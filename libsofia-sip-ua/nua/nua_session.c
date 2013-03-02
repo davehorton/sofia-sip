@@ -933,8 +933,8 @@ static int nua_session_client_response(nua_client_request_t *cr,
 {
   nua_handle_t *nh = cr->cr_owner;
   nua_dialog_usage_t *du = cr->cr_usage;
-  nua_dialog_state_t *ds = du->du_dialog;
   nua_session_usage_t *ss = nua_dialog_usage_private(du);
+  nua_dialog_state_t *ds = NULL;
 
   char const *sdp = NULL;
   size_t len;
@@ -950,6 +950,8 @@ static int nua_session_client_response(nua_client_request_t *cr,
 
   if (!ss || 300 <= status || !session_get_description(sip, &sdp, &len))
     return nua_base_client_response(cr, status, phrase, sip, NULL);
+
+  ds = du->du_dialog;
 
   if (cr->cr_offer_sent) {
     /* case 1: answer to our offer? */
