@@ -15,7 +15,7 @@
 #/configure
 #/depcomp
 #/install-sh
-/libtool
+#/libtool
 /ltmain.sh
 /missing
 /stamp-h1
