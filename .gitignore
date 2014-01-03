@@ -14,7 +14,7 @@
 /config.sub
 #/configure
 /depcomp
-/install-sh
+#/install-sh
 /libtool
 /ltmain.sh
 /missing
