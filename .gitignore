@@ -22,7 +22,7 @@
 
 Doxyfile
 Makefile
-Makefile.in
+#Makefile.in
 TAGS
 .deps
 .libs
