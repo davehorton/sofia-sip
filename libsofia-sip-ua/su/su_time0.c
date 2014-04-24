@@ -97,7 +97,7 @@ void su_time(su_time_t *tv)
   }
 #elif HAVE_GETTIMEOFDAY
   if (tv) {
-    struct timeval timeval;
+    struct timeval timeval={0.0};
 
     gettimeofday(&timeval, NULL);
     tv->tv_sec = timeval.tv_sec + NTP_EPOCH;
