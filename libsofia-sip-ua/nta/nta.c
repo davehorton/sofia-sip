@@ -1287,7 +1287,7 @@ void agent_timer(su_root_magic_t *rm, su_timer_t *timer, nta_agent_t *agent)
      if ( !agent->sa_out.completed->q_head && !agent->sa_out.trying->q_head && !agent->sa_out.inv_calling->q_head &&
         !agent->sa_out.re_list && !agent->sa_in.inv_confirmed->q_head && !agent->sa_in.preliminary->q_head &&
         !agent->sa_in.completed->q_head && !agent->sa_in.inv_completed->q_head && !agent->sa_in.re_list ) {
-      SU_DEBUG_9(("nta: timer not set\n" VA_NONE));
+      SU_DEBUG_9(("nta: timer not set\n"));
       return;
     }
   }
