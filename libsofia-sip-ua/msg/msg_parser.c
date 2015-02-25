@@ -2563,7 +2563,7 @@ msg_hclass_offset(msg_mclass_t const *mc, msg_pub_t const *mo, msg_hclass_t *hc)
     else if( mine == mc->mc_unknown[0].hr_class->hc_hash ) {
        return (msg_header_t **)((char *)mo + mc->mc_unknown[0].hr_offset);
     }
-    else if( mine == mc->mc_multipart[0].hr_class->hc_hash ) {
+    else if( mc->mc_multipart[0].hr_class && mine == mc->mc_multipart[0].hr_class->hc_hash ) {
        return (msg_header_t **)((char *)mo + mc->mc_multipart[0].hr_offset);
     }
     else if( mine == mc->mc_separator[0].hr_class->hc_hash ) {
