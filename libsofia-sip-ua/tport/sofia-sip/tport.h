@@ -425,6 +425,9 @@ tport_sigcomp_lifetime(tport_t *self,
 		       unsigned lifetime_in_ms,
 		       int only_expand);
 
+#ifdef SOFIA_TPORT_DEBUG_TRACE
+TPORT_DLL void tport_debug( tport_t const *tp ) ;
+#endif
 
 SOFIA_END_DECLS
 

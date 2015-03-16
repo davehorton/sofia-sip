@@ -43,12 +43,22 @@
 
 #include <sofia-sip/su_alloc.h>		/* XXX */
 #include <sofia-sip/su.h>
+#include <sofia-sip/su_debug.h>
 
 #include "msg_internal.h"
 #include "sofia-sip/msg_parser.h"
 #include "sofia-sip/msg_mclass.h"
 
+#ifdef SOFIA_MSG_DEBUG_TRACE
+static int nMsgs = 0 ;
+usize_t sofia_msg_count() {
+  return nMsgs ;
+}
+SOFIAPUBFUN void sofia_dump_msgs() {
+  //TODO: dump message addresses via SU_DEBUG
+}
 
+#endif
 /** Increment the reference count.
  *
  * @relatesalso msg_s
@@ -62,6 +72,9 @@
  */
 msg_t *msg_ref(msg_t *msg)
 {
+#ifdef SOFIA_MSG_DEBUG_TRACE  
+   SU_DEBUG_9(("msg_ref: %p, refcount before is %ld\n", (void*)msg, su_home_refcount(msg->m_home))) ;
+#endif
   return (msg_t *)su_home_ref(msg->m_home);
 }
 
@@ -86,7 +99,16 @@ static void msg_destructor(void *_msg)
  */
 void msg_unref(msg_t *msg)
 {
+#ifdef SOFIA_MSG_DEBUG_TRACE  
+  unsigned long count = su_home_refcount(msg->m_home) ; 
+  SU_DEBUG_9(("msg_unref: %p, refcount before is %ld\n", (void*)msg, count)) ;
+#endif
+
   su_home_unref(msg->m_home);
+
+#ifdef SOFIA_MSG_DEBUG_TRACE  
+  if( 1 == count ) nMsgs-- ;
+#endif
 }
 
 /**
@@ -128,7 +150,10 @@ msg_t *msg_create(msg_mclass_t const *mc, int flags)
     msg->m_object->msg_flags = mc->mc_flags | flags;
     msg->m_object->msg_common->h_class = (void *)mc;
   }
-
+#ifdef SOFIA_MSG_DEBUG_TRACE    
+  nMsgs++ ;
+  SU_DEBUG_9(("msg_create: %p\n", (void*)msg)) ;
+#endif
   return msg;
 }
 

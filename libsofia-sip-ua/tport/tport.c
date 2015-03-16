@@ -1196,22 +1196,29 @@ tport_primary_launch_reaper(tport_primary_t *self)
   su_timer_set(self->pri_primary->tp_timer, tport_secondary_reaper,
 	       (tport_t *)self);
 }
+#ifdef SOFIA_TPORT_DEBUG_TRACE
+static inline size_t
+tport_refcount(tport_t *tp)
+{
+  return su_home_refcount(tp->tp_home);
+}
+#endif
 
 /** Create a new reference to a transport object. */
 tport_t *tport_ref(tport_t *tp)
 {
+#ifdef SOFIA_TPORT_DEBUG_TRACE  
+  SU_DEBUG_9(("tport_ref: %p, refcount before is %ld\n", (void*)tp, tport_refcount(tp))) ;
+#endif
   return (tport_t *)su_home_ref(tp->tp_home);
 }
 
 static void _tport_unref(tport_t *tp)
 {
+#ifdef SOFIA_TPORT_DEBUG_TRACE  
+  SU_DEBUG_9(("_tport_unref: %p, refcount before is %ld\n", (void*)tp, tport_refcount(tp))) ;
+#endif
   su_home_unref(tp->tp_home);
-}
-
-static inline size_t
-tport_refcount(tport_t *tp)
-{
-  return su_home_refcount(tp->tp_home);
 }
 
 /** Destroy reference to a transport object. */
@@ -4506,7 +4513,17 @@ tport_t *tport_by_protocol(tport_t const *self, char const *proto)
 
   return (tport_t *)self;
 }
-
+#ifdef SOFIA_TPORT_DEBUG_TRACE
+void tport_debug( tport_t const *tp ) {
+  tport_primary_t const *self = tp->tp_master->mr_primaries ;
+  for (int i=0; self; self = self->pri_next, i++) {
+    tp = self->pri_primary;
+    SU_DEBUG_9(("tport_debug: loop %d \n", i));
+    SU_DEBUG_9(("tport_primary_by_name: tp %ld \n", (unsigned long) (void *)tp));
+    SU_DEBUG_9(("tport_primary_by_name: ai_family %d \n", tp->tp_addrinfo->ai_family));
+  }
+}
+#endif
 /** Get transport by protocol name. */
 tport_t *tport_primary_by_name(tport_t const *tp, tp_name_t const *tpn)
 {
@@ -4547,7 +4564,7 @@ tport_t *tport_primary_by_name(tport_t const *tp, tp_name_t const *tpn)
     if (ident && strcmp(ident, tp->tp_ident))
       continue;
     if (family) {
-      if (family == AF_INET && !tport_has_ip4(tp))
+      if (family == AF_INET && !tport_has_ip4(tp)) 
 	continue;
 #if SU_HAVE_IN6
       if (family == AF_INET6 && !tport_has_ip6(tp))
