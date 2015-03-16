@@ -1196,13 +1196,11 @@ tport_primary_launch_reaper(tport_primary_t *self)
   su_timer_set(self->pri_primary->tp_timer, tport_secondary_reaper,
 	       (tport_t *)self);
 }
-#ifdef SOFIA_TPORT_DEBUG_TRACE
 static inline size_t
 tport_refcount(tport_t *tp)
 {
   return su_home_refcount(tp->tp_home);
 }
-#endif
 
 /** Create a new reference to a transport object. */
 tport_t *tport_ref(tport_t *tp)
