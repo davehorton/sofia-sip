@@ -4514,7 +4514,8 @@ tport_t *tport_by_protocol(tport_t const *self, char const *proto)
 #ifdef SOFIA_TPORT_DEBUG_TRACE
 void tport_debug( tport_t const *tp ) {
   tport_primary_t const *self = tp->tp_master->mr_primaries ;
-  for (int i=0; self; self = self->pri_next, i++) {
+  int i = 0 ;
+  for (; self; self = self->pri_next, i++) {
     tp = self->pri_primary;
     SU_DEBUG_9(("tport_debug: loop %d \n", i));
     SU_DEBUG_9(("tport_primary_by_name: tp %ld \n", (unsigned long) (void *)tp));
