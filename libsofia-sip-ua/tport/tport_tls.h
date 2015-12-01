@@ -60,11 +60,12 @@ typedef struct tls_issues_s {
   char *randFile;       /* Seed file for the PRNG (default: tls_seed.dat) */
   char *CAfile;		/* PEM file of CA's                           */
   char *CApath;		/* PEM file path of CA's		      */
-  char *cipher;         /* Should be one of the above defined ciphers *
-			 * or NULL (default: "ALL:!ADH:!LOW:!EXP:!MD5:@STRENGTH
+  char *ciphers;         /* Should be one of the above defined ciphers *
+			 * or NULL (default: !eNULL:!aNULL:!EXP:!LOW:!MD5:ALL:@STRENGTH)
                          */
   int   version;	/* For tls1, version is 1. When ssl3/ssl2 is
 			 * used, it is 0. */
+  unsigned timeout;	/* Maximum session lifetime in seconds */
 } tls_issues_t;
 
 typedef struct tport_tls_s {
@@ -92,6 +93,7 @@ ssize_t tls_write(tls_t *tls, void *buf, size_t size);
 int tls_want_write(tls_t *tls, int events);
 
 int tls_events(tls_t const *tls, int flags);
+void tls_init(void);
 
 SOFIA_END_DECLS
 

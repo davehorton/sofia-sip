@@ -184,12 +184,31 @@ int tport_tcp_init_client(tport_primary_t *pri,
 int tport_tcp_init_secondary(tport_t *self, int socket, int accepted,
 			     char const **return_reason)
 {
-  int one = 1;
+  int val = 1;
 
   self->tp_has_connection = 1;
 
-  if (setsockopt(socket, SOL_TCP, TCP_NODELAY, (void *)&one, sizeof one) == -1)
+  self->tp_params->tpp_idle = UINT_MAX;
+
+  if (setsockopt(socket, SOL_TCP, TCP_NODELAY, (void *)&val, sizeof val) == -1)
     return *return_reason = "TCP_NODELAY", -1;
+
+#if defined(SO_KEEPALIVE)
+  setsockopt(socket, SOL_SOCKET, SO_KEEPALIVE, (void *)&val, sizeof val);
+#endif
+  val = (int)(self->tp_params->tpp_socket_keepalive);
+#if defined(TCP_KEEPIDLE)
+  if (val != 0 && val != UINT_MAX) {
+    SU_DEBUG_3(("%s(%p): Setting TCP_KEEPIDLE to %d\n",
+                __func__, (void *)self, val));
+    setsockopt(socket, SOL_TCP, TCP_KEEPIDLE, (void *)&val, sizeof val);}
+#endif
+#if defined(TCP_KEEPINTVL)
+  if (val != 0 && val != UINT_MAX) {
+    SU_DEBUG_3(("%s(%p): Setting TCP_KEEPINTVL to %d\n",
+                __func__, (void *)self, val));
+    setsockopt(socket, SOL_TCP, TCP_KEEPINTVL, (void *)&val, sizeof val);}
+#endif
 
   if (!accepted)
     tport_tcp_setsndbuf(socket, 64 * 1024);
@@ -270,8 +289,6 @@ int tport_recv_stream(tport_t *self)
     size_t i;
 
     n = su_recv(self->tp_socket, crlf, N, MSG_PEEK);
-    if (n <= 0)
-      return (int)n;
 
     i = ws_span(crlf, n);
     if (i == 0)
@@ -336,6 +353,10 @@ int tport_recv_stream(tport_t *self)
   /* Write the received data to the message dump file */
   if (self->tp_master->mr_dump_file)
     tport_dump_iovec(self, msg, n, iovec, veclen, "recv", "from");
+    
+  if (self->tp_master->mr_capt_sock)
+      tport_capt_msg(self, msg, n, iovec, veclen, "recv");
+         
 
   /* Mark buffer as used */
   msg_recv_commit(msg, n, n == 0);
@@ -480,7 +501,15 @@ int tport_tcp_ping(tport_t *self, su_time_t now)
     return 0;
 
   n = send(self->tp_socket, "\r\n\r\n", 4, 0);
-  if (n == -1) {
+
+  if (n > 0)
+    self->tp_ktime = now;
+
+  if (n == 4) {
+    if (self->tp_ptime.tv_sec == 0)
+      self->tp_ptime = now;
+  }
+  else if (n == -1) {
     int error = su_errno();
 
     why = " failed";
@@ -493,19 +522,11 @@ int tport_tcp_ping(tport_t *self, su_time_t now)
     return -1;
   }
 
-  if (n > 0)
-    self->tp_ktime = now;
-
-  if (n == 4) {
-    if (self->tp_ptime.tv_sec == 0)
-      self->tp_ptime = now;
-  }
-
   SU_DEBUG_7(("%s(%p): %s to " TPN_FORMAT "%s\n",
 	      __func__, (void *)self,
 	      "sending PING", TPN_ARGS(self->tp_name), why));
 
-  return 0;
+  return n == -1 ? -1 : 0;
 }
 
 /** Send pong */

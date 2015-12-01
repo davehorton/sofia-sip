@@ -78,6 +78,8 @@ static char const __func__[] = "stun";
 #define SU_DEBUG 3
 #endif
 
+#define SSLeay_add_ssl_algorithms()     SSL_library_init()
+
 /** STUN log. */
 su_log_t stun_log[] = { SU_LOG_INIT("stun", "STUN_DEBUG", SU_DEBUG) };
 
