@@ -255,7 +255,7 @@ int tport_udp_init_client(tport_primary_t *pri,
 /** Runtime test making sure MSG_TRUNC work as expected */
 static void tport_check_trunc(tport_t *tp, su_addrinfo_t *ai)
 {
-#if HAVE_MSG_TRUNC && 0		/* We are not using tp_trunc anymore */
+#if HAVE_MSG_TRUNC
   ssize_t n;
   char buffer[2];
   su_sockaddr_t su[1];
@@ -362,6 +362,9 @@ int tport_recv_dgram(tport_t *self)
 
   if (self->tp_master->mr_dump_file)
     tport_dump_iovec(self, msg, n, iovec, veclen, "recv", "from");
+    
+  if (self->tp_master->mr_capt_sock)
+    tport_capt_msg(self, msg, n, iovec, veclen, "recv");
 
   *sample = *((uint8_t *)iovec[0].mv_base);
 

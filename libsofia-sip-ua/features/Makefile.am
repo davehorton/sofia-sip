@@ -8,7 +8,7 @@
 # ----------------------------------------------------------------------
 # Header paths
 
-INCLUDES =		$(INTERNAL_INCLUDES)
+AM_CPPFLAGS =		$(INTERNAL_INCLUDES)
 
 # ----------------------------------------------------------------------
 # Build targets
@@ -31,6 +31,5 @@ EXTRA_DIST =		features.docs
 # ----------------------------------------------------------------------
 # Sofia specific rules
 
-LDADD = 
 include $(top_srcdir)/rules/sofia.am
 

@@ -178,11 +178,13 @@ su_strncasecmp(char const *s1,
   }
 }
 
- /** Check if two strings match.
+/** Check if two strings match.
  *
  * Compare two strings. Accept NULL arguments: two NULL pointers match each
  * other, but otherwise NULL pointer does not match anything else, not even
  * empty string.
+ *
+ * @param s1 
  *
  * @retval One if @a s1 matches @a s2
  * @retval Zero if @a s1 does not match @a s2
@@ -476,7 +478,7 @@ size_t su_memspn(const void *mem, size_t memlen,
  * of bytes not in @a reject.
  *
  * @param mem        pointer to memory area
- *Â @param memlen     size of @a mem in bytes
+ * @param memlen     size of @a mem in bytes
  * @param reject     pointer to table containing bytes to reject
  * @param rejectlen  size of @a reject table
  *

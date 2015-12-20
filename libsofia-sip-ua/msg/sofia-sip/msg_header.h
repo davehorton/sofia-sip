@@ -224,8 +224,6 @@ msg_param_t **msg_header_params(msg_common_t const *h)
   (msg_param_t **)((char *)(h) + ((msg_common_t *)h)->h_class->hc_params) : NULL)
 #endif
 
-SOFIAPUBFUN void msg_fragment_clear_chain(msg_header_t *h);
-
 SOFIAPUBFUN char const *msg_header_find_param(msg_common_t const *,
 					      char const *name);
 SOFIAPUBFUN int msg_header_add_param(su_home_t *, msg_common_t *h,
@@ -301,7 +299,12 @@ enum {
    (h))
 
 /** No header. */
-#define MSG_HEADER_NONE ((msg_header_t *)(intptr_t)-1)
+
+#ifndef _MSC_VER
+#define MSG_HEADER_NONE ((msg_header_t *)-1)
+#else
+#define MSG_HEADER_NONE ((msg_header_t *)(INT_PTR)-1)
+#endif
 
 SOFIA_END_DECLS
 

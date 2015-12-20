@@ -244,31 +244,6 @@ tag_typedef_t soatag_user_sdp = SDPTAG_TYPEDEF(user_sdp);
  */
 tag_typedef_t soatag_user_sdp_str = STRTAG_TYPEDEF(user_sdp_str);
 
-
-/**@def SOATAG_USER_O_LINE(x)
- *
- * Use address, id and version in the initial o= line from the user SDP
- * o= line.
- *
- * @par Used with
- *    soa_set_params(), soa_get_params(), soa_get_paramlist() \n
- *
- * @par Parameter type
- *    Boolean (int)
- *
- * @par Values
- *    0 - generate address, id and version \n
- *    1 (!= 0) - use address, id and version from o= line
- *
- * Corresponding tag taking reference parameter is SOATAG_USER_O_LINE_REF()
- *
- * @sa SOATAG_USER_SDP()
- *
- * @NEW_UNRELEASED
- */
-tag_typedef_t soatag_user_o_line = BOOLTAG_TYPEDEF(user_o_line);
-
-
 /**@def SOATAG_AF(x)
  *
  * Preferred address family for media.
@@ -672,23 +647,3 @@ tag_typedef_t soatag_hold = STRTAG_TYPEDEF(hold);
 tag_typedef_t soatag_ordered_user = BOOLTAG_TYPEDEF(ordered_user);
 
 tag_typedef_t soatag_reuse_rejected = BOOLTAG_TYPEDEF(reuse_rejected);
-
-/**@def SOATAG_DELAYED_OFFER_ENABLE(x)
- *
- * Enable delayed offer
- *
- * @par Used with
- *    soa_set_params(), soa_get_params(), soa_get_paramlist() \n
- *
- * @par Parameter type
- *    boolean (int)
- *
- * @par Values
- *    @c !=0 enable \n
- *    @c 0 disable
- *
- * Corresponding tag taking reference parameter is
- * SOATAG_DELAYED_OFFER_ENABLE_REF()
- *
- */
-tag_typedef_t soatag_delayed_offer_enable = BOOLTAG_TYPEDEF(delayed_offer_enable);

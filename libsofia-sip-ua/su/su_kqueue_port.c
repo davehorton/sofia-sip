@@ -46,6 +46,17 @@
 
 #include <sys/event.h>
 
+/* INT_TO_UDATA() macros from https://github.com/libevent/libevent */
+
+/* Some platforms apparently define the udata field of struct kevent as
+ * intptr_t, whereas others define it as void*.  There doesn't seem to be an
+ * easy way to tell them apart via autoconf, so we need to use OS macros. */
+#if defined(HAVE_INTTYPES_H) && !defined(__OpenBSD__) && !defined(__FreeBSD__) && !defined(__darwin__) && !defined(__APPLE__) && !defined(__DragonFly__)
+#define INT_TO_UDATA(x) ((intptr_t)(x))
+#else
+#define INT_TO_UDATA(x) ((void*)(intptr_t)(x))
+#endif
+
 #define SU_ENABLE_MULTISHOT_KQUEUE 1
 
 #include <stdlib.h>
@@ -144,8 +155,6 @@ su_port_vtable_t const su_kqueue_port_vtable[1] =
       su_base_port_max_defer,
       su_socket_port_wakeup,
       su_base_port_is_running,
-      su_base_port_stamp64,
-      su_base_port_stamp64_offset,
     }};
 
 static char const *su_kqueue_port_name(su_port_t const *self)
@@ -248,7 +257,7 @@ int su_kqueue_port_register(su_port_t *self,
   i = ser->ser_id;
 
   flags = (wait->events & SU_WAIT_IN) ? EV_ADD : EV_ADD | EV_DISABLE;
-  EV_SET(ev, wait->fd, EVFILT_READ, flags, 0, 0, (void *)(intptr_t)i);
+  EV_SET(ev, wait->fd, EVFILT_READ, flags, 0, 0, INT_TO_UDATA(i));
   if (kevent(self->sup_kqueue, ev, 1, NULL, 0, NULL) == -1) {
     SU_DEBUG_0(("kevent((%u, %s, %u, %p)) failed: %s\n",
 				wait->fd, "EVFILT_READ", flags, (void *)(intptr_t)i, strerror(errno)));
@@ -256,13 +265,13 @@ int su_kqueue_port_register(su_port_t *self,
   }
 
   flags = (wait->events & SU_WAIT_OUT) ? EV_ADD : EV_ADD | EV_DISABLE;
-  EV_SET(ev, wait->fd, EVFILT_WRITE, flags, 0, 0, (void *)(intptr_t)i);
+  EV_SET(ev, wait->fd, EVFILT_WRITE, flags, 0, 0, INT_TO_UDATA(i));
   if (kevent(self->sup_kqueue, ev, 1, NULL, 0, NULL) == -1) {
     int error = errno;
     SU_DEBUG_0(("kevent((%u, %s, %u, %p)) failed: %s\n",
 				wait->fd, "EVFILT_WRITE", flags, (void *)(intptr_t)i, strerror(error)));
 
-    EV_SET(ev, wait->fd, EVFILT_READ, EV_DELETE, 0, 0, (void *)(intptr_t)i);
+    EV_SET(ev, wait->fd, EVFILT_READ, EV_DELETE, 0, 0, INT_TO_UDATA(i));
     kevent(self->sup_kqueue, ev, 1, NULL, 0, NULL);
 
     errno = error;
@@ -300,14 +309,14 @@ static int su_kqueue_port_deregister0(su_port_t *self, int i, int destroy_wait)
 
   wait = ser->ser_wait;
 
-  EV_SET(ev, wait->fd, EVFILT_READ, EV_DELETE, 0, 0, (void *)(intptr_t)i);
+  EV_SET(ev, wait->fd, EVFILT_READ, EV_DELETE, 0, 0, INT_TO_UDATA(i));
   if (kevent(self->sup_kqueue, ev, 1, NULL, 0, NULL) == -1) {
     SU_DEBUG_0(("remove kevent((%u, %s, %s, %p)) failed: %s\n",
 				wait->fd, "EVFILT_READ", "EV_DELETE", (void *)(intptr_t)i,
 		strerror(errno)));
   }
 
-  EV_SET(ev, wait->fd, EVFILT_WRITE, EV_DELETE, 0, 0, (void *)(intptr_t)i);
+  EV_SET(ev, wait->fd, EVFILT_WRITE, EV_DELETE, 0, 0, INT_TO_UDATA(i));
   if (kevent(self->sup_kqueue, ev, 1, NULL, 0, NULL) == -1) {
     SU_DEBUG_0(("remove kevent((%u, %s, %s, %p)) failed: %s\n",
 				wait->fd, "EVFILT_WRITE", "EV_DELETE", (void *)(intptr_t)i,
@@ -467,7 +476,7 @@ int su_kqueue_port_eventmask(su_port_t *self, int index, int socket, int events)
   wait->events = events;
 
   flags = (wait->events & SU_WAIT_IN) ? EV_ADD | EV_ENABLE : EV_ADD | EV_DISABLE;
-  EV_SET(ev, wait->fd, EVFILT_READ, flags, 0, 0, (void *)(intptr_t)index);
+  EV_SET(ev, wait->fd, EVFILT_READ, flags, 0, 0, INT_TO_UDATA(index));
   if (kevent(self->sup_kqueue, ev, 1, NULL, 0, NULL) == -1) {
     SU_DEBUG_0(("modify kevent((%u, %s, %s, %p)) failed: %s\n",
 		wait->fd, "EVFILT_READ",
@@ -476,7 +485,7 @@ int su_kqueue_port_eventmask(su_port_t *self, int index, int socket, int events)
   }
 
   flags = (wait->events & SU_WAIT_OUT) ? EV_ADD | EV_ENABLE : EV_ADD | EV_DISABLE;
-  EV_SET(ev, wait->fd, EVFILT_WRITE, flags, 0, 0, (void *)(intptr_t)index);
+  EV_SET(ev, wait->fd, EVFILT_WRITE, flags, 0, 0, INT_TO_UDATA(index));
   if (kevent(self->sup_kqueue, ev, 1, NULL, 0, NULL) == -1) {
     SU_DEBUG_0(("modify kevent((%u, %s, %s, %p)) failed: %s\n",
 		wait->fd, "EVFILT_WRITE",

@@ -270,42 +270,10 @@ int su_setblocking(su_socket_t s, int blocking)
 #endif
 
 #if SU_HAVE_WINSOCK
-
-static int
-get_extension_function_pointer(GUID const *id, void **return_function)
-{
-  int retval;
-  SOCKET s;
-  DWORD bytes_returned = 0;
-
-  *return_function = NULL;
-
-  s = su_socket(PF_INET, SOCK_STREAM, IPPROTO_TCP);
-  if (s == INVALID_SOCKET)
-    return -1;
-
-  retval = WSAIoctl(s, SIO_GET_EXTENSION_FUNCTION_POINTER,
-		    id, sizeof *id,
-		    return_function, sizeof *return_function,
-		    &bytes_returned, NULL, NULL);
-
-  closesocket(s);
-
-  return retval;
-}
-
-static BOOL (WINAPI *_DisconnectEx)(SOCKET, LPOVERLAPPED, DWORD, DWORD);
-
-#ifndef WSAID_DISCONNECTEX
-#define WSAID_DISCONNECTEX \
-{ 0x7fda2e11, 0x8630, 0x436f, { 0xa0, 0x31, 0xf5, 0x36, 0xa6, 0xee, 0xc1, 0x57 }}
-#endif
-
 int su_init(void)
 {
-  WORD wVersionRequested;
-  WSADATA wsaData;
-  GUID const disconnectExGuid = WSAID_DISCONNECTEX;
+  WORD	wVersionRequested;
+  WSADATA	wsaData;
 
   wVersionRequested = MAKEWORD(2, 0);
 
@@ -316,11 +284,6 @@ int su_init(void)
   su_log_init(su_log_default);
 
   su_log_init(su_log_global);
-
-  if (get_extension_function_pointer(&disconnectExGuid,
-				     (void **)&_DisconnectEx) == -1)
-    su_log("DisconnectEx: cannot load (%d): %s",
-	   su_errno(), su_strerror(su_errno()));
 
   return 0;
 }
@@ -333,10 +296,6 @@ void su_deinit(void)
 /** Close a socket descriptor. */
 int su_close(su_socket_t s)
 {
-  /* Implement close() semantics on XP or later */
-  if (_DisconnectEx)
-    _DisconnectEx(s, NULL, 0, 0);
-
   return closesocket(s);
 }
 
@@ -391,8 +350,15 @@ int su_getsocktype(su_socket_t s)
 
 int su_setreuseaddr(su_socket_t s, int reuse)
 {
-  return setsockopt(s, SOL_SOCKET, SO_REUSEADDR,
-		    (void *)&reuse, (socklen_t)sizeof(reuse));
+#ifdef SO_REUSEPORT
+	if (setsockopt(s, SOL_SOCKET, SO_REUSEPORT,
+				   (void *)&reuse, (socklen_t)sizeof(reuse)) < 0)
+		return -1;
+#endif
+	if (setsockopt(s, SOL_SOCKET, SO_REUSEADDR,
+				   (void *)&reuse, (socklen_t)sizeof(reuse)) < 0)
+		return -1;
+	return 0;
 }
 
 
@@ -545,19 +511,27 @@ issize_t su_vrecv(su_socket_t s, su_iovec_t iov[], isize_t iovlen, int flags,
 
 
 #else
-
+#include <sched.h>
 issize_t su_vsend(su_socket_t s,
 		  su_iovec_t const iov[], isize_t iovlen, int flags,
 		  su_sockaddr_t const *su, socklen_t sulen)
 {
   struct msghdr hdr[1] = {{0}};
+  issize_t rv;
+  int sanity = 100;
 
   hdr->msg_name = (void *)su;
   hdr->msg_namelen = sulen;
   hdr->msg_iov = (struct iovec *)iov;
   hdr->msg_iovlen = iovlen;
-
-  return sendmsg(s, hdr, flags);
+  
+  do {
+	  if ((rv = sendmsg(s, hdr, flags)) == -1) {
+		  if (errno == EAGAIN) sched_yield();
+	  }
+  } while (--sanity > 0 && rv == -1 && (errno == EAGAIN || errno == EINTR));
+  
+  return rv;
 }
 
 issize_t su_vrecv(su_socket_t s, su_iovec_t iov[], isize_t iovlen, int flags,

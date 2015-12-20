@@ -152,7 +152,7 @@ _su_task_r su_task_init(su_task_r task)
 {
   assert(task);
 
-  memset(task, 0, sizeof(task[0]));
+  memset(task, 0, sizeof(su_task_r));
   return task;
 }
 
@@ -422,7 +422,6 @@ su_root_clone_initializer(su_root_t *root,
  *
  * Allocate and initialize the instance of su_root_t.
  *
- * @param self      pointer to a root object.
  * @param magic     pointer to user data
  *
  * @return A pointer to allocated su_root_t instance, NULL on error.
@@ -714,9 +713,9 @@ int su_root_set_max_defer(su_root_t *self, su_duration_t max_defer)
  * activated, however, they are deferred no longer than the maximum defer
  * time. The maximum defer time is 15 seconds by default.
  *
- * @param self pointer to root object
+ * @param root pointer to root object
  *
- * @return Maximum defer time in milliseconds
+ * @return Maximum defer time
  *
  * @NEW_1_12_7
  */
@@ -728,48 +727,6 @@ su_duration_t su_root_get_max_defer(su_root_t const *self)
     su_port_max_defer(self->sur_port, &max_defer, NULL);
 
   return max_defer;
-}
-
-/** Get cached timestamp.
- *
- * Get cached monotonic timestamp from root. The advantage of using this
- * function over su_stamp64() is that when processing multiple events,
- * Sofia can cache result from a single call instead of repeatedly
- * calling the system monotonic clock.
- *
- * The returned time uses the system monotonic clock, if available.
- *
- * @param self pointer to root object
- *
- * @return Cached time in nanosecond resolution
- *
- * @NEW_UNRELEASED
- */
-su_time64_t su_root_stamp64(su_root_t const *self)
-{
-  if (self != NULL)
-    return su_port_stamp64(self->sur_port);
-  else
-    return su_stamp64();
-}
-
-/** Get cached offset between monotonic timestamps and UTC time.
- *
- * Get cached offset in nanoseconds between UTC time and monotonic
- * timestamps returned by su_stamp64() or su_root_stamp64().
- *
- * @param self pointer to root object
- *
- * @return Cached offset in nanosecond resolution
- *
- * @NEW_UNRELEASED
- */
-su_dur64_t su_root_stamp64_offset(su_root_t const *self)
-{
-  if (self != NULL)
-    return su_port_stamp64(self->sur_port);
-  else
-    return su_now64() - su_stamp64();
 }
 
 /** Remove a su_wait_t registration.

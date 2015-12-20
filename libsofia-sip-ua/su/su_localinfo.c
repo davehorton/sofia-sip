@@ -194,7 +194,8 @@ static void li_sort(su_localinfo_t *i, su_localinfo_t **rresult);
 int su_getlocalinfo(su_localinfo_t const *hints,
 		    su_localinfo_t **return_localinfo)
 {
-  int error = 0, ip4 = 0, ip6 = 0;
+  int error = 0, ip4 = 0;
+  int ip6 = 0;
   su_localinfo_t *result = NULL, **rr = &result;
   su_localinfo_t hh[1] = {{ 0 }};
 
@@ -231,7 +232,11 @@ int su_getlocalinfo(su_localinfo_t const *hints,
     break;
 
   case 0:
-    ip6 = ip4 = 1;
+    ip4 = 1;
+#if SU_HAVE_IN6  
+    ip6 = 1;
+#endif
+
     break;
 
   default:
@@ -260,6 +265,9 @@ int su_getlocalinfo(su_localinfo_t const *hints,
   }
 #endif
 
+  if (ip6) {
+    /* Required to make compiler happy */  
+  }
   if (!result)
     error = ELI_NOADDRESS;
 
@@ -401,8 +409,10 @@ static int
 li_scope6(struct in6_addr const *ip6)
 {
   if (IN6_IS_ADDR_V4MAPPED(ip6) || IN6_IS_ADDR_V4COMPAT(ip6)) {
-    uint32_t ip4 = *(uint32_t *)(ip6->s6_addr + 12);
-    return li_scope4(ip4);
+	  uint32_t *u = (uint32_t *)(ip6->s6_addr + 12);
+
+	  uint32_t ip4 = *u;
+	  return li_scope4(ip4);
   }
   else if (IN6_IS_ADDR_LOOPBACK(ip6))
     return LI_SCOPE_HOST;
@@ -599,7 +609,7 @@ int localinfo4(su_localinfo_t const *hints, su_localinfo_t **rresult)
   ifc.ifc_len = numifs * sizeof (struct ifreq);
   buffer = malloc(sizeof(su_localinfo_t) + ifc.ifc_len + su_xtra);
   if (!buffer) {
-    SU_DEBUG_1(("su_localinfo: memory exhausted\n"));
+    SU_DEBUG_1(("su_localinfo: memory exhausted\n" VA_NONE));
     error = ELI_MEMORY;
     goto err;
   }
@@ -1250,7 +1260,7 @@ int bsd_localinfo(su_localinfo_t const hints[1],
 	flags |= LI_NUMERIC;
 
     if (!(li = calloc(1, sizeof(*li) + sulen + ifnamelen))) {
-      SU_DEBUG_1(("su_getlocalinfo: memory exhausted\n"));
+		SU_DEBUG_1(("su_getlocalinfo: memory exhausted\n" VA_NONE));
       error = ELI_MEMORY;
       break;
     }
@@ -1619,7 +1629,7 @@ int li_name(su_localinfo_t const *hints,
     if (error) {
       if ((flags & LI_NAMEREQD) == LI_NAMEREQD)
 	return 1;
-      SU_DEBUG_7(("li_name: getnameinfo() failed\n"));
+      SU_DEBUG_7(("li_name: getnameinfo() failed\n" VA_NONE));
       if (!su_inet_ntop(su->su_family, SU_ADDR(su), name, sizeof name))
 	return ELI_RESOLVER;
     }

@@ -45,7 +45,16 @@ libnua_la_SOURCES = 	nua.c nua_stack.h nua_common.c nua_stack.c \
 
 COVERAGE_INPUT = 	$(libnua_la_SOURCES) $(include_sofia_HEADERS)
 
-LDADD = 		libnua.la  \
+# ----------------------------------------------------------------------
+
+check_nua_SOURCES = 	check_nua.c check_nua.h \
+			check_session.c check_register.c \
+			check_etsi.c check_simple.c
+
+check_nua_LDADD = 	$(nua_libs) ${top_builddir}/s2check/libs2.a \
+			@CHECK_LIBS@
+
+nua_libs = 		libnua.la  \
 			../iptsec/libiptsec.la \
 			../ipt/libipt.la \
 			../nea/libnea.la \
@@ -63,15 +72,6 @@ LDADD = 		libnua.la  \
 			../su/libsu.la
 
 # ----------------------------------------------------------------------
-
-check_nua_SOURCES = 	check_nua.c check_nua.h \
-			check_session.c check_register.c \
-			check_etsi.c check_simple.c
-
-check_nua_LDADD = 	$(LDADD) ${top_builddir}/s2check/libs2.a \
-			@CHECK_LIBS@
-
-# ----------------------------------------------------------------------
 # Install and distribution rules
 
 EXTRA_DIST =		nua.docs $(BUILT_SOURCES)
@@ -81,6 +81,6 @@ EXTRA_DIST =		nua.docs $(BUILT_SOURCES)
 
 include $(top_srcdir)/rules/sofia.am
 
-INCLUDES = ${INTERNAL_INCLUDES} -I$(top_srcdir)/s2check
+AM_CPPFLAGS = ${INTERNAL_INCLUDES} -I$(top_srcdir)/s2check
 
 TAG_DLL_FLAGS =		LIST=nua_tag_list

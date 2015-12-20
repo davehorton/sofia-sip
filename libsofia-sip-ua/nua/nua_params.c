@@ -133,13 +133,13 @@ int nua_stack_set_defaults(nua_handle_t *nh,
   NHP_SET(nhp, max_subscriptions, 20);
 
   NHP_SET(nhp, media_enable, 1);
-  NHP_SET(nhp, accept_multipart, 0);
   NHP_SET(nhp, invite_enable, 1);
   NHP_SET(nhp, auto_alert, 0);
   NHP_SET(nhp, early_media, 0);
   NHP_SET(nhp, only183_100rel, 0);
   NHP_SET(nhp, auto_answer, 0);
   NHP_SET(nhp, auto_ack, 1);
+  NHP_SET(nhp, timer_autorequire, 1);
   NHP_SET(nhp, invite_timeout, 120);
 
   nhp->nhp_session_timer = 1800;
@@ -157,14 +157,10 @@ int nua_stack_set_defaults(nua_handle_t *nh,
   NHP_SET(nhp, callee_caps, 0);
   NHP_SET(nhp, service_route_enable, 1);
   NHP_SET(nhp, path_enable, 1);
+  NHP_SET(nhp, retry_after_enable, 1);
 
   NHP_SET(nhp, refer_expires, 300);
   NHP_SET(nhp, refer_with_id, 1);
-
-  NHP_SET(nhp, auto302, 1);
-  NHP_SET(nhp, auto305, 1);
-  NHP_SET(nhp, auto100, 1);
-  NHP_SET(nhp, max_retry_after, 32);
 
   NHP_SET(nhp, substate, nua_substate_active);
   NHP_SET(nhp, sub_expires, 3600);
@@ -270,15 +266,9 @@ int nua_stack_init_instance(nua_handle_t *nh, tagi_t const *tags)
  *     nothing
  *
  * @par Related tags:
- *   NUTAG_ACCEPT_MULTIPART() \n
  *   NUTAG_ALLOW(), SIPTAG_ALLOW(), and SIPTAG_ALLOW_STR() \n
  *   NUTAG_ALLOW_EVENTS(), SIPTAG_ALLOW_EVENTS(), and
  *                         SIPTAG_ALLOW_EVENTS_STR() \n
- *   NUTAG_APPL_EVENT() \n
- *   NUTAG_APPL_METHOD() \n
- *   NUTAG_AUTO100() \n
- *   NUTAG_AUTO302() \n
- *   NUTAG_AUTO305() \n
  *   NUTAG_AUTOACK() \n
  *   NUTAG_AUTOALERT() \n
  *   NUTAG_AUTOANSWER() \n
@@ -295,7 +285,6 @@ int nua_stack_init_instance(nua_handle_t *nh, tagi_t const *tags)
  *   NUTAG_INVITE_TIMER() \n
  *   NUTAG_KEEPALIVE() \n
  *   NUTAG_KEEPALIVE_STREAM() \n
- *   NUTAG_MAX_RETRY_AFTER() \n
  *   NUTAG_MAX_SUBSCRIPTIONS() \n
  *   NUTAG_MEDIA_ENABLE() \n
  *   NUTAG_MEDIA_FEATURES() \n
@@ -307,6 +296,7 @@ int nua_stack_init_instance(nua_handle_t *nh, tagi_t const *tags)
  *   NUTAG_ONLY183_100REL() \n
  *   NUTAG_OUTBOUND() \n
  *   NUTAG_PATH_ENABLE() \n
+ *   NUTAG_RETRY_AFTER_ENABLE() \n
  *   NUTAG_PROXY() (aka NTATAG_DEFAULT_PROXY()) \n
  *   NUTAG_REFER_EXPIRES() \n
  *   NUTAG_REFER_WITH_ID() \n
@@ -399,16 +389,10 @@ int nua_stack_init_instance(nua_handle_t *nh, tagi_t const *tags)
  *     nothing
  *
  * @par Tags Used to Set Handle-Specific Parameters:
- *   NUTAG_ACCEPT_MULTIPART() \n
  *   NUTAG_ALLOW(), SIPTAG_ALLOW(), and SIPTAG_ALLOW_STR() \n
  *   NUTAG_ALLOW_EVENTS(), SIPTAG_ALLOW_EVENTS(), and
  *                         SIPTAG_ALLOW_EVENTS_STR() \n
- *   NUTAG_APPL_EVENT() \n
- *   NUTAG_APPL_METHOD() \n
  *   NUTAG_AUTH_CACHE() \n
- *   NUTAG_AUTO100() \n
- *   NUTAG_AUTO302() \n
- *   NUTAG_AUTO305() \n
  *   NUTAG_AUTOACK() \n
  *   NUTAG_AUTOALERT() \n
  *   NUTAG_AUTOANSWER() \n
@@ -424,7 +408,6 @@ int nua_stack_init_instance(nua_handle_t *nh, tagi_t const *tags)
  *   NUTAG_INVITE_TIMER() \n
  *   NUTAG_KEEPALIVE() \n
  *   NUTAG_KEEPALIVE_STREAM() \n
- *   NUTAG_MAX_RETRY_AFTER() \n
  *   NUTAG_MAX_SUBSCRIPTIONS() \n
  *   NUTAG_MEDIA_ENABLE() \n
  *   NUTAG_MEDIA_FEATURES() \n
@@ -436,6 +419,7 @@ int nua_stack_init_instance(nua_handle_t *nh, tagi_t const *tags)
  *   NUTAG_ONLY183_100REL() \n
  *   NUTAG_OUTBOUND() \n
  *   NUTAG_PATH_ENABLE() \n
+ *   NUTAG_RETRY_AFTER_ENABLE() \n
  *   NUTAG_PROXY() (aka NTATAG_DEFAULT_PROXY()) \n
  *   NUTAG_REFER_EXPIRES() \n
  *   NUTAG_REFER_WITH_ID() \n
@@ -542,29 +526,28 @@ int nua_stack_set_params(nua_t *nua, nua_handle_t *nh, nua_event_t e,
   if (status == 200) {
     nua_handle_preferences_t const *nhp = nh->nh_prefs;
     nua_handle_preferences_t const *dnhp = dnh->nh_prefs;
-    nua_dialog_state_t *ds = nh->nh_ds, *dds = dnh->nh_ds;
 
-    if (!ds->ds_soa && NHP_GET(nhp, dnhp, media_enable)) {
+    if (!nh->nh_soa && NHP_GET(nhp, dnhp, media_enable)) {
       /* Create soa when needed */
       char const *soa_name = NHP_GET(nhp, dnhp, soa_name);
 
-      if (dds->ds_soa)
-	ds->ds_soa = soa_clone(dds->ds_soa, nua->nua_root, nh);
+      if (dnh->nh_soa)
+	nh->nh_soa = soa_clone(dnh->nh_soa, nua->nua_root, nh);
       else
-	ds->ds_soa = soa_create(soa_name, nua->nua_root, nh);
+	nh->nh_soa = soa_create(soa_name, nua->nua_root, nh);
 
-      if (!ds->ds_soa)
+      if (!nh->nh_soa)
 	status = 900, phrase = "Error Creating SOA Object";
-      else if (soa_set_params(ds->ds_soa, TAG_NEXT(nh->nh_ptags)) < 0)
+      else if (soa_set_params(nh->nh_soa, TAG_NEXT(nh->nh_ptags)) < 0)
 	status = 900, phrase = "Error Setting SOA Parameters";
     }
-    else if (ds->ds_soa && !NHP_GET(nhp, dnhp, media_enable)) {
+    else if (nh->nh_soa && !NHP_GET(nhp, dnhp, media_enable)) {
       /* ... destroy soa when not needed */
-      soa_destroy(ds->ds_soa), ds->ds_soa = NULL;
+      soa_destroy(nh->nh_soa), nh->nh_soa = NULL;
     }
 
-    if (status == 200 && tags && ds->ds_soa &&
-	soa_set_params(ds->ds_soa, TAG_NEXT(tags)) < 0)
+    if (status == 200 && tags && nh->nh_soa &&
+	soa_set_params(nh->nh_soa, TAG_NEXT(tags)) < 0)
       status = 900, phrase = "Error Setting SOA Parameters";
   }
 
@@ -734,10 +717,6 @@ static int nhp_set_tags(su_home_t *home,
     else if (tag == nutag_media_enable) {
       NHP_SET(nhp, media_enable, value != 0);
     }
-    /* NUTAG_ACCEPT_MULTIPART(accept_multipart) */
-    else if (tag == nutag_accept_multipart) {
-      NHP_SET(nhp, accept_multipart, value != 0);
-    }
     /* NUTAG_ENABLEINVITE(invite_enable) */
     else if (tag == nutag_enableinvite) {
       NHP_SET(nhp, invite_enable, value != 0);
@@ -766,21 +745,9 @@ static int nhp_set_tags(su_home_t *home,
     else if (tag == nutag_autoack) {
       NHP_SET(nhp, auto_ack, value != 0);
     }
-    /* NUTAG_AUTO302(auto302) */
-    else if (tag == nutag_auto302) {
-      NHP_SET(nhp, auto302, value != 0);
-    }
-    /* NUTAG_AUTO305(auto305) */
-    else if (tag == nutag_auto305) {
-      NHP_SET(nhp, auto305, value != 0);
-    }
-    /* NUTAG_AUTO100(auto100) */
-    else if (tag == nutag_auto100) {
-      NHP_SET(nhp, auto100, value != 0);
-    }
-    /* NUTAG_MAX_RETRY_AFTER(retry_after) */
-    else if (tag == nutag_max_retry_after) {
-      NHP_SET(nhp, max_retry_after, (unsigned)value);
+    /* NUTAG_TIMER_AUTOREQUIRE(timer_autorequire) */
+    else if (tag == nutag_timer_autorequire) {
+      NHP_SET(nhp, timer_autorequire, value != 0);
     }
     /* NUTAG_INVITE_TIMER(invite_timeout) */
     else if (tag == nutag_invite_timer) {
@@ -836,6 +803,10 @@ static int nhp_set_tags(su_home_t *home,
     /* NUTAG_PATH_ENABLE(path_enable) */
     else if (tag == nutag_path_enable) {
       NHP_SET(nhp, path_enable, value != 0);
+    }
+    /* NUTAG_RETRY_AFTER_ENABLE(retry_after_enable) */
+    else if (tag == nutag_retry_after_enable) {
+      NHP_SET(nhp, retry_after_enable, value != 0);
     }
     /* NUTAG_AUTH_CACHE(auth_cache) */
     else if (tag == nutag_auth_cache) {
@@ -931,28 +902,6 @@ static int nhp_set_tags(su_home_t *home,
       else if (ok)
 	NHP_SET(nhp, allow_events, allow_events);
     }
-    else if (tag == nutag_appl_event) {
-      int ok;
-      sip_allow_events_t *appl_event = NULL;
-      tag_value_t value = t->t_value;
-
-      if (value == 0)
-	value = (tag_value_t)NUA_NONE;
-
-      ok = nhp_merge_lists(home,
-			   sip_allow_events_class,
-			   &appl_event,
-			   nhp->nhp_appl_event,
-			   NHP_ISSET(nhp, appl_event), /* already set */
-			   0, /* dup it, don't make */
-			   1, /* merge with old value */
-			   value);
-
-      if (ok < 0)
-	return -1;
-      else if (ok)
-	NHP_SET(nhp, appl_event, appl_event);
-    }
     /* NUTAG_APPL_METHOD(appl_method) */
     else if (tag == nutag_appl_method) {
       if (t->t_value == 0) {
@@ -1020,6 +969,16 @@ static int nhp_set_tags(su_home_t *home,
 	value = 0;
       NHP_SET_STR(nhp, organization, value);
     }
+    /* SIPTAG_VIA(via) */
+    else if (tag == siptag_via) {
+      NHP_SET_STR_BY_HEADER(nhp, via, value);
+    }
+    /* SIPTAG_VIA_STR(via_str) */
+    else if (tag == siptag_via_str) {
+      if (value == -1)
+	value = 0;
+      NHP_SET_STR(nhp, via, value);
+    }
     /* NUTAG_REGISTRAR(registrar) */
     else if (tag == nutag_registrar) {
       NHP_SET_STR_BY_URL(nhp, char, registrar, value);
@@ -1070,11 +1029,6 @@ static int nhp_set_tags(su_home_t *home,
     else if (ngp && tag == nutag_shutdown_events) {
       ngp->ngp_shutdown_events = value != 0;
       ngp->ngp_set.ngp_shutdown_events = 1;
-    }
-    /* NUTAG_DEFERRABLE_TIMERS() */
-    else if (ngp && tag == nutag_deferrable_timers) {
-      ngp->ngp_deferrable_timers = value != 0;
-      ngp->ngp_set.ngp_deferrable_timers = 1;
     }
   }
 
@@ -1200,9 +1154,9 @@ int nhp_save_params(nua_handle_t *nh,
   NHP_ZAP_OVERRIDEN(old, dst, msg_header_free, allow);
   NHP_ZAP_OVERRIDEN(old, dst, msg_header_free, supported);
   NHP_ZAP_OVERRIDEN(old, dst, msg_header_free, allow_events);
-  NHP_ZAP_OVERRIDEN(old, dst, msg_header_free, appl_event);
   NHP_ZAP_OVERRIDEN(old, dst, su_free, user_agent);
   NHP_ZAP_OVERRIDEN(old, dst, su_free, organization);
+  NHP_ZAP_OVERRIDEN(old, dst, su_free, via);
   NHP_ZAP_OVERRIDEN(old, dst, su_free, m_display);
   NHP_ZAP_OVERRIDEN(old, dst, su_free, m_username);
   NHP_ZAP_OVERRIDEN(old, dst, su_free, m_params);
@@ -1294,6 +1248,14 @@ int nua_handle_save_tags(nua_handle_t *nh, tagi_t *tags)
     else if (t->t_tag == nutag_sips_url) {
       url = (url_string_t *)t->t_value;
     }
+    /* NUTAG_WS_URL_REF(url) */
+    else if (t->t_tag == nutag_ws_url) {
+      url = (url_string_t *)t->t_value;
+    }
+    /* NUTAG_WSS_URL_REF(url) */
+    else if (t->t_tag == nutag_wss_url) {
+      url = (url_string_t *)t->t_value;
+    }
   }
 
   su_home_auto(tmphome, sizeof tmphome);
@@ -1360,6 +1322,8 @@ static int nua_handle_param_filter(tagi_t const *f, tagi_t const *t)
 
   if (t->t_tag == nutag_url ||
       t->t_tag == nutag_sips_url ||
+      t->t_tag == nutag_ws_url ||
+      t->t_tag == nutag_wss_url ||
       t->t_tag == nutag_identity)
     return 0;
 
@@ -1518,8 +1482,6 @@ int nua_stack_set_smime_params(nua_t *nua, tagi_t const *tags)
  *               when responding to nua_get_hparams()
  * @param sip    NULL
  * @param tags
- *   NUTAG_ACCEPT_MULTIPART() \n
- *   NUTAG_APPL_EVENT() \n
  *   NUTAG_APPL_METHOD() \n
  *   NUTAG_AUTH_CACHE() \n
  *   NUTAG_AUTOACK() \n
@@ -1549,6 +1511,7 @@ int nua_stack_set_smime_params(nua_t *nua, tagi_t const *tags)
  *   NUTAG_ONLY183_100REL() \n
  *   NUTAG_OUTBOUND() \n
  *   NUTAG_PATH_ENABLE() \n
+ *   NUTAG_RETRY_AFTER_ENABLE() \n
  *   NUTAG_REFER_EXPIRES() \n
  *   NUTAG_REFER_WITH_ID() \n
  *   NUTAG_REFRESH_WITHOUT_SDP() \n
@@ -1652,7 +1615,7 @@ int nua_stack_get_params(nua_t *nua, nua_handle_t *nh, nua_event_t e,
   else /* if (nua->nua_from_is_set) */
     has_from = 1, *from = *nua->nua_from;
 
-  media_params = soa_get_paramlist(nh->nh_ds->ds_soa, TAG_END());
+  media_params = soa_get_paramlist(nh->nh_soa, TAG_END());
 
   m = nua_stack_get_contact(nua->nua_registrations);
 
@@ -1700,7 +1663,6 @@ int nua_stack_get_params(nua_t *nua, nua_handle_t *nh, nua_event_t e,
 
      TIF(NUTAG_SOA_NAME, soa_name),
      TIF(NUTAG_MEDIA_ENABLE, media_enable),
-     TIF(NUTAG_ACCEPT_MULTIPART, accept_multipart),
      TIF(NUTAG_ENABLEINVITE, invite_enable),
      TIF(NUTAG_AUTOALERT, auto_alert),
      TIF(NUTAG_EARLY_ANSWER, early_answer),
@@ -1708,6 +1670,7 @@ int nua_stack_get_params(nua_t *nua, nua_handle_t *nh, nua_event_t e,
      TIF(NUTAG_ONLY183_100REL, only183_100rel),
      TIF(NUTAG_AUTOANSWER, auto_answer),
      TIF(NUTAG_AUTOACK, auto_ack),
+     TIF(NUTAG_TIMER_AUTOREQUIRE, timer_autorequire),
      TIF(NUTAG_INVITE_TIMER, invite_timeout),
 
      TIFD(NUTAG_SESSION_TIMER, session_timer),
@@ -1724,14 +1687,10 @@ int nua_stack_get_params(nua_t *nua, nua_handle_t *nh, nua_event_t e,
      TIF(NUTAG_MEDIA_FEATURES, media_features),
      TIF(NUTAG_SERVICE_ROUTE_ENABLE, service_route_enable),
      TIF(NUTAG_PATH_ENABLE, path_enable),
+     TIF(NUTAG_RETRY_AFTER_ENABLE, retry_after_enable),
      TIF(NUTAG_AUTH_CACHE, auth_cache),
      TIF(NUTAG_REFER_EXPIRES, refer_expires),
      TIF(NUTAG_REFER_WITH_ID, refer_with_id),
-
-     TIF(NUTAG_AUTO302, auto302),
-     TIF(NUTAG_AUTO305, auto305),
-     TIF(NUTAG_AUTO100, auto100),
-     TIF(NUTAG_MAX_RETRY_AFTER, max_retry_after),
 
      TIF(NUTAG_SUBSTATE, substate),
      TIF(NUTAG_SUB_EXPIRES, sub_expires),
@@ -1743,13 +1702,15 @@ int nua_stack_get_params(nua_t *nua, nua_handle_t *nh, nua_event_t e,
      TIF_STR(NUTAG_APPL_METHOD, appl_method),
      TIF(SIPTAG_ALLOW_EVENTS, allow_events),
      TIF_STR(SIPTAG_ALLOW_EVENTS_STR, allow_events),
-     TIF_STR(NUTAG_APPL_EVENT, appl_event),
      TIF_SIP(SIPTAG_USER_AGENT, user_agent),
      TIF(SIPTAG_USER_AGENT_STR, user_agent),
      TIF(NUTAG_USER_AGENT, user_agent),
 
      TIF_SIP(SIPTAG_ORGANIZATION, organization),
      TIF(SIPTAG_ORGANIZATION_STR, organization),
+
+     TIF_SIP(SIPTAG_VIA, via),
+     TIF(SIPTAG_VIA_STR, via),
 
      TIF(NUTAG_INITIAL_ROUTE, initial_route),
      TIF_STR(NUTAG_INITIAL_ROUTE_STR, initial_route),

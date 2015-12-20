@@ -327,7 +327,7 @@ void *msg_buf_move(msg_t *dst, msg_t const *src)
  * @param[in]  msg     message object
  * @param[out] vec     I/O vector
  * @param[in]  veclen  available length of @a vec
- * @param[in]  n       number of possibly available bytes 
+ * @param[in]  n       number of possibly available bytes
  * @param[in]  exact   true if data ends at message boundary
  *
  * @return
@@ -739,7 +739,7 @@ issize_t msg_buf_external(msg_t *msg,
 			  usize_t N,
 			  usize_t blocksize)
 {
-  msg_buffer_t *ext, *b, **bb;
+  msg_buffer_t *ext = NULL, *b, **bb;
   size_t i, I;
 
   assert(N <= 128 * 1024);
@@ -1101,7 +1101,7 @@ msg_header_t *header_parse(msg_t *msg, msg_pub_t *mo,
   su_home_t *home = msg_home(msg);
   msg_header_t *h, **hh;
   msg_hclass_t *hc = hr->hr_class;
-  issize_t n;
+  int n;
   int add_to_list, clear = 0;
 
   hh = (msg_header_t **)((char *)mo + hr->hr_offset);
@@ -1190,6 +1190,7 @@ msg_header_t *error_header_parse(msg_t *msg, msg_pub_t *mo,
   return h;
 }
 
+
 /** Complete this header field and parse next header field.
  *
  * This function completes parsing a multi-field header like @Accept,
@@ -1238,67 +1239,6 @@ issize_t msg_parse_next_field(su_home_t *home, msg_header_t *prev,
   return hc->hc_parse(home, h, s, end - s);
 }
 
-/** Parse a multi-field header.
- *
- * Parses a multi-field header like @Accept, @Contact, @Via or @Warning.
- * It scans for the next header field and if one is found, it calls the
- * given parsing function.
- *
- * @param home 	 memory home used ot allocate
- *             	 new header structures and parameter lists
- * @param h 	 pointer to header structure
- * @param s	 header content to parse
- * @param parser function parsing each header field
- *
- * @since New in @VERSION_UNRELEASED.
- *
- * @retval >= 0 when successful
- * @retval -1 upon an error
- */
-issize_t msg_parse_header_fields(su_home_t *home,
-				 msg_header_t *h,
-				 char *s,
-				 int (*parser)(su_home_t *,
-					       msg_header_t *h,
-					       char **s))
-{
-  msg_hclass_t *hc = h->sh_class;
-  msg_header_t *prev;
-  issize_t n;
-
-  while (*s == ',')   /* Ignore empty entries (comma-whitespace) */
-    s += 1 + span_lws(s + 1);
-
-  for (;;) {
-    n = (*parser)(home, h, &s);
-    if (n < 0)
-      return n;
-
-    if (msg_header_update_params((msg_common_t *)h, 0) < 0)
-      return -1;
-
-    if (*s == '\0')
-      return 0;
-
-    if (*s != ',')
-      return -1;
-
-    while (*s == ',')
-      *s = '\0', s += 1 + span_lws(s + 1);
-
-    if (*s == '\0')
-      return 0;
-
-    prev = h;
-
-    h = msg_header_alloc(home, hc, 0);
-    if (h == NULL)
-      return -1;
-
-    prev->sh_succ = h, h->sh_prev = &prev->sh_succ;
-    prev->sh_next = h;
-  }
-}
 
 /** Decode a message header. */
 msg_header_t *msg_header_d(su_home_t *home, msg_t const *msg, char const *b)
@@ -1740,7 +1680,7 @@ size_t msg_header_prepare(msg_mclass_t const *mc, int flags,
     n += m;
 
     if (hc->hc_name) {
-      if (!comma_list || !next || next == *return_next)
+      if (!hc->hc_name[0] || !comma_list || !next || next == *return_next)
 	s = CRLF, m = 2;
       /* Else encode continuation */
       else if (compact)
@@ -2530,8 +2470,6 @@ int msg_header_prepend(msg_t *msg,
 msg_header_t **
 msg_hclass_offset(msg_mclass_t const *mc, msg_pub_t const *mo, msg_hclass_t *hc)
 {
-  int i;
-
   assert(mc && hc);
 
   if (mc == NULL || hc == NULL)
@@ -2539,37 +2477,21 @@ msg_hclass_offset(msg_mclass_t const *mc, msg_pub_t const *mo, msg_hclass_t *hc)
 
   if (hc->hc_hash > 0) {
     unsigned j, N = mc->mc_hash_size;
-    for (j = hc->hc_hash % N; mc->mc_hash[j].hr_class; j = (j + 1) % N) {
+    for (j = hc->hc_hash % N; mc->mc_hash[j].hr_class; j = (j + 1) % N)
       if (mc->mc_hash[j].hr_class == hc) {
-        return (msg_header_t **)((char *)mo + mc->mc_hash[j].hr_offset);
+	return (msg_header_t **)((char *)mo + mc->mc_hash[j].hr_offset);
       }
-    }
-   }
-  else {
+  } else {
     /* Header has no name. */
-    int mine = hc->hc_hash ;
-    if( mine == mc->mc_payload[0].hr_class->hc_hash ) {
-       return (msg_header_t **)((char *)mo + mc->mc_payload[0].hr_offset);
-    }
-    else if( mine == mc->mc_request[0].hr_class->hc_hash ) {
-       return (msg_header_t **)((char *)mo + mc->mc_request[0].hr_offset);
-    }
-    else if( mine == mc->mc_error[0].hr_class->hc_hash ) {
-       return (msg_header_t **)((char *)mo + mc->mc_error[0].hr_offset);
-    }
-    else if( mine == mc->mc_status[0].hr_class->hc_hash ) {
-       return (msg_header_t **)((char *)mo + mc->mc_status[0].hr_offset);
-    }
-    else if( mine == mc->mc_unknown[0].hr_class->hc_hash ) {
-       return (msg_header_t **)((char *)mo + mc->mc_unknown[0].hr_offset);
-    }
-    else if( mc->mc_multipart[0].hr_class && mine == mc->mc_multipart[0].hr_class->hc_hash ) {
-       return (msg_header_t **)((char *)mo + mc->mc_multipart[0].hr_offset);
-    }
-    else if( mine == mc->mc_separator[0].hr_class->hc_hash ) {
-       return (msg_header_t **)((char *)mo + mc->mc_separator[0].hr_offset);
-    }
+    if (hc->hc_hash == mc->mc_request[0].hr_class->hc_hash) return (msg_header_t **)((char *)mo + mc->mc_request[0].hr_offset);
+    if (hc->hc_hash == mc->mc_status[0].hr_class->hc_hash) return (msg_header_t **)((char *)mo + mc->mc_status[0].hr_offset);
+    if (hc->hc_hash == mc->mc_separator[0].hr_class->hc_hash) return (msg_header_t **)((char *)mo + mc->mc_separator[0].hr_offset);
+    if (hc->hc_hash == mc->mc_payload[0].hr_class->hc_hash) return (msg_header_t **)((char *)mo + mc->mc_payload[0].hr_offset);
+    if (hc->hc_hash == mc->mc_unknown[0].hr_class->hc_hash) return (msg_header_t **)((char *)mo + mc->mc_unknown[0].hr_offset);
+    if (hc->hc_hash == mc->mc_error[0].hr_class->hc_hash) return (msg_header_t **)((char *)mo + mc->mc_error[0].hr_offset);
+    if (hc->hc_hash == mc->mc_multipart[0].hr_class->hc_hash) return (msg_header_t **)((char *)mo + mc->mc_multipart[0].hr_offset);
   }
+
   return NULL;
 }
 
@@ -2996,7 +2918,6 @@ int msg_header_remove(msg_t *msg, msg_pub_t *pub, msg_header_t *h)
   if (msg == NULL || h == NULL || h == MSG_HEADER_NONE ||
       h->sh_class == NULL)
     return -1;
-
   if (pub == NULL)
     pub = msg->m_object;
 
@@ -3087,8 +3008,8 @@ int msg_header_remove_all(msg_t *msg, msg_pub_t *pub, msg_header_t *h)
  *
  * @param msg message object owning the fragment chain
  * @param pub public message structure to which header is added
- * @param replaced   old header to be removed (may be NULL)
- * @param h  list of header(s) to be added (may be NULL)
+ * @param replaced   old header to be removed
+ * @param h   list of header(s) to be added
  */
 int msg_header_replace(msg_t *msg,
 		       msg_pub_t *pub,
@@ -3097,20 +3018,16 @@ int msg_header_replace(msg_t *msg,
 {
   msg_header_t *h0, *last, **hh, **hh0;
 
-  if (msg == NULL)
+  if (msg == NULL || replaced == NULL)
     return -1;
-
   if (h == NULL || h == MSG_HEADER_NONE || h->sh_class == NULL)
     return msg_header_remove(msg, pub, replaced);
-
   if (pub == NULL)
     pub = msg->m_object;
 
   hh = hh0 = msg_hclass_offset(msg->m_class, pub, h->sh_class);
-
   if (hh == NULL)
     return -1;
-
   if (replaced == NULL)
     return msg_header_add(msg, pub, hh, h);
 

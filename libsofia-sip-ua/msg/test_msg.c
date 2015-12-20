@@ -1,7 +1,7 @@
 /*
  * This file is part of the Sofia-SIP package
  *
- * Copyright (C) 2005,2011 Nokia Corporation.
+ * Copyright (C) 2005 Nokia Corporation.
  *
  * Contact: Pekka Pessi <pekka.pessi@nokia.com>
  *
@@ -606,7 +606,7 @@ int test_msg_parsing(void)
   msg_status_t *status;
   msg_content_location_t *location;
   msg_content_language_t *language;
-  msg_accept_language_t *en, *se;
+  msg_accept_language_t *se;
   msg_separator_t *separator;
   msg_payload_t *payload;
 
@@ -614,9 +614,7 @@ int test_msg_parsing(void)
 
   msg = read_msg("GET a-life HTTP/1.1" CRLF
 		 "Content-Length: 6" CRLF
-		 "Accept-Encoding: bzip2" CRLF
 		 "Accept-Language: en;q=0.8, fi, se ; q = 0.6" CRLF
-		 "Accept-Encoding: gzip" CRLF
 		 "Foo: bar" CRLF
 		 CRLF
 		 "test" CRLF);
@@ -672,14 +670,6 @@ int test_msg_parsing(void)
     MSG_PARAM_MATCH_P(vi, foo, "fo");
     TEST(vi, 0);
   }
-
-  /* Test msg_fragment_clear_chain() */
-  en = tst->msg_accept_language;
-  TEST_1(en->aa_common->h_data != NULL);
-  msg_fragment_clear_chain((msg_header_t *)en->aa_next->aa_next);
-  TEST_1(en->aa_common->h_data == NULL);
-  TEST_1(en->aa_next->aa_common->h_data == NULL);
-  TEST_1(en->aa_next->aa_next->aa_common->h_data == NULL);
 
   msg_destroy(msg);
 
@@ -1207,8 +1197,6 @@ int test_mime(void)
     "GET /a-life HTTP/1.1" CRLF
     "Accept: text/html;level=4;q=1" CRLF
     "Accept: text / plain;q=0.9" CRLF
-    "Accept: text / calendar;q=0.0" CRLF
-    "Accept: text/*, */*" CRLF
     "Accept-Charset: *;q=0.1, iso-latin-1, utf-8;q=0.9" CRLF
     "Accept-Encoding: gzip;q=0.9, deflate" CRLF
     "Accept-Encoding: , identity ," CRLF
@@ -1289,32 +1277,6 @@ int test_mime(void)
   TEST_1(aa = tst->msg_accept_charset);
   TEST_S(aa->aa_value, "*");   TEST_S(aa->aa_q, "0.1");
 
-  {
-    msg_content_type_t *c = msg_content_type_make(home, "text/plain");
-    msg_accept_t *ac;
-
-    TEST_1(c != NULL);
-
-    ac = msg_accept_match(tst->msg_accept, c);
-    TEST_1(ac != NULL);
-    TEST_S(ac->ac_type, "text/plain");
-
-    ac = msg_accept_match(ac->ac_next, c);
-    TEST_1(ac != NULL);
-    TEST_S(ac->ac_type, "text/*");
-
-    ac = msg_accept_match(ac->ac_next, c);
-    TEST_1(ac != NULL);
-    TEST_S(ac->ac_type, "*/*");
-
-    su_free(home, c);
-
-    c = msg_content_type_make(home, "text/calendar");
-    ac = msg_accept_match(tst->msg_accept, c);
-    TEST_1(ac != NULL);
-    TEST_S(ac->ac_type, "text/*");
-  }
-
   mp = msg_multipart_parse(home, tst->msg_content_type, tst->msg_payload);
 
   TEST_1(mp0 = mp);
@@ -1322,8 +1284,7 @@ int test_mime(void)
   TEST_1(mp->mp_data);
   TEST(memcmp(mp->mp_data, CRLF "--" "LaGqGt4BI6Ho" CRLF, mp->mp_len), 0);
   TEST_1(mp->mp_common->h_data);
-  TEST_M(mp->mp_common->h_data, CRLF "--" "LaGqGt4BI6Ho" "  " CRLF,
-	 mp->mp_common->h_len);
+  //  TEST_M(mp->mp_common->h_data, CRLF "--" "LaGqGt4BI6Ho" "  " CRLF,	 mp->mp_common->h_len);
 
   TEST_1(pl = mp->mp_payload); TEST_1(pl->pl_data);
   TEST_SIZE(strlen("part 1" CRLF), pl->pl_len);

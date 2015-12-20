@@ -114,6 +114,7 @@ SOFIAPUBVAR tag_typedef_t nutag_use_dialog;
 #define NUTAG_USE_DIALOG_REF(x)    nutag_use_dialog_ref, tag_bool_vr(&(x))
 SOFIAPUBVAR tag_typedef_t nutag_use_dialog_ref;
 
+
 /* Protocol engine parameters,
  * set by nua_set_params(), get by nua_get_params() */
 
@@ -148,12 +149,6 @@ SOFIAPUBVAR tag_typedef_t nutag_include_extra_sdp;
 #define NUTAG_INCLUDE_EXTRA_SDP_REF(x) \
    nutag_include_extra_sdp_ref, tag_bool_vr(&(x))
 SOFIAPUBVAR tag_typedef_t nutag_include_extra_sdp_ref;
-
-#define NUTAG_ACCEPT_MULTIPART(x)    nutag_accept_multipart, tag_bool_v(x)
-SOFIAPUBVAR tag_typedef_t nutag_accept_multipart;
-#define NUTAG_ACCEPT_MULTIPART_REF(x) \
-   nutag_accept_multipart_ref, tag_bool_vr(&(x))
-SOFIAPUBVAR tag_typedef_t nutag_accept_multipart_ref;
 
 #define NUTAG_INVITE_TIMER(x)  nutag_invite_timer, tag_uint_v((x))
 SOFIAPUBVAR tag_typedef_t nutag_invite_timer;
@@ -204,6 +199,11 @@ SOFIAPUBVAR tag_typedef_t nutag_autoack;
 #define NUTAG_AUTOACK_REF(x)    nutag_autoack_ref, tag_bool_vr(&(x))
 SOFIAPUBVAR tag_typedef_t nutag_autoack_ref;
 
+#define NUTAG_TIMER_AUTOREQUIRE(x)        nutag_timer_autorequire, tag_bool_v(x)
+SOFIAPUBVAR tag_typedef_t nutag_timer_autorequire;
+#define NUTAG_TIMER_AUTOREQUIRE_REF(x)    nutag_timer_autorequire_ref, tag_bool_vr(&(x))
+SOFIAPUBVAR tag_typedef_t nutag_timer_autorequire_ref;
+
 #define NUTAG_AUTOANSWER(x)     nutag_autoanswer, tag_bool_v(x)
 SOFIAPUBVAR tag_typedef_t nutag_autoanswer;
 #define NUTAG_AUTOANSWER_REF(x) nutag_autoanswer_ref, tag_bool_vr(&(x))
@@ -224,28 +224,6 @@ SOFIAPUBVAR tag_typedef_t nutag_enablemessenger;
 #define NUTAG_ENABLEMESSENGER_REF(x) \
   nutag_enablemessenger_ref, tag_bool_vr(&(x))
 SOFIAPUBVAR tag_typedef_t nutag_enablemessenger_ref;
-
-#define NUTAG_AUTO302(x)        nutag_auto302, tag_bool_v(x)
-SOFIAPUBVAR tag_typedef_t nutag_auto302;
-#define NUTAG_AUTO302_REF(x)    nutag_auto302_ref, tag_bool_vr(&(x))
-SOFIAPUBVAR tag_typedef_t nutag_auto302_ref;
-
-#define NUTAG_AUTO305(x)        nutag_auto305, tag_bool_v(x)
-SOFIAPUBVAR tag_typedef_t nutag_auto305;
-#define NUTAG_AUTO305_REF(x)    nutag_auto305_ref, tag_bool_vr(&(x))
-SOFIAPUBVAR tag_typedef_t nutag_auto305_ref;
-
-#define NUTAG_AUTO100(x)        nutag_auto100, tag_bool_v(x)
-SOFIAPUBVAR tag_typedef_t nutag_auto100;
-#define NUTAG_AUTO100_REF(x)    nutag_auto100_ref, tag_bool_vr(&(x))
-SOFIAPUBVAR tag_typedef_t nutag_auto100_ref;
-
-#define NUTAG_MAX_RETRY_AFTER(x) \
-  nutag_max_retry_after, tag_bool_v(x)
-SOFIAPUBVAR tag_typedef_t nutag_max_retry_after;
-#define NUTAG_MAX_RETRY_AFTER_REF(x) \
-  nutag_max_retry_after_ref, tag_bool_vr(&(x))
-SOFIAPUBVAR tag_typedef_t nutag_max_retry_after_ref;
 
 /* Start NRC Boston */
 
@@ -307,6 +285,16 @@ SOFIAPUBVAR tag_typedef_t nutag_certificate_phrase_ref;
 SOFIAPUBVAR tag_typedef_t nutag_sips_url;
 #define NUTAG_SIPS_URL_REF(x)   nutag_sips_url_ref, urltag_url_vr(&(x))
 SOFIAPUBVAR tag_typedef_t nutag_sips_url_ref;
+
+#define NUTAG_WS_URL(x)       nutag_ws_url, urltag_url_v(x)
+SOFIAPUBVAR tag_typedef_t nutag_ws_url;
+#define NUTAG_WS_URL_REF(x)   nutag_ws_url_ref, urltag_url_vr(&(x))
+SOFIAPUBVAR tag_typedef_t nutag_ws_url_ref;
+
+#define NUTAG_WSS_URL(x)       nutag_wss_url, urltag_url_v(x)
+SOFIAPUBVAR tag_typedef_t nutag_wss_url;
+#define NUTAG_WSS_URL_REF(x)   nutag_wss_url_ref, urltag_url_vr(&(x))
+SOFIAPUBVAR tag_typedef_t nutag_wss_url_ref;
 
 #define NUTAG_PROXY(x)          NTATAG_DEFAULT_PROXY(x)
 #define NUTAG_PROXY_REF(x)      NTATAG_DEFAULT_PROXY_REF(x)
@@ -464,6 +452,11 @@ SOFIAPUBVAR tag_typedef_t nutag_user_agent;
 #define NUTAG_USER_AGENT_REF(x) nutag_user_agent_ref, tag_str_vr(&(x))
 SOFIAPUBVAR tag_typedef_t nutag_user_agent_ref;
 
+#define NUTAG_VIA(x)     nutag_via, tag_str_v(x)
+SOFIAPUBVAR tag_typedef_t nutag_via;
+#define NUTAG_VIA_REF(x) nutag_via_ref, tag_str_vr(&(x))
+SOFIAPUBVAR tag_typedef_t nutag_via_ref;
+
 #define NUTAG_ALLOW(x)     nutag_allow, tag_str_v(x)
 SOFIAPUBVAR tag_typedef_t nutag_allow;
 #define NUTAG_ALLOW_REF(x) nutag_allow_ref, tag_str_vr(&(x))
@@ -475,6 +468,7 @@ SOFIAPUBVAR tag_typedef_t nutag_appl_method;
 #define NUTAG_APPL_METHOD_REF(x) nutag_appl_method_ref, tag_str_vr(&(x))
 SOFIAPUBVAR tag_typedef_t nutag_appl_method_ref;
 
+
 #define NUTAG_SUPPORTED(x)     nutag_supported, tag_str_v(x)
 SOFIAPUBVAR tag_typedef_t nutag_supported;
 #define NUTAG_SUPPORTED_REF(x) nutag_supported_ref, tag_str_vr(&(x))
@@ -484,11 +478,6 @@ SOFIAPUBVAR tag_typedef_t nutag_supported_ref;
 SOFIAPUBVAR tag_typedef_t nutag_allow_events;
 #define NUTAG_ALLOW_EVENTS_REF(x) nutag_allow_events_ref, tag_str_vr(&(x))
 SOFIAPUBVAR tag_typedef_t nutag_allow_events_ref;
-
-#define NUTAG_APPL_EVENT(x)     nutag_appl_event, tag_str_v(x)
-SOFIAPUBVAR tag_typedef_t nutag_appl_event;
-#define NUTAG_APPL_EVENT_REF(x) nutag_appl_event_ref, tag_str_vr(&(x))
-SOFIAPUBVAR tag_typedef_t nutag_appl_event_ref;
 
 #define NUTAG_CALLSTATE(x) nutag_callstate, tag_int_v(x)
 SOFIAPUBVAR tag_typedef_t nutag_callstate;
@@ -571,6 +560,11 @@ SOFIAPUBVAR tag_typedef_t nutag_path_enable;
 #define NUTAG_PATH_ENABLE_REF(x) nutag_path_enable_ref, tag_bool_vr(&(x))
 SOFIAPUBVAR tag_typedef_t nutag_path_enable_ref;
 
+#define NUTAG_RETRY_AFTER_ENABLE(x)   nutag_retry_after_enable, tag_bool_v(x)
+SOFIAPUBVAR tag_typedef_t nutag_retry_after_enable;
+#define NUTAG_RETRY_AFTER_ENABLE_REF(x) nutag_retry_after_enable_ref, tag_bool_vr(&(x))
+SOFIAPUBVAR tag_typedef_t nutag_retry_after_enable_ref;
+
 #define NUTAG_SERVICE_ROUTE_ENABLE(x) nutag_service_route_enable, tag_bool_v(x)
 SOFIAPUBVAR tag_typedef_t nutag_service_route_enable;
 #define NUTAG_SERVICE_ROUTE_ENABLE_REF(x) \
@@ -616,13 +610,6 @@ SOFIAPUBVAR tag_typedef_t nutag_shutdown_events;
 #define NUTAG_SHUTDOWN_EVENTS_REF(x) \
   nutag_shutdown_events_ref, tag_bool_vr(&(x))
 SOFIAPUBVAR tag_typedef_t nutag_shutdown_events_ref;
-
-#define NUTAG_DEFERRABLE_TIMERS(x) \
-  nutag_deferrable_timers, tag_bool_v(x)
-SOFIAPUBVAR tag_typedef_t nutag_deferrable_timers;
-#define NUTAG_DEFERRABLE_TIMERS_REF(x) \
-  nutag_deferrable_timers_ref, tag_bool_vr(&(x))
-SOFIAPUBVAR tag_typedef_t nutag_deferrable_timers_ref;
 
 /* Pass nua handle as tagged argument */
 #if SU_INLINE_TAG_CAST

@@ -63,7 +63,7 @@ const unsigned sdp_struct_align_ = sizeof(void *) - STRUCT_ALIGN_;
 
 
 #define STRUCT_DUP(p, dst, src) \
-  ASSERT_STRUCT_ALIGN(p);						\
+  ASSERT_STRUCT_ALIGN(p); \
   ((*(int*)(src) >= (int)sizeof(*src)					\
     ? (dst = memcpy((p), (src), sizeof(*src)))				\
     : (dst = memcpy((p), (src), *(int*)(src))),				\
@@ -1190,7 +1190,7 @@ int sdp_session_cmp(sdp_session_t const *a, sdp_session_t const *b)
   for (ab = a->sdp_bandwidths, bb = b->sdp_bandwidths;
        ab || bb;
        ab = ab->b_next, bb = bb->b_next)
-    if ((rv = sdp_bandwidth_cmp(ab, bb)))
+    if ((rv = sdp_bandwidth_cmp(a->sdp_bandwidths, b->sdp_bandwidths)))
       return rv;
 
   if ((rv = sdp_time_cmp(a->sdp_time, b->sdp_time)))
@@ -1199,7 +1199,7 @@ int sdp_session_cmp(sdp_session_t const *a, sdp_session_t const *b)
     return rv;
 
   for (aa = a->sdp_attributes, ba = b->sdp_attributes;
-       aa || ba;
+       aa || bb;
        aa = aa->a_next, ba = ba->a_next)
     if ((rv = sdp_attribute_cmp(aa, ba)))
       return rv;
@@ -1497,14 +1497,14 @@ int sdp_media_cmp(sdp_media_t const *a, sdp_media_t const *b)
   for (ab = a->m_bandwidths, bb = b->m_bandwidths;
        ab || bb;
        ab = ab->b_next, bb = bb->b_next)
-    if ((rv = sdp_bandwidth_cmp(ab, bb)))
+    if ((rv = sdp_bandwidth_cmp(a->m_bandwidths, b->m_bandwidths)))
       return rv;
 
   if ((rv = sdp_key_cmp(a->m_key, b->m_key)))
     return rv;
 
   for (aa = a->m_attributes, ba = b->m_attributes;
-       aa || ba;
+       aa || bb;
        aa = aa->a_next, ba = ba->a_next)
     if ((rv = sdp_attribute_cmp(aa, ba)))
       return rv;
@@ -1831,7 +1831,7 @@ int sdp_media_uses_rtp(sdp_media_t const *m)
 {
   return m &&
     (m->m_proto == sdp_proto_rtp ||
-     m->m_proto == sdp_proto_srtp ||
+     m->m_proto == sdp_proto_srtp || m->m_proto == sdp_proto_extended_srtp ||
      (m->m_proto == sdp_proto_x && m->m_proto_name &&
       su_casenmatch(m->m_proto_name, "RTP/", 4)));
 }
@@ -1866,23 +1866,20 @@ int sdp_rtpmap_match(sdp_rtpmap_t const *a, sdp_rtpmap_t const *b)
   return 1;
 }
 
-/** Search for matching a rtpmap entry from list.
+/** Search for matching rtpmap from list.
  *
  * @note
  * The a=fmtp: for the codecs are not compared.
- *
- * @return
- * Pointer to first sdp_rtpmap_t entry on the @a list matching with any
- * sdp_rtpmap_t entry on @a rm.
  */
 sdp_rtpmap_t *sdp_rtpmap_find_matching(sdp_rtpmap_t const *list,
 				       sdp_rtpmap_t const *rm)
 {
   char const *lparam, *rparam;
+  sdp_rtpmap_t const *cp_list = NULL;
 
   if (rm == NULL)
     return NULL;
-
+    
   for (; list; list = list->rm_next) {
     if (rm->rm_rate != list->rm_rate)
       continue;
@@ -1892,8 +1889,11 @@ sdp_rtpmap_t *sdp_rtpmap_find_matching(sdp_rtpmap_t const *list,
 
     lparam = rm->rm_params; rparam = list->rm_params;
 
-    if (lparam == rparam)
-      break;
+    if (lparam == rparam) {
+          cp_list = list;
+          if (rm->rm_pt != list->rm_pt) continue;
+          break;
+    }
 
     if (!lparam) lparam = "1"; if (!rparam) rparam = "1";
     if (!su_casematch(lparam, rparam))
@@ -1902,5 +1902,5 @@ sdp_rtpmap_t *sdp_rtpmap_find_matching(sdp_rtpmap_t const *list,
     break;
   }
 
-  return (sdp_rtpmap_t *)list;
+  return cp_list ? (sdp_rtpmap_t *) cp_list : (sdp_rtpmap_t *)list;
 }

@@ -15,7 +15,7 @@ else
 
   if test "$with_openssl" = "pkg-config" ; then
     PKG_CHECK_MODULES(openssl, openssl,
-	[HAVE_TLS=1 HAVE_OPENSSL=1],
+	[HAVE_TLS=1 HAVE_OPENSSL=1 LIBS="$openssl_LIBS $LIBS"],
 	[HAVE_OPENSSL=0])
   fi
 
@@ -33,7 +33,7 @@ else
       AC_CHECK_LIB(ssl, TLSv1_method,,
       	HAVE_TLS=0
       	AC_MSG_WARN(OpenSSL protocol library was not found))
-     ],[AC_MSG_WARN(OpenSSL include files were not found)])
+     ],[AC_MSG_WARN(OpenSSL include files were not found)],[#include <openssl/safestack.h>])
   fi
 
   if test x$HAVE_OPENSSL = x1; then

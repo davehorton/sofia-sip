@@ -129,11 +129,11 @@ ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/m4/libtool.m4 \
 	$(top_srcdir)/m4/ltoptions.m4 $(top_srcdir)/m4/ltsugar.m4 \
 	$(top_srcdir)/m4/ltversion.m4 $(top_srcdir)/m4/lt~obsolete.m4 \
-	$(top_srcdir)/m4/sac-coverage.m4 \
+	$(top_srcdir)/acinclude.m4 $(top_srcdir)/m4/sac-pkg-config.m4 \
 	$(top_srcdir)/m4/sac-general.m4 \
-	$(top_srcdir)/m4/sac-openssl.m4 \
-	$(top_srcdir)/m4/sac-pkg-config.m4 $(top_srcdir)/m4/sac-su2.m4 \
-	$(top_srcdir)/m4/sac-tport.m4 $(top_srcdir)/configure.ac
+	$(top_srcdir)/m4/sac-openssl.m4 $(top_srcdir)/m4/sac-su2.m4 \
+	$(top_srcdir)/m4/sac-su.m4 $(top_srcdir)/m4/sac-tport.m4 \
+	$(top_srcdir)/m4/sac-coverage.m4 $(top_srcdir)/configure.ac
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
 mkinstalldirs = $(install_sh) -d
@@ -174,83 +174,83 @@ PROGRAMS = $(bin_PROGRAMS)
 addrinfo_SOURCES = addrinfo.c
 addrinfo_OBJECTS = addrinfo.$(OBJEXT)
 addrinfo_LDADD = $(LDADD)
-addrinfo_DEPENDENCIES = libsu.la $(am__DEPENDENCIES_1)
+addrinfo_DEPENDENCIES = libsu.la
 localinfo_SOURCES = localinfo.c
 localinfo_OBJECTS = localinfo.$(OBJEXT)
 localinfo_LDADD = $(LDADD)
-localinfo_DEPENDENCIES = libsu.la $(am__DEPENDENCIES_1)
+localinfo_DEPENDENCIES = libsu.la
 su_proxy_SOURCES = su_proxy.c
 su_proxy_OBJECTS = su_proxy.$(OBJEXT)
 su_proxy_LDADD = $(LDADD)
-su_proxy_DEPENDENCIES = libsu.la $(am__DEPENDENCIES_1)
+su_proxy_DEPENDENCIES = libsu.la
 test_htable_SOURCES = test_htable.c
 test_htable_OBJECTS = test_htable.$(OBJEXT)
 test_htable_LDADD = $(LDADD)
-test_htable_DEPENDENCIES = libsu.la $(am__DEPENDENCIES_1)
+test_htable_DEPENDENCIES = libsu.la
 test_htable2_SOURCES = test_htable2.c
 test_htable2_OBJECTS = test_htable2.$(OBJEXT)
 test_htable2_LDADD = $(LDADD)
-test_htable2_DEPENDENCIES = libsu.la $(am__DEPENDENCIES_1)
+test_htable2_DEPENDENCIES = libsu.la
 test_memmem_SOURCES = test_memmem.c
 test_memmem_OBJECTS = test_memmem.$(OBJEXT)
 test_memmem_LDADD = $(LDADD)
-test_memmem_DEPENDENCIES = libsu.la $(am__DEPENDENCIES_1)
+test_memmem_DEPENDENCIES = libsu.la
 test_poll_SOURCES = test_poll.c
 test_poll_OBJECTS = test_poll.$(OBJEXT)
 test_poll_LDADD = $(LDADD)
-test_poll_DEPENDENCIES = libsu.la $(am__DEPENDENCIES_1)
+test_poll_DEPENDENCIES = libsu.la
 test_su_SOURCES = test_su.c
 test_su_OBJECTS = test_su.$(OBJEXT)
 test_su_LDADD = $(LDADD)
-test_su_DEPENDENCIES = libsu.la $(am__DEPENDENCIES_1)
+test_su_DEPENDENCIES = libsu.la
 test_su_osx_SOURCES = test_su_osx.c
 test_su_osx_OBJECTS = test_su_osx.$(OBJEXT)
 test_su_osx_LDADD = $(LDADD)
-test_su_osx_DEPENDENCIES = libsu.la $(am__DEPENDENCIES_1)
+test_su_osx_DEPENDENCIES = libsu.la
 torture_heap_SOURCES = torture_heap.c
 torture_heap_OBJECTS = torture_heap.$(OBJEXT)
 torture_heap_LDADD = $(LDADD)
-torture_heap_DEPENDENCIES = libsu.la $(am__DEPENDENCIES_1)
+torture_heap_DEPENDENCIES = libsu.la
 torture_rbtree_SOURCES = torture_rbtree.c
 torture_rbtree_OBJECTS = torture_rbtree.$(OBJEXT)
 torture_rbtree_LDADD = $(LDADD)
-torture_rbtree_DEPENDENCIES = libsu.la $(am__DEPENDENCIES_1)
+torture_rbtree_DEPENDENCIES = libsu.la
 torture_su_SOURCES = torture_su.c
 torture_su_OBJECTS = torture_su.$(OBJEXT)
 torture_su_LDADD = $(LDADD)
-torture_su_DEPENDENCIES = libsu.la $(am__DEPENDENCIES_1)
+torture_su_DEPENDENCIES = libsu.la
 torture_su_alloc_SOURCES = torture_su_alloc.c
 torture_su_alloc_OBJECTS = torture_su_alloc.$(OBJEXT)
 torture_su_alloc_LDADD = $(LDADD)
-torture_su_alloc_DEPENDENCIES = libsu.la $(am__DEPENDENCIES_1)
+torture_su_alloc_DEPENDENCIES = libsu.la
 torture_su_bm_SOURCES = torture_su_bm.c
 torture_su_bm_OBJECTS = torture_su_bm.$(OBJEXT)
 torture_su_bm_LDADD = $(LDADD)
-torture_su_bm_DEPENDENCIES = libsu.la $(am__DEPENDENCIES_1)
+torture_su_bm_DEPENDENCIES = libsu.la
 torture_su_port_SOURCES = torture_su_port.c
 torture_su_port_OBJECTS = torture_su_port.$(OBJEXT)
 torture_su_port_LDADD = $(LDADD)
-torture_su_port_DEPENDENCIES = libsu.la $(am__DEPENDENCIES_1)
+torture_su_port_DEPENDENCIES = libsu.la
 torture_su_root_SOURCES = torture_su_root.c
 torture_su_root_OBJECTS = torture_su_root.$(OBJEXT)
 torture_su_root_LDADD = $(LDADD)
-torture_su_root_DEPENDENCIES = libsu.la $(am__DEPENDENCIES_1)
+torture_su_root_DEPENDENCIES = libsu.la
 torture_su_root_osx_SOURCES = torture_su_root_osx.c
 torture_su_root_osx_OBJECTS = torture_su_root_osx.$(OBJEXT)
 torture_su_root_osx_LDADD = $(LDADD)
-torture_su_root_osx_DEPENDENCIES = libsu.la $(am__DEPENDENCIES_1)
+torture_su_root_osx_DEPENDENCIES = libsu.la
 torture_su_tag_SOURCES = torture_su_tag.c
 torture_su_tag_OBJECTS = torture_su_tag.$(OBJEXT)
 torture_su_tag_LDADD = $(LDADD)
-torture_su_tag_DEPENDENCIES = libsu.la $(am__DEPENDENCIES_1)
+torture_su_tag_DEPENDENCIES = libsu.la
 torture_su_time_SOURCES = torture_su_time.c
 torture_su_time_OBJECTS = torture_su_time.$(OBJEXT)
 torture_su_time_LDADD = $(LDADD)
-torture_su_time_DEPENDENCIES = libsu.la $(am__DEPENDENCIES_1)
+torture_su_time_DEPENDENCIES = libsu.la
 torture_su_timer_SOURCES = torture_su_timer.c
 torture_su_timer_OBJECTS = torture_su_timer.$(OBJEXT)
 torture_su_timer_LDADD = $(LDADD)
-torture_su_timer_DEPENDENCIES = libsu.la $(am__DEPENDENCIES_1)
+torture_su_timer_DEPENDENCIES = libsu.la
 am__vpath_adj_setup = srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`;
 am__vpath_adj = case $$p in \
     $(srcdir)/*) f=`echo "$$p" | sed "s|^$$srcdirstrip/||"`;; \
@@ -305,9 +305,8 @@ am__nobase_include_sofia_HEADERS_DIST = sofia-sip/su_types.h \
 	sofia-sip/htable.h sofia-sip/htable2.h sofia-sip/rbtree.h \
 	sofia-sip/heap.h sofia-sip/su_debug.h sofia-sip/su_log.h \
 	sofia-sip/su_config.h sofia-sip/su_md5.h \
-	sofia-sip/su_uniqueid.h sofia-sip/su_random.h \
-	sofia-sip/su_bm.h sofia-sip/tstdef.h sofia-sip/su_os_nw.h \
-	sofia-sip/su_string.h sofia-sip/string0.h \
+	sofia-sip/su_uniqueid.h sofia-sip/su_bm.h sofia-sip/tstdef.h \
+	sofia-sip/su_os_nw.h sofia-sip/su_string.h sofia-sip/string0.h \
 	sofia-sip/su_osx_runloop.h
 HEADERS = $(nobase_include_sofia_HEADERS) \
 	$(nobase_nodist_include_sofia_HEADERS)
@@ -377,7 +376,6 @@ LIBVER_SOFIA_SIP_UA_SOVER = @LIBVER_SOFIA_SIP_UA_SOVER@
 LIPO = @LIPO@
 LN_S = @LN_S@
 LTLIBOBJS = @LTLIBOBJS@
-MAINT = @MAINT@
 MAKEINFO = @MAKEINFO@
 MINGW_ENVIRONMENT = @MINGW_ENVIRONMENT@
 MKDIR_P = @MKDIR_P@
@@ -487,8 +485,7 @@ nobase_include_sofia_HEADERS = \
 			sofia-sip/rbtree.h sofia-sip/heap.h \
 			sofia-sip/su_debug.h sofia-sip/su_log.h \
 			sofia-sip/su_config.h sofia-sip/su_md5.h \
-			sofia-sip/su_uniqueid.h sofia-sip/su_random.h \
-			sofia-sip/su_bm.h \
+			sofia-sip/su_uniqueid.h sofia-sip/su_bm.h \
 			sofia-sip/tstdef.h sofia-sip/su_os_nw.h \
 			sofia-sip/su_string.h sofia-sip/string0.h \
 			$(OSXHEADERS)
@@ -528,7 +525,7 @@ EXTRA_DIST = su_win32_port.c su_open_c_localinfo.cpp su.docs \
 libsu_la_LIBADD = $(REPLACE_LIBADD)
 libsu_la_DEPENDENCIES = $(REPLACE_LIBADD)
 COVERAGE_INPUT = $(libsu_la_SOURCES) $(include_sofia_HEADERS)
-LDADD = libsu.la $(openssl_LIBS)
+LDADD = libsu.la
 dist_pkgdata_SCRIPTS = tag_dll.awk
 
 # ----------------------------------------------------------------------
@@ -611,7 +608,7 @@ all: $(BUILT_SOURCES)
 
 .SUFFIXES:
 .SUFFIXES: _tag_ref.c _tag.c .c .lo .o .obj
-$(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am $(top_srcdir)/rules/sofia.am $(top_srcdir)/rules/valcheck.am $(top_srcdir)/rules/lcov.am $(top_srcdir)/rules/silent.am $(am__configure_deps)
+$(srcdir)/Makefile.in:  $(srcdir)/Makefile.am $(top_srcdir)/rules/sofia.am $(top_srcdir)/rules/valcheck.am $(top_srcdir)/rules/lcov.am $(top_srcdir)/rules/silent.am $(am__configure_deps)
 	@for dep in $?; do \
 	  case '$(am__configure_deps)' in \
 	    *$$dep*) \
@@ -636,9 +633,9 @@ Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 $(top_builddir)/config.status: $(top_srcdir)/configure $(CONFIG_STATUS_DEPENDENCIES)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
 
-$(top_srcdir)/configure: @MAINTAINER_MODE_TRUE@ $(am__configure_deps)
+$(top_srcdir)/configure:  $(am__configure_deps)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
-$(ACLOCAL_M4): @MAINTAINER_MODE_TRUE@ $(am__aclocal_m4_deps)
+$(ACLOCAL_M4):  $(am__aclocal_m4_deps)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
 $(am__aclocal_m4_deps):
 Doxyfile: $(top_builddir)/config.status $(srcdir)/Doxyfile.in

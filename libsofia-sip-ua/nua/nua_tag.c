@@ -44,13 +44,12 @@
 
 /** @page nua_api_overview NUA API Overview
  *
- * This page gives a short overview of the NUA API: different functions,
- * events, tags, and where and how they affect the workings of the NUA
- * engine.
+ * This page shortly overviews the NUA API: different functions, tags, and
+ * where and how they affect the working of NUA engine.
  *
  * The application and the NUA engine can pass various parameters between
  * them using tagged arguments. Tagged arguments can be used like named
- * arguments in higher-lever languages.
+ * arguments in higher-lever language.
  *
  * @par NUA Agent
  *
@@ -67,67 +66,54 @@
  * The agent-wide parameter can be later modified or obtained with
  * nua_set_params() and nua_get_params(), respectively.
  *
- * The #su_root_t mainloop integration uses:
+ * The #su_root_t mainloop integration uses
  * - su_root_create(), su_root_threading(),
- *   su_root_step(), su_root_run(), su_root_break()
+ *   su_root_poll(), su_root_run(), su_root_break()
  *
  * @par NUA Handles
- *
  * - nua_handle(), nua_get_hparams(), nua_set_hparams()
  * - nua_handle_home(), nua_handle_has_invite(), nua_handle_has_subscribe(),
  *   nua_handle_has_register(), nua_handle_has_active_call(),
  *   nua_handle_has_call_on_hold(), nua_handle_has_events(),
  *   nua_handle_has_registrations(), nua_handle_remote(), and
- *   nua_handle_local()
- *
- * Settings:
- * - See nua_set_hparams()
- *
- * There are a few "sticky" headers that are used
- *   on subsequent requests if included with any handle-specific call:
+ *   nua_handle_local().
+ * - Settings:
+ *   See nua_set_hparams(). There are a few "sticky" headers that are used
+ *   on subsequent requests if given on any handle-specific call:
  *   - @Contact, @UserAgent, @Supported, @Allow, @Organization
  *
  * @par Client Generating SIP Requests
- *
  * - nua_register(), nua_unregister(), nua_invite(), nua_cancel(),
  *   nua_ack(), nua_bye(), nua_options(), nua_refer(), nua_publish(),
  *   nua_unpublish(), nua_prack(), nua_info(), nua_update(), nua_message(),
  *   nua_subscribe(), nua_unsubscribe(), nua_notify(), nua_method()
  * - NUTAG_URL()
- *
  *  Settings:
  * - NUTAG_RETRY_COUNT(), NUTAG_PROXY(),
  *   NUTAG_INITIAL_ROUTE() and NUTAG_INITIAL_ROUTE_STR()
- * - NUTAG_ALLOW(), SIPTAG_ALLOW() and SIPTAG_ALLOW_STR()
+ * - NUTAG_ALLOW(), SIPTAG_ALLOW(), and SIPTAG_ALLOW_STR()
  * - NUTAG_SUPPORTED(), SIPTAG_SUPPORTED(), and SIPTAG_SUPPORTED_STR()
  * - NUTAG_USER_AGENT(), SIPTAG_USER_AGENT() and SIPTAG_USER_AGENT_STR()
  * - SIPTAG_ORGANIZATION() and SIPTAG_ORGANIZATION_STR()
- * - NUTAG_AUTO302(), NUTAG_AUTO305()
  *
  * @par Client Authenticating Requests
- *
  * - nua_authenticate(), #nua_r_authenticate
  * - NUTAG_AUTH(), NUTAG_AUTH_CACHE()
  *
  * @par Server Processing Received SIP Requests
- *
  * - nua_respond(), NUTAG_WITH_THIS(), NUTAG_WITH_SAVED(), NUTAG_WITH()
  * - #nua_i_invite, #nua_i_cancel, #nua_i_ack, #nua_i_bye,
  *   #nua_i_options, #nua_i_refer, #nua_i_publish, #nua_i_prack,
  *   #nua_i_info, #nua_i_update, #nua_i_message, #nua_i_subscribe,
  *   #nua_i_notify, #nua_i_method, #nua_i_register
- *
  *  Settings:
  * - NUTAG_APPL_METHOD(), NUTAG_PROXY()
  * - NUTAG_ALLOW(), SIPTAG_ALLOW(), and SIPTAG_ALLOW_STR()
  * - NUTAG_SUPPORTED(), SIPTAG_SUPPORTED(), and SIPTAG_SUPPORTED_STR()
- * - NUTAG_ACCEPT_MULTIPART()
  *
  * @par Registrations and Contact Header Generation
- *
  * - nua_register(), #nua_r_register(), #nua_i_outbound,
  *   nua_unregister(), and #nua_r_unregister
- *
  * Settings:
  * - NUTAG_CALLEE_CAPS()
  * - NUTAG_DETECT_NETWORK_UPDATES()
@@ -140,14 +126,13 @@
  * - NUTAG_M_USERNAME()
  * - NUTAG_OUTBOUND()
  * - NUTAG_PATH_ENABLE()
+ * - NUTAG_RETRY_AFTER_ENABLE()
  * - NUTAG_SERVICE_ROUTE_ENABLE()
- *
  * Specifications:
  * - @RFC3261 section 10, @RFC3327, @RFC3608, @RFC3680, @RFC3840,
  *   draft-ietf-sip-outbound, draft-ietf-sip-gruu-14
  *
  * @par INVITE Sessions and Call Model
- *
  * - nua_invite(), #nua_r_invite, #nua_i_invite
  * - nua_handle_has_active_call(), nua_handle_has_call_on_hold(),
  *   nua_handle_has_invite()
@@ -158,90 +143,70 @@
  *   NUTAG_OFFER_SENT(), NUTAG_OFFER_RECV(), NUTAG_ANSWER_RECV(), and
  *   NUTAG_ANSWER_SENT(), SOATAG_REMOTE_SDP(), SOATAG_REMOTE_SDP_STR(),
  *   SOATAG_LOCAL_SDP(), SOATAG_LOCAL_SDP_STR()
- *
  *  Settings:
- * - NUTAG_AUTOACK(), NUTAG_AUTOALERT(), NUTAG_AUTOANSWER(), NUTAG_AUTO100(),
+ * - NUTAG_AUTOACK(), NUTAG_AUTOALERT(), NUTAG_AUTOANSWER(),
  *   NUTAG_ENABLEINVITE(), NUTAG_INVITE_TIMER(), NUTAG_MEDIA_ENABLE(),
  *   SOATAG_USER_SDP(), SOATAG_USER_SDP_STR(), SOATAG_CAPS_SDP(),
  *   SOATAG_CAPS_SDP_STR()
- *
  * Specifications:
  * - @RFC3261, @RFC3264
  *
  * @par In-Session Information requests
- *
  * - nua_info() #nua_r_info, #nua_i_info
- *
  * Settings:
- * - @ref NUTAG_ALLOW("INFO"), @ref NUTAG_APPL_METHOD("INFO")
+ * - NUTAG_ALLOW("INFO"), NUTAG_APPL_METHOD("INFO")
  *
  * @par SDP Processing
- *
  * - #nua_i_state, SOATAG_ACTIVE_AUDIO(), SOATAG_ACTIVE_VIDEO(),
  *   SOATAG_ACTIVE_IMAGE(), SOATAG_ACTIVE_CHAT(),
  *   SOATAG_REMOTE_SDP(), SOATAG_REMOTE_SDP_STR(),
  *   SOATAG_LOCAL_SDP(), SOATAG_LOCAL_SDP_STR()
- *
  * Settings:
  * - NUTAG_MEDIA_ENABLE(), NUTAG_SOA_NAME(), NUTAG_EARLY_ANSWER(),
  *   SOATAG_USER_SDP(), SOATAG_USER_SDP_STR(), SOATAG_CAPS_SDP(),
- *   SOATAG_CAPS_SDP_STR(), NUTAG_ACCEPT_MULTIPART()
- *
+ *   SOATAG_CAPS_SDP_STR()
  * Specifications:
  * - @RFC3264
  *
  * @par Call Model Extensions ("100rel" and "precondition")
- *
- * Early media:
+ * Early
  * - nua_prack(), #nua_r_prack, #nua_i_prack
  * - nua_update() #nua_r_update, #nua_i_update
- *
  * Settings:
  * - NUTAG_EARLY_MEDIA(), NUTAG_ONLY183_100REL()
- * - "100rel" or "precondition" in NUTAG_SUPPORTED() or SIPTAG_SUPPORTED()
- *
+ * - "100rel" or "precondition" in NUTAG_SUPPORTED()/SIPTAG_SUPPORTED()
  * Specifications:
  * - @RFC3262, @RFC3311, @RFC3312
  *
  * @par SIP Session Timers ("timer")
- *
  * Periodic refresh of SIP Session initiated with INVITE with re-INVITE or
  * UPDATE requests.
- *
  * Settings:
  * - NUTAG_MIN_SE(), NUTAG_SESSION_REFRESHER(),
  *   NUTAG_SESSION_TIMER(), NUTAG_UPDATE_REFRESH(),
  *   NUTAG_REFRESH_WITHOUT_SDP(),
- * - "timer" in NUTAG_SUPPORTED() or SIPTAG_SUPPORTED()
- *
+ * - "timer" in NUTAG_SUPPORTED()/SIPTAG_SUPPORTED()
  * Specifications:
  * - @RFC4028
  *
  * @par Caller Preferences and Callee Caps
- *
- * - Caller preferences in an @AcceptContact header in a INVITE requests
- * - Callee caps contained in a @Contact header in a REGISTER request
- *
+ * - Caller preferences in @AcceptContact header in a INVITE requests
+ * - Callee caps contained in @Contact header in a REGISTER request
  * Settings:
  * - NUTAG_CALLEE_CAPS(), NUTAG_MEDIA_FEATURES(),
  *   NUTAG_M_FEATURES()
- *
  * Specifications:
  * - @RFC3840, @RFC3841
  *
  * @par Instant Messaging
- *
  * - nua_message(), #nua_r_message, #nua_i_message
- *
  * Settings:
- * - @ref NUTAG_APPL_METHOD("MESSAGE"),
+ * - NUTAG_APPL_METHOD("MESSAGE"),
  *   NUTAG_ENABLEMESSAGE(), NUTAG_ENABLEMESSENGER()
- *
  * Specifications:
  * - @RFC3428
  *
  * @par Call Transfer
- *
  * - nua_refer(), #nua_r_refer, #nua_i_notify, SIPTAG_EVENT(),
  *   @ReferTo, SIPTAG_REFER_TO(), @ReferredBy, SIPTAG_REFERRED_BY(),
  *   nua_handle_make_replaces(), @Replaces, SIPTAG_REPLACES(),
@@ -249,84 +214,63 @@
  * - #nua_i_refer, nua_notify(), #nua_r_notify,
  *   nua_handle_by_replaces()
  * - nua_invite() with NUTAG_NOTIFY_REFER() and NUTAG_REFER_EVENT()
- *
  * Settings:
  * - NUTAG_REFER_EXPIRES(), NUTAG_REFER_WITH_ID()
- *
  * Specifications:
  * - @RFC3515 (@ReferTo), @RFC3892 (@ReferredBy), @RFC3891 (@Replaces),
- *   @RFC4488 (@ReferSub)
+ *   @RFC4488, @ReferSub
  *
  * @par Internal SIP Event Server
- *
  * - nua_notifier(), #nua_r_notifier, #nua_i_subscription,
  *   nua_authorize(), #nua_r_authorize, nua_terminate(), #nua_r_terminate
  * - SIPTAG_EVENT(), SIPTAG_CONTENT_TYPE(), SIPTAG_PAYLOAD(),
  *   NUTAG_SUBSTATE()
- *
  * @par Settings
- *
  * - NUTAG_ALLOW_EVENTS(), SIPTAG_ALLOW_EVENTS(), and
  *                          SIPTAG_ALLOW_EVENTS_STR()
  * - NUTAG_MAX_SUBSCRIPTIONS()
  * - NUTAG_SUBSTATE(), NUTAG_SUB_EXPIRES()
- *
- * Specifications:
+ * @par Specifications
  * - @RFC3265
  *
  * @par SIP Event Subscriber
- *
  * - nua_subscribe(), #nua_r_subscribe, #nua_i_notify, NUTAG_SUBSTATE(),
  *   SIPTAG_EVENT(), SIPTAG_EXPIRES()
  * - nua_unsubscribe(), #nua_r_unsubscribe()
- *
- * Specifications:
+ * @par Specifications
  * - @RFC3265
  *
  * @par SIP Event Notifier
- *
  * - #nua_i_subscribe(), nua_notify(), #nua_r_notify,
  *   NUTAG_SUBSTATE(), NUTAG_SUB_EXPIRES(), SIPTAG_EVENT()
- *
  * Settings:
  * - NUTAG_SUB_EXPIRES()
  * - NUTAG_ALLOW_EVENTS(), SIPTAG_ALLOW_EVENTS(), and
  *                          SIPTAG_ALLOW_EVENTS_STR()
- * - NUTAG_APPL_EVENT()
- * - @ref NUTAG_ALLOW("SUBSCRIBE"),
- *   @ref NUTAG_APPL_METHOD("SUBSCRIBE")
- *
- * Specifications
+ * - NUTAG_ALLOW("SUBSCRIBE"), NUTAG_APPL_METHOD("SUBSCRIBE")
+ * @par Specifications
  * - @RFC3265
  *
  * @par SIP Event Publisher
- *
  * - nua_publish(), #nua_r_publish(), nua_unpublish(), nua_r_unpublish()
  * - @SIPETag, SIPTAG_ETAG(), @SIPIfMatch, SIPTAG_IF_MATCH()
- *
- * Specifications:
+ * @par Specifications
  * - @RFC3903
  *
  * @par SIP Event State Compositor (PUBLISH Server)
- *
  * - #nua_i_publish, @SIPETag, @SIPIfMatch
- *
- * Settings:
- * - @ref NUTAG_ALLOW("PUBLISH"), @ref NUTAG_APPL_METHOD("PUBLISH")
- *
- * Specifications:
+ * @par Settings
+ * - NUTAG_ALLOW("PUBLISH"), NUTAG_APPL_METHOD("PUBLISH")
+ * @par Specifications
  * - @RFC3903
  *
  * @par Non-Standard Extension Methods
- *
  * - nua_method(), NUTAG_METHOD(), #nua_r_method, NUTAG_DIALOG()
  * - #nua_i_method, nua_respond()
- *
  * Settings:
  * - NUTAG_ALLOW(x), NUTAG_APPL_METHOD(x)
  *
  * @par Server Shutdown
- *
  * - nua_shutdown(), NUTAG_SHUTDOWN_EVENTS(), nua_destroy().
  */
 
@@ -613,15 +557,7 @@ tag_typedef_t nutag_include_extra_sdp = BOOLTAG_TYPEDEF(include_extra_sdp);
  * of offer-answer negotiation.
  *
  * @par Used with
- *    nua_create(), nua_handle(), nua_set_hparams(),
- *    nua_get_params(), nua_get_hparams(),
- *    nua_register(), nua_unregister(),
- *    nua_options(), nua_invite(), nua_ack(), nua_cancel(), nua_bye(),
- *    nua_prack(), nua_update(), nua_info(),
- *    nua_message(), nua_publish(), nua_unpublish(), nua_notifier(),
- *    nua_subscribe(), nua_unsubscribe(), nua_notify(), nua_refer(),
- *    nua_method(), nua_respond(),
- *    nua_authenticate().
+ *    nua_create()
  *
  * @par Parameter type
  *    int
@@ -638,41 +574,6 @@ tag_typedef_t nutag_media_enable = BOOLTAG_TYPEDEF(media_enable);
  * Reference tag for NUTAG_MEDIA_ENABLE().
  */
 
-
-/**@def NUTAG_ACCEPT_MULTIPART()
- *
- * Enable multipart processing for received messages. If an incoming
- * request or response contains multipart body, it is parsed and can be
- * accessed from @a sip_multipart field.
- *
- * @par Used with
- *    nua_create(), nua_handle(), nua_set_hparams(),
- *    nua_get_params(), nua_get_hparams(),
- *    nua_register(), nua_unregister(),
- *    nua_options(), nua_invite(), nua_ack(), nua_cancel(), nua_bye(),
- *    nua_prack(), nua_update(), nua_info(),
- *    nua_message(), nua_publish(), nua_unpublish(), nua_notifier(),
- *    nua_subscribe(), nua_unsubscribe(), nua_notify(), nua_refer(),
- *    nua_method(), nua_respond(),
- *    nua_authenticate().
- *
- * @par Parameter type
- *    int (boolean)
- *
- * @par Values
- *    - 0 (false) - do not interpret multipart bodies
- *    - 1 (true) - try to parse message body in multipart format
- *
- * Corresponding tag taking reference parameter is NUTAG_ACCEPT_MULTIPART_REF()
- *
- * @NEW_UNRELEASED
- */
-tag_typedef_t nutag_accept_multipart = BOOLTAG_TYPEDEF(accept_multipart);
-
-/**@def NUTAG_ACCEPT_MULTIPART_REF(x)
- * Reference tag for NUTAG_ACCEPT_MULTIPART().
- * @NEW_UNRELEASED
- */
 
 
 /**@def NUTAG_SOA_NAME(x)
@@ -715,7 +616,7 @@ tag_typedef_t nutag_soa_name = STRTAG_TYPEDEF(soa_name);
  *    nua_prack(), nua_update(), nua_info(),
  *    nua_message(), nua_publish(), nua_unpublish(), nua_notifier(),
  *    nua_subscribe(), nua_unsubscribe(), nua_notify(), nua_refer(),
- *    nua_method(), nua_respond(),
+ *    nua_method(), nua_respond()
  *    nua_authenticate().
  *
  * @par Parameter type
@@ -1429,6 +1330,8 @@ tag_typedef_t nutag_autoanswer = BOOLTAG_TYPEDEF(autoAnswer);
  */
 tag_typedef_t nutag_autoack = BOOLTAG_TYPEDEF(autoACK);
 
+tag_typedef_t nutag_timer_autorequire = BOOLTAG_TYPEDEF(timerAutorequire);
+
 /**@def NUTAG_AUTOACK_REF(x)
  * Reference tag for NUTAG_AUTOACK().
  */
@@ -1510,163 +1413,6 @@ tag_typedef_t nutag_enablemessenger = BOOLTAG_TYPEDEF(enableMessenger);
 
 /**@def NUTAG_ENABLEMESSENGER_REF(x)
  * Reference tag for NUTAG_ENABLEMESSENGER().
- */
-
-/**@def NUTAG_AUTO302(x)
- *
- * Recurse automatically on 302 response.
- *
- * If this parameter is true, a client recurses automatically upon receiving
- * a 302 response. The request is resent with the request-URI from the
- * @Contact header in the 302 response.
- *
- * @par Used with
- *    nua_create(), nua_set_params(), nua_set_hparams(), \n
- *    nua_get_params(), nua_get_hparams(), \n
- *    nua_invite(), nua_prack(), nua_ack(), nua_update(), nua_respond(), \n
- *    nua_info(), nua_cancel(), nua_bye(), \n
- *    nua_register(), nua_unregister(), nua_publish(), nua_unpublish(), \n
- *    nua_subscribe(), nua_unsubscribe(), nua_refer(), nua_notify(), \n
- *    nua_options(), nua_message(), nua_method()
- *
- * @par Parameter type
- *    int (boolean: nonzero is true, zero is false)
- *
- * @par Values
- *    - 0 (false) - process 302 as an ordinary final response
- *    - 1 (true) - resend request with URI received in 302 response
- *
- * Default value is NUTAG_AUTO302(1).
- *
- * Corresponding tag taking reference parameter is NUTAG_AUTO302_REF().
- *
- * @NEW_1_12_11
- */
-tag_typedef_t nutag_auto302 = BOOLTAG_TYPEDEF(auto302);
-
-/**@def NUTAG_AUTO302_REF(x)
- * Reference tag for NUTAG_AUTO302().
- */
-
-/**@def NUTAG_AUTO305(x)
- *
- * Recurse automatically on 305 response.
- *
- * If this parameter is true, a client recurses automatically upon receiving
- * a 305 response. The request is resent via the proxy specified by the
- * @Contact header in the 305 response. The proxy URI is included in the
- * @Route header of the request.
- *
- * Note that the NUTAG_PROXY() takes a precedence over the proxy in 305, and
- * the NUTAG_PROXY() is responsible of actually routing the request through
- * the 305 proxy.
- *
- * @par Used with
- *    nua_create(), nua_set_params(), nua_set_hparams(), \n
- *    nua_get_params(), nua_get_hparams(), \n
- *    nua_invite(), nua_prack(), nua_ack(), nua_update(), nua_respond(), \n
- *    nua_info(), nua_cancel(), nua_bye(), \n
- *    nua_register(), nua_unregister(), nua_publish(), nua_unpublish(), \n
- *    nua_subscribe(), nua_unsubscribe(), nua_refer(), nua_notify(), \n
- *    nua_options(), nua_message(), nua_method()
- *
- * @par Parameter type
- *    int (boolean: nonzero is true, zero is false)
- *
- * @par Values
- *    - 0 (false) - process 305 as an ordinary final response
- *    - 1 (true) - resend request via proxy received in 305 response
- *
- * Default value is NUTAG_AUTO305(1).
- *
- * Corresponding tag taking reference parameter is NUTAG_AUTO305_REF().
- *
- * @NEW_1_12_11
- */
-tag_typedef_t nutag_auto305 = BOOLTAG_TYPEDEF(auto305);
-
-/**@def NUTAG_AUTO305_REF(x)
- * Reference tag for NUTAG_AUTO305().
- */
-
-
-/**@def NUTAG_AUTO100(x)
- *
- * Generate automatically 100 Trying responses.
- *
- * If this parameter is true, the server will automatically generate a
- * "100 Trying" response to the incoming INVITE request (and other
- * requests containing @Timestamp header).
- *
- * @par Used with
- *    nua_create(), nua_set_params(), nua_set_hparams(), \n
- *    nua_get_params(), nua_get_hparams(), \n
- *    nua_invite(), nua_prack(), nua_ack(), nua_update(), nua_respond(), \n
- *    nua_info(), nua_cancel(), nua_bye(), \n
- *    nua_register(), nua_unregister(), nua_publish(), nua_unpublish(), \n
- *    nua_subscribe(), nua_unsubscribe(), nua_refer(), nua_notify(), \n
- *    nua_options(), nua_message(), nua_method()
- *
- * @par Parameter type
- *    int (boolean: nonzero is true, zero is false)
- *
- * @par Values
- *    - 0 (false) - let application generate 100 Trying
- *    - 1 (true) - automatically generate 100 Trying response
- *
- * Default value is NUTAG_AUTO100(1).
- *
- * Corresponding tag taking reference parameter is NUTAG_AUTO100_REF().
- *
- * @NEW_UNRELEASED
- *
- * @sa NTATAG_EXTRA_100()
- */
-tag_typedef_t nutag_auto100 = BOOLTAG_TYPEDEF(auto100);
-
-/**@def NUTAG_AUTO100_REF(x)
- * Reference tag for NUTAG_AUTO100().
- */
-
-
-/**@def NUTAG_MAX_RETRY_AFTER(x)
- *
- * This parameter specifies the maximum delay in seconds that stack
- * allows for @RetryAfter header when it considers if it should
- * automatically retry the request.
- *
- * If the delay specified by in @RetryAfter header is greater or equal
- * to this value, stack does no retry but considers the transaction
- * complete.
- *
- * The value 0 disables the automatic retry.
- *
- * @par Used with
- *    nua_create(), nua_set_params() or nua_set_hparams() \n
- *    nua_get_params() or nua_get_hparams()
- *    nua_handle(), nua_invite(), nua_update(), nua_respond() \n
- *
- * See nua_set_hparams() for a complete list of all the nua operations that
- * accept this tag.
- *
- * @par Parameter type
- *    unsigned int
- *
- * @par Value
- *    Maximum @RetryAfter delay obeyed.
- *
- * Default value is NUTAG_MAX_RETRY_AFTER(32).
- *
- * Corresponding tag taking reference parameter is NUTAG_MAX_RETRY_AFTER_REF().
- *
- * @NEW_UNRELEASED
- *
- * @sa @RetryAfter
- */
-tag_typedef_t nutag_max_retry_after = UINTTAG_TYPEDEF(max_retry_after);
-
-/**@def NUTAG_MAX_RETRY_AFTER_REF(x)
- * Reference tag for NUTAG_MAX_RETRY_AFTER().
  */
 
 
@@ -1873,6 +1619,55 @@ tag_typedef_t nutag_sips_url = URLTAG_TYPEDEF(sips_url);
 
 /**@def NUTAG_SIPS_URL_REF(x)
  * Reference tag for NUTAG_SIPS_URL().
+ */
+
+/**@def NUTAG_WS_URL(x)
+ *
+ * Local WS url.
+ *
+ * The application can specify an alternative local address for
+ * NUA user agent engine. Usually the alternative address is a
+ *  SIP URI (WS) used with websocket transport.
+ *
+ * @par Used with
+ *    nua_create()
+ *
+ * @par Parameter type
+ *    char const *
+ *
+ * @par Values
+ *
+ * Corresponding tag taking reference parameter is NUTAG_WS_URL_REF().
+ */
+tag_typedef_t nutag_ws_url = URLTAG_TYPEDEF(ws_url);
+
+/**@def NUTAG_WS_URL_REF(x)
+ * Reference tag for NUTAG_WS_URL().
+ */
+
+
+/**@def NUTAG_WSS_URL(x)
+ *
+ * Local WSS url.
+ *
+ * The application can specify an alternative local address for
+ * NUA user agent engine. Usually the alternative address is a
+ * secure SIP URI (WSS) used with secure websocket transport.
+ *
+ * @par Used with
+ *    nua_create()
+ *
+ * @par Parameter type
+ *    char const *
+ *
+ * @par Values
+ *
+ * Corresponding tag taking reference parameter is NUTAG_WSS_URL_REF().
+ */
+tag_typedef_t nutag_wss_url = URLTAG_TYPEDEF(wss_url);
+
+/**@def NUTAG_WSS_URL_REF(x)
+ * Reference tag for NUTAG_WSS_URL().
  */
 
 
@@ -2239,8 +2034,8 @@ tag_typedef_t nutag_instance = STRTAG_TYPEDEF(instance);
  * keepalive, use NUTAG_OUTBOUND("natify no-options-keepalive").
  *
  * An empty string can be passed to let the stack choose the
- * default values for outbound usage (in the 1.12.10 release, the
- * defaults are: "gruuize no-outbound validate use-rport options-keepalive").
+ * default values for outbound usage (in the 1.12.5 release, the
+ * defaults are: "gruuize no-outbound validate use-port options-keepalive").
  *
  * @note
  * Options string is used so that no new tags need to be added when the
@@ -2249,7 +2044,7 @@ tag_typedef_t nutag_instance = STRTAG_TYPEDEF(instance);
  * @par Used with
  *    nua_register()   \n
  *    nua_set_params() \n
- *    nua_get_params() \n
+ *    nua_get_params()
  *    nua_set_hparams() \n
  *    nua_get_hparams()
  *
@@ -2274,7 +2069,7 @@ tag_typedef_t nutag_outbound = STRTAG_TYPEDEF(outbound);
  * @par Used with
  *    nua_register()   \n
  *    nua_set_params() \n
- *    nua_get_params() \n
+ *    nua_get_params()
  *    nua_set_hparams() \n
  *    nua_get_hparams()
  *
@@ -2299,7 +2094,7 @@ tag_typedef_t nutag_outbound_set1 = STRTAG_TYPEDEF(outbound_set1);
  * @par Used with
  *    nua_register()   \n
  *    nua_set_params() \n
- *    nua_get_params() \n
+ *    nua_get_params()
  *    nua_set_hparams() \n
  *    nua_get_hparams()
  *
@@ -2324,7 +2119,7 @@ tag_typedef_t nutag_outbound_set2 = STRTAG_TYPEDEF(outbound_set2);
  * @par Used with
  *    nua_register()   \n
  *    nua_set_params() \n
- *    nua_get_params() \n
+ *    nua_get_params()
  *    nua_set_hparams() \n
  *    nua_get_hparams()
  *
@@ -2347,9 +2142,9 @@ tag_typedef_t nutag_outbound_set3 = STRTAG_TYPEDEF(outbound_set3);
  * Outbound proxy set 4.
  *
  * @par Used with
- *    nua_register() \n
+ *    nua_register()   \n
  *    nua_set_params() \n
- *    nua_get_params() \n
+ *    nua_get_params()
  *    nua_set_hparams() \n
  *    nua_get_hparams()
  *
@@ -2378,7 +2173,7 @@ tag_typedef_t nutag_outbound_set4 = STRTAG_TYPEDEF(outbound_set4);
  * @par Used with
  *    nua_register()   \n
  *    nua_set_params() \n
- *    nua_get_params() \n
+ *    nua_get_params()
  *    nua_set_hparams() \n
  *    nua_get_hparams()
  *
@@ -2408,7 +2203,7 @@ tag_typedef_t nutag_keepalive = UINTTAG_TYPEDEF(keepalive);
  * @par Used with
  *    nua_register()   \n
  *    nua_set_params() \n
- *    nua_get_params() \n
+ *    nua_get_params()
  *    nua_set_hparams() \n
  *    nua_get_hparams()
  *
@@ -2495,6 +2290,8 @@ tag_typedef_t nutag_auth = STRTAG_TYPEDEF(auth);
  * @par Values
  *    - 0 (zero) - Use authentication data only for this handle
  *    - nonzero - Lifetime of authentication data in seconds
+ *
+ * @todo
  *
  * Corresponding tag taking reference parameter is NUTAG_AUTHTIME_REF().
  */
@@ -2641,7 +2438,7 @@ tag_typedef_t nutag_notify_refer = PTRTAG_TYPEDEF(notify_refer);
  *
  * Corresponding tag taking reference parameter is NUTAG_REFER_EVENT_REF().
  */
-tag_typedef_t nutag_refer_event = SIPEXTHDRTAG_TYPEDEF(refer_event, event);
+tag_typedef_t nutag_refer_event = SIPHDRTAG_NAMED_TYPEDEF(refer_event, event);
 
 /**@def NUTAG_REFER_EVENT_REF(x)
  * Reference tag for NUTAG_REFER_EVENT().
@@ -2713,6 +2510,31 @@ tag_typedef_t nutag_user_agent = STRTAG_TYPEDEF(user_agent);
  */
 
 
+/**@def NUTAG_VIA()
+ *
+ * Via string.
+ *
+ * Indicate the Via header used by the stack.
+ *
+ * @par Used with
+ *    nua_set_params(), nua_set_hparams() \n
+ *    nua_get_params(), nua_get_hparams(), #nua_r_get_params \n
+ *    any handle-specific nua call
+ *
+ * @par Parameter type
+ *    char const *
+ *
+ * @par Values
+ *    See @RFC3261 \n
+ *
+ * Corresponding tag taking reference parameter is NUTAG_VIA_REF().
+ */
+tag_typedef_t nutag_via = STRTAG_TYPEDEF(via);
+
+/**@def NUTAG_VIA_REF(x)
+ * Reference tag for NUTAG_VIA().
+ */
+
 /**@def NUTAG_ALLOW()
  *
  * Allow a method (or methods).
@@ -2772,9 +2594,8 @@ tag_typedef_t nutag_allow = STRTAG_TYPEDEF(allow);
  *    Valid event name, or comma-separated list of them.
  *
  * @sa @AllowEvents, @RFC3265, @RFC3903, #nua_i_subscribe, #nua_i_publish,
- * #nua_i_refer, nua_notify(), nua_refer(),
  * nua_subscribe(), nua_publish(), SIPTAG_ALLOW_EVENTS(),
- * SIPTAG_ALLOW_EVENTS_STR(), NUTAG_APPL_EVENT()
+ * SIPTAG_ALLOW_EVENTS_STR()
  *
  * @NEW_1_12_4.
  *
@@ -2784,45 +2605,6 @@ tag_typedef_t nutag_allow_events = STRTAG_TYPEDEF(allow_events);
 
 /**@def NUTAG_ALLOW_EVENTS_REF(x)
  * Reference tag for NUTAG_ALLOW_EVENTS().
- */
-
-
-/**@def NUTAG_APPL_EVENT()
- *
- * List events which the application handles always.
- *
- * When nua stack receives a SUBSCRIBE request for an already existing
- * subscription, it can either automatically refresh the subscription
- * or, if the event name is listed in NUTAG_APPL_EVENT() list, it
- * is passed to application, pass the SUBSCRIBE request to application.
- *
- * The list of application events is cleared with
- * NUTAG_APPL_EVENT(NULL).
- *
- * @par Used with
- *    nua_set_params() \n
- *    nua_set_hparams() \n
- *    any handle-specific nua call
- *
- * @par Parameter type
- *    char const *
- *
- * @par Values
- *    Valid event name, or comma-separated list of them.
- *
- * @sa @AllowEvents, @RFC3265, @RFC3903, #nua_i_subscribe,
- * #nua_i_publish, #nua_i_refer, nua_notify(), nua_refer(),
- * nua_subscribe(), nua_publish(), NUTAG_ALLOW_EVENTS(),
- *
- * @NEW_UNRELEASED
- *
- * Corresponding tag taking reference parameter is
- * NUTAG_APPL_EVENT_REF().
- */
-tag_typedef_t nutag_appl_event = STRTAG_TYPEDEF(appl_event);
-
-/**@def NUTAG_APPL_EVENT_REF(x)
- * Reference tag for NUTAG_APPL_EVENT().
  */
 
 
@@ -2931,6 +2713,29 @@ tag_typedef_t nutag_path_enable = BOOLTAG_TYPEDEF(path_enable);
  * Reference tag for NUTAG_PATH_ENABLE().
  */
 
+/**@def NUTAG_RETRY_AFTER_ENABLE(x)
+ *
+ * If true, support RFC 3261 Retry-After
+ *
+ * @par Used with
+ * - nua_create(), nua_set_params(), nua_get_params()
+ * - nua_handle(), nua_set_hparams(), nua_get_hparams()
+ * - nua_register()
+ *
+ * @par Parameter type
+ *    int (boolean: nonzero is true, zero is false)
+ *
+ * @par Values
+ *    - 0 (false) - Do not honor Retry-After
+ *    - 1 (true) - honor Retry-After
+ *
+ */
+tag_typedef_t nutag_retry_after_enable = BOOLTAG_TYPEDEF(retry_after_enable);
+
+/**@def NUTAG_RETRY_AFTER_ENABLE_REF(x)
+ * Reference tag for NUTAG_RETRY_AFTER_ENABLE().
+ */
+
 
 
 /**@def NUTAG_SERVICE_ROUTE_ENABLE(x)
@@ -2953,6 +2758,8 @@ tag_typedef_t nutag_path_enable = BOOLTAG_TYPEDEF(path_enable);
  * Corresponding tag taking reference parameter is NUTAG_SERVICE_ROUTE_ENABLE_REF().
  *
  * @sa NUTAG_INITIAL_ROUTE(), NUTAG_INITIAL_ROUTE_STR(), @RFC3608
+ *
+ * @todo
  */
 tag_typedef_t nutag_service_route_enable =
   BOOLTAG_TYPEDEF(service_route_enable);
@@ -3132,7 +2939,7 @@ tag_typedef_t nutag_dialog = UINTTAG_TYPEDEF(dialog);
 
 /**@def NUTAG_SIP_PARSER(x)
  *
- * Pointer to a customized SIP parser used with NUA.
+ * Pointer to SIP parser structure
  *
  * @par Used with
  *    nua_create()
@@ -3152,6 +2959,7 @@ tag_typedef_t nutag_dialog = UINTTAG_TYPEDEF(dialog);
  * Reference tag for NUTAG_SIP_PARSER().
  */
 
+
 /**@def NUTAG_SHUTDOWN_EVENTS(x)
  *
  * Allow passing of normal events when stack is being shut down.
@@ -3168,7 +2976,7 @@ tag_typedef_t nutag_dialog = UINTTAG_TYPEDEF(dialog);
  *    int (boolean: nonzero is true, zero is false)
  *
  * @par Values
- *    - 0 (false) - pass only #nua_r_shutdown events during shutdown
+ *    - 0 (false) - pass only #nua_r_shutdown events to application during shutdown
  *    - 1 (true) - pass all events to application during shutdown
  *
  * Corresponding tag taking reference parameter is NUTAG_SHUTDOWN_EVENTS_REF().
@@ -3183,32 +2991,6 @@ tag_typedef_t nutag_shutdown_events = BOOLTAG_TYPEDEF(shutdown_events);
  * Reference tag for NUTAG_SHUTDOWN_EVENTS().
  */
 
-/**@def NUTAG_DEFERRABLE_TIMERS(x)
- *
- * Use deferrable timers in NUA.
- *
- * @par Used with
- *    nua_create()
- *
- * @par Parameter type
- *    int (boolean: nonzero is true, zero is false)
- *
- * @par Values
- *    - 0 (false) - do not use deferrable timers (default)
- *    - 1 (true) - use deferrable timers
- *
- * Corresponding tag taking reference parameter is
- * NUTAG_DEFERRABLE_TIMERS_REF().
- *
- * @sa su_timer_deferrable(), su_root_set_max_defer()
- *
- * @NEW_UNRELEASED
- */
-tag_typedef_t nutag_deferrable_timers = BOOLTAG_TYPEDEF(deferrable_timers);
-
-/**@def NUTAG_DEFERRABLE_TIMERS_REF(x)
- * Reference tag for NUTAG_DEFERRABLE_TIMERS().
- */
 
 /* ---------------------------------------------------------------------- */
 

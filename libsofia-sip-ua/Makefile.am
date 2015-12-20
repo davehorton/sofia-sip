@@ -11,7 +11,7 @@ AUTOMAKE_OPTIONS = foreign
 
 # select which optional sofia-sip modules have been enabled
 # in the build
-OPT_LIBADD = $(openssl_LIBS)
+OPT_LIBADD =
 OPT_SUBDIRS_STUN =
 OPT_SUBDIRS_HTTP =
 OPT_SUBDIRS_NTH =
@@ -35,7 +35,7 @@ DIST_SUBDIRS = su features bnf sresolv ipt sdp url msg sip http \
 
 DOXYGEN = doxygen
 
-lib_LTLIBRARIES = libsofia-sip-ua.la
+noinst_LTLIBRARIES = libsofia-sip-ua.la
 
 libsofia_sip_ua_la_SOURCES =
 libsofia_sip_ua_la_LIBADD = 	bnf/libbnf.la \
@@ -58,7 +58,11 @@ libsofia_sip_ua_la_LIBADD = 	bnf/libbnf.la \
 # set the libtool version info version:revision:age for libsofia-sip-ua
 # - soname to 'libsofia-sip-ua.so.(CUR-AGE)'
 libsofia_sip_ua_la_LDFLAGS = \
-	-version-info $(LIBVER_SOFIA_SIP_UA_CUR):$(LIBVER_SOFIA_SIP_UA_REV):$(LIBVER_SOFIA_SIP_UA_AGE)
+	-version-info $(LIBVER_SOFIA_SIP_UA_CUR):$(LIBVER_SOFIA_SIP_UA_REV):$(LIBVER_SOFIA_SIP_UA_AGE) 
+
+if HAVE_ZLIB
+libsofia_sip_ua_la_LDFLAGS += -lz
+endif
 
 PHONY = doxygen built-sources
 
@@ -68,7 +72,7 @@ checklib: checklib-recursive $(lib_LTLIBRARIES)
 
 doxygen: built-sources
 	@echo Generating empty doxytags
-	@mkdir -p docs/html ; \
+	mkdir -p docs/html ; \
 	for d in $(DIST_SUBDIRS); do \
 	  test -r $$d/Doxyfile || continue ; \
 	  if ! test -r docs/$$d.doxytags ; then \
@@ -79,7 +83,7 @@ doxygen: built-sources
 	    mv -f docs/$$d.doxytags.tmp docs/$$d.doxytags ; \
           fi ; \
 	done
-	@for d in $(DIST_SUBDIRS); do \
+	for d in $(DIST_SUBDIRS); do \
 	  ( test -r $$d/Doxyfile && \
 	  cd $$d > /dev/null && \
 	  echo running ${DOXYGEN} first time in $$d && \
@@ -90,9 +94,9 @@ doxygen: built-sources
 	    docs/$$d.doxytags > docs/$$d.doxytags.tmp && \
 	  mv -f docs/$$d.doxytags.tmp docs/$$d.doxytags ; \
 	done
-	@for d in $(DIST_SUBDIRS); do \
+	for d in $(DIST_SUBDIRS); do \
 	  ( test -r $$d/Doxyfile && \
-	    cd $$d > /dev/null && \
+	    cd $$d > /dev/null \
 	    echo running ${DOXYGEN} second time in $$d && \
             ${DOXYGEN} 2>&1 ) | \
 	    egrep -v -i -e 'Warning: Unsupported (xml/)?html tag' ; \

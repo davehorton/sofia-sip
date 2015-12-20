@@ -201,7 +201,8 @@ void tls_set_default(tls_issues_t *i)
   i->cert = i->cert ? i->cert : "agent.pem";
   i->key = i->key ? i->key : i->cert;
   i->randFile = i->randFile ? i->randFile : "tls_seed.dat";
-  i->cipher = i->cipher ? i->cipher : "ALL:!ADH:!LOW:!EXP:!MD5:@STRENGTH";
+  i->CAfile = i->CAfile ? i->CAfile : "cafile.pem";
+  i->ciphers = i->ciphers ? i->ciphers : "!eNULL:!aNULL:!EXP:!LOW:!MD5:ALL:@STRENGTH";
   /* Default SIP cipher */
   /* "RSA-WITH-AES-128-CBC-SHA"; */
   /* RFC-2543-compatibility ciphersuite */
@@ -262,6 +263,33 @@ int tls_verify_cb(int ok, X509_STORE_CTX *store)
   return ok;
 }
 
+void tls_init(void) {
+  ONCE_INIT(tls_init_once);
+}
+
+#ifndef OPENSSL_NO_EC
+static
+int tls_init_ecdh_curve(tls_t *tls)
+{
+  int nid;
+  EC_KEY *ecdh;
+  if (!(nid = OBJ_sn2nid("prime256v1"))) {
+    tls_log_errors(1, "Couldn't find specified curve", 0);
+    errno = EIO;
+    return -1;
+  }
+  if (!(ecdh = EC_KEY_new_by_curve_name(nid))) {
+    tls_log_errors(1, "Couldn't create specified curve", 0);
+    errno = EIO;
+    return -1;
+  }
+  SSL_CTX_set_options(tls->ctx, SSL_OP_SINGLE_ECDH_USE);
+  SSL_CTX_set_tmp_ecdh(tls->ctx, ecdh);
+  EC_KEY_free(ecdh);
+  return 0;
+}
+#endif
+
 static
 int tls_init_context(tls_t *tls, tls_issues_t const *ti)
 {
@@ -290,25 +318,26 @@ int tls_init_context(tls_t *tls, tls_issues_t const *ti)
   signal(SIGPIPE, SIG_IGN);
 #endif
 
-  if (tls->ctx == NULL) {
-    const SSL_METHOD *meth;
-
-    /* meth = SSLv3_method(); */
-    /* meth = SSLv23_method(); */
-
-    if (ti->version)
-      meth = TLSv1_method();
-    else
-      meth = SSLv23_method();
-
-    tls->ctx = SSL_CTX_new((SSL_METHOD*)meth);
-  }
-
-  if (tls->ctx == NULL) {
-    tls_log_errors(1, "tls_init_context", 0);
-    errno = EIO;
-    return -1;
-  }
+  if (tls->ctx == NULL)
+    if (!(tls->ctx = SSL_CTX_new((SSL_METHOD*)SSLv23_method()))) {
+      tls_log_errors(1, "SSL_CTX_new() failed", 0);
+      errno = EIO;
+      return -1;
+    }
+  if (!(ti->version & TPTLS_VERSION_SSLv2))
+    SSL_CTX_set_options(tls->ctx, SSL_OP_NO_SSLv2);
+  if (!(ti->version & TPTLS_VERSION_SSLv3))
+    SSL_CTX_set_options(tls->ctx, SSL_OP_NO_SSLv3);
+  if (!(ti->version & TPTLS_VERSION_TLSv1))
+    SSL_CTX_set_options(tls->ctx, SSL_OP_NO_TLSv1);
+  if (!(ti->version & TPTLS_VERSION_TLSv1_1))
+    SSL_CTX_set_options(tls->ctx, SSL_OP_NO_TLSv1_1);
+  if (!(ti->version & TPTLS_VERSION_TLSv1_2))
+    SSL_CTX_set_options(tls->ctx, SSL_OP_NO_TLSv1_2);
+  SSL_CTX_sess_set_remove_cb(tls->ctx, NULL);
+  SSL_CTX_set_timeout(tls->ctx, ti->timeout);
+  /* CRIME (CVE-2012-4929) mitigation */
+  SSL_CTX_set_options(tls->ctx, SSL_OP_NO_COMPRESSION);
 
   /* Set callback if we have a passphrase */
   if (ti->passphrase != NULL) {
@@ -353,21 +382,34 @@ int tls_init_context(tls_t *tls, tls_issues_t const *ti)
     errno = EIO;
     return -1;
 #endif
+#ifndef OPENSSL_NO_DH
+  } else {
+    BIO *bio = BIO_new_file(ti->key, "r");
+    if (bio != NULL) {
+      DH *dh = PEM_read_bio_DHparams(bio, NULL, NULL, NULL);
+      if (dh != NULL) {
+        if (!SSL_CTX_set_tmp_dh(tls->ctx, dh)) {
+          SU_DEBUG_1(("%s: invalid DH parameters (PFS) because %s: %s\n",
+                      "tls_init_context",
+                      ERR_reason_error_string(ERR_get_error()),
+                      ti->key));
+        } else {
+          long options = SSL_OP_CIPHER_SERVER_PREFERENCE | SSL_OP_SINGLE_DH_USE;
+          options = SSL_CTX_set_options(tls->ctx, options);
+          SU_DEBUG_3(("%s\n", "tls: initialized DHE"));
+        }
+        DH_free(dh);
+      }
+      BIO_free(bio);
+    }
+#endif
   }
 
-  if (ti->CAfile == NULL && ti->CApath == NULL) {
-    /* No CAfile, default path */
-    if (!SSL_CTX_set_default_verify_paths(tls->ctx)) {
-      SU_DEBUG_1(("tls_init_context: error setting default verify paths\n"));
-      errno = EIO;
-      return -1;
-    }
-  }
-  else if (!SSL_CTX_load_verify_locations(tls->ctx,
-					  ti->CAfile,
-					  ti->CApath)) {
+  if (!SSL_CTX_load_verify_locations(tls->ctx,
+                                     ti->CAfile,
+                                     ti->CApath)) {
     SU_DEBUG_1(("%s: error loading CA list: %s\n",
-		"tls_init_context", ti->CAfile ? ti->CAfile : "<default>"));
+		 "tls_init_context", ti->CAfile));
     if (ti->configured > 0)
       tls_log_errors(3, "tls_init_context(CA)", 0);
     errno = EIO;
@@ -388,8 +430,14 @@ int tls_init_context(tls_t *tls, tls_issues_t const *ti)
 
   SSL_CTX_set_verify_depth(tls->ctx, ti->verify_depth);
   SSL_CTX_set_verify(tls->ctx, verify, tls_verify_cb);
-
-  if (!SSL_CTX_set_cipher_list(tls->ctx, ti->cipher)) {
+#ifndef OPENSSL_NO_EC
+  if (tls_init_ecdh_curve(tls) == 0) {
+    SU_DEBUG_3(("%s\n", "tls: initialized ECDH"));
+  } else {
+    SU_DEBUG_3(("%s\n", "tls: failed to initialize ECDH"));
+  }
+#endif
+  if (!SSL_CTX_set_cipher_list(tls->ctx, ti->ciphers)) {
     SU_DEBUG_1(("%s: error setting cipher list\n", "tls_init_context"));
     tls_log_errors(3, "tls_init_context", 0);
     errno = EIO;
@@ -404,14 +452,14 @@ void tls_free(tls_t *tls)
   if (!tls)
     return;
 
-  if (tls->con != NULL)
-    SSL_shutdown(tls->con);
+  if (tls->con != NULL) {
+	SSL_shutdown(tls->con);
+	SSL_free(tls->con), tls->con = NULL;
+  }
 
-  if (tls->ctx != NULL && tls->type != tls_slave)
+  if (tls->ctx != NULL && tls->type != tls_slave) {
     SSL_CTX_free(tls->ctx);
-
-  if (tls->bio_con != NULL)
-    BIO_free(tls->bio_con);
+  }
 
   su_home_unref(tls->home);
 }
@@ -480,7 +528,6 @@ tls_t *tls_init_secondary(tls_t *master, int sock, int accept)
 
   if (tls) {
     tls->ctx = master->ctx;
-    tls->type = master->type;
     tls->accept = accept ? 1 : 0;
     tls->verify_outgoing = master->verify_outgoing;
     tls->verify_incoming = master->verify_incoming;
@@ -520,20 +567,39 @@ su_inline
 int tls_post_connection_check(tport_t *self, tls_t *tls)
 {
   X509 *cert;
+  const SSL_CIPHER *cipher;
+  char cipher_description[256];
+  int cipher_bits, alg_bits;
   int extcount;
   int i, j, error;
 
   if (!tls) return -1;
 
+  if (!(cipher = SSL_get_current_cipher(tls->con))) {
+    SU_DEBUG_7(("%s(%p): %s\n", __func__, (void*)self,
+                "OpenSSL failed to return an SSL_CIPHER object to us."));
+    return SSL_ERROR_SSL;
+  }
+  SU_DEBUG_9(("%s(%p): TLS cipher chosen (name): %s\n", __func__, (void*)self,
+              SSL_CIPHER_get_name(cipher)));
+  SU_DEBUG_9(("%s(%p): TLS cipher chosen (version): %s\n", __func__, (void*)self,
+              SSL_CIPHER_get_version(cipher)));
+  cipher_bits = SSL_CIPHER_get_bits(cipher, &alg_bits);
+  SU_DEBUG_9(("%s(%p): TLS cipher chosen (bits/alg_bits): %d/%d\n", __func__, (void*)self,
+              cipher_bits, alg_bits));
+  SSL_CIPHER_description(cipher, cipher_description, sizeof(cipher_description));
+  SU_DEBUG_9(("%s(%p): TLS cipher chosen (description): %s\n", __func__, (void*)self,
+              cipher_description));
+
   cert = SSL_get_peer_certificate(tls->con);
   if (!cert) {
-    SU_DEBUG_7(("%s(%p): Peer did not provide X.509 Certificate.\n",
-		 __func__, (void *) self));
+    SU_DEBUG_7(("%s(%p): Peer did not provide X.509 Certificate.\n", 
+				__func__, (void *) self));
     if (self->tp_accepted && tls->verify_incoming)
       return X509_V_ERR_CERT_UNTRUSTED;
     else if (!self->tp_accepted && tls->verify_outgoing)
       return X509_V_ERR_CERT_UNTRUSTED;
-    else
+    else 
       return X509_V_OK;
   }
 
@@ -610,10 +676,10 @@ int tls_post_connection_check(tport_t *self, tls_t *tls)
     int i, len = su_strlst_len(tls->subjects);
     for (i=0; i < len; i++)
       SU_DEBUG_7(("%s(%p): Peer Certificate Subject %i: %s\n", \
-	      __func__, (void *)self, i, su_strlst_item(tls->subjects, i)));
+				  __func__, (void *)self, i, su_strlst_item(tls->subjects, i)));
     if (i == 0)
       SU_DEBUG_7(("%s(%p): Peer Certificate provided no usable subjects.\n",
-		   __func__, (void *)self));
+				  __func__, (void *)self));
   }
 
   /* Verify incoming connections */
@@ -637,7 +703,7 @@ int tls_post_connection_check(tport_t *self, tls_t *tls)
 	  return X509_V_OK;
       }
       SU_DEBUG_3(("%s(%p): Peer Subject Mismatch (incoming connection)\n", \
-		   __func__, (void *)self));
+				  __func__, (void *)self));
 
       return X509_V_ERR_CERT_UNTRUSTED;
     }
@@ -655,7 +721,7 @@ int tls_post_connection_check(tport_t *self, tls_t *tls)
       if (tport_subject_search(subject, tls->subjects))
         return X509_V_OK; /* Subject match found in verified certificate chain */
       SU_DEBUG_3(("%s(%p): Peer Subject Mismatch (%s)\n", \
-		    __func__, (void *)self, subject));
+				  __func__, (void *)self, subject));
 
       return X509_V_ERR_CERT_UNTRUSTED;
     }
@@ -960,7 +1026,7 @@ int tls_connect(su_root_magic_t *magic, su_wait_t *w, tport_t *self)
 	  char errbuf[64];
 	  ERR_error_string_n(status, errbuf, 64);
           SU_DEBUG_3(("%s(%p): TLS setup failed (%s)\n",
-		    __func__, (void *)self, errbuf));
+					  __func__, (void *)self, errbuf));
         }
         break;
     }

@@ -241,9 +241,6 @@
 /* Define to 1 if you have the <net/if_types.h> header file. */
 #undef HAVE_NET_IF_TYPES_H
 
-/* tcase_add_test() with allowed_exit_value argument */
-#undef HAVE_NEW_TCASE_ADD_TEST
-
 /* Define to 1 if you have OpenSSL */
 #undef HAVE_OPENSSL
 
@@ -265,6 +262,9 @@
    shall ensure that the thread performs matching unlocks - that is, it calls
    the pthread_rwlock_unlock() function n times. */
 #undef HAVE_PTHREAD_RWLOCK
+
+/* Define if you have pthread_setschedparam() */
+#undef HAVE_PTHREAD_SETSCHEDPARAM
 
 /* Define to 1 if you have the `random' function. */
 #undef HAVE_RANDOM
@@ -409,6 +409,9 @@
 
 /* Define to 1 if you have the <ws2tcpip.h> header file. */
 #undef HAVE_WS2TCPIP_H
+
+/* Define if you have zlib compress */
+#undef HAVE_ZLIB_COMPRESS
 
 /* Format (%lli) for long long */
 #undef LLI

@@ -225,10 +225,6 @@ struct soa_session
     ss_srtp_confidentiality:1,
     ss_srtp_integrity:1;
 
-  unsigned ss_delayed_offer_enable:1;
-
-  unsigned ss_user_o_line:1;
-
   unsigned :0;			/* Pad */
 
   int             ss_wcode;	/**< Warning code from last media operation */

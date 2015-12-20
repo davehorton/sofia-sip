@@ -8,14 +8,12 @@
 # ----------------------------------------------------------------------
 # Header paths
 
-INCLUDES = 		$(INTERNAL_INCLUDES)
+AM_CPPFLAGS = 		$(INTERNAL_INCLUDES)
 
 # ----------------------------------------------------------------------
 # Build targets
 
-if HAVE_CHECK
 noinst_LIBRARIES = 	libs2.a
-endif
 
 # ----------------------------------------------------------------------
 # Rules for building the targets
@@ -27,12 +25,10 @@ libs2_a_SOURCES = 	s2check.h s2tcase.c \
 			s2dns.h s2dns.c \
 			s2util.h s2time.c
 
-LDADD =
-
 # ----------------------------------------------------------------------
 # Install and distribution rules
 
-EXTRA_DIST =		exit77.c $(libs2_a_SOURCES)
+EXTRA_DIST =
 
 # ----------------------------------------------------------------------
 # Tests

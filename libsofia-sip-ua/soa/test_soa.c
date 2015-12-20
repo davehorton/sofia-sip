@@ -164,8 +164,6 @@ int test_localinfo_replacement(void)
   TEST(n, 3);
   su_freelocalinfo(res);
 
-  s2_localinfo_teardown();
-
   END();
 }
 /* ========================================================================= */
@@ -341,7 +339,6 @@ int test_params(struct context *ctx)
   int rtp_select, rtp_sort;
   int rtp_mismatch;
   int srtp_enable, srtp_confidentiality, srtp_integrity;
-  int delayed_offer_enable;
   soa_session_t *a = ctx->a, *b = ctx->b;
 
   n = soa_set_params(a, TAG_END()); TEST(n, 0);
@@ -353,7 +350,6 @@ int test_params(struct context *ctx)
 
   rtp_select = -1, rtp_sort = -1, rtp_mismatch = -1;
   srtp_enable = -1, srtp_confidentiality = -1, srtp_integrity = -1;
-  delayed_offer_enable = -1;
 
   TEST(soa_get_params(a,
 		      SOATAG_AF_REF(af),
@@ -367,11 +363,8 @@ int test_params(struct context *ctx)
 		      SOATAG_SRTP_ENABLE_REF(srtp_enable),
 		      SOATAG_SRTP_CONFIDENTIALITY_REF(srtp_confidentiality),
 		      SOATAG_SRTP_INTEGRITY_REF(srtp_integrity),
-
-		      SOATAG_DELAYED_OFFER_ENABLE_REF(delayed_offer_enable),
-
 		      TAG_END()),
-       10);
+       9);
   TEST(af, SOA_AF_ANY);
   TEST_P(address, 0);
   TEST_P(hold, 0);
@@ -380,9 +373,7 @@ int test_params(struct context *ctx)
   TEST(rtp_mismatch, 0);
   TEST(srtp_enable, 0);
   TEST(srtp_confidentiality, 0);
-  TEST(rtp_mismatch, 0);
   TEST(srtp_integrity, 0);
-  TEST(delayed_offer_enable, 0);
 
   TEST(soa_set_params(a,
 		      SOATAG_AF(SOA_AF_IP4_IP6),
@@ -397,10 +388,8 @@ int test_params(struct context *ctx)
 		      SOATAG_SRTP_CONFIDENTIALITY(1),
 		      SOATAG_SRTP_INTEGRITY(1),
 
-		      SOATAG_DELAYED_OFFER_ENABLE(1),
-
 		      TAG_END()),
-       10);
+       9);
   TEST(soa_get_params(a,
 		      SOATAG_AF_REF(af),
 		      SOATAG_ADDRESS_REF(address),
@@ -413,11 +402,8 @@ int test_params(struct context *ctx)
 		      SOATAG_SRTP_ENABLE_REF(srtp_enable),
 		      SOATAG_SRTP_CONFIDENTIALITY_REF(srtp_confidentiality),
 		      SOATAG_SRTP_INTEGRITY_REF(srtp_integrity),
-
-		      SOATAG_DELAYED_OFFER_ENABLE_REF(delayed_offer_enable),
-
 		      TAG_END()),
-       10);
+       9);
   TEST(af, SOA_AF_IP4_IP6);
   TEST_S(address, "127.0.0.1");
   TEST_S(hold, "audio");
@@ -427,7 +413,6 @@ int test_params(struct context *ctx)
   TEST(srtp_enable, 1);
   TEST(srtp_confidentiality, 1);
   TEST(srtp_integrity, 1);
-  TEST(delayed_offer_enable, 1);
 
   /* Restore defaults */
   TEST(soa_set_params(a,
@@ -443,10 +428,8 @@ int test_params(struct context *ctx)
 		      SOATAG_SRTP_CONFIDENTIALITY(0),
 		      SOATAG_SRTP_INTEGRITY(0),
 
-		      SOATAG_DELAYED_OFFER_ENABLE(0),
-
 		      TAG_END()),
-       10);
+       9);
 
   END();
 }
@@ -1316,41 +1299,16 @@ int test_media_mode(struct context *ctx)
 
   char const a_caps[] = "m=audio 5008 RTP/AVP 0 8\r\n";
   char const b_caps[] = "m=audio 5004 RTP/AVP 8 0\n";
-  char const b_recvonly[] = "m=audio 5004 RTP/AVP 8 0\na=recvonly\n";
 
   TEST_1(a = soa_clone(ctx->a, ctx->root, ctx));
   TEST_1(b = soa_clone(ctx->b, ctx->root, ctx));
 
   TEST(soa_set_user_sdp(a, 0, a_caps, -1), 1);
-  TEST(soa_set_user_sdp(b, 0, b_recvonly, -1), 1);
-
-  n = soa_generate_offer(a, 1, test_completed); TEST(n, 0);
-  n = soa_get_local_sdp(a, NULL, &offer, &offerlen); TEST(n, 1);
-  TEST_1(offer != NULL && offer != NONE);
-
-  n = soa_set_remote_sdp(b, 0, offer, offerlen); TEST(n, 1);
-  n = soa_generate_answer(b, test_completed); TEST(n, 0);
-  TEST_1(soa_is_complete(b));
-  TEST(soa_activate(b, NULL), 0);
-
-  n = soa_get_local_sdp(b, NULL, &answer, &answerlen); TEST(n, 1);
-  TEST_1(answer != NULL && answer != NONE);
-
-  n = soa_set_remote_sdp(a, 0, answer, -1); TEST(n, 1);
-  n = soa_process_answer(a, test_completed); TEST(n, 0);
-  TEST_1(soa_is_complete(a));
-  TEST(soa_activate(a, NULL), 0);
-
-  TEST(soa_is_audio_active(a), SOA_ACTIVE_SENDONLY);
-  TEST(soa_is_remote_audio_active(a), SOA_ACTIVE_SENDONLY);
-
-  /* Put B as sendrecv */
-
-  n = soa_generate_offer(a, 1, test_completed); TEST(n, 0);
-  n = soa_get_local_sdp(a, NULL, &offer, &offerlen); TEST(n, 1);
-  TEST_1(offer != NULL && offer != NONE);
-
   TEST(soa_set_user_sdp(b, 0, b_caps, -1), 1);
+
+  n = soa_generate_offer(a, 1, test_completed); TEST(n, 0);
+  n = soa_get_local_sdp(a, NULL, &offer, &offerlen); TEST(n, 1);
+  TEST_1(offer != NULL && offer != NONE);
 
   n = soa_set_remote_sdp(b, 0, offer, offerlen); TEST(n, 1);
   n = soa_generate_answer(b, test_completed); TEST(n, 0);
@@ -1987,13 +1945,6 @@ int test_large_sessions(struct context *ctx)
   n = soa_generate_offer(a, 1, test_completed); TEST(n, 0);
   n = soa_get_local_sdp(a, NULL, &offer, &offerlen); TEST(n, 1);
   TEST_1(offer != NULL && offer != NONE);
-
-  soa_process_reject(a, test_completed);
-
-  n = soa_generate_offer(a, 1, test_completed); TEST(n, 0);
-  n = soa_get_local_sdp(a, NULL, &offer, &offerlen); TEST(n, 1);
-  TEST_1(offer != NULL && offer != NONE);
-
   /* printf("offer1: %s\n", offer); */
   n = soa_set_remote_sdp(b, 0, offer, offerlen); TEST(n, 1);
   n = soa_get_local_sdp(b, NULL, &answer, &answerlen); TEST(n, 0);
@@ -2638,7 +2589,6 @@ int test_address_selection(struct context *ctx)
   TEST_VOID(soa_destroy(b));
 #endif
   su_home_deinit(home);
-  s2_localinfo_teardown();
 
   END();
 }

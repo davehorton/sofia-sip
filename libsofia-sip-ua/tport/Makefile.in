@@ -109,11 +109,11 @@ ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/m4/libtool.m4 \
 	$(top_srcdir)/m4/ltoptions.m4 $(top_srcdir)/m4/ltsugar.m4 \
 	$(top_srcdir)/m4/ltversion.m4 $(top_srcdir)/m4/lt~obsolete.m4 \
-	$(top_srcdir)/m4/sac-coverage.m4 \
+	$(top_srcdir)/acinclude.m4 $(top_srcdir)/m4/sac-pkg-config.m4 \
 	$(top_srcdir)/m4/sac-general.m4 \
-	$(top_srcdir)/m4/sac-openssl.m4 \
-	$(top_srcdir)/m4/sac-pkg-config.m4 $(top_srcdir)/m4/sac-su2.m4 \
-	$(top_srcdir)/m4/sac-tport.m4 $(top_srcdir)/configure.ac
+	$(top_srcdir)/m4/sac-openssl.m4 $(top_srcdir)/m4/sac-su2.m4 \
+	$(top_srcdir)/m4/sac-su.m4 $(top_srcdir)/m4/sac-tport.m4 \
+	$(top_srcdir)/m4/sac-coverage.m4 $(top_srcdir)/configure.ac
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
 mkinstalldirs = $(install_sh) -d
@@ -126,9 +126,9 @@ libtport_la_LIBADD =
 am__libtport_la_SOURCES_DIST = tport.c tport_logging.c \
 	tport_stub_sigcomp.c tport_type_udp.c tport_type_tcp.c \
 	tport_type_sctp.c tport_internal.h tport_tag.c tport_tag_ref.c \
-	tport_type_connect.c tport_type_tls.c tport_tls.c tport_tls.h \
-	tport_stub_stun.c tport_type_stun.c
-am__objects_1 = tport_type_connect.lo
+	tport_type_connect.c tport_type_ws.c ws.c tport_type_tls.c \
+	tport_tls.c tport_tls.h tport_stub_stun.c tport_type_stun.c
+am__objects_1 = tport_type_connect.lo tport_type_ws.lo ws.lo
 @HAVE_NTH_TRUE@am__objects_2 = $(am__objects_1)
 am__objects_3 = tport_type_tls.lo tport_tls.lo
 @HAVE_TLS_TRUE@am__objects_4 = $(am__objects_3)
@@ -145,11 +145,10 @@ PROGRAMS = $(bin_PROGRAMS)
 test_tport_SOURCES = test_tport.c
 test_tport_OBJECTS = test_tport.$(OBJEXT)
 test_tport_LDADD = $(LDADD)
-am__DEPENDENCIES_1 =
 test_tport_DEPENDENCIES = libtport.la ../stun/libstun.la \
 	../sresolv/libsresolv.la ../ipt/libipt.la ../http/libhttp.la \
 	../msg/libtest_msg.a ../msg/libmsg.la ../url/liburl.la \
-	../bnf/libbnf.la ../su/libsu.la $(am__DEPENDENCIES_1)
+	../bnf/libbnf.la ../su/libsu.la
 test_tport_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
 	$(test_tport_LDFLAGS) $(LDFLAGS) -o $@
@@ -250,7 +249,6 @@ LIBVER_SOFIA_SIP_UA_SOVER = @LIBVER_SOFIA_SIP_UA_SOVER@
 LIPO = @LIPO@
 LN_S = @LN_S@
 LTLIBOBJS = @LTLIBOBJS@
-MAINT = @MAINT@
 MAKEINFO = @MAKEINFO@
 MINGW_ENVIRONMENT = @MINGW_ENVIRONMENT@
 MKDIR_P = @MKDIR_P@
@@ -342,12 +340,13 @@ target_vendor = @target_vendor@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-INCLUDES = -I$(srcdir)/../bnf -I../bnf \
+AM_CPPFLAGS = -I$(srcdir)/../bnf -I../bnf \
 			-I$(srcdir)/../stun -I../stun \
 			-I$(srcdir)/../ipt -I../ipt \
 			-I$(srcdir)/../msg -I../msg \
 			-I$(srcdir)/../http -I../http \
 			-I$(srcdir)/../url -I../url \
+			-I$(srcdir)/../sip -I../sip \
 			-I$(srcdir)/../su -I../su
 
 
@@ -365,7 +364,7 @@ TLS_SRC = tport_type_tls.c tport_tls.c tport_tls.h
 @HAVE_TLS_TRUE@USE_TLS_SRC = $(TLS_SRC)
 STUN_SRC = tport_stub_stun.c tport_type_stun.c
 @HAVE_STUN_TRUE@USE_STUN_SRC = $(STUN_SRC)
-HTTP_SRC = tport_type_connect.c
+HTTP_SRC = tport_type_connect.c tport_type_ws.c ws.c
 @HAVE_NTH_TRUE@USE_HTTP_SRC = $(HTTP_SRC)
 libtport_la_SOURCES = tport.c tport_logging.c \
 			tport_stub_sigcomp.c \
@@ -381,10 +380,16 @@ EXTRA_libtport_la_SOURCES = $(TLS_SRC) $(STUN_SRC) $(HTTP_SRC) \
 	tport_sigcomp.c tport_threadpool.c
 BUILT_SOURCES = tport_tag_ref.c
 COVERAGE_INPUT = $(libtport_la_SOURCES) $(include_sofia_HEADERS)
-LDADD = libtport.la ../stun/libstun.la ../sresolv/libsresolv.la \
-	../ipt/libipt.la ../http/libhttp.la ../msg/libtest_msg.a \
-	../msg/libmsg.la ../url/liburl.la ../bnf/libbnf.la \
-	../su/libsu.la $(openssl_LIBS)
+LDADD = libtport.la \
+			../stun/libstun.la \
+			../sresolv/libsresolv.la \
+			../ipt/libipt.la \
+			../http/libhttp.la \
+			../msg/libtest_msg.a ../msg/libmsg.la \
+			../url/liburl.la \
+			../bnf/libbnf.la \
+			../su/libsu.la
+
 test_tport_LDFLAGS = -static
 
 # ----------------------------------------------------------------------
@@ -459,7 +464,7 @@ all: $(BUILT_SOURCES)
 
 .SUFFIXES:
 .SUFFIXES: _tag_ref.c _tag.c .c .lo .o .obj
-$(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am $(top_srcdir)/rules/sofia.am $(top_srcdir)/rules/valcheck.am $(top_srcdir)/rules/lcov.am $(top_srcdir)/rules/silent.am $(am__configure_deps)
+$(srcdir)/Makefile.in:  $(srcdir)/Makefile.am $(top_srcdir)/rules/sofia.am $(top_srcdir)/rules/valcheck.am $(top_srcdir)/rules/lcov.am $(top_srcdir)/rules/silent.am $(am__configure_deps)
 	@for dep in $?; do \
 	  case '$(am__configure_deps)' in \
 	    *$$dep*) \
@@ -484,9 +489,9 @@ Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 $(top_builddir)/config.status: $(top_srcdir)/configure $(CONFIG_STATUS_DEPENDENCIES)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
 
-$(top_srcdir)/configure: @MAINTAINER_MODE_TRUE@ $(am__configure_deps)
+$(top_srcdir)/configure:  $(am__configure_deps)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
-$(ACLOCAL_M4): @MAINTAINER_MODE_TRUE@ $(am__aclocal_m4_deps)
+$(ACLOCAL_M4):  $(am__aclocal_m4_deps)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
 $(am__aclocal_m4_deps):
 Doxyfile: $(top_builddir)/config.status $(srcdir)/Doxyfile.in
@@ -580,6 +585,8 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/tport_type_tcp.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/tport_type_tls.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/tport_type_udp.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/tport_type_ws.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ws.Plo@am__quote@
 
 .c.obj:
 @am__fastdepCC_TRUE@	$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ `$(CYGPATH_W) '$<'`

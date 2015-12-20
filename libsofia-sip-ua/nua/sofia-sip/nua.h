@@ -65,8 +65,6 @@ typedef NUA_MAGIC_T nua_magic_t;
 /** Application context for NUA handle. */
 typedef NUA_HMAGIC_T nua_hmagic_t;
 
-#define NUA_NONE ((void *)(intptr_t)-1)
-
 /**Network change event levels given to NUTAG_DETECT_NETWORK_UPDATES().
  *
  * @sa NUTAG_DETECT_NETWORK_UPDATES(), #nua_i_network_changed
@@ -386,7 +384,7 @@ SOFIAPUBFUN sip_replaces_t *nua_handle_make_replaces(nua_handle_t *nh,
 SOFIAPUBFUN nua_handle_t *nua_handle_by_replaces(nua_t *nua,
 						 sip_replaces_t const *rp);
 
-SOFIAPUBFUN nua_handle_t *nua_handle_by_call_id(nua_t *nua, const char *call_id);
+nua_handle_t *nua_handle_by_call_id(nua_t *nua, const char *call_id);
 
 SOFIA_END_DECLS
 

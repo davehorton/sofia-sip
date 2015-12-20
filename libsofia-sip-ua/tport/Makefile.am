@@ -8,12 +8,13 @@
 # ----------------------------------------------------------------------
 # Header paths
 
-INCLUDES = 		-I$(srcdir)/../bnf -I../bnf \
+AM_CPPFLAGS = 		-I$(srcdir)/../bnf -I../bnf \
 			-I$(srcdir)/../stun -I../stun \
 			-I$(srcdir)/../ipt -I../ipt \
 			-I$(srcdir)/../msg -I../msg \
 			-I$(srcdir)/../http -I../http \
 			-I$(srcdir)/../url -I../url \
+			-I$(srcdir)/../sip -I../sip \
 			-I$(srcdir)/../su -I../su
 
 # ----------------------------------------------------------------------
@@ -44,7 +45,7 @@ if HAVE_STUN
 USE_STUN_SRC = 		$(STUN_SRC)
 endif
 
-HTTP_SRC =		tport_type_connect.c
+HTTP_SRC =		tport_type_connect.c tport_type_ws.c ws.c
 if HAVE_NTH
 USE_HTTP_SRC = 		$(HTTP_SRC)
 endif

@@ -66,7 +66,8 @@ static void nua_publish_usage_remove(nua_handle_t *nh,
 				     nua_server_request_t *sr);
 static void nua_publish_usage_refresh(nua_handle_t *nh,
 				      nua_dialog_state_t *ds,
-				      nua_dialog_usage_t *du);
+				      nua_dialog_usage_t *du,
+				      sip_time_t now);
 static int nua_publish_usage_shutdown(nua_handle_t *nh,
 				      nua_dialog_state_t *ds,
 				      nua_dialog_usage_t *du);
@@ -412,7 +413,7 @@ static int nua_publish_client_response(nua_client_request_t *cr,
 	if (!ex || ex->ex_delta == 0)
 	  SET_STATUS(900, "Received Invalid Expiration Time");
 	else
-	  SET_STATUS1(NUA_ERROR_AT(__FILE__, __LINE__));
+	  SET_STATUS(900, _NUA_INTERNAL_ERROR_AT(__FILE__, __LINE__));
       }
       else
 	nua_dialog_usage_set_refresh(du, ex->ex_delta);
@@ -424,7 +425,8 @@ static int nua_publish_client_response(nua_client_request_t *cr,
 
 static void nua_publish_usage_refresh(nua_handle_t *nh,
 				     nua_dialog_state_t *ds,
-				     nua_dialog_usage_t *du)
+				     nua_dialog_usage_t *du,
+				     sip_time_t now)
 {
   nua_client_request_t *cr = du->du_cr;
 

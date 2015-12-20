@@ -209,9 +209,14 @@ void (*_su_home_destroy_mutexes)(void *mutex);
 su_inline void safefree(void *b) { b ? free(b) : (void)0; }
 #endif
 
-#define MEMLOCK(h)   \
-  ((void)((h) && (h)->suh_lock ? _su_home_locker((h)->suh_lock) : 0), (h)->suh_blocks)
-#define UNLOCK(h) ((void)((h) && (h)->suh_lock ? _su_home_unlocker((h)->suh_lock) : 0), NULL)
+static inline su_block_t* MEMLOCK(const su_home_t *h) {
+  if (h && h->suh_lock) _su_home_locker(h->suh_lock);
+  return h->suh_blocks;
+}
+static inline void* UNLOCK(const su_home_t *h) {
+  if (h && h->suh_lock) _su_home_unlocker(h->suh_lock);
+  return NULL;
+}
 
 #ifdef NDEBUG
 #define MEMCHECK 0
@@ -233,7 +238,7 @@ enum {
 };
 
 #define ALIGNMENT (8)
-#define ALIGN(n) (size_t)(((n) + (ALIGNMENT - 1)) & (size_t)~(ALIGNMENT - 1))
+#define __ALIGN(n) (size_t)(((n) + (ALIGNMENT - 1)) & (size_t)~(ALIGNMENT - 1))
 #define SIZEBITS (sizeof (unsigned) * 8 - 1)
 
 typedef struct {
@@ -427,15 +432,17 @@ void *sub_alloc(su_home_t *home,
   if (size >= ((size_t)1) << SIZEBITS)
     return (void)(errno = ENOMEM), NULL;
 
+  if (!size) return NULL;
+
   if (sub == NULL || 3 * sub->sub_used > 2 * sub->sub_n) {
     /* Resize the hash table */
-    size_t i, n, n2, used;
+    size_t i, n, n2;
     su_block_t *b2;
 
     if (sub)
-      n = home->suh_blocks->sub_n, n2 = 4 * n + 3, used = sub->sub_used;
+      n = home->suh_blocks->sub_n, n2 = 4 * n + 3; //, used = sub->sub_used;
     else
-      n = 0, n2 = SUB_N, used = 0;
+      n = 0, n2 = SUB_N; //, used = 0;
 
 #if 0
     printf("su_alloc(home = %p): realloc block hash of size %d\n", home, n2);
@@ -469,11 +476,11 @@ void *sub_alloc(su_home_t *home,
     sub = b2;
   }
 
-  if (size && sub && zero < do_clone &&
+  if (sub && zero < do_clone &&
       sub->sub_preload && size <= sub->sub_prsize) {
     /* Use preloaded memory */
     size_t prused = sub->sub_prused + size + MEMCHECK_EXTRA;
-    prused = ALIGN(prused);
+    prused = __ALIGN(prused);
     if (prused <= sub->sub_prsize) {
       preload = (char *)sub->sub_preload + sub->sub_prused;
       sub->sub_prused = (unsigned)prused;
@@ -569,28 +576,6 @@ void *su_home_new(isize_t size)
   return home;
 }
 
-/** Create a new reference to a home object. */
-void *su_home_ref(su_home_t const *home)
-{
-  if (home) {
-    su_block_t *sub = MEMLOCK(home);
-
-    if (sub == NULL || sub->sub_ref == 0) {
-      assert(sub && sub->sub_ref != 0);
-      UNLOCK(home);
-      return NULL;
-    }
-
-    if (sub->sub_ref != REF_MAX)
-      sub->sub_ref++;
-    UNLOCK(home);
-  }
-  else
-    su_seterrno(EFAULT);
-
-  return (void *)home;
-}
-
 /** Set destructor function.
  *
  * The destructor function is called after the reference count of a
@@ -636,6 +621,123 @@ int su_home_desctructor(su_home_t *home, void (*destructor)(void *))
 {
   return su_home_destructor(home, destructor);
 }
+
+
+#if (defined(HAVE_MEMLEAK_LOG) && (HAVE_MEMLEAK_LOG != 1))
+#include "sofia-sip/su_debug.h"
+
+
+static void *real_su_home_ref(su_home_t const *home)
+{
+  if (home) {
+    su_block_t *sub = MEMLOCK(home);
+
+    if (sub == NULL || sub->sub_ref == 0) {
+      assert(sub && sub->sub_ref != 0);
+      UNLOCK(home);
+      return NULL;
+    }
+
+    if (sub->sub_ref != REF_MAX)
+      sub->sub_ref++;
+    UNLOCK(home);
+  }
+  else
+    su_seterrno(EFAULT);
+
+  return (void *)home;
+}
+
+
+static int real_su_home_unref(su_home_t *home)
+{
+  su_block_t *sub;
+
+  if (home == NULL)
+    return 0;
+
+  sub = MEMLOCK(home);
+
+  if (sub == NULL) {
+    /* Xyzzy */
+    return 0;
+  }
+  else if (sub->sub_ref == REF_MAX) {
+    UNLOCK(home);
+    return 0;
+  }
+  else if (--sub->sub_ref > 0) {
+    UNLOCK(home);
+    return 0;
+  }
+  else if (sub->sub_parent) {
+    su_home_t *parent = sub->sub_parent;
+    UNLOCK(home);
+    su_free(parent, home);
+    return 1;
+  }
+  else {
+    int hauto = sub->sub_hauto;
+    _su_home_deinit(home);
+    if (!hauto)
+      safefree(home);
+    /* UNLOCK(home); */
+    return 1;
+  }
+}
+
+su_home_t *
+_su_home_ref_by(su_home_t *home,
+		   char const *file, unsigned line,
+		   char const *function)
+{
+  if (home)
+	  SU_DEBUG_0(("%ld %p - su_home_ref() => "MOD_ZU" by %s:%u: %s()\n", pthread_self(),
+		home, su_home_refcount(home) + 1, file, line, function));
+  return (su_home_t *)real_su_home_ref(home);
+}
+
+int
+_su_home_unref_by(su_home_t *home,
+		    char const *file, unsigned line,
+		    char const *function)
+{
+  if (home) {
+    size_t refcount = su_home_refcount(home) - 1;
+    int freed =  real_su_home_unref(home);
+
+    if (freed) refcount = 0;
+    SU_DEBUG_0(("%ld %p - su_home_unref() => "MOD_ZU" by %s:%u: %s()\n", pthread_self(),
+		home, refcount, file, line, function));
+    return freed;
+  }
+
+  return 0;
+}
+#else
+
+/** Create a new reference to a home object. */
+void *su_home_ref(su_home_t const *home)
+{
+  if (home) {
+    su_block_t *sub = MEMLOCK(home);
+
+    if (sub == NULL || sub->sub_ref == 0) {
+      assert(sub && sub->sub_ref != 0);
+      UNLOCK(home);
+      return NULL;
+    }
+
+    if (sub->sub_ref != REF_MAX)
+      sub->sub_ref++;
+    UNLOCK(home);
+  }
+  else
+    su_seterrno(EFAULT);
+
+  return (void *)home;
+}
+
 
 /**Unreference a su_home_t object.
  *
@@ -683,6 +785,7 @@ int su_home_unref(su_home_t *home)
     return 1;
   }
 }
+#endif
 
 /** Return reference count of home. */
 size_t su_home_refcount(su_home_t *home)
@@ -922,8 +1025,6 @@ void su_home_check_blocks(su_block_t const *b)
  *
  * @return This function returns a pointer to an #su_home_t object, or
  * NULL upon an error.
- *
- * @deprecated Use su_home_new(sizeof (su_home_t)) instead
  */
 su_home_t *su_home_create(void)
 {
@@ -1131,11 +1232,8 @@ int su_home_move(su_home_t *dst, su_home_t *src)
 	  d2->sub_ref = d->sub_ref;
 	  d2->sub_preload = d->sub_preload;
 	  d2->sub_prsize = d->sub_prsize;
-	  d2->sub_hauto = d->sub_hauto;
 	  d2->sub_prused = d->sub_prused;
 	  d2->sub_preauto = d->sub_preauto;
-	  d2->sub_destructor = d->sub_destructor;
-	  /* auto && auto_all are not copied! */
 	  d2->sub_stats = d->sub_stats;
 	}
 
@@ -1217,7 +1315,7 @@ void su_home_preload(su_home_t *home, isize_t n, isize_t isize)
     size_t size;
     void *preload;
 
-    size = n * ALIGN(isize);
+    size = n * __ALIGN(isize);
     if (size > 65535)		/* We have 16 bits... */
       size = 65535 & (ALIGNMENT - 1);
 
@@ -1238,13 +1336,13 @@ su_home_t *su_home_auto(void *area, isize_t size)
 {
   su_home_t *home;
   su_block_t *sub;
-  size_t homesize = ALIGN(sizeof *home);
-  size_t subsize = ALIGN(offsetof(su_block_t, sub_nodes[SUB_N_AUTO]));
+  size_t homesize = __ALIGN(sizeof *home);
+  size_t subsize = __ALIGN(offsetof(su_block_t, sub_nodes[SUB_N_AUTO]));
   size_t prepsize;
 
   char *p = area;
 
-  prepsize = homesize + subsize + (ALIGN((intptr_t)p) - (intptr_t)p);
+  prepsize = homesize + subsize + (__ALIGN((intptr_t)p) - (intptr_t)p);
 
   if (area == NULL || size < prepsize)
     return NULL;
@@ -1347,11 +1445,11 @@ void *su_realloc(su_home_t *home, void *data, isize_t size)
 
   p = (char *)data - home->suh_blocks->sub_preload;
   p += sua->sua_size + MEMCHECK_EXTRA;
-  p = ALIGN(p);
+  p = __ALIGN(p);
 
   if (p == sub->sub_prused) {
     size_t p2 = (char *)data - sub->sub_preload + size + MEMCHECK_EXTRA;
-    p2 = ALIGN(p2);
+    p2 = __ALIGN(p2);
     if (p2 <= sub->sub_prsize) {
       /* Extend/reduce existing preload */
       if (sub->sub_stats) {
@@ -1551,14 +1649,24 @@ int su_home_is_threadsafe(su_home_t const *home)
  * Otherwise the su_home_mutex_lock() will just increase the reference
  * count.
  */
+
+#if (defined(HAVE_MEMLEAK_LOG) && (HAVE_MEMLEAK_LOG != 1))
+int _su_home_mutex_lock(su_home_t *home, const char *file, unsigned int line, const char *function)
+#else
 int su_home_mutex_lock(su_home_t *home)
+#endif
+
 {
   int error;
 
   if (home == NULL)
     return su_seterrno(EFAULT);
 
+#if (defined(HAVE_MEMLEAK_LOG) && (HAVE_MEMLEAK_LOG != 1))
+  if (home->suh_blocks == NULL || !_su_home_ref_by(home, file, line, function))
+#else
   if (home->suh_blocks == NULL || !su_home_ref(home))
+#endif
     return su_seterrno(EINVAL);  /* Uninitialized home */
 
   if (!home->suh_lock)
@@ -1575,7 +1683,12 @@ int su_home_mutex_lock(su_home_t *home)
  *
  * @sa su_home_unlock().
  */
+
+#if (defined(HAVE_MEMLEAK_LOG) && (HAVE_MEMLEAK_LOG != 1))
+int _su_home_mutex_unlock(su_home_t *home, const char *file, unsigned int line, const char *function)
+#else
 int su_home_mutex_unlock(su_home_t *home)
+#endif
 {
   if (home == NULL)
     return su_seterrno(EFAULT);
@@ -1587,9 +1700,13 @@ int su_home_mutex_unlock(su_home_t *home)
   }
 
   if (home->suh_blocks == NULL)
-    return su_seterrno(EINVAL); /* Uninitialized home */
+    return su_seterrno(EINVAL), -1; /* Uninitialized home */
 
+#if (defined(HAVE_MEMLEAK_LOG) && (HAVE_MEMLEAK_LOG != 1))
+  _su_home_unref_by(home, file, line, function);
+#else
   su_home_unref(home);
+#endif
 
   return 0;
 }
@@ -1725,7 +1842,7 @@ void su_home_stats_alloc(su_block_t *sub, void *p, void *preload,
 {
   su_home_stat_t *hs = sub->sub_stats;
 
-  size_t rsize = ALIGN(size);
+  size_t rsize = __ALIGN(size);
 
   hs->hs_rehash += (sub->sub_n != hs->hs_blocksize);
   hs->hs_blocksize = sub->sub_n;
@@ -1754,7 +1871,7 @@ void su_home_stats_free(su_block_t *sub, void *p, void *preload,
 {
   su_home_stat_t *hs = sub->sub_stats;
 
-  size_t rsize = ALIGN(size);
+  size_t rsize = __ALIGN(size);
 
   if (preload) {
     hs->hs_frees.hsf_preload++;

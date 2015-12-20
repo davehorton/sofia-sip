@@ -107,11 +107,11 @@ ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/m4/libtool.m4 \
 	$(top_srcdir)/m4/ltoptions.m4 $(top_srcdir)/m4/ltsugar.m4 \
 	$(top_srcdir)/m4/ltversion.m4 $(top_srcdir)/m4/lt~obsolete.m4 \
-	$(top_srcdir)/m4/sac-coverage.m4 \
+	$(top_srcdir)/acinclude.m4 $(top_srcdir)/m4/sac-pkg-config.m4 \
 	$(top_srcdir)/m4/sac-general.m4 \
-	$(top_srcdir)/m4/sac-openssl.m4 \
-	$(top_srcdir)/m4/sac-pkg-config.m4 $(top_srcdir)/m4/sac-su2.m4 \
-	$(top_srcdir)/m4/sac-tport.m4 $(top_srcdir)/configure.ac
+	$(top_srcdir)/m4/sac-openssl.m4 $(top_srcdir)/m4/sac-su2.m4 \
+	$(top_srcdir)/m4/sac-su.m4 $(top_srcdir)/m4/sac-tport.m4 \
+	$(top_srcdir)/m4/sac-coverage.m4 $(top_srcdir)/configure.ac
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
 mkinstalldirs = $(install_sh) -d
@@ -125,12 +125,10 @@ am_libsoa_la_OBJECTS = soa.lo soa_static.lo soa_tag.lo soa_tag_ref.lo
 libsoa_la_OBJECTS = $(am_libsoa_la_OBJECTS)
 test_soa_SOURCES = test_soa.c
 test_soa_OBJECTS = test_soa.$(OBJEXT)
-am__DEPENDENCIES_1 =
-am__DEPENDENCIES_2 = libsoa.la ../sip/libsip.la ../msg/libmsg.la \
-	../url/liburl.la ../sdp/libsdp.la ../ipt/libipt.la \
-	../bnf/libbnf.la ../su/libsu.la $(am__DEPENDENCIES_1)
-test_soa_DEPENDENCIES = $(top_builddir)/s2check/libs2.a \
-	$(am__DEPENDENCIES_2)
+test_soa_DEPENDENCIES = $(top_builddir)/s2check/libs2.a libsoa.la \
+	../sip/libsip.la ../msg/libmsg.la ../url/liburl.la \
+	../sdp/libsdp.la ../ipt/libipt.la ../bnf/libbnf.la \
+	../su/libsu.la
 test_soa_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
 	--mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(test_soa_LDFLAGS) \
 	$(LDFLAGS) -o $@
@@ -230,7 +228,6 @@ LIBVER_SOFIA_SIP_UA_SOVER = @LIBVER_SOFIA_SIP_UA_SOVER@
 LIPO = @LIPO@
 LN_S = @LN_S@
 LTLIBOBJS = @LTLIBOBJS@
-MAINT = @MAINT@
 MAKEINFO = @MAKEINFO@
 MINGW_ENVIRONMENT = @MINGW_ENVIRONMENT@
 MKDIR_P = @MKDIR_P@
@@ -322,7 +319,7 @@ target_vendor = @target_vendor@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-INCLUDES = -I$(srcdir)/../sdp -I../sdp \
+AM_CPPFLAGS = -I$(srcdir)/../sdp -I../sdp \
 			-I$(srcdir)/../sip -I../sip \
 			-I$(srcdir)/../msg -I../msg \
 			-I$(srcdir)/../url -I../url \
@@ -347,11 +344,15 @@ libsoa_la_SOURCES = soa.c soa_static.c \
 			soa_tag.c soa_tag_ref.c
 
 COVERAGE_INPUT = $(libsoa_la_SOURCES) $(include_sofia_HEADERS)
-LDADD = libsoa.la ../sip/libsip.la ../msg/libmsg.la ../url/liburl.la \
-	../sdp/libsdp.la ../ipt/libipt.la ../bnf/libbnf.la \
-	../su/libsu.la $(openssl_LIBS)
 test_soa_LDADD = $(top_builddir)/s2check/libs2.a \
-			$(LDADD)
+			libsoa.la \
+			../sip/libsip.la \
+			../msg/libmsg.la \
+			../url/liburl.la \
+			../sdp/libsdp.la \
+			../ipt/libipt.la \
+			../bnf/libbnf.la \
+			../su/libsu.la
 
 test_soa_LDFLAGS = -static
 
@@ -429,7 +430,7 @@ all: $(BUILT_SOURCES)
 
 .SUFFIXES:
 .SUFFIXES: _tag_ref.c _tag.c .c .lo .o .obj
-$(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am $(top_srcdir)/rules/sofia.am $(top_srcdir)/rules/valcheck.am $(top_srcdir)/rules/lcov.am $(top_srcdir)/rules/silent.am $(am__configure_deps)
+$(srcdir)/Makefile.in:  $(srcdir)/Makefile.am $(top_srcdir)/rules/sofia.am $(top_srcdir)/rules/valcheck.am $(top_srcdir)/rules/lcov.am $(top_srcdir)/rules/silent.am $(am__configure_deps)
 	@for dep in $?; do \
 	  case '$(am__configure_deps)' in \
 	    *$$dep*) \
@@ -454,9 +455,9 @@ Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 $(top_builddir)/config.status: $(top_srcdir)/configure $(CONFIG_STATUS_DEPENDENCIES)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
 
-$(top_srcdir)/configure: @MAINTAINER_MODE_TRUE@ $(am__configure_deps)
+$(top_srcdir)/configure:  $(am__configure_deps)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
-$(ACLOCAL_M4): @MAINTAINER_MODE_TRUE@ $(am__aclocal_m4_deps)
+$(ACLOCAL_M4):  $(am__aclocal_m4_deps)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
 $(am__aclocal_m4_deps):
 Doxyfile: $(top_builddir)/config.status $(srcdir)/Doxyfile.in

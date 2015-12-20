@@ -8,7 +8,7 @@
 # ----------------------------------------------------------------------
 # Header paths
 
-INCLUDES = 		-I$(srcdir)/../sdp -I../sdp \
+AM_CPPFLAGS = 		-I$(srcdir)/../sdp -I../sdp \
 			-I$(srcdir)/../sip -I../sip \
 			-I$(srcdir)/../msg -I../msg \
 			-I$(srcdir)/../url -I../url \
@@ -40,7 +40,8 @@ libsoa_la_SOURCES = 	soa.c soa_static.c \
 
 COVERAGE_INPUT = 	$(libsoa_la_SOURCES) $(include_sofia_HEADERS)
 
-LDADD = 		libsoa.la \
+test_soa_LDADD = 	$(top_builddir)/s2check/libs2.a \
+			libsoa.la \
 			../sip/libsip.la \
 			../msg/libmsg.la \
 			../url/liburl.la \
@@ -48,9 +49,6 @@ LDADD = 		libsoa.la \
 			../ipt/libipt.la \
 			../bnf/libbnf.la \
 			../su/libsu.la
-
-test_soa_LDADD = 	$(top_builddir)/s2check/libs2.a \
-			$(LDADD)
 
 test_soa_LDFLAGS = 	-static
 

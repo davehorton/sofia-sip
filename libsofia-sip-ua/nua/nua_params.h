@@ -64,7 +64,6 @@ struct nua_handle_preferences
   /* Session-related preferences */
   char const      *nhp_soa_name;
   unsigned         nhp_media_enable:1;
-  unsigned         nhp_accept_multipart:1;
   unsigned     	   nhp_invite_enable:1;
   unsigned     	   nhp_auto_alert:1;
   unsigned         nhp_early_answer:1; /**< Include answer in 1XX */
@@ -110,16 +109,13 @@ struct nua_handle_preferences
 
   /** Always include id with Event: refer */
   unsigned         nhp_refer_with_id:1;
-  /** Redirect automatically when receiving 302 responses */
-  unsigned         nhp_auto302:1;
-  /** Redirect automatically when receiving 305 responses */
-  unsigned         nhp_auto305:1;
-  /** Automatically generate 100 Trying responses. */
-  unsigned         nhp_auto100:1;
+
+  unsigned         nhp_timer_autorequire:1;
+
+  /** Enable Retry-After */
+  unsigned         nhp_retry_after_enable:1;
 
   unsigned:0;
-
-  unsigned         nhp_max_retry_after;
 
   /* Default lifetime for implicit subscriptions created by REFER */
   unsigned         nhp_refer_expires;
@@ -135,9 +131,9 @@ struct nua_handle_preferences
   sip_allow_t        *nhp_allow;
   sip_supported_t    *nhp_supported;
   sip_allow_events_t *nhp_allow_events;
-  sip_allow_events_t *nhp_appl_event;
   char const         *nhp_user_agent;
   char const         *nhp_organization;
+  char const         *nhp_via;
 
   char const         *nhp_m_display;
   char const         *nhp_m_username;
@@ -169,7 +165,6 @@ struct nua_handle_preferences
 
     unsigned nhb_soa_name:1;
     unsigned nhb_media_enable:1;
-    unsigned nhb_accept_multipart:1;
     unsigned nhb_invite_enable:1;
     unsigned nhb_auto_alert:1;
     unsigned nhb_early_answer:1;
@@ -193,27 +188,21 @@ struct nua_handle_preferences
     unsigned nhb_path_enable:1;
     unsigned nhb_auth_cache:1;
     unsigned nhb_refer_with_id:1;
-    unsigned nhb_auto302:1;
-    unsigned nhb_auto305:1;
-    unsigned nhb_auto100:1;
-    unsigned nhb_max_retry_after:1;
     unsigned nhb_refer_expires:1;
-    unsigned :0;		/* at most 32 bits before this point */
-
     unsigned nhb_substate:1;
     unsigned nhb_sub_expires:1;
-
     unsigned nhb_keepalive:1;
     unsigned nhb_keepalive_stream:1;
     unsigned nhb_registrar:1;
+    unsigned :0;		/* at most 32 bits before this point */
 
     unsigned nhb_allow:1;
     unsigned nhb_supported:1;
 
     unsigned nhb_allow_events:1;
-    unsigned nhb_appl_event:1;
     unsigned nhb_user_agent:1;
     unsigned nhb_organization:1;
+    unsigned nhb_via:1;
 
     unsigned nhb_m_display:1;
     unsigned nhb_m_username:1;
@@ -224,6 +213,8 @@ struct nua_handle_preferences
     unsigned nhb_appl_method:1;
     unsigned nhb_initial_route:1;
     unsigned nhb_proxy:1;
+    unsigned nhb_timer_autorequire:1;
+    unsigned nhb_retry_after_enable:1;
     unsigned :0;
   } set_bits;
     unsigned set_unsigned[2];
@@ -232,21 +223,18 @@ struct nua_handle_preferences
 
 #define nhp_set nhp_set_.set_bits
 
-/** @internal Global preferences for nua. */
+/** Global preferences for nua. */
 struct nua_global_preferences {
   /** Network detection: NONE, INFORMAL, TRY_FULL */
   signed int ngp_detect_network_updates:3;
   /** Pass events during shutdown, too */
   int ngp_shutdown_events:1;
-  /** Use deferrable timers */
-  int ngp_deferrable_timers:1;
 
   unsigned :0;			/* pad */
   union { struct {
     /* A bit for each feature set by application */
     unsigned ngp_detect_network_updates:1;
     unsigned ngp_shutdown_events:1;
-    unsigned ngp_deferrable_timers:1;
     unsigned :0;
   } set_bits;
     unsigned set_unsigned[2];

@@ -68,21 +68,22 @@ target_triplet = @target@
 @HAVE_NTH_TRUE@am__append_3 = http/libhttp.la nth/libnth.la
 @HAVE_NTH_TRUE@am__append_4 = http
 @HAVE_NTH_TRUE@am__append_5 = nth
+@HAVE_ZLIB_TRUE@am__append_6 = -lz
 DIST_COMMON = $(srcdir)/Makefile.am $(srcdir)/Makefile.in \
 	$(top_srcdir)/rules/lcov.am $(top_srcdir)/rules/recursive.am \
 	$(top_srcdir)/rules/silent.am ChangeLog
-@HAVE_GENPNG_TRUE@@HAVE_LCOV_TRUE@am__append_6 = --frames
-@HAVE_LCOV_TRUE@am__append_7 = lcov lcov-report lcov-rerun clean-lcov covcheck uncovered
+@HAVE_GENPNG_TRUE@@HAVE_LCOV_TRUE@am__append_7 = --frames
+@HAVE_LCOV_TRUE@am__append_8 = lcov lcov-report lcov-rerun clean-lcov covcheck uncovered
 subdir = libsofia-sip-ua
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/m4/libtool.m4 \
 	$(top_srcdir)/m4/ltoptions.m4 $(top_srcdir)/m4/ltsugar.m4 \
 	$(top_srcdir)/m4/ltversion.m4 $(top_srcdir)/m4/lt~obsolete.m4 \
-	$(top_srcdir)/m4/sac-coverage.m4 \
+	$(top_srcdir)/acinclude.m4 $(top_srcdir)/m4/sac-pkg-config.m4 \
 	$(top_srcdir)/m4/sac-general.m4 \
-	$(top_srcdir)/m4/sac-openssl.m4 \
-	$(top_srcdir)/m4/sac-pkg-config.m4 $(top_srcdir)/m4/sac-su2.m4 \
-	$(top_srcdir)/m4/sac-tport.m4 $(top_srcdir)/configure.ac
+	$(top_srcdir)/m4/sac-openssl.m4 $(top_srcdir)/m4/sac-su2.m4 \
+	$(top_srcdir)/m4/sac-su.m4 $(top_srcdir)/m4/sac-tport.m4 \
+	$(top_srcdir)/m4/sac-coverage.m4 $(top_srcdir)/configure.ac
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
 mkinstalldirs = $(install_sh) -d
@@ -90,38 +91,13 @@ CONFIG_HEADER = $(top_builddir)/config.h \
 	$(top_builddir)/libsofia-sip-ua/su/sofia-sip/su_configure.h
 CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
-am__vpath_adj_setup = srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`;
-am__vpath_adj = case $$p in \
-    $(srcdir)/*) f=`echo "$$p" | sed "s|^$$srcdirstrip/||"`;; \
-    *) f=$$p;; \
-  esac;
-am__strip_dir = f=`echo $$p | sed -e 's|^.*/||'`;
-am__install_max = 40
-am__nobase_strip_setup = \
-  srcdirstrip=`echo "$(srcdir)" | sed 's/[].[^$$\\*|]/\\\\&/g'`
-am__nobase_strip = \
-  for p in $$list; do echo "$$p"; done | sed -e "s|$$srcdirstrip/||"
-am__nobase_list = $(am__nobase_strip_setup); \
-  for p in $$list; do echo "$$p $$p"; done | \
-  sed "s| $$srcdirstrip/| |;"' / .*\//!s/ .*/ ./; s,\( .*\)/[^/]*$$,\1,' | \
-  $(AWK) 'BEGIN { files["."] = "" } { files[$$2] = files[$$2] " " $$1; \
-    if (++n[$$2] == $(am__install_max)) \
-      { print $$2, files[$$2]; n[$$2] = 0; files[$$2] = "" } } \
-    END { for (dir in files) print dir, files[dir] }'
-am__base_list = \
-  sed '$$!N;$$!N;$$!N;$$!N;$$!N;$$!N;$$!N;s/\n/ /g' | \
-  sed '$$!N;$$!N;$$!N;$$!N;s/\n/ /g'
-am__installdirs = "$(DESTDIR)$(libdir)"
-LTLIBRARIES = $(lib_LTLIBRARIES)
-am__DEPENDENCIES_1 =
-am__DEPENDENCIES_2 = $(am__DEPENDENCIES_1) $(am__append_1) \
-	$(am__append_3)
+LTLIBRARIES = $(noinst_LTLIBRARIES)
 libsofia_sip_ua_la_DEPENDENCIES = bnf/libbnf.la \
 	features/libfeatures.la ipt/libipt.la iptsec/libiptsec.la \
 	msg/libmsg.la nea/libnea.la nta/libnta.la nua/libnua.la \
 	sdp/libsdp.la sip/libsip.la soa/libsoa.la \
 	sresolv/libsresolv.la su/libsu.la tport/libtport.la \
-	url/liburl.la $(am__DEPENDENCIES_2)
+	url/liburl.la $(OPT_LIBADD)
 am_libsofia_sip_ua_la_OBJECTS =
 libsofia_sip_ua_la_OBJECTS = $(am_libsofia_sip_ua_la_OBJECTS)
 libsofia_sip_ua_la_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) \
@@ -232,7 +208,6 @@ LIBVER_SOFIA_SIP_UA_SOVER = @LIBVER_SOFIA_SIP_UA_SOVER@
 LIPO = @LIPO@
 LN_S = @LN_S@
 LTLIBOBJS = @LTLIBOBJS@
-MAINT = @MAINT@
 MAKEINFO = @MAKEINFO@
 MINGW_ENVIRONMENT = @MINGW_ENVIRONMENT@
 MKDIR_P = @MKDIR_P@
@@ -328,7 +303,7 @@ AUTOMAKE_OPTIONS = foreign
 
 # select which optional sofia-sip modules have been enabled
 # in the build
-OPT_LIBADD = $(openssl_LIBS) $(am__append_1) $(am__append_3)
+OPT_LIBADD = $(am__append_1) $(am__append_3)
 OPT_SUBDIRS_STUN = $(am__append_2)
 OPT_SUBDIRS_HTTP = $(am__append_4)
 OPT_SUBDIRS_NTH = $(am__append_5)
@@ -342,7 +317,7 @@ DIST_SUBDIRS = su features bnf sresolv ipt sdp url msg sip http \
 	  stun soa tport nta nth \
 	  nea iptsec nua docs
 
-lib_LTLIBRARIES = libsofia-sip-ua.la
+noinst_LTLIBRARIES = libsofia-sip-ua.la
 libsofia_sip_ua_la_SOURCES = 
 libsofia_sip_ua_la_LIBADD = bnf/libbnf.la \
 				features/libfeatures.la \
@@ -364,10 +339,10 @@ libsofia_sip_ua_la_LIBADD = bnf/libbnf.la \
 
 # set the libtool version info version:revision:age for libsofia-sip-ua
 # - soname to 'libsofia-sip-ua.so.(CUR-AGE)'
-libsofia_sip_ua_la_LDFLAGS = \
-	-version-info $(LIBVER_SOFIA_SIP_UA_CUR):$(LIBVER_SOFIA_SIP_UA_REV):$(LIBVER_SOFIA_SIP_UA_AGE)
-
-PHONY = doxygen built-sources $(am__append_7)
+libsofia_sip_ua_la_LDFLAGS = -version-info \
+	$(LIBVER_SOFIA_SIP_UA_CUR):$(LIBVER_SOFIA_SIP_UA_REV):$(LIBVER_SOFIA_SIP_UA_AGE) \
+	$(am__append_6)
+PHONY = doxygen built-sources $(am__append_8)
 SOFIA_RECURSIVE = \
 	valcheck-recursive \
 	checklib-recursive
@@ -386,7 +361,7 @@ SOFIA_DIST_RECURSIVE = \
 
 # Options
 @HAVE_LCOV_TRUE@GENHTML_OPTIONS = --show-details --legend \
-@HAVE_LCOV_TRUE@	$(am__append_6)
+@HAVE_LCOV_TRUE@	$(am__append_7)
 
 # Fancy shell command that expands to directory relative to top_builddir
 @HAVE_LCOV_TRUE@expand_subdir = `pwd|sed "s'\`cd ${top_builddir};pwd\`''"`
@@ -408,7 +383,7 @@ all: all-recursive
 
 .SUFFIXES:
 .SUFFIXES: .c .lo .o
-$(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am $(top_srcdir)/rules/recursive.am $(top_srcdir)/rules/lcov.am $(top_srcdir)/rules/silent.am $(am__configure_deps)
+$(srcdir)/Makefile.in:  $(srcdir)/Makefile.am $(top_srcdir)/rules/recursive.am $(top_srcdir)/rules/lcov.am $(top_srcdir)/rules/silent.am $(am__configure_deps)
 	@for dep in $?; do \
 	  case '$(am__configure_deps)' in \
 	    *$$dep*) \
@@ -433,44 +408,22 @@ Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 $(top_builddir)/config.status: $(top_srcdir)/configure $(CONFIG_STATUS_DEPENDENCIES)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
 
-$(top_srcdir)/configure: @MAINTAINER_MODE_TRUE@ $(am__configure_deps)
+$(top_srcdir)/configure:  $(am__configure_deps)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
-$(ACLOCAL_M4): @MAINTAINER_MODE_TRUE@ $(am__aclocal_m4_deps)
+$(ACLOCAL_M4):  $(am__aclocal_m4_deps)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
 $(am__aclocal_m4_deps):
-install-libLTLIBRARIES: $(lib_LTLIBRARIES)
-	@$(NORMAL_INSTALL)
-	test -z "$(libdir)" || $(MKDIR_P) "$(DESTDIR)$(libdir)"
-	@list='$(lib_LTLIBRARIES)'; test -n "$(libdir)" || list=; \
-	list2=; for p in $$list; do \
-	  if test -f $$p; then \
-	    list2="$$list2 $$p"; \
-	  else :; fi; \
-	done; \
-	test -z "$$list2" || { \
-	  echo " $(LIBTOOL) $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=install $(INSTALL) $(INSTALL_STRIP_FLAG) $$list2 '$(DESTDIR)$(libdir)'"; \
-	  $(LIBTOOL) $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=install $(INSTALL) $(INSTALL_STRIP_FLAG) $$list2 "$(DESTDIR)$(libdir)"; \
-	}
 
-uninstall-libLTLIBRARIES:
-	@$(NORMAL_UNINSTALL)
-	@list='$(lib_LTLIBRARIES)'; test -n "$(libdir)" || list=; \
-	for p in $$list; do \
-	  $(am__strip_dir) \
-	  echo " $(LIBTOOL) $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=uninstall rm -f '$(DESTDIR)$(libdir)/$$f'"; \
-	  $(LIBTOOL) $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=uninstall rm -f "$(DESTDIR)$(libdir)/$$f"; \
-	done
-
-clean-libLTLIBRARIES:
-	-test -z "$(lib_LTLIBRARIES)" || rm -f $(lib_LTLIBRARIES)
-	@list='$(lib_LTLIBRARIES)'; for p in $$list; do \
+clean-noinstLTLIBRARIES:
+	-test -z "$(noinst_LTLIBRARIES)" || rm -f $(noinst_LTLIBRARIES)
+	@list='$(noinst_LTLIBRARIES)'; for p in $$list; do \
 	  dir="`echo $$p | sed -e 's|/[^/]*$$||'`"; \
 	  test "$$dir" != "$$p" || dir=.; \
 	  echo "rm -f \"$${dir}/so_locations\""; \
 	  rm -f "$${dir}/so_locations"; \
 	done
 libsofia-sip-ua.la: $(libsofia_sip_ua_la_OBJECTS) $(libsofia_sip_ua_la_DEPENDENCIES) 
-	$(libsofia_sip_ua_la_LINK) -rpath $(libdir) $(libsofia_sip_ua_la_OBJECTS) $(libsofia_sip_ua_la_LIBADD) $(LIBS)
+	$(libsofia_sip_ua_la_LINK)  $(libsofia_sip_ua_la_OBJECTS) $(libsofia_sip_ua_la_LIBADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
@@ -682,9 +635,6 @@ check: check-recursive
 all-am: Makefile $(LTLIBRARIES)
 installdirs: installdirs-recursive
 installdirs-am:
-	for dir in "$(DESTDIR)$(libdir)"; do \
-	  test -z "$$dir" || $(MKDIR_P) "$$dir"; \
-	done
 install: install-recursive
 install-exec: install-exec-recursive
 install-data: install-data-recursive
@@ -714,8 +664,8 @@ maintainer-clean-generic:
 @HAVE_LCOV_FALSE@clean-local:
 clean: clean-recursive
 
-clean-am: clean-generic clean-libLTLIBRARIES clean-libtool clean-local \
-	mostlyclean-am
+clean-am: clean-generic clean-libtool clean-local \
+	clean-noinstLTLIBRARIES mostlyclean-am
 
 distclean: distclean-recursive
 	-rm -f Makefile
@@ -740,7 +690,7 @@ install-dvi: install-dvi-recursive
 
 install-dvi-am:
 
-install-exec-am: install-libLTLIBRARIES
+install-exec-am:
 
 install-html: install-html-recursive
 
@@ -779,26 +729,25 @@ ps: ps-recursive
 
 ps-am:
 
-uninstall-am: uninstall-libLTLIBRARIES
+uninstall-am:
 
 .MAKE: $(RECURSIVE_CLEAN_TARGETS) $(RECURSIVE_TARGETS) ctags-recursive \
 	install-am install-strip tags-recursive
 
 .PHONY: $(RECURSIVE_CLEAN_TARGETS) $(RECURSIVE_TARGETS) CTAGS GTAGS \
-	all all-am check check-am clean clean-generic \
-	clean-libLTLIBRARIES clean-libtool clean-local ctags \
-	ctags-recursive distclean distclean-compile distclean-generic \
+	all all-am check check-am clean clean-generic clean-libtool \
+	clean-local clean-noinstLTLIBRARIES ctags ctags-recursive \
+	distclean distclean-compile distclean-generic \
 	distclean-libtool distclean-tags distdir dvi dvi-am html \
 	html-am info info-am install install-am install-data \
 	install-data-am install-dvi install-dvi-am install-exec \
 	install-exec-am install-html install-html-am install-info \
-	install-info-am install-libLTLIBRARIES install-man install-pdf \
-	install-pdf-am install-ps install-ps-am install-strip \
-	installcheck installcheck-am installdirs installdirs-am \
-	maintainer-clean maintainer-clean-generic mostlyclean \
-	mostlyclean-compile mostlyclean-generic mostlyclean-libtool \
-	pdf pdf-am ps ps-am tags tags-recursive uninstall uninstall-am \
-	uninstall-libLTLIBRARIES
+	install-info-am install-man install-pdf install-pdf-am \
+	install-ps install-ps-am install-strip installcheck \
+	installcheck-am installdirs installdirs-am maintainer-clean \
+	maintainer-clean-generic mostlyclean mostlyclean-compile \
+	mostlyclean-generic mostlyclean-libtool pdf pdf-am ps ps-am \
+	tags tags-recursive uninstall uninstall-am
 
 
 all-recursive: built-sources-recursive
@@ -842,7 +791,7 @@ checklib: checklib-recursive $(lib_LTLIBRARIES)
 
 doxygen: built-sources
 	@echo Generating empty doxytags
-	@mkdir -p docs/html ; \
+	mkdir -p docs/html ; \
 	for d in $(DIST_SUBDIRS); do \
 	  test -r $$d/Doxyfile || continue ; \
 	  if ! test -r docs/$$d.doxytags ; then \
@@ -853,7 +802,7 @@ doxygen: built-sources
 	    mv -f docs/$$d.doxytags.tmp docs/$$d.doxytags ; \
           fi ; \
 	done
-	@for d in $(DIST_SUBDIRS); do \
+	for d in $(DIST_SUBDIRS); do \
 	  ( test -r $$d/Doxyfile && \
 	  cd $$d > /dev/null && \
 	  echo running ${DOXYGEN} first time in $$d && \
@@ -864,9 +813,9 @@ doxygen: built-sources
 	    docs/$$d.doxytags > docs/$$d.doxytags.tmp && \
 	  mv -f docs/$$d.doxytags.tmp docs/$$d.doxytags ; \
 	done
-	@for d in $(DIST_SUBDIRS); do \
+	for d in $(DIST_SUBDIRS); do \
 	  ( test -r $$d/Doxyfile && \
-	    cd $$d > /dev/null && \
+	    cd $$d > /dev/null \
 	    echo running ${DOXYGEN} second time in $$d && \
             ${DOXYGEN} 2>&1 ) | \
 	    egrep -v -i -e 'Warning: Unsupported (xml/)?html tag' ; \
