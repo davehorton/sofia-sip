@@ -820,8 +820,6 @@ freeaddrinfo(ai)
 #endif
 
 #if !HAVE_GAI_STRERROR
-#undef gai_strerror
-
 static
 char *
 gai_strerror(ecode)

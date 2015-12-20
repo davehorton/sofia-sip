@@ -180,7 +180,9 @@ static int tport_tls_init_master(tport_primary_t *pri,
   char *homedir;
   char *tbf = NULL;
   char const *path = NULL;
+  char const *tls_ciphers = NULL;
   unsigned tls_version = 1;
+  unsigned tls_timeout = 300;
   unsigned tls_verify = 0;
   char const *passphrase = NULL;
   unsigned tls_policy = TPTLS_VERIFY_NONE;
@@ -197,7 +199,9 @@ static int tport_tls_init_master(tport_primary_t *pri,
 
   tl_gets(tags,
 	  TPTAG_CERTIFICATE_REF(path),
+	  TPTAG_TLS_CIPHERS_REF(tls_ciphers),
 	  TPTAG_TLS_VERSION_REF(tls_version),
+	  TPTAG_TLS_TIMEOUT_REF(tls_timeout),
 	  TPTAG_TLS_VERIFY_PEER_REF(tls_verify),
 	  TPTAG_TLS_PASSPHRASE_REF(passphrase),
 	  TPTAG_TLS_VERIFY_POLICY_REF(tls_policy),
@@ -206,18 +210,7 @@ static int tport_tls_init_master(tport_primary_t *pri,
 	  TPTAG_TLS_VERIFY_SUBJECTS_REF(tls_subjects),
 	  TAG_END());
 
-  if (path) {
-    if (su_strmatch(path, ":") || su_strmatch(path, "")) {
-      path = NULL;
-
-      ti.policy = tls_policy | (tls_verify ? TPTLS_VERIFY_ALL : 0);
-      ti.verify_depth = tls_depth;
-      ti.verify_date = tls_date;
-      ti.version = tls_version;
-
-      tlspri->tlspri_master = tls_init_master(&ti);
-    }
-  } else {
+  if (!path) {
     homedir = getenv("HOME");
     if (!homedir)
       homedir = "";
@@ -231,10 +224,16 @@ static int tport_tls_init_master(tport_primary_t *pri,
     ti.configured = path != tbf;
     ti.randFile = su_sprintf(autohome, "%s/%s", path, "tls_seed.dat");
     ti.key = su_sprintf(autohome, "%s/%s", path, "agent.pem");
+	if (access(ti.key, R_OK) != 0) ti.key = NULL;
+    if (!ti.key) ti.key = su_sprintf(autohome, "%s/%s", path, "tls.pem");
     ti.passphrase = su_strdup(autohome, passphrase);
     ti.cert = ti.key;
     ti.CAfile = su_sprintf(autohome, "%s/%s", path, "cafile.pem");
+	if (access(ti.CAfile, R_OK) != 0) ti.CAfile = NULL;
+    if (!ti.CAfile) ti.CAfile = su_sprintf(autohome, "%s/%s", path, "tls.pem");
+    if (tls_ciphers) ti.ciphers = su_strdup(autohome, tls_ciphers);
     ti.version = tls_version;
+    ti.timeout = tls_timeout;
     ti.CApath = su_strdup(autohome, path);
 
     SU_DEBUG_9(("%s(%p): tls key = %s\n", __func__, (void *)pri, ti.key));

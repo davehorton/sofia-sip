@@ -108,11 +108,11 @@ ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/m4/libtool.m4 \
 	$(top_srcdir)/m4/ltoptions.m4 $(top_srcdir)/m4/ltsugar.m4 \
 	$(top_srcdir)/m4/ltversion.m4 $(top_srcdir)/m4/lt~obsolete.m4 \
-	$(top_srcdir)/m4/sac-coverage.m4 \
+	$(top_srcdir)/acinclude.m4 $(top_srcdir)/m4/sac-pkg-config.m4 \
 	$(top_srcdir)/m4/sac-general.m4 \
-	$(top_srcdir)/m4/sac-openssl.m4 \
-	$(top_srcdir)/m4/sac-pkg-config.m4 $(top_srcdir)/m4/sac-su2.m4 \
-	$(top_srcdir)/m4/sac-tport.m4 $(top_srcdir)/configure.ac
+	$(top_srcdir)/m4/sac-openssl.m4 $(top_srcdir)/m4/sac-su2.m4 \
+	$(top_srcdir)/m4/sac-su.m4 $(top_srcdir)/m4/sac-tport.m4 \
+	$(top_srcdir)/m4/sac-coverage.m4 $(top_srcdir)/configure.ac
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
 mkinstalldirs = $(install_sh) -d
@@ -125,23 +125,14 @@ libnta_la_LIBADD =
 am_libnta_la_OBJECTS = nta.lo nta_check.lo nta_tag.lo nta_tag_ref.lo \
 	sl_utils_print.lo sl_utils_log.lo sl_read_payload.lo
 libnta_la_OBJECTS = $(am_libnta_la_OBJECTS)
-am__check_nta_SOURCES_DIST = $(top_srcdir)/s2check/exit77.c \
-	check_nta.h check_nta_api.c check_nta_client.c \
-	check_nta_server.c check_nta.c
+am__check_nta_SOURCES_DIST = exit77.c check_nta.c check_nta.h \
+	check_nta_api.c check_nta_client.c
 @HAVE_CHECK_FALSE@am_check_nta_OBJECTS = exit77.$(OBJEXT)
-@HAVE_CHECK_TRUE@am_check_nta_OBJECTS = check_nta_api.$(OBJEXT) \
-@HAVE_CHECK_TRUE@	check_nta_client.$(OBJEXT) \
-@HAVE_CHECK_TRUE@	check_nta_server.$(OBJEXT) \
-@HAVE_CHECK_TRUE@	check_nta.$(OBJEXT)
+@HAVE_CHECK_TRUE@am_check_nta_OBJECTS = check_nta.$(OBJEXT) \
+@HAVE_CHECK_TRUE@	check_nta_api.$(OBJEXT) \
+@HAVE_CHECK_TRUE@	check_nta_client.$(OBJEXT)
 check_nta_OBJECTS = $(am_check_nta_OBJECTS)
-am__DEPENDENCIES_1 =
-am__DEPENDENCIES_2 = libnta.la ../ipt/libipt.la ../sip/libsip.la \
-	../features/libfeatures.la ../sresolv/libsresolv.la \
-	../tport/libtport.la ../http/libhttp.la ../stun/libstun.la \
-	../url/liburl.la ../msg/libmsg.la ../bnf/libbnf.la \
-	../su/libsu.la ${top_builddir}/s2check/libs2.a \
-	$(am__DEPENDENCIES_1)
-@HAVE_CHECK_TRUE@check_nta_DEPENDENCIES = $(am__DEPENDENCIES_2)
+@HAVE_CHECK_TRUE@check_nta_DEPENDENCIES = $(LDADD)
 portbind_SOURCES = portbind.c
 portbind_OBJECTS = portbind.$(OBJEXT)
 portbind_LDADD = $(LDADD)
@@ -149,8 +140,7 @@ portbind_DEPENDENCIES = libnta.la ../ipt/libipt.la ../sip/libsip.la \
 	../features/libfeatures.la ../sresolv/libsresolv.la \
 	../tport/libtport.la ../http/libhttp.la ../stun/libstun.la \
 	../url/liburl.la ../msg/libmsg.la ../bnf/libbnf.la \
-	../su/libsu.la ${top_builddir}/s2check/libs2.a \
-	$(am__DEPENDENCIES_1)
+	../su/libsu.la ${top_builddir}/s2check/libs2.a
 test_nta_SOURCES = test_nta.c
 test_nta_OBJECTS = test_nta.$(OBJEXT)
 test_nta_LDADD = $(LDADD)
@@ -158,8 +148,7 @@ test_nta_DEPENDENCIES = libnta.la ../ipt/libipt.la ../sip/libsip.la \
 	../features/libfeatures.la ../sresolv/libsresolv.la \
 	../tport/libtport.la ../http/libhttp.la ../stun/libstun.la \
 	../url/liburl.la ../msg/libmsg.la ../bnf/libbnf.la \
-	../su/libsu.la ${top_builddir}/s2check/libs2.a \
-	$(am__DEPENDENCIES_1)
+	../su/libsu.la ${top_builddir}/s2check/libs2.a
 test_nta_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
 	--mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(test_nta_LDFLAGS) \
 	$(LDFLAGS) -o $@
@@ -171,7 +160,7 @@ test_nta_api_DEPENDENCIES = libnta.la ../ipt/libipt.la \
 	../sresolv/libsresolv.la ../tport/libtport.la \
 	../http/libhttp.la ../stun/libstun.la ../url/liburl.la \
 	../msg/libmsg.la ../bnf/libbnf.la ../su/libsu.la \
-	${top_builddir}/s2check/libs2.a $(am__DEPENDENCIES_1)
+	${top_builddir}/s2check/libs2.a
 SCRIPTS = $(dist_noinst_SCRIPTS)
 DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir) -I$(top_builddir)/libsofia-sip-ua/su/sofia-sip
 depcomp = $(SHELL) $(top_srcdir)/depcomp
@@ -271,7 +260,6 @@ LIBVER_SOFIA_SIP_UA_SOVER = @LIBVER_SOFIA_SIP_UA_SOVER@
 LIPO = @LIPO@
 LN_S = @LN_S@
 LTLIBOBJS = @LTLIBOBJS@
-MAINT = @MAINT@
 MAKEINFO = @MAKEINFO@
 MINGW_ENVIRONMENT = @MINGW_ENVIRONMENT@
 MKDIR_P = @MKDIR_P@
@@ -363,7 +351,7 @@ target_vendor = @target_vendor@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-INCLUDES = -I$(srcdir)/../ipt -I../ipt \
+AM_CPPFLAGS = -I$(srcdir)/../ipt -I../ipt \
 			-I$(srcdir)/../msg -I../msg \
 			-I$(srcdir)/../sip -I../sip \
 			-I$(srcdir)/../bnf -I../bnf \
@@ -379,7 +367,7 @@ INCLUDES = -I$(srcdir)/../ipt -I../ipt \
 # ----------------------------------------------------------------------
 # Build targets
 noinst_LTLIBRARIES = libnta.la
-dist_noinst_SCRIPTS = run_check_nta run_test_nta_api run_test_nta
+dist_noinst_SCRIPTS = run_test_nta_api run_test_nta
 TESTS = run_check_nta run_test_nta_api run_test_nta
 
 # ----------------------------------------------------------------------
@@ -396,18 +384,25 @@ libnta_la_SOURCES = nta.c nta_check.c nta_tag.c nta_tag_ref.c \
 			sl_read_payload.c
 
 COVERAGE_INPUT = $(libnta_la_SOURCES) $(include_sofia_HEADERS)
-LDADD = libnta.la ../ipt/libipt.la ../sip/libsip.la \
-	../features/libfeatures.la ../sresolv/libsresolv.la \
-	../tport/libtport.la ../http/libhttp.la ../stun/libstun.la \
-	../url/liburl.la ../msg/libmsg.la ../bnf/libbnf.la \
-	../su/libsu.la ${top_builddir}/s2check/libs2.a $(openssl_LIBS)
+LDADD = libnta.la \
+			../ipt/libipt.la \
+			../sip/libsip.la \
+			../features/libfeatures.la \
+			../sresolv/libsresolv.la \
+			../tport/libtport.la \
+			../http/libhttp.la \
+			../stun/libstun.la \
+			../url/liburl.la \
+			../msg/libmsg.la \
+			../bnf/libbnf.la \
+			../su/libsu.la \
+			${top_builddir}/s2check/libs2.a
+
 test_nta_LDFLAGS = -static
-@HAVE_CHECK_FALSE@check_nta_SOURCES = $(top_srcdir)/s2check/exit77.c
-@HAVE_CHECK_TRUE@check_nta_SOURCES = check_nta.h \
+@HAVE_CHECK_FALSE@check_nta_SOURCES = exit77.c
+@HAVE_CHECK_TRUE@check_nta_SOURCES = check_nta.c check_nta.h \
 @HAVE_CHECK_TRUE@			check_nta_api.c \
-@HAVE_CHECK_TRUE@			check_nta_client.c \
-@HAVE_CHECK_TRUE@			check_nta_server.c \
-@HAVE_CHECK_TRUE@			check_nta.c
+@HAVE_CHECK_TRUE@			check_nta_client.c
 
 @HAVE_CHECK_TRUE@check_nta_LDADD = ${LDADD} @CHECK_LIBS@
 
@@ -490,7 +485,7 @@ all: $(BUILT_SOURCES)
 
 .SUFFIXES:
 .SUFFIXES: _tag_ref.c _tag.c .c .lo .o .obj
-$(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am $(top_srcdir)/rules/sofia.am $(top_srcdir)/rules/valcheck.am $(top_srcdir)/rules/lcov.am $(top_srcdir)/rules/silent.am $(am__configure_deps)
+$(srcdir)/Makefile.in:  $(srcdir)/Makefile.am $(top_srcdir)/rules/sofia.am $(top_srcdir)/rules/valcheck.am $(top_srcdir)/rules/lcov.am $(top_srcdir)/rules/silent.am $(am__configure_deps)
 	@for dep in $?; do \
 	  case '$(am__configure_deps)' in \
 	    *$$dep*) \
@@ -515,9 +510,9 @@ Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 $(top_builddir)/config.status: $(top_srcdir)/configure $(CONFIG_STATUS_DEPENDENCIES)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
 
-$(top_srcdir)/configure: @MAINTAINER_MODE_TRUE@ $(am__configure_deps)
+$(top_srcdir)/configure:  $(am__configure_deps)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
-$(ACLOCAL_M4): @MAINTAINER_MODE_TRUE@ $(am__aclocal_m4_deps)
+$(ACLOCAL_M4):  $(am__aclocal_m4_deps)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
 $(am__aclocal_m4_deps):
 Doxyfile: $(top_builddir)/config.status $(srcdir)/Doxyfile.in
@@ -564,7 +559,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_nta.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_nta_api.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_nta_client.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_nta_server.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/exit77.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/nta.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/nta_check.Plo@am__quote@
@@ -583,20 +577,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	source='$<' object='$@' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(COMPILE) -c `$(CYGPATH_W) '$<'`
-
-exit77.o: $(top_srcdir)/s2check/exit77.c
-@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT exit77.o -MD -MP -MF $(DEPDIR)/exit77.Tpo -c -o exit77.o `test -f '$(top_srcdir)/s2check/exit77.c' || echo '$(srcdir)/'`$(top_srcdir)/s2check/exit77.c
-@am__fastdepCC_TRUE@	$(am__mv) $(DEPDIR)/exit77.Tpo $(DEPDIR)/exit77.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='$(top_srcdir)/s2check/exit77.c' object='exit77.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o exit77.o `test -f '$(top_srcdir)/s2check/exit77.c' || echo '$(srcdir)/'`$(top_srcdir)/s2check/exit77.c
-
-exit77.obj: $(top_srcdir)/s2check/exit77.c
-@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT exit77.obj -MD -MP -MF $(DEPDIR)/exit77.Tpo -c -o exit77.obj `if test -f '$(top_srcdir)/s2check/exit77.c'; then $(CYGPATH_W) '$(top_srcdir)/s2check/exit77.c'; else $(CYGPATH_W) '$(srcdir)/$(top_srcdir)/s2check/exit77.c'; fi`
-@am__fastdepCC_TRUE@	$(am__mv) $(DEPDIR)/exit77.Tpo $(DEPDIR)/exit77.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='$(top_srcdir)/s2check/exit77.c' object='exit77.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o exit77.obj `if test -f '$(top_srcdir)/s2check/exit77.c'; then $(CYGPATH_W) '$(top_srcdir)/s2check/exit77.c'; else $(CYGPATH_W) '$(srcdir)/$(top_srcdir)/s2check/exit77.c'; fi`
 
 mostlyclean-libtool:
 	-rm -f *.lo

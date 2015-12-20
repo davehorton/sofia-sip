@@ -80,7 +80,8 @@ static void nua_notify_usage_remove(nua_handle_t *nh,
 				    nua_server_request_t *sr);
 static void nua_notify_usage_refresh(nua_handle_t *nh,
 				     nua_dialog_state_t *ds,
-				     nua_dialog_usage_t *du);
+				     nua_dialog_usage_t *du,
+				     sip_time_t now);
 static int nua_notify_usage_shutdown(nua_handle_t *nh,
 				     nua_dialog_state_t *ds,
 				     nua_dialog_usage_t *du);
@@ -243,7 +244,6 @@ int nua_subscribe_server_preprocess(nua_server_request_t *sr)
   /* Maximum expiration time */
   unsigned long expires = sip->sip_expires ? sip->sip_expires->ex_delta : 3600;
   sip_time_t now = sip_now();
-  sip_allow_events_t *appl_event = NH_PGET(nh, appl_event);
 
   assert(nh && nh->nh_nua->nua_dhandle != nh);
 
@@ -255,19 +255,12 @@ int nua_subscribe_server_preprocess(nua_server_request_t *sr)
     if (du == NULL)
       return SR_STATUS1(sr, SIP_500_INTERNAL_SERVER_ERROR);
   }
-  else if (!msg_header_find_param((void *)appl_event, event)) {
-    unsigned max_expires;
-
+  else {
     /* Refresh existing subscription */
-    if (su_strmatch(event, "refer"))
-      max_expires = NH_PGET(nh, refer_expires);
-    else
-      max_expires = NH_PGET(nh, sub_expires);
+	  if (su_strmatch(event, "refer")){
+      expires = NH_PGET(nh, refer_expires);
 
-    if (expires >= max_expires)
-      expires = max_expires;
-
-    SR_STATUS1(sr, SIP_200_OK);
+	  SR_STATUS1(sr, SIP_200_OK);}
   }
 
   nu = nua_dialog_usage_private(du);
@@ -385,7 +378,7 @@ int nua_subscribe_server_report(nua_server_request_t *sr, tagi_t const *tags)
 
   if (notify) {
     /* Send NOTIFY (and terminate subscription, when needed) */
-    nua_dialog_usage_refresh(nh, ds, du);
+    nua_dialog_usage_refresh(nh, ds, du, sip_now());
   }
 
   return retval;
@@ -435,12 +428,16 @@ int nua_subscribe_server_report(nua_server_request_t *sr, tagi_t const *tags)
  * @sa @RFC3265, #nua_i_subscribe, #nua_i_refer, NUTAG_ALLOW_EVENTS()
  */
 
+#if 0
 static int nua_notify_client_init(nua_client_request_t *cr,
 				  msg_t *, sip_t *,
 				  tagi_t const *tags);
+
+
 static int nua_notify_client_init_etag(nua_client_request_t *cr,
 				       msg_t *msg, sip_t *sip,
 				       tagi_t const *tags);
+
 static int nua_notify_client_request(nua_client_request_t *cr,
 				     msg_t *, sip_t *,
 				     tagi_t const *tags);
@@ -449,7 +446,8 @@ static int nua_notify_client_report(nua_client_request_t *cr,
 				    sip_t const *sip,
 				    nta_outgoing_t *orq,
 				    tagi_t const *tags);
-
+#endif
+#if 0
 static nua_client_methods_t const nua_notify_client_methods = {
   SIP_METHOD_NOTIFY,		/* crm_method, crm_method_name */
   0,				/* crm_extra */
@@ -467,6 +465,25 @@ static nua_client_methods_t const nua_notify_client_methods = {
   nua_notify_client_report,	/* crm_report */
   NULL,				/* crm_complete */
 };
+#endif
+
+nua_client_methods_t const nua_notify_client_methods = {
+  SIP_METHOD_NOTIFY,		/* crm_method, crm_method_name */
+  0,				/* crm_extra */
+  {				/* crm_flags */
+    /* create_dialog */ 1,
+    /* in_dialog */ 1,
+    /* target refresh */ 1
+  },
+  NULL,				/* crm_template */
+  NULL,		/* crm_init */
+  NULL,	/* crm_send */
+  NULL,				/* crm_check_restart */
+  NULL,				/* crm_recv */
+  NULL,				/* crm_preliminary */
+  NULL,				/* crm_report */
+  NULL,				/* crm_complete */
+};
 
 /**@internal Send NOTIFY. */
 int nua_stack_notify(nua_t *nua,
@@ -476,7 +493,7 @@ int nua_stack_notify(nua_t *nua,
 {
   return nua_client_create(nh, e, &nua_notify_client_methods, tags);
 }
-
+#if 0
 static int nua_notify_client_init(nua_client_request_t *cr,
 				  msg_t *msg, sip_t *sip,
 				  tagi_t const *tags)
@@ -711,7 +728,7 @@ int nua_notify_client_request(nua_client_request_t *cr,
       if (sr->sr_usage == du) {
 	/* If subscribe has not been responded, don't terminate usage by NOTIFY */
 	sr->sr_terminating = 1;
-	nua_client_set_terminating(cr, 0);
+	// nua_client_set_terminating(cr, 0);
 	break;
       }
     }
@@ -722,7 +739,7 @@ int nua_notify_client_request(nua_client_request_t *cr,
 
   return nua_base_client_request(cr, msg, sip, tags);
 }
-
+#endif
 /** @NUA_EVENT nua_r_notify
  *
  * Response to an outgoing @b NOTIFY request.
@@ -754,7 +771,7 @@ int nua_notify_client_request(nua_client_request_t *cr,
  *
  * @END_NUA_EVENT
  */
-
+#if 0
 static int nua_notify_client_report(nua_client_request_t *cr,
 				    int status, char const *phrase,
 				    sip_t const *sip,
@@ -789,11 +806,12 @@ static int nua_notify_client_report(nua_client_request_t *cr,
 
   return 0;
 }
-
+#endif
 
 static void nua_notify_usage_refresh(nua_handle_t *nh,
 				     nua_dialog_state_t *ds,
-				     nua_dialog_usage_t *du)
+				     nua_dialog_usage_t *du,
+				     sip_time_t now)
 {
   struct notifier_usage *nu = nua_dialog_usage_private(du);
   nua_client_request_t *cr = du->du_cr;
@@ -801,11 +819,6 @@ static void nua_notify_usage_refresh(nua_handle_t *nh,
 
   if (cr) {
     int terminating = 0;
-    sip_time_t now = sip_now();
-
-    SU_DEBUG_7(("%s(%p, %p, %p): using existing cr=%p\n",
-		"nua_notify_usage_refresh",
-		(void *)nh, (void *)ds, (void *)du, (void *)cr));
 
     if (nu->nu_expires && nu->nu_expires <= now)
       terminating = 1;
@@ -816,11 +829,6 @@ static void nua_notify_usage_refresh(nua_handle_t *nh,
       return;
   }
   else {
-    SU_DEBUG_7(("%s(%p, %p, %p): new NOTIFY cr for %s\n",
-		"nua_notify_usage_refresh",
-		(void *)nh, (void *)ds, (void *)du,
-		du->du_event ? du->du_event->o_type : "<implicit>"));
-
     if (nua_client_create(nh, e, &nua_notify_client_methods, NULL) >= 0)
       return;
   }
@@ -843,10 +851,10 @@ static int nua_notify_usage_shutdown(nua_handle_t *nh,
 				     nua_dialog_usage_t *du)
 {
   struct notifier_usage *nu = nua_dialog_usage_private(du);
-  nua_client_request_t *cr = du->du_cr;
+  //nua_client_request_t *cr = du->du_cr;
 
   nu->nu_substate = nua_substate_terminated;
-
+#if 0
   if (cr) {
     SU_DEBUG_5(("%s(%p, %p, %p): using existing cr=%p\n",
 		"nua_notify_usage_shutdown",
@@ -868,7 +876,7 @@ static int nua_notify_usage_shutdown(nua_handle_t *nh,
 			   TAG_END()) >= 0)
       return 0;
   }
-
+#endif
   nua_dialog_usage_remove(nh, ds, du, NULL, NULL);
   return 200;
 }
@@ -992,13 +1000,14 @@ int nua_refer_server_respond(nua_server_request_t *sr, tagi_t const *tags)
 static
 int nua_refer_server_report(nua_server_request_t *sr, tagi_t const *tags)
 {
-  nua_handle_t *nh = sr->sr_owner;
+	//nua_handle_t *nh = sr->sr_owner;
   struct notifier_usage *nu = nua_dialog_usage_private(sr->sr_usage);
   sip_t const *sip = sr->sr_request.sip;
   sip_referred_by_t *by = sip->sip_referred_by, default_by[1];
   sip_event_t const *o = sr->sr_usage->du_event;
   enum nua_substate substate = nua_substate_terminated;
-  int initial = sr->sr_initial, retval;
+  //int initial = sr->sr_initial, retval;
+  int retval;
 
   if (nu) {
     if (!sr->sr_terminating)
@@ -1021,13 +1030,14 @@ int nua_refer_server_report(nua_server_request_t *sr, tagi_t const *tags)
   if (retval >= 2 || nu == NULL)
     return retval;
 
+#if 0
   if (initial)
     nua_stack_post_signal(nh,
 			  nua_r_notify,
 			  SIPTAG_EVENT(o),
 			  SIPTAG_CONTENT_TYPE_STR("message/sipfrag"),
 			  SIPTAG_PAYLOAD_STR("SIP/2.0 100 Trying\r\n"),
-			  TAG_END());
-
+		  TAG_END());
+#endif
   return retval;
 }

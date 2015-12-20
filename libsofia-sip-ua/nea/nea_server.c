@@ -41,7 +41,11 @@
 
 #include "nea_debug.h"
 
-#define NONE ((void *)(intptr_t)-1)
+#ifndef _MSC_VER
+#define NONE ((void *)- 1)
+#else
+#define NONE ((void *)(INT_PTR)- 1)
+#endif
 
 #define SU_ROOT_MAGIC_T      struct nea_server_s
 #define SU_MSG_ARG_T         tagi_t
@@ -420,12 +424,12 @@ nea_server_t *nea_server_create(nta_agent_t *agent,
     throttle = min_throttle;
 
   if (!url) {
-    SU_DEBUG_5(("nea_server_create(): invalid url\n"));
+    SU_DEBUG_5(("nea_server_create(): invalid url\n" VA_NONE));
     return NULL;
   }
 
   if (min_expires > expires || expires > max_expires) {
-    SU_DEBUG_5(("nea_server_create(): invalid expiration range\n"));
+    SU_DEBUG_5(("nea_server_create(): invalid expiration range\n" VA_NONE));
     return NULL;
   }
 
@@ -546,7 +550,7 @@ int nea_server_shutdown(nea_server_t *nes,
 			int retry_after)
 {
   nea_sub_t *s;
-  int status = 200;
+//  int status = 200;
   int in_callback;
 
   if (nes == NULL)
@@ -572,8 +576,8 @@ int nea_server_shutdown(nea_server_t *nes,
 		   TAG_IF(!retry_after, NEATAG_REASON("deactivated")),
 		   TAG_IF(retry_after, NEATAG_RETRY_AFTER(retry_after)),
 		   TAG_END());
-    else
-      status = 180;
+    //else
+      //status = 180;
   }
 
   nes->nes_in_callback = in_callback;
@@ -1219,6 +1223,7 @@ nea_event_t *nea_event_tcreate(nea_server_t *nes,
 			       tag_type_t tag, tag_value_t value, ...)
 {
   nea_event_t *ev, **pev;
+  size_t len = strlen(name);
   ta_list ta;
 
   if (nes == NULL || callback == NULL || name == NULL)
@@ -1234,11 +1239,6 @@ nea_event_t *nea_event_tcreate(nea_server_t *nes,
     }
   }
   else {
-    size_t len = strlen(name);
-
-    if (len == 0)
-      return NULL;
-
     for (pev = &nes->nes_events; (ev = *pev); pev = &(*pev)->ev_next) {
       if (strncmp(ev->ev_event->o_type, name, len) != 0 ||
 	  ev->ev_event->o_type[len] != '.' ||
@@ -1784,7 +1784,7 @@ int nea_sub_process_subscribe(nea_sub_t *s,
 	    a_next = a->ac_next;
 
 	    for (aa = (sip_accept_t **)&accept;
-		 *aa && msg_q_value((*aa)->ac_q) >= msg_q_value(a->ac_q);
+		 *aa && sip_q_value((*aa)->ac_q) >= sip_q_value(a->ac_q);
 		 aa = &(*aa)->ac_next)
 	      ;
 

@@ -35,7 +35,7 @@
 #undef NDEBUG
 
 #define TP_STACK_T struct s2sip
-#define TP_MAGIC_T struct s2sip_tp_magic_s
+#define TP_MAGIC_T struct tp_magic_s
 #define SU_ROOT_MAGIC_T struct s2sip
 
 #include "s2sip.h"
@@ -61,7 +61,7 @@
 
 /* -- Module types ------------------------------------------------------ */
 
-struct s2sip_tp_magic_s
+struct tp_magic_s
 {
   sip_via_t *via;
   sip_contact_t *contact;
@@ -86,20 +86,6 @@ s2_sip_generate_tag(su_home_t *home)
   static unsigned s2_tag_generator = 0;
 
   return su_sprintf(home, "tag=%s-%s/%u", _s2_suite, _s2_case, ++s2_tag_generator);
-}
-
-sip_via_t *s2_sip_tport_via(tport_t const *tport)
-{
-  tp_magic_t *magic = tport_magic(tport);
-  assert(magic);
-  return magic->via;
-}
-
-sip_contact_t *s2_sip_tport_contact(tport_t const *tport)
-{
-  tp_magic_t *magic = tport_magic(tport);
-  assert(magic);
-  return magic->contact;
 }
 
 /* ---------------------------------------------------------------------- */
@@ -327,22 +313,8 @@ s2_sip_respond_to(struct message *m, struct dialog *d,
     }
   }
 
-  if (d) {
-    if (!d->contact)
-      d->contact = sip_contact_dup(d->home, sip->sip_contact);
-    if (!d->contact)
-      d->contact = sip_contact_dup(d->home, s2sip->contact);
-    if (!sip->sip_contact && d->contact && 100 < status && status <= 299)
-      switch (m->sip->sip_request->rq_method) {
-      case sip_method_info:
-      case sip_method_bye:
-      case sip_method_cancel:
-      case sip_method_register:
-      case sip_method_publish:
-	break;
-      default:
-	sip_add_tl(reply, sip, SIPTAG_CONTACT(d->contact), TAG_END());
-      }
+  if (d && !d->contact) {
+    d->contact = sip_contact_dup(d->home, sip->sip_contact);
   }
 
   *tpn = *tport_name(m->tport);
@@ -418,8 +390,6 @@ s2_complete_response(msg_t *response,
   return 0;
 }
 
-int s2_sip_msg_flags = 0;
-
 /* Send request (updating dialog).
  *
  * Return zero upon success, nonzero upon failure.
@@ -433,7 +403,7 @@ s2_sip_request_to(struct dialog *d,
   ta_list ta;
   tagi_t const *tags;
 
-  msg_t *msg = s2_msg(s2_sip_msg_flags);
+  msg_t *msg = s2_msg(0);
   sip_t *sip = sip_object(msg);
   url_t const *target = NULL;
   sip_cseq_t cseq[1];
@@ -506,9 +476,9 @@ s2_sip_request_to(struct dialog *d,
 
   if (tport == NULL)
     tport = s2sip->udp.tport;
-  if (tport == NULL)
+  else if (tport == NULL)
     tport = s2sip->tcp.tport;
-  if (tport == NULL)
+  else if (tport == NULL)
     tport = s2sip->tls.tport;
 
   assert(tport);
@@ -608,7 +578,7 @@ int s2_sip_update_dialog(struct dialog *d, struct message *m)
 {
   int status = 0;
 
-  if (m && m->sip->sip_status)
+  if (m->sip->sip_status)
     status = m->sip->sip_status->st_status;
 
   if (100 < status && status < 300) {

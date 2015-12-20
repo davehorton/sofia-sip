@@ -552,7 +552,7 @@ int stun_obtain_shared_secret(stun_handle_t *sh,
 
     ta_list ta;
     ta_start(ta, tag, value);
-    SU_DEBUG_5(("Delaying STUN shared-secret req. for DNS-SRV query.\n"));
+    SU_DEBUG_5(("Delaying STUN shared-secret req. for DNS-SRV query.\n" VA_NONE));
     err = priv_dns_queue_action(sh, stun_action_tls_query, sdf, magic, ta_tags(ta));
     ta_end(ta);
 
@@ -565,7 +565,7 @@ int stun_obtain_shared_secret(stun_handle_t *sh,
     SU_DEBUG_3(("%s: Obtaining shared secret.\n", __func__));
   }
   else {
-    SU_DEBUG_3(("No message integrity enabled.\n"));
+    SU_DEBUG_3(("No message integrity enabled.\n" VA_NONE));
     return errno = EFAULT, -1;
   }
 
@@ -673,12 +673,12 @@ static stun_request_t *stun_request_create(stun_discovery_t *sd)
 
 void stun_request_destroy(stun_request_t *req)
 {
-  stun_handle_t *sh;
+  //stun_handle_t *sh;
   assert(req);
 
   enter;
 
-  sh = req->sr_handle;
+  //sh = req->sr_handle;
 
   if (x_is_inserted(req, sr))
     x_remove(req, sr);
@@ -928,12 +928,12 @@ static void priv_lookup_cb(stun_dns_lookup_t *self,
       break;
 
     default:
-      SU_DEBUG_5(("Warning: unknown pending STUN DNS-SRV action.\n"));
+      SU_DEBUG_5(("Warning: unknown pending STUN DNS-SRV action.\n" VA_NONE));
     }
       }
   else {
     /* DNS lookup failed */
-    SU_DEBUG_5(("Warning: STUN DNS-SRV lookup failed.\n"));
+    SU_DEBUG_5(("Warning: STUN DNS-SRV lookup failed.\n" VA_NONE));
     if (sh->sh_dns_pend_cb) {
       sh->sh_dns_pend_cb(sh->sh_dns_pend_ctx, sh, NULL,
 			 sh->sh_dns_pend_action, stun_error);
@@ -1045,7 +1045,7 @@ int stun_bind(stun_handle_t *sh,
     int err;
     ta_list ta;
     ta_start(ta, tag, value);
-    SU_DEBUG_5(("Delaying STUN bind for DNS-SRV query.\n"));
+    SU_DEBUG_5(("Delaying STUN bind for DNS-SRV query.\n" VA_NONE));
     err = priv_dns_queue_action(sh, stun_action_binding_request, sdf, magic, ta_tags(ta));
     ta_end(ta);
     return err;
@@ -1140,14 +1140,14 @@ static stun_discovery_t *stun_discovery_create(stun_handle_t *sh,
 
 static int stun_discovery_destroy(stun_discovery_t *sd)
 {
-  stun_handle_t *sh;
+  //stun_handle_t *sh;
 
   enter;
 
   if (!sd)
     return errno = EFAULT, -1;
 
-  sh = sd->sd_handle;
+  //sh = sd->sd_handle;
 
   if (sd->sd_timer)
     su_timer_destroy(sd->sd_timer), sd->sd_timer = NULL;
@@ -1201,7 +1201,7 @@ int stun_test_nattype(stun_handle_t *sh,
 
     ta_list ta;
     ta_start(ta, tag, value);
-    SU_DEBUG_5(("Delaying STUN get-nat-type req. for DNS-SRV query.\n"));
+    SU_DEBUG_5(("Delaying STUN get-nat-type req. for DNS-SRV query.\n" VA_NONE));
     err = priv_dns_queue_action(sh, stun_action_test_nattype, sdf, magic, ta_tags(ta));
     ta_end(ta);
 
@@ -1453,7 +1453,7 @@ int stun_tls_callback(su_root_magic_t *m, su_wait_t *w, su_wakeup_arg_t *arg)
     su_root_eventmask(self->sh_root, sd->sd_index,
 		      sd->sd_socket, events);
 
-    SU_DEBUG_5(("Shared Secret Request sent to server:\n"));
+    SU_DEBUG_5(("Shared Secret Request sent to server:\n" VA_NONE));
     debug_print(&msg_req->enc_buf);
 
     z = SSL_read(ssl, buf, sizeof(buf));
@@ -1472,7 +1472,7 @@ int stun_tls_callback(su_root_magic_t *m, su_wait_t *w, su_wakeup_arg_t *arg)
     resp->enc_buf.size = z;
     resp->enc_buf.data = malloc(z);
     memcpy(resp->enc_buf.data, buf, z);
-    SU_DEBUG_5(("Shared Secret Response received from server:\n"));
+    SU_DEBUG_5(("Shared Secret Response received from server:\n" VA_NONE));
     debug_print(&resp->enc_buf);
 
     /* closed TLS connection */
@@ -1505,7 +1505,7 @@ int stun_tls_callback(su_root_magic_t *m, su_wait_t *w, su_wakeup_arg_t *arg)
 
     case SHARED_SECRET_ERROR_RESPONSE:
       if (stun_process_error_response(resp) < 0) {
-	SU_DEBUG_5(("Error in Shared Secret Error Response.\n"));
+	SU_DEBUG_5(("Error in Shared Secret Error Response.\n" VA_NONE));
       }
       stun_free_buffer(&resp->enc_buf);
       return -1;
@@ -1755,7 +1755,7 @@ static int do_action(stun_handle_t *sh, stun_msg_t *msg)
   id = msg->stun_hdr.tran_id;
   req = find_request(sh, id);
   if (!req) {
-    SU_DEBUG_7(("warning: unable to find matching TID for response\n"));
+    SU_DEBUG_7(("warning: unable to find matching TID for response\n" VA_NONE));
     return 0;
   }
 
@@ -1883,7 +1883,7 @@ static int process_test_lifetime(stun_request_t *req, stun_msg_t *binding_respon
   stun_discovery_t *sd = req->sr_discovery;
   stun_request_t *new;
   stun_handle_t *sh = req->sr_handle;
-  su_localinfo_t *li;
+  //su_localinfo_t *li;
   su_sockaddr_t *sa;
   su_timer_t *sockfdy_timer = NULL;
   su_socket_t sockfdy = sd->sd_socket2;
@@ -1954,7 +1954,7 @@ static int process_test_lifetime(stun_request_t *req, stun_msg_t *binding_respon
   /* Rock, we come from sockfdx */
   process_binding_request(req, binding_response);
 
-  li = &req->sr_localinfo;
+  //li = &req->sr_localinfo;
   sa = req->sr_local_addr;
   stun_free_message(binding_response);
 
@@ -1981,7 +1981,7 @@ static int process_test_lifetime(stun_request_t *req, stun_msg_t *binding_respon
 
 static int action_bind(stun_request_t *req, stun_msg_t *binding_response)
 {
-  su_localinfo_t *li = NULL;
+  //su_localinfo_t *li = NULL;
   su_sockaddr_t *sa = NULL;
   stun_discovery_t *sd = req->sr_discovery;
   stun_handle_t *sh = req->sr_handle;
@@ -1992,7 +1992,7 @@ static int action_bind(stun_request_t *req, stun_msg_t *binding_response)
 
   process_binding_request(req, binding_response);
 
-  li = &req->sr_localinfo;
+  //li = &req->sr_localinfo;
   sa = req->sr_local_addr;
 
   memcpy(sd->sd_addr_seen_outside, sa, sizeof(su_sockaddr_t));
@@ -2205,7 +2205,7 @@ static int action_determine_nattype(stun_request_t *req, stun_msg_t *binding_res
 
     if (err < 0) {
       SU_DEBUG_0(("WARNING: Failure in performing STUN Test-IV check. "
-		  "The results related to mapping characteristics may be incorrect."));
+		  "The results related to mapping characteristics may be incorrect." VA_NONE));
       stun_free_message(req->sr_msg);
       sd->sd_fourth = -1;
       /* call function again, sd_fourth stops the recursion */
@@ -2696,7 +2696,7 @@ int stun_test_lifetime(stun_handle_t *sh,
 
     ta_list ta;
     ta_start(ta, tag, value);
-    SU_DEBUG_5(("Delaying STUN get-lifetime req. for DNS-SRV query.\n"));
+    SU_DEBUG_5(("Delaying STUN get-lifetime req. for DNS-SRV query.\n" VA_NONE));
     err = priv_dns_queue_action(sh, stun_action_test_lifetime, sdf, magic, ta_tags(ta));
     ta_end(ta);
 
@@ -3039,7 +3039,7 @@ int stun_process_request(su_socket_t s, stun_msg_t *req,
   su_sockaddr_t mod_addr[1] = {{ 0 }}, src_addr[1] = {{ 0 }}, chg_addr[1] = {{ 0 }};
   stun_attr_t *tmp, m_attr[1], s_attr[1], c_attr[1], **p;
   su_sockaddr_t to_addr;
-  int c, i;
+  int i;
 
   tmp = stun_get_attr(req->stun_attr, RESPONSE_ADDRESS);
 
@@ -3071,20 +3071,20 @@ int stun_process_request(su_socket_t s, stun_msg_t *req,
   /* SOURCE-ADDRESS depends on CHANGE_REQUEST */
   tmp = stun_get_attr(req->stun_attr, CHANGE_REQUEST);
   if (!tmp) {
-    c = 0;
+    //c = 0;
   }
   else {
     switch (((stun_attr_changerequest_t *) tmp->pattr)->value) {
     case STUN_CR_CHANGE_IP:
-      c = 1;
+      //c = 1;
       break;
 
     case STUN_CR_CHANGE_PORT:
-      c = 2;
+      //c = 2;
       break;
 
     case STUN_CR_CHANGE_IP | STUN_CR_CHANGE_PORT: /* bitwise or */
-      c = 3;
+      //c = 3;
       break;
 
     default:

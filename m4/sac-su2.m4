@@ -531,7 +531,6 @@ AC_CHECK_FUNCS([gettimeofday strerror random initstate tcsetattr flock \
                 poll epoll_create kqueue select if_nameindex \
 		signal alarm \
 		strnlen \
-		memmem \
 	        getaddrinfo getnameinfo freeaddrinfo gai_strerror getifaddrs \
                 getline getdelim getpass])
 # getline getdelim getpass are _GNU_SOURCE stuff
@@ -550,7 +549,7 @@ if test $ac_cv_func_if_nameindex = yes ; then
     [Define to 1 if you have if_nameindex().])
 fi
 
-SAC_REPLACE_FUNCS([memccpy memspn memcspn strtoull \
+SAC_REPLACE_FUNCS([memmem memccpy memspn memcspn strtoull \
 		   inet_ntop inet_pton poll])
 
 if test $ac_cv_func_signal = yes ; then
@@ -595,7 +594,7 @@ Define to 1 if you have working pthread_rwlock_t implementation.
 
 if test x$HAVE_PTHREADS = x1 ; then
 
-AC_RUN_IFELSE([
+AC_RUN_IFELSE([AC_LANG_SOURCE([[
 #define _XOPEN_SOURCE (500)
 
 #include <pthread.h>
@@ -611,7 +610,7 @@ int main()
   /* pthread_rwlock_trywrlock() should fail (not return 0) */
   return pthread_rwlock_trywrlock(&rw) != 0 ? 0  : 1;
 }
-],[AC_DEFINE_HAVE_PTHREAD_RWLOCK],[
+]])],[AC_DEFINE_HAVE_PTHREAD_RWLOCK],[
 AC_MSG_WARN([Recursive pthread_rwlock_rdlock() does not work!!! ])
 ],[AC_DEFINE_HAVE_PTHREAD_RWLOCK])
 

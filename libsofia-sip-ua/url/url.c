@@ -185,7 +185,7 @@ int url_reserved_p(char const *s)
  * The number of characters in corresponding but escaped string.
  *
  * You can handle a part of URL with reserved characters like this:
- * @code
+ * @code
  * if (url_reserved_p(s))  {
  *   n = malloc(url_esclen(s, NULL) + 1);
  *   if (n) url_escape(n, s);
@@ -508,48 +508,38 @@ void url_init(url_t *url, enum url_type_e type)
 }
 
 /** Get url type */
-su_inline enum url_type_e url_get_type(char const *scheme, size_t len)
+su_inline
+enum url_type_e url_get_type(char const *scheme, size_t len)
 {
 #define test_scheme(s) \
    if (len == strlen(#s) && !strncasecmp(scheme, #s, len)) return url_##s
 
   switch (scheme[0]) {
-  case '*':
-    if (strcmp(scheme, "*") == 0)
-      return url_any;
-    break;
+  case '*': if (strcmp(scheme, "*") == 0) return url_any;
   case 'c': case 'C':
     test_scheme(cid); break;
   case 'f': case 'F':
-    test_scheme(ftp); test_scheme(file); test_scheme(fax);
-    break;
+    test_scheme(ftp); test_scheme(file); test_scheme(fax); break;
   case 'h': case 'H':
-    test_scheme(http); test_scheme(https);
-    break;
+    test_scheme(http); test_scheme(https); break;
   case 'i': case 'I':
-    test_scheme(im);
-    break;
+    test_scheme(im); break;
   case 'm': case 'M':
     test_scheme(mailto); test_scheme(modem);
-    test_scheme(msrp); test_scheme(msrps);
-    break;
+    test_scheme(msrp); test_scheme(msrps); break;
   case 'p': case 'P':
-    test_scheme(pres);
-    break;
+    test_scheme(pres); break;
   case 'r': case 'R':
-    test_scheme(rtsp); test_scheme(rtspu);
-    break;
+    test_scheme(rtsp); test_scheme(rtspu); break;
   case 's': case 'S':
-    test_scheme(sip); test_scheme(sips);
-    break;
+    test_scheme(sip); test_scheme(sips); break;
   case 't': case 'T':
-    test_scheme(tel);
-    break;
+    test_scheme(tel); break;
   case 'w': case 'W':
-    test_scheme(wv);
-    break;
-  default:
-    break;
+    test_scheme(wv); break;
+
+
+  default: break;
   }
 
 #undef test_scheme
@@ -577,7 +567,7 @@ static
 int _url_d(url_t *url, char *s)
 {
   size_t n, p;
-  char *s0, rest_c, *host, *user;
+  char rest_c, *host, *user;
   int have_authority = 1;
 
   memset(url, 0, sizeof(*url));
@@ -587,8 +577,6 @@ int _url_d(url_t *url, char *s)
     url->url_scheme = "*";
     return 0;
   }
-
-  s0 = s;
 
   n = strcspn(s, ":/?#");
 
@@ -1100,7 +1088,7 @@ char *copy(char *buf, char *end, char const *src)
  * @param buf     Buffer for non-constant strings copied from @a src.
  * @param bufsize Size of @a buf.
  * @param dst     Destination URL structure.
- * @param src     Source URL structure.
+ * @param src     Source URL structure.
  *
  * @return Number of characters required for
  * duplicating the strings in @a str, or -1 if an error
@@ -1184,7 +1172,7 @@ issize_t url_dup(char *buf, isize_t bufsize, url_t *dst, url_t const *src)
  * @param buf     Buffer for non-constant strings copied from @a src.
  * @param end     End of @a buf.
  * @param dst     Destination URL structure.
- * @param src     Source URL structure.
+ * @param src     Source URL structure.
  *
  * @return
  * The macro URL_DUP() returns pointer to first unused byte in the
@@ -1411,10 +1399,11 @@ char *url_strip_param_string(char *params, char const *name)
 
       rest = strlen(params + i + remove);
       if (!rest) {
+	if (i == 0)
+	  return NULL;		/* removed everything */
 	params[i - 1] = '\0';
 	break;
       }
-
       memmove(params + i, params + i + remove, rest + 1);
     }
 
@@ -2119,33 +2108,30 @@ char *url_query_as_header_string(su_home_t *home,
   if (!s)
     return NULL;
 
-  for (i = 0, j = 0; query[i];) {
-    n = strcspn(query + i, "=");
-    if (!query[i + n])
+  for (i = 0, j = 0; s[i];) {
+    n = strcspn(s + i, "=");
+    if (!s[i + n])
       break;
-    if (n == 4 && su_strncasecmp(query + i, "body", 4) == 0) {
+    if (n == 4 && strncasecmp(s + i, "body", 4) == 0) {
       if (b_start)
 	break;
-      b_start = i + n + 1, b_len = strcspn(query + b_start, "&");
-      i = b_start + b_len;
-      if (!query[i])
-        break;
-      i++;
+      b_start = i + n + 1, b_len = strcspn(s + b_start, "&");
+      i = b_start + b_len + 1;
       continue;
     }
     if (i != j)
-      memcpy(s + j, query + i, n);
+      memmove(s + j, s + i, n);
     s[j + n] = ':';
     i += n + 1, j += n + 1;
-    n = strcspn(query + i, "&");
-    j += url_unescape_to(s + j, query + i, n);
+    n = strcspn(s + i, "&");
+    j += url_unescape_to(s + j, s + i, n);
     i += n;
-    if (query[i]) {
+    if (s[i]) {
       s[j++] = '\n', i++;
     }
   }
 
-  if (query[i])
+  if (s[i])
     return (void)su_free(home, s), NULL;
 
   if (b_start) {

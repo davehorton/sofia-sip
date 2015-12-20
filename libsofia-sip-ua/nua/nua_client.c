@@ -63,7 +63,9 @@
 
 #include <sofia-sip/su_wait.h>
 
+#if 0
 su_inline int can_redirect(sip_contact_t const *m, sip_method_t method);
+#endif
 
 /**@internal
  *
@@ -566,7 +568,7 @@ int nua_client_init_request0(nua_client_request_t *cr)
 
   if (!ds->ds_leg) {
     if (ds->ds_remote_tag && ds->ds_remote_tag[0] &&
-	sip_to_tag(msg_home(msg), sip->sip_to, ds->ds_remote_tag) < 0)
+	sip_to_tag(nh->nh_home, sip->sip_to, ds->ds_remote_tag) < 0)
       return nua_client_return(cr, NUA_ERROR_AT(__FILE__, __LINE__), msg);
 
     if (sip->sip_from == NULL &&
@@ -578,9 +580,6 @@ int nua_client_init_request0(nua_client_request_t *cr)
 		     (sip_header_t *)sip->sip_from) < 0) {
       return nua_client_return(cr, NUA_ERROR_AT(__FILE__, __LINE__), msg);
     }
-
-    if (sip->sip_call_id == NULL)
-      sip->sip_call_id = sip_call_id_create(msg_home(msg), NULL);
   }
   else {
     if (ds->ds_route)
@@ -840,6 +839,9 @@ int nua_client_request_sendmsg(nua_client_request_t *cr)
   if (!sip->sip_user_agent && NH_PGET(nh, user_agent))
     sip_add_make(msg, sip, sip_user_agent_class, NH_PGET(nh, user_agent));
 
+  if (!sip->sip_via && NH_PGET(nh, via))
+    sip_add_make(msg, sip, sip_via_class, NH_PGET(nh, via));
+
   /** Any node implementing one or more event packages SHOULD include an
    * appropriate @AllowEvents header indicating all supported events in
    * all methods which initiate dialogs and their responses (such as
@@ -977,24 +979,6 @@ nua_client_orq_response(nua_client_request_t *cr,
   if (sip && sip->sip_status) {
     status = sip->sip_status->st_status;
     phrase = sip->sip_status->st_phrase;
-
-    if (sip->sip_payload != NULL &&
-	NH_PGET(cr->cr_owner, accept_multipart) &&
-	sip->sip_multipart == NULL) {
-      sip_content_type_t *c = sip->sip_content_type;
-
-      if (c != NULL && su_casenmatch(c->c_type, "multipart/", 10)) {
-	msg_t *msg = nta_outgoing_getresponse(orq);
-	su_home_t *home = msg_home(msg);
-	sip_t *request = (sip_t *)sip;
-	sip_payload_t *pl = (sip_payload_t *)sip->sip_payload;
-	msg_multipart_t *mp = msg_multipart_parse(home, c, pl);
-
-	request->sip_multipart = mp;
-
-	msg_unref(msg);
-      }
-    }
   }
   else {
     status = nta_outgoing_status(orq);
@@ -1080,11 +1064,15 @@ int nua_client_response(nua_client_request_t *cr,
     sip_method_t method = cr->cr_method;
     int terminated, graceful = 1;
 
-    if (status < 700)
-      terminated = sip_response_terminates_dialog(status, method, &graceful);
-    else
-      /* XXX - terminate usage by all internal error responses */
-      terminated = 0, graceful = 1;
+    if (status < 700) {
+		terminated = sip_response_terminates_dialog(status, method, &graceful);
+		if (terminated && !cr->cr_initial) {
+			terminated = 0, graceful = 1;
+		}
+	} else {
+		/* XXX - terminate usage by all internal error responses */
+		terminated = 0, graceful = 1;
+	}
 
     if (terminated < 0)
       cr->cr_terminated = terminated;
@@ -1145,14 +1133,9 @@ int nua_base_client_check_restart(nua_client_request_t *cr,
 {
   nua_handle_t *nh = cr->cr_owner;
   nta_outgoing_t *orq;
-
+#if 0
   if (status == 302 || status == 305) {
     sip_route_t r[1];
-
-    if (status == 302 && !NH_PGET(nh, auto302))
-      return 0;
-    if (status == 305 && !NH_PGET(nh, auto305))
-      return 0;
 
     if (!can_redirect(sip->sip_contact, cr->cr_method))
       return 0;
@@ -1171,8 +1154,12 @@ int nua_base_client_check_restart(nua_client_request_t *cr,
 	  sip_add_dup(cr->cr_msg, cr->cr_sip, (sip_header_t *)r) >= 0)
 	return nua_client_restart(cr, 100, "Redirected via a proxy");
       break;
+
+    default:
+      break;
     }
   }
+#endif
 
   if (status == 423) {
     unsigned my_expires = 0;
@@ -1191,6 +1178,14 @@ int nua_base_client_check_restart(nua_client_request_t *cr,
 
       return nua_client_restart(cr, 100, "Re-Negotiating Expiration");
     }
+  }
+
+  if (status == 403) {
+	  if (nh->nh_auth) {
+		  /* Bad username/password */
+		  SU_DEBUG_7(("nua(%p): bad credentials, clearing them\n", (void *)nh));
+		  auc_clear_credentials(&nh->nh_auth, NULL, NULL);
+	  }
   }
 
   if ((status == 401 && sip->sip_www_authenticate) ||
@@ -1213,12 +1208,12 @@ int nua_base_client_check_restart(nua_client_request_t *cr,
       cr->cr_challenged = 1;
 
       if (invalid) {
-	/* Bad username/password */
-	SU_DEBUG_7(("nua(%p): bad credentials, clearing them\n", (void *)nh));
-	auc_clear_credentials(&nh->nh_auth, NULL, NULL);
-      }
-      else if (auc_has_authorization(&nh->nh_auth))
-	return nua_client_restart(cr, 100, "Request Authorized by Cache");
+		  /* Bad username/password */
+		  SU_DEBUG_7(("nua(%p): bad credentials, clearing them\n", (void *)nh));
+		  auc_clear_credentials(&nh->nh_auth, NULL, NULL);
+      } else if (auc_has_authorization(&nh->nh_auth)) {
+		  return nua_client_restart(cr, 100, "Request Authorized by Cache");
+	  }
 
       orq = cr->cr_orq, cr->cr_orq = NULL;
 
@@ -1231,10 +1226,13 @@ int nua_base_client_check_restart(nua_client_request_t *cr,
       return 1;
     }
   }
-
-  if (500 <= status && status < 600 &&
+  /* GriGiu : RFC-3261 status supported Retry-After */
+  if ( (status == 404 || status == 413 || status == 480 || status == 486 ||
+	   status == 500 || status == 503 ||
+	   status == 600 || status == 603) &&
       sip->sip_retry_after &&
-      sip->sip_retry_after->af_delta < NH_PGET(nh, max_retry_after)) {
+	  NH_PGET(nh, retry_after_enable) &&
+      sip->sip_retry_after->af_delta < 3200) {
     su_timer_t *timer;
     char phrase[18];		/* Retry After XXXX\0 */
 
@@ -1256,12 +1254,14 @@ int nua_base_client_check_restart(nua_client_request_t *cr,
     nua_client_report(cr, 100, phrase, NULL, orq, NULL);
     nta_outgoing_destroy(orq);
     cr->cr_status = 0, cr->cr_phrase = NULL;
+
     return 1;
   }
 
   return 0;  /* This was a final response that cannot be restarted. */
 }
 
+#if 0
 su_inline
 int can_redirect(sip_contact_t const *m, sip_method_t method)
 {
@@ -1277,6 +1277,7 @@ int can_redirect(sip_contact_t const *m, sip_method_t method)
   }
   return 0;
 }
+#endif
 
 /** @internal Add authorization data */
 static int nh_authorize(nua_handle_t *nh, tag_type_t tag, tag_value_t value, ...)
@@ -1592,10 +1593,6 @@ int nua_client_next_request(nua_client_request_t *cr, int invite)
   for (; cr; cr = cr->cr_next) {
     if (cr->cr_method == sip_method_cancel)
       continue;
-
-    if (invite
-	? cr->cr_method == sip_method_invite
-	: cr->cr_method != sip_method_invite)
       break;
   }
 

@@ -40,15 +40,17 @@
 #define MSG_PUB_T       struct sip_s
 #define MSG_HDR_T       union sip_header_u
 
+
 #include "sofia-sip/sip_parser.h"
 #include "sofia-sip/sip_extra.h"
+#include "../su/sofia-sip/su_alloc.h"
 
 #include <stdio.h>
 #include <stddef.h>
 #include <stdlib.h>
 #include <string.h>
 #include <limits.h>
-
+#
 #include <assert.h>
 
 /* ====================================================================== */
@@ -309,7 +311,7 @@ issize_t sip_alert_info_e(char b[], isize_t bsiz, sip_header_t const *h, int f)
  * {
  *   sip_common_t       rplyto_common[1]; // Common fragment info
 
- *   sip_error_t       *rplyto_next;	 // Dummy link to next header
+ *   sip_reply_to_t       *rplyto_next;	 // Dummy link to next header
  *   char const        *rplyto_display;	 // Display name
  *   url_t              rplyto_url[1];	 // Return URI
  *   msg_param_t const *rplyto_params;	 // List of optional parameters
@@ -881,18 +883,25 @@ issize_t sip_if_match_e(char b[], isize_t bsiz, sip_header_t const *h, int f)
 /* ====================================================================== */
 
 /** Parsing @CallInfo, @ErrorInfo. */
-static issize_t
-sip_info_field_d(su_home_t *home, sip_header_t *h, char **ss)
+static
+issize_t sip_info_d(su_home_t *home, sip_header_t *h, char *s, isize_t slen)
 {
   sip_call_info_t *ci = h->sh_call_info;
+  char *end = s + slen;
 
-  return sip_name_addr_d(home, ss, NULL, ci->ci_url, &ci->ci_params, NULL);
-}
+  for(;;) {
+	  ci = h->sh_call_info;
+	  end = s + slen;
 
-static issize_t
-sip_info_d(su_home_t *home, sip_header_t *h, char *s, isize_t slen)
-{
-  return msg_parse_header_fields(home, h, s, sip_info_field_d);
+	  while (*s == ',')
+		  s += span_lws(s + 1) + 1;
+
+	  if (sip_name_addr_d(home, &s, NULL, ci->ci_url, &ci->ci_params, NULL) < 0)
+		  return -1;
+
+	  slen = end - s;
+	  msg_parse_next_field_without_recursion();
+  }
 }
 
 isize_t sip_info_dup_xtra(sip_header_t const *h, isize_t offset)
@@ -1141,22 +1150,26 @@ msg_hclass_t sip_remote_party_id_class[] =
 SIP_HEADER_CLASS(remote_party_id, "Remote-Party-ID", "",
 		 rpid_params, append, remote_party_id);
 
-static issize_t
-sip_remote_party_id_field_d(su_home_t *home, sip_header_t *h, char **ss)
-
+issize_t sip_remote_party_id_d(su_home_t *home, sip_header_t *h,
+			       char *s, isize_t slen)
 {
-  sip_remote_party_id_t *rpid = (sip_remote_party_id_t *)h;
+	sip_remote_party_id_t *rpid;
 
-  return sip_name_addr_d(home, ss,
-			 &rpid->rpid_display,
-			 rpid->rpid_url,
-			 &rpid->rpid_params, NULL);
-}
+	for(;;) {
+		rpid = (sip_remote_party_id_t *)h;
 
-issize_t
-sip_remote_party_id_d(su_home_t *home, sip_header_t *h, char *s, isize_t slen)
-{
-  return msg_parse_header_fields(home, h, s, sip_remote_party_id_field_d);
+		while (*s == ',')   /* Ignore empty entries (comma-whitespace) */
+			*s = '\0', s += span_lws(s + 1) + 1;
+
+		if (sip_name_addr_d(home, &s,
+							&rpid->rpid_display,
+							rpid->rpid_url,
+							&rpid->rpid_params, NULL) == -1)
+			return -1;
+
+		msg_parse_next_field_without_recursion();
+	}
+
 }
 
 issize_t sip_remote_party_id_e(char b[], isize_t bsiz,
@@ -1282,22 +1295,25 @@ msg_hclass_t sip_p_asserted_identity_class[] =
 SIP_HEADER_CLASS(p_asserted_identity, "P-Asserted-Identity", "",
 		 paid_common, append, p_asserted_identity);
 
-static issize_t
-sip_p_asserted_identity_field_d(su_home_t *home, sip_header_t *h, char **ss)
+issize_t sip_p_asserted_identity_d(su_home_t *home, sip_header_t *h,
+				   char *s, isize_t slen)
 {
-  sip_p_asserted_identity_t *paid = (sip_p_asserted_identity_t *)h;
+	sip_p_asserted_identity_t *paid;
 
-  return sip_name_addr_d(home, ss,
-			 &paid->paid_display,
-			 paid->paid_url,
-			 NULL, NULL);
-}
+	for(;;) {
+		paid = (sip_p_asserted_identity_t *)h;
+		while (*s == ',')   /* Ignore empty entries (comma-whitespace) */
+			*s = '\0', s += span_lws(s + 1) + 1;
 
-issize_t
-sip_p_asserted_identity_d(su_home_t *home, sip_header_t *h,
-			  char *s, isize_t slen)
-{
-  return msg_parse_header_fields(home, h, s, sip_p_asserted_identity_field_d);
+		if (sip_name_addr_d(home, &s,
+							&paid->paid_display,
+							paid->paid_url,
+							NULL, NULL) == -1)
+			return -1;
+
+		msg_parse_next_field_without_recursion();
+	}
+
 }
 
 issize_t sip_p_asserted_identity_e(char b[], isize_t bsiz,

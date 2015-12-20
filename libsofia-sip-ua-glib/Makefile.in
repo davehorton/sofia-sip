@@ -73,11 +73,11 @@ ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/m4/libtool.m4 \
 	$(top_srcdir)/m4/ltoptions.m4 $(top_srcdir)/m4/ltsugar.m4 \
 	$(top_srcdir)/m4/ltversion.m4 $(top_srcdir)/m4/lt~obsolete.m4 \
-	$(top_srcdir)/m4/sac-coverage.m4 \
+	$(top_srcdir)/acinclude.m4 $(top_srcdir)/m4/sac-pkg-config.m4 \
 	$(top_srcdir)/m4/sac-general.m4 \
-	$(top_srcdir)/m4/sac-openssl.m4 \
-	$(top_srcdir)/m4/sac-pkg-config.m4 $(top_srcdir)/m4/sac-su2.m4 \
-	$(top_srcdir)/m4/sac-tport.m4 $(top_srcdir)/configure.ac
+	$(top_srcdir)/m4/sac-openssl.m4 $(top_srcdir)/m4/sac-su2.m4 \
+	$(top_srcdir)/m4/sac-su.m4 $(top_srcdir)/m4/sac-tport.m4 \
+	$(top_srcdir)/m4/sac-coverage.m4 $(top_srcdir)/configure.ac
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
 mkinstalldirs = $(install_sh) -d
@@ -109,9 +109,8 @@ am__base_list = \
 am__installdirs = "$(DESTDIR)$(libdir)"
 LTLIBRARIES = $(lib_LTLIBRARIES)
 am__DEPENDENCIES_1 =
-libsofia_sip_ua_glib_la_DEPENDENCIES =  \
-	$(top_builddir)/libsofia-sip-ua/libsofia-sip-ua.la \
-	$(GLIB_TARGETS) $(am__DEPENDENCIES_1)
+libsofia_sip_ua_glib_la_DEPENDENCIES = $(GLIB_TARGETS) \
+	$(am__DEPENDENCIES_1)
 am_libsofia_sip_ua_glib_la_OBJECTS =
 libsofia_sip_ua_glib_la_OBJECTS =  \
 	$(am_libsofia_sip_ua_glib_la_OBJECTS)
@@ -225,7 +224,6 @@ LIBVER_SOFIA_SIP_UA_SOVER = @LIBVER_SOFIA_SIP_UA_SOVER@
 LIPO = @LIPO@
 LN_S = @LN_S@
 LTLIBOBJS = @LTLIBOBJS@
-MAINT = @MAINT@
 MAKEINFO = @MAKEINFO@
 MINGW_ENVIRONMENT = @MINGW_ENVIRONMENT@
 MKDIR_P = @MKDIR_P@
@@ -322,10 +320,7 @@ SUBDIRS = su-glib
 GLIB_TARGETS = su-glib/libsu-glib.la
 lib_LTLIBRARIES = $(am__append_1)
 libsofia_sip_ua_glib_la_SOURCES = 
-libsofia_sip_ua_glib_la_LIBADD = \
-	$(top_builddir)/libsofia-sip-ua/libsofia-sip-ua.la \
-	$(GLIB_TARGETS) $(GLIB_LIBS)
-
+libsofia_sip_ua_glib_la_LIBADD = $(GLIB_TARGETS) $(GLIB_LIBS)
 
 # set the libtool version info version:revision:age for libsofia-sip-ua-glib
 # - soname to 'libsofia-sip-ua-glib.so.(CUR-AGE)'
@@ -379,7 +374,7 @@ all: all-recursive
 
 .SUFFIXES:
 .SUFFIXES: .c .lo .o
-$(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am $(top_srcdir)/rules/recursive.am $(top_srcdir)/rules/lcov.am $(top_srcdir)/rules/silent.am $(am__configure_deps)
+$(srcdir)/Makefile.in:  $(srcdir)/Makefile.am $(top_srcdir)/rules/recursive.am $(top_srcdir)/rules/lcov.am $(top_srcdir)/rules/silent.am $(am__configure_deps)
 	@for dep in $?; do \
 	  case '$(am__configure_deps)' in \
 	    *$$dep*) \
@@ -404,9 +399,9 @@ Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 $(top_builddir)/config.status: $(top_srcdir)/configure $(CONFIG_STATUS_DEPENDENCIES)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
 
-$(top_srcdir)/configure: @MAINTAINER_MODE_TRUE@ $(am__configure_deps)
+$(top_srcdir)/configure:  $(am__configure_deps)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
-$(ACLOCAL_M4): @MAINTAINER_MODE_TRUE@ $(am__aclocal_m4_deps)
+$(ACLOCAL_M4):  $(am__aclocal_m4_deps)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
 $(am__aclocal_m4_deps):
 install-libLTLIBRARIES: $(lib_LTLIBRARIES)

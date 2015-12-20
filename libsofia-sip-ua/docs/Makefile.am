@@ -35,8 +35,8 @@ Doxyfile.rfc: Makefile.am
 		for (i=from; i < to; i++) { \
 		  print "RFC"i"=\"<a href="q site i type q">RFC "i"</a>\" "b; \
 		}}' \
-	site=http://tools.ietf.org/html type= \
-	from=700 to=6500 \
+	site=http://www.faqs.org/rfcs/rfc type=.html \
+	from=700 to=5500 \
 	/dev/null > $@
 
 CLEANFILES = Doxyfile.rfc *.doxytags
@@ -47,5 +47,4 @@ distclean-local:
 # ----------------------------------------------------------------------
 # Sofia specific rules
 
-LDADD =
 include $(top_srcdir)/rules/sofia.am

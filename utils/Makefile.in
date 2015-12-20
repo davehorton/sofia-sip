@@ -25,7 +25,7 @@
 # ref: http://www.gnu.org/software/automake/manual/automake.html
 
 # ----------------------------------------------------------------------
-# Build targets
+# Header paths
 
 # common Makefile targets for libsofia-sip-ua(-glib) modules
 # ----------------------------------------------------------
@@ -92,7 +92,6 @@ POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
 target_triplet = @target@
-bin_PROGRAMS = sip-options$(EXEEXT) sip-date$(EXEEXT) sip-dig$(EXEEXT)
 DIST_COMMON = $(noinst_HEADERS) $(srcdir)/Doxyfile.in \
 	$(srcdir)/Makefile.am $(srcdir)/Makefile.in \
 	$(top_srcdir)/rules/lcov.am $(top_srcdir)/rules/silent.am \
@@ -103,16 +102,17 @@ DIST_COMMON = $(noinst_HEADERS) $(srcdir)/Doxyfile.in \
 @NDEBUG_TRUE@am__append_1 = -DNDEBUG
 @HAVE_GENPNG_TRUE@@HAVE_LCOV_TRUE@am__append_2 = --frames
 @HAVE_LCOV_TRUE@am__append_3 = lcov lcov-report lcov-rerun clean-lcov covcheck uncovered
+bin_PROGRAMS = sip-options$(EXEEXT) sip-date$(EXEEXT) sip-dig$(EXEEXT)
 subdir = utils
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/m4/libtool.m4 \
 	$(top_srcdir)/m4/ltoptions.m4 $(top_srcdir)/m4/ltsugar.m4 \
 	$(top_srcdir)/m4/ltversion.m4 $(top_srcdir)/m4/lt~obsolete.m4 \
-	$(top_srcdir)/m4/sac-coverage.m4 \
+	$(top_srcdir)/acinclude.m4 $(top_srcdir)/m4/sac-pkg-config.m4 \
 	$(top_srcdir)/m4/sac-general.m4 \
-	$(top_srcdir)/m4/sac-openssl.m4 \
-	$(top_srcdir)/m4/sac-pkg-config.m4 $(top_srcdir)/m4/sac-su2.m4 \
-	$(top_srcdir)/m4/sac-tport.m4 $(top_srcdir)/configure.ac
+	$(top_srcdir)/m4/sac-openssl.m4 $(top_srcdir)/m4/sac-su2.m4 \
+	$(top_srcdir)/m4/sac-su.m4 $(top_srcdir)/m4/sac-tport.m4 \
+	$(top_srcdir)/m4/sac-coverage.m4 $(top_srcdir)/configure.ac
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
 mkinstalldirs = $(install_sh) -d
@@ -127,17 +127,17 @@ sip_date_OBJECTS = sip-date.$(OBJEXT)
 sip_date_LDADD = $(LDADD)
 am__DEPENDENCIES_1 =
 sip_date_DEPENDENCIES = ../libsofia-sip-ua/libsofia-sip-ua.la \
-	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1)
+	$(am__DEPENDENCIES_1)
 sip_dig_SOURCES = sip-dig.c
 sip_dig_OBJECTS = sip-dig.$(OBJEXT)
 sip_dig_LDADD = $(LDADD)
 sip_dig_DEPENDENCIES = ../libsofia-sip-ua/libsofia-sip-ua.la \
-	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1)
+	$(am__DEPENDENCIES_1)
 sip_options_SOURCES = sip-options.c
 sip_options_OBJECTS = sip-options.$(OBJEXT)
 sip_options_LDADD = $(LDADD)
 sip_options_DEPENDENCIES = ../libsofia-sip-ua/libsofia-sip-ua.la \
-	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1)
+	$(am__DEPENDENCIES_1)
 DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir) -I$(top_builddir)/libsofia-sip-ua/su/sofia-sip
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
@@ -210,7 +210,6 @@ LIBVER_SOFIA_SIP_UA_SOVER = @LIBVER_SOFIA_SIP_UA_SOVER@
 LIPO = @LIPO@
 LN_S = @LN_S@
 LTLIBOBJS = @LTLIBOBJS@
-MAINT = @MAINT@
 MAKEINFO = @MAKEINFO@
 MINGW_ENVIRONMENT = @MINGW_ENVIRONMENT@
 MKDIR_P = @MKDIR_P@
@@ -302,13 +301,6 @@ target_vendor = @target_vendor@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-noinst_HEADERS = apps_utils.h
-LDADD = ../libsofia-sip-ua/libsofia-sip-ua.la $(GLIB_LIBS) \
-	$(openssl_LIBS)
-
-# ----------------------------------------------------------------------
-# Dist and install
-EXTRA_DIST = utils.docs
 sofiasrcdir = ${top_srcdir}/libsofia-sip-ua
 sofiabuilddir = ${top_builddir}/libsofia-sip-ua
 AM_CFLAGS = $(CWFLAG) $(SOFIA_COVERAGE) $(SOFIA_CFLAGS) \
@@ -340,8 +332,7 @@ INTERNAL_INCLUDES = \
     -I${sofiasrcdir}/url -I${sofiabuilddir}/url \
     -I${sofiasrcdir}/su -I${sofiabuilddir}/su
 
-PHONY = built-sources clean-built-sources $(am__append_3) \
-	built-sources clean-built-sources valcheck doxygen
+PHONY = built-sources clean-built-sources $(am__append_3)
 VALGRIND = valgrind
 VALGRINDFLAGS = --tool=memcheck
 
@@ -372,15 +363,22 @@ LINK = ${SOFIA_SILENT}test "${SOFIA_SILENT}" != @ || echo '	 LINK $@'; \
 	$(CCLD) $(AM_CFLAGS) $(CFLAGS) \
 	$(AM_LDFLAGS) $(LDFLAGS) -o $@
 
+AM_CPPFLAGS = ${INTERNAL_INCLUDES}
 
 # ----------------------------------------------------------------------
-# Sofia specific rules
-INCLUDES = ${INTERNAL_INCLUDES}
+# Build targets
+noinst_HEADERS = apps_utils.h
+LDADD = ../libsofia-sip-ua/libsofia-sip-ua.la $(GLIB_LIBS)
+
+# ----------------------------------------------------------------------
+# Dist and install
+EXTRA_DIST = utils.docs
+CLEANFILES = utils.doxytags
 all: all-am
 
 .SUFFIXES:
 .SUFFIXES: _tag_ref.c _tag.c .c .lo .o .obj
-$(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am $(top_srcdir)/rules/sofia.am $(top_srcdir)/rules/valcheck.am $(top_srcdir)/rules/lcov.am $(top_srcdir)/rules/silent.am $(am__configure_deps)
+$(srcdir)/Makefile.in:  $(srcdir)/Makefile.am $(top_srcdir)/rules/sofia.am $(top_srcdir)/rules/valcheck.am $(top_srcdir)/rules/lcov.am $(top_srcdir)/rules/silent.am $(am__configure_deps)
 	@for dep in $?; do \
 	  case '$(am__configure_deps)' in \
 	    *$$dep*) \
@@ -405,9 +403,9 @@ Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 $(top_builddir)/config.status: $(top_srcdir)/configure $(CONFIG_STATUS_DEPENDENCIES)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
 
-$(top_srcdir)/configure: @MAINTAINER_MODE_TRUE@ $(am__configure_deps)
+$(top_srcdir)/configure:  $(am__configure_deps)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
-$(ACLOCAL_M4): @MAINTAINER_MODE_TRUE@ $(am__aclocal_m4_deps)
+$(ACLOCAL_M4):  $(am__aclocal_m4_deps)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
 $(am__aclocal_m4_deps):
 Doxyfile: $(top_builddir)/config.status $(srcdir)/Doxyfile.in
@@ -595,6 +593,7 @@ mostlyclean-generic:
 	-test -z "$(MOSTLYCLEANFILES)" || rm -f $(MOSTLYCLEANFILES)
 
 clean-generic:
+	-test -z "$(CLEANFILES)" || rm -f $(CLEANFILES)
 
 distclean-generic:
 	-test -z "$(CONFIG_CLEAN_FILES)" || rm -f $(CONFIG_CLEAN_FILES)
@@ -856,11 +855,6 @@ valcheck-TESTS:	$(TESTS)
 @AMDEP_FALSE@@am__fastdepCC_FALSE@	${SOFIA_SILENT}$(LTCOMPILE) -c -o $@ $<
 
 # endif
-
-built-sources clean-built-sources valcheck:
-
-doxygen:
-	doxygen
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

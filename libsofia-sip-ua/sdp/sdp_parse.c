@@ -91,6 +91,9 @@ struct sdp_parser_s {
 #define pr_error   pr_output.pru_error
 #define pr_session pr_output.pru_session
 
+#ifdef _MSC_VER
+#undef STRICT
+#endif
 #define STRICT(pr) (pr->pr_strict)
 
 /* Static parser object used when running out of memory */
@@ -107,12 +110,8 @@ static int parsing_error(sdp_parser_t *p, char const *fmt, ...);
 /** Parse an SDP message.
  *
  * The function sdp_parse() parses an SDP message @a msg of size @a
- * msgsize. If msgsize is -1, the size of message is calculated using
- * strlen().
- *
- * Parsing is done according to the given @a flags.
- *
- * The SDP message may not contain a NUL.
+ * msgsize. Parsing is done according to the given @a flags. The SDP message
+ * may not contain a NUL.
  *
  * The parsing result is stored to an #sdp_session_t structure.
  *
@@ -148,7 +147,7 @@ sdp_parse(su_home_t *home, char const msg[], issize_t msgsize, int flags)
   char *b;
   size_t len;
 
-  if (msg == NULL) {
+  if (msgsize == -1 || msg == NULL) {
     p = su_home_clone(home, sizeof(*p));
     if (p)
       parsing_error(p, "invalid input message");
@@ -157,7 +156,7 @@ sdp_parse(su_home_t *home, char const msg[], issize_t msgsize, int flags)
     return p;
   }
 
-  if (msgsize == -1)
+  if (msgsize == -1 && msg)
     len = strlen(msg);
   else
     len = msgsize;
@@ -166,26 +165,31 @@ sdp_parse(su_home_t *home, char const msg[], issize_t msgsize, int flags)
     len = ISSIZE_MAX;
 
   p = su_home_clone(home, sizeof(*p) + len + 1);
-  if (p == NULL)
-    return (sdp_parser_t*)&no_mem_error;
 
-  b = strncpy((void *)(p + 1), msg, len);
-  b[len] = 0;
+  if (p) {
+    b = strncpy((void *)(p + 1), msg, len);
+    b[len] = 0;
 
-  p->pr_message = b;
-  p->pr_strict = (flags & sdp_f_strict) != 0;
-  p->pr_anynet = (flags & sdp_f_anynet) != 0;
-  p->pr_mode_0000 = (flags & sdp_f_mode_0000) != 0;
-  p->pr_insane = (flags & sdp_f_insane) != 0;
-  p->pr_c_missing = (flags & sdp_f_c_missing) != 0;
-  if (flags & sdp_f_config)
-    p->pr_c_missing = 1, p->pr_config = 1;
-  p->pr_mode_manual = (flags & sdp_f_mode_manual) != 0;
-  p->pr_session_mode = sdp_sendrecv;
+    p->pr_message = b;
+    p->pr_strict = (flags & sdp_f_strict) != 0;
+    p->pr_anynet = (flags & sdp_f_anynet) != 0;
+    p->pr_mode_0000 = (flags & sdp_f_mode_0000) != 0;
+    p->pr_insane = (flags & sdp_f_insane) != 0;
+    p->pr_c_missing = (flags & sdp_f_c_missing) != 0;
+    if (flags & sdp_f_config)
+      p->pr_c_missing = 1, p->pr_config = 1;
+    p->pr_mode_manual = (flags & sdp_f_mode_manual) != 0;
+    p->pr_session_mode = sdp_sendrecv;
 
-  parse_message(p);
+    parse_message(p);
 
-  return p;
+    return p;
+  }
+
+  if (p)
+    sdp_parser_free(p);
+
+  return (sdp_parser_t*)&no_mem_error;
 }
 
 
@@ -479,7 +483,7 @@ static void parse_message(sdp_parser_t *p)
 
   post_session(p, sdp);
 }
-
+#ifdef SOFIA_AUTO_CORRECT_INADDR_ANY
 int sdp_connection_is_inaddr_any(sdp_connection_t const *c)
 {
   return
@@ -488,6 +492,7 @@ int sdp_connection_is_inaddr_any(sdp_connection_t const *c)
     ((c->c_addrtype == sdp_addr_ip4 && su_strmatch(c->c_address, "0.0.0.0")) ||
      (c->c_addrtype == sdp_addr_ip6 && su_strmatch(c->c_address, "::")));
 }
+#endif
 
 /**Postprocess session description.
  *
@@ -497,7 +502,9 @@ int sdp_connection_is_inaddr_any(sdp_connection_t const *c)
 static void post_session(sdp_parser_t *p, sdp_session_t *sdp)
 {
   sdp_media_t *m;
+#ifdef SOFIA_AUTO_CORRECT_INADDR_ANY
   sdp_connection_t const *c;
+#endif
 
   if (!p->pr_ok)
     return;
@@ -521,12 +528,15 @@ static void post_session(sdp_parser_t *p, sdp_session_t *sdp)
       continue;
     }
 
+#ifdef SOFIA_AUTO_CORRECT_INADDR_ANY
     c = sdp_media_connections(m);
+
 
     if (p->pr_mode_0000 && sdp_connection_is_inaddr_any(c)) {
       /* Reset recvonly flag */
       m->m_mode &= ~sdp_recvonly;
     }
+#endif
   }
 
   if (p->pr_insane)
@@ -818,12 +828,12 @@ static void parse_connection(sdp_parser_t *p, char *r, sdp_connection_t **result
 
   *result = c;
 
-  if (su_casenmatch(r, "IN", 2) && (r[2] == ' ' || r[2] == '\t')) {
+  if (su_casenmatch(r, "IN", 2)) {
     char *s;
 
     /* nettype is internet */
-    token(&r, SPACE TAB, NULL, NULL);
     c->c_nettype = sdp_net_in;
+    s = token(&r, SPACE TAB, NULL, NULL);
 
     /* addrtype */
     s = token(&r, SPACE TAB, NULL, NULL);
@@ -912,7 +922,9 @@ static void parse_bandwidth(sdp_parser_t *p, char *r, sdp_bandwidth_t **result)
 
   if (su_casematch(name, "CT"))
     modifier = sdp_bw_ct, name = NULL;
-  else if (su_casematch(name, "AS") == 0)
+  else if (su_casematch(name, "TIAS") == 1)
+    modifier = sdp_bw_tias, name = NULL;
+  else if (su_casematch(name, "AS") == 1)
     modifier = sdp_bw_as, name = NULL;
   else
     modifier = sdp_bw_x;
@@ -1029,11 +1041,8 @@ static void parse_repeat(sdp_parser_t *p, char *d, sdp_repeat_t **result)
 
     switch (*d) {
     case 'd': case 'D': tt *= 24;
-      /* FALLTHROUGH */
     case 'h': case 'H': tt *= 60;
-      /* FALLTHROUGH */
     case 'm': case 'M': tt *= 60;
-      /* FALLTHROUGH */
     case 's': case 'S': d++;
       break;
     }
@@ -1082,7 +1091,7 @@ static void parse_zone(sdp_parser_t *p, char *r, sdp_zone_t **result)
     if (!(*s == '-' || is_posdigit(*s) || (!STRICT(p) && (*s) == '0')))
       break;
     do { s++; } while (is_digit(*s));
-    if (*s && strchr(STRICT(p) ? "dhms" : "dhmsDHMS", *s))
+    if (*s && strchr("dhms", *s))
       s++;
     N++;
     if (!(i = STRICT(p) ? is_space(*s) : strspn(s, SPACE TAB)))
@@ -1107,13 +1116,10 @@ static void parse_zone(sdp_parser_t *p, char *r, sdp_zone_t **result)
     unsigned long at = strtoul(r, &r, 10);
     long offset = strtol(r, &r, 10);
     switch (*r) {
-    case 'd': case 'D': offset *= 24;
-      /* FALLTHROUGH */
-    case 'h': case 'H': offset *= 60;
-      /* FALLTHROUGH */
-    case 'm': case 'M': offset *= 60;
-      /* FALLTHROUGH */
-    case 's': case 'S': r++;
+    case 'd': offset *= 24;
+    case 'h': offset *= 60;
+    case 'm': offset *= 60;
+    case 's': r++;
       break;
     }
 
@@ -1334,8 +1340,8 @@ static void parse_media(sdp_parser_t *p, char *r, sdp_media_t **result)
 
   /* RTP format list */
   if (*r && sdp_media_has_rtp(m)) {
-    parse_payload(p, r, &m->m_rtpmaps);
-    return;
+	  parse_payload(p, r, &m->m_rtpmaps);
+	  return;
   }
 
   /* "normal" format list */
@@ -1378,7 +1384,7 @@ void sdp_media_type(sdp_media_t *m, char const *s)
 
 /** Set transport protocol.
  *
- * Set the @a m->m_proto to a well-known protocol type as
+ * Set the @m->m_proto to a well-known protocol type as
  * well as canonize case of @a m_proto_name.
  */
 void sdp_media_transport(sdp_media_t *m, char const *s)
@@ -1391,9 +1397,21 @@ void sdp_media_transport(sdp_media_t *m, char const *s)
     m->m_proto = sdp_proto_rtp, m->m_proto_name = "RTP/AVP";
   else if (su_casematch(s, "RTP/SAVP"))
     m->m_proto = sdp_proto_srtp, m->m_proto_name = "RTP/SAVP";
+  else if (su_casematch(s, "RTP/SAVPF"))
+	  m->m_proto = sdp_proto_extended_srtp, m->m_proto_name = "RTP/SAVPF";
+  else if (su_casematch(s, "UDP/TLS/RTP/SAVPF"))
+    m->m_proto = sdp_proto_extended_srtp, m->m_proto_name = "UDP/TLS/RTP/SAVPF";
+  else if (su_casematch(s, "RTP/AVPF"))
+	  m->m_proto = sdp_proto_extended_rtp, m->m_proto_name = "RTP/AVPF";
+  else if (su_casematch(s, "UDP/RTP/AVPF"))
+    m->m_proto = sdp_proto_extended_rtp, m->m_proto_name = "UDP/RTP/AVPF";
   else if (su_casematch(s, "udptl"))
     /* Lower case - be compatible with people living by T.38 examples */
     m->m_proto = sdp_proto_udptl, m->m_proto_name = "udptl";
+  else if (su_casematch(s, "TCP/MSRP"))
+    m->m_proto = sdp_proto_msrp, m->m_proto_name = "TCP/MSRP";
+  else if (su_casematch(s, "TCP/TLS/MSRP"))
+    m->m_proto = sdp_proto_msrps, m->m_proto_name = "TCP/TLS/MSRP";
   else if (su_casematch(s, "UDP"))
     m->m_proto = sdp_proto_udp, m->m_proto_name = "UDP";
   else if (su_casematch(s, "TCP"))
@@ -1407,7 +1425,7 @@ void sdp_media_transport(sdp_media_t *m, char const *s)
 /** Check if media uses RTP as its transport protocol.  */
 int sdp_media_has_rtp(sdp_media_t const *m)
 {
-  return m && (m->m_proto == sdp_proto_rtp || m->m_proto == sdp_proto_srtp);
+	return m && (m->m_proto == sdp_proto_rtp || m->m_proto == sdp_proto_srtp || m->m_proto == sdp_proto_extended_srtp || m->m_proto == sdp_proto_extended_rtp);
 }
 
 #define RTPMAP(pt, encoding, rate, params) \
@@ -1583,7 +1601,7 @@ static void parse_media_attr(sdp_parser_t *p, char *r, sdp_media_t *m,
 
   if (p->pr_mode_manual)
     ;
-  else if (su_casematch(name, "inactive")) {
+  else if (m->m_port == 0 || su_casematch(name, "inactive")) {
     m->m_mode = sdp_inactive;
     return;
   }
@@ -1601,8 +1619,8 @@ static void parse_media_attr(sdp_parser_t *p, char *r, sdp_media_t *m,
   }
 
   if (rtp && su_casematch(name, "rtpmap")) {
-    if ((n = parse_rtpmap(p, r, m)) == 0 || n < -1)
-      return;
+	  if ((n = parse_rtpmap(p, r, m)) == 0 || n < -1)
+		  return;
   }
   else if (rtp && su_casematch(name, "fmtp")) {
     if ((n = parse_fmtp(p, r, m)) == 0 || n < -1)
@@ -1802,7 +1820,9 @@ static int parse_ul(sdp_parser_t *p, char **r,
 }
 
 #if !HAVE_STRTOULL
-unsigned longlong strtoull(char const *string, char **return_end, int base);
+#if !((defined(WIN32) || defined(_WIN32)) && (_MSC_VER >= 1800))
+unsigned long long strtoull(char const *string, char **return_end, int base);
+#endif
 #endif
 
 /*
@@ -1811,7 +1831,7 @@ unsigned longlong strtoull(char const *string, char **return_end, int base);
 static int parse_ull(sdp_parser_t *p, char **r,
 		     uint64_t *result, uint64_t max)
 {
-  unsigned longlong ull;
+  unsigned long long ull;
 
   char *s = *r;
 
@@ -1888,12 +1908,11 @@ static char *next(char **message, const char *sep, const char *strip)
 
 static int parsing_error(sdp_parser_t *p, char const *fmt, ...)
 {
-  int n;
   va_list ap;
   va_start(ap, fmt);
 
   memset(p->pr_error, 0, sizeof(p->pr_error));
-  n = vsnprintf(p->pr_error, sizeof(p->pr_error), fmt, ap);
+  vsnprintf(p->pr_error, sizeof(p->pr_error), fmt, ap);
   va_end(ap);
 
   p->pr_ok = 0;

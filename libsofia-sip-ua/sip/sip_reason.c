@@ -94,24 +94,27 @@ static msg_update_f sip_reason_update;
 msg_hclass_t sip_reason_class[] =
 SIP_HEADER_CLASS(reason, "Reason", "", re_params, append, reason);
 
-static issize_t
-sip_reason_field_d(su_home_t *home, sip_header_t *h, char **ss)
+issize_t sip_reason_d(su_home_t *home, sip_header_t *h, char *s, isize_t slen)
 {
-  sip_reason_t *re = (sip_reason_t *)h;
+	sip_reason_t *re;
+	size_t n;
+	for (;;) {
+		re = (sip_reason_t *)h;
 
-  if (msg_token_d(ss, &re->re_protocol) == -1)
-    return -1;
+		while (*s == ',')   /* Ignore empty entries (comma-whitespace) */
+			*s = '\0', s += span_lws(s + 1) + 1;
 
-  if (**ss == ';')
-    return msg_params_d(home, ss, &re->re_params);
+		re->re_protocol = s;
+		if ((n = span_token(s)) == 0)
+			return -1;
+		s += n; while (IS_LWS(*s)) *s++ = '\0';
+		if (*s == ';' && msg_params_d(home, &s, &re->re_params) < 0)
+			return -1;
 
-  return 0;
-}
+		msg_parse_next_field_without_recursion();
+	}
 
-issize_t
-sip_reason_d(su_home_t *home, sip_header_t *h, char *s, isize_t slen)
-{
-  return msg_parse_header_fields(home, h, s, sip_reason_field_d);
+
 }
 
 issize_t sip_reason_e(char b[], isize_t bsiz, sip_header_t const *h, int f)

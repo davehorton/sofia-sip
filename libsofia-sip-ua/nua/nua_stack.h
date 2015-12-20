@@ -77,13 +77,17 @@ SOFIA_BEGIN_DECLS
 
 typedef struct event_s event_t, nua_signal_data_t;
 
-/** @internal Extended event data. */
+/** Extended event data. */
 typedef struct nua_ee_data {
   nua_t *ee_nua;
   nua_event_data_t ee_data[1];
 } nua_ee_data_t;
 
-#define NONE ((void *)(intptr_t)-1)
+#ifndef _MSC_VER
+#define       NONE ((void *)-1)
+#else
+#define       NONE ((void *)(INT_PTR)-1)
+#endif
 
 typedef struct register_usage nua_registration_t;
 
@@ -146,11 +150,14 @@ struct nua_handle_s
   unsigned        nh_ref_by_user:1;	/**< Has user used the handle? */
   unsigned        nh_init:1;	        /**< Handle has been initialized */
   unsigned        nh_used_ptags:1;	/**< Ptags has been used */
+  unsigned        nh_destroyed:1;	/**< nh_destroy already called */
   unsigned :0;
 
   nua_dialog_state_t nh_ds[1];
 
   auth_client_t  *nh_auth;	/**< Authorization objects */
+
+  soa_session_t  *nh_soa;	/**< Media session */
 
   struct nua_referral {
     nua_handle_t  *ref_handle;	/**< Referring handle */
@@ -221,13 +228,12 @@ struct nua_s {
   nua_registration_t *nua_registrations; /**< Active registrations */
 
   /* Constants */
-  sip_accept_t       *nua_accept_multipart;
   sip_accept_t       *nua_invite_accept; /* What we accept for invite */
 
   su_root_t          *nua_root;
   su_task_r           nua_server;
   nta_agent_t        *nua_nta;
-  su_timer_t         *nua_shutdown_timer;
+  su_timer_t         *nua_timer;
 
   /* User-agent parameters */
   nua_global_preferences_t nua_prefs[1];
@@ -332,6 +338,8 @@ int nua_stack_tevent(nua_t *nua, nua_handle_t *nh, msg_t *msg,
 int nua_stack_event(nua_t *nua, nua_handle_t *nh, msg_t *msg,
 		    nua_event_t event, int status, char const *phrase,
 		    tagi_t const *tags);
+
+su_msg_t *nua_current_msg(nua_t const *nua, int clear);
 
 void nua_move_event(nua_saved_event_t a[1], nua_saved_event_t b[1]);
 

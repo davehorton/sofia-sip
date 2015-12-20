@@ -8,7 +8,7 @@
 # ----------------------------------------------------------------------
 # Header paths
 
-INCLUDES = 	-I$(srcdir)/../ipt -I../ipt \
+AM_CPPFLAGS = 	-I$(srcdir)/../ipt -I../ipt \
 		-I$(srcdir)/../iptsec -I../iptsec \
 		-I$(srcdir)/../msg -I../msg \
 		-I$(srcdir)/../bnf -I../bnf \
@@ -26,8 +26,6 @@ noinst_LTLIBRARIES = 	libnth.la
 check_PROGRAMS = 	test_nth http-client http-server
 
 TESTS = 		test_nth
-
-CLEANFILES =		tmp_sippasswd.*
 
 # ----------------------------------------------------------------------
 # Rules for building the targets

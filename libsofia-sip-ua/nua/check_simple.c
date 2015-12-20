@@ -153,19 +153,16 @@ notify_to_nua(enum nua_substate expect_substate,
   struct event *event;
   struct message *response;
   ta_list ta;
-  int status;
 
   ta_start(ta, tag, value);
   fail_if(s2_sip_request_to(dialog, SIP_METHOD_NOTIFY, NULL,
-			    SIPTAG_CONTENT_TYPE_STR(event_mime_type),
-			    SIPTAG_PAYLOAD_STR(event_state),
-			    ta_tags(ta)));
+			SIPTAG_CONTENT_TYPE_STR(event_mime_type),
+			SIPTAG_PAYLOAD_STR(event_state),
+			ta_tags(ta)));
   ta_end(ta);
 
-  response = s2_sip_wait_for_response(0, SIP_METHOD_NOTIFY);
+  response = s2_sip_wait_for_response(200, SIP_METHOD_NOTIFY);
   fail_if(!response);
-  status = response->sip->sip_status->st_status;
-  fail_unless(status == 200);
   s2_sip_free_message(response);
 
   event = s2_wait_for_event(nua_i_notify, 200); fail_if(!event);
@@ -247,7 +244,7 @@ unsubscribe_by_nua(nua_handle_t *nh, tag_type_t tag, tag_value_t value, ...)
 
   fail_if(s2_sip_request_to(dialog, SIP_METHOD_NOTIFY, NULL,
 			SIPTAG_EVENT(subscribe->sip->sip_event),
-			SIPTAG_SUBSCRIPTION_STATE_STR("terminated;reason=timeout"),
+			SIPTAG_SUBSCRIPTION_STATE_STR("terminated;reason=tiemout"),
 			SIPTAG_CONTENT_TYPE_STR(event_mime_type),
 			SIPTAG_PAYLOAD_STR(event_state),
 			TAG_END()));
@@ -400,51 +397,6 @@ START_TEST(subscribe_6_1_4)
 }
 END_TEST
 
-START_TEST(subscribe_6_1_5)
-{
-  nua_handle_t *nh;
-  struct event *notify;
-  sip_via_t *vorig = s2_sip_tport_via(s2sip->udp.tport);
-  sip_via_t via[2];
-  char *v0_params[8] = {}, *v1_params[8] = {};
-  char branch0[32], branch1[32];
-
-  S2_CASE("6.1.5", "Via handling in response to NOTIFY",
-	  "NUA sends SUBSCRIBE, waits for NOTIFY, sends un-SUBSCRIBE");
-
-  nh = nua_handle(nua, NULL, SIPTAG_TO(s2sip->aor), TAG_END());
-  nua_subscribe(nh, SIPTAG_EVENT_STR(event_type), TAG_END());
-
-  s2_sip_msg_flags = MSG_FLG_COMMA_LISTS|MSG_FLG_COMPACT;
-
-  fail_if(vorig == NULL);
-
-  via[0] = *vorig;
-  via[0].v_host = "example.org";
-  via[0].v_params = (void *)v0_params;
-  snprintf(v0_params[0] = branch0, sizeof branch0,
-	   "branch=z9hG4bK%lx", ++s2sip->tid);
-
-  fail_if(vorig == NULL);
-
-  via[1] = *vorig;
-  via[1].v_params = (void *)v1_params;
-  snprintf(v1_params[0] = branch1, sizeof branch1,
-	   "branch=z9hG4bK%lx", ++s2sip->tid);
-
-  notify = subscription_by_nua(nh, nua_substate_embryonic,
-			       SIPTAG_VIA(via + 1),
-			       SIPTAG_VIA(via + 0),
-			       TAG_END());
-
-  s2_sip_msg_flags = 0;
-
-  s2_free_event(notify);
-  unsubscribe_by_nua(nh, TAG_END());
-  nua_handle_destroy(nh);
-}
-END_TEST
-
 TCase *subscribe_tcase(int threading)
 {
   TCase *tc = tcase_create("6.1 - Basic SUBSCRIBE_");
@@ -458,7 +410,6 @@ TCase *subscribe_tcase(int threading)
     tcase_add_test(tc, subscribe_6_1_2);
     tcase_add_test(tc, subscribe_6_1_3);
     tcase_add_test(tc, subscribe_6_1_4);
-    tcase_add_test(tc, subscribe_6_1_5);
   }
   return tc;
 }
@@ -860,118 +811,6 @@ START_TEST(notify_6_3_5)
 }
 END_TEST
 
-START_TEST(notify_6_3_6)
-{
-  nua_handle_t *nh;
-  struct event *subscribe;
-  struct message *notify, *response;
-  sip_t *sip;
-
-  S2_CASE("6.3.6", "Explicit refresh with NUTAG_APPL_EVENT()",
-	  "Process subscription refresh by application");
-
-  nua_set_params(nua,
-		 NUTAG_APPL_METHOD("SUBSCRIBE"),
-		 NUTAG_APPL_EVENT("presence"),
-		 SIPTAG_ALLOW_EVENTS_STR("presence"),
-		 TAG_END());
-  fail_unless_event(nua_r_set_params, 200);
-
-  s2_sip_request_to(dialog, SIP_METHOD_SUBSCRIBE, NULL,
-		    SIPTAG_EVENT_STR("presence"),
-		    TAG_END());
-  subscribe = s2_wait_for_event(nua_i_subscribe, 100);
-  nh = subscribe->nh;
-  nua_respond(nh, SIP_202_ACCEPTED,
-	      NUTAG_WITH_SAVED(subscribe->event),
-	      TAG_END());
-  s2_free_event(subscribe);
-
-  response = s2_sip_wait_for_response(202, SIP_METHOD_SUBSCRIBE);
-  s2_sip_update_dialog(dialog, response);
-  fail_unless(response->sip->sip_expires != NULL);
-  s2_sip_free_message(response);
-
-  nua_notify(nh,
-	     NUTAG_SUBSTATE(nua_substate_active),
-	     SIPTAG_PAYLOAD_STR(presence_closed),
-	     TAG_END());
-  notify = s2_sip_wait_for_request(SIP_METHOD_NOTIFY);
-  fail_unless(notify != NULL);
-  sip = notify->sip;
-  fail_unless(sip->sip_subscription_state != NULL);
-  fail_unless(su_strmatch(sip->sip_subscription_state->ss_substate,
-			  "active"));
-  s2_sip_respond_to(notify, dialog, SIP_200_OK, TAG_END());
-
-  fail_unless_event(nua_r_notify, 200);
-
-  s2_sip_request_to(dialog, SIP_METHOD_SUBSCRIBE, NULL,
-		    SIPTAG_EVENT_STR("presence"),
-		    TAG_END());
-  subscribe = s2_wait_for_event(nua_i_subscribe, 100);
-  nh = subscribe->nh;
-  nua_respond(nh, SIP_202_ACCEPTED,
-	      NUTAG_WITH_SAVED(subscribe->event),
-	      TAG_END());
-  s2_free_event(subscribe);
-
-  response = s2_sip_wait_for_response(202, SIP_METHOD_SUBSCRIBE);
-  s2_sip_update_dialog(dialog, response);
-  fail_unless(response->sip->sip_expires != NULL);
-  s2_sip_free_message(response);
-
-  notify = s2_sip_wait_for_request(SIP_METHOD_NOTIFY);
-  fail_unless(notify != NULL);
-  sip = notify->sip;
-  fail_unless(sip->sip_subscription_state != NULL);
-  fail_unless(su_strmatch(sip->sip_subscription_state->ss_substate,
-			  "active"));
-  s2_sip_respond_to(notify, dialog, SIP_200_OK, TAG_END());
-
-  fail_unless_event(nua_r_notify, 200);
-
-  /* Now clear list of application events */
-  nua_set_params(nua,
-		 NUTAG_APPL_EVENT(NULL),
-		 NUTAG_SUB_EXPIRES(360),
-		 TAG_END());
-  fail_unless_event(nua_r_set_params, 200);
-
-  s2_sip_request_to(dialog, SIP_METHOD_SUBSCRIBE, NULL,
-		    SIPTAG_EVENT_STR("presence"),
-		    TAG_END());
-  /* Automatically responded && refreshed */
-  subscribe = s2_wait_for_event(nua_i_subscribe, 200);
-  s2_free_event(subscribe);
-
-  response = s2_sip_wait_for_response(200, SIP_METHOD_SUBSCRIBE);
-  s2_sip_update_dialog(dialog, response);
-  fail_unless(response->sip->sip_expires != NULL);
-  fail_unless(response->sip->sip_expires->ex_delta == 360);
-  s2_sip_free_message(response);
-
-  notify = s2_sip_wait_for_request(SIP_METHOD_NOTIFY);
-  fail_unless(notify != NULL);
-  sip = notify->sip;
-  fail_unless(sip->sip_subscription_state != NULL);
-  fail_unless(su_strmatch(sip->sip_subscription_state->ss_substate,
-			  "active"));
-  s2_sip_respond_to(notify, dialog, SIP_200_OK, TAG_END());
-
-  fail_unless_event(nua_r_notify, 200);
-
-  nua_handle_destroy(nh);
-
-  notify = s2_sip_wait_for_request(SIP_METHOD_NOTIFY);
-  sip = notify->sip;
-  fail_unless(sip->sip_subscription_state != NULL);
-  fail_unless(su_strmatch(sip->sip_subscription_state->ss_substate,
-			  "terminated"));
-  s2_sip_respond_to(notify, dialog, SIP_481_NO_TRANSACTION, TAG_END());
-}
-END_TEST
-
 TCase *notifier_tcase(int threading)
 {
   TCase *tc = tcase_create("6.3 - Basic event server with NOTIFY ");
@@ -986,179 +825,9 @@ TCase *notifier_tcase(int threading)
     tcase_add_test(tc, notify_6_3_3);
     tcase_add_test(tc, notify_6_3_4);
     tcase_add_test(tc, notify_6_3_5);
-    tcase_add_test(tc, notify_6_3_6);
   }
   return tc;
 }
-
-/* ====================================================================== */
-
-START_TEST(message_6_4_1)
-{
-  nua_handle_t *nh;
-  struct message *message;
-  struct event *response;
-
-  S2_CASE("6.4.1", "SIMPLE MESSAGE",
-	  "Send MESSAGE");
-
-  nh = nua_handle(nua, NULL, SIPTAG_TO(s2sip->aor), TAG_END());
-  nua_message(nh,
-	      SIPTAG_CONTENT_TYPE_STR("text/plain"),
-	      SIPTAG_PAYLOAD_STR("hello"),
-	      TAG_END());
-  message = s2_sip_wait_for_request(SIP_METHOD_MESSAGE);
-  s2_sip_respond_to(message, NULL, SIP_202_ACCEPTED, TAG_END());
-  s2_sip_free_message(message);
-  response = s2_wait_for_event(nua_r_message, 202);
-  s2_free_event(response);
-
-  nua_handle_destroy(nh);
-}
-END_TEST
-
-START_TEST(message_6_4_2)
-{
-  nua_handle_t *nh;
-  struct message *message;
-  struct event *response;
-
-  S2_CASE("6.4.2", "MESSAGE with 302/305",
-	  "Send MESSAGE");
-
-  nh = nua_handle(nua, NULL, SIPTAG_TO(s2sip->aor), TAG_END());
-
-  nua_message(nh,
-	      SIPTAG_CONTENT_TYPE_STR("text/plain"),
-	      SIPTAG_PAYLOAD_STR("hello"),
-	      TAG_END());
-  message = s2_sip_wait_for_request(SIP_METHOD_MESSAGE);
-  s2_sip_respond_to(message, NULL, SIP_302_MOVED_TEMPORARILY,
-		    SIPTAG_CONTACT_STR("<sip:302ed@example.com>"),
-		    TAG_END());
-  s2_sip_free_message(message);
-
-  response = s2_wait_for_event(nua_r_message, 100);
-  s2_free_event(response);
-
-  message = s2_sip_wait_for_request(SIP_METHOD_MESSAGE);
-  fail_unless(message->sip->sip_request->rq_url->url_user != NULL);
-  fail_if(strcmp(message->sip->sip_request->rq_url->url_user, "302ed"));
-  s2_sip_respond_to(message, NULL, SIP_305_USE_PROXY,
-		    SIPTAG_CONTACT_STR("<sip:routed@example.com;lr>"),
-		    TAG_END());
-  s2_sip_free_message(message);
-
-  response = s2_wait_for_event(nua_r_message, 100);
-  s2_free_event(response);
-
-  message = s2_sip_wait_for_request(SIP_METHOD_MESSAGE);
-  fail_unless(message->sip->sip_route != NULL);
-  fail_unless(message->sip->sip_route->r_url->url_user != NULL);
-  fail_if(strcmp(message->sip->sip_route->r_url->url_user, "routed"));
-  s2_sip_respond_to(message, NULL, SIP_200_OK, TAG_END());
-  s2_sip_free_message(message);
-
-  response = s2_wait_for_event(nua_r_message, 200);
-  s2_free_event(response);
-
-  /* ---------------------------------------------------------------------- */
-
-  nua_message(nh,
-	      NUTAG_AUTO302(0),
-	      SIPTAG_CONTENT_TYPE_STR("text/plain"),
-	      SIPTAG_PAYLOAD_STR("hello 2"),
-	      TAG_END());
-
-  message = s2_sip_wait_for_request(SIP_METHOD_MESSAGE);
-  s2_sip_respond_to(message, NULL, SIP_302_MOVED_TEMPORARILY,
-		    SIPTAG_CONTACT_STR("<sip:not302ed@example.com>"),
-		    TAG_END());
-  s2_sip_free_message(message);
-
-  response = s2_wait_for_event(nua_r_message, 302);
-
-  fail_unless(response->sip && response->sip->sip_contact);
-  nua_message(nh,
-	      NUTAG_URL(response->sip->sip_contact->m_url),
-	      NUTAG_AUTO305(0),
-	      SIPTAG_CONTENT_TYPE_STR("text/plain"),
-	      SIPTAG_PAYLOAD_STR("hello 2"),
-	      TAG_END());
-
-  s2_free_event(response);
-
-  message = s2_sip_wait_for_request(SIP_METHOD_MESSAGE);
-  fail_unless(message->sip->sip_request->rq_url->url_user != NULL);
-  fail_if(strcmp(message->sip->sip_request->rq_url->url_user, "not302ed"));
-  s2_sip_respond_to(message, NULL, SIP_305_USE_PROXY,
-		    SIPTAG_CONTACT_STR("<sip:not-routed@example.com>"),
-		    TAG_END());
-  s2_sip_free_message(message);
-
-  response = s2_wait_for_event(nua_r_message, 305);
-  s2_free_event(response);
-
-  nua_handle_destroy(nh);
-}
-END_TEST
-
-START_TEST(message_6_4_3)
-{
-  nua_handle_t *nh;
-  struct message *message;
-  struct event *response;
-  sip_call_id_t *i;
-
-  S2_CASE("6.4.1", "SIMPLE MESSAGE",
-	  "Send MESSAGE");
-
-  nh = nua_handle(nua, NULL, SIPTAG_TO(s2sip->aor), TAG_END());
-  nua_message(nh,
-	      SIPTAG_CONTENT_TYPE_STR("text/plain"),
-	      SIPTAG_PAYLOAD_STR("hello"),
-	      TAG_END());
-  message = s2_sip_wait_for_request(SIP_METHOD_MESSAGE);
-  s2_sip_respond_to(message, NULL,
-		    SIP_407_PROXY_AUTH_REQUIRED,
-		    SIPTAG_PROXY_AUTHENTICATE_STR(s2_auth_digest_str),
-		    TAG_END());
-  i = sip_call_id_dup(NULL, message->sip->sip_call_id);
-  fail_unless(i != NULL);
-  s2_sip_free_message(message);
-  fail_unless_event(nua_r_message, 407);
-
-  nua_authenticate(nh, NUTAG_AUTH(s2_auth_credentials), TAG_END());
-
-  message = s2_sip_wait_for_request(SIP_METHOD_MESSAGE);
-  s2_sip_respond_to(message, NULL, SIP_202_ACCEPTED, TAG_END());
-  fail_unless(su_strmatch(i->i_id, message->sip->sip_call_id->i_id));
-  s2_sip_free_message(message);
-  response = s2_wait_for_event(nua_r_message, 202);
-  s2_free_event(response);
-
-  nua_handle_destroy(nh);
-}
-END_TEST
-
-
-static TCase *message_tcase(int threading)
-{
-  TCase *tc = tcase_create(threading ?
-			   "6.4 - MESSAGE (MT)" :
-			   "6.4 - MESSAGE");
-  void (*simple_setup)(void);
-
-  simple_setup = threading ? simple_thread_setup : simple_threadless_setup;
-  tcase_add_checked_fixture(tc, simple_setup, simple_teardown);
-
-  tcase_add_test(tc, message_6_4_1);
-  tcase_add_test(tc, message_6_4_2);
-  tcase_add_test(tc, message_6_4_3);
-
-  return tc;
-}
-
 
 /* ====================================================================== */
 
@@ -1197,7 +866,6 @@ void check_simple_cases(Suite *suite, int threading)
   suite_add_tcase(suite, subscribe_tcase(threading));
   suite_add_tcase(suite, fetch_tcase(threading));
   suite_add_tcase(suite, notifier_tcase(threading));
-  suite_add_tcase(suite, message_tcase(threading));
 
   if (0)			/* Template */
     suite_add_tcase(suite, empty_tcase(threading));

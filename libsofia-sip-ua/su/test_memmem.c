@@ -36,13 +36,17 @@
 #include "config.h"
 
 #include <sofia-sip/su_string.h>
-#include <sofia-sip/su_bm.h>
 
 #include <stddef.h>
 #include <stdlib.h>
 #include <limits.h>
 #include <stdio.h>
 #include <assert.h>
+
+#if !HAVE_MEMMEM
+void *memmem(const void *haystack, size_t haystacklen,
+	     const void *needle, size_t needlelen);
+#endif
 
 #include <string.h>
 
@@ -59,7 +63,6 @@ void usage(int exitcode)
   exit(exitcode);
 }
 
-
 static int test_notfound(void);
 static int test_pattern(void);
 
@@ -72,29 +75,27 @@ static int test_notfound(void)
   char const *a;
   BEGIN();
 
-  TEST_P(bm_memmem(haystack, 12, needle, 3, NULL), haystack + 2);
-  TEST_P(bm_memmem(needle, 3, haystack, 12, NULL), NULL);
+  TEST_P(memmem(haystack, 12, needle, 3), haystack + 2);
+  TEST_P(memmem(needle, 3, haystack, 12), NULL);
 
 #if HAVE_MEMMEM
-  if (bm_memmem(haystack, 12, "", 0, NULL) == NULL) {
+  if (memmem(haystack, 12, "", 0) == NULL) {
     fprintf(stderr, "test_memmem.c: "
 	    "*** WARNING: system memmem() fails with empty needle ***\n");
   }
   else
 #endif
   {
-    TEST_P(bm_memmem(haystack, 12, "", 0, NULL), haystack);
-    TEST_P(bm_memmem(haystack, 12, null, 0, NULL), haystack);
-    TEST_P(bm_memmem(haystack, 0, "", 0, NULL), haystack);
-    TEST_P(bm_memmem(haystack, 0, null, 0, NULL), haystack);
+    TEST_P(memmem(haystack, 12, "", 0), haystack);
+    TEST_P(memmem(haystack, 12, null, 0), haystack);
+    TEST_P(memmem(haystack, 0, "", 0), haystack);
+    TEST_P(memmem(haystack, 0, null, 0), haystack);
   }
 
-  TEST_P(bm_memmem(haystack + 2, 3, needle, 3, NULL), haystack + 2);
-  TEST_P(bm_memmem(haystack + 2, 2, needle, 3, NULL), NULL);
-
-  a = "a\0bc";
-  TEST_P(bm_memmem(a, 4, "a\0bc", 4, NULL), a);
-  TEST_P(bm_memmem(a, 4, "\0bc", 3, NULL), a + 1);
+  TEST_P(memmem(haystack + 2, 3, needle, 3), haystack + 2);
+  TEST_P(memmem(haystack + 2, 2, needle, 3), NULL);
+  TEST_P(memmem(a = "a\0bc", 4, "a\0bc", 4), a);
+  TEST_P(memmem(a, 4, "\0bc", 3), a + 1);
 
   END();
 }

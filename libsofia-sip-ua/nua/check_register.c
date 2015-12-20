@@ -65,7 +65,7 @@ static void register_thread_setup(void)
 
 static void register_threadless_setup(void)
 {
-  s2_nua_thread = 0;
+  s2_nua_thread = 1;
   register_setup();
 }
 
@@ -297,9 +297,6 @@ static nua_handle_t *make_auth_natted_register(
 
   fail_unless_event(nua_r_register, 401);
 
-  /* NAT detected event */
-  fail_unless_event(nua_i_outbound, 101);
-
   nua_authenticate(nh, NUTAG_AUTH(s2_auth_credentials), TAG_END());
 
   m = s2_sip_wait_for_request(SIP_METHOD_REGISTER);
@@ -512,102 +509,6 @@ START_TEST(register_1_2_3) {
   fail_unless_event(nua_r_register, 200);
 
   s2->registration->nh = nh;
-
-  s2_register_teardown();
-
-} END_TEST
-
-#include <sys/time.h>
-
-START_TEST(register_1_2_4)
-{
-  nua_handle_t *nh = nua_handle(nua, NULL, TAG_END());
-  struct message *m;
-  struct event *e;
-  unsigned t1, n;
-
-  S2_CASE("1.2.4", "Register behind NAT",
-	  "Authenticate, outbound activated, "
-	  "drop OPTIONS, check that OPTIONS is not retried");
-
-  mark_point();
-  make_auth_natted_register(nh,
-      NUTAG_OUTBOUND("validate, no-options-keepalive"),  /* test with a round of unanswered plain keepalives as well? */
-      TAG_END());
-
-  s2->registration->nh = nh;
-  mark_point();
-
-  t1 = 500;
-
-  for (t1 = 500, n = 0; n < 20; n++) {
-    e = NULL, m = NULL;
-
-    s2_next_thing(&e, &m);
-
-    if (e)
-      break;
-
-    fail_if(!m);
-    fail_if(!m->sip->sip_request);
-    fail_if(m->sip->sip_request->rq_method != sip_method_options);
-    s2_sip_free_message(m);
-
-    mark_point();
-
-    s2_nua_fast_forward((t1 + 500) / 1000, s2base->root);
-    t1 *= 2;
-    if (t1 > 4000)
-      t1 = 4000;
-  }
-
-  fail_unless(e != NULL);
-  fail_unless(e->data->e_event == nua_i_outbound);
-  fail_unless(e->data->e_status == 408);
-  s2_free_event(e);
-
-  s2_sip_flush_messages();
-
-  s2_nua_fast_forward(3600, s2base->root);
-
-  m = s2_sip_wait_for_request(SIP_METHOD_REGISTER);
-  fail_if(!m); fail_if(!m->sip->sip_authorization);
-  fail_if(!m->sip->sip_contact);
-
-  s2_default_registration_duration = 120;
-  s2_save_register(m);
-
-  s2_sip_respond_to(m, NULL,
-		    SIP_200_OK,
-		    SIPTAG_CONTACT(s2->registration->contact),
-		    TAG_END());
-  s2_sip_free_message(m);
-
-  fail_unless_event(nua_r_register, 200);
-
-  fail_unless(s2->registration->contact != NULL);
-  fail_if(s2->registration->contact->m_next != NULL);
-
-  s2_sip_flush_messages();
-
-  while (s2sip->received == NULL) {
-    s2_nua_fast_forward(10, s2base->root);
-  }
-
-  m = s2_sip_remove_message(s2sip->received);
-  fail_if(!m);
-  fail_unless(m->sip->sip_request->rq_method == sip_method_register);
-  fail_if(!m->sip->sip_authorization);
-  fail_if(!m->sip->sip_contact);
-  s2_save_register(m);
-
-  s2_sip_respond_to(m, NULL,
-		    SIP_200_OK,
-		    SIPTAG_CONTACT(s2->registration->contact),
-		    TAG_END());
-  s2_sip_free_message(m);
-
-  fail_unless_event(nua_r_register, 200);
 
   s2_register_teardown();
 
@@ -954,7 +855,6 @@ TCase *register_tcase(int threading)
     tcase_add_test(tc, register_1_2_2_2);
     tcase_add_test(tc, register_1_2_2_3);
     tcase_add_test(tc, register_1_2_3);
-    tcase_add_test(tc, register_1_2_4);
     tcase_add_test(tc, register_1_3_1);
     tcase_add_test(tc, register_1_3_2_1);
     tcase_add_test(tc, register_1_3_2_2);
@@ -979,105 +879,169 @@ TCase *pingpong_tcase(int threading)
 
 /* ---------------------------------------------------------------------- */
 
-START_TEST(client_1_4_1)
+static struct dialog *dialog = NULL;
+
+static void registrar_setup(void)
 {
-  nua_handle_t *nh;
-  struct message *message;
-  struct event *response;
+  struct event *event;
+  tagi_t const *t;
+  sip_contact_t *m;
 
-  S2_CASE("1.4.1", "Simple client transaction",
-	  "Send MESSAGE");
+  dialog = su_home_new(sizeof *dialog); fail_if(!dialog);
 
-  nh = nua_handle(nua, NULL, SIPTAG_TO(s2sip->aor), TAG_END());
-  nua_message(nh,
-	      SIPTAG_CONTENT_TYPE_STR("text/plain"),
-	      SIPTAG_PAYLOAD_STR("hello"),
-	      TAG_END());
-  message = s2_sip_wait_for_request(SIP_METHOD_MESSAGE);
-  s2_sip_respond_to(message, NULL, SIP_202_ACCEPTED, TAG_END());
-  s2_sip_free_message(message);
-  response = s2_wait_for_event(nua_r_message, 202);
-  s2_free_event(response);
+  nua = s2_nua_setup("register",
+		     NUTAG_APPL_METHOD("REGISTER"),
+		     NUTAG_ALLOW("REGISTER"),
+		     NUTAG_PROXY(SIP_NONE),
+		     TAG_END());
 
-  nua_handle_destroy(nh);
+  nua_get_params(nua, TAG_ANY(), TAG_END());
+  event = s2_wait_for_event(nua_r_get_params, 200);
+  fail_unless(event != NULL);
+
+  t = tl_find(event->data->e_tags, ntatag_contact);
+  fail_unless(t != NULL);
+  m = sip_contact_dup(dialog->home, (sip_contact_t *)t->t_value);
+  fail_unless(m != NULL);
+
+  s2sip->sut.contact = m;
 }
-END_TEST
 
-START_TEST(client_1_4_2)
+static void registrar_thread_setup(void)
 {
-  nua_handle_t *nh;
-  struct message *message;
-  struct event *response;
-
-  S2_CASE("1.4.2", "Retry-After a delay",
-	  "Retry MESSAGE after a delay");
-
-  nh = nua_handle(nua, NULL, SIPTAG_TO(s2sip->aor), TAG_END());
-  nua_message(nh,
-	      SIPTAG_CONTENT_TYPE_STR("text/plain"),
-	      SIPTAG_PAYLOAD_STR("hello"),
-	      TAG_END());
-  message = s2_sip_wait_for_request(SIP_METHOD_MESSAGE);
-  s2_sip_respond_to(message, NULL, SIP_503_SERVICE_UNAVAILABLE,
-		    SIPTAG_RETRY_AFTER_STR("3"),
-		    TAG_END());
-  s2_sip_free_message(message);
-  response = s2_wait_for_event(nua_r_message, 100);
-  s2_free_event(response);
-
-  s2_nua_fast_forward(32, s2base->root);
-
-  /* Too long delay */
-  message = s2_sip_wait_for_request(SIP_METHOD_MESSAGE);
-  s2_sip_respond_to(message, NULL, SIP_503_SERVICE_UNAVAILABLE,
-		    SIPTAG_RETRY_AFTER_STR("32"),
-		    TAG_END());
-  s2_sip_free_message(message);
-  response = s2_wait_for_event(nua_r_message, 503);
-  s2_free_event(response);
-
-  nua_set_params(nua, NUTAG_MAX_RETRY_AFTER(0), TAG_END());
-  fail_unless_event(nua_r_set_params, 200);
-
-  /* Disable feature */
-  nua_message(nh,
-	      SIPTAG_CONTENT_TYPE_STR("text/plain"),
-	      SIPTAG_PAYLOAD_STR("hello"),
-	      TAG_END());
-  message = s2_sip_wait_for_request(SIP_METHOD_MESSAGE);
-  s2_sip_respond_to(message, NULL, SIP_503_SERVICE_UNAVAILABLE,
-		    SIPTAG_RETRY_AFTER_STR("3"),
-		    TAG_END());
-  s2_sip_free_message(message);
-  response = s2_wait_for_event(nua_r_message, 503);
-  s2_free_event(response);
-
-  nua_handle_destroy(nh);
+  s2_nua_thread = 1;
+  registrar_setup();
 }
-END_TEST
 
-
-static TCase *client_tcase(int threading)
+static void registrar_threadless_setup(void)
 {
-  TCase *tc = tcase_create(threading ?
-			   "1.4 - client (MT)" :
-			   "1.4 - client");
+  s2_nua_thread = 1;
+  registrar_setup();
+}
+
+static void registrar_teardown(void)
+{
+  s2_teardown_started("registrar");
+  nua_shutdown(nua);
+  fail_unless_event(nua_r_shutdown, 200);
+  s2_nua_teardown();
+}
+
+static void add_registrar_fixtures(TCase *tc, int threading)
+{
   void (*setup)(void);
 
-  setup = threading ? register_thread_setup : register_threadless_setup;
-  tcase_add_checked_fixture(tc, setup, register_teardown);
+  if (threading)
+    setup = registrar_thread_setup;
+  else
+    setup = registrar_threadless_setup;
 
-  tcase_add_test(tc, client_1_4_1);
-  tcase_add_test(tc, client_1_4_2);
+  tcase_add_checked_fixture(tc, setup, registrar_teardown);
+}
+
+START_TEST(registrar_1_4_0)
+{
+  struct event *event;
+  nua_handle_t *nh;
+  struct message *response;
+
+  S2_CASE("1.4.0", "Registrar", "Test receiving a REGISTER");
+
+  fail_if(s2_sip_request_to(dialog, SIP_METHOD_REGISTER, NULL,
+			    SIPTAG_FROM_STR("<sip:tst@example.com>"),
+			    SIPTAG_TO_STR("<sip:tst@example.com>"),
+			    TAG_END()));
+
+  event = s2_wait_for_event(nua_i_register, 100);
+  fail_unless(event != NULL);
+  nh = event->nh; fail_if(!nh);
+
+  nua_respond(nh, 200, "Ok",
+	      NUTAG_WITH_SAVED(event->event),
+	      TAG_END());
+
+  response = s2_sip_wait_for_response(200, SIP_METHOD_REGISTER);
+  fail_if(!response);
+  s2_sip_free_message(response);
+
+  nua_handle_destroy(nh);
+}
+END_TEST
+
+START_TEST(registrar_1_4_1)
+{
+  struct event *event;
+  nua_handle_t *nh;
+  struct message *response;
+
+  S2_CASE("1.4.1", "Registrar", "Test receiving a REGISTER via TCP");
+
+  fail_if(s2_sip_request_to(dialog, SIP_METHOD_REGISTER, s2sip->tcp.tport,
+			    SIPTAG_FROM_STR("<sip:tst@example.com>"),
+			    SIPTAG_TO_STR("<sip:tst@example.com>"),
+			    TAG_END()));
+
+  event = s2_wait_for_event(nua_i_register, 100);
+  fail_if(!event);
+  nh = event->nh; fail_if(!nh);
+
+  nua_respond(nh, 200, "Ok",
+	      NUTAG_WITH_SAVED(event->event),
+	      TAG_END());
+
+  response = s2_sip_wait_for_response(200, SIP_METHOD_REGISTER);
+  fail_if(!response);
+  tport_shutdown(response->tport, 2);
+  s2_sip_free_message(response);
+
+  event = s2_wait_for_event(nua_i_media_error, 0);
+  fail_if(!event);
+  nua_handle_destroy(nh);
+
+  fail_if(s2_sip_request_to(dialog, SIP_METHOD_REGISTER, s2sip->tcp.tport,
+			    SIPTAG_FROM_STR("<sip:tst@example.com>"),
+			    SIPTAG_TO_STR("<sip:tst@example.com>"),
+			    TAG_END()));
+
+  event = s2_wait_for_event(nua_i_register, 100);
+  fail_if(!event);
+  nh = event->nh; fail_if(!nh);
+
+  nua_respond(nh, 200, "Ok",
+	      NUTAG_WITH_SAVED(event->event),
+	      TAG_END());
+
+  response = s2_sip_wait_for_response(200, SIP_METHOD_REGISTER);
+  fail_if(!response);
+  nua_handle_destroy(nh);
+
+  s2_step();
+  s2_step();
+  s2_step();
+
+  tport_shutdown(response->tport, 2);
+  s2_sip_free_message(response);
+}
+END_TEST
+
+TCase *registrar_tcase(int threading)
+{
+  TCase *tc = tcase_create("1.4 - REGISTER server");
+
+  add_registrar_fixtures(tc, threading);
+
+  tcase_add_test(tc, registrar_1_4_0);
+  tcase_add_test(tc, registrar_1_4_1);
+
+  tcase_set_timeout(tc, 10);
 
   return tc;
 }
-
 
 void check_register_cases(Suite *suite, int threading)
 {
   suite_add_tcase(suite, register_tcase(threading));
   suite_add_tcase(suite, pingpong_tcase(threading));
-  suite_add_tcase(suite, client_tcase(threading));
+  suite_add_tcase(suite, registrar_tcase(threading));
 }
 

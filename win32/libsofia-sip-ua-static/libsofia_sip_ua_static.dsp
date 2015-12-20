@@ -97,10 +97,6 @@ SOURCE="..\..\libsofia-sip-ua\su\inet_pton.c"
 # End Source File
 # Begin Source File
 
-SOURCE="..\..\libsofia-sip-ua\su\smoothsort.c"
-# End Source File
-# Begin Source File
-
 SOURCE="..\..\libsofia-sip-ua\su\string0.c"
 # End Source File
 # Begin Source File

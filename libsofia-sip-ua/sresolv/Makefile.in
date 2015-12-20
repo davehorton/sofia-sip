@@ -92,11 +92,9 @@ build_triplet = @build@
 host_triplet = @host@
 target_triplet = @target@
 check_PROGRAMS = torture_sresolv$(EXEEXT) test_sresolv$(EXEEXT) \
-	$(am__EXEEXT_1)
-TESTS = $(am__EXEEXT_1) torture_sresolv$(EXEEXT) run_test_sresolv
-@HAVE_CHECK_TRUE@am__append_1 = check_sres_sip
-@HAVE_CHECK_TRUE@am__append_2 = check_sres_sip
-@HAVE_CHECK_TRUE@am__append_3 = -I${top_srcdir}/s2check
+	check_sres_sip$(EXEEXT)
+TESTS = check_sres_sip$(EXEEXT) torture_sresolv$(EXEEXT) \
+	run_test_sresolv
 DIST_COMMON = $(dist_noinst_DATA) $(nobase_include_sofia_HEADERS) \
 	$(srcdir)/Doxyfile.in $(srcdir)/Makefile.am \
 	$(srcdir)/Makefile.in $(top_srcdir)/rules/lcov.am \
@@ -104,19 +102,19 @@ DIST_COMMON = $(dist_noinst_DATA) $(nobase_include_sofia_HEADERS) \
 	$(top_srcdir)/rules/valcheck.am ChangeLog
 
 # Use with --enable-ndebug
-@NDEBUG_TRUE@am__append_4 = -DNDEBUG
-@HAVE_GENPNG_TRUE@@HAVE_LCOV_TRUE@am__append_5 = --frames
-@HAVE_LCOV_TRUE@am__append_6 = lcov lcov-report lcov-rerun clean-lcov covcheck uncovered
+@NDEBUG_TRUE@am__append_1 = -DNDEBUG
+@HAVE_GENPNG_TRUE@@HAVE_LCOV_TRUE@am__append_2 = --frames
+@HAVE_LCOV_TRUE@am__append_3 = lcov lcov-report lcov-rerun clean-lcov covcheck uncovered
 subdir = libsofia-sip-ua/sresolv
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/m4/libtool.m4 \
 	$(top_srcdir)/m4/ltoptions.m4 $(top_srcdir)/m4/ltsugar.m4 \
 	$(top_srcdir)/m4/ltversion.m4 $(top_srcdir)/m4/lt~obsolete.m4 \
-	$(top_srcdir)/m4/sac-coverage.m4 \
+	$(top_srcdir)/acinclude.m4 $(top_srcdir)/m4/sac-pkg-config.m4 \
 	$(top_srcdir)/m4/sac-general.m4 \
-	$(top_srcdir)/m4/sac-openssl.m4 \
-	$(top_srcdir)/m4/sac-pkg-config.m4 $(top_srcdir)/m4/sac-su2.m4 \
-	$(top_srcdir)/m4/sac-tport.m4 $(top_srcdir)/configure.ac
+	$(top_srcdir)/m4/sac-openssl.m4 $(top_srcdir)/m4/sac-su2.m4 \
+	$(top_srcdir)/m4/sac-su.m4 $(top_srcdir)/m4/sac-tport.m4 \
+	$(top_srcdir)/m4/sac-coverage.m4 $(top_srcdir)/configure.ac
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
 mkinstalldirs = $(install_sh) -d
@@ -129,19 +127,14 @@ libsresolv_la_LIBADD =
 am_libsresolv_la_OBJECTS = sres.lo sres_cache.lo sres_blocking.lo \
 	sresolv.lo sres_sip.lo
 libsresolv_la_OBJECTS = $(am_libsresolv_la_OBJECTS)
-@HAVE_CHECK_TRUE@am__EXEEXT_1 = check_sres_sip$(EXEEXT)
 check_sres_sip_SOURCES = check_sres_sip.c
 check_sres_sip_OBJECTS = check_sres_sip.$(OBJEXT)
-am__DEPENDENCIES_1 =
-am__DEPENDENCIES_2 = libsresolv.la ../url/liburl.la ../bnf/libbnf.la \
-	../su/libsu.la $(am__DEPENDENCIES_1)
-@HAVE_CHECK_TRUE@check_sres_sip_DEPENDENCIES = $(am__DEPENDENCIES_2) \
-@HAVE_CHECK_TRUE@	${top_builddir}/s2check/libs2.a
+check_sres_sip_DEPENDENCIES = $(LDADD) ${top_builddir}/s2check/libs2.a
 test_sresolv_SOURCES = test_sresolv.c
 test_sresolv_OBJECTS = test_sresolv.$(OBJEXT)
 test_sresolv_LDADD = $(LDADD)
 test_sresolv_DEPENDENCIES = libsresolv.la ../url/liburl.la \
-	../bnf/libbnf.la ../su/libsu.la $(am__DEPENDENCIES_1)
+	../bnf/libbnf.la ../su/libsu.la
 test_sresolv_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
 	$(test_sresolv_LDFLAGS) $(LDFLAGS) -o $@
@@ -149,7 +142,7 @@ torture_sresolv_SOURCES = torture_sresolv.c
 torture_sresolv_OBJECTS = torture_sresolv.$(OBJEXT)
 torture_sresolv_LDADD = $(LDADD)
 torture_sresolv_DEPENDENCIES = libsresolv.la ../url/liburl.la \
-	../bnf/libbnf.la ../su/libsu.la $(am__DEPENDENCIES_1)
+	../bnf/libbnf.la ../su/libsu.la
 DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir) -I$(top_builddir)/libsofia-sip-ua/su/sofia-sip
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
@@ -249,7 +242,6 @@ LIBVER_SOFIA_SIP_UA_SOVER = @LIBVER_SOFIA_SIP_UA_SOVER@
 LIPO = @LIPO@
 LN_S = @LN_S@
 LTLIBOBJS = @LTLIBOBJS@
-MAINT = @MAINT@
 MAKEINFO = @MAKEINFO@
 MINGW_ENVIRONMENT = @MINGW_ENVIRONMENT@
 MKDIR_P = @MKDIR_P@
@@ -341,19 +333,21 @@ target_vendor = @target_vendor@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-INCLUDES = -I$(srcdir)/../url -I../url -I$(srcdir)/../bnf -I../bnf \
-	-I$(srcdir)/../su -I../su $(am__append_3)
+AM_CPPFLAGS = -I$(srcdir)/../url -I../url -I$(srcdir)/../bnf -I../bnf \
+	-I$(srcdir)/../su -I../su -I${top_srcdir}/s2check
 
 # ----------------------------------------------------------------------
 # Build targets
 noinst_LTLIBRARIES = libsresolv.la
-@HAVE_CHECK_TRUE@check_sres_sip_LDADD = $(LDADD) ${top_builddir}/s2check/libs2.a @CHECK_LIBS@
+check_sres_sip_LDADD = $(LDADD) ${top_builddir}/s2check/libs2.a @CHECK_LIBS@
 CLEANFILES = resolv.conf error.conf named.conf.tmp \
 			.test_sresolv.api.conf.?????? \
 			named.run
 
-LDADD = libsresolv.la ../url/liburl.la ../bnf/libbnf.la ../su/libsu.la \
-	$(openssl_LIBS)
+LDADD = libsresolv.la \
+	 		../url/liburl.la ../bnf/libbnf.la \
+			../su/libsu.la
+
 test_sresolv_LDFLAGS = -static
 
 # ----------------------------------------------------------------------
@@ -374,7 +368,7 @@ COVERAGE_INPUT = $(libsresolv_la_SOURCES) $(include_sofia_HEADERS)
 
 # ----------------------------------------------------------------------
 # Distribution
-EXTRA_DIST = sresolv.docs check_sres_sip.c
+EXTRA_DIST = sresolv.docs
 dist_noinst_DATA = run_test_sresolv \
 	root.zone rndc.conf \
 	127.zone 194.2.188 3.f.f.e.1.2.0.0.3.0.1.2.c.0.0.0 example.com \
@@ -383,7 +377,7 @@ dist_noinst_DATA = run_test_sresolv \
 sofiasrcdir = ${top_srcdir}/libsofia-sip-ua
 sofiabuilddir = ${top_builddir}/libsofia-sip-ua
 AM_CFLAGS = $(CWFLAG) $(SOFIA_COVERAGE) $(SOFIA_CFLAGS) \
-	$(openssl_CFLAGS) $(SOFIA_PLAT_CFLAGS) $(am__append_4)
+	$(openssl_CFLAGS) $(SOFIA_PLAT_CFLAGS) $(am__append_1)
 SOFIA_COVERAGE = $(COVERAGE_FLAGS)
 DISTCLEANFILES = $(BUILT_SOURCES)
 
@@ -411,7 +405,7 @@ INTERNAL_INCLUDES = \
     -I${sofiasrcdir}/url -I${sofiabuilddir}/url \
     -I${sofiasrcdir}/su -I${sofiabuilddir}/su
 
-PHONY = built-sources clean-built-sources $(am__append_6)
+PHONY = built-sources clean-built-sources $(am__append_3)
 VALGRIND = valgrind
 VALGRINDFLAGS = --tool=memcheck
 
@@ -424,7 +418,7 @@ VALGRINDFLAGS = --tool=memcheck
 
 # Options
 @HAVE_LCOV_TRUE@GENHTML_OPTIONS = --show-details --legend \
-@HAVE_LCOV_TRUE@	$(am__append_5)
+@HAVE_LCOV_TRUE@	$(am__append_2)
 
 # Fancy shell command that expands to directory relative to top_builddir
 @HAVE_LCOV_TRUE@expand_subdir = `pwd|sed "s'\`cd ${top_builddir};pwd\`''"`
@@ -446,7 +440,7 @@ all: all-am
 
 .SUFFIXES:
 .SUFFIXES: _tag_ref.c _tag.c .c .lo .o .obj
-$(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am $(top_srcdir)/rules/sofia.am $(top_srcdir)/rules/valcheck.am $(top_srcdir)/rules/lcov.am $(top_srcdir)/rules/silent.am $(am__configure_deps)
+$(srcdir)/Makefile.in:  $(srcdir)/Makefile.am $(top_srcdir)/rules/sofia.am $(top_srcdir)/rules/valcheck.am $(top_srcdir)/rules/lcov.am $(top_srcdir)/rules/silent.am $(am__configure_deps)
 	@for dep in $?; do \
 	  case '$(am__configure_deps)' in \
 	    *$$dep*) \
@@ -471,9 +465,9 @@ Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 $(top_builddir)/config.status: $(top_srcdir)/configure $(CONFIG_STATUS_DEPENDENCIES)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
 
-$(top_srcdir)/configure: @MAINTAINER_MODE_TRUE@ $(am__configure_deps)
+$(top_srcdir)/configure:  $(am__configure_deps)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
-$(ACLOCAL_M4): @MAINTAINER_MODE_TRUE@ $(am__aclocal_m4_deps)
+$(ACLOCAL_M4):  $(am__aclocal_m4_deps)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
 $(am__aclocal_m4_deps):
 Doxyfile: $(top_builddir)/config.status $(srcdir)/Doxyfile.in

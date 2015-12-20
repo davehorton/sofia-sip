@@ -33,8 +33,6 @@
 #include "s2util.h"
 #include "s2sip.h"
 
-#include <check.h>
-
 struct s2nua
 {
   su_home_t home[1];
@@ -47,7 +45,6 @@ struct s2nua
     struct event *next, **prev;
     nua_saved_event_t event[1];
     nua_handle_t *nh;
-    sip_t *sip;
     nua_event_data_t const *data;
     su_time_t when;
   } *events;
@@ -80,12 +77,9 @@ struct event *s2_remove_event(struct event *);
 void s2_free_event(struct event *);
 void s2_flush_events(void);
 
-int s2_next_thing(struct event **event, struct message **message);
-
 struct event *s2_next_event(void);
 struct event *s2_wait_for_event(nua_event_t event, int status);
 int s2_check_event(nua_event_t event, int status);
-enum nua_callstate s2_event_callstate(struct event *e);
 int s2_check_callstate(enum nua_callstate state);
 int s2_check_substate(struct event *e, enum nua_substate state);
 
@@ -99,8 +93,6 @@ void s2_flush_all(void);
 nua_t *s2_nua_setup(char const *label, tag_type_t tag, tag_value_t value, ...);
 
 void s2_nua_teardown(void);
-
-void s2_nua_set_tcase_timeout(TCase *, int timeout);
 
 void s2_nua_fast_forward(unsigned long seconds,
 			 su_root_t *steproot);

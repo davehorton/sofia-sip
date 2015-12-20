@@ -455,24 +455,27 @@ issize_t sip_proxy_authentication_info_e(char b[], isize_t bsiz,
 typedef struct sip_security_agree_s sip_security_agree_t;
 #define sh_security_agree sh_security_client
 
-static issize_t
-sip_security_agree_field_d(su_home_t *home, sip_header_t *h, char **ss)
+static
+issize_t sip_security_agree_d(su_home_t *home, sip_header_t *h, char *s, isize_t slen)
 {
-  sip_security_agree_t *sa = (sip_security_agree_t *)h;
 
-  if (msg_token_d(ss, &sa->sa_mec) == -1)
-    return -1;
+	for (;;) {
+		sip_security_agree_t *sa = (sip_security_agree_t *)h;
 
-  if (**ss == ';')
-    return msg_params_d(home, ss, &sa->sa_params);
+		isize_t n;
 
-  return 0;
-}
+		while (*s == ',')   /* Ignore empty entries (comma-whitespace) */
+			*s = '\0', s += span_lws(s + 1) + 1;
 
-static issize_t
-sip_security_agree_d(su_home_t *home, sip_header_t *h, char *s, isize_t slen)
-{
-  return msg_parse_header_fields(home, h, s, sip_security_agree_field_d);
+		if ((n = span_token(s)) == 0)
+			return -1;
+		sa->sa_mec = s; s += n; while (IS_LWS(*s)) *s++ = '\0';
+		if (*s == ';' && msg_params_d(home, &s, &sa->sa_params) < 0)
+			return -1;
+
+		msg_parse_next_field_without_recursion();
+	}
+
 }
 
 static

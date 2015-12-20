@@ -270,7 +270,7 @@ static void print_session(sdp_printer_t *p, sdp_session_t const *sdp)
 {
   p->pr_ok = 1;
 
-  if (p->pr_ok && sdp->sdp_version)
+  if (p->pr_ok)
     print_version(p, sdp->sdp_version);
   if (p->pr_ok && sdp->sdp_origin)
     print_origin(p, sdp->sdp_origin);
@@ -430,6 +430,7 @@ static void print_bandwidths(sdp_printer_t *p, sdp_bandwidth_t const *b)
     switch (b->b_modifier) {
     case sdp_bw_ct: name = "CT"; break;
     case sdp_bw_as: name = "AS"; break;
+    case sdp_bw_tias: name = "TIAS"; break;
     default:        name = b->b_modifier_name; break;
     }
 
@@ -590,7 +591,10 @@ static void print_media(sdp_printer_t *p,
     case sdp_proto_udp:   proto = "udp"; break;
     case sdp_proto_rtp:   proto = "RTP/AVP"; break;
     case sdp_proto_srtp:  proto = "RTP/SAVP"; break;
+		//case sdp_proto_extended_srtp:  proto = "RTP/SAVPF"; break;
     case sdp_proto_udptl: proto = "udptl"; break;
+    case sdp_proto_msrp:  proto = "TCP/MSRP"; break;
+    case sdp_proto_msrps:  proto = "TCP/TLS/MSRP"; break;
     case sdp_proto_tls:   proto = "tls"; break;
     default:              proto = m->m_proto_name; break;
     }
@@ -615,8 +619,10 @@ static void print_media(sdp_printer_t *p,
 	sdp_printf(p, " %s", l->l_text);
     }
     else {
-      sdp_printf(p, " 19");      /* SDP syntax requires at least one format.
-				    19 is used by nobody, right?. */
+		/* SDP syntax requires at least one format. */
+		/* defaults to "19", or "t38" for image */
+		if (m->m_type == sdp_media_image) sdp_printf(p, " t38");
+		else sdp_printf(p, " 19");
     }
 
 
@@ -635,14 +641,16 @@ static void print_media(sdp_printer_t *p,
       print_key(p, m->m_key);
 
     for (rm = m->m_rtpmaps; rm; rm = rm->rm_next) {
-      if (!rm->rm_predef || p->pr_all_rtpmaps)
-	sdp_printf(p, "a=rtpmap:%u %s/%lu%s%s" CRLF,
-		   rm->rm_pt, rm->rm_encoding, rm->rm_rate,
-		   rm->rm_params ? "/" : "",
-		   rm->rm_params ? rm->rm_params : "");
-      if (rm->rm_fmtp)
-	sdp_printf(p, "a=fmtp:%u %s" CRLF,
-		   rm->rm_pt, rm->rm_fmtp);
+		if (rm->rm_encoding && *rm->rm_encoding && (!rm->rm_predef || p->pr_all_rtpmaps)) {
+			sdp_printf(p, "a=rtpmap:%u %s/%lu%s%s" CRLF,
+					   rm->rm_pt, rm->rm_encoding, rm->rm_rate,
+					   rm->rm_params ? "/" : "",
+					   rm->rm_params ? rm->rm_params : "");
+		}
+		if (rm->rm_fmtp) {
+			sdp_printf(p, "a=fmtp:%u %s" CRLF,
+					   rm->rm_pt, rm->rm_fmtp);
+		}
     }
 
     if (!p->pr_mode_manual && !m->m_rejected &&
@@ -685,9 +693,8 @@ static void printing_error(sdp_printer_t *p, const char *fmt, ...)
   va_list ap;
 
   if (p->pr_ok) {
-    int n;
     va_start(ap, fmt);
-    n = vsnprintf(p->pr_buffer, p->pr_bsiz, fmt, ap);
+    vsnprintf(p->pr_buffer, p->pr_bsiz, fmt, ap);
     va_end(ap);
   }
 

@@ -8,7 +8,7 @@
 # ----------------------------------------------------------------------
 # Header paths
 
-INCLUDES = 		-I$(srcdir)/../ipt -I../ipt \
+AM_CPPFLAGS = 		-I$(srcdir)/../ipt -I../ipt \
 			-I$(srcdir)/../msg -I../msg \
 			-I$(srcdir)/../sip -I../sip \
 			-I$(srcdir)/../bnf -I../bnf \
@@ -26,7 +26,7 @@ INCLUDES = 		-I$(srcdir)/../ipt -I../ipt \
 noinst_LTLIBRARIES = 	libnta.la
 
 check_PROGRAMS = 	check_nta test_nta_api test_nta portbind
-dist_noinst_SCRIPTS =	run_check_nta run_test_nta_api run_test_nta
+dist_noinst_SCRIPTS =	run_test_nta_api run_test_nta
 
 TESTS =			run_check_nta run_test_nta_api run_test_nta
 
@@ -69,16 +69,14 @@ MOSTLYCLEANFILES +=	.test[0-9]*
 
 if HAVE_CHECK
 
-check_nta_SOURCES =	check_nta.h \
+check_nta_SOURCES =	check_nta.c check_nta.h \
 			check_nta_api.c \
-			check_nta_client.c \
-			check_nta_server.c \
-			check_nta.c
+			check_nta_client.c
 
 check_nta_LDADD = 	${LDADD} @CHECK_LIBS@
 
 else
-check_nta_SOURCES = 	$(top_srcdir)/s2check/exit77.c
+check_nta_SOURCES = 	exit77.c
 endif
 
 # ----------------------------------------------------------------------

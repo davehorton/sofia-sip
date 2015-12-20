@@ -49,6 +49,7 @@
 #include <sofia-sip/sip_status.h>
 
 #define NTA_UPDATE_MAGIC_T   struct nua_s
+#define NTA_ERROR_MAGIC_T   struct nua_s
 
 #include "nua_stack.h"
 
@@ -116,7 +117,8 @@ static void nua_register_usage_peer_info(nua_dialog_usage_t *du,
 					 sip_t const *sip);
 static void nua_register_usage_refresh(nua_handle_t *,
 				       nua_dialog_state_t *,
-				       nua_dialog_usage_t *);
+				       nua_dialog_usage_t *,
+				       sip_time_t);
 static int nua_register_usage_shutdown(nua_handle_t *,
 				       nua_dialog_state_t *,
 				       nua_dialog_usage_t *);
@@ -779,14 +781,12 @@ int nua_register_client_request(nua_client_request_t *cr,
       /* Remove the expire parameters from contacts */
       msg_header_remove_param(m->m_common, "expires");
     }
-    else if (nr && nr->nr_min_expires) {
-      unsigned long exp = strtoul(m->m_expires, 0, 10);
-      if (exp != 0 && exp < nr->nr_min_expires) {
-        if (min_expires == NULL)
-          min_expires = su_sprintf(msg_home(msg), "expires=%lu",
-                                   nr->nr_min_expires);
-        msg_header_replace_param(msg_home(msg), m->m_common, min_expires);
-      }
+    else if (nr && nr->nr_min_expires &&
+	     strtoul(m->m_expires, 0, 10) < nr->nr_min_expires) {
+      if (min_expires == NULL)
+	min_expires = su_sprintf(msg_home(msg), "expires=%lu",
+				 nr->nr_min_expires);
+      msg_header_replace_param(msg_home(msg), m->m_common, min_expires);
     }
   }
 
@@ -968,7 +968,7 @@ static int nua_register_client_response(nua_client_request_t *cr,
     if (tport && tport != nr->nr_tport) {
       if (nr->nr_error_report_id) {
 	if (tport_release(nr->nr_tport, nr->nr_error_report_id, NULL, NULL, nr, 0) < 0)
-	  SU_DEBUG_1(("nua_register: tport_release() failed\n"));
+	  SU_DEBUG_1(("nua_register: tport_release() failed\n" VA_NONE));
 	nr->nr_error_report_id = 0;
       }
       tport_unref(nr->nr_tport);
@@ -997,7 +997,7 @@ static int nua_register_client_response(nua_client_request_t *cr,
     if (nr->nr_tport) {
       if (nr->nr_error_report_id) {
 	if (tport_release(nr->nr_tport, nr->nr_error_report_id, NULL, NULL, nr, 0) < 0)
-	  SU_DEBUG_1(("nua_register: tport_release() failed\n"));
+	  SU_DEBUG_1(("nua_register: tport_release() failed\n" VA_NONE));
 	nr->nr_error_report_id = 0;
       }
 
@@ -1029,7 +1029,7 @@ void nua_register_connection_closed(tp_stack_t *sip_stack,
   pending = nr->nr_error_report_id;
 
   if (tport_release(tport, pending, NULL, NULL, nr, 0) < 0)
-    SU_DEBUG_1(("nua_register: tport_release() failed\n"));
+    SU_DEBUG_1(("nua_register: tport_release() failed\n" VA_NONE));
   nr->nr_error_report_id = 0;
 
   tpn = tport_name(nr->nr_tport);
@@ -1086,7 +1086,8 @@ nua_register_usage_update_params(nua_dialog_usage_t const *du,
 
 static void nua_register_usage_refresh(nua_handle_t *nh,
 				       nua_dialog_state_t *ds,
-				       nua_dialog_usage_t *du)
+				       nua_dialog_usage_t *du,
+				       sip_time_t now)
 {
   nua_t *nua = nh->nh_nua;
   nua_client_request_t *cr = du->du_cr;
@@ -1138,6 +1139,7 @@ static int nua_register_usage_shutdown(nua_handle_t *nh,
 #endif
 
 static void nua_stack_tport_update(nua_t *nua, nta_agent_t *nta);
+static void nua_stack_tport_error(nua_t *nua, nta_agent_t *nta, tport_t *tport);
 static int nua_registration_add_contact_and_route(nua_handle_t *nh,
 						  nua_registration_t *nr,
 						  msg_t *msg,
@@ -1149,12 +1151,16 @@ int
 nua_stack_init_transport(nua_t *nua, tagi_t const *tags)
 {
   url_string_t const *contact1 = NULL, *contact2 = NULL;
+  url_string_t const *contact3 = NULL, *contact4 = NULL;
   char const *name1 = "sip", *name2 = "sip";
+  char const *name3 = "sip", *name4 = "sip";
   char const *certificate_dir = NULL;
 
   tl_gets(tags,
           NUTAG_URL_REF(contact1),
           NUTAG_SIPS_URL_REF(contact2),
+          NUTAG_WS_URL_REF(contact3),
+          NUTAG_WSS_URL_REF(contact4),
           NUTAG_CERTIFICATE_DIR_REF(certificate_dir),
           TAG_END());
 
@@ -1173,6 +1179,18 @@ nua_stack_init_transport(nua_t *nua, tagi_t const *tags)
        : contact2->us_url->url_type == url_sips))
     name2 = "sips";
 
+  if (contact3 &&
+      (url_is_string(contact3)
+       ? su_casenmatch(contact3->us_str, "sips:", 5)
+       : contact3->us_url->url_type == url_sips))
+    name3 = "sips";
+
+  if (contact4 &&
+      (url_is_string(contact4)
+       ? su_casenmatch(contact4->us_str, "sips:", 5)
+       : contact4->us_url->url_type == url_sips))
+    name4 = "sips";
+
   if (!contact1 /* && !contact2 */) {
     if (nta_agent_add_tport(nua->nua_nta, NULL,
 			    TPTAG_IDENT("sip"),
@@ -1190,7 +1208,7 @@ nua_stack_init_transport(nua_t *nua, tagi_t const *tags)
 			    TPTAG_PUBLIC(tport_type_stun), /* use stun */
 			    TPTAG_CERTIFICATE(certificate_dir),
 			    TAG_NEXT(nua->nua_args)) < 0) {
-      SU_DEBUG_0(("nua: error initializing STUN transport\n"));
+      SU_DEBUG_0(("nua: error initializing STUN transport\n" VA_NONE));
     }
 #endif
   }
@@ -1204,6 +1222,20 @@ nua_stack_init_transport(nua_t *nua, tagi_t const *tags)
     if (contact2 &&
 	nta_agent_add_tport(nua->nua_nta, contact2,
 			    TPTAG_IDENT(name2),
+			    TPTAG_CERTIFICATE(certificate_dir),
+			    TAG_NEXT(nua->nua_args)) < 0)
+      return -1;
+
+    if (contact3 &&
+	nta_agent_add_tport(nua->nua_nta, contact3,
+			    TPTAG_IDENT(name3),
+			    TPTAG_CERTIFICATE(certificate_dir),
+			    TAG_NEXT(nua->nua_args)) < 0)
+      return -1;
+
+    if (contact4 &&
+	nta_agent_add_tport(nua->nua_nta, contact4,
+			    TPTAG_IDENT(name4),
 			    TPTAG_CERTIFICATE(certificate_dir),
 			    TAG_NEXT(nua->nua_args)) < 0)
       return -1;
@@ -1337,11 +1369,12 @@ nua_stack_init_registrations(nua_t *nua)
     du = ds->ds_usage;
 
     if (ds->ds_has_register == 1 && du->du_class->usage_refresh) {
-      nua_dialog_usage_refresh(*nh_list, ds, du);
+      nua_dialog_usage_refresh(*nh_list, ds, du, 1);
     }
   }
 
   nta_agent_bind_tport_update(nua->nua_nta, (nta_update_magic_t *)nua, nua_stack_tport_update);
+  nta_agent_bind_tport_error(nua->nua_nta, (nta_error_magic_t *)nua, nua_stack_tport_error);
 
   return 0;
 }
@@ -1444,6 +1477,12 @@ int nua_registration_from_via(nua_registration_t **list,
   su_home_deinit(autohome);
 
   return 0;
+}
+
+static
+void nua_stack_tport_error(nua_t *nua, nta_agent_t *nta, tport_t *tport)
+{
+  return;
 }
 
 static
@@ -1879,14 +1918,14 @@ int nua_registration_process_request(nua_registration_t *list,
 				     nta_incoming_t *irq,
 				     sip_t const *sip)
 {
-  sip_call_id_t *i;
+  //sip_call_id_t *i;
   nua_registration_t *nr;
 
   if (!outbound_targeted_request(sip))
     return 0;
 
   /* Process by outbound... */
-  i = sip->sip_call_id;
+  //i = sip->sip_call_id;
 
   for (nr = list; nr; nr = nr->nr_next) {
     outbound_t *ob = nr->nr_ob;
@@ -1908,7 +1947,7 @@ static int nua_stack_outbound_refresh(nua_handle_t *nh,
   du = nua_dialog_usage_get(ds, nua_register_usage, NULL);
 
   if (du)
-    nua_dialog_usage_refresh(nh, ds, du);
+    nua_dialog_usage_refresh(nh, ds, du, 1);
 
   return 0;
 }
@@ -2033,7 +2072,7 @@ sip_contact_t *nua_handle_contact_by_via(nua_handle_t *nh,
       char *s = strcpy(_transport, transport);
       short c;
 
-      for (; (c = *s) && c != ';'; s++)
+      for (s = _transport; (c = *s) && c != ';'; s++)
 	if (isupper(c))
 	  *s = tolower(c);
 
@@ -2107,8 +2146,8 @@ sip_contact_t *nua_handle_contact_by_via(nua_handle_t *nh,
 	su_strlst_append(l, "\"");
       }
 
-      if (nh->nh_ds->ds_soa) {
-	char **media = soa_media_features(nh->nh_ds->ds_soa, 0, home);
+      if (nh->nh_soa) {
+	char **media = soa_media_features(nh->nh_soa, 0, home);
 
 	while (*media) {
 	  if (su_strlst_len(l))

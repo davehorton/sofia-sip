@@ -102,11 +102,11 @@ ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/m4/libtool.m4 \
 	$(top_srcdir)/m4/ltoptions.m4 $(top_srcdir)/m4/ltsugar.m4 \
 	$(top_srcdir)/m4/ltversion.m4 $(top_srcdir)/m4/lt~obsolete.m4 \
-	$(top_srcdir)/m4/sac-coverage.m4 \
+	$(top_srcdir)/acinclude.m4 $(top_srcdir)/m4/sac-pkg-config.m4 \
 	$(top_srcdir)/m4/sac-general.m4 \
-	$(top_srcdir)/m4/sac-openssl.m4 \
-	$(top_srcdir)/m4/sac-pkg-config.m4 $(top_srcdir)/m4/sac-su2.m4 \
-	$(top_srcdir)/m4/sac-tport.m4 $(top_srcdir)/configure.ac
+	$(top_srcdir)/m4/sac-openssl.m4 $(top_srcdir)/m4/sac-su2.m4 \
+	$(top_srcdir)/m4/sac-su.m4 $(top_srcdir)/m4/sac-tport.m4 \
+	$(top_srcdir)/m4/sac-coverage.m4 $(top_srcdir)/configure.ac
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
 mkinstalldirs = $(install_sh) -d
@@ -139,11 +139,7 @@ libtestproxy_a_OBJECTS = $(am_libtestproxy_a_OBJECTS)
 check_dlopen_sofia_SOURCES = check_dlopen_sofia.c
 check_dlopen_sofia_OBJECTS =  \
 	check_dlopen_sofia-check_dlopen_sofia.$(OBJEXT)
-am__DEPENDENCIES_1 =
-am__DEPENDENCIES_2 = ${sofiabuilddir}/libsofia-sip-ua.la \
-	$(am__DEPENDENCIES_1)
-check_dlopen_sofia_DEPENDENCIES = ${top_builddir}/s2check/libs2.a \
-	$(am__DEPENDENCIES_2)
+check_dlopen_sofia_DEPENDENCIES = ${top_builddir}/s2check/libs2.a
 check_dlopen_sofia_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CCLD) \
 	$(check_dlopen_sofia_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) \
@@ -151,13 +147,15 @@ check_dlopen_sofia_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) \
 am_check_sofia_OBJECTS = check_sofia-check_sofia.$(OBJEXT) \
 	check_sofia-suite_for_nua.$(OBJEXT)
 check_sofia_OBJECTS = $(am_check_sofia_OBJECTS)
-check_sofia_DEPENDENCIES = $(check_LIBRARIES) $(am__DEPENDENCIES_2)
+check_sofia_DEPENDENCIES = $(check_LIBRARIES) \
+	${sofiabuilddir}/libsofia-sip-ua.la
 check_sofia_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(check_sofia_CFLAGS) \
 	$(CFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
 am_test_nua_OBJECTS = test_nua.$(OBJEXT)
 test_nua_OBJECTS = $(am_test_nua_OBJECTS)
-test_nua_DEPENDENCIES = $(check_LIBRARIES) $(am__DEPENDENCIES_2)
+test_nua_DEPENDENCIES = $(check_LIBRARIES) \
+	${sofiabuilddir}/libsofia-sip-ua.la
 DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir) -I$(top_builddir)/libsofia-sip-ua/su/sofia-sip
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
@@ -235,7 +233,6 @@ LIBVER_SOFIA_SIP_UA_SOVER = @LIBVER_SOFIA_SIP_UA_SOVER@
 LIPO = @LIPO@
 LN_S = @LN_S@
 LTLIBOBJS = @LTLIBOBJS@
-MAINT = @MAINT@
 MAKEINFO = @MAKEINFO@
 MINGW_ENVIRONMENT = @MINGW_ENVIRONMENT@
 MKDIR_P = @MKDIR_P@
@@ -329,8 +326,9 @@ top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 EXTRA_DIST = check_sofia.h check_sofia.c suite_for_nua.c
 test_nua_SOURCES = test_nua.c
-LDADD = ${sofiabuilddir}/libsofia-sip-ua.la $(openssl_LIBS)
-test_nua_LDADD = $(check_LIBRARIES) $(LDADD)
+test_nua_LDADD = $(check_LIBRARIES) \
+			${sofiabuilddir}/libsofia-sip-ua.la
+
 check_LIBRARIES = libtestnua.a libtestproxy.a libtestnat.a
 libtestnua_a_SOURCES = test_nua.h test_ops.c \
 			test_init.c \
@@ -349,14 +347,12 @@ check_sofia_CFLAGS = @CHECK_CFLAGS@
 check_sofia_SOURCES = check_sofia.c check_sofia.h \
 	suite_for_nua.c
 
-check_sofia_LDADD = $(check_LIBRARIES) $(LDADD) \
-			@CHECK_LIBS@ 
-
-check_dlopen_sofia_CFLAGS = -I$(top_srcdir)/s2check @CHECK_CFLAGS@
-check_dlopen_sofia_LDADD = \
-			${top_builddir}/s2check/libs2.a $(LDADD) -ldl \
+check_sofia_LDADD = $(check_LIBRARIES) \
+			${sofiabuilddir}/libsofia-sip-ua.la \
 			@CHECK_LIBS@
 
+check_dlopen_sofia_CFLAGS = -I$(top_srcdir)/s2check @CHECK_CFLAGS@
+check_dlopen_sofia_LDADD = ${top_builddir}/s2check/libs2.a @CHECK_LIBS@
 CLEANFILES = tmp_sippasswd.??????
 sofiasrcdir = ${top_srcdir}/libsofia-sip-ua
 sofiabuilddir = ${top_builddir}/libsofia-sip-ua
@@ -423,12 +419,12 @@ LINK = ${SOFIA_SILENT}test "${SOFIA_SILENT}" != @ || echo '	 LINK $@'; \
 
 # ----------------------------------------------------------------------
 # Sofia specific rules
-INCLUDES = ${INTERNAL_INCLUDES}
+AM_CPPFLAGS = ${INTERNAL_INCLUDES}
 all: all-am
 
 .SUFFIXES:
 .SUFFIXES: _tag_ref.c _tag.c .c .lo .o .obj
-$(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am $(top_srcdir)/rules/sofia.am $(top_srcdir)/rules/valcheck.am $(top_srcdir)/rules/lcov.am $(top_srcdir)/rules/silent.am $(am__configure_deps)
+$(srcdir)/Makefile.in:  $(srcdir)/Makefile.am $(top_srcdir)/rules/sofia.am $(top_srcdir)/rules/valcheck.am $(top_srcdir)/rules/lcov.am $(top_srcdir)/rules/silent.am $(am__configure_deps)
 	@for dep in $?; do \
 	  case '$(am__configure_deps)' in \
 	    *$$dep*) \
@@ -453,9 +449,9 @@ Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 $(top_builddir)/config.status: $(top_srcdir)/configure $(CONFIG_STATUS_DEPENDENCIES)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
 
-$(top_srcdir)/configure: @MAINTAINER_MODE_TRUE@ $(am__configure_deps)
+$(top_srcdir)/configure:  $(am__configure_deps)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
-$(ACLOCAL_M4): @MAINTAINER_MODE_TRUE@ $(am__aclocal_m4_deps)
+$(ACLOCAL_M4):  $(am__aclocal_m4_deps)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
 $(am__aclocal_m4_deps):
 

@@ -260,7 +260,7 @@ sip_contact_string_from_via(su_home_t *home,
     char *s = strcpy(_transport, transport);
     short c;
 
-    for (; (c = *s) && c != ';'; s++)
+    for (s = _transport; (c = *s) && c != ';'; s++)
       if (isupper(c))
 	*s = tolower(c);
 
@@ -394,7 +394,8 @@ issize_t sip_header_field_e(char *b, isize_t bsiz, sip_header_t const *h, int fl
 char *sip_header_as_string(su_home_t *home, sip_header_t const *h)
 {
   ssize_t len;
-  char *rv, s[128];
+  char *rv, s[256];
+  ssize_t n;
 
   if (h == NULL)
     return NULL;
@@ -412,7 +413,8 @@ char *sip_header_as_string(su_home_t *home, sip_header_t const *h)
   for (rv = su_alloc(home, len);
        rv;
        rv = su_realloc(home, rv, len)) {
-    ssize_t n = sip_header_field_e(rv, len, h, 0);
+	memset(rv,0,len);
+    n = sip_header_field_e(rv, len, h, 0);
     if (n > -1 && n + 1 <= len)
       break;
     if (n > -1)			/* glibc >2.1 */
@@ -451,12 +453,40 @@ url_t *sip_url_dup(su_home_t *home, url_t const *o)
  * @param q q-value string <code>("1" | "." 1,3DIGIT)</code>
  *
  * @return An integer in range 0 .. 1000.
- *
- * @deprecated Use msg_q_value() instead.
  */
 unsigned sip_q_value(char const *q)
 {
-  return msg_q_value(q);
+  unsigned value = 0;
+
+  if (!q)
+    return 1000;
+  if (q[0] != '0' && q[0] != '.' && q[0] != '1')
+    return 500; /* Garbage... */
+  while (q[0] == '0')
+    q++;
+  if (q[0] >= '1' && q[0] <= '9')
+    return 1000;
+  if (q[0] == '\0')
+    return 0;
+  if (q[0] != '.')
+    return 500;    /* Garbage... */
+
+  if (q[1] >= '0' && q[1] <= '9') {
+    value = (q[1] - '0') * 100;
+    if (q[2] >= '0' && q[2] <= '9') {
+      value += (q[2] - '0') * 10;
+      if (q[3] >= '0' && q[3] <= '9') {
+	value += (q[3] - '0');
+	if (q[4] > '5' && q[4] <= '9')
+	  /* Round upwards */
+	  value += 1;
+	else if (q[4] == '5')
+	  value += value & 1; /* Round to even */
+      }
+    }
+  }
+
+  return value;
 }
 
 
@@ -640,12 +670,27 @@ sip_route_t *sip_route_fixdup(su_home_t *home, sip_route_t const *route)
   return sip_route_fixdup_as(home, sip_route_class, route);
 }
 
+static void sip_fragment_clear_chain(sip_header_t *h)
+{
+  void const *next;
+
+  for (; h; h = h->sh_succ) {
+    next = (char *)h->sh_data + h->sh_len;
+
+    sip_fragment_clear(h->sh_common);
+
+    if (!next ||
+	!h->sh_succ ||
+	h->sh_next != h->sh_succ ||
+	h->sh_succ->sh_data != next ||
+	h->sh_succ->sh_len)
+      return;
+  }
+}
+
 /**@ingroup sip_route
  *
  * Fix @Route header.
- *
- * If URI has no parameters and the header contains a single @c ;lr header
- * parameter, the "lr" is moved as URI parameter.
  */
 sip_route_t *sip_route_fix(sip_route_t *route)
 {
@@ -671,7 +716,7 @@ sip_route_t *sip_route_fix(sip_route_t *route)
       for (i = 0; r->r_params[i]; i++)
 	((char const **)r->r_params)[i] = r->r_params[i + 1];
 
-      msg_fragment_clear_chain((msg_header_t *)h);
+      sip_fragment_clear_chain(h);
     }
   }
 
@@ -689,9 +734,14 @@ sip_via_t *sip_via_remove(msg_t *msg, sip_t *sip)
   if (sip == NULL)
     return NULL;
 
-  v = sip->sip_via;
+  for (v = sip->sip_via; v; v = v->v_next) {
+    sip_fragment_clear(v->v_common);
 
-  if (v)
+    if (v->v_next != (void *)v->v_common->h_succ)
+      break;
+  }
+
+  if ((v = sip->sip_via))
     msg_header_remove(msg, (msg_pub_t *)sip, (msg_header_t *)v);
 
   return v;

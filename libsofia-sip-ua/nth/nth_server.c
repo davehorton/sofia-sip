@@ -200,9 +200,6 @@ static char const __func__[] = "nth";
 static server_t *server_create(url_t const *url,
 			       tag_type_t tag, tag_value_t value, ...);
 void server_destroy(server_t *srv);
-su_inline int server_timer_init(server_t *srv);
-static void server_timer(su_root_magic_t *rm, su_timer_t *timer, server_t *srv);
-su_inline uint32_t server_now(server_t const *srv);
 static void server_request(server_t *srv, tport_t *tport, msg_t *msg,
 				    void *arg, su_time_t now);
 static nth_site_t **site_get_host(nth_site_t **, char const *host, char const *port);
@@ -312,20 +309,20 @@ nth_site_t *nth_site_create(nth_site_t *parent,
   is_path = url->url_path != NULL;
 
   if (is_host && is_path) {
-    SU_DEBUG_3(("nth_site_create(): virtual host and path simultanously\n"));
+    SU_DEBUG_3(("nth_site_create(): virtual host and path simultanously\n" VA_NONE));
     errno = EINVAL;
     goto error;
   }
 
   if (!parent && !is_host) {
-    SU_DEBUG_3(("nth_site_create(): host is required\n"));
+    SU_DEBUG_3(("nth_site_create(): host is required\n" VA_NONE));
     errno = EINVAL;
     goto error;
   }
 
   if (parent) {
     if (!parent->site_isdir) {
-      SU_DEBUG_3(("nth_site_create(): invalid parent resource \n"));
+      SU_DEBUG_3(("nth_site_create(): invalid parent resource \n" VA_NONE));
       errno = EINVAL;
       goto error;
     }
@@ -775,44 +772,6 @@ void server_destroy(server_t *srv)
   su_home_unref(srv->srv_home);
 }
 
-/** Initialize server timer. */
-su_inline
-int server_timer_init(server_t *srv)
-{
-  if (0) {
-    srv->srv_timer = su_timer_create(su_root_task(srv->srv_root), SERVER_TICK);
-    return su_timer_set(srv->srv_timer, server_timer, srv);
-  }
-  return 0;
-}
-
-/**
- * Server timer routine.
- */
-static
-void server_timer(su_root_magic_t *rm, su_timer_t *timer, server_t *srv)
-{
-  uint32_t now;
-
-  su_timer_set(timer, server_timer, srv);
-
-  now = su_time_ms(su_now()); now += now == 0; srv->srv_now = now;
-
-  /* Xyzzy */
-
-  srv->srv_now = 0;
-}
-
-/** Get current timestamp in milliseconds */
-su_inline
-uint32_t server_now(server_t const *srv)
-{
-  if (srv->srv_now)
-    return srv->srv_now;
-  else
-    return su_time_ms(su_now());
-}
-
 /** Process incoming request message */
 static
 void server_request(server_t *srv,
@@ -995,7 +954,7 @@ static void server_reply(server_t *srv, tport_t *tport,
   if (tport_tqsend(tport, response, NULL,
 		   TPTAG_CLOSE_AFTER(close),
 		   TAG_END()) == -1) {
-    SU_DEBUG_3(("server_reply(): cannot queue response\n"));
+    SU_DEBUG_3(("server_reply(): cannot queue response\n" VA_NONE));
     tport_shutdown(tport, 2);
   }
 
@@ -1231,7 +1190,7 @@ msg_t *nth_request_message(nth_request_t *req)
   msg_t *retval = NULL;
 
   if (req)
-    retval = msg_ref(req->req_request);
+    retval = msg_ref_create(req->req_request);
 
   return retval;
 }

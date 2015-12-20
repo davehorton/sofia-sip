@@ -12,9 +12,8 @@ EXTRA_DIST = check_sofia.h check_sofia.c suite_for_nua.c
 
 test_nua_SOURCES = 	test_nua.c
 
-LDADD = 		${sofiabuilddir}/libsofia-sip-ua.la
-
-test_nua_LDADD =	$(check_LIBRARIES) $(LDADD)
+test_nua_LDADD =	$(check_LIBRARIES) \
+			${sofiabuilddir}/libsofia-sip-ua.la
 
 check_LIBRARIES =   	libtestnua.a libtestproxy.a libtestnat.a
 
@@ -43,13 +42,12 @@ check_sofia_CFLAGS = @CHECK_CFLAGS@
 check_sofia_SOURCES = check_sofia.c check_sofia.h \
 	suite_for_nua.c
 
-check_sofia_LDADD = 	$(check_LIBRARIES) $(LDADD) \
-			@CHECK_LIBS@ 
+check_sofia_LDADD = 	$(check_LIBRARIES) \
+			${sofiabuilddir}/libsofia-sip-ua.la \
+			@CHECK_LIBS@
 
 check_dlopen_sofia_CFLAGS = -I$(top_srcdir)/s2check @CHECK_CFLAGS@
-check_dlopen_sofia_LDADD = \
-			${top_builddir}/s2check/libs2.a $(LDADD) -ldl \
-			@CHECK_LIBS@
+check_dlopen_sofia_LDADD = ${top_builddir}/s2check/libs2.a @CHECK_LIBS@
 
 CLEANFILES =            tmp_sippasswd.??????
 
@@ -58,4 +56,4 @@ CLEANFILES =            tmp_sippasswd.??????
 
 include $(top_srcdir)/rules/sofia.am
 
-INCLUDES = ${INTERNAL_INCLUDES}
+AM_CPPFLAGS = ${INTERNAL_INCLUDES}

@@ -185,6 +185,10 @@ int ca_challenge(auth_client_t *ca,
 
   if (ca->ca_auc->auc_challenge)
     stale = ca->ca_auc->auc_challenge(ca, ch);
+
+  if (AUTH_CLIENT_IS_EXTENDED(ca))
+	  ca->ca_clear = 0;
+
   if (stale < 0)
     return -1;
 
@@ -285,18 +289,12 @@ int ca_info(auth_client_t *ca,
 /**Feed authentication data to the authenticator.
  *
  * The function auc_credentials() is used to provide the authenticators in
- * with authentication data (user name, secret).
- *
- * The authentication data has format as follows:
+ * with authentication data (user name, secret).  The authentication data
+ * has format as follows:
  *
  * scheme:"realm":user:pass
  *
  * For instance, @c Basic:"nokia-proxy":ppessi:verysecret
- *
- * For Digest authentication scheme, it is possible to provide hashed
- * password instead. The scheme and hashed password should have prefix
- * "HA1+". For instance,
- * @c HA1+Digest:"realm":user1:HA1+c0890ff7a4fadc50c45f392ec4312965
  *
  * @todo The authentication data format sucks.
  *
@@ -320,8 +318,7 @@ int auc_credentials(auth_client_t **auc_list, su_home_t *home,
   /* Parse authentication data */
   /* Data is string like "Basic:\"agni\":user1:secret"
      or "Basic:\"[fe80::204:23ff:fea7:d60a]\":user1:secret" (IPv6)
-     or "Basic:\"Use \\\"interesting\\\" username and password here:\"\
-     :user1:secret"
+     or "Basic:\"Use \\\"interesting\\\" username and password here:\":user1:secret"
   */
   if (s && (s = strchr(scheme = s, ':')))
     *s++ = 0;
@@ -359,14 +356,12 @@ int auc_credentials(auth_client_t **auc_list, su_home_t *home,
   return retval;
 }
 
-/**Feed authentication data to the authenticators.
+/**Feed authentication data to the authenticator.
  *
  * The function auc_credentials() is used to provide the authenticators in
  * with authentication tuple (scheme, realm, user name, secret).
  *
- * For @b Digest authentication scheme, it is possible to provide hashed
- * password instead. The @a scheme should contain "HA1+Digest", and the
- * @a password should be in hashed format prefixed with "HA1+".
+ * scheme:"realm":user:pass
  *
  * @param[in,out] auc_list  list of authenticators
  * @param[in] scheme        scheme to use (NULL, if any)
@@ -409,57 +404,16 @@ int ca_credentials(auth_client_t *ca,
 		   char const *user,
 		   char const *pass)
 {
-  int (*save)(auth_client_t *ca,
-	      char const *scheme,
-	      char const *realm,
-	      char const *user,
-	      char const *pass);
-
-  if (!ca || !ca->ca_scheme || !ca->ca_realm)
-    return -1;
-
-  save = AUTH_CLIENT_SAVE_CREDENTIALS(ca);
-
-  if (save)
-    return (*save)(ca, scheme, realm, user, pass);
-  else
-    return auth_client_save_credentials(ca, scheme, realm, user, pass);
-}
-
-
-/**Save authentication data to an authenticator.
- *
- * Function saves the authentication data in the authentication client,
- * if the scheme and the realm match.
- *
- * @param[in] ca            client authenticator
- * @param[in] scheme        scheme to use (NULL, if any)
- * @param[in] realm         realm to use (NULL, if any)
- * @param[in] user          username
- * @param[in] pass          password
- *
- * @retval 1 if successful
- * @retval 0 data did not match
- * @retval -1 upon an error
- *
- * @NEW_1_12_11
- */
-int auth_client_save_credentials(auth_client_t *ca,
-				 char const *scheme,
-				 char const *realm,
-				 char const *user,
-				 char const *pass)
-{
   char *new_user, *new_pass;
   char *old_user, *old_pass;
 
+  assert(ca);
+
   if (!ca || !ca->ca_scheme || !ca->ca_realm)
     return -1;
 
-  if (scheme != NULL && !su_casematch(scheme, ca->ca_scheme))
-    return 0;
-
-  if (realm != NULL && !su_strmatch(realm, ca->ca_realm))
+  if ((scheme != NULL && !su_casematch(scheme, ca->ca_scheme)) ||
+      (realm != NULL && !su_strmatch(realm, ca->ca_realm)))
     return 0;
 
   old_user = ca->ca_user, old_pass = ca->ca_pass;
@@ -486,9 +440,6 @@ int auth_client_save_credentials(auth_client_t *ca,
 
 /** Copy authentication data from @a src to @a dst.
  *
- * @param[in,out] dst  destination list of authenticators
- * @param[in] src      source list of authenticators
- *
  * @retval >0 if credentials were copied
  * @retval 0 if there was no credentials to copy
  * @retval <0 if an error occurred.
@@ -506,27 +457,35 @@ int auc_copy_credentials(auth_client_t **dst,
     auth_client_t const *ca;
 
     for (ca = src; ca; ca = ca->ca_next) {
-      int (*copy)(auth_client_t *d, auth_client_t const *s);
-      int result;
-
+      char *u, *p;
       if (!ca->ca_user || !ca->ca_pass)
 	continue;
       if (AUTH_CLIENT_IS_EXTENDED(ca) && ca->ca_clear)
 	continue;
-
-      copy = AUTH_CLIENT_COPY_CREDENTIALS(d);
-
-      if (copy != NULL)
-	result = (*copy)(d, src);
-      else
-	result = auth_client_copy_credentials(d, src);
-
-      if (result < 0)
-	return result;
-      else if (result == 0)
+      if (!ca->ca_scheme[0] || !su_casematch(ca->ca_scheme, d->ca_scheme))
 	continue;
-      else
+      if (!ca->ca_realm || !su_strmatch(ca->ca_realm, d->ca_realm))
+	continue;
+
+      if (!(AUTH_CLIENT_IS_EXTENDED(d) && d->ca_clear) &&
+	  su_strmatch(d->ca_user, ca->ca_user) &&
+	  su_strmatch(d->ca_pass, ca->ca_pass)) {
 	retval++;
+	break;
+      }
+
+      u = su_strdup(d->ca_home, ca->ca_user);
+      p = su_strdup(d->ca_home, ca->ca_pass);
+      if (!u || !p)
+	return -1;
+
+      if (d->ca_user) su_free(d->ca_home, (void *)d->ca_user);
+      if (d->ca_pass) su_free(d->ca_home, (void *)d->ca_pass);
+      d->ca_user = u, d->ca_pass = p;
+      if (AUTH_CLIENT_IS_EXTENDED(d))
+	d->ca_clear = 0;
+
+      retval++;
       break;
     }
   }
@@ -534,49 +493,6 @@ int auc_copy_credentials(auth_client_t **dst,
   return retval;
 }
 
-/**Copy authentication data from a matching client in @a src to @a d.
- *
- * @retval 1 if credentials were copied
- * @retval 0 clients did not match
- * @retval -1 if an error occurred.
- *
- * @NEW_1_12_11
- */
-int auth_client_copy_credentials(auth_client_t *d,
-				auth_client_t const *s)
-{
-  char *u, *p;
-
-  if (d == NULL || s == NULL)
-    return -1;
-
-  if (!s->ca_scheme[0] || !su_casematch(s->ca_scheme, d->ca_scheme))
-    return 0;
-
-  if (!s->ca_realm || !su_strmatch(s->ca_realm, d->ca_realm))
-    return 0;
-
-  if (!(AUTH_CLIENT_IS_EXTENDED(d) && d->ca_clear) &&
-      su_strmatch(d->ca_user, s->ca_user) &&
-      su_strmatch(d->ca_pass, s->ca_pass))
-    return 1;
-
-  u = su_strdup(d->ca_home, s->ca_user);
-  p = su_strdup(d->ca_home, s->ca_pass);
-  if (!u || !p)
-    return -1;
-
-  su_free(d->ca_home, (void *)d->ca_user);
-  su_free(d->ca_home, (void *)d->ca_pass);
-
-  d->ca_user = u;
-  d->ca_pass = p;
-
-  if (AUTH_CLIENT_IS_EXTENDED(d))
-    d->ca_clear = 0;
-
-  return 1;
-}
 
 /**Clear authentication data from the authenticator.
  *
@@ -654,8 +570,10 @@ int auc_has_authorization(auth_client_t **auc_list)
        * scheme
        */
       for (other = *auc_list; other; other = other->ca_next) {
-	if (ca == other)
-	  continue;
+		  if (ca == other) {
+			  continue;
+		  }
+
 	if (ca->ca_credential_class == other->ca_credential_class &&
 	    su_strcmp(ca->ca_realm, other->ca_realm) == 0 &&
 	    ca_has_authorization(other))
@@ -914,15 +832,6 @@ static int auc_digest_authorization(auth_client_t *ca,
 static int auc_digest_info(auth_client_t *ca,
 			   msg_auth_info_t const *info);
 
-static int auc_digest_save_credentials(auth_client_t *ca,
-				       char const *scheme,
-				       char const *realm,
-				       char const *user,
-				       char const *pass);
-
-static int auc_digest_copy_credentials(auth_client_t *ca,
-				       auth_client_t const *src);
-
 static const auth_client_plugin_t ca_digest_plugin =
 {
   /* auc_plugin_size: */ sizeof ca_digest_plugin,
@@ -931,9 +840,7 @@ static const auth_client_plugin_t ca_digest_plugin =
   /* auc_challenge: */   auc_digest_challenge,
   /* auc_authorize: */   auc_digest_authorization,
   /* auc_info: */        auc_digest_info,
-  /* auc_clear: */       ca_clear_credentials,
-  /* auc_save_credentials: */ auc_digest_save_credentials,
-  /* auc_copy_credentials: */ auc_digest_copy_credentials,
+  /* auc_clear: */       ca_clear_credentials
 };
 
 /** Store a digest authorization challenge.
@@ -960,7 +867,7 @@ static int auc_digest_challenge(auth_client_t *ca, msg_auth_t const *ch)
 
   stale = ac->ac_stale || cda->cda_ac->ac_nonce == NULL;
 
-  if (ac->ac_qop && (cda->cda_cnonce == NULL || ac->ac_stale)) {
+  if (ac->ac_qop && (cda->cda_cnonce == NULL || ac->ac_stale || ca->ca_clear )) {
     su_guid_t guid[1];
     char *cnonce;
     size_t b64len = BASE64_MINSIZE(sizeof(guid)) + 1;
@@ -1037,18 +944,12 @@ int auc_digest_authorization(auth_client_t *ca,
   char *uri;
 
   msg_header_t *h;
-  char const *ha1;
   auth_hexmd5_t sessionkey, response;
   auth_response_t ar[1] = {{ 0 }};
   char ncount[17];
 
   if (!user || !pass || (AUTH_CLIENT_IS_EXTENDED(ca) && ca->ca_clear))
     return 0;
-
-  if (!su_casenmatch(pass, "HA1+", 4))
-    return 0;
-
-  ha1 = pass + 4;
 
   ar->ar_size = sizeof(ar);
   ar->ar_username = user;
@@ -1076,16 +977,8 @@ int auc_digest_authorization(auth_client_t *ca,
     ar->ar_nc = ncount;
   }
 
-  if (ar->ar_md5sess) {
-    ar->ar_algorithm = "MD5-sess";
-    auth_digest_a1sess(ar, sessionkey, ha1);
-    ha1 = sessionkey;
-  }
-  else {
-    ar->ar_algorithm = "MD5";
-  }
-
-  auth_digest_response(ar, response, ha1, method, data, dlen);
+  auth_digest_sessionkey(ar, sessionkey, pass);
+  auth_digest_response(ar, response, sessionkey, method, data, dlen);
 
   h = msg_header_format(home, hc,
 			"Digest "
@@ -1124,39 +1017,6 @@ int auc_digest_authorization(auth_client_t *ca,
   return 0;
 }
 
-static int auc_digest_save_credentials(auth_client_t *ca,
-				       char const *scheme,
-				       char const *realm,
-				       char const *user,
-				       char const *pass)
-{
-  char prefixed[4 + sizeof (auth_hexmd5_t)]; /* "HA1+" and hex */
-
-  if (!ca)
-    return -1;
-
-  if (realm != NULL && !su_strmatch(realm, ca->ca_realm))
-    return 0;
-
-  if (scheme == NULL || su_casematch(scheme, "Digest")) {
-    strcpy(prefixed, "HA1+");
-    auth_digest_ha1(prefixed + strlen("HA1+"), user, ca->ca_realm, pass);
-    pass = prefixed;
-  }
-  else if (su_strmatch(scheme, "HA1+Digest") &&
-	   su_casenmatch(pass, "HA1+", 4))
-    pass = pass;
-  else
-    return 0;
-
-  return auth_client_save_credentials(ca, NULL, NULL, user, pass);
-}
-
-static int auc_digest_copy_credentials(auth_client_t *ca,
-				       auth_client_t const *src)
-{
-  return auth_client_copy_credentials(ca, src);
-}
 
 /* ---------------------------------------------------------------------- */
 

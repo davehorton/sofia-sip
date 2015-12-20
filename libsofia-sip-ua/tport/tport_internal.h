@@ -79,7 +79,11 @@
 #endif
 
 #ifndef NONE
-#define NONE ((void *)(intptr_t)-1)
+#ifndef _MSC_VER
+#define NONE ((void *)-1)
+#else
+#define NONE ((void *)(INT_PTR)-1)
+#endif
 #endif
 
 SOFIA_BEGIN_DECLS
@@ -102,6 +106,7 @@ typedef struct {
   unsigned tpp_mtu;		/**< Maximum packet size */
   unsigned tpp_idle;		/**< Allowed connection idle time. */
   unsigned tpp_timeout;		/**< Allowed idle time for message. */
+  unsigned tpp_socket_keepalive;/**< Socket keepalive interval */
   unsigned tpp_keepalive;	/**< Keepalive PING interval */
   unsigned tpp_pingpong;	/**< PONG-to-PING interval */
 
@@ -134,12 +139,16 @@ typedef struct {
 struct tport_s {
   su_home_t           tp_home[1];       /**< Memory home */
 
+  ssize_t             tp_refs;		/**< Number of references to tport */
+
+  unsigned            tp_black:1;       /**< Used by red-black-tree */
+
   unsigned            tp_accepted:1;    /**< Originally server? */
   unsigned            tp_conn_orient:1;	/**< Is connection-oriented */
   unsigned            tp_has_connection:1; /**< Has real connection */
   unsigned            tp_reusable:1;    /**< Can this connection be reused */
   unsigned            tp_closed : 1;
-  /**< This transport has been closed.
+  /**< This transport is closed.
    *
    * A closed transport is inserted into pri_closed list.
    */
@@ -153,12 +162,10 @@ struct tport_s {
   unsigned            tp_trunc:1;
   unsigned            tp_is_connected:1; /**< Connection is established */
   unsigned            tp_verified:1;     /**< Certificate Chain was verified */
-  unsigned            tp_error_reported:1; /**< Already reported */
-
-  /* Red-black tree */
-  unsigned            tp_black:1;       /**< Black node */
+  unsigned            tp_pre_framed:1;   /** Data is pre-framed **/
   unsigned:0;
-  tport_t *tp_left, *tp_right, *tp_dad; /**< Links in tport rbtree */
+
+  tport_t *tp_left, *tp_right, *tp_dad; /**< Links in tport tree */
 
   tport_master_t     *tp_master;        /**< Master transport */
   tport_primary_t    *tp_pri;           /**< Primary transport */
@@ -182,7 +189,7 @@ struct tport_s {
                                          *
                                          * Subject Name(s) provided by the peer
 					 * in a TLS connection (if secondary).
-					 * or matched against incoming
+					 * or matched against incoming 
 					 * connections (if primary).
                                          */
 
@@ -295,6 +302,9 @@ struct tport_master {
   /** FILE to dump received and sent data */
   FILE               *mr_dump_file;
   char               *mr_dump;	/**< Filename for dumping received/sent data */
+  /** SOCK to dump received and sent data */
+  su_socket_t         mr_capt_sock;
+  char               *mr_capt_name;	/**< Servername for capturing received/sent data */  
   tport_primary_t    *mr_primaries;        /**< List of primary contacts */
 
   tport_params_t      mr_params[1];
@@ -473,6 +483,9 @@ void tport_dump_iovec(tport_t const *self, msg_t *msg,
 		      size_t n, su_iovec_t const iov[], size_t iovused,
 		      char const *what, char const *how);
 
+void tport_capt_msg(tport_t const *self, msg_t *msg, size_t n,
+                    su_iovec_t const iov[], size_t iovused, char const *what);
+
 int tport_tcp_ping(tport_t *self, su_time_t now);
 int tport_tcp_pong(tport_t *self);
 
@@ -516,6 +529,10 @@ void tport_recv_timeout_timer(tport_t *self, su_time_t now);
 int tport_next_keepalive(tport_t *self, su_time_t *, char const **);
 void tport_keepalive_timer(tport_t *self, su_time_t now);
 
+extern tport_vtable_t const tport_ws_vtable;
+extern tport_vtable_t const tport_ws_client_vtable;
+extern tport_vtable_t const tport_wss_vtable;
+extern tport_vtable_t const tport_wss_client_vtable;
 extern tport_vtable_t const tport_sctp_vtable;
 extern tport_vtable_t const tport_sctp_client_vtable;
 extern tport_vtable_t const tport_tls_vtable;

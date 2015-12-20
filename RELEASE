@@ -25,26 +25,34 @@ API/ABI changes and versioning
 
 libsofia-sip-ua:
 - **template**: Added foobar() function (sofia-sip/foobar.h).
-- Added nta_leg_get_call_id() function to <sofia-sip/nta.h>
-- Added SOATAG_USER_O_LINE() tag (sofia-sip/soa_tag.h)
-- Added msg_q_value() function (sofia-sip/msg_mime.h).
-- Added msg_accept_match() function (sofia-sip/msg_mime.h).
-- Added NUTAG_AUTO100() tag (sofia-sip/nua_tag.h)
-- Added NUTAG_ACCEPT_MULTIPART() tag (sofia-sip/nua_tag.h).
-- Added NUTAG_MAX_RETRY_AFTER() tag (sofia-sip/nua_tag.h)
-- Added NUTAG_APPL_EVENT() tag (sofia-sip/nua_tag.h)
-- Added NUTAG_DEFERRABLE_TIMERS() tag (sofia-sip/nua_tag.h).
-- Added typedef su_time64_t and functions su_now64(), su_stamp64(),
-  su_time64_to_time(), su_time_to_time64(), su_time64_add(), and
-  su_duration64() (sofia-sip/su_time.h).
-- Added su_root_stamp64() and su_root_stamp64_offset() (sofia-sip/su_wait.h).
-- Added functions su_timer_set_interval64() and su_timer_is_running() 
-  (sofia-sip/su_wait.h)
-- Added function su_randint64() and include file <sofia-sip/su_random.h>
+- Timing out CANCELed INVITE client transactions is now done with timer D.
+  Previously, the INVITE client transactions were restarted instead of
+  timing out under certain circumstances.
+- An INVITE transaction that has been timed out with stack timer C is now
+  CANCELed automatically. Previously, such the INVITE client transactions
+  were restarted instead of timing out under certain circumstances.
+- Timing out forked INVITE client transactions is now done by stack.
+  The stack generates a 408 response to each INVITE transaction fork that
+  has not received a final response within 32 seconds (or 64 times SIP T1)
+  after first final response to the INVITE was received.
+- The mp_len type was changed from usize_t to unsigned.
+  The change is binary-incompatible on 64-bit platforms when compiled with
+  the configure opetion --disable-size-compat
 - This release is ABI/API compatible with applications linked against
   any 1.12.x release. However, applications built against this release won't
   work against an older library. The ABI has been tested with the nua module
   unit test (test_nua) built against original 1.12.0 release.
+
+Removed globals which should have been static in first place:
+  - su_t64_to_time()
+  - mutex_trylocker()
+  - su_port_set_system_preferences()
+  - t_null_next(), t_null_move(), t_null_dup(), t_null_copy(), t_null_find()
+  - t_skip_next(), t_skip_move(), t_skip_len(), t_skip_dup(), t_skip_filter()
+  - t_next_next(), t_next_move(), t_next_len(), t_next_dup(), t_next_filter()
+  - t_filter_with(), t_any_filter()
+  - sres_record_class(), urandom
+  - u2s_alloc()
 
 libsofia-sip-ua-glib:
 - No ABI/API changes, compatible with 1.12.0. Note, libsofia-sip-ua-glib
@@ -54,6 +62,8 @@ libsofia-sip-ua-glib:
 Contributors to this release
 ----------------------------
 
+Jarod Neuner <j dot neuner at networkharbor dot com>
+Michael Jerris <mike at jerris dot com>
 <list of people who contributed to _this_ release
  - update as people's patches are added, or when you commit stuff
  - current development team members (see AUTHORS) may be omitted,
@@ -64,23 +74,25 @@ Contributors to this release
  - roughly sorted by number of patches accepted
 />
 
-- 
 - **template**: First Surname (patch to nua/soa/msg)
-- Benoit Vallee (win32 install script)
-- Michael Jerris and other FreeSwitch contributors (numerous fixes)
-- timeless (fixes to sizeof goofs)
-- Jakub Sitnicki (bug fix to su_home_move())
 
 See the AUTHORS file in the distribution package.
 
 Notes on new features
 ---------------------
 
-<information about major new features
- - new/changed/removed functionality
- - links to further documentation
- - section may be omitted for minor releases
-/>
+Jarod Neuner has improved certificate validation facilities of TLS
+transport. Significant changes include:
+
+1) The TLS handshake is no longer handled via transparent negotiation.
+Certain static methods from tport.c were exposed to make this possible.
+
+2) Certificate subjects are copied out of the peer certificate before
+the first message is sent.  The next patch will include code that allows
+the stack to reject messages sent to a untrusted peer.
+
+3) The tport module can now report whether a secondary has a verified
+certificate chain and the subjects of the peer certificate.
 
 Bugs fixed in this release
 --------------------------
@@ -92,24 +104,5 @@ Bugs fixed in this release
 />
 
 - **template**: #9499652 sf.net bug item title
-- Fixed crash in case of response timeout in nua
-- Fixed assertion failure in case BYE was sent before 200 OK to invite
-  was received (reported by Jerry Richards)
-- Fixed sres_blocking_complete() reporting bogus errors (patch by <Yuri
-  AT rawbw DOT com>)
-- If initial OPTIONS used to verify registration fails, it is not retried
-  after re-REGISTER.
-- Fixed multiple Coverity issues.
-- Updating SDP version on o= line if the SDP was changed processing answer.
-  Thanks for Kristian Tronnberg for reporting the issue.
-- Incorporated fixes for multiple issues from Freeswitch.
-- MeeGo bug #15577: msg_addr_zero confuses sizeof pointer for sizeof *pointer
-- MeeGo bug #15573: su_task_init use of sizeof typedef causes analysis tool 
-  to fret  (reports by timeless)
-- Now using same Call-ID when retransmitting authenticated requests by NUA
-  (report by Olivier Deme)
-- Now including media activity tags in nua_i_invite events
-- Removed a memory leak from su_home_move() (fix by Jakub Sitnicki)
-- Fixed bug with changing timer deferability when set (Mikhail Zabaluev)
-- Fixed bug with extra OPTIONS keepalives and probes (Mikhail Zabaluev)
-- Fixed bug with session timer using Require: timer when not needed
+- Accept multiple WWW-Authenticate and Authorization headers.
+  Bug reported by Andrew Rechenberg.

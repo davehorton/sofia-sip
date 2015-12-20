@@ -112,11 +112,11 @@ ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/m4/libtool.m4 \
 	$(top_srcdir)/m4/ltoptions.m4 $(top_srcdir)/m4/ltsugar.m4 \
 	$(top_srcdir)/m4/ltversion.m4 $(top_srcdir)/m4/lt~obsolete.m4 \
-	$(top_srcdir)/m4/sac-coverage.m4 \
+	$(top_srcdir)/acinclude.m4 $(top_srcdir)/m4/sac-pkg-config.m4 \
 	$(top_srcdir)/m4/sac-general.m4 \
-	$(top_srcdir)/m4/sac-openssl.m4 \
-	$(top_srcdir)/m4/sac-pkg-config.m4 $(top_srcdir)/m4/sac-su2.m4 \
-	$(top_srcdir)/m4/sac-tport.m4 $(top_srcdir)/configure.ac
+	$(top_srcdir)/m4/sac-openssl.m4 $(top_srcdir)/m4/sac-su2.m4 \
+	$(top_srcdir)/m4/sac-su.m4 $(top_srcdir)/m4/sac-tport.m4 \
+	$(top_srcdir)/m4/sac-coverage.m4 $(top_srcdir)/configure.ac
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
 mkinstalldirs = $(install_sh) -d
@@ -137,15 +137,7 @@ am_check_nua_OBJECTS = check_nua.$(OBJEXT) check_session.$(OBJEXT) \
 	check_register.$(OBJEXT) check_etsi.$(OBJEXT) \
 	check_simple.$(OBJEXT)
 check_nua_OBJECTS = $(am_check_nua_OBJECTS)
-am__DEPENDENCIES_1 =
-am__DEPENDENCIES_2 = libnua.la ../iptsec/libiptsec.la ../ipt/libipt.la \
-	../nea/libnea.la ../nta/libnta.la ../sresolv/libsresolv.la \
-	../tport/libtport.la ../stun/libstun.la ../soa/libsoa.la \
-	../sdp/libsdp.la ../sip/libsip.la ../http/libhttp.la \
-	../msg/libmsg.la ../url/liburl.la ../bnf/libbnf.la \
-	../su/libsu.la $(am__DEPENDENCIES_1)
-check_nua_DEPENDENCIES = $(am__DEPENDENCIES_2) \
-	${top_builddir}/s2check/libs2.a
+check_nua_DEPENDENCIES = $(nua_libs) ${top_builddir}/s2check/libs2.a
 DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir) -I$(top_builddir)/libsofia-sip-ua/su/sofia-sip
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
@@ -242,7 +234,6 @@ LIBVER_SOFIA_SIP_UA_SOVER = @LIBVER_SOFIA_SIP_UA_SOVER@
 LIPO = @LIPO@
 LN_S = @LN_S@
 LTLIBOBJS = @LTLIBOBJS@
-MAINT = @MAINT@
 MAKEINFO = @MAKEINFO@
 MINGW_ENVIRONMENT = @MINGW_ENVIRONMENT@
 MKDIR_P = @MKDIR_P@
@@ -357,20 +348,31 @@ libnua_la_SOURCES = nua.c nua_stack.h nua_common.c nua_stack.c \
 			nua_tag.c nua_tag_ref.c
 
 COVERAGE_INPUT = $(libnua_la_SOURCES) $(include_sofia_HEADERS)
-LDADD = libnua.la ../iptsec/libiptsec.la ../ipt/libipt.la \
-	../nea/libnea.la ../nta/libnta.la ../sresolv/libsresolv.la \
-	../tport/libtport.la ../stun/libstun.la ../soa/libsoa.la \
-	../sdp/libsdp.la ../sip/libsip.la ../http/libhttp.la \
-	../msg/libmsg.la ../url/liburl.la ../bnf/libbnf.la \
-	../su/libsu.la $(openssl_LIBS)
 
 # ----------------------------------------------------------------------
 check_nua_SOURCES = check_nua.c check_nua.h \
 			check_session.c check_register.c \
 			check_etsi.c check_simple.c
 
-check_nua_LDADD = $(LDADD) ${top_builddir}/s2check/libs2.a \
+check_nua_LDADD = $(nua_libs) ${top_builddir}/s2check/libs2.a \
 			@CHECK_LIBS@
+
+nua_libs = libnua.la  \
+			../iptsec/libiptsec.la \
+			../ipt/libipt.la \
+			../nea/libnea.la \
+			../nta/libnta.la \
+			../sresolv/libsresolv.la \
+			../tport/libtport.la \
+			../stun/libstun.la \
+			../soa/libsoa.la \
+			../sdp/libsdp.la \
+			../sip/libsip.la \
+			../http/libhttp.la \
+			../msg/libmsg.la \
+			../url/liburl.la \
+			../bnf/libbnf.la \
+			../su/libsu.la
 
 
 # ----------------------------------------------------------------------
@@ -441,14 +443,14 @@ LINK = ${SOFIA_SILENT}test "${SOFIA_SILENT}" != @ || echo '	 LINK $@'; \
 
 # ----------------------------------------------------------------------
 # Sofia specific rules
-INCLUDES = ${INTERNAL_INCLUDES} -I$(top_srcdir)/s2check
+AM_CPPFLAGS = ${INTERNAL_INCLUDES} -I$(top_srcdir)/s2check
 TAG_DLL_FLAGS = LIST=nua_tag_list
 all: $(BUILT_SOURCES)
 	$(MAKE) $(AM_MAKEFLAGS) all-am
 
 .SUFFIXES:
 .SUFFIXES: _tag_ref.c _tag.c .c .lo .o .obj
-$(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am $(top_srcdir)/rules/sofia.am $(top_srcdir)/rules/valcheck.am $(top_srcdir)/rules/lcov.am $(top_srcdir)/rules/silent.am $(am__configure_deps)
+$(srcdir)/Makefile.in:  $(srcdir)/Makefile.am $(top_srcdir)/rules/sofia.am $(top_srcdir)/rules/valcheck.am $(top_srcdir)/rules/lcov.am $(top_srcdir)/rules/silent.am $(am__configure_deps)
 	@for dep in $?; do \
 	  case '$(am__configure_deps)' in \
 	    *$$dep*) \
@@ -473,9 +475,9 @@ Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 $(top_builddir)/config.status: $(top_srcdir)/configure $(CONFIG_STATUS_DEPENDENCIES)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
 
-$(top_srcdir)/configure: @MAINTAINER_MODE_TRUE@ $(am__configure_deps)
+$(top_srcdir)/configure:  $(am__configure_deps)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
-$(ACLOCAL_M4): @MAINTAINER_MODE_TRUE@ $(am__aclocal_m4_deps)
+$(ACLOCAL_M4):  $(am__aclocal_m4_deps)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
 $(am__aclocal_m4_deps):
 Doxyfile: $(top_builddir)/config.status $(srcdir)/Doxyfile.in

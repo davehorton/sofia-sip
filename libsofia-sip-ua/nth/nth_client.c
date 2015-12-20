@@ -243,8 +243,18 @@ static int hc_recv(nth_client_t * hc, msg_t *msg, http_t * http);
 HTABLE_PROTOS_WITH(hc_htable, hct, nth_client_t, uintptr_t, size_t);
 
 #define HTABLE_HASH_CLIENT(hc) ((uintptr_t)(hc)->hc_tport)
+
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunused-function"
+#endif
+
 HTABLE_BODIES_WITH(hc_htable, hct, nth_client_t, HTABLE_HASH_CLIENT,
 		   uintptr_t, size_t);
+
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
 
 static url_string_t const *hc_request_complete(nth_client_t * hc,
 					       msg_t *msg, http_t * http,
@@ -911,7 +921,7 @@ int hc_resolve_and_send(nth_client_t * hc)
 
   if (msg_serialize(msg, http) < 0) {
     assert(hc->hc_tport);
-    SU_DEBUG_3(("nth client create: invalid message"));
+    SU_DEBUG_3(("nth client create: invalid message" VA_NONE));
     return -1;
   }
 
@@ -1021,7 +1031,7 @@ msg_t *nth_client_request(nth_client_t * hc)
 msg_t *nth_client_response(nth_client_t const *hc)
 {
   if (hc)
-    return msg_ref(hc->hc_response);
+    return msg_ref_create(hc->hc_response);
   else
     return NULL;
 }

@@ -109,11 +109,11 @@ ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/m4/libtool.m4 \
 	$(top_srcdir)/m4/ltoptions.m4 $(top_srcdir)/m4/ltsugar.m4 \
 	$(top_srcdir)/m4/ltversion.m4 $(top_srcdir)/m4/lt~obsolete.m4 \
-	$(top_srcdir)/m4/sac-coverage.m4 \
+	$(top_srcdir)/acinclude.m4 $(top_srcdir)/m4/sac-pkg-config.m4 \
 	$(top_srcdir)/m4/sac-general.m4 \
-	$(top_srcdir)/m4/sac-openssl.m4 \
-	$(top_srcdir)/m4/sac-pkg-config.m4 $(top_srcdir)/m4/sac-su2.m4 \
-	$(top_srcdir)/m4/sac-tport.m4 $(top_srcdir)/configure.ac
+	$(top_srcdir)/m4/sac-openssl.m4 $(top_srcdir)/m4/sac-su2.m4 \
+	$(top_srcdir)/m4/sac-su.m4 $(top_srcdir)/m4/sac-tport.m4 \
+	$(top_srcdir)/m4/sac-coverage.m4 $(top_srcdir)/configure.ac
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
 mkinstalldirs = $(install_sh) -d
@@ -138,10 +138,8 @@ libmsg_la_OBJECTS = $(am_libmsg_la_OBJECTS)
 msg_name_hash_SOURCES = msg_name_hash.c
 msg_name_hash_OBJECTS = msg_name_hash.$(OBJEXT)
 msg_name_hash_LDADD = $(LDADD)
-am__DEPENDENCIES_1 =
 msg_name_hash_DEPENDENCIES = libtest_msg.a libmsg.la ../bnf/libbnf.la \
-	../url/liburl.la ../ipt/libipt.la ../su/libsu.la \
-	$(am__DEPENDENCIES_1)
+	../url/liburl.la ../ipt/libipt.la ../su/libsu.la
 msg_name_hash_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
 	$(msg_name_hash_LDFLAGS) $(LDFLAGS) -o $@
@@ -149,8 +147,7 @@ test_msg_SOURCES = test_msg.c
 test_msg_OBJECTS = test_msg.$(OBJEXT)
 test_msg_LDADD = $(LDADD)
 test_msg_DEPENDENCIES = libtest_msg.a libmsg.la ../bnf/libbnf.la \
-	../url/liburl.la ../ipt/libipt.la ../su/libsu.la \
-	$(am__DEPENDENCIES_1)
+	../url/liburl.la ../ipt/libipt.la ../su/libsu.la
 test_msg_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
 	--mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(test_msg_LDFLAGS) \
 	$(LDFLAGS) -o $@
@@ -254,7 +251,6 @@ LIBVER_SOFIA_SIP_UA_SOVER = @LIBVER_SOFIA_SIP_UA_SOVER@
 LIPO = @LIPO@
 LN_S = @LN_S@
 LTLIBOBJS = @LTLIBOBJS@
-MAINT = @MAINT@
 MAKEINFO = @MAKEINFO@
 MINGW_ENVIRONMENT = @MINGW_ENVIRONMENT@
 MKDIR_P = @MKDIR_P@
@@ -346,7 +342,7 @@ target_vendor = @target_vendor@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-INCLUDES = -I$(srcdir)/../url -I../url \
+AM_CPPFLAGS = -I$(srcdir)/../url -I../url \
 		-I$(srcdir)/../bnf -I../bnf \
 		-I$(srcdir)/../su -I../su
 
@@ -383,8 +379,12 @@ COVERAGE_INPUT = $(libmsg_la_SOURCES) $(include_sofia_HEADERS)
 libtest_msg_a_SOURCES = test_class.c test_class.h \
 			test_table.c test_inlined.c test_protos.h
 
-LDADD = libtest_msg.a libmsg.la ../bnf/libbnf.la ../url/liburl.la \
-	../ipt/libipt.la ../su/libsu.la $(openssl_LIBS)
+LDADD = libtest_msg.a libmsg.la \
+			../bnf/libbnf.la \
+			../url/liburl.la \
+			../ipt/libipt.la \
+			../su/libsu.la
+
 test_msg_LDFLAGS = -static
 msg_name_hash_LDFLAGS = -static
 
@@ -472,7 +472,7 @@ all: $(BUILT_SOURCES)
 
 .SUFFIXES:
 .SUFFIXES: _tag_ref.c _tag.c .c .lo .o .obj
-$(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am $(top_srcdir)/rules/sofia.am $(top_srcdir)/rules/valcheck.am $(top_srcdir)/rules/lcov.am $(top_srcdir)/rules/silent.am $(am__configure_deps)
+$(srcdir)/Makefile.in:  $(srcdir)/Makefile.am $(top_srcdir)/rules/sofia.am $(top_srcdir)/rules/valcheck.am $(top_srcdir)/rules/lcov.am $(top_srcdir)/rules/silent.am $(am__configure_deps)
 	@for dep in $?; do \
 	  case '$(am__configure_deps)' in \
 	    *$$dep*) \
@@ -497,9 +497,9 @@ Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 $(top_builddir)/config.status: $(top_srcdir)/configure $(CONFIG_STATUS_DEPENDENCIES)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
 
-$(top_srcdir)/configure: @MAINTAINER_MODE_TRUE@ $(am__configure_deps)
+$(top_srcdir)/configure:  $(am__configure_deps)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
-$(ACLOCAL_M4): @MAINTAINER_MODE_TRUE@ $(am__aclocal_m4_deps)
+$(ACLOCAL_M4):  $(am__aclocal_m4_deps)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
 $(am__aclocal_m4_deps):
 Doxyfile: $(top_builddir)/config.status $(srcdir)/Doxyfile.in

@@ -89,7 +89,7 @@ dnl ======================================================================
 
 AC_DEFUN([SAC_TOOL_CC], [
 AC_REQUIRE([SAC_CANONICAL_SYSTEM_CACHE_CHECK])
-AC_BEFORE([$0], [AC_PROG_CPP])dnl
+#AC_BEFORE([$0], [AC_PROG_CPP])dnl
 
 AC_CHECK_TOOL(CC, gcc, gcc)
 if test -z "$CC"; then
@@ -103,32 +103,28 @@ if test -z "$CC"; then
 fi
 
 AC_PROG_CC
-])
 
-dnl ======================================================================
-dnl Define extra C flags for Sofia
-dnl ======================================================================
-
-AC_DEFUN([SAC_CFLAGS],[
 #
 # Wall
 #
 AC_CACHE_CHECK([for maximum warnings compiler flag],
-  sac_cv_cwflag,
+  ac_cv_cwflag,
 [case "${CC-cc}" in
-  *gcc*) ssac_cv_cwflag=-Wall;;
+  *gcc*) ac_cv_cwflag=-Wall;;
   *)	case "$host" in
-    *irix*)	sac_cv_cwflag=-fullwarn ;;
-    *solaris*)  sac_cv_cwflag="-erroff=%none,E_END_OF_LOOP_CODE_NOT_REACHED,E_BAD_PTR_INT_COMBINATION -errtags"
+    *irix*)	ac_cv_cwflag=-fullwarn ;;
+    *solaris*)  ac_cv_cwflag="-erroff=%none,E_END_OF_LOOP_CODE_NOT_REACHED,E_BAD_PTR_INT_COMBINATION -errtags"
 	        ;;
-    *)		sac_cv_cwflag=;;
+    *)		ac_cv_cwflag=;;
 		esac
   ;;
 esac])
-AC_SUBST([CWFLAG], [$sac_cv_cwflag])
+AC_SUBST([CWFLAG], [$ac_cv_cwflag])
 
 AC_ARG_VAR([SOFIA_CFLAGS], [CFLAGS not used during configure])
 AC_ARG_VAR([SOFIA_GLIB_CFLAGS], [Extra CFLAGS for libsofia-sip-ua-glib])
+
+SAC_COVERAGE
 ])
 
 dnl ======================================================================
@@ -352,17 +348,17 @@ dnl ======================================================================
 dnl Check if we are using Windows with MinGW compiler
 dnl ======================================================================
 
-AC_DEFUN([SAC_CHECK_COMPILATION_ENVIRONMENT], [
+AC_DEFUN([AC_CHECK_COMPILATION_ENVIRONMENT], [
 AC_REQUIRE([AC_PROG_CC])
 AC_CACHE_CHECK([for compilation environment],
-  sac_cv_cc_environment, [
+  ac_cv_cc_environment, [
 machine=`$CC -dumpmachine`
 if test "$machine" = mingw32 ; then
-  sac_cv_cc_environment=$machine
+  ac_cc_environment=$machine
 fi
 ])
 
-if test "$sac_cv_cc_environment" = mingw32 ; then
+if test "$ac_cc_environment" = mingw32 ; then
 CFLAGS="$CFLAGS -I\$(top_srcdir)/win32/pthread -DWINVER=0x0501 \
 	-D_WIN32_WINNT=0x0501 -DIN_LIBSOFIA_SIP_UA -DIN_LIBSOFIA_SRES \
 	-mms-bitfields \
@@ -375,7 +371,7 @@ AC_SUBST(MINGW_ENVIRONMENT)
 AC_DEFINE([HAVE_MINGW], [1], [Define to 1 if you are compiling in MinGW environment])
 AC_DEFINE([HAVE_WIN32], [1], [Define to 1 if you have WIN32])
 fi
-AM_CONDITIONAL([HAVE_MINGW32], [test "x$sac_cv_cc_environment" != x])
+AM_CONDITIONAL([HAVE_MINGW32], [test "x$ac_cc_environment" != x])
 ])dnl
 
 
@@ -403,19 +399,3 @@ if test $ac_cv_dev_urandom = yes; then
     [Define to the random number source name.])
 fi
 ])
-
-dnl ======================================================================
-dnl Check for internal check API
-dnl ======================================================================
-AC_DEFUN([SAC_NEW_TCASE_ADD_TEST],[
-CFLAGS_save=$CFLAGS CFLAGS="$CFLAGS $CHECK_CFLAGS"
-AC_COMPILE_IFELSE([#include <check.h>
-
-void tcase_add_ss1_test(TCase *tc, TFun tf, char const *name)
-{
-	/* prototype with allowed_exit_value */
-	_tcase_add_test(tc, tf, name, 0, 0, 0, 1);
-}
-], [AC_DEFINE([HAVE_NEW_TCASE_ADD_TEST], [1],
-[tcase_add_test() with allowed_exit_value argument])])
-CFLAGS=$CFLAGS_save])

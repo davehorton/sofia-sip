@@ -142,6 +142,12 @@ TPORT_DLL extern tag_typedef_t tptag_timeout;
 TPORT_DLL extern tag_typedef_t tptag_timeout_ref;
 #define TPTAG_TIMEOUT_REF(x) tptag_timeout_ref, tag_uint_vr(&(x))
 
+TPORT_DLL extern tag_typedef_t tptag_socket_keepalive;
+#define TPTAG_SOCKET_KEEPALIVE(x) tptag_socket_keepalive, tag_uint_v((x))
+
+TPORT_DLL extern tag_typedef_t tptag_socket_keepalive_ref;
+#define TPTAG_SOCKET_KEEPALIVE_REF(x) tptag_socket_keepalive_ref, tag_uint_vr(&(x))
+
 TPORT_DLL extern tag_typedef_t tptag_keepalive;
 #define TPTAG_KEEPALIVE(x) tptag_keepalive, tag_uint_v((x))
 
@@ -180,6 +186,20 @@ TPORT_DLL extern tag_typedef_t tptag_certificate;
 TPORT_DLL extern tag_typedef_t tptag_certificate_ref;
 #define TPTAG_CERTIFICATE_REF(x) tptag_certificate_ref, tag_str_vr(&(x))
 
+TPORT_DLL extern tag_typedef_t tptag_tls_ciphers;
+#define TPTAG_TLS_CIPHERS(x) tptag_tls_ciphers, tag_str_v((x))
+
+TPORT_DLL extern tag_typedef_t tptag_tls_ciphers_ref;
+#define TPTAG_TLS_CIPHERS_REF(x) tptag_tls_ciphers_ref, tag_str_vr(&(x))
+
+enum tport_tls_version {
+  TPTLS_VERSION_SSLv2 = (1 << 0),
+  TPTLS_VERSION_SSLv3 = (1 << 1),
+  TPTLS_VERSION_TLSv1 = (1 << 2),
+  TPTLS_VERSION_TLSv1_1 = (1 << 3),
+  TPTLS_VERSION_TLSv1_2 = (1 << 4),
+};
+
 TPORT_DLL extern tag_typedef_t tptag_tls_version;
 #define TPTAG_TLS_VERSION(x) tptag_tls_version, tag_uint_v((x))
 
@@ -197,6 +217,12 @@ enum tport_tls_verify_policy {
   TPTLS_VERIFY_SUBJECTS_OUT = 0xA, /* 0x8 | TPTLS_VERIFY_OUTGOING */
   TPTLS_VERIFY_SUBJECTS_ALL = 0xF,
 };
+
+TPORT_DLL extern tag_typedef_t tptag_tls_timeout;
+#define TPTAG_TLS_TIMEOUT(x) tptag_tls_timeout, tag_uint_v((x))
+
+TPORT_DLL extern tag_typedef_t tptag_tls_timeout_ref;
+#define TPTAG_TLS_TIMEOUT_REF(x) tptag_tls_timeout_ref, tag_uint_vr(&(x))
 
 TPORT_DLL extern tag_typedef_t tptag_tls_passphrase;
 #define TPTAG_TLS_PASSPHRASE(x)  tptag_tls_passphrase, tag_str_v(x)
@@ -306,6 +332,12 @@ TPORT_DLL extern tag_typedef_t tptag_dump;
 
 TPORT_DLL extern tag_typedef_t tptag_dump_ref;
 #define TPTAG_DUMP_REF(x) tptag_dump_ref, tag_str_vr(&(x))
+
+TPORT_DLL extern tag_typedef_t tptag_capt;
+#define TPTAG_CAPT(x) tptag_capt, tag_str_v((x))
+
+TPORT_DLL extern tag_typedef_t tptag_capt_ref;
+#define TPTAG_CAPT_REF(x) tptag_capt_ref, tag_str_vr(&(x))
 
 SOFIA_END_DECLS
 
