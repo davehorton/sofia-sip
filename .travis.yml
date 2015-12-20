@@ -3,4 +3,4 @@ compiler:
   - gcc
   - clang
 # Change this to your needs
-script: autoreconf -fvi && ./configure && make
+script: autoreconf -fvi && ./configure --with-glib=no && make
