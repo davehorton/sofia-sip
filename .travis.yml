@@ -3,4 +3,4 @@ compiler:
   - gcc
   - clang
 # Change this to your needs
-script: ./bootstrap && ./configure --with-glib=no && make
+script: ./bootstrap.sh && ./configure --with-glib=no && make
