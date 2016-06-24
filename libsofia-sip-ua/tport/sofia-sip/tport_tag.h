@@ -186,6 +186,19 @@ TPORT_DLL extern tag_typedef_t tptag_certificate;
 TPORT_DLL extern tag_typedef_t tptag_certificate_ref;
 #define TPTAG_CERTIFICATE_REF(x) tptag_certificate_ref, tag_str_vr(&(x))
 
+
+
+TPORT_DLL extern tag_typedef_t tptag_tls_certificate_key_file_ref;
+#define TPTAG_TLS_CERTIFICATE_KEY_FILE_REF(x) tptag_tls_certificate_key_file_ref, tag_str_vr(&(x))
+
+TPORT_DLL extern tag_typedef_t tptag_tls_certificate_file_ref;
+#define TPTAG_TLS_CERTIFICATE_FILE_REF(x) tptag_tls_certificate_file_ref, tag_str_vr(&(x))
+
+TPORT_DLL extern tag_typedef_t tptag_tls_certificate_chain_file_ref;
+#define TPTAG_TLS_CERTIFICATE_CHAIN_FILE_REF(x) tptag_tls_certificate_chain_file_ref, tag_str_vr(&(x))
+
+
+
 TPORT_DLL extern tag_typedef_t tptag_tls_ciphers;
 #define TPTAG_TLS_CIPHERS(x) tptag_tls_ciphers, tag_str_v((x))
 

@@ -270,6 +270,39 @@ tag_typedef_t tptag_sigcomp_lifetime = UINTTAG_TYPEDEF(sigcomp_lifetime);
  */
 tag_typedef_t tptag_certificate = STRTAG_TYPEDEF(certificate);
 
+
+
+/**@def TPTAG_TLS_CERTIFICATE_KEY_FILE(x)
+ *
+ * Path to the private key certificate file.
+ *
+ * Use with tport_tbind(), nua_create(), nta_agent_create(),
+ * nta_agent_add_tport(), nth_engine_create(), or initial nth_site_create().
+ */
+tag_typedef_t tptag_tls_certificate_key_file = STRTAG_TYPEDEF(tls_certificate_key_file);
+
+/**@def TPTAG_TLS_CERTIFICATE_FILE(x)
+ *
+ * Path to the public certificate file.
+ *
+ * Use with tport_tbind(), nua_create(), nta_agent_create(),
+ * nta_agent_add_tport(), nth_engine_create(), or initial nth_site_create().
+ */
+tag_typedef_t tptag_tls_certificate_file = STRTAG_TYPEDEF(tls_certificate_file);
+
+/**@def TPTAG_TLS_CERTIFICATE_CHAIN_FILE(x)
+ *
+ * Path to the root and intermediate certificates chain file.
+ *
+ * Use with tport_tbind(), nua_create(), nta_agent_create(),
+ * nta_agent_add_tport(), nth_engine_create(), or initial nth_site_create().
+ */
+tag_typedef_t tptag_tls_certificate_chain_file = STRTAG_TYPEDEF(tls_certificate_chain_file);
+
+
+
+
+
 /**@def TPTAG_COMPARTMENT(x)
  *
  * Pointer to SigComp compartment.

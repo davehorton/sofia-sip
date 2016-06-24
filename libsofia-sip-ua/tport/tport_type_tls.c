@@ -180,6 +180,9 @@ static int tport_tls_init_master(tport_primary_t *pri,
   char *homedir;
   char *tbf = NULL;
   char const *path = NULL;
+  char const *tls_key_file = NULL ;
+  char const *tls_certificate_file = NULL ;
+  char const *tls_chain_file = NULL ;
   char const *tls_ciphers = NULL;
   unsigned tls_version = 1;
   unsigned tls_timeout = 300;
@@ -208,7 +211,30 @@ static int tport_tls_init_master(tport_primary_t *pri,
 	  TPTAG_TLS_VERIFY_DEPTH_REF(tls_depth),
 	  TPTAG_TLS_VERIFY_DATE_REF(tls_date),
 	  TPTAG_TLS_VERIFY_SUBJECTS_REF(tls_subjects),
+    TPTAG_TLS_CERTIFICATE_KEY_FILE_REF(tls_key_file),
+    TPTAG_TLS_CERTIFICATE_FILE_REF(tls_certificate_file),
+    TPTAG_TLS_CERTIFICATE_CHAIN_FILE_REF(tls_chain_file),
 	  TAG_END());
+
+  if( NULL != tls_key_file ) {
+    ti.key = su_sprintf(autohome, "%s", tls_key_file);
+    if (access(ti.key, R_OK) != 0) {
+          SU_DEBUG_1(("%s(%p): tls key = %s does not exist or could not be accessed\n", __func__, (void *)pri, ti.key));
+    }
+  }
+  if( NULL != tls_certificate_file ) {
+    ti.cert = su_sprintf(autohome, "%s", tls_certificate_file);
+    if (access(ti.cert, R_OK) != 0) {
+          SU_DEBUG_1(("%s(%p): tls cert = %s does not exist or could not be accessed\n", __func__, (void *)pri, ti.cert));
+    }
+  }
+  if( NULL != tls_chain_file ) {
+    ti.CAfile = su_sprintf(autohome, "%s", tls_chain_file);
+    ti.CApath = NULL ;
+    if (access(ti.CAfile, R_OK) != 0) {
+          SU_DEBUG_1(("%s(%p): tls CAfile = %s does not exist or could not be accessed\n", __func__, (void *)pri, ti.CAfile));
+    }
+  }
 
   if (!path) {
     homedir = getenv("HOME");
@@ -223,18 +249,18 @@ static int tport_tls_init_master(tport_primary_t *pri,
     ti.verify_date = tls_date;
     ti.configured = path != tbf;
     ti.randFile = su_sprintf(autohome, "%s/%s", path, "tls_seed.dat");
-    ti.key = su_sprintf(autohome, "%s/%s", path, "agent.pem");
+    if( !ti.key ) ti.key = su_sprintf(autohome, "%s/%s", path, "agent.pem"); 
 	if (access(ti.key, R_OK) != 0) ti.key = NULL;
     if (!ti.key) ti.key = su_sprintf(autohome, "%s/%s", path, "tls.pem");
     ti.passphrase = su_strdup(autohome, passphrase);
-    ti.cert = ti.key;
-    ti.CAfile = su_sprintf(autohome, "%s/%s", path, "cafile.pem");
+    if( !ti.cert ) ti.cert = ti.key;
+    if( !ti.CAfile ) ti.CAfile = su_sprintf(autohome, "%s/%s", path, "cafile.pem");
 	if (access(ti.CAfile, R_OK) != 0) ti.CAfile = NULL;
     if (!ti.CAfile) ti.CAfile = su_sprintf(autohome, "%s/%s", path, "tls.pem");
     if (tls_ciphers) ti.ciphers = su_strdup(autohome, tls_ciphers);
     ti.version = tls_version;
     ti.timeout = tls_timeout;
-    ti.CApath = su_strdup(autohome, path);
+    if( !tls_chain_file ) ti.CApath = su_strdup(autohome, path);
 
     SU_DEBUG_9(("%s(%p): tls key = %s\n", __func__, (void *)pri, ti.key));
 
