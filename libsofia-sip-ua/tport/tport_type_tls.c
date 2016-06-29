@@ -177,14 +177,15 @@ static int tport_tls_init_master(tport_primary_t *pri,
 				 char const **return_culprit)
 {
   tport_tls_primary_t *tlspri = (tport_tls_primary_t *)pri;
-  char *homedir;
-  char *tbf = NULL;
+  //char *homedir;
+  //char *tbf = NULL;
   char const *path = NULL;
   char const *tls_key_file = NULL ;
   char const *tls_certificate_file = NULL ;
   char const *tls_chain_file = NULL ;
   char const *tls_ciphers = NULL;
-  unsigned tls_version = 1;
+  //unsigned tls_version = 1;
+  unsigned tls_version = 7 ;
   unsigned tls_timeout = 300;
   unsigned tls_verify = 0;
   char const *passphrase = NULL;
@@ -197,9 +198,11 @@ static int tport_tls_init_master(tport_primary_t *pri,
 
   su_home_auto(autohome, sizeof autohome);
 
+  /*
   if (getenv("TPORT_SSL"))
     tls_version = 0;
-
+  */
+ 
   tl_gets(tags,
 	  TPTAG_CERTIFICATE_REF(path),
 	  TPTAG_TLS_CIPHERS_REF(tls_ciphers),
@@ -222,11 +225,19 @@ static int tport_tls_init_master(tport_primary_t *pri,
           SU_DEBUG_1(("%s(%p): tls key = %s does not exist or could not be accessed\n", __func__, (void *)pri, ti.key));
     }
   }
+  else {
+      SU_DEBUG_1(("%s(%p): tls key file (TPTAG_TLS_CERTIFICATE_KEY_FILE) is required and not specified\n", __func__, (void *)pri));
+      return *return_culprit = "tls_init_master", -1;
+  }
   if( NULL != tls_certificate_file ) {
     ti.cert = su_sprintf(autohome, "%s", tls_certificate_file);
     if (access(ti.cert, R_OK) != 0) {
           SU_DEBUG_1(("%s(%p): tls cert = %s does not exist or could not be accessed\n", __func__, (void *)pri, ti.cert));
     }
+  }
+  else {
+      SU_DEBUG_1(("%s(%p): tls certificate file (TPTAG_TLS_CERTIFICATE_FILE) is required and not specified\n", __func__, (void *)pri));
+      return *return_culprit = "tls_init_master", -1;
   }
   if( NULL != tls_chain_file ) {
     ti.CAfile = su_sprintf(autohome, "%s", tls_chain_file);
@@ -235,7 +246,22 @@ static int tport_tls_init_master(tport_primary_t *pri,
           SU_DEBUG_1(("%s(%p): tls CAfile = %s does not exist or could not be accessed\n", __func__, (void *)pri, ti.CAfile));
     }
   }
+  else {
+      SU_DEBUG_1(("%s(%p): tls chain file (TPTAG_TLS_CERTIFICATE_CHAIN_FILE) is required and not specified\n", __func__, (void *)pri));
+      return *return_culprit = "tls_init_master", -1;
+  }
 
+  ti.policy = tls_policy | (tls_verify ? TPTLS_VERIFY_ALL : 0);
+  ti.verify_depth = tls_depth;
+  ti.verify_date = tls_date;
+  ti.configured = 1;
+  if (tls_ciphers) ti.ciphers = su_strdup(autohome, tls_ciphers);
+  ti.version = tls_version;
+  ti.timeout = tls_timeout;
+
+  tlspri->tlspri_master = tls_init_master(&ti);
+
+/*
   if (!path) {
     homedir = getenv("HOME");
     if (!homedir)
@@ -243,6 +269,7 @@ static int tport_tls_init_master(tport_primary_t *pri,
     path = tbf = su_sprintf(autohome, "%s/.sip/auth", homedir);
   }
 
+  
   if (path) {
     ti.policy = tls_policy | (tls_verify ? TPTLS_VERIFY_ALL : 0);
     ti.verify_depth = tls_depth;
@@ -271,6 +298,7 @@ static int tport_tls_init_master(tport_primary_t *pri,
       tlspri->tlspri_master = tls_init_master(&ti);
     }
   }
+  */
 
   su_home_zap(autohome);
 

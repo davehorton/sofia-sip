@@ -294,6 +294,7 @@ static
 int tls_init_context(tls_t *tls, tls_issues_t const *ti)
 {
   int verify;
+  int rc ;
   static int random_loaded;
 
   ONCE_INIT(tls_init_once);
@@ -345,9 +346,9 @@ int tls_init_context(tls_t *tls, tls_issues_t const *ti)
     SSL_CTX_set_default_passwd_cb_userdata(tls->ctx, (void *)ti);
   }
 
-  if (!SSL_CTX_use_certificate_file(tls->ctx,
+  if (!( rc = SSL_CTX_use_certificate_file(tls->ctx,
 				    ti->cert,
-				    SSL_FILETYPE_PEM)) {
+				    SSL_FILETYPE_PEM))) {
     if (ti->configured > 0) {
       SU_DEBUG_1(("%s: invalid local certificate: %s\n",
 		 "tls_init_context", ti->cert));
@@ -358,10 +359,11 @@ int tls_init_context(tls_t *tls, tls_issues_t const *ti)
 #endif
     }
   }
+  //printf("called SSL_CTX_use_certificate_file: %s, rc=%d\n", ti->cert, rc) ;
 
-  if (!SSL_CTX_use_PrivateKey_file(tls->ctx,
+  if (!(rc = SSL_CTX_use_PrivateKey_file(tls->ctx,
                                    ti->key,
-                                   SSL_FILETYPE_PEM)) {
+                                   SSL_FILETYPE_PEM))) {
     if (ti->configured > 0) {
       SU_DEBUG_1(("%s: invalid private key: %s\n",
 		 "tls_init_context", ti->key));
@@ -372,6 +374,7 @@ int tls_init_context(tls_t *tls, tls_issues_t const *ti)
 #endif
     }
   }
+  //printf("called SSL_CTX_use_PrivateKey_file: %s, rc = %d\n", ti->key, rc) ;
 
   if (!SSL_CTX_check_private_key(tls->ctx)) {
     if (ti->configured > 0) {
@@ -405,9 +408,9 @@ int tls_init_context(tls_t *tls, tls_issues_t const *ti)
 #endif
   }
 
-  if (!SSL_CTX_load_verify_locations(tls->ctx,
+  if (!( rc = SSL_CTX_load_verify_locations(tls->ctx,
                                      ti->CAfile,
-                                     ti->CApath)) {
+                                     ti->CApath))) {
     SU_DEBUG_1(("%s: error loading CA list: %s\n",
 		 "tls_init_context", ti->CAfile));
     if (ti->configured > 0)
@@ -415,6 +418,7 @@ int tls_init_context(tls_t *tls, tls_issues_t const *ti)
     errno = EIO;
     return -1;
   }
+  //printf("called SSL_CTX_load_verify_locations: %s, rc = %d\n", ti->CAfile, rc) ;
 
   /* corresponds to (enum tport_tls_verify_policy) */
   tls->verify_incoming = (ti->policy & 0x1) ? 1 : 0;
@@ -486,8 +490,9 @@ tls_t *tls_init_master(tls_issues_t *ti)
 
   tls_set_default(ti);
 
-  if (!(tls = tls_create(tls_master)))
+  if (!(tls = tls_create(tls_master))) {
     return NULL;
+  }
 
   if (tls_init_context(tls, ti) < 0) {
     int err = errno;
@@ -1023,6 +1028,8 @@ int tls_connect(su_root_magic_t *magic, su_wait_t *w, tport_t *self)
 
       default:
         {
+                      ERR_print_errors_fp(stderr);
+
 	  char errbuf[64];
 	  ERR_error_string_n(status, errbuf, 64);
           SU_DEBUG_3(("%s(%p): TLS setup failed (%s)\n",
