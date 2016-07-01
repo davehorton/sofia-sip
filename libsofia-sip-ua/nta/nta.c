@@ -612,6 +612,7 @@ static int agent_get_params(nta_agent_t *agent, tagi_t *tags);
 static sip_via_t const *agent_tport_via(tport_t *tport);
 static int outgoing_insert_via(nta_outgoing_t *orq, sip_via_t const *);
 static int nta_tpn_by_via(tp_name_t *tpn, sip_via_t const *v, int *using_rport);
+static int nta_tpn_by_url(su_home_t *home, tp_name_t *tpn, char const **scheme, char const **port, url_string_t const *us);
 
 static msg_t *nta_msg_create_for_transport(nta_agent_t *agent, int flags,
 					   char const data[], usize_t dlen,
@@ -2014,6 +2015,37 @@ char const *stateless_branch(nta_agent_t *sa,
   msg_random_token(branch, sizeof(branch) - 1, digest, sizeof(digest));
 
   return su_sprintf(msg_home(msg), "branch=z9hG4bK.%s", branch);
+}
+
+int nta_get_outbound_tport_name_for_url( nta_agent_t const *a, su_home_t *home, url_string_t const *us, void** ppTport ) {
+  char const *scheme = NULL;
+  char const *port = NULL;
+  tp_name_t tpn[1] = {{ NULL }};
+
+  int rc = nta_tpn_by_url(home, tpn, &scheme, &port, us) ;
+  if( rc < 0 ) {
+    return rc ;
+  }
+  if (!tpn->tpn_port) {
+    tpn->tpn_port = "";
+  }
+
+  tport_t* tp = tport_by_name(a->sa_tports, tpn);
+  if (!tp) {
+    tp = tport_by_protocol(a->sa_tports, tpn->tpn_proto);
+  }
+  if( tp ) {
+    if (tpn->tpn_port[0] == '\0') {
+      if (tport_has_tls(tp))
+        tpn->tpn_port = "5061";
+      else
+        tpn->tpn_port = "5060";
+    }
+  }
+
+  *ppTport = tp ;
+
+  return NULL == tp ? -1 : 0;
 }
 
 /* ====================================================================== */

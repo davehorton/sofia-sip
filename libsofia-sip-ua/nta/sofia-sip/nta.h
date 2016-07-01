@@ -156,6 +156,13 @@ SOFIAPUBFUN int nta_agent_get_params(nta_agent_t *agent,
 SOFIAPUBFUN int nta_agent_get_stats(nta_agent_t *agent,
 				    tag_type_t tag, tag_value_t value, ...);
 
+/* DH: added, because sometimes it is necessary to know before sending which transport will be used for a request
+				e.g., in order to include an appropriate Contact header
+		Note: this does not (so far as I can tell) increment the ref count on the tport
+ */
+SOFIAPUBFUN int nta_get_outbound_tport_name_for_url( nta_agent_t const *a, su_home_t *home, 
+						url_string_t const *req_url, void** tpn ) ;
+
 /* ----------------------------------------------------------------------
  * 4) Message-level prototypes
  */
