@@ -339,21 +339,62 @@ static int tport_ws_init_primary_secure(tport_primary_t *pri,
 				 char const **return_culprit)
 {
   tport_ws_primary_t *wspri = (tport_ws_primary_t *)pri;
+    char const *tls_key_file = NULL ;
+    char const *tls_certificate_file = NULL ;
+    char const *tls_chain_file = NULL ;
+
+
   const char *cert = "/ssl.pem";
   const char *key = "/ssl.pem";
   const char *chain = NULL;
-  char *homedir;
-  char *tbf = NULL;
+  //char *homedir;
+
+  //char *tbf = NULL;
   su_home_t autohome[SU_HOME_AUTO_SIZE(1024)];
-  char const *path = NULL;
+  //char const *path = NULL;
   int ret = -1;
 
   su_home_auto(autohome, sizeof autohome);
 
   tl_gets(tags,
-	  TPTAG_CERTIFICATE_REF(path),
+	  //TPTAG_CERTIFICATE_REF(path),
+    TPTAG_TLS_CERTIFICATE_KEY_FILE_REF(tls_key_file),
+    TPTAG_TLS_CERTIFICATE_FILE_REF(tls_certificate_file),
+    TPTAG_TLS_CERTIFICATE_CHAIN_FILE_REF(tls_chain_file),
 	  TAG_END());
 
+  if( NULL != tls_key_file ) {
+    key = su_sprintf(autohome, "%s", tls_key_file);
+    if (access(key, R_OK) != 0) {
+          SU_DEBUG_1(("%s(%p): tls key = %s does not exist or could not be accessed\n", __func__, (void *)pri, key));
+    }
+  }
+  else {
+      SU_DEBUG_1(("%s(%p): tls key file (TPTAG_TLS_CERTIFICATE_KEY_FILE) is required and not specified\n", __func__, (void *)pri));
+      return *return_culprit = "tport_ws_init_primary_secure", -1;
+  }
+  if( NULL != tls_certificate_file ) {
+    cert = su_sprintf(autohome, "%s", tls_certificate_file);
+    if (access(cert, R_OK) != 0) {
+          SU_DEBUG_1(("%s(%p): tls cert = %s does not exist or could not be accessed\n", __func__, (void *)pri, cert));
+    }
+  }
+  else {
+      SU_DEBUG_1(("%s(%p): tls certificate file (TPTAG_TLS_CERTIFICATE_FILE) is required and not specified\n", __func__, (void *)pri));
+      return *return_culprit = "tport_ws_init_primary_secure", -1;
+  }
+  if( NULL != tls_chain_file ) {
+    chain = su_sprintf(autohome, "%s", tls_chain_file);
+    if (access(chain, R_OK) != 0) {
+          SU_DEBUG_1(("%s(%p): tls CAfile = %s does not exist or could not be accessed\n", __func__, (void *)pri, chain));
+    }
+  }
+  else {
+      SU_DEBUG_1(("%s(%p): tls chain file (TPTAG_TLS_CERTIFICATE_CHAIN_FILE) is required and not specified\n", __func__, (void *)pri));
+      return *return_culprit = "tport_ws_init_primary_secure", -1;
+  }
+
+/*
   if (!path) {
     homedir = getenv("HOME");
     if (!homedir)
@@ -378,7 +419,7 @@ static int tport_ws_init_primary_secure(tport_primary_t *pri,
 	if (access(cert, R_OK) != 0) cert = NULL;
 	if (access(chain, R_OK) != 0) chain = NULL;
   }
-
+*/
   init_ssl();
 
   //  OpenSSL_add_all_algorithms();   /* load & register cryptos */                                                                                       
@@ -390,7 +431,7 @@ static int tport_ws_init_primary_secure(tport_primary_t *pri,
 
   if ( !wspri->ssl_ctx ) goto done;
 
-  if (chain) {
+  if (tls_chain_file) {
 	  SSL_CTX_use_certificate_chain_file(wspri->ssl_ctx, chain);
   }
 
