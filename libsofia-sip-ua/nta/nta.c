@@ -8123,6 +8123,9 @@ nta_outgoing_t *outgoing_create(nta_agent_t *agent,
 
     return retval;
   }
+  else if( stateless ) {
+    orq->orq_destroyed = 1 ;
+  }
 
   assert(orq->orq_queue);
 
