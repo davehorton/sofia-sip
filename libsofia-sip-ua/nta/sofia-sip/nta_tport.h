@@ -74,6 +74,14 @@ struct sigcomp_compartment *nta_incoming_compartment(nta_incoming_t *irq);
 
 SOFIAPUBFUN tport_t *nta_outgoing_transport(nta_outgoing_t *orq);
 
+// DCH: useful for knowing remote side of the connection
+SOFIAPUBFUN const char* nta_incoming_remote_host(nta_incoming_t *);
+SOFIAPUBFUN const char* nta_incoming_remote_port(nta_incoming_t *);
+SOFIAPUBFUN const char* nta_incoming_protocol(nta_incoming_t *);
+SOFIAPUBFUN const char* nta_outgoing_remote_host(nta_outgoing_t *);
+SOFIAPUBFUN const char* nta_outgoing_remote_port(nta_outgoing_t *);
+SOFIAPUBFUN const char* nta_outgoing_protocol(nta_outgoing_t *);
+
 SOFIAPUBFUN
 struct sigcomp_compartment *
 nta_outgoing_compartment(nta_outgoing_t *orq);

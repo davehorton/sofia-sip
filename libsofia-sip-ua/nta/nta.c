@@ -11835,6 +11835,15 @@ nta_compressor_t *nta_agent_init_sigcomp(nta_agent_t *sa)
 
   return sa->sa_compressor;
 }
+const char* nta_incoming_remote_host(nta_incoming_t *irq) {
+  return irq ? irq->irq_tpn->tpn_host : NULL ;
+}
+const char* nta_incoming_remote_port(nta_incoming_t *irq) {
+  return irq ? irq->irq_tpn->tpn_port : NULL ;
+}
+const char* nta_incoming_protocol(nta_incoming_t *irq) {
+  return irq ? irq->irq_tpn->tpn_proto : NULL ;
+}
 
 void nta_agent_deinit_sigcomp(nta_agent_t *sa)
 {
@@ -11861,7 +11870,15 @@ nta_outgoing_transport(nta_outgoing_t *orq)
   else
     return NULL;
 }
-
+const char* nta_outgoing_remote_host(nta_outgoing_t *orq) {
+  return orq ? orq->orq_tpn->tpn_host : NULL ;
+}
+const char* nta_outgoing_remote_port(nta_outgoing_t *orq) {
+  return orq ? orq->orq_tpn->tpn_port : NULL ;
+}
+const char* nta_outgoing_protocol(nta_outgoing_t *orq) {
+  return orq ? orq->orq_tpn->tpn_proto : NULL ;
+}
 
 struct sigcomp_compartment *
 nta_outgoing_compartment(nta_outgoing_t *orq)
