@@ -386,7 +386,7 @@ static int tport_ws_init_primary_secure(tport_primary_t *pri,
   if( NULL != tls_chain_file ) {
     chain = su_sprintf(autohome, "%s", tls_chain_file);
     if (access(chain, R_OK) != 0) {
-          SU_DEBUG_1(("%s(%p): tls CAfile = %s does not exist or could not be accessed\n", __func__, (void *)pri, chain));
+          SU_DEBUG_1(("%s(%p): tls chain file = %s does not exist or could not be accessed\n", __func__, (void *)pri, chain));
     }
   }
   else {
@@ -536,6 +536,10 @@ static void tport_ws_deinit_secondary(tport_t *self)
 
 	if (wstp->ws_initialized == 1) {
 		SU_DEBUG_1(("%p destroy ws%s transport %p.\n", (void *) self, wstp->ws_secure ? "s" : "", (void *) &wstp->ws));
+
+    // DCH: flush any queued messages that might have accumulated between when we  tport_close was called and now
+    tport_flush_queued(self) ;
+    
 		ws_destroy(&wstp->ws);
 		wstp->ws_initialized = -1;
 	}

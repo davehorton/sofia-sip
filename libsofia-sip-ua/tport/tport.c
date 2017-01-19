@@ -340,6 +340,24 @@ int tport_has_queued(tport_t const *self)
   return self && self->tp_queue && self->tp_queue[self->tp_qhead];
 }
 
+/** Flush queued messages  */
+int tport_flush_queued(tport_t const *self) 
+{
+    /* Zap the queued messages */
+  int num = 0 ;
+  if (tport_has_queued(self)) {
+    unsigned short i, N = self->tp_params->tpp_qsize;
+    for (i = 0; i < N; i++) {
+      if (self->tp_queue[i]) {
+        msg_ref_destroy(self->tp_queue[i]) ; 
+        self->tp_queue[i] = NULL;
+        num++;
+      }
+    }
+  }
+  return num;
+}
+
 /** MTU for transport  */
 su_inline unsigned tport_mtu(tport_t const *self)
 {

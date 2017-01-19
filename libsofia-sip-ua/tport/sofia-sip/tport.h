@@ -215,6 +215,12 @@ TPORT_DLL int tport_tqueue(tport_t *, msg_t *, tag_type_t, tag_value_t, ...);
 /** Return number of queued messages. */
 TPORT_DLL isize_t tport_queuelen(tport_t const *self);
 
+/** returns true if tport has queued messages */
+TPORT_DLL int tport_has_queued(tport_t const *self) ;
+
+/** flush any queued messages */
+TPORT_DLL int tport_flush_queued(tport_t const *self) ;
+
 /** Send a queued message (and queue another, if required). */
 TPORT_DLL int tport_tqsend(tport_t *, msg_t *, msg_t *,
 			   tag_type_t, tag_value_t, ...);
