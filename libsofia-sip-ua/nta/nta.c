@@ -9315,10 +9315,10 @@ nta_outgoing_t *outgoing_find(nta_agent_t const *sa,
     if (orq->orq_stateless)
       continue;
     /* Accept terminated transactions when looking for original INVITE */
-    
+
     //DCH: this looks like a bug
     //if (orq->orq_terminated && method2 != sip_method_invalid)
-    if (orq->orq_terminated && method2 != sip_method_invite) {
+    if (orq->orq_terminated && method2 != sip_method_invite)
 
       continue;
     if (hash != orq->orq_hash)
