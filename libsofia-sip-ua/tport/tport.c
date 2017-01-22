@@ -3357,6 +3357,7 @@ tport_t *tport_tsend(tport_t *self,
    * Try to find an already open connection to the destination,
    * or get a primary protocol
    */
+  
   else {
     /* If primary, resolve the destination address, store it in the msg */
     if (tport_resolve(primary->pri_primary, msg, tpn) < 0) {
@@ -3364,10 +3365,20 @@ tport_t *tport_tsend(tport_t *self,
     }
     resolved = 1;
 
-    self = tport_by_addrinfo(primary, msg_addrinfo(msg), tpn);
 
-    if (!self)
-      self = primary->pri_primary;
+    // DCH: iterate through all primaries
+    tport_t* secondary = NULL ;
+    tport_t* tp = tport_primaries( self ) ;
+    while( NULL != (tp = tport_next(tp)) && !secondary ) {
+      secondary = tport_by_addrinfo((tport_primary_t *)tp, msg_addrinfo(msg), tpn);
+    }
+
+    if( secondary ) {
+      self = secondary ;
+    }
+    else {
+      self = primary->pri_primary;      
+    }
   }
 
   if (tport_is_primary(self)) {
