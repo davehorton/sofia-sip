@@ -611,6 +611,7 @@ static int agent_get_params(nta_agent_t *agent, tagi_t *tags);
 /* Transport interface */
 static sip_via_t const *agent_tport_via(tport_t *tport);
 static int outgoing_insert_via(nta_outgoing_t *orq, sip_via_t const *);
+static int outgoing_update_contact(nta_outgoing_t *orq, tport_t* tp);
 static int nta_tpn_by_via(tp_name_t *tpn, sip_via_t const *v, int *using_rport);
 static int nta_tpn_by_url(su_home_t *home, tp_name_t *tpn, char const **scheme, char const **port, url_string_t const *us);
 
@@ -2569,6 +2570,55 @@ sip_via_t const *agent_tport_via(tport_t *tport)
   while (v && v->v_next)
     v = v->v_next;
   return v;
+}
+
+static 
+int outgoing_update_contact(nta_outgoing_t *orq, tport_t* tp) {
+  int rc = -1 ;
+  msg_t* msg = orq->orq_request ;
+  sip_t* sip = sip_object( msg ) ;
+
+  if( sip->sip_contact ) {
+    const tp_name_t* tpn = tport_name(tp) ;
+    su_home_t* home = msg_home(orq->orq_request) ;
+
+    SU_DEBUG_7(("%s: updating contact to  " TPN_FORMAT "\n", __func__, TPN_ARGS(tpn)));
+    if( tpn->tpn_proto ) {
+      char transport[16] ;
+      strcpy( transport, "transport=" ) ;
+      strcat( transport, tpn->tpn_proto) ;
+      url_strip_transport( sip->sip_contact->m_url );
+      url_param_add(home, sip->sip_contact->m_url, transport);
+    }
+
+    /* if host or port of the actual tport is different than specified in the contact header then update */
+    if( 1 /*(tpn->tpn_host && sip->sip_contact->m_url->url_host && 0 != strcmp( tpn->tpn_host, sip->sip_contact->m_url->url_host ) ) ||
+      (tpn->tpn_port && sip->sip_contact->m_url->url_port && 0 != strcmp( tpn->tpn_port, sip->sip_contact->m_url->url_port )) */) {
+
+      char s[256] ;
+
+      const char* host = sip->sip_contact->m_url->url_host ;
+      const char* port = sip->sip_contact->m_url->url_port ;
+
+      sip->sip_contact->m_url->url_host = tpn->tpn_host ;
+      sip->sip_contact->m_url->url_port = tpn->tpn_port ;
+
+      sip_contact_e(s, 255, (msg_header_t *)sip->sip_contact, 0) ;
+
+      sip->sip_contact->m_url->url_host = host ;
+      sip->sip_contact->m_url->url_port = port ;
+
+      void *p = sip->sip_contact ;
+
+      msg_header_remove(msg, (msg_pub_t*) sip, (msg_header_t *) sip->sip_contact) ;
+      msg_header_add_make(msg, (msg_pub_t*) sip, sip_contact_class, s) ;
+
+      su_free( home, p) ;
+
+    }
+    rc = 0 ;
+  }
+  return rc ;
 }
 
 /** Insert @Via to a request message */
@@ -8193,6 +8243,8 @@ outgoing_send_via(nta_outgoing_t *orq, tport_t *tp)
     outgoing_reply(orq, 503, "Cannot insert Via", 1);
     return;
   }
+
+  outgoing_update_contact( orq, tp ) ;
 
 #if HAVE_SOFIA_SMIME
   {
