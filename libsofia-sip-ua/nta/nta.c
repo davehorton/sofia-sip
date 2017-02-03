@@ -2579,7 +2579,7 @@ int outgoing_update_contact(nta_outgoing_t *orq, tport_t* tp) {
   sip_t* sip = sip_object( msg ) ;
 
   if( sip->sip_contact ) {
-    const tp_name_t* tpn = tport_name(tp) ;
+    const tp_name_t* tpn = tport_name( tport_parent(tp) ) ;
     su_home_t* home = msg_home(orq->orq_request) ;
 
     SU_DEBUG_7(("%s: updating contact to  " TPN_FORMAT "\n", __func__, TPN_ARGS(tpn)));
@@ -2592,8 +2592,8 @@ int outgoing_update_contact(nta_outgoing_t *orq, tport_t* tp) {
     }
 
     /* if host or port of the actual tport is different than specified in the contact header then update */
-    if( 1 /*(tpn->tpn_host && sip->sip_contact->m_url->url_host && 0 != strcmp( tpn->tpn_host, sip->sip_contact->m_url->url_host ) ) ||
-      (tpn->tpn_port && sip->sip_contact->m_url->url_port && 0 != strcmp( tpn->tpn_port, sip->sip_contact->m_url->url_port )) */) {
+    if( (tpn->tpn_host && sip->sip_contact->m_url->url_host && 0 != strcmp( tpn->tpn_host, sip->sip_contact->m_url->url_host ) ) ||
+      (tpn->tpn_port && sip->sip_contact->m_url->url_port && 0 != strcmp( tpn->tpn_port, sip->sip_contact->m_url->url_port )) ) {
 
       char s[256] ;
 
