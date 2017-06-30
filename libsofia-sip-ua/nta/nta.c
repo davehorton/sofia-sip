@@ -2165,7 +2165,7 @@ static tport_stack_class_t nta_agent_class[1] =
  * On success, zero is returned. On error, -1 is returned, and @a errno is
  * set appropriately.
  */
-int nta_agent_add_tport(nta_agent_t *self,
+int   nta_agent_add_tport(nta_agent_t *self,
 			url_string_t const *uri,
 			tag_type_t tag, tag_value_t value, ...)
 {
@@ -2580,27 +2580,32 @@ int outgoing_update_contact(nta_outgoing_t *orq, tport_t* tp) {
 
   if( sip->sip_contact ) {
     const tp_name_t* tpn = tport_name( tport_parent(tp) ) ;
-    su_home_t* home = msg_home(orq->orq_request) ;
 
-    SU_DEBUG_7(("%s: updating contact to  " TPN_FORMAT "\n", __func__, TPN_ARGS(tpn)));
-    if( tpn->tpn_proto ) {
-      char transport[16] ;
-      strcpy( transport, "transport=" ) ;
-      strcat( transport, tpn->tpn_proto) ;
-      url_strip_transport( sip->sip_contact->m_url );
-      url_param_add(home, sip->sip_contact->m_url, transport);
-    }
+    int hostChanged = tpn->tpn_host && sip->sip_contact->m_url->url_host 
+      && 0 != strcmp( tpn->tpn_host, sip->sip_contact->m_url->url_host ) 
+      && (!tpn->tpn_canon || 0 != strcmp( tpn->tpn_canon, sip->sip_contact->m_url->url_host)) ;
+    int portChanged = tpn->tpn_port && sip->sip_contact->m_url->url_port && 0 != strcmp( tpn->tpn_port, sip->sip_contact->m_url->url_port ) ;
 
     /* if host or port of the actual tport is different than specified in the contact header then update */
-    if( (tpn->tpn_host && sip->sip_contact->m_url->url_host && 0 != strcmp( tpn->tpn_host, sip->sip_contact->m_url->url_host ) ) ||
-      (tpn->tpn_port && sip->sip_contact->m_url->url_port && 0 != strcmp( tpn->tpn_port, sip->sip_contact->m_url->url_port )) ) {
+    if( hostChanged || portChanged ) {
+
+      su_home_t* home = msg_home(orq->orq_request) ;
+
+      SU_DEBUG_7(("%s: updating contact to  " TPN_FORMAT "\n", __func__, TPN_ARGS(tpn)));
+      if( tpn->tpn_proto ) {
+        char transport[16] ;
+        strcpy( transport, "transport=" ) ;
+        strcat( transport, tpn->tpn_proto) ;
+        url_strip_transport( sip->sip_contact->m_url );
+        url_param_add(home, sip->sip_contact->m_url, transport);
+      }
 
       char s[256] ;
 
       const char* host = sip->sip_contact->m_url->url_host ;
       const char* port = sip->sip_contact->m_url->url_port ;
 
-      sip->sip_contact->m_url->url_host = tpn->tpn_host ;
+      sip->sip_contact->m_url->url_host = tpn->tpn_canon ? tpn->tpn_canon : tpn->tpn_host ;
       sip->sip_contact->m_url->url_port = tpn->tpn_port ;
 
       sip_contact_e(s, 255, (msg_header_t *)sip->sip_contact, 0) ;
