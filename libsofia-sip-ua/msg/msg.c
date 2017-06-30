@@ -172,6 +172,9 @@ msg_t *msg_ref_create(msg_t *msg)
     msg->m_refs++;
     su_home_mutex_unlock(msg->m_home);
   }
+#ifdef DEBUG
+  SU_DEBUG_3(("msg_ref_create: message %p, refcount now %d\n", (void *) msg, msg->m_refs));
+#endif
   return msg;
 }
 
@@ -229,9 +232,37 @@ void msg_destroy(msg_t *msg)
       msg->m_refs--;
     refs = msg->m_refs;
     su_home_mutex_unlock(msg->m_home);
+
+#ifdef DEBUG
+    SU_DEBUG_3(("msg_destroy: message %p, decremented refcount, refcount now %d\n", (void *) msg, msg->m_refs));
+#endif
     if (refs)
       break;
     su_home_zap(msg->m_home);
+
+#ifdef DEBUG
+    /* search for it */
+    int i;
+    for( i = 0; i < nTotalMsgs && allocatedMsgs[i] != (void *)msg; i++ ) {
+      ;
+    }
+    if( i < nTotalMsgs ) {
+      int j ;
+      for( j = i; j < nTotalMsgs - 1; j++ ) {
+        allocatedMsgs[j] = allocatedMsgs[j+1] ;
+      }
+    }
+
+    nTotalMsgs-- ;
+    SU_DEBUG_3(("msg_destroy: actually destroyed message %p, total msgs: %d\n", (void *) msg, nTotalMsgs));
+
+    if( nTotalMsgs < 6 ) {
+      int k ;
+      for( k = 0; k < nTotalMsgs; k++ ) {
+        SU_DEBUG_3(("msg_destroy:    remaining msg %p\n", (void *) allocatedMsgs[k]));
+      }      
+    }
+#endif
   }
 }
 

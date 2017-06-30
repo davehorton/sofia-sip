@@ -182,6 +182,7 @@
  */
 
 #include <sofia-sip/su_config.h>
+#include <sofia-sip/su_debug.h>
 #include "sofia-sip/su_alloc.h"
 #include "sofia-sip/su_alloc_stat.h"
 #include "sofia-sip/su_errno.h"
@@ -288,9 +289,35 @@ size_t su_block_find_collision, su_block_find_collision_used,
   su_block_find_collision_size;
 #endif
 
+
+int su_get_used_count(su_block_t const *b)
+{
+#if MEMCHECK != 0
+  if (b) {
+    size_t i, used;
+
+    for (i = 0, used = 0; i < b->sub_n; i++) {
+      if (b->sub_nodes[i].sua_data) {
+        used++;
+      }
+    }
+    SU_DEBUG_9(("%s: block %p sub_used is %ld sub_n %ld used %ld\n", __func__, b, b->sub_used, b->sub_n, used)) ;
+
+    return used ;
+
+  }
+  return -1 ;
+#else 
+  return -1;
+#endif
+}
+
 su_inline su_alloc_t *su_block_find(su_block_t const *b, void const *p)
 {
   size_t h, h0, probe;
+
+  SU_DEBUG_9(("su_block_find: searching block %p for data %p\n", b, p)) ;
+
 
 #if SU_ALLOC_STATS
   size_t collision = 0;
@@ -312,6 +339,7 @@ su_inline su_alloc_t *su_block_find(su_block_t const *b, void const *p)
 
   do {
     if (b->sub_nodes[h].sua_data == p) {
+      SU_DEBUG_9(("su_block_find: found block %p data %p at h %ld\n", b, p, h)) ;
       su_alloc_t const *retval = &b->sub_nodes[h];
       return (su_alloc_t *)retval; /* discard const */
     }
@@ -348,6 +376,9 @@ su_inline su_alloc_t *su_block_add(su_block_t *b, void *p)
 
   b->sub_used++;
   b->sub_nodes[h].sua_data = p;
+
+  SU_DEBUG_9(("su_block_add: block %p data %p stored at h %ld b->sub_used %ld b->sub_n %ld used %d\n", b, p, h, b->sub_used, b->sub_n, su_get_used_count(b))) ;
+
 
   return &b->sub_nodes[h];
 }
@@ -400,6 +431,7 @@ su_inline su_block_t *su_hash_alloc(size_t n)
     b->sub_hauto = 1;
     b->sub_n = n;
   }
+  SU_DEBUG_9(("su_hash_alloc: block %p added\n", b)) ;
 
   return b;
 }
@@ -429,6 +461,8 @@ void *sub_alloc(su_home_t *home,
 
   assert (size < (((size_t)1) << SIZEBITS));
 
+  SU_DEBUG_9(("sub_alloc: allocating size %ld from home: %p using block %p\n", size, home, sub)) ;
+
   if (size >= ((size_t)1) << SIZEBITS)
     return (void)(errno = ENOMEM), NULL;
 
@@ -443,6 +477,8 @@ void *sub_alloc(su_home_t *home,
       n = home->suh_blocks->sub_n, n2 = 4 * n + 3; //, used = sub->sub_used;
     else
       n = 0, n2 = SUB_N; //, used = 0;
+
+    SU_DEBUG_9(("sub_alloc: realloc block hash of size %ld\n", n2)) ;
 
 #if 0
     printf("su_alloc(home = %p): realloc block hash of size %d\n", home, n2);
@@ -485,16 +521,21 @@ void *sub_alloc(su_home_t *home,
       preload = (char *)sub->sub_preload + sub->sub_prused;
       sub->sub_prused = (unsigned)prused;
     }
+    SU_DEBUG_9(("sub_alloc: using %s memory\n", "preloaded")) ;
   }
 
-  if (preload && zero)
+  if (preload && zero) {
     data = memset(preload, 0, size);
-  else if (preload)
+  }
+  else if (preload) {
     data = preload;
-  else if (zero)
+  }
+  else if (zero) {
     data = calloc(1, size + MEMCHECK_EXTRA);
-  else
+  }
+  else {
     data = malloc(size + MEMCHECK_EXTRA);
+  }
 
   if (data) {
     su_alloc_t *sua;
@@ -503,6 +544,8 @@ void *sub_alloc(su_home_t *home,
     size_t term = 0 - size;
     memcpy((char *)data + size, &term, sizeof (term));
 #endif
+
+    SU_DEBUG_9(("sub_alloc: data will be located at %p\n", data)) ;
 
     if (!preload)
       sub->sub_auto_all = 0;
@@ -572,6 +615,8 @@ void *su_home_new(isize_t size)
     else
       safefree(home), home = NULL;
   }
+
+  SU_DEBUG_9(("su_home_new: created new home for size %d at %p\n", size, home)) ;
 
   return home;
 }
@@ -668,16 +713,19 @@ static int real_su_home_unref(su_home_t *home)
   }
   else if (--sub->sub_ref > 0) {
     UNLOCK(home);
+    SU_DEBUG_9(("real_su_home_unref: home %p now has refdcount %ld\n", home, sub->sub_ref)) ;
     return 0;
   }
   else if (sub->sub_parent) {
     su_home_t *parent = sub->sub_parent;
     UNLOCK(home);
+    SU_DEBUG_9(("real_su_home_unref: actually freeing home %p\n", home)) ;
     su_free(parent, home);
     return 1;
   }
   else {
     int hauto = sub->sub_hauto;
+    SU_DEBUG_9(("real_su_home_unref: actually freeing home %p, hauto %d\n", home, hauto)) ;
     _su_home_deinit(home);
     if (!hauto)
       safefree(home);
@@ -768,16 +816,19 @@ int su_home_unref(su_home_t *home)
   }
   else if (--sub->sub_ref > 0) {
     UNLOCK(home);
+    SU_DEBUG_9(("su_home_unref: home %p now has refdcount %ld\n", home, sub->sub_ref)) ;
     return 0;
   }
   else if (sub->sub_parent) {
     su_home_t *parent = sub->sub_parent;
     UNLOCK(home);
+    SU_DEBUG_9(("su_home_unref: actually freeing home %p\n", home)) ;
     su_free(parent, home);
     return 1;
   }
   else {
     int hauto = sub->sub_hauto;
+    SU_DEBUG_9(("su_home_unref: actually freeing home %p hauto %d\n", home, hauto)) ;
     _su_home_deinit(home);
     if (!hauto)
       safefree(home);
@@ -908,6 +959,8 @@ void su_free(su_home_t *home, void *data)
     return;
 
   if (home) {
+    SU_DEBUG_9(("su_free, home: %p, data: %p\n", (void*)home, (void*)data)) ;
+
     su_alloc_t *allocation;
     su_block_t *sub = MEMLOCK(home);
 
@@ -943,6 +996,8 @@ void su_free(su_home_t *home, void *data)
 
       memset(allocation, 0, sizeof (*allocation));
       sub->sub_used--;
+
+      SU_DEBUG_9(("%s: block %p sub_used decremented, now %ld used %d\n", __func__, sub, sub->sub_used, su_get_used_count(sub))) ;
 
       if (preloaded)
 	data = NULL;
@@ -1012,6 +1067,8 @@ void su_home_check_blocks(su_block_t const *b)
 	  su_home_check((su_home_t *)b->sub_nodes[i].sua_data);
       }
 
+    SU_DEBUG_9(("%s: block %p sub_used is %ld sub_n %ld used %ld\n", __func__, b, b->sub_used, b->sub_n, used)) ;
+
     assert(used == b->sub_used);
   }
 #endif
@@ -1044,6 +1101,8 @@ su_home_t *su_home_create(void)
  */
 void su_home_destroy(su_home_t *home)
 {
+  SU_DEBUG_9(("su_home_destroy: destroying home at %p\n", home)) ;
+
   if (MEMLOCK(home)) {
     assert(home->suh_blocks);
     assert(home->suh_blocks->sub_ref == 1);
@@ -1086,6 +1145,8 @@ int su_home_init(su_home_t *home)
   if (!sub)
     return -1;
 
+  SU_DEBUG_9(("%s: allocated block %p sub_used is %ld sub_n %ld used %d\n", __func__, sub, sub->sub_used, sub->sub_n, su_get_used_count(sub))) ;
+
   return 0;
 }
 
@@ -1107,6 +1168,8 @@ void _su_home_deinit(su_home_t *home)
     }
 
     b = home->suh_blocks;
+
+    SU_DEBUG_9(("%s: block %p sub_used is %ld sub_n %ld used %d\n", __func__, b, b->sub_used, b->sub_n, su_get_used_count(b))) ;
 
     su_home_check_blocks(b);
 
@@ -1197,6 +1260,8 @@ int su_home_move(su_home_t *dst, su_home_t *src)
     s = MEMLOCK(src); d = MEMLOCK(dst);
 
     if (s && s->sub_n) {
+
+      SU_DEBUG_9(("%s: start - block %p sub_used is %ld sub_n %ld used %d\n", __func__, s, s->sub_used, s->sub_n, su_get_used_count(s))) ;
 
       if (s->sub_destructor) {
 	void (*destructor)(void *) = s->sub_destructor;
@@ -1290,6 +1355,8 @@ int su_home_move(su_home_t *dst, su_home_t *src)
       s->sub_used = 0;
     }
 
+      SU_DEBUG_9(("%s: end - block %p sub_used is %ld sub_n %ld used %d\n", __func__, s, s->sub_used, s->sub_n, su_get_used_count(s))) ;
+
     UNLOCK(src);
   }
 
@@ -1367,6 +1434,8 @@ su_home_t *su_home_auto(void *area, isize_t size)
   sub->sub_auto = 1;
   sub->sub_preauto = 1;
   sub->sub_auto_all = 1;
+
+  SU_DEBUG_9(("%s: start - block %p sub_used is %ld sub_n %ld used %d\n", __func__, sub, sub->sub_used, sub->sub_n, su_get_used_count(sub))) ;
 
   return home;
 }
@@ -1505,6 +1574,9 @@ void *su_realloc(su_home_t *home, void *data, isize_t size)
     memset(sua, 0, sizeof *sua); sub->sub_used--;
 
     su_block_add(sub, ndata)->sua_size = (unsigned)size;
+
+    SU_DEBUG_9(("%s: block %p sub_used is %ld sub_n %ld used %d\n", __func__, sub, sub->sub_used, sub->sub_n, su_get_used_count(sub))) ;
+
   }
 
   UNLOCK(home);
@@ -1577,6 +1649,7 @@ void *su_zalloc(su_home_t *home, isize_t size)
   else
     data = calloc(1, size);
 
+  SU_DEBUG_9(("su_zalloc: allocated size %d at: %p\n", size, data)) ;
   return data;
 }
 
