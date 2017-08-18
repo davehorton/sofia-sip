@@ -440,6 +440,7 @@ nta_outgoing_t *nta_outgoing_find(nta_agent_t const *sa,
 				  sip_via_t const *v);
 
 SOFIAPUBFUN int nta_tport_keepalive(nta_outgoing_t *orq);
+SOFIAPUBFUN void outgoing_retransmit(nta_outgoing_t *orq);
 
 /* ----------------------------------------------------------------------
  * 8) Reliable provisional responses (100rel)

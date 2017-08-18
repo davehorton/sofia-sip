@@ -7357,7 +7357,6 @@ static size_t outgoing_timer_c(outgoing_queue_t *q,
 static void outgoing_ack(nta_outgoing_t *orq, sip_t *sip);
 static msg_t *outgoing_ackmsg(nta_outgoing_t *, sip_method_t, char const *,
 			      tag_type_t tag, tag_value_t value, ...);
-static void outgoing_retransmit(nta_outgoing_t *orq);
 static void outgoing_trying(nta_outgoing_t *orq);
 static void outgoing_timeout(nta_outgoing_t *orq, uint32_t now);
 static int outgoing_complete(nta_outgoing_t *orq);
