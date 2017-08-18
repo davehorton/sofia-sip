@@ -5368,7 +5368,6 @@ int incoming_set_compartment(nta_incoming_t *irq, tport_t *tport, msg_t *msg,
 su_inline nta_incoming_t
   *incoming_call_callback(nta_incoming_t *, msg_t *, sip_t *);
 su_inline int incoming_final_failed(nta_incoming_t *irq, msg_t *);
-static void incoming_retransmit_reply(nta_incoming_t *irq, tport_t *tport);
 
 /** Create a default server transaction.
  *
@@ -6986,7 +6985,6 @@ int incoming_final_failed(nta_incoming_t *irq, msg_t *msg)
 }
 
 /** @internal Retransmit the reply */
-static
 void incoming_retransmit_reply(nta_incoming_t *irq, tport_t *tport)
 {
   msg_t *msg = NULL;

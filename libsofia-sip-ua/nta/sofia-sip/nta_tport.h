@@ -102,6 +102,8 @@ int nta_agent_bind_tport_error(nta_agent_t *agent,
 				nta_error_magic_t *magic,
 			    nta_error_tport_f *callback);
 
+SOFIAPUBFUN void incoming_retransmit_reply(nta_incoming_t *irq, tport_t *tport);
+
 SOFIA_END_DECLS
 
 #endif /* !defined NTA_TPORT_H */
