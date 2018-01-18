@@ -4525,8 +4525,8 @@ tport_t *tport_primary_by_name(tport_t const *tp, tp_name_t const *tpn)
     strncpy(szRemote, tpn->tpn_host, 64);
     strncpy(szLocal, current->tp_name->tpn_host, 64);
 
-    char *pLocal[4];
-    char *pRemote[4];
+    char *pLocal[4] = {0,0,0,0};
+    char *pRemote[4] = {0,0,0,0};
 
     int i = 0;
     pLocal[i++] = strtok(szLocal, ".");
