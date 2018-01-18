@@ -22,3 +22,5 @@ TAGS
 *.lo
 *.o
 *_tag_ref.c
+
+Makefile.in

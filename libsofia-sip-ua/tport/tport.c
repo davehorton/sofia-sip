@@ -4463,6 +4463,9 @@ tport_t *tport_primary_by_name(tport_t const *tp, tp_name_t const *tpn)
   char const *proto = tpn->tpn_proto;
   char const *comp = tpn->tpn_comp;
   int family = 0;
+  const tport_t* tport_default = NULL;
+  tport_t* tport_best_match = NULL;
+  int octet_count = 0;
 
   tport_primary_t const *self, *nocomp = NULL;
 
@@ -4486,21 +4489,25 @@ tport_t *tport_primary_by_name(tport_t const *tp, tp_name_t const *tpn)
     proto = NULL;
 
   if (!ident && !proto && !family && !comp)
-    return (tport_t *)self;		/* Anything goes */
+    return (tport_t *)self;   /* Anything goes */
 
   comp = tport_canonize_comp(comp);
 
   for (; self; self = self->pri_next) {
+    const tport_t* current = (tport_t *) self;
+    char szRemote[64];
+    char szLocal[64];
+
     tp = self->pri_primary;
 
     if (ident && strcmp(ident, tp->tp_ident))
       continue;
     if (family) {
       if (family == AF_INET && !tport_has_ip4(tp)) 
-	continue;
+  continue;
 #if SU_HAVE_IN6
       if (family == AF_INET6 && !tport_has_ip6(tp))
-	continue;
+  continue;
 #endif
     }
     if (proto && !su_casematch(proto, tp->tp_protoname))
@@ -4508,17 +4515,45 @@ tport_t *tport_primary_by_name(tport_t const *tp, tp_name_t const *tpn)
 
     if (comp && comp != tp->tp_name->tpn_comp) {
       if (tp->tp_name->tpn_comp == NULL && nocomp == NULL)
-	nocomp = self;
+  nocomp = self;
       continue;
     }
 
-    break;
+    //break;
+    if (!tport_default) tport_default = tp ;
+
+    strncpy(szRemote, tpn->tpn_host, 64);
+    strncpy(szLocal, current->tp_name->tpn_host, 64);
+
+    char *pLocal[4];
+    char *pRemote[4];
+
+    int i = 0;
+    pLocal[i++] = strtok(szLocal, ".");
+    while (i < 4 && pLocal[i] != NULL) pLocal[i++] = strtok(NULL, ".");
+
+    i = 0;
+    pRemote[i++] = strtok(szRemote, ".");
+    while (i < 4 && pRemote[i] != NULL) pRemote[i++] = strtok(NULL, ".");
+
+    int count = 0;
+    int j = 0;
+    for (j = 0; j < 4; j++) {
+      if (NULL == pLocal[j] || NULL == pRemote[j]) break;
+      if (0 != strcmp(pLocal[j], pRemote[j])) break;
+      count++;
+    }
+
+    if (count > octet_count) {
+      octet_count = count;
+      tport_best_match = (tport_t *) current;
+    }
   }
 
-  if (self)
-    return (tport_t *)self;
-  else
-    return (tport_t *)nocomp;
+  if (tport_best_match) return (tport_t *) tport_best_match;
+  if (tport_default) return (tport_t *) tport_default;
+
+  return (tport_t *)nocomp;
 }
 
 
