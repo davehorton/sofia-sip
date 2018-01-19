@@ -4529,12 +4529,17 @@ tport_t *tport_primary_by_name(tport_t const *tp, tp_name_t const *tpn)
     char *pRemote[4] = {0,0,0,0};
 
     int i = 0;
-    pLocal[i++] = strtok(szLocal, ".");
-    while (i < 4 && pLocal[i] != NULL) pLocal[i++] = strtok(NULL, ".");
+    char* rest = szLocal;
+    char* token ;
+    while (NULL != (token = strtok_r(rest, ".", &rest)) && i < 4) {
+       pLocal[i++] = token;
+    }
 
     i = 0;
-    pRemote[i++] = strtok(szRemote, ".");
-    while (i < 4 && pRemote[i] != NULL) pRemote[i++] = strtok(NULL, ".");
+    rest = szRemote;
+    while (NULL != (token = strtok_r(rest, ".", &rest)) && i < 4) {
+       pRemote[i++] = token;
+    }
 
     int count = 0;
     int j = 0;
@@ -4665,8 +4670,8 @@ tport_t *tport_by_name(tport_t const *self, tp_name_t const *tpn)
       if (resolved) {
 	if ((socklen_t)sub->tp_addrlen != sulen ||
 	    memcmp(sub->tp_addr, su, sulen)) {
-	  SU_DEBUG_7(("tport(%p): not found by name " TPN_FORMAT "\n",
-		      (void *)self, TPN_ARGS(tpn)));
+	  //SU_DEBUG_7(("tport(%p): not found by name " TPN_FORMAT "\n",
+		//      (void *)self, TPN_ARGS(tpn)));
 	  break;
 	}
 	SU_DEBUG_7(("tport(%p): found %p by name " TPN_FORMAT "\n",
@@ -4758,10 +4763,10 @@ tport_t *tport_by_addrinfo(tport_primary_t const *pri,
   }
 
   if (sub)
-    SU_DEBUG_7(("%s(%p): found %p by name " TPN_FORMAT "\n",
+    SU_DEBUG_9(("%s(%p): found %p by name " TPN_FORMAT "\n",
 		__func__, (void *)pri, (void *)sub, TPN_ARGS(tpn)));
   else
-    SU_DEBUG_7(("%s(%p): not found by name " TPN_FORMAT "\n",
+    SU_DEBUG_9(("%s(%p): not found by name " TPN_FORMAT "\n",
 		__func__, (void *)pri, TPN_ARGS(tpn)));
 
   return (tport_t *)sub;
