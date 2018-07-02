@@ -389,10 +389,13 @@ static int tport_ws_init_primary_secure(tport_primary_t *pri,
           SU_DEBUG_1(("%s(%p): tls chain file = %s does not exist or could not be accessed\n", __func__, (void *)pri, chain));
     }
   }
+  // should be optional; e.g. in the case of a self-signed cert
+  /*
   else {
       SU_DEBUG_1(("%s(%p): tls chain file (TPTAG_TLS_CERTIFICATE_CHAIN_FILE) is required and not specified\n", __func__, (void *)pri));
       return *return_culprit = "tport_ws_init_primary_secure", -1;
   }
+  */
 
 /*
   if (!path) {
