@@ -246,10 +246,13 @@ static int tport_tls_init_master(tport_primary_t *pri,
           SU_DEBUG_1(("%s(%p): tls CAfile = %s does not exist or could not be accessed\n", __func__, (void *)pri, ti.CAfile));
     }
   }
+  // make optional, so we can do self-signed certs
+  /*
   else {
       SU_DEBUG_1(("%s(%p): tls chain file (TPTAG_TLS_CERTIFICATE_CHAIN_FILE) is required and not specified\n", __func__, (void *)pri));
       return *return_culprit = "tls_init_master", -1;
   }
+  */
 
   ti.policy = tls_policy | (tls_verify ? TPTLS_VERIFY_ALL : 0);
   ti.verify_depth = tls_depth;
