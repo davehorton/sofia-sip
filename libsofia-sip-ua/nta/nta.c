@@ -7497,7 +7497,7 @@ nta_outgoing_t *nta_outgoing_tcreate(nta_leg_t *leg,
       SU_DEBUG_3(("%s: failed call to nta_msg_request_complete\n", __func__));
     }
     else {
-      outgoing_create(agent, callback, magic, route_url, NULL, msg, ta_tags(ta));      
+      orq = outgoing_create(agent, callback, magic, route_url, NULL, msg, ta_tags(ta));      
     }
   }
 
