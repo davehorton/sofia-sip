@@ -7488,7 +7488,12 @@ nta_outgoing_t *nta_outgoing_tcreate(nta_leg_t *leg,
 		  t->tt_ns ? t->tt_ns : "", t->tt_name ? t->tt_name : ""));
     }
   }
-  else if (route_url == NULL && leg->leg_route && leg->leg_loose_route && !(route_url = (url_string_t *)leg->leg_route->r_url)) {
+  else if (sip && sip->sip_from && sip->sip_from->a_tag) {
+     char const *tag = su_sprintf(msg_home(msg), "tag=%s", leg->leg_local->a_tag);
+     msg_header_replace_param(msg_home(msg), sip->sip_from->a_common, tag);
+  }
+
+  if (route_url == NULL && leg->leg_route && leg->leg_loose_route && !(route_url = (url_string_t *)leg->leg_route->r_url)) {
       ; // do nothing
   }
   else {
