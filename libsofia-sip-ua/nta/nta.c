@@ -2579,7 +2579,8 @@ int outgoing_update_contact(nta_outgoing_t *orq, tport_t* tp) {
   sip_t* sip = sip_object( msg ) ;
 
   // don't do this if we are proxying a request (i.e multiple vias) or if it is IP6
-  if (sip->sip_contact && sip->sip_via && !sip->sip_via->v_next && '[' != sip->sip_contact->m_url->url_host[0]) {
+  if (sip->sip_contact && sip->sip_via && !sip->sip_via->v_next && '[' != sip->sip_contact->m_url->url_host[0] && 
+    sip->sip_request &&  sip->sip_request->rq_method != sip_method_register) {
     const tp_name_t* tpn = tport_name( tport_parent(tp) ) ;
 
     int hostChanged = tpn->tpn_host && sip->sip_contact->m_url->url_host 
