@@ -12,8 +12,12 @@
 /missing
 /stamp-h1
 
+config.sub
+config.guess
+
 Doxyfile
 Makefile
+Makefile.in
 TAGS
 .deps
 .libs
