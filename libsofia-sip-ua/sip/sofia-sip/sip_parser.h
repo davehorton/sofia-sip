@@ -111,7 +111,7 @@ SOFIAPUBFUN isize_t sip_transport_xtra(char const *transport);
 SOFIAPUBFUN void sip_transport_dup(char **pp, char const **dd, char const *s);
 
 /* Method */
-SOFIAPUBFUN sip_method_t sip_method_d(char **ss, char const **nname);
+SOFIAPUBFUN sip_method_t sip_method_d(char **ss, char const **nname, isize_t slen);
 
 /* Call-ID */
 SOFIAPUBFUN char *sip_word_at_word_d(char **ss);

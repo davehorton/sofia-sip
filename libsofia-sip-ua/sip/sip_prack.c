@@ -96,6 +96,7 @@ SIP_HEADER_CLASS(rack, "RAck", "", ra_common, single, rack);
 
 issize_t sip_rack_d(su_home_t *home, sip_header_t *h, char *s, isize_t slen)
 {
+  const char *initial_s = s;
   sip_rack_t *ra = h->sh_rack;
 
   ra->ra_response = strtoul(s, &s, 10);
@@ -106,7 +107,8 @@ issize_t sip_rack_d(su_home_t *home, sip_header_t *h, char *s, isize_t slen)
 
     if (IS_LWS(*s)) {
       skip_lws(&s);
-      if ((ra->ra_method = sip_method_d(&s, &ra->ra_method_name)) >= 0) {
+      const isize_t skipped = s - initial_s;
+      if ((ra->ra_method = sip_method_d(&s, &ra->ra_method_name, slen - skipped)) >= 0) {
 	return 0;
       }
     }
