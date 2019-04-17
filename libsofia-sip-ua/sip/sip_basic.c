@@ -127,7 +127,7 @@ issize_t sip_request_d(su_home_t *home, sip_header_t *h, char *s, isize_t slen)
   char *uri, *version;
 
   if (msg_firstline_d(s, &uri, &version) < 0 || !uri || !version ||
-      (rq->rq_method = sip_method_d(&s, &rq->rq_method_name)) < 0 || *s ||
+      (rq->rq_method = sip_method_d(&s, &rq->rq_method_name, slen)) < 0 || *s ||
       url_d(rq->rq_url, uri) < 0 ||
       sip_version_d(&version, &rq->rq_version) < 0 || *version)
     return -1;
@@ -1205,12 +1205,15 @@ issize_t sip_cseq_d(su_home_t *home,
 {
   sip_cseq_t *cs = (sip_cseq_t *)h;
 
+  const char *start = s;
   if (msg_uint32_d(&s, &cs->cs_seq) < 0)
     return -1;
 
   if (*s) {
-    if ((cs->cs_method = sip_method_d(&s, &cs->cs_method_name)) >= 0)
+    const isize_t remaining = slen - (s - start);
+    if ((cs->cs_method = sip_method_d(&s, &cs->cs_method_name, remaining)) >= 0) {
       return 0;
+    }
   }
 
   return -1;

@@ -366,14 +366,15 @@ char const *sip_method_name(sip_method_t method, char const *name)
  * If the value-result argument @a return_name is not @c NULL,
  * a pointer to the method name is stored to it.
  */
-sip_method_t sip_method_d(char **ss, char const **return_name)
+sip_method_t sip_method_d(char **ss, char const **return_name, isize_t slen)
 {
   char *s = *ss, c = *s;
   char const *name;
   int code = sip_method_unknown;
   size_t n = 0;
 
-#define MATCH(s, m) (strncmp(s, m, n = sizeof(m) - 1) == 0)
+#define MIN(a,b) ( (a) < (b) ? (a) : (b) )
+#define MATCH(s, m) (strncmp(s, m, n = MIN((sizeof(m) - 1), slen)) == 0)
 
   switch (c) {
   case 'A': if (MATCH(s, "ACK")) code = sip_method_ack; break;
@@ -412,27 +413,44 @@ sip_method_t sip_method_d(char **ss, char const **return_name)
   }
 
 #undef MATCH
+#undef MIN
 
-  if (IS_NON_WS(s[n]))
-    /* Unknown method */
+  // Bail out immediately if there's nothing left in the string.
+  if (n >= slen) {
+    name = s;
+    *ss = s + slen;
+    if (return_name) {
+      *return_name = name;
+    }
+
+    return (sip_method_t)code;
+  }
+
+  if (IS_NON_WS(s[n])) {
+    /* Unknown method -- it's a known method that isn't followed by whitespace. */
     code = sip_method_unknown;
+  }
 
   if (code == sip_method_unknown) {
     name = s;
-    for (n = 0; IS_UNRESERVED(s[n]); n++)
+    for (n = 0; n < slen && IS_UNRESERVED(s[n]); n++)
       ;
-    if (s[n]) {
-      if (!IS_LWS(s[n]))
-	return sip_method_invalid;
-      if (return_name)
-	s[n++] = '\0';
+    if (n < slen) {
+      if (s[n]) {
+        if (!IS_LWS(s[n])) {
+          return sip_method_invalid;
+        }
+        if (return_name && (n + 1 < slen)) {
+          s[n++] = '\0';
+        }
+      }
     }
   }
   else {
     name = sip_method_names[code];
   }
 
-  while (IS_LWS(s[n]))
+  while (n < slen && IS_LWS(s[n]))
     n++;
 
   *ss = (s + n);
@@ -445,7 +463,7 @@ sip_method_t sip_method_d(char **ss, char const **return_name)
 sip_method_t sip_method_code(char const *name)
 {
   /* Note that sip_method_d() does not change string if return_name is NULL */
-  return sip_method_d((char **)&name, NULL);
+  return sip_method_d((char **)&name, NULL, strlen(name));
 }
 
 char const sip_transport_udp[] = "SIP/2.0/UDP";
