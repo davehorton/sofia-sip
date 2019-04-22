@@ -1018,11 +1018,16 @@ nta_leg_t* nta_get_next_dialog_from_hash(nta_agent_t *agent, nta_leg_t* prev) {
   if (agent) {
     leg_htable_t *lht = agent->sa_dialogs;
     size_t i;
+    int found = 0;
 
-    if (lht->lht_size == 0) return NULL;
-    if (prev == NULL) return lht->lht_table[0];
-    for (i = 1; i < lht->lht_size; i++) {
-      if (prev == lht->lht_table[i-1]) return lht->lht_table[i];
+    if (lht->lht_used == 0) return NULL;
+
+    for (i = 0; i < lht->lht_size; i++) {
+      nta_leg_t* leg = lht->lht_table[i];
+      if (leg) {
+        if (NULL == prev || found) return leg;
+        if (leg == prev) found = 1;
+      }
     }
   }
   return NULL;
@@ -1031,11 +1036,16 @@ nta_outgoing_t* nta_get_next_client_txn_from_hash(nta_agent_t *agent, nta_outgoi
   if (agent) {
     outgoing_htable_t *oht = agent->sa_outgoing;
     size_t i;
+    int found = 0;
 
-    if (oht->oht_size == 0) return NULL;
-    if (prev == NULL) return oht->oht_table[0];
-    for (i = 1; i < oht->oht_size; i++) {
-      if (prev == oht->oht_table[i-1]) return oht->oht_table[i];
+    if (oht->oht_used == 0) return NULL;
+
+    for (i = 0; i < oht->oht_size; i++) {
+      nta_outgoing_t* leg = oht->oht_table[i];
+      if (leg) {
+        if (NULL == prev || found) return leg;
+        if (leg == prev) found = 1;
+      }
     }
   }
   return NULL;
@@ -1044,15 +1054,19 @@ nta_incoming_t* nta_get_next_server_txn_from_hash(nta_agent_t *agent, nta_incomi
   if (agent) {
     incoming_htable_t *iht = agent->sa_incoming;
     size_t i;
+    int found = 0;
 
-    if (iht->iht_size == 0) return NULL;
-    if (prev == NULL) return iht->iht_table[0];
-    for (i = 1; i < iht->iht_size; i++) {
-      if (prev == iht->iht_table[i-1]) return iht->iht_table[i];
+    if (iht->iht_used == 0) return NULL;
+
+    for (i = 0; i < iht->iht_size; i++) {
+      nta_incoming_t* leg = iht->iht_table[i];
+      if (leg) {
+        if (NULL == prev || found) return leg;
+        if (leg == prev) found = 1;
+      }
     }
   }
   return NULL;
-
 }
 
 /**
