@@ -163,6 +163,11 @@ SOFIAPUBFUN int nta_agent_get_stats(nta_agent_t *agent,
 SOFIAPUBFUN int nta_get_outbound_tport_name_for_url( nta_agent_t const *a, su_home_t *home, 
 						url_string_t const *req_url, void** tpn ) ;
 
+/* DH: added for debugging purposes */
+nta_leg_t* nta_get_next_dialog_from_hash(nta_agent_t *agent, nta_leg_t* prev);
+nta_outgoing_t* nta_get_next_client_txn_from_hash(nta_agent_t *agent, nta_outgoing_t* prev);
+nta_incoming_t* nta_get_next_server_txn_from_hash(nta_agent_t *agent, nta_incoming_t* prev);
+
 /* ----------------------------------------------------------------------
  * 4) Message-level prototypes
  */

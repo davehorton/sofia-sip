@@ -1011,6 +1011,51 @@ nta_agent_t *nta_agent_create(su_root_t *root,
 }
 
 /**
+ * DH: added for memory tracking/debugging
+ * return next leg/transaction after the one indicated, or the first in the hash table if NULL
+*/
+nta_leg_t* nta_get_next_dialog_from_hash(nta_agent_t *agent, nta_leg_t* prev) {
+  if (agent) {
+    leg_htable_t *lht = agent->sa_dialogs;
+    size_t i;
+
+    if (lht->lht_size == 0) return NULL;
+    if (prev == NULL) return lht->lht_table[0];
+    for (i = 1; i < lht->lht_size; i++) {
+      if (prev == lht->lht_table[i-1]) return lht->lht_table[i];
+    }
+  }
+  return NULL;
+}
+nta_outgoing_t* nta_get_next_client_txn_from_hash(nta_agent_t *agent, nta_outgoing_t* prev) {
+  if (agent) {
+    outgoing_htable_t *oht = agent->sa_outgoing;
+    size_t i;
+
+    if (oht->oht_size == 0) return NULL;
+    if (prev == NULL) return oht->oht_table[0];
+    for (i = 1; i < oht->oht_size; i++) {
+      if (prev == oht->oht_table[i-1]) return oht->oht_table[i];
+    }
+  }
+  return NULL;
+}
+nta_incoming_t* nta_get_next_server_txn_from_hash(nta_agent_t *agent, nta_incoming_t* prev) {
+  if (agent) {
+    incoming_htable_t *iht = agent->sa_incoming;
+    size_t i;
+
+    if (iht->iht_size == 0) return NULL;
+    if (prev == NULL) return iht->iht_table[0];
+    for (i = 1; i < iht->iht_size; i++) {
+      if (prev == iht->iht_table[i-1]) return iht->iht_table[i];
+    }
+  }
+  return NULL;
+
+}
+
+/**
  * Destroy an NTA agent object.
  *
  * @param agent the NTA agent object to be destroyed.
