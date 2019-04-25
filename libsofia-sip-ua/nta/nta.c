@@ -7867,6 +7867,11 @@ uint32_t nta_outgoing_cseq(nta_outgoing_t const *orq)
   return orq != NULL && orq != NONE && orq->orq_cseq
     ? orq->orq_cseq->cs_seq : 0;
 }
+/** Get the call id of a client transaction
+*/
+SOFIAPUBFUN char const *nta_outgoing_call_id(nta_outgoing_t const *orq) {
+  return (orq != NULL && orq != NONE && orq->orq_call_id) ? orq->orq_call_id->i_id : NULL;
+}
 
 /**
  * Get the status code of a client transaction.

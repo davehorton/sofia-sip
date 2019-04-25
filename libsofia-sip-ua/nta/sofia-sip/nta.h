@@ -410,6 +410,7 @@ SOFIAPUBFUN nta_outgoing_magic_t *nta_outgoing_magic(nta_outgoing_t const *orq,
 SOFIAPUBFUN int nta_outgoing_status(nta_outgoing_t const *orq);
 SOFIAPUBFUN sip_method_t nta_outgoing_method(nta_outgoing_t const *orq);
 SOFIAPUBFUN char const *nta_outgoing_method_name(nta_outgoing_t const *orq);
+SOFIAPUBFUN char const *nta_outgoing_call_id(nta_outgoing_t const *orq);
 SOFIAPUBFUN uint32_t nta_outgoing_cseq(nta_outgoing_t const *orq);
 SOFIAPUBFUN char const *nta_outgoing_branch(nta_outgoing_t const *orq);
 
