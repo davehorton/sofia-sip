@@ -16,6 +16,8 @@
 #pragma warning(disable: 4706)
 #endif
 
+#define HDR_BUFLEN 65536
+
 #define WS_BLOCK 1
 #define WS_NOBLOCK 0
 
@@ -132,6 +134,25 @@ void deinit_ssl(void) {
 
 static const char c64[65] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 
+static int get_next_header(char *data, char *buf, size_t buflen) {
+ char *p = data;
+
+	while (*p == '\r' || *p == '\n') {
+		p++;
+	}
+
+	char* s = strstr(p, "\n");
+	if (!s) return -1;
+
+	char *t = strstr(p, ":");
+	if (NULL == t || t > s) return -1;
+
+	size_t len = s - p + 1;
+	if (len > buflen) return -1;
+
+	strncpy(buf, p, len);
+	return len;
+}
 
 static int cheezy_get_var(char *data, char *name, char *buf, size_t buflen)
 {
@@ -251,7 +272,8 @@ int ws_handshake(wsh_t *wsh)
 	char b64[256] = "";
 	char respond[512] = "";
 	ssize_t bytes;
-	char *p, *e = 0;
+	char *p, *e = 0, *t = 0;
+	int hdr_offset = 0, hdr_bytes_read;
 
 	if (wsh->sock == ws_sock_invalid) {
 		return -3;
@@ -285,6 +307,14 @@ int ws_handshake(wsh_t *wsh)
 	strncpy(wsh->uri, p, e-p);
 	*(wsh->uri + (e-p)) = '\0';
 
+	/* get all the headers, in case higher level app wants them */
+	t = e + 1;
+	do {
+		hdr_bytes_read = get_next_header(t, wsh->orig_http_headers + hdr_offset, HDR_BUFLEN - hdr_offset);
+		if (hdr_bytes_read > 0) hdr_offset += hdr_bytes_read;
+	} while (hdr_bytes_read > 0);
+
+	/* get specific websocket headers that we need */
 	cheezy_get_var(wsh->buffer, "Sec-WebSocket-Key", key, sizeof(key));
 	cheezy_get_var(wsh->buffer, "Sec-WebSocket-Version", version, sizeof(version));
 	cheezy_get_var(wsh->buffer, "Sec-WebSocket-Protocol", proto, sizeof(proto));
@@ -587,6 +617,7 @@ int ws_init(wsh_t *wsh, ws_socket_t sock, SSL_CTX *ssl_ctx, int close_sock, int 
 	wsh->sanity = 5000;
 	wsh->ssl_ctx = ssl_ctx;
 	wsh->stay_open = stay_open;
+	wsh->orig_http_headers = malloc(HDR_BUFLEN);
 
 	if (!ssl_ctx) {
 		ssl_ctx = ws_globals.ssl_ctx;
@@ -635,6 +666,10 @@ void ws_destroy(wsh_t *wsh)
 		wsh->write_buffer_len = 0;
 	}
 
+	if (wsh->orig_http_headers) {
+		free(wsh->orig_http_headers);
+	}
+
 	if (wsh->ssl) {
 		int code;
 		do {
@@ -643,6 +678,14 @@ void ws_destroy(wsh_t *wsh)
 
 		SSL_free(wsh->ssl);
 		wsh->ssl = NULL;
+	}
+
+}
+
+void ws_release_headers(wsh_t *wsh) {
+	if (wsh->orig_http_headers) {
+		free(wsh->orig_http_headers);
+		wsh->orig_http_headers = NULL;
 	}
 }
 
