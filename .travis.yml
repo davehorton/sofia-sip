@@ -4,3 +4,6 @@ compiler:
   - clang
 # Change this to your needs
 script: ./bootstrap.sh && ./configure --with-glib=no && make
+
+before_install:
+    - sudo apt-get install -y curl libtool libcurl4-openssl-dev
