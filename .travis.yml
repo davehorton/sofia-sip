@@ -6,4 +6,4 @@ compiler:
 script: ./bootstrap.sh && ./configure --with-glib=no && make
 
 before_install:
-    - sudo apt-get install -y curl libtool libcurl4-openssl-dev
+    - sudo apt-get install -y curl libtool libtool-bin libcurl4-openssl-dev
