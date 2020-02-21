@@ -2650,37 +2650,48 @@ int outgoing_update_contact(nta_outgoing_t *orq, tport_t* tp) {
     /* if host or port of the actual tport is different than specified in the contact header then update */
     if( hostChanged || portChanged ) {
 
-      su_home_t* home = msg_home(orq->orq_request) ;
-
-      SU_DEBUG_7(("%s: updating contact to  " TPN_FORMAT "\n", __func__, TPN_ARGS(tpn)));
-      if( tpn->tpn_proto ) {
-        char transport[16] ;
-        strcpy( transport, "transport=" ) ;
-        strcat( transport, tpn->tpn_proto) ;
-        url_strip_transport( sip->sip_contact->m_url );
-        url_param_add(home, sip->sip_contact->m_url, transport);
+      /* if the original host in the Contact header is a DNS name, leave it */
+      const char* szHost = sip->sip_contact->m_url->url_host;
+      int isDotDecimal = 1;
+      while (*szHost) {
+        isDotDecimal = *szHost == '.' || (*szHost >= '0' && *szHost <= '9');
+        if (!isDotDecimal) break;
+        szHost++;
       }
 
-      char s[256] ;
+      if (!isDotDecimal) {
+        SU_DEBUG_7(("%s: NOT updating contact because original contact is a dns name %s\n", __func__, sip->sip_contact->m_url->url_host)) ;
+      }
+      else {
+        su_home_t* home = msg_home(orq->orq_request) ;
+        SU_DEBUG_7(("%s: updating contact to  " TPN_FORMAT "\n", __func__, TPN_ARGS(tpn)));
+        if( tpn->tpn_proto ) {
+          char transport[16] ;
+          strcpy( transport, "transport=" ) ;
+          strcat( transport, tpn->tpn_proto) ;
+          url_strip_transport( sip->sip_contact->m_url );
+          url_param_add(home, sip->sip_contact->m_url, transport);
+        }
 
-      const char* host = sip->sip_contact->m_url->url_host ;
-      const char* port = sip->sip_contact->m_url->url_port ;
+        char s[256] ;
 
-      sip->sip_contact->m_url->url_host = tpn->tpn_canon ? tpn->tpn_canon : tpn->tpn_host ;
-      sip->sip_contact->m_url->url_port = tpn->tpn_port ;
+        const char* host = sip->sip_contact->m_url->url_host ;
+        const char* port = sip->sip_contact->m_url->url_port ;
 
-      sip_contact_e(s, 255, (msg_header_t *)sip->sip_contact, 0) ;
+        sip->sip_contact->m_url->url_host = tpn->tpn_canon ? tpn->tpn_canon : tpn->tpn_host ;
+        sip->sip_contact->m_url->url_port = tpn->tpn_port ;
 
-      sip->sip_contact->m_url->url_host = host ;
-      sip->sip_contact->m_url->url_port = port ;
+        sip_contact_e(s, 255, (msg_header_t *)sip->sip_contact, 0) ;
 
-      void *p = sip->sip_contact ;
+        sip->sip_contact->m_url->url_host = host ;
+        sip->sip_contact->m_url->url_port = port ;
 
-      msg_header_remove(msg, (msg_pub_t*) sip, (msg_header_t *) sip->sip_contact) ;
-      msg_header_add_make(msg, (msg_pub_t*) sip, sip_contact_class, s) ;
+        void *p = sip->sip_contact ;
 
-      su_free( home, p) ;
-
+        msg_header_remove(msg, (msg_pub_t*) sip, (msg_header_t *) sip->sip_contact) ;
+        msg_header_add_make(msg, (msg_pub_t*) sip, sip_contact_class, s) ;
+        su_free( home, p) ;
+      }
     }
     rc = 0 ;
   }
