@@ -2637,6 +2637,15 @@ int outgoing_update_contact(nta_outgoing_t *orq, tport_t* tp) {
   msg_t* msg = orq->orq_request ;
   sip_t* sip = sip_object( msg ) ;
 
+  /*
+    Don't update the contact if there is no contact
+    Don't update the contact if it is the same as the Via header
+    Don't update the contact if this is an ipv6 message
+    Don't update the contact if the host is a DNS name
+  */
+  if (!sip->sip_contact) return -1;
+  if (orq->orq_user_via && sip->sip_via && 0 == strcmp(sip->sip_via->v_host, sip->sip_contact->m_url->url_host)) return -1;
+
   // don't do this if we are proxying a request (i.e multiple vias) or if it is IP6
   if (sip->sip_contact && sip->sip_via && !sip->sip_via->v_next && '[' != sip->sip_contact->m_url->url_host[0] && 
     sip->sip_request &&  sip->sip_request->rq_method != sip_method_register) {
