@@ -2559,6 +2559,10 @@ char *localipname(int pf, char *buf, size_t bufsiz)
   return buf;
 }
 
+su_socket_t tport_socket(tport_t const *tport) {
+  return tport->tp_socket;
+}
+
 /** Process errors from transport. */
 void tport_error_report(tport_t *self, int errcode,
 			su_sockaddr_t const *addr)

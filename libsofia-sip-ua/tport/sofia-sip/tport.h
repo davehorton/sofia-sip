@@ -324,6 +324,9 @@ TPORT_DLL tport_t *tport_next(tport_t const *tport);
 /** Get secondary transports. */
 TPORT_DLL tport_t *tport_secondary(tport_t const *tport);
 
+/** Get socket. */
+TPORT_DLL su_socket_t tport_socket(tport_t const *tport);
+
 /** Get a protocol corresponding to the protocol name. */
 TPORT_DLL tport_t *tport_by_protocol(tport_t const *self, char const *proto);
 

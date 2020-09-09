@@ -8117,10 +8117,11 @@ nta_outgoing_t *outgoing_create(nta_agent_t *agent,
 
   /* select the tport to use for the outgoing message  */
   if (override_tport) {
+    orq->orq_user_tport = 1;
+
     /* note: no ref taken to the tport as its only used once here */
     if (tport_is_secondary(override_tport)) {
       tpn = tport_name(override_tport);
-      orq->orq_user_tport = 1;
     }
   }
 

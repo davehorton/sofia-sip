@@ -414,7 +414,7 @@ ssize_t tport_send_dgram(tport_t const *self, msg_t *msg,
 
   su_soerror(self->tp_socket); /* XXX - we *still* have a race condition */
 
-  return su_vsend(self->tp_socket, iov, iovused, MSG_NOSIGNAL, su, sulen);
+  return su_vsend(self->tp_socket, iov, iovused, MSG_NOSIGNAL  | MSG_DONTROUTE, su, sulen);
 }
 
 
