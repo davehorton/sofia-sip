@@ -4770,8 +4770,8 @@ tport_t *tport_by_addrinfo(tport_primary_t const *pri,
     SU_DEBUG_9(("%s(%p): found %p by name " TPN_FORMAT "\n",
 		__func__, (void *)pri, (void *)sub, TPN_ARGS(tpn)));
   else
-    //SU_DEBUG_9(("%s(%p): not found by name " TPN_FORMAT "\n",
-		//__func__, (void *)pri, TPN_ARGS(tpn)));
+    SU_DEBUG_9(("%s(%p): not found by name " TPN_FORMAT "\n",
+		__func__, (void *)pri, TPN_ARGS(tpn)));
 
   return (tport_t *)sub;
 }
