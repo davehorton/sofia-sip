@@ -8250,8 +8250,17 @@ nta_outgoing_t *outgoing_create(nta_agent_t *agent,
   agent->sa_stats->as_client_tr++;
   orq->orq_hash = NTA_HASH(sip->sip_call_id, sip->sip_cseq->cs_seq);
 
-  if (orq->orq_user_tport)
+  if (orq->orq_user_tport) {
+    // DH: need to set default port if needed
+    tp_name_t *tpn = orq->orq_tpn;
+    if (orq->orq_sips && strcmp(tpn->tpn_proto, "*") == 0) tpn->tpn_proto = "tls";
+
+    if (!tpn->tpn_port) {
+      if (orq->orq_sips || tport_has_tls(override_tport)) tpn->tpn_port = "5061";
+      else tpn->tpn_port = "5060";
+    }
     outgoing_send_via(orq, override_tport);
+  }
   else if (resolved)
     outgoing_prepare_send(orq);
 #if HAVE_SOFIA_SRESOLV
