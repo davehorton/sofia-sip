@@ -3375,7 +3375,7 @@ int sres_resolver_error(sres_resolver_t *res, int socket)
 
   getsockopt(socket, SOL_SOCKET, SO_ERROR, (void *)&errcode, &errorlen);
 
-  return sres_resolver_report_error(res, socket, errcode, NULL, 0, "");
+  return errcode == 0 ? errcode : sres_resolver_report_error(res, socket, errcode, NULL, 0, "");
 }
 #endif
 
