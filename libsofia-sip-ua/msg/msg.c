@@ -50,12 +50,298 @@
 #include "sofia-sip/msg_mclass.h"
 
 #ifdef SOFIA_MSG_DEBUG_TRACE
-static int nMsgs = 0 ;
-usize_t sofia_msg_count() {
-  return nMsgs ;
+
+#define CAPACITY 50000 // Size of the Hash Table
+
+typedef struct Ht_item Ht_item;
+struct Ht_item {
+  void* address;
+};
+
+typedef struct LinkedList LinkedList;
+ 
+// Define the Linkedlist here
+struct LinkedList {
+    Ht_item* item; 
+    LinkedList* next;
+};
+LinkedList* allocate_list () {
+    // Allocates memory for a Linkedlist pointer
+    LinkedList* list = (LinkedList*) malloc (sizeof(LinkedList));
+    list->item = NULL;
+    list->next = NULL;
+    return list;
+}
+ 
+LinkedList* linkedlist_insert(LinkedList* list, Ht_item* item) {
+    // Inserts the item onto the Linked List
+    if (!list) {
+        LinkedList* head = allocate_list();
+        head->item = item;
+        head->next = NULL;
+        list = head;
+        return list;
+    } 
+     
+    else if (list->next == NULL) {
+        LinkedList* node = allocate_list();
+        node->item = item;
+        node->next = NULL;
+        list->next = node;
+        return list;
+    }
+ 
+    LinkedList* temp = list;
+    while (temp->next->next) {
+        temp = temp->next;
+    }
+     
+    LinkedList* node = allocate_list();
+    node->item = item;
+    node->next = NULL;
+    temp->next = node;
+     
+    return list;
+}
+Ht_item* linkedlist_remove(LinkedList* list) {
+    // Removes the head from the linked list
+    // and returns the item of the popped element
+    if (!list)
+        return NULL;
+    if (!list->next)
+        return NULL;
+    LinkedList* node = list->next;
+    LinkedList* temp = list;
+    temp->next = NULL;
+    list = node;
+    Ht_item* it = NULL;
+    memcpy(temp->item, it, sizeof(Ht_item));
+    free(temp->item);
+    free(temp);
+    return it;
+}
+ 
+void free_linkedlist(LinkedList* list) {
+    LinkedList* temp = list;
+    while (list) {
+        temp = list;
+        list = list->next;
+        free(temp->item);
+        free(temp);
+    }
+}
+
+typedef struct HashTable HashTable;
+struct HashTable {
+  Ht_item** items;
+  LinkedList** overflow_buckets;
+  int size;
+  int count;
+};
+
+Ht_item* create_item(void* address) {
+  Ht_item* item = (Ht_item*) malloc(sizeof(Ht_item));
+  item->address = address;
+  return item;
+}
+void free_item(Ht_item* item) {
+    free(item);
+}
+LinkedList** create_overflow_buckets(HashTable* table) {
+    // Create the overflow buckets; an array of linkedlists
+    LinkedList** buckets = (LinkedList**) calloc (table->size, sizeof(LinkedList*));
+    for (int i=0; i<table->size; i++)
+                   buckets[i] = NULL;
+    return buckets;
+}
+ 
+void free_overflow_buckets(HashTable* table) {
+    // Free all the overflow bucket lists
+    LinkedList** buckets = table->overflow_buckets;
+    for (int i=0; i<table->size; i++)
+          free_linkedlist(buckets[i]);
+    free(buckets);
+}
+ 
+HashTable* create_table(int size) {
+    // Creates a new HashTable
+    HashTable* table = (HashTable*) malloc (sizeof(HashTable));
+    table->size = size;
+    table->count = 0;
+    table->items = (Ht_item**) calloc (table->size, sizeof(Ht_item*));
+    for (int i=0; i<table->size; i++)
+        table->items[i] = NULL;
+    table->overflow_buckets = create_overflow_buckets(table);
+    return table;
+}
+void free_table(HashTable* table) {
+    // Frees the table
+    for (int i=0; i<table->size; i++) {
+        Ht_item* item = table->items[i];
+        if (item != NULL)
+            free_item(item);
+    }
+    free_overflow_buckets(table);
+    free(table->items);
+    free(table);
+}
+
+unsigned long hash_function(void* address) {
+  return (unsigned long) address % CAPACITY;
+}
+void handle_collision(HashTable* table, unsigned long index, Ht_item* item) {
+    LinkedList* head = table->overflow_buckets[index];
+ 
+    if (head == NULL) {
+        // We need to create the list
+        head = allocate_list();
+        head->item = item;
+        table->overflow_buckets[index] = head;
+        return;
+    }
+    else {
+        // Insert to the list
+        table->overflow_buckets[index] = linkedlist_insert(head, item);
+        return;
+    }
+}
+ 
+void ht_insert(HashTable* table, void* address ) {
+    // Create the item
+    Ht_item* item = create_item(address);
+    unsigned long index = hash_function(address);
+    Ht_item* current_item = table->items[index];
+     
+    if (current_item == NULL) {
+      // Key does not exist.
+      if (table->count == table->size) {
+          // Hash Table Full
+          SU_DEBUG_9(("ht_insert - %s\n", "hash table full")) ;
+          return;
+      }
+        
+      // Insert directly
+      table->items[index] = item; 
+      table->count++;
+    }
+    else {
+      // Scenario 2: Collision
+      // We will handle case this a bit later
+      handle_collision(table, index, item);
+      return;
+    }
+}
+int ht_exists(HashTable* table, void* address) {
+    int index = hash_function(address);
+    Ht_item* item = table->items[index];
+    LinkedList* head = table->overflow_buckets[index];
+ 
+    // Ensure that we move to items which are not NULL
+    while (item != NULL) {
+        if (item->address == address)
+            return 1;
+        if (head == NULL)
+            return 0;
+        item = head->item;
+        head = head->next;
+    }
+    return 0;
+}
+void ht_delete(HashTable* table, void* address) {
+    // Deletes an item from the table
+    int index = hash_function(address);
+    Ht_item* item = table->items[index];
+    LinkedList* head = table->overflow_buckets[index];
+ 
+    if (item == NULL) {
+        // Does not exist. Return
+        return;
+    }
+    else {
+        if (head == NULL && item->address == address) {
+            // No collision chain. Remove the item
+            // and set table index to NULL
+            table->items[index] = NULL;
+            free_item(item);
+            table->count--;
+            return;
+        }
+        else if (head != NULL) {
+            // Collision Chain exists
+            if (item->address == address) {
+                // Remove this item and set the head of the list
+                // as the new item
+                 
+                free_item(item);
+                LinkedList* node = head;
+                head = head->next;
+                node->next = NULL;
+                table->items[index] = create_item(node->item->address);
+                free_linkedlist(node);
+                table->overflow_buckets[index] = head;
+                return;
+            }
+ 
+            LinkedList* curr = head;
+            LinkedList* prev = NULL;
+             
+            while (curr) {
+                if (curr->item->address == address) {
+                    if (prev == NULL) {
+                        // First element of the chain. Remove the chain
+                        free_linkedlist(head);
+                        table->overflow_buckets[index] = NULL;
+                        return;
+                    }
+                    else {
+                        // This is somewhere in the chain
+                        prev->next = curr->next;
+                        curr->next = NULL;
+                        free_linkedlist(curr);
+                        table->overflow_buckets[index] = head;
+                        return;
+                    }
+                }
+                curr = curr->next;
+                prev = curr;
+            }
+ 
+        }
+    }
+}
+
+void print_table(HashTable* table) {
+  for (int i=0; i < table->size; i++) {
+    if (table->items[i]) {
+      SU_DEBUG_9(("msg_t* - %p\n", table->items[i]->address)) ;
+      if (table->overflow_buckets[i]) {
+        printf(" => Overflow Bucket => ");
+        LinkedList* head = table->overflow_buckets[i];
+        while (head) {
+          SU_DEBUG_9(("msg_t* - %p\n",  head->item->address)) ;
+          head = head->next;
+        }
+      }
+    }
+  }
+}
+HashTable* dbgTable = NULL;
+int debugging_on = 1;
+
+SOFIAPUBFUN usize_t sofia_msg_count() {
+  return dbgTable ? dbgTable->count : 0;
+}
+SOFIAPUBFUN void stop_sofia_msg_counting() {
+  if (dbgTable) {
+    debugging_on = 0;
+    free_table(dbgTable);
+    dbgTable = NULL;
+  }
 }
 SOFIAPUBFUN void sofia_dump_msgs() {
-  //TODO: dump message addresses via SU_DEBUG
+  SU_DEBUG_9(("sofia_dump_msgs - %s\n", "starting")) ;
+  if (dbgTable) print_table(dbgTable);
+  SU_DEBUG_9(("sofia_dump_msgs - %s\n", "completed")) ;
 }
 
 #endif
@@ -78,6 +364,7 @@ msg_t *msg_ref(msg_t *msg)
   return (msg_t *)su_home_ref(msg->m_home);
 }
 
+/*
 static void msg_destructor(void *_msg)
 {
   msg_t *msg = _msg;
@@ -85,6 +372,7 @@ static void msg_destructor(void *_msg)
   if (msg->m_parent)
     su_home_unref(msg->m_parent->m_home);
 }
+*/
 
 /** Decrease the reference count.
  *
@@ -101,13 +389,12 @@ void msg_unref(msg_t *msg)
 {
 #ifdef SOFIA_MSG_DEBUG_TRACE  
   unsigned long count = su_home_refcount(msg->m_home) ; 
-  SU_DEBUG_9(("msg_unref: %p, refcount before is %ld\n", (void*)msg, count)) ;
 #endif
 
   su_home_unref(msg->m_home);
 
 #ifdef SOFIA_MSG_DEBUG_TRACE  
-  if( 1 == count ) nMsgs-- ;
+  SU_DEBUG_9(("msg_unref: %p, refcount is now %ld\n", (void*)msg, count - 1)) ;
 #endif
 }
 
@@ -145,9 +432,12 @@ msg_t *msg_create(msg_mclass_t const *mc, int flags)
     msg->m_object->msg_flags = mc->mc_flags | flags;
     msg->m_object->msg_common->h_class = (void *)mc;
   }
-#ifdef SOFIA_MSG_DEBUG_TRACE    
-  nMsgs++ ;
-  SU_DEBUG_9(("msg_create: %p\n", (void*)msg)) ;
+#ifdef SOFIA_MSG_DEBUG_TRACE
+  if (debugging_on) {
+    if (NULL == dbgTable) dbgTable = create_table(CAPACITY);
+    ht_insert(dbgTable, (void*) msg);
+    SU_DEBUG_9(("msg_create: %p, active msg count now %d\n", (void*)msg, sofia_msg_count())) ;
+  }
 #endif
   return msg;
 }
@@ -172,8 +462,8 @@ msg_t *msg_ref_create(msg_t *msg)
     msg->m_refs++;
     su_home_mutex_unlock(msg->m_home);
   }
-#ifdef DEBUG
-  SU_DEBUG_3(("msg_ref_create: message %p, refcount now %d\n", (void *) msg, msg->m_refs));
+#ifdef SOFIA_MSG_DEBUG_TRACE
+  SU_DEBUG_9(("msg_ref_create: message %p, refcount now %d\n", (void *) msg, msg->m_refs));
 #endif
   return msg;
 }
@@ -233,35 +523,17 @@ void msg_destroy(msg_t *msg)
     refs = msg->m_refs;
     su_home_mutex_unlock(msg->m_home);
 
-#ifdef DEBUG
-    SU_DEBUG_3(("msg_destroy: message %p, decremented refcount, refcount now %d\n", (void *) msg, msg->m_refs));
+#ifdef SOFIA_MSG_DEBUG_TRACE
+    SU_DEBUG_9(("msg_destroy: message %p, decremented refcount, refcount now %d\n", 
+      (void *) msg, msg->m_refs));
 #endif
     if (refs)
       break;
     su_home_zap(msg->m_home);
 
-#ifdef DEBUG
-    /* search for it */
-    int i;
-    for( i = 0; i < nTotalMsgs && allocatedMsgs[i] != (void *)msg; i++ ) {
-      ;
-    }
-    if( i < nTotalMsgs ) {
-      int j ;
-      for( j = i; j < nTotalMsgs - 1; j++ ) {
-        allocatedMsgs[j] = allocatedMsgs[j+1] ;
-      }
-    }
-
-    nTotalMsgs-- ;
-    SU_DEBUG_3(("msg_destroy: actually destroyed message %p, total msgs: %d\n", (void *) msg, nTotalMsgs));
-
-    if( nTotalMsgs < 6 ) {
-      int k ;
-      for( k = 0; k < nTotalMsgs; k++ ) {
-        SU_DEBUG_3(("msg_destroy:    remaining msg %p\n", (void *) allocatedMsgs[k]));
-      }      
-    }
+#ifdef SOFIA_MSG_DEBUG_TRACE
+    ht_delete(dbgTable, (void *)msg);
+    SU_DEBUG_9(("msg_destroy: actually destroyed message %p, total msgs: %d\n", (void *) msg, sofia_msg_count()));
 #endif
   }
 }

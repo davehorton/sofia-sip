@@ -246,10 +246,10 @@ int ws_handshake(wsh_t *wsh)
 	char version[5] = "";
 	char proto[256] = "";
 	char proto_buf[384] = "";
-	char input[256] = "";
+	char input[512] = "";
 	unsigned char output[SHA1_HASH_SIZE] = "";
 	char b64[256] = "";
-	char respond[512] = "";
+	char respond[751] = "";
 	ssize_t bytes;
 	char *p, *e = 0;
 
@@ -309,7 +309,7 @@ int ws_handshake(wsh_t *wsh)
 			 "%s\r\n",
 			 b64,
 			 proto_buf);
-	respond[511] = 0;
+	respond[750] = 0;
 
 	if (ws_raw_write(wsh, respond, strlen(respond)) != (ssize_t)strlen(respond)) {
 		goto err;
@@ -325,7 +325,7 @@ int ws_handshake(wsh_t *wsh)
 
 		snprintf(respond, sizeof(respond), "HTTP/1.1 400 Bad Request\r\n"
 				 "Sec-WebSocket-Version: 13\r\n\r\n");
-		respond[511] = 0;
+		respond[750] = 0;
 
 		ws_raw_write(wsh, respond, strlen(respond));
 
