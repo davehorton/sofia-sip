@@ -8136,7 +8136,7 @@ nta_outgoing_t *outgoing_create(nta_agent_t *agent,
     resolved = tport_name_is_resolved(orq->orq_tpn);
     orq->orq_url = url_hdup(home, sip->sip_request->rq_url);
   }
-  else if (route_url && !orq->orq_user_tport) {
+  else if (route_url /*&& !orq->orq_user_tport */) {
     invalid = nta_tpn_by_url(home, orq->orq_tpn, &scheme, &port, route_url);
     if (invalid >= 0) {
       explicit_transport = invalid > 0;
