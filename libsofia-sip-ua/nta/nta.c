@@ -7772,6 +7772,7 @@ nta_outgoing_t *nta_outgoing_tcancel(nta_outgoing_t *orq,
 			     NTATAG_BRANCH_KEY(orq->orq_branch),
 			     NTATAG_DELAY_SENDING(delay_sending),
 			     NTATAG_USER_VIA(1),
+			     NTATAG_TPORT(orq->orq_tport),
 			     TAG_END());
 
     if (delay_sending)
@@ -8135,7 +8136,7 @@ nta_outgoing_t *outgoing_create(nta_agent_t *agent,
     resolved = tport_name_is_resolved(orq->orq_tpn);
     orq->orq_url = url_hdup(home, sip->sip_request->rq_url);
   }
-  else if (route_url && !orq->orq_user_tport) {
+  else if (route_url /*&& !orq->orq_user_tport */) {
     invalid = nta_tpn_by_url(home, orq->orq_tpn, &scheme, &port, route_url);
     if (invalid >= 0) {
       explicit_transport = invalid > 0;
@@ -9833,6 +9834,7 @@ void outgoing_ack(nta_outgoing_t *orq, sip_t *sip)
 		      NTATAG_BRANCH_KEY(sip->sip_via->v_branch),
 		      NTATAG_USER_VIA(1),
 		      NTATAG_STATELESS(1),
+		      NTATAG_TPORT(orq->orq_tport),
 		      TAG_END()))
     msg_destroy(ackmsg);
 }
