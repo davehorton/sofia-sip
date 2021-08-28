@@ -3371,9 +3371,11 @@ tport_t *tport_tsend(tport_t *self,
     // DCH: iterate through all primaries
     tport_t* secondary = NULL ;
     tport_t* tp = tport_primaries( self ) ;
-    while(NULL != (tp = tport_next(tp))) {
-      secondary = tport_by_addrinfo((tport_primary_t *)tp, msg_addrinfo(msg), tpn);
-      if (secondary) break;
+    if (tp) {
+      do {
+        secondary = tport_by_addrinfo((tport_primary_t *)tp, msg_addrinfo(msg), tpn);
+        if (secondary) break;
+      } while(NULL != (tp = tport_next(tp)));
     }
 
     if( secondary ) {
