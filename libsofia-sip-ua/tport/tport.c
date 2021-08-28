@@ -1143,12 +1143,13 @@ void tport_zap_secondary(tport_t *self)
 
   su_home_zap(self->tp_home);
 }
+/*
 static inline size_t
 tport_refcount(tport_t *tp)
 {
   return su_home_refcount(tp->tp_home);
 }
-
+*/
 /** Create a new reference to a transport object. */
 tport_t *tport_ref(tport_t *tp)
 {
@@ -1158,6 +1159,7 @@ tport_t *tport_ref(tport_t *tp)
   return (tport_t *)su_home_ref(tp->tp_home);
 }
 
+/*
 static void _tport_unref(tport_t *tp)
 {
 #ifdef SOFIA_TPORT_DEBUG_TRACE  
@@ -1165,7 +1167,7 @@ static void _tport_unref(tport_t *tp)
 #endif
   su_home_unref(tp->tp_home);
 }
-
+*/
 /** Destroy reference to a transport object. */
 void tport_unref(tport_t *tp)
 {
@@ -4763,13 +4765,14 @@ tport_t *tport_by_addrinfo(tport_primary_t const *pri,
     break;
   }
 
-  if (sub)
+  if (sub) {
     SU_DEBUG_9(("%s(%p): found %p by name " TPN_FORMAT "\n",
 		__func__, (void *)pri, (void *)sub, TPN_ARGS(tpn)));
-  else
-    //SU_DEBUG_9(("%s(%p): not found by name " TPN_FORMAT "\n",
-		//__func__, (void *)pri, TPN_ARGS(tpn)));
-
+  }
+  else {
+    SU_DEBUG_9(("%s(%p): not found by name " TPN_FORMAT "\n",
+		__func__, (void *)pri, TPN_ARGS(tpn)));
+  }
   return (tport_t *)sub;
 }
 
