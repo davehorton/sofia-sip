@@ -1143,44 +1143,42 @@ void tport_zap_secondary(tport_t *self)
 
   su_home_zap(self->tp_home);
 }
-/*
-static inline size_t
-tport_refcount(tport_t *tp)
-{
-  return su_home_refcount(tp->tp_home);
-}
-*/
+
 /** Create a new reference to a transport object. */
 tport_t *tport_ref(tport_t *tp)
 {
-#ifdef SOFIA_TPORT_DEBUG_TRACE  
-  SU_DEBUG_9(("tport_ref: %p, refcount before is %ld\n", (void*)tp, tport_refcount(tp))) ;
-#endif
-  return (tport_t *)su_home_ref(tp->tp_home);
+  if (tp) {
+    if (tp->tp_refs >= 0) {
+      tp->tp_refs++;
+    }
+    else if (tp->tp_refs == -1) {
+      tp->tp_refs = 1;
+    }
+    SU_DEBUG_9(("%s(%p): refcount is now %d\n", __func__, (void *)tp, tp->tp_refs));
+
+  }
+  return tp;
 }
 
-/*
-static void _tport_unref(tport_t *tp)
-{
-#ifdef SOFIA_TPORT_DEBUG_TRACE  
-  SU_DEBUG_9(("_tport_unref: %p, refcount before is %ld\n", (void*)tp, tport_refcount(tp))) ;
-#endif
-  su_home_unref(tp->tp_home);
-}
-*/
 /** Destroy reference to a transport object. */
 void tport_unref(tport_t *tp)
 {
   if (tp == NULL || tp->tp_refs <= 0)
     return;
-  if (--tp->tp_refs > 0)
+
+  tp->tp_refs--;
+    SU_DEBUG_9(("%s(%p): refcount is now %d\n", __func__, (void *)tp, tp->tp_refs));
+
+  if (tp->tp_refs > 0)
     return;
 
   if (!tport_is_secondary(tp))
     return;
 
-  if (tp->tp_params->tpp_idle == 0)
+  if (tp->tp_params->tpp_idle == 0) {
+    SU_DEBUG_9(("%s(%p): refcount is 0 and its idle, so we can close it\n", __func__, (void *)tp));
     tport_close(tp);
+  }
 
   tport_set_secondary_timer(tp);
 }
