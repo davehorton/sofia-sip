@@ -1154,7 +1154,7 @@ tport_t *tport_ref(tport_t *tp)
     else if (tp->tp_refs == -1) {
       tp->tp_refs = 1;
     }
-    SU_DEBUG_9(("%s(%p): refcount is now %d\n", __func__, (void *)tp, tp->tp_refs));
+    SU_DEBUG_9(("%s(%p): refcount is now %ld\n", __func__, (void *)tp, tp->tp_refs));
 
   }
   return tp;
@@ -1167,7 +1167,7 @@ void tport_unref(tport_t *tp)
     return;
 
   tp->tp_refs--;
-    SU_DEBUG_9(("%s(%p): refcount is now %d\n", __func__, (void *)tp, tp->tp_refs));
+    SU_DEBUG_9(("%s(%p): refcount is now %ld\n", __func__, (void *)tp, tp->tp_refs));
 
   if (tp->tp_refs > 0)
     return;
