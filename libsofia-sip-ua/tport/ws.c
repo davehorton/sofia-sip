@@ -1,3 +1,8 @@
+#include "config.h"
+#include "tport_internal.h"
+
+#include <openssl/err.h>
+
 #include "ws.h"
 #include <pthread.h>
 
@@ -363,7 +368,8 @@ ssize_t ws_raw_read(wsh_t *wsh, void *data, size_t bytes, int block)
 			}
 
 		} while (r == -1 && err == SSL_ERROR_WANT_READ && wsh->x < 100);
-
+		
+		SU_DEBUG_9(("%s(%p): returning %d\n", __func__, (void *)wsh, (int) r));
 		goto end;
 	}
 
@@ -519,6 +525,7 @@ static int establish_logical_layer(wsh_t *wsh)
 {
 
 	if (!wsh->sanity) {
+		SU_DEBUG_9(("%s(%p): sanity issue\n", __func__, (void *)wsh));
 		return -1;
 	}
 
@@ -534,6 +541,7 @@ static int establish_logical_layer(wsh_t *wsh)
 			assert(wsh->ssl);
 
 			SSL_set_fd(wsh->ssl, wsh->sock);
+			SU_DEBUG_9(("%s(%p): SSL_new\n", __func__, (void *)wsh->ssl));
 		}
 
 		do {
@@ -545,11 +553,13 @@ static int establish_logical_layer(wsh_t *wsh)
 			}
 
 			if (code == 0) {
+				SU_DEBUG_9(("%s(%p): SSL_accept returned 0\n", __func__, (void *)wsh));
 				return -1;
 			}
 			
 			if (code < 0) {
 				if (code == -1 && SSL_get_error(wsh->ssl, code) != SSL_ERROR_WANT_READ) {
+					SU_DEBUG_9(("%s(%p): SSL_accept returned %d\n", __func__, (void *)wsh, code));
 					return -1;
 				}
 			}
@@ -563,12 +573,14 @@ static int establish_logical_layer(wsh_t *wsh)
 			wsh->sanity--;
 
 			if (!wsh->block) {
+				SU_DEBUG_9(("%s(%p): SSL_accept returning -2\n", __func__, (void *)wsh));
 				return -2;
 			}
 
 		} while (wsh->sanity > 0);
 		
 		if (!wsh->sanity) {
+			SU_DEBUG_9(("%s(%p): SSL_accept returning -1 due to sanity\n", __func__, (void *)wsh));
 			return -1;
 		}
 		
@@ -578,11 +590,13 @@ static int establish_logical_layer(wsh_t *wsh)
 		int r = ws_handshake(wsh);
 
 		if (r < 0) {
+			SU_DEBUG_9(("%s(%p): ws_handshake failed\n", __func__, (void *)wsh));
 			wsh->down = 1;
 			return -1;
 		}
 
 		if (!wsh->handshake && !wsh->block) {
+			SU_DEBUG_9(("%s(%p): ws_handshake failed, returning -2\n", __func__, (void *)wsh));
 			return -2;
 		}
 
@@ -654,9 +668,11 @@ void ws_destroy(wsh_t *wsh)
 	if (wsh->ssl) {
 		int code;
 		do {
+			SU_DEBUG_9(("%s(%p): calling SSL_shutdown\n", __func__, (void *)wsh->ssl));
 			code = SSL_shutdown(wsh->ssl);
 		} while (code == -1 && SSL_get_error(wsh->ssl, code) == SSL_ERROR_WANT_READ);
 
+		SU_DEBUG_9(("%s(%p): SSL_free\n", __func__, (void *)wsh->ssl));
 		SSL_free(wsh->ssl);
 		wsh->ssl = NULL;
 	}
@@ -717,18 +733,22 @@ ssize_t ws_read_frame(wsh_t *wsh, ws_opcode_t *oc, uint8_t **data)
 	ll = establish_logical_layer(wsh);
 
 	if (ll < 0) {
+		SU_DEBUG_9(("%s(%p): establish_logical_layer failed: %d\n", __func__, (void *)wsh, ll));
 		return ll;
 	}
 
 	if (wsh->down) {
+		SU_DEBUG_9(("%s(%p): wsh->down so returning -1\n", __func__, (void *)wsh));
 		return -1;
 	}
 
 	if (!wsh->handshake) {
+		SU_DEBUG_9(("%s(%p): handshake failed\n", __func__, (void *)wsh->ssl));
 		return ws_close(wsh, WS_PROTO_ERR);
 	}
 
 	if ((wsh->datalen = ws_raw_read(wsh, wsh->buffer, 9, wsh->block)) < 0) {
+		SU_DEBUG_9(("%s(%p): ws_raw_read returned %d\n", __func__, (void *)wsh->ssl, (int) wsh->datalen));
 		if (wsh->datalen == -2) {
 			return -2;
 		}
@@ -738,6 +758,7 @@ ssize_t ws_read_frame(wsh_t *wsh, ws_opcode_t *oc, uint8_t **data)
 	if (wsh->datalen < need) {
 		if ((wsh->datalen += ws_raw_read(wsh, wsh->buffer + wsh->datalen, 9 - wsh->datalen, WS_BLOCK)) < need) {
 			/* too small - protocol err */
+			SU_DEBUG_9(("%s(%p): ws_raw_read returned %d, less than needed\n", __func__, (void *)wsh->ssl, (int) wsh->datalen));
 			return ws_close(wsh, WS_PROTO_ERR);
 		}
 	}
@@ -747,6 +768,7 @@ ssize_t ws_read_frame(wsh_t *wsh, ws_opcode_t *oc, uint8_t **data)
 	switch(*oc) {
 	case WSOC_CLOSE:
 		{
+			SU_DEBUG_9(("%s(%p): ws_raw_read opcode WSOC_CLOSE\n", __func__, (void *)wsh->ssl));
 			wsh->plen = wsh->buffer[1] & 0x7f;
 			*data = (uint8_t *) &wsh->buffer[2];
 			return ws_close(wsh, 1000);
@@ -776,6 +798,7 @@ ssize_t ws_read_frame(wsh_t *wsh, ws_opcode_t *oc, uint8_t **data)
 					ssize_t bytes = ws_raw_read_blocking(wsh, wsh->buffer + wsh->datalen, need - wsh->datalen, 10);
 					if (bytes < 0 || (wsh->datalen += bytes) < need) {
 						/* too small - protocol err */
+						SU_DEBUG_9(("%s(%p): too small %d\n", __func__, (void *)wsh->ssl, (int)bytes));
 						*oc = WSOC_CLOSE;
 						return ws_close(wsh, WS_NONE);
 					}
@@ -794,6 +817,7 @@ ssize_t ws_read_frame(wsh_t *wsh, ws_opcode_t *oc, uint8_t **data)
 					ssize_t bytes = ws_raw_read_blocking(wsh, wsh->buffer + wsh->datalen, need - wsh->datalen, 10);
 					if (bytes < 0 || (wsh->datalen += bytes) < need) {
 						/* too small - protocol err */
+						SU_DEBUG_9(("%s(%p): too small\n", __func__, (void *)wsh->ssl));
 						*oc = WSOC_CLOSE;
 						return ws_close(wsh, WS_NONE);
 					}
@@ -813,6 +837,7 @@ ssize_t ws_read_frame(wsh_t *wsh, ws_opcode_t *oc, uint8_t **data)
 					ssize_t bytes = ws_raw_read_blocking(wsh, wsh->buffer + wsh->datalen, need - wsh->datalen, 10);
 					if (bytes < 0 || (wsh->datalen += bytes) < need) {
 						/* too small - protocol err */
+						SU_DEBUG_9(("%s(%p): too small (2) %d\n", __func__, (void *)wsh->ssl, (int) bytes));
 						*oc = WSOC_CLOSE;
 						return ws_close(wsh, WS_NONE);
 					}
@@ -832,12 +857,14 @@ ssize_t ws_read_frame(wsh_t *wsh, ws_opcode_t *oc, uint8_t **data)
 
 			if (need < 0) {
 				/* invalid read - protocol err .. */
+				SU_DEBUG_9(("%s(%p): need %d\n", __func__, (void *)wsh->ssl, (int) need));
 				*oc = WSOC_CLOSE;
 				return ws_close(wsh, WS_PROTO_ERR);
 			}
 
 			if ((need + wsh->datalen) > (ssize_t)wsh->buflen) {
 				/* too big - Ain't nobody got time fo' dat */
+				SU_DEBUG_9(("%s(%p): too big\n", __func__, (void *)wsh->ssl));
 				*oc = WSOC_CLOSE;
 				return ws_close(wsh, WS_DATA_TOO_BIG);				
 			}
@@ -849,6 +876,7 @@ ssize_t ws_read_frame(wsh_t *wsh, ws_opcode_t *oc, uint8_t **data)
 
 				if (r < 1) {
 					/* invalid read - protocol err .. */
+					SU_DEBUG_9(("%s(%p): ws_raw_read returned %d, need was %d\n", __func__, (void *)wsh->ssl, (int) r, (int) need));
 					*oc = WSOC_CLOSE;
 					return ws_close(wsh, WS_PROTO_ERR);
 				}
@@ -875,13 +903,12 @@ ssize_t ws_read_frame(wsh_t *wsh, ws_opcode_t *oc, uint8_t **data)
 			if (frag) {
 				goto again;
 			}
-			
 
 			*(wsh->payload+wsh->rplen) = '\0';
 			*data = (uint8_t *)wsh->payload;
 
 			//printf("READ[%ld][%d]-----------------------------:\n[%s]\n-------------------------------\n", wsh->rplen, *oc, (char *)*data);
-
+			SU_DEBUG_9(("%s(%p): returning %d\n", __func__, (void *)wsh->ssl, (int) wsh->rplen));
 
 			return wsh->rplen;
 		}
@@ -889,6 +916,7 @@ ssize_t ws_read_frame(wsh_t *wsh, ws_opcode_t *oc, uint8_t **data)
 	default:
 		{
 			/* invalid op code - protocol err .. */
+			SU_DEBUG_9(("%s(%p): invalid opcode %d\n", __func__, (void *)wsh->ssl, *oc));
 			*oc = WSOC_CLOSE;
 			return ws_close(wsh, WS_PROTO_ERR);
 		}

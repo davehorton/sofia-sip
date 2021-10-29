@@ -215,6 +215,7 @@ int tport_recv_stream_ws(tport_t *self)
   }
 
   N = ws_read_frame(&wstp->ws, &oc, &data);
+  SU_DEBUG_9(("%s(%p): ws_read_frame returned: %ld\n", __func__, (void *)self, (long)N));
 
   if (N == -2) {
 	  return 1;
@@ -227,8 +228,8 @@ int tport_recv_stream_ws(tport_t *self)
 	  return 0;    /* End of stream */
   }
   if (N < 0) {
-	  err = errno = EHOSTDOWN;
-	  SU_DEBUG_1(("%s(%p): su_getmsgsize(): %s (%d) N=%ld\n", __func__, (void *)self,
+	  err = errno /* = EHOSTDOWN */;
+	  SU_DEBUG_9(("%s(%p): error: %s (%d) N=%ld\n", __func__, (void *)self,
 				  su_strerror(err), err, (long)N));
 	  return 0;
   }
