@@ -667,11 +667,13 @@ void ws_destroy(wsh_t *wsh)
 
 	if (wsh->ssl) {
 		int code;
-		do {
-			SU_DEBUG_9(("%s(%p): calling SSL_shutdown\n", __func__, (void *)wsh->ssl));
-			code = SSL_shutdown(wsh->ssl);
-		} while (code == -1 && SSL_get_error(wsh->ssl, code) == SSL_ERROR_WANT_READ);
 
+		if (wsh->logical_established) {
+			do {
+				SU_DEBUG_9(("%s(%p): calling SSL_shutdown\n", __func__, (void *)wsh->ssl));
+				code = SSL_shutdown(wsh->ssl);
+			} while (code == -1 && SSL_get_error(wsh->ssl, code) == SSL_ERROR_WANT_READ);
+		}
 		SU_DEBUG_9(("%s(%p): SSL_free\n", __func__, (void *)wsh->ssl));
 		SSL_free(wsh->ssl);
 		wsh->ssl = NULL;
