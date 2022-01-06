@@ -1,6 +1,8 @@
 #ifndef _WS_H
 #define _WS_H
 
+#include "tport_internal.h"
+
 //#define WSS_STANDALONE 1
 
 #define WEBSOCKET_GUID "258EAFA5-E914-47DA-95CA-C5AB0DC85B11"
@@ -24,7 +26,19 @@
 #include <errno.h>
 //#include "sha1.h"
 #include <openssl/ssl.h>
+#include <openssl/err.h>
 
+#if defined(_MSC_VER) || defined(__APPLE__) || defined(__FreeBSD__) || (defined(__SVR4) && defined(__sun)) 
+#define __bswap_64(x) \
+  x = (x>>56) | \
+    ((x<<40) & 0x00FF000000000000) | \
+    ((x<<24) & 0x0000FF0000000000) | \
+    ((x<<8)  & 0x000000FF00000000) | \
+    ((x>>8)  & 0x00000000FF000000) | \
+    ((x>>24) & 0x0000000000FF0000) | \
+    ((x>>40) & 0x000000000000FF00) | \
+    (x<<56)
+#endif
 #ifdef _MSC_VER
 #ifndef strncasecmp
 #define strncasecmp _strnicmp
@@ -50,7 +64,7 @@ struct ws_globals_s {
 	char key[512];
 };
 
-extern struct ws_globals_s ws_globals;
+//extern struct ws_globals_s ws_globals;
 
 #ifndef WIN32
 typedef int ws_socket_t;
@@ -78,15 +92,17 @@ typedef enum {
 
 typedef struct wsh_s {
 	ws_socket_t sock;
-	char buffer[65536];
-	char wbuffer[65536];
+	char *buffer;
+	char *bbuffer;
+	char *body;
 	char *uri;
 	size_t buflen;
+	size_t bbuflen;
 	ssize_t datalen;
-	ssize_t wdatalen;
 	char *payload;
 	ssize_t plen;
 	ssize_t rplen;
+	ssize_t packetlen;
 	SSL *ssl;
 	int handshake;
 	uint8_t down;
@@ -106,7 +122,7 @@ typedef struct wsh_s {
 ssize_t ws_send_buf(wsh_t *wsh, ws_opcode_t oc);
 ssize_t ws_feed_buf(wsh_t *wsh, void *data, size_t bytes);
 
-
+int establish_logical_layer(wsh_t *wsh);
 ssize_t ws_raw_read(wsh_t *wsh, void *data, size_t bytes, int block);
 ssize_t ws_raw_write(wsh_t *wsh, void *data, size_t bytes);
 ssize_t ws_read_frame(wsh_t *wsh, ws_opcode_t *oc, uint8_t **data);
@@ -118,6 +134,7 @@ void init_ssl(void);
 void deinit_ssl(void);
 int xp_errno(void);
 int xp_is_blocking(int errcode);
+void wss_log_errors(unsigned level, char const *s, unsigned long e);
 
 
 

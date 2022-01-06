@@ -137,7 +137,6 @@ enum { tls_buffer_size = 16384 };
  * Log the TLS error specified by the error code @a e and all the errors in
  * the queue. The error code @a e implies no error, and it is not logged.
  */
-static
 void tls_log_errors(unsigned level, char const *s, unsigned long e)
 {
   if (e == 0)
@@ -271,14 +270,9 @@ void tls_init(void) {
 static
 int tls_init_ecdh_curve(tls_t *tls)
 {
-  int nid;
-  EC_KEY *ecdh;
-  if (!(nid = OBJ_sn2nid("prime256v1"))) {
-    tls_log_errors(1, "Couldn't find specified curve", 0);
-    errno = EIO;
-    return -1;
-  }
-  if (!(ecdh = EC_KEY_new_by_curve_name(nid))) {
+#if OPENSSL_VERSION_NUMBER < 0x10002000
+  EC_KEY *ecdh = EC_KEY_new_by_curve_name(NID_X9_62_prime256v1);
+  if (!ecdh) {
     tls_log_errors(1, "Couldn't create specified curve", 0);
     errno = EIO;
     return -1;
@@ -287,6 +281,15 @@ int tls_init_ecdh_curve(tls_t *tls)
   SSL_CTX_set_tmp_ecdh(tls->ctx, ecdh);
   EC_KEY_free(ecdh);
   return 0;
+#elif OPENSSL_VERSION_NUMBER < 0x10100000
+  if (!SSL_CTX_set_ecdh_auto(tls->ctx, 1)) {
+    return -1;
+  }
+  SSL_CTX_set_options(tls->ctx, SSL_OP_SINGLE_ECDH_USE);
+  return 0;
+#else
+  return 0;
+#endif
 }
 #endif
 
@@ -294,7 +297,6 @@ static
 int tls_init_context(tls_t *tls, tls_issues_t const *ti)
 {
   int verify;
-  int rc ;
   static int random_loaded;
 
   ONCE_INIT(tls_init_once);
@@ -346,9 +348,9 @@ int tls_init_context(tls_t *tls, tls_issues_t const *ti)
     SSL_CTX_set_default_passwd_cb_userdata(tls->ctx, (void *)ti);
   }
 
-  if (!( rc = SSL_CTX_use_certificate_file(tls->ctx,
+  if (!SSL_CTX_use_certificate_file(tls->ctx,
 				    ti->cert,
-				    SSL_FILETYPE_PEM))) {
+				    SSL_FILETYPE_PEM)) {
     if (ti->configured > 0) {
       SU_DEBUG_1(("%s: invalid local certificate: %s\n",
 		 "tls_init_context", ti->cert));
@@ -359,11 +361,10 @@ int tls_init_context(tls_t *tls, tls_issues_t const *ti)
 #endif
     }
   }
-  //printf("called SSL_CTX_use_certificate_file: %s, rc=%d\n", ti->cert, rc) ;
 
-  if (!(rc = SSL_CTX_use_PrivateKey_file(tls->ctx,
+  if (!SSL_CTX_use_PrivateKey_file(tls->ctx,
                                    ti->key,
-                                   SSL_FILETYPE_PEM))) {
+                                   SSL_FILETYPE_PEM)) {
     if (ti->configured > 0) {
       SU_DEBUG_1(("%s: invalid private key: %s\n",
 		 "tls_init_context", ti->key));
@@ -374,7 +375,6 @@ int tls_init_context(tls_t *tls, tls_issues_t const *ti)
 #endif
     }
   }
-  //printf("called SSL_CTX_use_PrivateKey_file: %s, rc = %d\n", ti->key, rc) ;
 
   if (!SSL_CTX_check_private_key(tls->ctx)) {
     if (ti->configured > 0) {
@@ -398,7 +398,7 @@ int tls_init_context(tls_t *tls, tls_issues_t const *ti)
                       ti->key));
         } else {
           long options = SSL_OP_CIPHER_SERVER_PREFERENCE | SSL_OP_SINGLE_DH_USE;
-          options = SSL_CTX_set_options(tls->ctx, options);
+          SSL_CTX_set_options(tls->ctx, options);
           SU_DEBUG_3(("%s\n", "tls: initialized DHE"));
         }
         DH_free(dh);
@@ -408,9 +408,9 @@ int tls_init_context(tls_t *tls, tls_issues_t const *ti)
 #endif
   }
 
-  if (!( rc = SSL_CTX_load_verify_locations(tls->ctx,
+  if (!SSL_CTX_load_verify_locations(tls->ctx,
                                      ti->CAfile,
-                                     ti->CApath))) {
+                                     ti->CApath)) {
     SU_DEBUG_1(("%s: error loading CA list: %s\n",
 		 "tls_init_context", ti->CAfile));
     if (ti->configured > 0)
@@ -418,7 +418,6 @@ int tls_init_context(tls_t *tls, tls_issues_t const *ti)
     errno = EIO;
     return -1;
   }
-  //printf("called SSL_CTX_load_verify_locations: %s, rc = %d\n", ti->CAfile, rc) ;
 
   /* corresponds to (enum tport_tls_verify_policy) */
   tls->verify_incoming = (ti->policy & 0x1) ? 1 : 0;
@@ -435,7 +434,9 @@ int tls_init_context(tls_t *tls, tls_issues_t const *ti)
   SSL_CTX_set_verify_depth(tls->ctx, ti->verify_depth);
   SSL_CTX_set_verify(tls->ctx, verify, tls_verify_cb);
 #ifndef OPENSSL_NO_EC
-  if (tls_init_ecdh_curve(tls) == 0) {
+  if (tls->accept == 0) {
+    SU_DEBUG_3(("%s\n", "tls: initialized ECDH"));
+  } else if (tls_init_ecdh_curve(tls) == 0) {
     SU_DEBUG_3(("%s\n", "tls: initialized ECDH"));
   } else {
     SU_DEBUG_3(("%s\n", "tls: failed to initialize ECDH"));
@@ -453,12 +454,22 @@ int tls_init_context(tls_t *tls, tls_issues_t const *ti)
 
 void tls_free(tls_t *tls)
 {
+  int ret;
   if (!tls)
     return;
 
   if (tls->con != NULL) {
-	SSL_shutdown(tls->con);
-	SSL_free(tls->con), tls->con = NULL;
+    do {
+      ret = SSL_shutdown(tls->con);
+      if (ret == -1) {
+        /* The return value -1 means that the connection wasn't actually established */
+        /* so it should be safe to not call shutdown again. We need to clear the eror */
+        /* queue for other connections though. */
+        tls_log_errors(3, "tls_free", 0);
+        ret = 1;
+      }
+    } while (ret != 1);
+    SSL_free(tls->con), tls->con = NULL;
   }
 
   if (tls->ctx != NULL && tls->type != tls_slave) {
@@ -490,9 +501,8 @@ tls_t *tls_init_master(tls_issues_t *ti)
 
   tls_set_default(ti);
 
-  if (!(tls = tls_create(tls_master))) {
+  if (!(tls = tls_create(tls_master)))
     return NULL;
-  }
 
   if (tls_init_context(tls, ti) < 0) {
     int err = errno;
@@ -501,15 +511,24 @@ tls_t *tls_init_master(tls_issues_t *ti)
     return NULL;
   }
 
-  RAND_pseudo_bytes(sessionId, sizeof(sessionId));
+  RAND_bytes(sessionId, sizeof(sessionId));
 
-  SSL_CTX_set_session_id_context(tls->ctx,
+  if (!SSL_CTX_set_session_id_context(tls->ctx,
                                  (void*) sessionId,
-				 sizeof(sessionId));
+				 sizeof(sessionId))) {
+    tls_log_errors(3, "tls_init_master", 0);
+  }
 
-  if (ti->CAfile != NULL)
+  if (ti->CAfile != NULL) {
     SSL_CTX_set_client_CA_list(tls->ctx,
                                SSL_load_client_CA_file(ti->CAfile));
+#if OPENSSL_VERSION_NUMBER >= 0x10100000
+	if (SSL_CTX_get_client_CA_list(tls->ctx) == NULL)
+#else
+	if (tls->ctx->client_CA == NULL)
+#endif
+      tls_log_errors(3, "tls_init_master", 0);
+  }
 
 #if 0
   if (sock != -1) {
@@ -581,6 +600,7 @@ int tls_post_connection_check(tport_t *self, tls_t *tls)
   if (!tls) return -1;
 
   if (!(cipher = SSL_get_current_cipher(tls->con))) {
+    tls_log_errors(3, "tls_post_connection_check", 0);
     SU_DEBUG_7(("%s(%p): %s\n", __func__, (void*)self,
                 "OpenSSL failed to return an SSL_CIPHER object to us."));
     return SSL_ERROR_SSL;
@@ -755,6 +775,7 @@ int tls_error(tls_t *tls, int ret, char const *who,
     return 0;
 
   case SSL_ERROR_SYSCALL:
+    ERR_clear_error();
     if (SSL_get_shutdown(tls->con) & SSL_RECEIVED_SHUTDOWN)
       return 0;			/* EOS */
     if (errno == 0)
@@ -883,7 +904,7 @@ ssize_t tls_write(tls_t *tls, void *buf, size_t size)
   tls->write_events = 0;
 
   ret = SSL_write(tls->con, buf, size);
-  if (ret < 0)
+  if (ret <= 0)
     return tls_error(tls, ret, "tls_write: SSL_write", buf, size);
 
   return ret;
@@ -954,12 +975,19 @@ int tls_connect(su_root_magic_t *magic, su_wait_t *w, tport_t *self)
   if (events & SU_WAIT_HUP && !self->tp_closed)
     tport_hup_event(self);
 
-  if (self->tp_closed)
+  if (self->tp_closed) {
+    SU_DEBUG_9(("%s(%p): tport was closed during connect. Returning, but set secondary timer first.\n",
+                __func__, (void *)self));
+    tport_set_secondary_timer(self);
     return 0;
+  }
 
   error = su_soerror(self->tp_socket);
   if (error) {
     tport_error_report(self, error, NULL);
+    SU_DEBUG_9(("%s(%p): socket error during connect. Returning, but set secondary timer first.\n",
+                __func__, (void *)self));
+    tport_set_secondary_timer(self);
     return 0;
   }
 
@@ -1007,6 +1035,7 @@ int tls_connect(su_root_magic_t *magic, su_wait_t *w, tport_t *self)
           if (((su_wait_create_ret = su_wait_create(wait, self->tp_socket, self->tp_events)) == -1) ||
              ((self->tp_index = su_root_register(mr->mr_root, wait, tport_wakeup,
                                                            self, 0)) == -1)) {
+
             if (su_wait_create_ret == 0) {
               su_wait_destroy(wait);
             }
@@ -1032,14 +1061,7 @@ int tls_connect(su_root_magic_t *magic, su_wait_t *w, tport_t *self)
 	break;
 
       default:
-        {
-                      ERR_print_errors_fp(stderr);
-
-	  char errbuf[64];
-	  ERR_error_string_n(status, errbuf, 64);
-          SU_DEBUG_3(("%s(%p): TLS setup failed (%s)\n",
-					  __func__, (void *)self, errbuf));
-        }
+        tls_log_errors(3, "TLS setup failed", status);
         break;
     }
   }

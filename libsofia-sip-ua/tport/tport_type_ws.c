@@ -215,7 +215,6 @@ int tport_recv_stream_ws(tport_t *self)
   }
 
   N = ws_read_frame(&wstp->ws, &oc, &data);
-  SU_DEBUG_9(("%s(%p): ws_read_frame returned: %ld\n", __func__, (void *)self, (long)N));
 
   if (N == -2) {
 	  return 1;
@@ -228,8 +227,8 @@ int tport_recv_stream_ws(tport_t *self)
 	  return 0;    /* End of stream */
   }
   if (N < 0) {
-	  err = errno /* = EHOSTDOWN */;
-	  SU_DEBUG_9(("%s(%p): error: %s (%d) N=%ld\n", __func__, (void *)self,
+	  err = errno = EHOSTDOWN;
+	  SU_DEBUG_1(("%s(%p): su_getmsgsize(): %s (%d) N=%ld\n", __func__, (void *)self,
 				  su_strerror(err), err, (long)N));
 	  return 0;
   }
@@ -268,26 +267,15 @@ ssize_t tport_send_stream_ws(tport_t const *self, msg_t *msg,
 			  msg_iovec_t iov[],
 			  size_t iovlen)
 {
-  size_t i, j, n, m, size = 0;
+  size_t i, j, m, size = 0;
   ssize_t nerror;
   tport_ws_t *wstp = (tport_ws_t *)self;
 
-  enum { WSBUFSIZE = 2048 };
+  wstp->wstp_buflen = 0;
 
   for (i = 0; i < iovlen; i = j) {
-    char *buf = wstp->wstp_buffer;
-    unsigned wsbufsize = WSBUFSIZE;
-
-    if (i + 1 == iovlen) {
-		buf = NULL;		/* Don't bother copying single chunk */
-	}
-
-    if (buf &&
-		(char *)iov[i].siv_base - buf < WSBUFSIZE &&
-		(char *)iov[i].siv_base - buf >= 0) {
-		wsbufsize = buf + WSBUFSIZE - (char *)iov[i].siv_base;
-		assert(wsbufsize <= WSBUFSIZE);
-    }
+	char *buf = NULL;
+    unsigned wsbufsize = sizeof(wstp->wstp_buffer);
 
     for (j = i, m = 0; buf && j < iovlen; j++) {
 		if (m + iov[j].siv_len > wsbufsize) {
@@ -305,8 +293,20 @@ ssize_t tport_send_stream_ws(tport_t const *self, msg_t *msg,
       iov[j].siv_base = buf, iov[j].siv_len = m;
 	}
 
-	nerror = ws_feed_buf(&wstp->ws, buf, m);
+	nerror = 0;
 	
+	if (m + wstp->wstp_buflen >= wsbufsize) {
+		nerror = -1;
+		errno = ENOMEM;
+	} else {
+		if (memcpy(wstp->wstp_buffer + wstp->wstp_buflen, buf, m)) {
+			wstp->wstp_buflen += m;
+		} else {
+			nerror = -1;
+			errno = ENOMEM;
+		}
+	}
+
     SU_DEBUG_9(("tport_ws_writevec: vec %p %p %lu ("MOD_ZD")\n",
 		(void *)&wstp->ws, (void *)iov[i].siv_base, (LU)iov[i].siv_len,
 		nerror));
@@ -314,21 +314,26 @@ ssize_t tport_send_stream_ws(tport_t const *self, msg_t *msg,
     if (nerror == -1) {
       int err = su_errno();
       if (su_is_blocking(err))
-	break;
+		  break;
       SU_DEBUG_3(("ws_write: %s\n", strerror(err)));
       return -1;
     }
-
-    n = (size_t)nerror;
-    size += n;
-
-    /* Return if the write buffer is full for now */
-    if (n != m)
-      break;
   }
 
-  ws_send_buf(&wstp->ws, WSOC_TEXT);
+  if (wstp->wstp_buflen) {
+	  ssize_t wrote = 0;
+	  
+	  *(wstp->wstp_buffer + wstp->wstp_buflen) = '\0';
+	  wrote = ws_write_frame(&wstp->ws, WSOC_TEXT, wstp->wstp_buffer, wstp->wstp_buflen);
 
+	  if (wrote <= 0) {
+		  int err = su_errno();
+		  SU_DEBUG_3(("ws_write_frame: %s (%ld)\n", strerror(err), (long)wrote));
+		  return (wrote == 0) ? 0 : -1;
+	  } else {
+		  size = wstp->wstp_buflen;
+	  }
+  }
 
   return size;
 }
@@ -340,16 +345,14 @@ static int tport_ws_init_primary_secure(tport_primary_t *pri,
 				 char const **return_culprit)
 {
   tport_ws_primary_t *wspri = (tport_ws_primary_t *)pri;
-    char const *tls_key_file = NULL ;
-    char const *tls_certificate_file = NULL ;
-    char const *tls_chain_file = NULL ;
-
+  char const *tls_key_file = NULL ;
+  char const *tls_certificate_file = NULL ;
+  char const *tls_chain_file = NULL ;
 
   const char *cert = "/ssl.pem";
   const char *key = "/ssl.pem";
   const char *chain = NULL;
   //char *homedir;
-
   //char *tbf = NULL;
   su_home_t autohome[SU_HOME_AUTO_SIZE(1024)];
   //char const *path = NULL;
@@ -390,14 +393,6 @@ static int tport_ws_init_primary_secure(tport_primary_t *pri,
           SU_DEBUG_1(("%s(%p): tls chain file = %s does not exist or could not be accessed\n", __func__, (void *)pri, chain));
     }
   }
-  // should be optional; e.g. in the case of a self-signed cert
-  /*
-  else {
-      SU_DEBUG_1(("%s(%p): tls chain file (TPTAG_TLS_CERTIFICATE_CHAIN_FILE) is required and not specified\n", __func__, (void *)pri));
-      return *return_culprit = "tport_ws_init_primary_secure", -1;
-  }
-  */
-
 /*
   if (!path) {
     homedir = getenv("HOME");
@@ -430,12 +425,16 @@ static int tport_ws_init_primary_secure(tport_primary_t *pri,
   //  SSL_load_error_strings();     /* load all error messages */                                                                                         
   wspri->ssl_method = SSLv23_server_method();   /* create server instance */
   wspri->ssl_ctx = SSL_CTX_new((SSL_METHOD *)wspri->ssl_method);         /* create context */
+
+  if (!wspri->ssl_ctx) {
+	  tls_log_errors(3, "tport_ws_init_primary_secure", 0);
+	  goto done;
+  }
+
   SSL_CTX_sess_set_remove_cb(wspri->ssl_ctx, NULL);
   wspri->ws_secure = 1;
 
-  if ( !wspri->ssl_ctx ) goto done;
-
-  if (tls_chain_file) {
+ if (tls_chain_file) {
 	  SSL_CTX_use_certificate_chain_file(wspri->ssl_ctx, chain);
   }
 
@@ -448,7 +447,19 @@ static int tport_ws_init_primary_secure(tport_primary_t *pri,
 	  goto done;
   }
 
-  SSL_CTX_set_cipher_list(wspri->ssl_ctx, "!eNULL:!aNULL:!DSS:HIGH:@STRENGTH");
+  /* Disable SSLv2 */
+  SSL_CTX_set_options(wspri->ssl_ctx, SSL_OP_NO_SSLv2);
+  /* Disable SSLv3 */
+  SSL_CTX_set_options(wspri->ssl_ctx, SSL_OP_NO_SSLv3);
+  /* Disable TLSv1 */
+  SSL_CTX_set_options(wspri->ssl_ctx, SSL_OP_NO_TLSv1);
+  /* Disable Compression CRIME (Compression Ratio Info-leak Made Easy) */
+  SSL_CTX_set_options(wspri->ssl_ctx, SSL_OP_NO_COMPRESSION);
+  
+  if ( !SSL_CTX_set_cipher_list(wspri->ssl_ctx, "!eNULL:!aNULL:!DSS:HIGH:@STRENGTH") ) {
+      tls_log_errors(3, "tport_ws_init_primary_secure", 0);
+      goto done;
+  }
 
   ret = tport_ws_init_primary(pri, tpn, ai, tags, return_culprit);
 
@@ -494,6 +505,7 @@ int tport_ws_init_secondary(tport_t *self, int socket, int accepted,
   tport_ws_t *wstp = (tport_ws_t *)self;
 
   self->tp_has_connection = 1;
+  self->tp_params->tpp_keepalive = 5000;
 
   /* override the default 30 minute timeout on tport connections */
   self->tp_params->tpp_idle = UINT_MAX;
@@ -526,10 +538,12 @@ int tport_ws_init_secondary(tport_t *self, int socket, int accepted,
 	  return *return_reason = "WS_INIT", -1;
   }
 
+  wstp->connected = time(NULL);
+
   wstp->ws_initialized = 1;
   self->tp_pre_framed = 1;
   
-
+  tport_set_secondary_timer(self);
 
   return 0;
 }
@@ -540,10 +554,6 @@ static void tport_ws_deinit_secondary(tport_t *self)
 
 	if (wstp->ws_initialized == 1) {
 		SU_DEBUG_1(("%p destroy ws%s transport %p.\n", (void *) self, wstp->ws_secure ? "s" : "", (void *) &wstp->ws));
-
-    // DCH: flush any queued messages that might have accumulated between when we  tport_close was called and now
-    tport_flush_queued(self) ;
-    
 		ws_destroy(&wstp->ws);
 		wstp->ws_initialized = -1;
 	}
@@ -629,6 +639,32 @@ int tport_ws_next_timer(tport_t *self,
 			 su_time_t *return_target,
 			 char const **return_why)
 {
+	tport_ws_t *wstp = (tport_ws_t *)self;
+	int ll = establish_logical_layer(&wstp->ws);
+	int punt = 0;
+
+	if (ll == -1) {
+		punt = 1;
+	} else if (ll < 0) {
+		time_t now = time(NULL);
+		if (now - wstp->connected > 5) {
+			punt = 2;
+		}
+	} else {
+		self->tp_params->tpp_keepalive = 0;
+	}
+
+	if (punt) {
+		tport_close(self);
+
+		SU_DEBUG_7(("%s(%p): %s to " TPN_FORMAT "%s\n",
+					__func__, (void *)self,
+					(punt == 2 ? "Timeout establishing SSL" : "Error establishing SSL"), TPN_ARGS(self->tp_name), ""));
+		if (wstp->ws.secure)
+			return -1;
+	}
+
+
   return
     tport_next_recv_timeout(self, return_target, return_why) |
     tport_next_keepalive(self, return_target, return_why);
@@ -637,7 +673,13 @@ int tport_ws_next_timer(tport_t *self,
 /** WS timer. */
 void tport_ws_timer(tport_t *self, su_time_t now)
 {
-  tport_recv_timeout_timer(self, now);
-  tport_keepalive_timer(self, now);
+  tport_ws_t *wstp = (tport_ws_t *)self;
+
+  if (!strcmp("wss", self->tp_protoname) && !wstp->ws.secure_established) {
+    tport_close(self);
+  } else {
+    tport_recv_timeout_timer(self, now);
+    tport_keepalive_timer(self, now);
+  }
   tport_base_timer(self, now);
 }

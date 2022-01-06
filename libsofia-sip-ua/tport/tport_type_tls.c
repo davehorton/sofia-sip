@@ -185,7 +185,7 @@ static int tport_tls_init_master(tport_primary_t *pri,
   char const *tls_chain_file = NULL ;
   char const *tls_ciphers = NULL;
   //unsigned tls_version = 1;
-  unsigned tls_version = 7 ;
+  unsigned tls_version = 7;
   unsigned tls_timeout = 300;
   unsigned tls_verify = 0;
   char const *passphrase = NULL;
@@ -198,11 +198,9 @@ static int tport_tls_init_master(tport_primary_t *pri,
 
   su_home_auto(autohome, sizeof autohome);
 
-  /*
   if (getenv("TPORT_SSL"))
     tls_version = 0;
-  */
- 
+
   tl_gets(tags,
 	  TPTAG_CERTIFICATE_REF(path),
 	  TPTAG_TLS_CIPHERS_REF(tls_ciphers),
@@ -219,8 +217,10 @@ static int tport_tls_init_master(tport_primary_t *pri,
     TPTAG_TLS_CERTIFICATE_CHAIN_FILE_REF(tls_chain_file),
 	  TAG_END());
 
+
   if( NULL != tls_key_file ) {
     ti.key = su_sprintf(autohome, "%s", tls_key_file);
+    SU_DEBUG_9(("%s(%p): tls key file = %s\n", __func__, (void *)pri, tls_key_file));
     if (access(ti.key, R_OK) != 0) {
           SU_DEBUG_1(("%s(%p): tls key = %s does not exist or could not be accessed\n", __func__, (void *)pri, ti.key));
     }
@@ -231,6 +231,7 @@ static int tport_tls_init_master(tport_primary_t *pri,
   }
   if( NULL != tls_certificate_file ) {
     ti.cert = su_sprintf(autohome, "%s", tls_certificate_file);
+    SU_DEBUG_9(("%s(%p): tls cert file = %s\n", __func__, (void *)pri, tls_certificate_file));
     if (access(ti.cert, R_OK) != 0) {
           SU_DEBUG_1(("%s(%p): tls cert = %s does not exist or could not be accessed\n", __func__, (void *)pri, ti.cert));
     }
@@ -240,19 +241,13 @@ static int tport_tls_init_master(tport_primary_t *pri,
       return *return_culprit = "tls_init_master", -1;
   }
   if( NULL != tls_chain_file ) {
+    SU_DEBUG_9(("%s(%p): tls chain file = %s\n", __func__, (void *)pri, tls_chain_file));
     ti.CAfile = su_sprintf(autohome, "%s", tls_chain_file);
     ti.CApath = NULL ;
     if (access(ti.CAfile, R_OK) != 0) {
           SU_DEBUG_1(("%s(%p): tls CAfile = %s does not exist or could not be accessed\n", __func__, (void *)pri, ti.CAfile));
     }
   }
-  // make optional, so we can do self-signed certs
-  /*
-  else {
-      SU_DEBUG_1(("%s(%p): tls chain file (TPTAG_TLS_CERTIFICATE_CHAIN_FILE) is required and not specified\n", __func__, (void *)pri));
-      return *return_culprit = "tls_init_master", -1;
-  }
-  */
 
   ti.policy = tls_policy | (tls_verify ? TPTLS_VERIFY_ALL : 0);
   ti.verify_depth = tls_depth;
@@ -264,56 +259,9 @@ static int tport_tls_init_master(tport_primary_t *pri,
 
   tlspri->tlspri_master = tls_init_master(&ti);
 
-/*
-  if (!path) {
-    homedir = getenv("HOME");
-    if (!homedir)
-      homedir = "";
-    path = tbf = su_sprintf(autohome, "%s/.sip/auth", homedir);
-  }
-
-  
-  if (path) {
-    ti.policy = tls_policy | (tls_verify ? TPTLS_VERIFY_ALL : 0);
-    ti.verify_depth = tls_depth;
-    ti.verify_date = tls_date;
-    ti.configured = path != tbf;
-    ti.randFile = su_sprintf(autohome, "%s/%s", path, "tls_seed.dat");
-    if( !ti.key ) ti.key = su_sprintf(autohome, "%s/%s", path, "agent.pem"); 
-	if (access(ti.key, R_OK) != 0) ti.key = NULL;
-    if (!ti.key) ti.key = su_sprintf(autohome, "%s/%s", path, "tls.pem");
-    ti.passphrase = su_strdup(autohome, passphrase);
-    if( !ti.cert ) ti.cert = ti.key;
-    if( !ti.CAfile ) ti.CAfile = su_sprintf(autohome, "%s/%s", path, "cafile.pem");
-	if (access(ti.CAfile, R_OK) != 0) ti.CAfile = NULL;
-    if (!ti.CAfile) ti.CAfile = su_sprintf(autohome, "%s/%s", path, "tls.pem");
-    if (tls_ciphers) ti.ciphers = su_strdup(autohome, tls_ciphers);
-    ti.version = tls_version;
-    ti.timeout = tls_timeout;
-    if( !tls_chain_file ) ti.CApath = su_strdup(autohome, path);
-
-    SU_DEBUG_9(("%s(%p): tls key = %s\n", __func__, (void *)pri, ti.key));
-
-    if (ti.key && ti.CAfile && ti.randFile) {
-      if (access(ti.key, R_OK) != 0) ti.key = NULL;
-      if (access(ti.randFile, R_OK) != 0) ti.randFile = NULL;
-      if (access(ti.CAfile, R_OK) != 0) ti.CAfile = NULL;
-      tlspri->tlspri_master = tls_init_master(&ti);
-    }
-  }
-  */
-
   su_home_zap(autohome);
 
   if (!tlspri->tlspri_master) {
-    /*
-    if (!path || ti.configured) {
-      SU_DEBUG_1(("tls_init_master: %s\n", strerror(errno)));
-    }
-    else {
-      SU_DEBUG_5(("tls_init_master: %s\n", strerror(errno)));
-    }
-    */
     return *return_culprit = "tls_init_master", -1;
   } else {
     char buf[TPORT_HOSTPORTSIZE];
@@ -526,7 +474,7 @@ int tport_tls_recv(tport_t *self)
     tport_dump_iovec(self, msg, n, iovec, veclen, "recv", "from");
 
   if (self->tp_master->mr_capt_sock)
-      tport_capt_msg(self, msg, n, iovec, veclen, "recv");
+    tport_capt_msg(self, msg, n, iovec, veclen, "recv");
 
   /* Mark buffer as used */
   msg_recv_commit(msg, N, 0);
