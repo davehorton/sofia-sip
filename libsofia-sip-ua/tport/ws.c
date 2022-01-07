@@ -878,6 +878,15 @@ void ws_destroy(wsh_t *wsh)
 		SU_DEBUG_9(("%s(%p): SSL_free\n", __func__, (void *)wsh->ssl));
 		SSL_free(wsh->ssl);
 		wsh->ssl = NULL;
+
+		if (wsh->buffer) {
+			free(wsh->buffer);
+			wsh->buffer = NULL;
+		}
+		if (wsh->bbuffer) {
+			free(wsh->bbuffer);
+			wsh->bbuffer = NULL;
+		}
 	}
 }
 
