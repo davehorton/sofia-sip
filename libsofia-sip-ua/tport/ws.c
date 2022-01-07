@@ -379,6 +379,7 @@ ssize_t ws_raw_read(wsh_t *wsh, void *data, size_t bytes, int block)
 					wsh->x++;
 					ms_sleep(10);
 				} else {
+					SU_DEBUG_9(("%s(%p): SSL_get_error():  %d\n", __func__, (void *)wsh, ssl_err));
 					wss_error(wsh, ssl_err, "ws_raw_read: SSL_read");
 					r = -1;
 					goto end;
