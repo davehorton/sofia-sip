@@ -877,7 +877,11 @@ nta_agent_t *nta_agent_create(su_root_t *root,
     return su_seterrno(EINVAL), NULL;
 
   if (-1 == use_sres_search) {
-    use_sres_search = (NULL == getenv("SOFIA_SEARCH_DOMAINS") ? 0 : 1);
+    char *s = getenv("SOFIA_SEARCH_DOMAINS");
+    use_sres_search = (NULL == s ? 0 : 1);
+    if (use_sres_search) {
+        SU_DEBUG_7(("nta_agent_create: SOFIA_SEARCH_DOMAINS %s, using sres_search instead of sres_query (search option in resolv.conf will be applied\n", s));
+    }
   }
 
   ta_start(ta, tag, value);
