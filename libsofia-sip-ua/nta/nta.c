@@ -99,6 +99,8 @@
 /* From AM_INIT/AC_INIT in our "config.h" */
 char const nta_version[] = PACKAGE_VERSION;
 
+int use_sres_search = -1;
+
 #if HAVE_FUNC
 #elif HAVE_FUNCTION
 #define __func__ __FUNCTION__
@@ -874,6 +876,10 @@ nta_agent_t *nta_agent_create(su_root_t *root,
   if (root == NULL)
     return su_seterrno(EINVAL), NULL;
 
+  if (-1 == use_sres_search) {
+    use_sres_search = (NULL == getenv("SOFIA_SEARCH_DOMAINS") ? 0 : 1);
+  }
+
   ta_start(ta, tag, value);
 
   if ((agent = su_home_new(sizeof(*agent)))) {
@@ -1006,7 +1012,6 @@ nta_agent_t *nta_agent_create(su_root_t *root,
   }
 
   ta_end(ta);
-
   return NULL;
 }
 
@@ -10988,9 +10993,16 @@ int outgoing_query_a(nta_outgoing_t *orq, struct sipdns_query *sq)
     return 0;
   }
 
-  sr->sr_query = sres_query(orq->orq_agent->sa_resolver,
-			      outgoing_answer_a, orq,
-			      sres_type_a, sq->sq_domain);
+  if (use_sres_search) {
+    sr->sr_query = sres_search(orq->orq_agent->sa_resolver,
+              outgoing_answer_a, orq,
+              sres_type_a, sq->sq_domain);
+  }
+  else {
+    sr->sr_query = sres_query(orq->orq_agent->sa_resolver,
+              outgoing_answer_a, orq,
+              sres_type_a, sq->sq_domain);
+  }
 
   return outgoing_resolving(orq);
 }
