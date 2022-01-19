@@ -3464,7 +3464,7 @@ void agent_recv_response(nta_agent_t *agent,
   agent->sa_stats->as_recv_msg++;
   agent->sa_stats->as_recv_response++;
 
-  SU_DEBUG_5(("nta: received %03d %s for %s (%u)\n",
+  SU_DEBUG_3(("nta: received %03d %s for %s (%u)\n",
 	      status, phrase, method, cseq));
 
   if (agent->sa_drop_prob && !tport_is_reliable(tport)) {
@@ -6954,7 +6954,7 @@ int incoming_reply(nta_incoming_t *irq, msg_t *msg, sip_t *sip)
       agent->sa_stats->as_sent_response++;
     }
 
-    SU_DEBUG_5(("nta: %s %u %s for %s (%u)\n",
+    SU_DEBUG_3(("nta: %s %u %s for %s (%u)\n",
 		sending ? "sent" : "not sending",
 		status, sip->sip_status->st_phrase, method_name, cseq));
 
