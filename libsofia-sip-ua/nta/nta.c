@@ -11979,7 +11979,9 @@ nta_incoming_transport(nta_agent_t *agent,
 		       nta_incoming_t *irq,
 		       msg_t *msg)
 {
-  return tport_ref(nta_transport_(agent, irq, msg));
+  tport_t* tp = nta_transport_(agent, irq, msg);
+  if (!tp || tport_is_shutdown(tp)) return NULL;
+  return tport_ref(tp);
 }
 
 nta_compressor_t *nta_agent_init_sigcomp(nta_agent_t *sa)
