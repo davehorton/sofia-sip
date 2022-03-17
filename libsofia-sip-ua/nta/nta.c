@@ -100,6 +100,7 @@
 char const nta_version[] = PACKAGE_VERSION;
 
 int use_sres_search = -1;
+#define SRES_NO_CACHE (getenv("SOFIA_SRES_NO_CACHE") != NULL)
 
 #if HAVE_FUNC
 #elif HAVE_FUNCTION
@@ -10580,7 +10581,7 @@ int outgoing_query_naptr(nta_outgoing_t *orq, char const *domain)
 
   sr->sr_target = domain;
 
-  answers = sres_cached_answers(orq->orq_agent->sa_resolver,
+  answers = SRES_NO_CACHE ? NULL : sres_cached_answers(orq->orq_agent->sa_resolver,
 				sres_type_naptr, domain);
 
   SU_DEBUG_5(("nta: for \"%s\" query \"%s\" %s%s\n",
@@ -10780,7 +10781,7 @@ int outgoing_query_srv(nta_outgoing_t *orq,
   sr->sr_target = sq->sq_domain;
   sr->sr_current = sq;
 
-  answers = sres_cached_answers(orq->orq_agent->sa_resolver,
+  answers = SRES_NO_CACHE ? NULL : sres_cached_answers(orq->orq_agent->sa_resolver,
 				sres_type_srv, sq->sq_domain);
 
   SU_DEBUG_5(("nta: for \"%s\" query \"%s\" %s%s\n",
@@ -10902,7 +10903,7 @@ int outgoing_query_aaaa(nta_outgoing_t *orq, struct sipdns_query *sq)
   sr->sr_target = sq->sq_domain;
   sr->sr_current = sq;
 
-  answers = sres_cached_answers(orq->orq_agent->sa_resolver,
+  answers = SRES_NO_CACHE ? NULL : sres_cached_answers(orq->orq_agent->sa_resolver,
 				sres_type_aaaa, sq->sq_domain);
 
   SU_DEBUG_5(("nta: for \"%s\" query \"%s\" %s%s\n",
@@ -10985,7 +10986,7 @@ int outgoing_query_a(nta_outgoing_t *orq, struct sipdns_query *sq)
   sr->sr_target = sq->sq_domain;
   sr->sr_current = sq;
 
-  answers = sres_cached_answers(orq->orq_agent->sa_resolver,
+  answers = SRES_NO_CACHE ? NULL :  sres_cached_answers(orq->orq_agent->sa_resolver,
 				sres_type_a, sq->sq_domain);
 
   SU_DEBUG_5(("nta: for \"%s\" query \"%s\" %s%s\n",
