@@ -8663,7 +8663,12 @@ outgoing_tport_error(nta_agent_t *agent, nta_outgoing_t *orq,
 
   outgoing_print_tport_error(orq, 3, "", tpn, msg, error);
 
-  outgoing_reply(orq, SIP_503_SERVICE_UNAVAILABLE, 0);
+  if (error == EPIPE && tpn && 0 != strcmp(tpn->tpn_proto, "udp")) {
+    outgoing_reply(orq, SIP_410_GONE, 0);
+  }
+  else {
+    outgoing_reply(orq, SIP_503_SERVICE_UNAVAILABLE, 0);
+  }
 }
 
 static
@@ -11978,7 +11983,7 @@ nta_transport_(nta_agent_t *agent,
 tport_t *
 nta_incoming_transport(nta_agent_t *agent,
 		       nta_incoming_t *irq,
-		       msg_t *msg)
+	 	       msg_t *msg)
 {
   tport_t* tp = nta_transport_(agent, irq, msg);
   if (!tp || tport_is_shutdown(tp)) return NULL;
