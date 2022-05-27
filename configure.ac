@@ -377,10 +377,6 @@ libsofia-sip-ua-glib/su-glib/Doxyfile
 utils/Makefile
 utils/Doxyfile
 tests/Makefile
-win32/Makefile
-win32/config.h
-open_c/Makefile
-open_c/config.h
 ])
 
 AC_CONFIG_COMMANDS([version],,[PACKAGE_VERSION=${PACKAGE_VERSION}])
