@@ -28,8 +28,12 @@ TAGS
 *_tag_ref.c
 
 Makefile.in
+<<<<<<< HEAD
 
 *.nix
 log
 result
 default.nix
+=======
+shell.nix
+>>>>>>> 672dcd72 (manually fix everything, bad)
