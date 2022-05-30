@@ -1359,7 +1359,7 @@ need_locks="$enable_libtool_lock"
 m4_defun([_LT_CMD_OLD_ARCHIVE],
 [AC_CHECK_TOOL(AR, ar, false)
 test -z "$AR" && AR=ar
-test -z "$AR_FLAGS" && AR_FLAGS=cru
+test -z "$AR_FLAGS" && AR_FLAGS=cr
 _LT_DECL([], [AR], [1], [The archiver])
 _LT_DECL([], [AR_FLAGS], [1])
 

@@ -8,6 +8,7 @@ stdenv.mkDerivation {
 
   buildPhase = ''
     autoupdate
+    ./autogen.sh
     ./bootstrap.sh
     ./configure --with-glib=no
     make
