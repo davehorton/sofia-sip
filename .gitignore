@@ -29,15 +29,21 @@ TAGS
 
 Makefile.in
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 9eb90d48 (one more warning that requires running autoupdate)
 
 *.nix
 log
 result
+<<<<<<< HEAD
 default.nix
 =======
 shell.nix
 <<<<<<< HEAD
 >>>>>>> 672dcd72 (manually fix everything, bad)
 =======
+=======
+>>>>>>> 9eb90d48 (one more warning that requires running autoupdate)
 default.nix
 >>>>>>> 3fe5e40f (fixing* compilation warnings, still configuration warnings)
