@@ -28,5 +28,8 @@ TAGS
 *_tag_ref.c
 
 Makefile.in
-shell.nix
+
+*.nix
+log
+result
 default.nix
