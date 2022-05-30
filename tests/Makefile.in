@@ -114,7 +114,7 @@ CONFIG_HEADER = $(top_builddir)/config.h \
 	$(top_builddir)/libsofia-sip-ua/su/sofia-sip/su_configure.h
 CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
-ARFLAGS = cru
+ARFLAGS = cr
 libtestnat_a_AR = $(AR) $(ARFLAGS)
 libtestnat_a_LIBADD =
 am_libtestnat_a_OBJECTS = test_nat.$(OBJEXT) test_nat_tags.$(OBJEXT)

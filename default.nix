@@ -7,15 +7,20 @@ stdenv.mkDerivation {
   buildInputs = [ gcc autoconf automake gnumake libtool openssl which gawk pkg-config file ];
 
   buildPhase = ''
-    autoupdate
+    # autoupdate
     # ./autogen.sh
     ./bootstrap.sh
     ./configure --with-glib=no
-    # make
+    make
   '';
 
   installPhase = ''
     mkdir -p $out
     cp -r * $out/
+
+  '';
+
+  postInstall = ''
+    rm -r * 
   '';
 }
