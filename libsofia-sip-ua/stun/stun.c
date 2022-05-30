@@ -566,7 +566,7 @@ int stun_obtain_shared_secret(stun_handle_t *sh,
   }
   else {
     SU_DEBUG_3(("No message integrity enabled.\n" VA_NONE));
-    errno = EFAULT;
+    return errno = EFAULT, -1;;
   }
 
   /* open tcp connection to server */
