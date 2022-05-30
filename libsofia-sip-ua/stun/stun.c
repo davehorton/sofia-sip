@@ -566,24 +566,27 @@ int stun_obtain_shared_secret(stun_handle_t *sh,
   }
   else {
     SU_DEBUG_3(("No message integrity enabled.\n" VA_NONE));
-    return errno = EFAULT, -1;
+    errno = EFAULT;
   }
 
   /* open tcp connection to server */
   s = su_socket(family = AF_INET, SOCK_STREAM, 0);
 
   if (s == INVALID_SOCKET) {
-    return STUN_ERROR(errno, socket);
+    STUN_ERROR(errno, socket);
+    return -1;
   }
 
   /* asynchronous connect() */
   if (su_setblocking(s, 0) < 0) {
-    return STUN_ERROR(errno, su_setblocking);
+    STUN_ERROR(errno, su_setblocking);
+    return -1;
   }
 
   if (setsockopt(s, SOL_TCP, TCP_NODELAY,
 		 (void *)&one, sizeof one) == -1) {
-    return STUN_ERROR(errno, setsockopt);
+    STUN_ERROR(errno, setsockopt);
+    return -1;
   }
 
   /* Do an asynchronous connect(). Three error codes are ok,
@@ -592,7 +595,8 @@ int stun_obtain_shared_secret(stun_handle_t *sh,
 	      ai->ai_addrlen) == SOCKET_ERROR) {
     err = su_errno();
     if (err != EINPROGRESS && err != EAGAIN && err != EWOULDBLOCK) {
-      return STUN_ERROR(err, connect);
+      STUN_ERROR(err, connect);
+      return -1;
     }
   }
 
@@ -604,15 +608,18 @@ int stun_obtain_shared_secret(stun_handle_t *sh,
   /* req = stun_request_create(sd); */
 
   events = SU_WAIT_CONNECT | SU_WAIT_ERR;
-  if (su_wait_create(wait, s, events) == -1)
-    return STUN_ERROR(errno, su_wait_create);
+  if (su_wait_create(wait, s, events) == -1) {
+    STUN_ERROR(errno, su_wait_create);
+    return -1;
+  }
 
   /* su_root_eventmask(sh->sh_root, sh->sh_root_index, s, events); */
 
   if ((sd->sd_index =
        su_root_register(sh->sh_root, wait, stun_tls_callback, (su_wakeup_arg_t *) sd, 0)) == -1) {
     su_wait_destroy(wait);
-    return STUN_ERROR(errno, su_root_register);
+    STUN_ERROR(errno, su_root_register);
+    return -1;
   }
 
   ta_start(ta, tag, value);
@@ -789,7 +796,8 @@ int assign_socket(stun_discovery_t *sd, su_socket_t s, int register_socket)
 
   /* set socket asynchronous */
   if (su_setblocking(s, 0) < 0) {
-    return STUN_ERROR(errno, su_setblocking);
+    STUN_ERROR(errno, su_setblocking);
+    return -1;
   }
 
   /* xxx -- check if socket is already assigned to this root */
@@ -815,7 +823,8 @@ int assign_socket(stun_discovery_t *sd, su_socket_t s, int register_socket)
     }
 
     if (getsockname(s, &su->su_sa, &sulen) == -1) {
-      return STUN_ERROR(errno, getsockname);
+      STUN_ERROR(errno, getsockname);
+      return -1;
     }
   }
 
@@ -828,7 +837,8 @@ int assign_socket(stun_discovery_t *sd, su_socket_t s, int register_socket)
   events = SU_WAIT_IN | SU_WAIT_ERR;
 
   if (su_wait_create(wait, s, events) == -1) {
-    return STUN_ERROR(su_errno(), su_wait_create);
+    STUN_ERROR(su_errno(), su_wait_create);
+    return -1;
   }
 
   /* Register receiving function with events specified above */
@@ -836,7 +846,8 @@ int assign_socket(stun_discovery_t *sd, su_socket_t s, int register_socket)
 				       wait, stun_bind_callback,
 				       (su_wakeup_arg_t *) sd, 0)) < 0) {
     su_wait_destroy(wait);
-    return STUN_ERROR(errno, su_root_register);
+    STUN_ERROR(errno, su_root_register);
+    return -1;
   }
 
   SU_DEBUG_7(("%s: socket registered.\n", __func__));
@@ -877,13 +888,15 @@ static int get_localinfo(int family, su_sockaddr_t *su, socklen_t *return_len)
     su_freelocalinfo(res);
 
     if (!li) {			/* Not found */
-      return STUN_ERROR(error, su_getlocalinfo);
+      STUN_ERROR(error, su_getlocalinfo);
+      return -1;
     }
 
     return 0;
   }
   else {
-    return STUN_ERROR(error, su_getlocalinfo);
+    STUN_ERROR(error, su_getlocalinfo);
+    return -1;
   }
 }
 #endif
@@ -1235,7 +1248,7 @@ int stun_test_nattype(stun_handle_t *sh,
   }
   else {
     err = stun_atoaddr(sh->sh_home, AF_INET, &sd->sd_pri_info, server);
-    memcpy(sd->sd_pri_addr, &sd->sd_pri_info.ai_addr, sizeof(su_sockaddr_t));
+    memmove(sd->sd_pri_addr, &sd->sd_pri_info.ai_addr, sizeof(su_sockaddr_t));
   }
   destination = (su_sockaddr_t *) sd->sd_pri_addr;
 
@@ -1316,6 +1329,7 @@ int stun_tls_callback(su_root_magic_t *m, su_wait_t *w, su_wakeup_arg_t *arg)
 	     (void *)&one, &onelen);
   if (one != 0) {
     STUN_ERROR(one, SO_ERROR);
+    return -1;
   }
 
   if (one || events & SU_WAIT_ERR) {
@@ -1355,7 +1369,7 @@ int stun_tls_callback(su_root_magic_t *m, su_wait_t *w, su_wakeup_arg_t *arg)
     /* openssl initiation */
     SSLeay_add_ssl_algorithms();
     SSL_load_error_strings();
-    ctx = SSL_CTX_new(TLSv1_client_method());
+    ctx = SSL_CTX_new(TLS_client_method());
     self->sh_ctx = ctx;
 
     if (ctx == NULL) {
@@ -2720,11 +2734,11 @@ int stun_test_lifetime(stun_handle_t *sh,
   /* If no server given, use default address from stun_handle_init() */
   if (!server) {
     /* memcpy(&sd->sd_pri_info, &sh->sh_pri_info, sizeof(su_addrinfo_t)); */
-    memcpy(sd->sd_pri_addr, sh->sh_pri_addr, sizeof(su_sockaddr_t));
+    memmove(sd->sd_pri_addr, sh->sh_pri_addr, sizeof(su_sockaddr_t));
   }
   else {
     err = stun_atoaddr(sh->sh_home, AF_INET, &sd->sd_pri_info, server);
-    memcpy(sd->sd_pri_addr, &sd->sd_pri_info.ai_addr, sizeof(su_sockaddr_t));
+    memmove(sd->sd_pri_addr, &sd->sd_pri_info.ai_addr, sizeof(su_sockaddr_t));
   }
   destination = (su_sockaddr_t *) sd->sd_pri_addr;
 

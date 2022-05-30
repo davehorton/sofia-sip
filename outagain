@@ -1,0 +1,2215 @@
+aclocal.m4:# 2005, 2006, 2007, 2008, 2009  Free Software Foundation, Inc.
+aclocal.m4:# This file is free software; the Free Software Foundation
+aclocal.m4:# even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+aclocal.m4:[m4_warning([this file was generated for autoconf 2.65.
+aclocal.m4:You have another version of autoconf.  It may work, but is not guaranteed to.
+aclocal.m4:# Copyright (C) 2002, 2003, 2005, 2006, 2007, 2008  Free Software Foundation, Inc.
+aclocal.m4:# This file is free software; the Free Software Foundation
+aclocal.m4:# Copyright (C) 2001, 2003, 2005  Free Software Foundation, Inc.
+aclocal.m4:# This file is free software; the Free Software Foundation
+aclocal.m4:# Of course, Automake must honor this variable whenever it calls a
+aclocal.m4:# tool from the auxiliary directory.  The problem is that $srcdir (and
+aclocal.m4:# are both prefixed by $srcdir.  In an in-source build this is usually
+aclocal.m4:# harmless because $srcdir is `.', but things will broke when you
+aclocal.m4:# start a VPATH build or use an absolute $srcdir.
+aclocal.m4:# So we could use something similar to $top_srcdir/$ac_aux_dir/missing,
+aclocal.m4:# However there are other variables, like CC, which are often used in
+aclocal.m4:# Free Software Foundation, Inc.
+aclocal.m4:# This file is free software; the Free Software Foundation
+aclocal.m4:# Free Software Foundation, Inc.
+aclocal.m4:# This file is free software; the Free Software Foundation
+aclocal.m4:# There are a few dirty hacks below to avoid letting `AC_PROG_CC' be
+aclocal.m4:# written in clear, in which case automake, when reading aclocal.m4,
+aclocal.m4:# We try a few techniques and use that to set a single cache variable.
+aclocal.m4:# modified to invoke _AM_DEPENDENCIES(CC); we would have a circular
+aclocal.m4:     *\ -arch\ *\ -arch\ *) am__universal=true ;;
+aclocal.m4:     *\ -arch\ *\ -arch\ *) am__universal=true ;;
+aclocal.m4:    # like to wrap large dependency lists on column 80 (with \), and
+aclocal.m4:      # Solaris 8's {/usr,}/bin/sh.
+aclocal.m4:      # after this tag, mechanisms are not by side-effect, so they'll
+aclocal.m4:      # not run yet.  These depmodes are late enough in the game, and
+aclocal.m4:      # icc doesn't choke on unknown options, it will just issue warnings
+aclocal.m4:      # or remarks (even with -Werror).  So we grep stderr for any message
+aclocal.m4:      #   icc: Command line warning: ignoring option '-M'; no argument required
+aclocal.m4:      #   icc: Command line remark: option '-MP' not supported
+aclocal.m4:# Free Software Foundation, Inc.
+aclocal.m4:# This file is free software; the Free Software Foundation
+aclocal.m4:  # Autoconf 2.62 quotes --file arguments for eval, but not when files
+aclocal.m4:  # are listed without --file.  Let's play safe and only enable the eval
+aclocal.m4:      dirpart=`AS_DIRNAME("$mf")`
+aclocal.m4:    # Find all dependency output files, they are included files with
+aclocal.m4:      test -f "$dirpart/$file" && continue
+aclocal.m4:      AS_MKDIR_P([$dirpart/$fdir])
+aclocal.m4:      # echo "creating $dirpart/$file"
+aclocal.m4:      echo '# dummy' > "$dirpart/$file"
+aclocal.m4:# 2005, 2006, 2008, 2009 Free Software Foundation, Inc.
+aclocal.m4:# This file is free software; the Free Software Foundation
+aclocal.m4:# This macro actually does too much.  Some checks are only needed if
+aclocal.m4:# The call with PACKAGE and VERSION arguments is the old style
+aclocal.m4:# arguments mandatory, and then we can depend on a new Autoconf
+aclocal.m4:dnl the ones we care about.
+aclocal.m4:  [m4_fatal([AC_INIT should be called with package and version arguments])])dnl
+aclocal.m4:# We need awk for the "check" target.  The system "awk" is bad on
+aclocal.m4:_AM_IF_OPTION([tar-ustar], [_AM_PROG_TAR([ustar])],
+aclocal.m4:	      [_AM_IF_OPTION([tar-pax], [_AM_PROG_TAR([pax])],
+aclocal.m4:dnl The `parallel-tests' driver may need to know about EXEEXT, so add the
+aclocal.m4:dnl is hooked onto _AC_COMPILER_EXEEXT early, see below.
+aclocal.m4:dnl Hook into `_AC_COMPILER_EXEEXT' early to learn its expansion.  Do not
+aclocal.m4:# that is generated.  The stamp files are numbered to have different names.
+aclocal.m4:_am_arg=$1
+aclocal.m4:    $_am_arg | $_am_arg:* )
+aclocal.m4:echo "timestamp for $_am_arg" >`AS_DIRNAME(["$_am_arg"])`/stamp-h[]$_am_stamp_count])
+aclocal.m4:# Copyright (C) 2001, 2003, 2005, 2008  Free Software Foundation, Inc.
+aclocal.m4:# This file is free software; the Free Software Foundation
+aclocal.m4:# Copyright (C) 2003, 2005  Free Software Foundation, Inc.
+aclocal.m4:# This file is free software; the Free Software Foundation
+aclocal.m4:# Copyright (C) 2001, 2002, 2003, 2005, 2009  Free Software Foundation, Inc.
+aclocal.m4:# This file is free software; the Free Software Foundation
+aclocal.m4:	@echo this is the am__doit target
+aclocal.m4:*the\ am__doit\ target*)
+aclocal.m4:   *the\ am__doit\ target*)
+aclocal.m4:# Free Software Foundation, Inc.
+aclocal.m4:# This file is free software; the Free Software Foundation
+aclocal.m4:# FIXME: we rely on the cache variable name because
+aclocal.m4:# Free Software Foundation, Inc.
+aclocal.m4:# This file is free software; the Free Software Foundation
+aclocal.m4:# Define MISSING if not defined so far and test if it supports --run.
+aclocal.m4:# Copyright (C) 2003, 2004, 2005, 2006  Free Software Foundation, Inc.
+aclocal.m4:# This file is free software; the Free Software Foundation
+aclocal.m4:dnl while keeping a definition of mkdir_p for backward compatibility.
+aclocal.m4:# Copyright (C) 2001, 2002, 2003, 2005, 2008  Free Software Foundation, Inc.
+aclocal.m4:# This file is free software; the Free Software Foundation
+aclocal.m4:# OPTIONS is a space-separated list of Automake options.
+aclocal.m4:# Free Software Foundation, Inc.
+aclocal.m4:# This file is free software; the Free Software Foundation
+aclocal.m4:# Reject unsafe characters in $srcdir or the absolute working directory
+aclocal.m4:# arguments.  Must try -L first in case configure is actually a
+aclocal.m4:      AC_MSG_ERROR([ls -t appears to fail.  Make sure there is not a broken
+aclocal.m4:# Copyright (C) 2001, 2003, 2005  Free Software Foundation, Inc.
+aclocal.m4:# This file is free software; the Free Software Foundation
+aclocal.m4:# specify the program used to strip binaries.  This is especially
+aclocal.m4:# is unlikely to handle the host's binaries.
+aclocal.m4:# Fortunately install-sh will honor a STRIPPROG variable, so we
+aclocal.m4:# STRIPPROG with the value of the STRIP variable (set by the user).
+aclocal.m4:# Installed binaries are usually stripped using `strip' when the user
+aclocal.m4:# will honor the `STRIP' environment variable to overrule this program.
+aclocal.m4:# Copyright (C) 2006, 2008  Free Software Foundation, Inc.
+aclocal.m4:# This file is free software; the Free Software Foundation
+aclocal.m4:# Check how to create a tarball.                            -*- Autoconf -*-
+aclocal.m4:# Copyright (C) 2004, 2005  Free Software Foundation, Inc.
+aclocal.m4:# This file is free software; the Free Software Foundation
+aclocal.m4:# Check how to create a tarball in format FORMAT.
+aclocal.m4:# FORMAT should be one of `v7', `ustar', or `pax'.
+aclocal.m4:# Substitute a variable $(am__tar) that is a command
+aclocal.m4:# writing to stdout a FORMAT-tarball containing the directory
+aclocal.m4:# $tardir.
+aclocal.m4:#     tardir=directory && $(am__tar) > result.tar
+aclocal.m4:# Substitute a variable $(am__untar) that extract such
+aclocal.m4:# a tarball read from stdin.
+aclocal.m4:#     $(am__untar) < result.tar
+aclocal.m4:[# Always define AMTAR for backward compatibility.
+aclocal.m4:AM_MISSING_PROG([AMTAR], [tar])
+aclocal.m4:     [am__tar='${AMTAR} chof - "$$tardir"'; am__untar='${AMTAR} xf -'],
+aclocal.m4:     [m4_case([$1], [ustar],, [pax],,
+aclocal.m4:              [m4_fatal([Unknown tar format])])
+aclocal.m4:AC_MSG_CHECKING([how to create a $1 tar archive])
+aclocal.m4:# Loop over all known methods to create a tar archive until one works.
+aclocal.m4:_am_tools='gnutar m4_if([$1], [ustar], [plaintar]) pax cpio none'
+aclocal.m4:_am_tools=${am_cv_prog_tar_$1-$_am_tools}
+aclocal.m4:# Solaris sh will not grok spaces in the rhs of `-'.
+aclocal.m4:  gnutar)
+aclocal.m4:    for _am_tar in tar gnutar gtar;
+aclocal.m4:      AM_RUN_LOG([$_am_tar --version]) && break
+aclocal.m4:    am__tar="$_am_tar --format=m4_if([$1], [pax], [posix], [$1]) -chf - "'"$$tardir"'
+aclocal.m4:    am__tar_="$_am_tar --format=m4_if([$1], [pax], [posix], [$1]) -chf - "'"$tardir"'
+aclocal.m4:    am__untar="$_am_tar -xf -"
+aclocal.m4:  plaintar)
+aclocal.m4:    # Must skip GNU tar: if it does not support --format= it doesn't create
+aclocal.m4:    # ustar tarball either.
+aclocal.m4:    (tar --version) >/dev/null 2>&1 && continue
+aclocal.m4:    am__tar='tar chf - "$$tardir"'
+aclocal.m4:    am__tar_='tar chf - "$tardir"'
+aclocal.m4:    am__untar='tar xf -'
+aclocal.m4:    am__tar='pax -L -x $1 -w "$$tardir"'
+aclocal.m4:    am__tar_='pax -L -x $1 -w "$tardir"'
+aclocal.m4:    am__untar='pax -r'
+aclocal.m4:    am__tar='find "$$tardir" -print | cpio -o -H $1 -L'
+aclocal.m4:    am__tar_='find "$tardir" -print | cpio -o -H $1 -L'
+aclocal.m4:    am__untar='cpio -i -H $1 -d'
+aclocal.m4:    am__tar=false
+aclocal.m4:    am__tar_=false
+aclocal.m4:    am__untar=false
+aclocal.m4:  # If the value was cached, stop now.  We just wanted to have am__tar
+aclocal.m4:  # and am__untar set.
+aclocal.m4:  test -n "${am_cv_prog_tar_$1}" && break
+aclocal.m4:  # tar/untar a dummy directory, and stop if the command works
+aclocal.m4:  AM_RUN_LOG([tardir=conftest.dir && eval $am__tar_ >conftest.tar])
+aclocal.m4:  if test -s conftest.tar; then
+aclocal.m4:    AM_RUN_LOG([$am__untar <conftest.tar])
+aclocal.m4:AC_CACHE_VAL([am_cv_prog_tar_$1], [am_cv_prog_tar_$1=$_am_tool])
+aclocal.m4:AC_MSG_RESULT([$am_cv_prog_tar_$1])])
+aclocal.m4:AC_SUBST([am__tar])
+aclocal.m4:AC_SUBST([am__untar])
+aclocal.m4:m4_include([m4/ltsugar.m4])
+autogen.sh:find . \( -name 'run*' -o -name '*.sh' \) -a -type f | xargs chmod +x
+bootstrap.sh:  # output is multiline from 1.5 onwards
+bootstrap.sh:  # compare libtool and libtoolize version
+bootstrap.sh:  # replicate this, we need a particular behavior that we can test
+config.h.in:/* Define to 1 if you have the `alarm' function. */
+config.h.in:/* Define to 1 if you have the <arpa/inet.h> header file. */
+config.h.in:/* Define to 1 if check library is available */
+config.h.in:/* Define this as 1 if your c library does not crash with free(0) */
+config.h.in:/* Define to 1 if you have the `crypto' library (-lcrypto). */
+config.h.in:/* Define to 1 if dl library is available */
+config.h.in:/* Define to 1 if you have the `gcov' library (-lgcov). */
+config.h.in:/* Define to 1 if you have the `pthread' library (-lpthread). */
+config.h.in:/* Define to 1 if you have the `socket' library (-lsocket). */
+config.h.in:/* Define to 1 if you have the `ssl' library (-lssl). */
+config.h.in:/* Define to 1 if you are compiling in MinGW environment */
+config.h.in:/* Define if you have pthread_setschedparam() */
+config.h.in:/* Define to 1 if we use HTTP parser library */
+config.h.in:/* Define to 1 if we use NTH library */
+config.h.in:/* Define to 1 if we use NTLM library */
+config.h.in:/* Define to 1 if we use S/MIME library */
+config.h.in:/* Define to 1 if we use DNS library */
+config.h.in:/* Define to 1 if we use STUN library */
+config.h.in:/* Define to the sub-directory in which libtool stores uninstalled libraries.
+config.h.in:	STACK_DIRECTION > 0 => grows toward higher addresses
+config.h.in:	STACK_DIRECTION < 0 => grows toward lower addresses
+config.h.in:/* Enable threading extensions on Solaris.  */
+config.h.in:/* Enable general extensions on Solaris.  */
+configure.ac:dnl ref: http://www.gnu.org/software/autoconf/manual/autoconf.info.gz
+configure.ac:# dnl calls AC_CANONICAL_ macros that are required by AM_INIT_AUTOMAKE
+configure.ac:AC_CHECK_TOOL(AR, ar, ar)
+configure.ac:dnl Add parameters for aclocal
+configure.ac:# openbsd seems to not define NULL as a void pointer, I blame standards by committee for this.
+configure.ac:# This is a dirty hack, but shuts up all the warnings
+configure.ac:### checks for declarations
+configure.ac:dnl (representing long long int, char, intmax_t, size_t, ptrdiff_t). Some C
+configure.ac:[[char buf[64];
+configure.ac: if (sprintf(buf, "%lld%hhd%jd%zd%td", (long long int)1, (char)2, (intmax_t)3, (size_t)4, (ptrdiff_t)5) != 5)
+configure.ac:[[char buf[64];
+configure.ac:[[char buf[64];
+configure.ac:### checks for typedefs, structures, and compiler characteristics.
+configure.ac:### checks for library functions
+configure.ac:### checks for libraries
+configure.ac:   AC_DEFINE([HAVE_CHECK], 1, [Define to 1 if check library is available])
+configure.ac:AC_CHECK_LIB(pthread, pthread_setschedparam, [AC_DEFINE(HAVE_PTHREAD_SETSCHEDPARAM, 1, [Define if you have pthread_setschedparam()])])
+configure.ac:   AC_DEFINE([HAVE_LIBDL], 1, [Define to 1 if dl library is available])
+configure.ac:AC_DEFINE([HAVE_SOFIA_SRESOLV], 1, [Define to 1 if we use DNS library])
+configure.ac:AC_DEFINE([HAVE_SOFIA_SMIME], 0, [Define to 1 if we use S/MIME library])
+configure.ac:  AC_MSG_WARN([** TLS support for STUN disabled as OpenSSL headers and/or libraries were not found **])
+configure.ac:  AC_DEFINE([HAVE_SOFIA_STUN], 1, [Define to 1 if we use STUN library])
+configure.ac:  AC_DEFINE([HAVE_SOFIA_STUN], 1, [Define to 1 if we use STUN library])
+configure.ac:  AC_DEFINE([HAVE_SOFIA_NTH], 1, [Define to 1 if we use NTH library])
+configure.ac:  AC_DEFINE([HAVE_SOFIA_HTTP], 1, [Define to 1 if we use HTTP parser library])
+configure.ac:  AC_DEFINE([HAVE_SOFIA_NTLM], 1, [Define to 1 if we use NTLM library])
+configure.gnu:$srcpath/configure "$@" --with-pic --with-glib=no --disable-shared  --without-doxygen --disable-stun
+COPYRIGHTS:This package contains the Sofia-SIP library.
+COPYRIGHTS:This library is free software; you can redistribute it and/or
+COPYRIGHTS:as published by the Free Software Foundation; either version 2.1 of
+COPYRIGHTS:This library is distributed in the hope that it will be useful, but
+COPYRIGHTS:WITHOUT ANY WARRANTY; without even the implied warranty of
+COPYRIGHTS:The package also contains files licensed by Internet Software Consortium.
+COPYRIGHTS:These files are distributed with the following copyright notice:
+COPYRIGHTS:Copyright (c) 1996 by Internet Software Consortium.
+COPYRIGHTS:Permission to use, copy, modify, and distribute this software for any
+COPYRIGHTS:copyright notice and this permission notice appear in all copies.
+COPYRIGHTS:The package also contains files licensed by Internet Software Consortium and
+COPYRIGHTS:Internet Systems Consortium, Inc.. These files are distributed with the
+COPYRIGHTS:Copyright (c) 1996,1999 by Internet Software Consortium.
+COPYRIGHTS:Permission to use, copy, modify, and distribute this software for any
+COPYRIGHTS:copyright notice and this permission notice appear in all copies.
+COPYRIGHTS:The package also contains files licensed by WIDE Project. These files are
+COPYRIGHTS:Redistribution and use in source and binary forms, with or without
+COPYRIGHTS:modification, are permitted provided that the following conditions
+COPYRIGHTS:are met:
+COPYRIGHTS:2. Redistributions in binary form must reproduce the above copyright
+COPYRIGHTS:   may be used to endorse or promote products derived from this software
+COPYRIGHTS:The package also contains files licensed by IBM Corporation. These files are
+COPYRIGHTS:           Any notices, including this one, are not to be removed
+COPYRIGHTS:The package also contains files written by Colin Plumb. These files are
+COPYRIGHTS:Microsystems. These files are distributed with the following copyright
+COPYRIGHTS:This software is copyrighted by the Regents of the University of
+COPYRIGHTS:Corporation and other parties.  The following terms apply to all files
+COPYRIGHTS:associated with the software unless explicitly disclaimed in
+COPYRIGHTS:and license this software and its documentation for any purpose, provided
+COPYRIGHTS:that existing copyright notices are retained in all copies and that this
+COPYRIGHTS:Modifications to this software may be copyrighted by their authors
+COPYRIGHTS:the new terms are clearly indicated on the first page of each file where
+COPYRIGHTS:GOVERNMENT USE: If you are acquiring this software on behalf of the
+COPYRIGHTS:in the software and related documentation as defined in the Federal
+COPYRIGHTS:are acquiring the software on behalf of the Department of Defense, the
+COPYRIGHTS:software shall be classified as "Commercial Computer Software" and the
+COPYRIGHTS:permission to use and distribute the software in accordance with the
+COPYRIGHTS:The package also contains files written by Pekka Pessi. These files are
+COPYRIGHTS:modify this source code without charge.
+COPYRIGHTS:on the part of author to assist in its use, correction, modification or
+COPYRIGHTS:The package also contains files from GNU C Library by Free Software
+COPYRIGHTS:These files are distributed with the following copyright notice:
+COPYRIGHTS:Free Software Foundation, Inc.
+COPYRIGHTS:This file is part of the GNU C Library.
+COPYRIGHTS:The GNU C Library is free software; you can redistribute it and/or
+COPYRIGHTS:License as published by the Free Software Foundation; either
+COPYRIGHTS:The GNU C Library is distributed in the hope that it will be useful,
+COPYRIGHTS:but WITHOUT ANY WARRANTY; without even the implied warranty of
+COPYRIGHTS:License along with the GNU C Library; if not, write to the Free
+COPYRIGHTS:Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
+depcomp:# Software Foundation, Inc.
+depcomp:# This program is free software; you can redistribute it and/or modify
+depcomp:# the Free Software Foundation; either version 2, or (at your option)
+depcomp:# but WITHOUT ANY WARRANTY; without even the implied warranty of
+depcomp:# distribute this file as part of a program that contains a
+depcomp:Environment variables:
+depcomp:  tmpdepfile  Temporary file to use when outputing dependencies.
+depcomp:  echo "depcomp: Variables source, object and depmode must be set" 1>&2
+depcomp:# Dependencies for sub/bar.o or sub/bar.obj go into sub/.deps/bar.Po.
+depcomp:# parameterize here, but still list the modes in the big case below,
+depcomp:  # HP compiler uses -M and no extra arg.
+depcomp:   # This is just like dashmstdout with a different argument.
+depcomp:   # Just convert the backslash-escaped backslashes to single forward
+depcomp:## the command line argument order; so add the flags where they
+depcomp:## appear in depend2.am.  Note that the slowdown incurred here
+depcomp:  for arg
+depcomp:    case $arg in
+depcomp:    -c) set fnord "$@" -MT "$object" -MD -MP -MF "$tmpdepfile" "$arg" ;;
+depcomp:    *)  set fnord "$@" "$arg" ;;
+depcomp:    shift # $arg
+depcomp:## There are various ways to get dependency output from gcc.  Here's
+depcomp:## - The DEPENDENCIES_OUTPUT environment variable makes gcc act like
+depcomp:## The problem is that when a header file which appears in a .P file
+depcomp:## correctly.  Breaking it into two sed invocations is a workaround.
+depcomp:    # lines with more than a fixed number of characters (4096 in
+depcomp:  # start of each line; $object doesn't have directory information.
+depcomp:  # correctly.  Breaking it into two sed invocations is a workaround.
+depcomp:  # Much of this is similar to the tru64 case; see comments there.
+depcomp:   # Subdirectories are respected.
+depcomp:      # With Tru64 cc, shared objects can also be used to make a
+depcomp:      # static library.  This mechanism is used in libtool 1.4 series to
+depcomp:      # handle both shared and static libraries in a single compilation.
+depcomp:      # generates 2 separate objects for the 2 libraries.  These two
+depcomp:  # always write the preprocessed file to stdout, regardless of -o.
+depcomp:  for arg
+depcomp:    case $arg in
+depcomp:      set fnord "$@" "$arg"
+depcomp:      shift # $arg
+depcomp:  # Require at least two characters before searching for `:'
+depcomp:  # in the target name.  This is to cope with DOS-style filenames:
+depcomp:  # a dependency such as `c:/foo/bar' could be seen as target `c' otherwise.
+depcomp:## correctly.  Breaking it into two sed invocations is a workaround.
+depcomp:  cleared=no eat=no
+depcomp:  for arg
+depcomp:    case $cleared in
+depcomp:      cleared=yes ;;
+depcomp:    case "$arg" in
+depcomp:      set fnord "$@" "$arg"; shift ;;
+depcomp:    # the object too, otherwise makedepend will parse it as a source file.
+depcomp:    -arch)
+depcomp:      set fnord "$@" "$arg"; shift ;;
+depcomp:## correctly.  Breaking it into two sed invocations is a workaround.
+depcomp:  for arg
+depcomp:    case $arg in
+depcomp:      set fnord "$@" "$arg"
+depcomp:      shift # $arg
+depcomp:  for arg
+depcomp:    case "$arg" in
+depcomp:	set fnord "$@" "$arg"
+depcomp:# Local Variables:
+depcomp:# time-stamp-start: "scriptversion="
+install-sh:# Permission is hereby granted, free of charge, to any person obtaining a copy
+install-sh:# of this software and associated documentation files (the "Software"), to
+install-sh:# deal in the Software without restriction, including without limitation the
+install-sh:# sell copies of the Software, and to permit persons to whom the Software is
+install-sh:# all copies or substantial portions of the Software.
+install-sh:# ings in this Software without prior written authorization from the X Consor-
+install-sh:# FSF changes to this file are in the public domain.
+install-sh:# Don't use :- since 4.3BSD and earlier shells don't like it.
+install-sh:# or use environment vars.
+install-sh:dir_arg=
+install-sh:dst_arg=
+install-sh:no_target_directory=
+install-sh:Environment variables override the default commands:
+install-sh:    -d) dir_arg=true;;
+install-sh:    -t) dst_arg=$2
+install-sh:    -T) no_target_directory=true;;
+install-sh:if test $# -ne 0 && test -z "$dir_arg$dst_arg"; then
+install-sh:  # When -d is used, all remaining arguments are directories to create.
+install-sh:  # Otherwise, the last argument is the destination.  Remove it from $@.
+install-sh:  for arg
+install-sh:    if test -n "$dst_arg"; then
+install-sh:      # $@ is not empty: it contains at least $arg.
+install-sh:      set fnord "$@" "$dst_arg"
+install-sh:    shift # arg
+install-sh:    dst_arg=$arg
+install-sh:  if test -z "$dir_arg"; then
+install-sh:  # It's OK to call `install-sh -d' without argument.
+install-sh:if test -z "$dir_arg"; then
+install-sh:  # Protect names starting with `-'.
+install-sh:  if test -n "$dir_arg"; then
+install-sh:    if test -z "$dst_arg"; then
+install-sh:    dst=$dst_arg
+install-sh:    # Protect names starting with `-'.
+install-sh:    # if double slashes aren't ignored.
+install-sh:      if test -n "$no_target_directory"; then
+install-sh:	echo "$0: $dst_arg: Is a directory" >&2
+install-sh:	if test -n "$dir_arg"; then
+install-sh:	    # POSIX mkdir -p sets u+wx bits regardless of umask, which
+install-sh:	      if test -z "$dir_arg" || {
+install-sh:		   # other-writeable bit of parent directory when it shouldn't.
+install-sh:	    # Don't fail if two instances are running concurrently.
+install-sh:	# Don't fail if two instances are running concurrently.
+install-sh:  if test -n "$dir_arg"; then
+install-sh:# Local variables:
+install-sh:# time-stamp-start: "scriptversion="
+log_file:unpacking source archive /nix/store/dr4pm7jfmz23apx3asnqg6g7aa2lndbq-sofia-sip
+log_file:aclocal.m4:16: warning: this file was generated for autoconf 2.65.
+log_file:You have another version of autoconf.  It may work, but is not guaranteed to.
+log_file:configure.ac:117: warning: The preprocessor macro `STDC_HEADERS' is obsolete.
+log_file:configure.ac:125: warning: your code may safely assume C89 semantics that RETSIGTYPE is void.
+log_file:Remove this warning and the `AC_CACHE_CHECK' when you adjust the code.
+log_file:configure.ac:227: warning: Update your code to rely only on HAVE_SYS_TIME_H,
+log_file:then remove this warning and the obsolete code below it.
+log_file:configure.ac:55: warning: AC_LANG_CONFTEST: no AC_LANG_SOURCE call detected in body
+log_file:configure.ac:55: warning: AC_LANG_CONFTEST: no AC_LANG_SOURCE call detected in body
+log_file:configure.ac:117: warning: The preprocessor macro `STDC_HEADERS' is obsolete.
+log_file:configure.ac:133: warning: your code may safely assume C89 semantics that RETSIGTYPE is void.
+log_file:configure.ac:133: Remove this warning and the `AC_CACHE_CHECK' when you adjust the code.
+log_file:configure.ac:247: warning: Update your code to rely only on HAVE_SYS_TIME_H,
+log_file:configure.ac:247: then remove this warning and the obsolete code below it.
+log_file:configure.ac:278: warning: The macro `AC_HEADER_TIME' is obsolete.
+log_file:checking target system type... x86_64-pc-linux-gnu
+log_file:checking whether make supports nested variables... yes
+log_file:checking whether we are cross compiling... no
+log_file:checking for wchar.h... yes
+log_file:checking for maximum warnings compiler flag... -Wall
+log_file:checking for ar... ar
+log_file:checking the maximum length of command line arguments... 1572864
+log_file:checking how to recognize dependent libraries... (cached) pass_all
+log_file:checking for ar... (cached) ar
+log_file:checking command to parse nm output from gcc object... ok
+log_file:checking whether the gcc linker (ld) supports shared libraries... yes
+log_file:checking dynamic linker characteristics... GNU/Linux ld.so
+log_file:checking how to hardcode library paths into programs... immediate
+log_file:checking whether stripping libraries is possible... yes
+log_file:checking if libtool supports shared libraries... yes
+log_file:checking whether to build shared libraries... yes
+log_file:checking whether to build static libraries... yes
+log_file:checking for gcc options needed to detect all undeclared functions... none needed
+log_file:checking for arpa/inet.h... yes
+log_file:checking whether MSG_TRUNC is declared... yes
+log_file:checking whether SO_RCVBUFFORCE is declared... yes
+log_file:checking whether SO_SNDBUFFORCE is declared... yes
+log_file:checking whether IP_ADD_MEMBERSHIP is declared... yes
+log_file:checking whether IP_MULTICAST_LOOP is declared... yes
+log_file:checking whether IP_MTU_DISCOVER is declared... yes
+log_file:checking for library containing clock_gettime... none required
+log_file:checking whether CLOCK_MONOTONIC is declared... yes
+log_file:checking for library containing socket... none required
+log_file:checking for library containing inet_ntop... none required
+log_file:checking for library containing getipnodebyname... no
+log_file:checking for library containing gethostbyname... none required
+log_file:checking for library containing getaddrinfo... none required
+log_file:checking for alarm... yes
+log_file:checking whether SIGPIPE is declared... yes
+log_file:*** in your path, or set the PKG_CONFIG environment variable
+log_file:*** Or see http://www.freedesktop.org/software/pkgconfig to get pkg-config.
+log_file:*** in your path, or set the PKG_CONFIG environment variable
+log_file:*** Or see http://www.freedesktop.org/software/pkgconfig to get pkg-config.
+log_file:checking for pthread_setschedparam in -lpthread... yes
+log_file:checking that generated files are newer than configure... done
+log_file:/nix/store/rcjksx6hx0i1sm8q1jhz5a415sb5xcwf-glibc-2.33-123-dev/include/bits/string_fortified.h:95:10: warning: '__builtin_strncpy' output truncated before terminating nul copying as many bytes from a string as its length [8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wstringop-truncation-Wstringop-truncation8;;]
+log_file:su_socket_port.c:172:3: warning: this 'if' clause does not guard... [8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmisleading-indentation-Wmisleading-indentation8;;]
+log_file:su_socket_port.c:173:34: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+log_file:su_socket_port.c:175:3: warning: this 'if' clause does not guard... [8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmisleading-indentation-Wmisleading-indentation8;;]
+log_file:su_socket_port.c:176:34: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+log_file:ar: `u' modifier ignored since `D' is the default (see `U')
+log_file:ar: `u' modifier ignored since `D' is the default (see `U')
+log_file:ar: `u' modifier ignored since `D' is the default (see `U')
+log_file:sres.c: In function 'sres_record_compare':
+log_file:sres.c:1642:7: warning: this 'if' clause does not guard... [8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmisleading-indentation-Wmisleading-indentation8;;]
+log_file:sres.c:1643:51: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+log_file:ar: `u' modifier ignored since `D' is the default (see `U')
+log_file:ar: `u' modifier ignored since `D' is the default (see `U')
+log_file:sdp.c:1861:3: warning: this 'if' clause does not guard... [8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmisleading-indentation-Wmisleading-indentation8;;]
+log_file: 1861 |   if (!aparam) aparam = "1"; if (!bparam) bparam = "1";
+log_file:sdp.c:1861:30: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+log_file: 1861 |   if (!aparam) aparam = "1"; if (!bparam) bparam = "1";
+log_file:sdp.c:1898:5: warning: this 'if' clause does not guard... [8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmisleading-indentation-Wmisleading-indentation8;;]
+log_file: 1898 |     if (!lparam) lparam = "1"; if (!rparam) rparam = "1";
+log_file:sdp.c:1898:32: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+log_file: 1898 |     if (!lparam) lparam = "1"; if (!rparam) rparam = "1";
+log_file:         LTCOMPILE sdp_parse.lo
+log_file:ar: `u' modifier ignored since `D' is the default (see `U')
+log_file:ar: `u' modifier ignored since `D' is the default (see `U')
+log_file:ar cru libtest_msg.a test_class.o test_table.o test_inlined.o
+log_file:ar: `u' modifier ignored since `D' is the default (see `U')
+log_file:         LTCOMPILE msg_parser.lo
+log_file:In file included from msg_parser.c:44:
+log_file:msg_parser.c: In function 'serialize_one':
+log_file:msg_parser.c:2020:14: warning: suggest parentheses around assignment used as truth value [8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wparentheses-Wparentheses8;;]
+log_file:         LTCOMPILE msg_parser_util.lo
+log_file:msg_date.c:251:5: warning: this 'if' clause does not guard... [8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmisleading-indentation-Wmisleading-indentation8;;]
+log_file:msg_date.c:251:44: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+log_file:ar: `u' modifier ignored since `D' is the default (see `U')
+log_file:         LTCOMPILE sip_parser.lo
+log_file:         LTCOMPILE sip_parser_table.lo
+log_file:ar: `u' modifier ignored since `D' is the default (see `U')
+log_file:         LTCOMPILE http_parser.lo
+log_file:http_parser.c: In function 'http_method_d':
+log_file:http_parser.c:467:13: warning: this 'if' clause does not guard... [8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmisleading-indentation-Wmisleading-indentation8;;]
+log_file:http_parser.c:467:58: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+log_file:http_parser.c:466:13: warning: this 'else' clause does not guard... [8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmisleading-indentation-Wmisleading-indentation8;;]
+log_file:http_parser.c:467:58: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'else'
+log_file:http_header.c:73:3: warning: this 'if' clause does not guard... [8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmisleading-indentation-Wmisleading-indentation8;;]
+log_file:http_header.c:76:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+log_file:         LTCOMPILE http_parser_table.lo
+log_file:ar: `u' modifier ignored since `D' is the default (see `U')
+log_file:stun_internal.h:90:66: warning: right-hand operand of comma expression has no effect [8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-value-Wunused-value8;;]
+log_file:stun_internal.h:90:66: warning: right-hand operand of comma expression has no effect [8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-value-Wunused-value8;;]
+log_file: 1350 |       STUN_ERROR(errno, stun_make_sharedsecret_req);
+log_file:stun.c:1358:5: warning: 'TLSv1_client_method' is deprecated [8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wdeprecated-declarations-Wdeprecated-declarations8;;]
+log_file:/nix/store/9b084i5zby1maswxq0kckn3ps0a8gln0-openssl-1.1.1n-dev/include/openssl/ssl.h:1879:1: note: declared here
+log_file:stun_internal.h:90:66: warning: right-hand operand of comma expression has no effect [8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-value-Wunused-value8;;]
+log_file:stun_internal.h:90:66: warning: right-hand operand of comma expression has no effect [8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-value-Wunused-value8;;]
+log_file:stun_internal.h:90:66: warning: right-hand operand of comma expression has no effect [8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-value-Wunused-value8;;]
+log_file:stun_internal.h:90:66: warning: right-hand operand of comma expression has no effect [8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-value-Wunused-value8;;]
+log_file:stun_internal.h:90:66: warning: right-hand operand of comma expression has no effect [8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-value-Wunused-value8;;]
+log_file:stun_internal.h:90:66: warning: right-hand operand of comma expression has no effect [8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-value-Wunused-value8;;]
+log_file:stun_internal.h:90:66: warning: right-hand operand of comma expression has no effect [8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-value-Wunused-value8;;]
+log_file:stun_internal.h:90:66: warning: right-hand operand of comma expression has no effect [8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-value-Wunused-value8;;]
+log_file:stun_internal.h:90:66: warning: right-hand operand of comma expression has no effect [8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-value-Wunused-value8;;]
+log_file:/nix/store/rcjksx6hx0i1sm8q1jhz5a415sb5xcwf-glibc-2.33-123-dev/include/bits/string_fortified.h:29:10: warning: '__builtin_memcpy' accessing 32 bytes at offsets 96 and 72 overlaps 8 bytes at offset 96 [8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wrestrict-Wrestrict8;;]
+log_file:/nix/store/rcjksx6hx0i1sm8q1jhz5a415sb5xcwf-glibc-2.33-123-dev/include/bits/string_fortified.h:29:10: warning: '__builtin_memcpy' accessing 32 bytes at offsets 96 and 72 overlaps 8 bytes at offset 96 [8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wrestrict-Wrestrict8;;]
+log_file:stun_internal.h:90:66: warning: right-hand operand of comma expression has no effect [8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-value-Wunused-value8;;]
+log_file:ar: `u' modifier ignored since `D' is the default (see `U')
+log_file:ar: `u' modifier ignored since `D' is the default (see `U')
+log_file:    inlined from 'tport_primary_by_name' at tport.c:4541:5:
+log_file:/nix/store/rcjksx6hx0i1sm8q1jhz5a415sb5xcwf-glibc-2.33-123-dev/include/bits/string_fortified.h:95:10: warning: '__builtin_strncpy' specified bound 64 equals destination size [8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wstringop-truncation-Wstringop-truncation8;;]
+log_file:    inlined from 'tport_primary_by_name' at tport.c:4542:5:
+log_file:/nix/store/rcjksx6hx0i1sm8q1jhz5a415sb5xcwf-glibc-2.33-123-dev/include/bits/string_fortified.h:95:10: warning: '__builtin_strncpy' specified bound 64 equals destination size [8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wstringop-truncation-Wstringop-truncation8;;]
+log_file:ar: `u' modifier ignored since `D' is the default (see `U')
+log_file:ar: `u' modifier ignored since `D' is the default (see `U')
+log_file:ar: `u' modifier ignored since `D' is the default (see `U')
+log_file:ar: `u' modifier ignored since `D' is the default (see `U')
+log_file:ar: `u' modifier ignored since `D' is the default (see `U')
+log_file:nua_client.c:1594:5: warning: this 'if' clause does not guard... [8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmisleading-indentation-Wmisleading-indentation8;;]
+log_file:nua_client.c:1596:7: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+log_file:         LTCOMPILE nua_params.lo
+log_file:         LTCOMPILE nua_registrar.lo
+log_file:ar: `u' modifier ignored since `D' is the default (see `U')
+log_file:libtool: link: warning: `-version-info/-version-number' is ignored for convenience libraries
+log_file:libtool: link: (cd .libs/libsofia-sip-ua.lax/libbnf.a && ar x "/build/sofia-sip/libsofia-sip-ua/bnf/.libs/libbnf.a")
+log_file:libtool: link: (cd .libs/libsofia-sip-ua.lax/libfeatures.a && ar x "/build/sofia-sip/libsofia-sip-ua/features/.libs/libfeatures.a")
+log_file:libtool: link: (cd .libs/libsofia-sip-ua.lax/libipt.a && ar x "/build/sofia-sip/libsofia-sip-ua/ipt/.libs/libipt.a")
+log_file:libtool: link: (cd .libs/libsofia-sip-ua.lax/libiptsec.a && ar x "/build/sofia-sip/libsofia-sip-ua/iptsec/.libs/libiptsec.a")
+log_file:libtool: link: (cd .libs/libsofia-sip-ua.lax/libmsg.a && ar x "/build/sofia-sip/libsofia-sip-ua/msg/.libs/libmsg.a")
+log_file:libtool: link: (cd .libs/libsofia-sip-ua.lax/libnea.a && ar x "/build/sofia-sip/libsofia-sip-ua/nea/.libs/libnea.a")
+log_file:libtool: link: (cd .libs/libsofia-sip-ua.lax/libnta.a && ar x "/build/sofia-sip/libsofia-sip-ua/nta/.libs/libnta.a")
+log_file:libtool: link: (cd .libs/libsofia-sip-ua.lax/libnua.a && ar x "/build/sofia-sip/libsofia-sip-ua/nua/.libs/libnua.a")
+log_file:libtool: link: (cd .libs/libsofia-sip-ua.lax/libsdp.a && ar x "/build/sofia-sip/libsofia-sip-ua/sdp/.libs/libsdp.a")
+log_file:libtool: link: (cd .libs/libsofia-sip-ua.lax/libsip.a && ar x "/build/sofia-sip/libsofia-sip-ua/sip/.libs/libsip.a")
+log_file:libtool: link: (cd .libs/libsofia-sip-ua.lax/libsoa.a && ar x "/build/sofia-sip/libsofia-sip-ua/soa/.libs/libsoa.a")
+log_file:libtool: link: (cd .libs/libsofia-sip-ua.lax/libsresolv.a && ar x "/build/sofia-sip/libsofia-sip-ua/sresolv/.libs/libsresolv.a")
+log_file:libtool: link: (cd .libs/libsofia-sip-ua.lax/libsu.a && ar x "/build/sofia-sip/libsofia-sip-ua/su/.libs/libsu.a")
+log_file:libtool: link: (cd .libs/libsofia-sip-ua.lax/libtport.a && ar x "/build/sofia-sip/libsofia-sip-ua/tport/.libs/libtport.a")
+log_file:libtool: link: (cd .libs/libsofia-sip-ua.lax/liburl.a && ar x "/build/sofia-sip/libsofia-sip-ua/url/.libs/liburl.a")
+log_file:libtool: link: (cd .libs/libsofia-sip-ua.lax/libstun.a && ar x "/build/sofia-sip/libsofia-sip-ua/stun/.libs/libstun.a")
+log_file:libtool: link: (cd .libs/libsofia-sip-ua.lax/libhttp.a && ar x "/build/sofia-sip/libsofia-sip-ua/http/.libs/libhttp.a")
+log_file:libtool: link: (cd .libs/libsofia-sip-ua.lax/libnth.a && ar x "/build/sofia-sip/libsofia-sip-ua/nth/.libs/libnth.a")
+log_file:libtool: link: ar cru .libs/libsofia-sip-ua.a   .libs/libsofia-sip-ua.lax/libbnf.a/bnf.o  .libs/libsofia-sip-ua.lax/libfeatures.a/features.o  .libs/libsofia-sip-ua.lax/libipt.a/base64.o .libs/libsofia-sip-ua.lax/libipt.a/token64.o  .libs/libsofia-sip-ua.lax/libiptsec.a/auth_client.o .libs/libsofia-sip-ua.lax/libiptsec.a/auth_plugin_delayed.o .libs/libsofia-sip-ua.lax/libiptsec.a/auth_module_http.o .libs/libsofia-sip-ua.lax/libiptsec.a/auth_module.o .libs/libsofia-sip-ua.lax/libiptsec.a/iptsec_debug.o .libs/libsofia-sip-ua.lax/libiptsec.a/auth_plugin.o .libs/libsofia-sip-ua.lax/libiptsec.a/auth_common.o .libs/libsofia-sip-ua.lax/libiptsec.a/auth_tag_ref.o .libs/libsofia-sip-ua.lax/libiptsec.a/auth_digest.o .libs/libsofia-sip-ua.lax/libiptsec.a/auth_tag.o .libs/libsofia-sip-ua.lax/libiptsec.a/auth_module_sip.o  .libs/libsofia-sip-ua.lax/libmsg.a/msg_mime_table.o .libs/libsofia-sip-ua.lax/libmsg.a/msg_header_copy.o .libs/libsofia-sip-ua.lax/libmsg.a/msg_parser_util.o .libs/libsofia-sip-ua.lax/libmsg.a/msg_auth.o .libs/libsofia-sip-ua.lax/libmsg.a/msg_inlined.o .libs/libsofia-sip-ua.lax/libmsg.a/msg_date.o .libs/libsofia-sip-ua.lax/libmsg.a/msg.o .libs/libsofia-sip-ua.lax/libmsg.a/msg_header_make.o .libs/libsofia-sip-ua.lax/libmsg.a/msg_tag.o .libs/libsofia-sip-ua.lax/libmsg.a/msg_mclass.o .libs/libsofia-sip-ua.lax/libmsg.a/msg_parser.o .libs/libsofia-sip-ua.lax/libmsg.a/msg_basic.o .libs/libsofia-sip-ua.lax/libmsg.a/msg_generic.o .libs/libsofia-sip-ua.lax/libmsg.a/msg_mime.o  .libs/libsofia-sip-ua.lax/libnea.a/nea_debug.o .libs/libsofia-sip-ua.lax/libnea.a/nea.o .libs/libsofia-sip-ua.lax/libnea.a/nea_tag_ref.o .libs/libsofia-sip-ua.lax/libnea.a/nea_event.o .libs/libsofia-sip-ua.lax/libnea.a/nea_tag.o .libs/libsofia-sip-ua.lax/libnea.a/nea_server.o  .libs/libsofia-sip-ua.lax/libnta.a/nta_check.o .libs/libsofia-sip-ua.lax/libnta.a/nta_tag_ref.o .libs/libsofia-sip-ua.lax/libnta.a/nta_tag.o .libs/libsofia-sip-ua.lax/libnta.a/sl_read_payload.o .libs/libsofia-sip-ua.lax/libnta.a/sl_utils_print.o .libs/libsofia-sip-ua.lax/libnta.a/nta.o .libs/libsofia-sip-ua.lax/libnta.a/sl_utils_log.o  .libs/libsofia-sip-ua.lax/libnua.a/outbound.o .libs/libsofia-sip-ua.lax/libnua.a/nua_publish.o .libs/libsofia-sip-ua.lax/libnua.a/nua_session.o .libs/libsofia-sip-ua.lax/libnua.a/nua_params.o .libs/libsofia-sip-ua.lax/libnua.a/nua_options.o .libs/libsofia-sip-ua.lax/libnua.a/nua_stack.o .libs/libsofia-sip-ua.lax/libnua.a/nua_registrar.o .libs/libsofia-sip-ua.lax/libnua.a/nua_event_server.o .libs/libsofia-sip-ua.lax/libnua.a/nua_tag.o .libs/libsofia-sip-ua.lax/libnua.a/nua_tag_ref.o .libs/libsofia-sip-ua.lax/libnua.a/nua_subnotref.o .libs/libsofia-sip-ua.lax/libnua.a/nua_message.o .libs/libsofia-sip-ua.lax/libnua.a/nua.o .libs/libsofia-sip-ua.lax/libnua.a/nua_common.o .libs/libsofia-sip-ua.lax/libnua.a/nua_register.o .libs/libsofia-sip-ua.lax/libnua.a/nua_dialog.o .libs/libsofia-sip-ua.lax/libnua.a/nua_client.o .libs/libsofia-sip-ua.lax/libnua.a/nua_server.o .libs/libsofia-sip-ua.lax/libnua.a/nua_extension.o .libs/libsofia-sip-ua.lax/libnua.a/nua_notifier.o  .libs/libsofia-sip-ua.lax/libsdp.a/sdp_tag_ref.o .libs/libsofia-sip-ua.lax/libsdp.a/sdp_print.o .libs/libsofia-sip-ua.lax/libsdp.a/sdp_tag.o .libs/libsofia-sip-ua.lax/libsdp.a/sdp.o .libs/libsofia-sip-ua.lax/libsdp.a/sdp_parse.o  .libs/libsofia-sip-ua.lax/libsip.a/sip_prack.o .libs/libsofia-sip-ua.lax/libsip.a/sip_feature.o .libs/libsofia-sip-ua.lax/libsip.a/sip_time.o .libs/libsofia-sip-ua.lax/libsip.a/sip_basic.o .libs/libsofia-sip-ua.lax/libsip.a/sip_mime.o .libs/libsofia-sip-ua.lax/libsip.a/sip_reason.o .libs/libsofia-sip-ua.lax/libsip.a/sip_security.o .libs/libsofia-sip-ua.lax/libsip.a/sip_extra.o .libs/libsofia-sip-ua.lax/libsip.a/sip_inlined.o .libs/libsofia-sip-ua.lax/libsip.a/sip_tag_class.o .libs/libsofia-sip-ua.lax/libsip.a/sip_header.o .libs/libsofia-sip-ua.lax/libsip.a/sip_util.o .libs/libsofia-sip-ua.lax/libsip.a/sip_caller_prefs.o .libs/libsofia-sip-ua.lax/libsip.a/sip_status.o .libs/libsofia-sip-ua.lax/libsip.a/sip_tag.o .libs/libsofia-sip-ua.lax/libsip.a/sip_refer.o .libs/libsofia-sip-ua.lax/libsip.a/sip_tag_ref.o .libs/libsofia-sip-ua.lax/libsip.a/sip_parser_table.o .libs/libsofia-sip-ua.lax/libsip.a/sip_parser.o .libs/libsofia-sip-ua.lax/libsip.a/sip_session.o .libs/libsofia-sip-ua.lax/libsip.a/sip_event.o .libs/libsofia-sip-ua.lax/libsip.a/sip_pref_util.o  .libs/libsofia-sip-ua.lax/libsoa.a/soa_tag_ref.o .libs/libsofia-sip-ua.lax/libsoa.a/soa.o .libs/libsofia-sip-ua.lax/libsoa.a/soa_tag.o .libs/libsofia-sip-ua.lax/libsoa.a/soa_static.o  .libs/libsofia-sip-ua.lax/libsresolv.a/sres_cache.o .libs/libsofia-sip-ua.lax/libsresolv.a/sres_sip.o .libs/libsofia-sip-ua.lax/libsresolv.a/sres_blocking.o .libs/libsofia-sip-ua.lax/libsresolv.a/sres.o .libs/libsofia-sip-ua.lax/libsresolv.a/sresolv.o  .libs/libsofia-sip-ua.lax/libsu.a/su_wait.o .libs/libsofia-sip-ua.lax/libsu.a/su_tag.o .libs/libsofia-sip-ua.lax/libsu.a/su.o .libs/libsofia-sip-ua.lax/libsu.a/su_epoll_port.o .libs/libsofia-sip-ua.lax/libsu.a/su_global_log.o .libs/libsofia-sip-ua.lax/libsu.a/su_taglist.o .libs/libsofia-sip-ua.lax/libsu.a/su_time.o .libs/libsofia-sip-ua.lax/libsu.a/su_md5.o .libs/libsofia-sip-ua.lax/libsu.a/su_strlst.o .libs/libsofia-sip-ua.lax/libsu.a/su_sprintf.o .libs/libsofia-sip-ua.lax/libsu.a/smoothsort.o .libs/libsofia-sip-ua.lax/libsu.a/su_pthread_port.o .libs/libsofia-sip-ua.lax/libsu.a/su_localinfo.o .libs/libsofia-sip-ua.lax/libsu.a/su_addrinfo.o .libs/libsofia-sip-ua.lax/libsu.a/su_default_log.o .libs/libsofia-sip-ua.lax/libsu.a/su_errno.o .libs/libsofia-sip-ua.lax/libsu.a/su_select_port.o .libs/libsofia-sip-ua.lax/libsu.a/su_socket_port.o .libs/libsofia-sip-ua.lax/libsu.a/su_timer.o .libs/libsofia-sip-ua.lax/libsu.a/su_root.o .libs/libsofia-sip-ua.lax/libsu.a/su_poll_port.o .libs/libsofia-sip-ua.lax/libsu.a/su_devpoll_port.o .libs/libsofia-sip-ua.lax/libsu.a/su_string.o .libs/libsofia-sip-ua.lax/libsu.a/su_tag_io.o .libs/libsofia-sip-ua.lax/libsu.a/su_kqueue_port.o .libs/libsofia-sip-ua.lax/libsu.a/memspn.o .libs/libsofia-sip-ua.lax/libsu.a/memcspn.o .libs/libsofia-sip-ua.lax/libsu.a/su_time0.o .libs/libsofia-sip-ua.lax/libsu.a/su_base_port.o .libs/libsofia-sip-ua.lax/libsu.a/su_alloc.o .libs/libsofia-sip-ua.lax/libsu.a/su_bm.o .libs/libsofia-sip-ua.lax/libsu.a/su_vector.o .libs/libsofia-sip-ua.lax/libsu.a/su_strdup.o .libs/libsofia-sip-ua.lax/libsu.a/su_alloc_lock.o .libs/libsofia-sip-ua.lax/libsu.a/su_log.o .libs/libsofia-sip-ua.lax/libsu.a/su_port.o .libs/libsofia-sip-ua.lax/libsu.a/string0.o .libs/libsofia-sip-ua.lax/libsu.a/su_uniqueid.o .libs/libsofia-sip-ua.lax/libsu.a/su_os_nw.o  .libs/libsofia-sip-ua.lax/libtport.a/tport_tag_ref.o .libs/libsofia-sip-ua.lax/libtport.a/tport_type_sctp.o .libs/libsofia-sip-ua.lax/libtport.a/tport_logging.o .libs/libsofia-sip-ua.lax/libtport.a/tport_type_tcp.o .libs/libsofia-sip-ua.lax/libtport.a/tport_type_udp.o .libs/libsofia-sip-ua.lax/libtport.a/tport_type_stun.o .libs/libsofia-sip-ua.lax/libtport.a/tport_tls.o .libs/libsofia-sip-ua.lax/libtport.a/tport_type_ws.o .libs/libsofia-sip-ua.lax/libtport.a/tport_type_tls.o .libs/libsofia-sip-ua.lax/libtport.a/tport_tag.o .libs/libsofia-sip-ua.lax/libtport.a/tport.o .libs/libsofia-sip-ua.lax/libtport.a/ws.o .libs/libsofia-sip-ua.lax/libtport.a/tport_type_connect.o .libs/libsofia-sip-ua.lax/libtport.a/tport_stub_sigcomp.o .libs/libsofia-sip-ua.lax/libtport.a/tport_stub_stun.o  .libs/libsofia-sip-ua.lax/liburl.a/url.o .libs/libsofia-sip-ua.lax/liburl.a/url_tag.o .libs/libsofia-sip-ua.lax/liburl.a/url_tag_ref.o  .libs/libsofia-sip-ua.lax/libstun.a/stun_tag.o .libs/libsofia-sip-ua.lax/libstun.a/stun_tag_ref.o .libs/libsofia-sip-ua.lax/libstun.a/stun.o .libs/libsofia-sip-ua.lax/libstun.a/stun_common.o .libs/libsofia-sip-ua.lax/libstun.a/stun_mini.o .libs/libsofia-sip-ua.lax/libstun.a/stun_dns.o  .libs/libsofia-sip-ua.lax/libhttp.a/http_tag_ref.o .libs/libsofia-sip-ua.lax/libhttp.a/http_parser.o .libs/libsofia-sip-ua.lax/libhttp.a/http_inlined.o .libs/libsofia-sip-ua.lax/libhttp.a/http_status.o .libs/libsofia-sip-ua.lax/libhttp.a/http_extra.o .libs/libsofia-sip-ua.lax/libhttp.a/http_parser_table.o .libs/libsofia-sip-ua.lax/libhttp.a/http_basic.o .libs/libsofia-sip-ua.lax/libhttp.a/http_tag.o .libs/libsofia-sip-ua.lax/libhttp.a/http_header.o .libs/libsofia-sip-ua.lax/libhttp.a/http_tag_class.o  .libs/libsofia-sip-ua.lax/libnth.a/nth_tag.o .libs/libsofia-sip-ua.lax/libnth.a/nth_tag_ref.o .libs/libsofia-sip-ua.lax/libnth.a/nth_client.o .libs/libsofia-sip-ua.lax/libnth.a/nth_server.o
+log_file:ar: `u' modifier ignored since `D' is the default (see `U')
+log_file:shrinking RPATHs of ELF executables and libraries in /nix/store/5k8x24h7ygl9p8jz0qv868fz2vvh18s4-sofia-sip
+log_file:shrinking /nix/store/5k8x24h7ygl9p8jz0qv868fz2vvh18s4-sofia-sip/libsofia-sip-ua/sdp/.libs/sdp_parse.o
+log_file:shrinking /nix/store/5k8x24h7ygl9p8jz0qv868fz2vvh18s4-sofia-sip/libsofia-sip-ua/sdp/sdp_parse.o
+log_file:shrinking /nix/store/5k8x24h7ygl9p8jz0qv868fz2vvh18s4-sofia-sip/libsofia-sip-ua/nua/nua_params.o
+log_file:shrinking /nix/store/5k8x24h7ygl9p8jz0qv868fz2vvh18s4-sofia-sip/libsofia-sip-ua/nua/nua_registrar.o
+log_file:shrinking /nix/store/5k8x24h7ygl9p8jz0qv868fz2vvh18s4-sofia-sip/libsofia-sip-ua/nua/.libs/nua_params.o
+log_file:shrinking /nix/store/5k8x24h7ygl9p8jz0qv868fz2vvh18s4-sofia-sip/libsofia-sip-ua/nua/.libs/nua_registrar.o
+log_file:shrinking /nix/store/5k8x24h7ygl9p8jz0qv868fz2vvh18s4-sofia-sip/libsofia-sip-ua/msg/msg_parser_util.o
+log_file:shrinking /nix/store/5k8x24h7ygl9p8jz0qv868fz2vvh18s4-sofia-sip/libsofia-sip-ua/msg/.libs/msg_parser_util.o
+log_file:shrinking /nix/store/5k8x24h7ygl9p8jz0qv868fz2vvh18s4-sofia-sip/libsofia-sip-ua/msg/.libs/msg_parser.o
+log_file:shrinking /nix/store/5k8x24h7ygl9p8jz0qv868fz2vvh18s4-sofia-sip/libsofia-sip-ua/msg/msg_parser.o
+log_file:shrinking /nix/store/5k8x24h7ygl9p8jz0qv868fz2vvh18s4-sofia-sip/libsofia-sip-ua/http/http_parser.o
+log_file:shrinking /nix/store/5k8x24h7ygl9p8jz0qv868fz2vvh18s4-sofia-sip/libsofia-sip-ua/http/http_parser_table.o
+log_file:shrinking /nix/store/5k8x24h7ygl9p8jz0qv868fz2vvh18s4-sofia-sip/libsofia-sip-ua/http/.libs/http_parser.o
+log_file:shrinking /nix/store/5k8x24h7ygl9p8jz0qv868fz2vvh18s4-sofia-sip/libsofia-sip-ua/http/.libs/http_parser_table.o
+log_file:shrinking /nix/store/5k8x24h7ygl9p8jz0qv868fz2vvh18s4-sofia-sip/libsofia-sip-ua/sip/.libs/sip_parser_table.o
+log_file:shrinking /nix/store/5k8x24h7ygl9p8jz0qv868fz2vvh18s4-sofia-sip/libsofia-sip-ua/sip/.libs/sip_parser.o
+log_file:shrinking /nix/store/5k8x24h7ygl9p8jz0qv868fz2vvh18s4-sofia-sip/libsofia-sip-ua/sip/sip_parser_table.o
+log_file:shrinking /nix/store/5k8x24h7ygl9p8jz0qv868fz2vvh18s4-sofia-sip/libsofia-sip-ua/sip/sip_parser.o
+log_file_fix1:unpacking source archive /nix/store/6md8r2gmgsn4p80msdznj3abd19w1asp-sofia-sip
+log_file_fix1:aclocal.m4:16: warning: this file was generated for autoconf 2.65.
+log_file_fix1:You have another version of autoconf.  It may work, but is not guaranteed to.
+log_file_fix1:configure.ac:117: warning: The preprocessor macro `STDC_HEADERS' is obsolete.
+log_file_fix1:configure.ac:125: warning: your code may safely assume C89 semantics that RETSIGTYPE is void.
+log_file_fix1:Remove this warning and the `AC_CACHE_CHECK' when you adjust the code.
+log_file_fix1:configure.ac:227: warning: Update your code to rely only on HAVE_SYS_TIME_H,
+log_file_fix1:then remove this warning and the obsolete code below it.
+log_file_fix1:Can't exec "aclocal-1.9": No such file or directory at /nix/store/19pkwsqf04m1xz0ln4dvdhy7z7g7l6bb-autoconf-2.71/share/autoconf/Autom4te/FileUtils.pm line 275.
+log_file_fix1:+ xargs chmod +x
+log_file_fix1:configure.ac:55: warning: AC_LANG_CONFTEST: no AC_LANG_SOURCE call detected in body
+log_file_fix1:configure.ac:55: warning: AC_LANG_CONFTEST: no AC_LANG_SOURCE call detected in body
+log_file_fix1:configure.ac:117: warning: The preprocessor macro `STDC_HEADERS' is obsolete.
+log_file_fix1:configure.ac:133: warning: your code may safely assume C89 semantics that RETSIGTYPE is void.
+log_file_fix1:configure.ac:133: Remove this warning and the `AC_CACHE_CHECK' when you adjust the code.
+log_file_fix1:configure.ac:247: warning: Update your code to rely only on HAVE_SYS_TIME_H,
+log_file_fix1:configure.ac:247: then remove this warning and the obsolete code below it.
+log_file_fix1:configure.ac:278: warning: The macro `AC_HEADER_TIME' is obsolete.
+log_file_fix1:checking target system type... x86_64-pc-linux-gnu
+log_file_fix1:checking whether make supports nested variables... yes
+log_file_fix1:checking whether we are cross compiling... no
+log_file_fix1:checking for wchar.h... yes
+log_file_fix1:checking for maximum warnings compiler flag... -Wall
+log_file_fix1:checking for ar... ar
+log_file_fix1:checking the maximum length of command line arguments... 1572864
+log_file_fix1:checking how to recognize dependent libraries... (cached) pass_all
+log_file_fix1:checking for ar... (cached) ar
+log_file_fix1:checking command to parse nm output from gcc object... ok
+log_file_fix1:checking whether the gcc linker (ld) supports shared libraries... yes
+log_file_fix1:checking dynamic linker characteristics... GNU/Linux ld.so
+log_file_fix1:checking how to hardcode library paths into programs... immediate
+log_file_fix1:checking whether stripping libraries is possible... yes
+log_file_fix1:checking if libtool supports shared libraries... yes
+log_file_fix1:checking whether to build shared libraries... yes
+log_file_fix1:checking whether to build static libraries... yes
+log_file_fix1:checking for gcc options needed to detect all undeclared functions... none needed
+log_file_fix1:checking for arpa/inet.h... yes
+log_file_fix1:checking whether MSG_TRUNC is declared... yes
+log_file_fix1:checking whether SO_RCVBUFFORCE is declared... yes
+log_file_fix1:checking whether SO_SNDBUFFORCE is declared... yes
+log_file_fix1:checking whether IP_ADD_MEMBERSHIP is declared... yes
+log_file_fix1:checking whether IP_MULTICAST_LOOP is declared... yes
+log_file_fix1:checking whether IP_MTU_DISCOVER is declared... yes
+log_file_fix1:checking for library containing clock_gettime... none required
+log_file_fix1:checking whether CLOCK_MONOTONIC is declared... yes
+log_file_fix1:checking for library containing socket... none required
+log_file_fix1:checking for library containing inet_ntop... none required
+log_file_fix1:checking for library containing getipnodebyname... no
+log_file_fix1:checking for library containing gethostbyname... none required
+log_file_fix1:checking for library containing getaddrinfo... none required
+log_file_fix1:checking for alarm... yes
+log_file_fix1:checking whether SIGPIPE is declared... yes
+log_file_fix1:checking for pthread_setschedparam in -lpthread... yes
+log_file_fix1:checking that generated files are newer than configure... done
+log_file_fix1:/nix/store/rcjksx6hx0i1sm8q1jhz5a415sb5xcwf-glibc-2.33-123-dev/include/bits/string_fortified.h:95:10: warning: '__builtin_strncpy' output truncated before terminating nul copying as many bytes from a string as its length [8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wstringop-truncation-Wstringop-truncation8;;]
+log_file_fix1:ar: `u' modifier ignored since `D' is the default (see `U')
+log_file_fix1:ar: `u' modifier ignored since `D' is the default (see `U')
+log_file_fix1:ar: `u' modifier ignored since `D' is the default (see `U')
+log_file_fix1:ar: `u' modifier ignored since `D' is the default (see `U')
+log_file_fix1:ar: `u' modifier ignored since `D' is the default (see `U')
+log_file_fix1:         LTCOMPILE sdp_parse.lo
+log_file_fix1:ar: `u' modifier ignored since `D' is the default (see `U')
+log_file_fix1:ar: `u' modifier ignored since `D' is the default (see `U')
+log_file_fix1:ar cru libtest_msg.a test_class.o test_table.o test_inlined.o
+log_file_fix1:ar: `u' modifier ignored since `D' is the default (see `U')
+log_file_fix1:         LTCOMPILE msg_parser.lo
+log_file_fix1:         LTCOMPILE msg_parser_util.lo
+log_file_fix1:ar: `u' modifier ignored since `D' is the default (see `U')
+log_file_fix1:         LTCOMPILE sip_parser.lo
+log_file_fix1:         LTCOMPILE sip_parser_table.lo
+log_file_fix1:ar: `u' modifier ignored since `D' is the default (see `U')
+log_file_fix1:         LTCOMPILE http_parser.lo
+log_file_fix1:         LTCOMPILE http_parser_table.lo
+log_file_fix1:ar: `u' modifier ignored since `D' is the default (see `U')
+log_file_fix1:stun_internal.h:90:66: warning: right-hand operand of comma expression has no effect [8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-value-Wunused-value8;;]
+log_file_fix1:stun_internal.h:90:66: warning: right-hand operand of comma expression has no effect [8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-value-Wunused-value8;;]
+log_file_fix1: 1350 |       STUN_ERROR(errno, stun_make_sharedsecret_req);
+log_file_fix1:stun.c:1358:5: warning: 'TLSv1_client_method' is deprecated [8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wdeprecated-declarations-Wdeprecated-declarations8;;]
+log_file_fix1:/nix/store/9b084i5zby1maswxq0kckn3ps0a8gln0-openssl-1.1.1n-dev/include/openssl/ssl.h:1879:1: note: declared here
+log_file_fix1:stun_internal.h:90:66: warning: right-hand operand of comma expression has no effect [8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-value-Wunused-value8;;]
+log_file_fix1:stun_internal.h:90:66: warning: right-hand operand of comma expression has no effect [8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-value-Wunused-value8;;]
+log_file_fix1:stun_internal.h:90:66: warning: right-hand operand of comma expression has no effect [8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-value-Wunused-value8;;]
+log_file_fix1:stun_internal.h:90:66: warning: right-hand operand of comma expression has no effect [8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-value-Wunused-value8;;]
+log_file_fix1:stun_internal.h:90:66: warning: right-hand operand of comma expression has no effect [8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-value-Wunused-value8;;]
+log_file_fix1:stun_internal.h:90:66: warning: right-hand operand of comma expression has no effect [8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-value-Wunused-value8;;]
+log_file_fix1:stun_internal.h:90:66: warning: right-hand operand of comma expression has no effect [8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-value-Wunused-value8;;]
+log_file_fix1:stun_internal.h:90:66: warning: right-hand operand of comma expression has no effect [8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-value-Wunused-value8;;]
+log_file_fix1:stun_internal.h:90:66: warning: right-hand operand of comma expression has no effect [8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-value-Wunused-value8;;]
+log_file_fix1:/nix/store/rcjksx6hx0i1sm8q1jhz5a415sb5xcwf-glibc-2.33-123-dev/include/bits/string_fortified.h:29:10: warning: '__builtin_memcpy' accessing 32 bytes at offsets 96 and 72 overlaps 8 bytes at offset 96 [8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wrestrict-Wrestrict8;;]
+log_file_fix1:/nix/store/rcjksx6hx0i1sm8q1jhz5a415sb5xcwf-glibc-2.33-123-dev/include/bits/string_fortified.h:29:10: warning: '__builtin_memcpy' accessing 32 bytes at offsets 96 and 72 overlaps 8 bytes at offset 96 [8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wrestrict-Wrestrict8;;]
+log_file_fix1:stun_internal.h:90:66: warning: right-hand operand of comma expression has no effect [8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-value-Wunused-value8;;]
+log_file_fix1:ar: `u' modifier ignored since `D' is the default (see `U')
+log_file_fix1:ar: `u' modifier ignored since `D' is the default (see `U')
+log_file_fix1:    inlined from 'tport_primary_by_name' at tport.c:4541:5:
+log_file_fix1:/nix/store/rcjksx6hx0i1sm8q1jhz5a415sb5xcwf-glibc-2.33-123-dev/include/bits/string_fortified.h:95:10: warning: '__builtin_strncpy' specified bound 64 equals destination size [8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wstringop-truncation-Wstringop-truncation8;;]
+log_file_fix1:    inlined from 'tport_primary_by_name' at tport.c:4542:5:
+log_file_fix1:/nix/store/rcjksx6hx0i1sm8q1jhz5a415sb5xcwf-glibc-2.33-123-dev/include/bits/string_fortified.h:95:10: warning: '__builtin_strncpy' specified bound 64 equals destination size [8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wstringop-truncation-Wstringop-truncation8;;]
+log_file_fix1:ar: `u' modifier ignored since `D' is the default (see `U')
+log_file_fix1:ar: `u' modifier ignored since `D' is the default (see `U')
+log_file_fix1:ar: `u' modifier ignored since `D' is the default (see `U')
+log_file_fix1:ar: `u' modifier ignored since `D' is the default (see `U')
+log_file_fix1:ar: `u' modifier ignored since `D' is the default (see `U')
+log_file_fix1:         LTCOMPILE nua_params.lo
+log_file_fix1:         LTCOMPILE nua_registrar.lo
+log_file_fix1:ar: `u' modifier ignored since `D' is the default (see `U')
+log_file_fix1:libtool: link: warning: `-version-info/-version-number' is ignored for convenience libraries
+log_file_fix1:libtool: link: (cd .libs/libsofia-sip-ua.lax/libbnf.a && ar x "/build/sofia-sip/libsofia-sip-ua/bnf/.libs/libbnf.a")
+log_file_fix1:libtool: link: (cd .libs/libsofia-sip-ua.lax/libfeatures.a && ar x "/build/sofia-sip/libsofia-sip-ua/features/.libs/libfeatures.a")
+log_file_fix1:libtool: link: (cd .libs/libsofia-sip-ua.lax/libipt.a && ar x "/build/sofia-sip/libsofia-sip-ua/ipt/.libs/libipt.a")
+log_file_fix1:libtool: link: (cd .libs/libsofia-sip-ua.lax/libiptsec.a && ar x "/build/sofia-sip/libsofia-sip-ua/iptsec/.libs/libiptsec.a")
+log_file_fix1:libtool: link: (cd .libs/libsofia-sip-ua.lax/libmsg.a && ar x "/build/sofia-sip/libsofia-sip-ua/msg/.libs/libmsg.a")
+log_file_fix1:libtool: link: (cd .libs/libsofia-sip-ua.lax/libnea.a && ar x "/build/sofia-sip/libsofia-sip-ua/nea/.libs/libnea.a")
+log_file_fix1:libtool: link: (cd .libs/libsofia-sip-ua.lax/libnta.a && ar x "/build/sofia-sip/libsofia-sip-ua/nta/.libs/libnta.a")
+log_file_fix1:libtool: link: (cd .libs/libsofia-sip-ua.lax/libnua.a && ar x "/build/sofia-sip/libsofia-sip-ua/nua/.libs/libnua.a")
+log_file_fix1:libtool: link: (cd .libs/libsofia-sip-ua.lax/libsdp.a && ar x "/build/sofia-sip/libsofia-sip-ua/sdp/.libs/libsdp.a")
+log_file_fix1:libtool: link: (cd .libs/libsofia-sip-ua.lax/libsip.a && ar x "/build/sofia-sip/libsofia-sip-ua/sip/.libs/libsip.a")
+log_file_fix1:libtool: link: (cd .libs/libsofia-sip-ua.lax/libsoa.a && ar x "/build/sofia-sip/libsofia-sip-ua/soa/.libs/libsoa.a")
+log_file_fix1:libtool: link: (cd .libs/libsofia-sip-ua.lax/libsresolv.a && ar x "/build/sofia-sip/libsofia-sip-ua/sresolv/.libs/libsresolv.a")
+log_file_fix1:libtool: link: (cd .libs/libsofia-sip-ua.lax/libsu.a && ar x "/build/sofia-sip/libsofia-sip-ua/su/.libs/libsu.a")
+log_file_fix1:libtool: link: (cd .libs/libsofia-sip-ua.lax/libtport.a && ar x "/build/sofia-sip/libsofia-sip-ua/tport/.libs/libtport.a")
+log_file_fix1:libtool: link: (cd .libs/libsofia-sip-ua.lax/liburl.a && ar x "/build/sofia-sip/libsofia-sip-ua/url/.libs/liburl.a")
+log_file_fix1:libtool: link: (cd .libs/libsofia-sip-ua.lax/libstun.a && ar x "/build/sofia-sip/libsofia-sip-ua/stun/.libs/libstun.a")
+log_file_fix1:libtool: link: (cd .libs/libsofia-sip-ua.lax/libhttp.a && ar x "/build/sofia-sip/libsofia-sip-ua/http/.libs/libhttp.a")
+log_file_fix1:libtool: link: (cd .libs/libsofia-sip-ua.lax/libnth.a && ar x "/build/sofia-sip/libsofia-sip-ua/nth/.libs/libnth.a")
+log_file_fix1:libtool: link: ar cru .libs/libsofia-sip-ua.a   .libs/libsofia-sip-ua.lax/libbnf.a/bnf.o  .libs/libsofia-sip-ua.lax/libfeatures.a/features.o  .libs/libsofia-sip-ua.lax/libipt.a/base64.o .libs/libsofia-sip-ua.lax/libipt.a/token64.o  .libs/libsofia-sip-ua.lax/libiptsec.a/auth_client.o .libs/libsofia-sip-ua.lax/libiptsec.a/auth_plugin_delayed.o .libs/libsofia-sip-ua.lax/libiptsec.a/auth_module_http.o .libs/libsofia-sip-ua.lax/libiptsec.a/auth_module.o .libs/libsofia-sip-ua.lax/libiptsec.a/iptsec_debug.o .libs/libsofia-sip-ua.lax/libiptsec.a/auth_plugin.o .libs/libsofia-sip-ua.lax/libiptsec.a/auth_common.o .libs/libsofia-sip-ua.lax/libiptsec.a/auth_tag_ref.o .libs/libsofia-sip-ua.lax/libiptsec.a/auth_digest.o .libs/libsofia-sip-ua.lax/libiptsec.a/auth_tag.o .libs/libsofia-sip-ua.lax/libiptsec.a/auth_module_sip.o  .libs/libsofia-sip-ua.lax/libmsg.a/msg_mime_table.o .libs/libsofia-sip-ua.lax/libmsg.a/msg_header_copy.o .libs/libsofia-sip-ua.lax/libmsg.a/msg_parser_util.o .libs/libsofia-sip-ua.lax/libmsg.a/msg_auth.o .libs/libsofia-sip-ua.lax/libmsg.a/msg_inlined.o .libs/libsofia-sip-ua.lax/libmsg.a/msg_date.o .libs/libsofia-sip-ua.lax/libmsg.a/msg.o .libs/libsofia-sip-ua.lax/libmsg.a/msg_header_make.o .libs/libsofia-sip-ua.lax/libmsg.a/msg_tag.o .libs/libsofia-sip-ua.lax/libmsg.a/msg_mclass.o .libs/libsofia-sip-ua.lax/libmsg.a/msg_parser.o .libs/libsofia-sip-ua.lax/libmsg.a/msg_basic.o .libs/libsofia-sip-ua.lax/libmsg.a/msg_generic.o .libs/libsofia-sip-ua.lax/libmsg.a/msg_mime.o  .libs/libsofia-sip-ua.lax/libnea.a/nea_debug.o .libs/libsofia-sip-ua.lax/libnea.a/nea.o .libs/libsofia-sip-ua.lax/libnea.a/nea_tag_ref.o .libs/libsofia-sip-ua.lax/libnea.a/nea_event.o .libs/libsofia-sip-ua.lax/libnea.a/nea_tag.o .libs/libsofia-sip-ua.lax/libnea.a/nea_server.o  .libs/libsofia-sip-ua.lax/libnta.a/nta_check.o .libs/libsofia-sip-ua.lax/libnta.a/nta_tag_ref.o .libs/libsofia-sip-ua.lax/libnta.a/nta_tag.o .libs/libsofia-sip-ua.lax/libnta.a/sl_read_payload.o .libs/libsofia-sip-ua.lax/libnta.a/sl_utils_print.o .libs/libsofia-sip-ua.lax/libnta.a/nta.o .libs/libsofia-sip-ua.lax/libnta.a/sl_utils_log.o  .libs/libsofia-sip-ua.lax/libnua.a/outbound.o .libs/libsofia-sip-ua.lax/libnua.a/nua_publish.o .libs/libsofia-sip-ua.lax/libnua.a/nua_session.o .libs/libsofia-sip-ua.lax/libnua.a/nua_params.o .libs/libsofia-sip-ua.lax/libnua.a/nua_options.o .libs/libsofia-sip-ua.lax/libnua.a/nua_stack.o .libs/libsofia-sip-ua.lax/libnua.a/nua_registrar.o .libs/libsofia-sip-ua.lax/libnua.a/nua_event_server.o .libs/libsofia-sip-ua.lax/libnua.a/nua_tag.o .libs/libsofia-sip-ua.lax/libnua.a/nua_tag_ref.o .libs/libsofia-sip-ua.lax/libnua.a/nua_subnotref.o .libs/libsofia-sip-ua.lax/libnua.a/nua_message.o .libs/libsofia-sip-ua.lax/libnua.a/nua.o .libs/libsofia-sip-ua.lax/libnua.a/nua_common.o .libs/libsofia-sip-ua.lax/libnua.a/nua_register.o .libs/libsofia-sip-ua.lax/libnua.a/nua_dialog.o .libs/libsofia-sip-ua.lax/libnua.a/nua_client.o .libs/libsofia-sip-ua.lax/libnua.a/nua_server.o .libs/libsofia-sip-ua.lax/libnua.a/nua_extension.o .libs/libsofia-sip-ua.lax/libnua.a/nua_notifier.o  .libs/libsofia-sip-ua.lax/libsdp.a/sdp_tag_ref.o .libs/libsofia-sip-ua.lax/libsdp.a/sdp_print.o .libs/libsofia-sip-ua.lax/libsdp.a/sdp_tag.o .libs/libsofia-sip-ua.lax/libsdp.a/sdp.o .libs/libsofia-sip-ua.lax/libsdp.a/sdp_parse.o  .libs/libsofia-sip-ua.lax/libsip.a/sip_prack.o .libs/libsofia-sip-ua.lax/libsip.a/sip_feature.o .libs/libsofia-sip-ua.lax/libsip.a/sip_time.o .libs/libsofia-sip-ua.lax/libsip.a/sip_basic.o .libs/libsofia-sip-ua.lax/libsip.a/sip_mime.o .libs/libsofia-sip-ua.lax/libsip.a/sip_reason.o .libs/libsofia-sip-ua.lax/libsip.a/sip_security.o .libs/libsofia-sip-ua.lax/libsip.a/sip_extra.o .libs/libsofia-sip-ua.lax/libsip.a/sip_inlined.o .libs/libsofia-sip-ua.lax/libsip.a/sip_tag_class.o .libs/libsofia-sip-ua.lax/libsip.a/sip_header.o .libs/libsofia-sip-ua.lax/libsip.a/sip_util.o .libs/libsofia-sip-ua.lax/libsip.a/sip_caller_prefs.o .libs/libsofia-sip-ua.lax/libsip.a/sip_status.o .libs/libsofia-sip-ua.lax/libsip.a/sip_tag.o .libs/libsofia-sip-ua.lax/libsip.a/sip_refer.o .libs/libsofia-sip-ua.lax/libsip.a/sip_tag_ref.o .libs/libsofia-sip-ua.lax/libsip.a/sip_parser_table.o .libs/libsofia-sip-ua.lax/libsip.a/sip_parser.o .libs/libsofia-sip-ua.lax/libsip.a/sip_session.o .libs/libsofia-sip-ua.lax/libsip.a/sip_event.o .libs/libsofia-sip-ua.lax/libsip.a/sip_pref_util.o  .libs/libsofia-sip-ua.lax/libsoa.a/soa_tag_ref.o .libs/libsofia-sip-ua.lax/libsoa.a/soa.o .libs/libsofia-sip-ua.lax/libsoa.a/soa_tag.o .libs/libsofia-sip-ua.lax/libsoa.a/soa_static.o  .libs/libsofia-sip-ua.lax/libsresolv.a/sres_cache.o .libs/libsofia-sip-ua.lax/libsresolv.a/sres_sip.o .libs/libsofia-sip-ua.lax/libsresolv.a/sres_blocking.o .libs/libsofia-sip-ua.lax/libsresolv.a/sres.o .libs/libsofia-sip-ua.lax/libsresolv.a/sresolv.o  .libs/libsofia-sip-ua.lax/libsu.a/su_wait.o .libs/libsofia-sip-ua.lax/libsu.a/su_tag.o .libs/libsofia-sip-ua.lax/libsu.a/su.o .libs/libsofia-sip-ua.lax/libsu.a/su_epoll_port.o .libs/libsofia-sip-ua.lax/libsu.a/su_global_log.o .libs/libsofia-sip-ua.lax/libsu.a/su_taglist.o .libs/libsofia-sip-ua.lax/libsu.a/su_time.o .libs/libsofia-sip-ua.lax/libsu.a/su_md5.o .libs/libsofia-sip-ua.lax/libsu.a/su_strlst.o .libs/libsofia-sip-ua.lax/libsu.a/su_sprintf.o .libs/libsofia-sip-ua.lax/libsu.a/smoothsort.o .libs/libsofia-sip-ua.lax/libsu.a/su_pthread_port.o .libs/libsofia-sip-ua.lax/libsu.a/su_localinfo.o .libs/libsofia-sip-ua.lax/libsu.a/su_addrinfo.o .libs/libsofia-sip-ua.lax/libsu.a/su_default_log.o .libs/libsofia-sip-ua.lax/libsu.a/su_errno.o .libs/libsofia-sip-ua.lax/libsu.a/su_select_port.o .libs/libsofia-sip-ua.lax/libsu.a/su_socket_port.o .libs/libsofia-sip-ua.lax/libsu.a/su_timer.o .libs/libsofia-sip-ua.lax/libsu.a/su_root.o .libs/libsofia-sip-ua.lax/libsu.a/su_poll_port.o .libs/libsofia-sip-ua.lax/libsu.a/su_devpoll_port.o .libs/libsofia-sip-ua.lax/libsu.a/su_string.o .libs/libsofia-sip-ua.lax/libsu.a/su_tag_io.o .libs/libsofia-sip-ua.lax/libsu.a/su_kqueue_port.o .libs/libsofia-sip-ua.lax/libsu.a/memspn.o .libs/libsofia-sip-ua.lax/libsu.a/memcspn.o .libs/libsofia-sip-ua.lax/libsu.a/su_time0.o .libs/libsofia-sip-ua.lax/libsu.a/su_base_port.o .libs/libsofia-sip-ua.lax/libsu.a/su_alloc.o .libs/libsofia-sip-ua.lax/libsu.a/su_bm.o .libs/libsofia-sip-ua.lax/libsu.a/su_vector.o .libs/libsofia-sip-ua.lax/libsu.a/su_strdup.o .libs/libsofia-sip-ua.lax/libsu.a/su_alloc_lock.o .libs/libsofia-sip-ua.lax/libsu.a/su_log.o .libs/libsofia-sip-ua.lax/libsu.a/su_port.o .libs/libsofia-sip-ua.lax/libsu.a/string0.o .libs/libsofia-sip-ua.lax/libsu.a/su_uniqueid.o .libs/libsofia-sip-ua.lax/libsu.a/su_os_nw.o  .libs/libsofia-sip-ua.lax/libtport.a/tport_tag_ref.o .libs/libsofia-sip-ua.lax/libtport.a/tport_type_sctp.o .libs/libsofia-sip-ua.lax/libtport.a/tport_logging.o .libs/libsofia-sip-ua.lax/libtport.a/tport_type_tcp.o .libs/libsofia-sip-ua.lax/libtport.a/tport_type_udp.o .libs/libsofia-sip-ua.lax/libtport.a/tport_type_stun.o .libs/libsofia-sip-ua.lax/libtport.a/tport_tls.o .libs/libsofia-sip-ua.lax/libtport.a/tport_type_ws.o .libs/libsofia-sip-ua.lax/libtport.a/tport_type_tls.o .libs/libsofia-sip-ua.lax/libtport.a/tport_tag.o .libs/libsofia-sip-ua.lax/libtport.a/tport.o .libs/libsofia-sip-ua.lax/libtport.a/ws.o .libs/libsofia-sip-ua.lax/libtport.a/tport_type_connect.o .libs/libsofia-sip-ua.lax/libtport.a/tport_stub_sigcomp.o .libs/libsofia-sip-ua.lax/libtport.a/tport_stub_stun.o  .libs/libsofia-sip-ua.lax/liburl.a/url.o .libs/libsofia-sip-ua.lax/liburl.a/url_tag.o .libs/libsofia-sip-ua.lax/liburl.a/url_tag_ref.o  .libs/libsofia-sip-ua.lax/libstun.a/stun_tag.o .libs/libsofia-sip-ua.lax/libstun.a/stun_tag_ref.o .libs/libsofia-sip-ua.lax/libstun.a/stun.o .libs/libsofia-sip-ua.lax/libstun.a/stun_common.o .libs/libsofia-sip-ua.lax/libstun.a/stun_mini.o .libs/libsofia-sip-ua.lax/libstun.a/stun_dns.o  .libs/libsofia-sip-ua.lax/libhttp.a/http_tag_ref.o .libs/libsofia-sip-ua.lax/libhttp.a/http_parser.o .libs/libsofia-sip-ua.lax/libhttp.a/http_inlined.o .libs/libsofia-sip-ua.lax/libhttp.a/http_status.o .libs/libsofia-sip-ua.lax/libhttp.a/http_extra.o .libs/libsofia-sip-ua.lax/libhttp.a/http_parser_table.o .libs/libsofia-sip-ua.lax/libhttp.a/http_basic.o .libs/libsofia-sip-ua.lax/libhttp.a/http_tag.o .libs/libsofia-sip-ua.lax/libhttp.a/http_header.o .libs/libsofia-sip-ua.lax/libhttp.a/http_tag_class.o  .libs/libsofia-sip-ua.lax/libnth.a/nth_tag.o .libs/libsofia-sip-ua.lax/libnth.a/nth_tag_ref.o .libs/libsofia-sip-ua.lax/libnth.a/nth_client.o .libs/libsofia-sip-ua.lax/libnth.a/nth_server.o
+log_file_fix1:ar: `u' modifier ignored since `D' is the default (see `U')
+log_file_fix1:shrinking RPATHs of ELF executables and libraries in /nix/store/kq8r7y6l5dfqj007jqngp7j2416yb3ha-sofia-sip
+log_file_fix1:shrinking /nix/store/kq8r7y6l5dfqj007jqngp7j2416yb3ha-sofia-sip/libsofia-sip-ua/sdp/.libs/sdp_parse.o
+log_file_fix1:shrinking /nix/store/kq8r7y6l5dfqj007jqngp7j2416yb3ha-sofia-sip/libsofia-sip-ua/sdp/sdp_parse.o
+log_file_fix1:shrinking /nix/store/kq8r7y6l5dfqj007jqngp7j2416yb3ha-sofia-sip/libsofia-sip-ua/nua/nua_params.o
+log_file_fix1:shrinking /nix/store/kq8r7y6l5dfqj007jqngp7j2416yb3ha-sofia-sip/libsofia-sip-ua/nua/nua_registrar.o
+log_file_fix1:shrinking /nix/store/kq8r7y6l5dfqj007jqngp7j2416yb3ha-sofia-sip/libsofia-sip-ua/nua/.libs/nua_params.o
+log_file_fix1:shrinking /nix/store/kq8r7y6l5dfqj007jqngp7j2416yb3ha-sofia-sip/libsofia-sip-ua/nua/.libs/nua_registrar.o
+log_file_fix1:shrinking /nix/store/kq8r7y6l5dfqj007jqngp7j2416yb3ha-sofia-sip/libsofia-sip-ua/msg/msg_parser_util.o
+log_file_fix1:shrinking /nix/store/kq8r7y6l5dfqj007jqngp7j2416yb3ha-sofia-sip/libsofia-sip-ua/msg/.libs/msg_parser_util.o
+log_file_fix1:shrinking /nix/store/kq8r7y6l5dfqj007jqngp7j2416yb3ha-sofia-sip/libsofia-sip-ua/msg/.libs/msg_parser.o
+log_file_fix1:shrinking /nix/store/kq8r7y6l5dfqj007jqngp7j2416yb3ha-sofia-sip/libsofia-sip-ua/msg/msg_parser.o
+log_file_fix1:shrinking /nix/store/kq8r7y6l5dfqj007jqngp7j2416yb3ha-sofia-sip/libsofia-sip-ua/http/http_parser.o
+log_file_fix1:shrinking /nix/store/kq8r7y6l5dfqj007jqngp7j2416yb3ha-sofia-sip/libsofia-sip-ua/http/http_parser_table.o
+log_file_fix1:shrinking /nix/store/kq8r7y6l5dfqj007jqngp7j2416yb3ha-sofia-sip/libsofia-sip-ua/http/.libs/http_parser.o
+log_file_fix1:shrinking /nix/store/kq8r7y6l5dfqj007jqngp7j2416yb3ha-sofia-sip/libsofia-sip-ua/http/.libs/http_parser_table.o
+log_file_fix1:shrinking /nix/store/kq8r7y6l5dfqj007jqngp7j2416yb3ha-sofia-sip/libsofia-sip-ua/sip/.libs/sip_parser_table.o
+log_file_fix1:shrinking /nix/store/kq8r7y6l5dfqj007jqngp7j2416yb3ha-sofia-sip/libsofia-sip-ua/sip/.libs/sip_parser.o
+log_file_fix1:shrinking /nix/store/kq8r7y6l5dfqj007jqngp7j2416yb3ha-sofia-sip/libsofia-sip-ua/sip/sip_parser_table.o
+log_file_fix1:shrinking /nix/store/kq8r7y6l5dfqj007jqngp7j2416yb3ha-sofia-sip/libsofia-sip-ua/sip/sip_parser.o
+ltmain.sh:# Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2003, 2004, 2005, 2006, 2007 2008 Free Software Foundation, Inc.
+ltmain.sh:# This is free software; see the source for copying conditions.  There is NO
+ltmain.sh:# warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ltmain.sh:# GNU Libtool is free software; you can redistribute it and/or modify
+ltmain.sh:# the Free Software Foundation; either version 2 of the License, or
+ltmain.sh:# if you distribute this file as part of a program or library that
+ltmain.sh:# WITHOUT ANY WARRANTY; without even the implied warranty of
+ltmain.sh:# or obtained by writing to the Free Software Foundation, Inc.,
+ltmain.sh:# Provide generalized library-building support services.
+ltmain.sh:#     --config             show all configuration variables
+ltmain.sh:#     --preserve-dup-deps  don't remove duplicate dependency libraries
+ltmain.sh:#     --tag=TAG            use configuration variables from tag TAG
+ltmain.sh:#       execute            automatically set library path, then run a program
+ltmain.sh:#       finish             complete the installation of libtool libraries
+ltmain.sh:#       install            install libraries or executables
+ltmain.sh:#       link               create a library or an executable
+ltmain.sh:#       uninstall          remove libraries from an installed directory
+ltmain.sh:# MODE-ARGS vary depending on the MODE.
+ltmain.sh:  # is contrary to our usage.  Disable this feature.
+ltmain.sh:for lt_var in LANG LANGUAGE LC_ALL LC_CTYPE LC_COLLATE LC_MESSAGES
+ltmain.sh:  eval "if test \"\${$lt_var+set}\" = set; then
+ltmain.sh:          save_$lt_var=\$$lt_var
+ltmain.sh:          $lt_var=C
+ltmain.sh:	  export $lt_var
+ltmain.sh:	  lt_user_locale=\"$lt_var=\\\$save_\$lt_var; \$lt_user_locale\"
+ltmain.sh:	  lt_safe_locale=\"$lt_var=C; \$lt_safe_locale\"
+ltmain.sh:# Global variables:
+ltmain.sh:  # Extract subdirectory from the argument.
+ltmain.sh:# Work around backward compatibility issue on IRIX 6.5. On IRIX 6.4+, sh
+ltmain.sh:# the _XPG environment variable is not equal to 1 (one), the special
+ltmain.sh:# positional parameter $0, within a function call, is the name of the
+ltmain.sh:# metacharacters that are still active within double-quoted strings.
+ltmain.sh:# Same as above, but do not quote variable references.
+ltmain.sh:# Re-`\' parameter expansions in output of double_quote_subst that were
+ltmain.sh:dollar='\$'
+ltmain.sh:  s/^$bs2$dollar/$bs&/
+ltmain.sh:  s/\\([^$bs]\\)$bs2$dollar/\\1$bs2$bs$dollar/g
+ltmain.sh:# Standard options:
+ltmain.sh:opt_warning=:
+ltmain.sh:# func_echo arg...
+ltmain.sh:# func_verbose arg...
+ltmain.sh:    # work around that:
+ltmain.sh:# func_error arg...
+ltmain.sh:# Echo program name prefixed message to standard error.
+ltmain.sh:# func_warning arg...
+ltmain.sh:# Echo program name prefixed warning message to standard error.
+ltmain.sh:func_warning ()
+ltmain.sh:    $opt_warning && $ECHO "$progname${mode+: }$mode: warning: "${1+"$@"} 1>&2
+ltmain.sh:# func_fatal_error arg...
+ltmain.sh:# Echo program name prefixed message to standard error, and exit.
+ltmain.sh:# func_fatal_help arg...
+ltmain.sh:# Echo program name prefixed message to standard error, followed by
+ltmain.sh:      # Protect directory names starting with `-'
+ltmain.sh:# Make a temporary directory that won't clash with other running
+ltmain.sh:        func_fatal_error "cannot create temporary directory \`$my_tmpdir'"
+ltmain.sh:# func_quote_for_eval arg
+ltmain.sh:# FUNC_QUOTE_FOR_EVAL_UNQUOTED_RESULT has merely all characters
+ltmain.sh:# which are still active within double quotes backslashified.
+ltmain.sh:      # Double-quote args containing shell metacharacters to delay
+ltmain.sh:      # word splitting, command substitution and and variable
+ltmain.sh:      # in scan sets, so we specify it separately.
+ltmain.sh:# func_quote_for_expand arg
+ltmain.sh:# but do not quote variable references.
+ltmain.sh:	my_arg=`$ECHO "X$1" | $Xsed \
+ltmain.sh:        my_arg="$1" ;;
+ltmain.sh:    case $my_arg in
+ltmain.sh:      # Double-quote args containing shell metacharacters to delay
+ltmain.sh:      # in scan sets, so we specify it separately.
+ltmain.sh:        my_arg="\"$my_arg\""
+ltmain.sh:    func_quote_for_expand_result="$my_arg"
+ltmain.sh:# Echo version message to standard output and exit.
+ltmain.sh:    $SED -n '/^# '$PROGRAM' (GNU /,/# warranty; / {
+ltmain.sh:# Echo short help message to standard output and exit.
+ltmain.sh:# Echo long help message to standard output and exit.
+ltmain.sh:# func_missing_arg argname
+ltmain.sh:# Echo program name prefixed message to standard error and set global
+ltmain.sh:func_missing_arg ()
+ltmain.sh:    func_error "missing argument for $1"
+ltmain.sh:  # Discard the --no-reexec flag, and continue.
+ltmain.sh:  # Restart under the correct shell, and then maybe $ECHO will work.
+ltmain.sh:magic="%%%MAGIC variable%%%"
+ltmain.sh:magic_exe="%%%MAGIC EXE variable%%%"
+ltmain.sh:# Global variables.
+ltmain.sh:preserve_args=
+ltmain.sh:extracted_archives=
+ltmain.sh:# If this variable is set in any of the actions, the command in it
+ltmain.sh:# func_fatal_configuration arg...
+ltmain.sh:# Echo program name prefixed message to standard error, followed by
+ltmain.sh:      $ECHO "enable shared libraries"
+ltmain.sh:      $ECHO "disable shared libraries"
+ltmain.sh:      $ECHO "enable static libraries"
+ltmain.sh:      $ECHO "disable static libraries"
+ltmain.sh:# variable here.
+ltmain.sh:  # Global variable:
+ltmain.sh:  # there but not specially marked.
+ltmain.sh:	# Evaluate the configuration.  Be careful to quote the path
+ltmain.sh:# Parse options once, thoroughly.  This comes as soon as possible in
+ltmain.sh:  # Shorthand for --mode=foo, only valid as the first argument
+ltmain.sh:  # Parse non-mode specific arguments:
+ltmain.sh:      --debug)		preserve_args="$preserve_args $opt"
+ltmain.sh:      -dlopen)		test "$#" -eq 0 && func_missing_arg "$opt" && break
+ltmain.sh:      --mode)		test "$#" -eq 0 && func_missing_arg "$opt" && break
+ltmain.sh:			  # Valid mode arguments:
+ltmain.sh:			  *) func_error "invalid argument for $opt"
+ltmain.sh:      --quiet|--silent)	preserve_args="$preserve_args $opt"
+ltmain.sh:      --verbose| -v)	preserve_args="$preserve_args $opt"
+ltmain.sh:      --tag)		test "$#" -eq 0 && func_missing_arg "$opt" && break
+ltmain.sh:			preserve_args="$preserve_args $opt $1"
+ltmain.sh:      # Separate optargs to long options:
+ltmain.sh:			set dummy "$func_opt_split_opt" "$func_opt_split_arg" ${1+"$@"}
+ltmain.sh:  # Having warned about all mis-specified options, bail out if
+ltmain.sh:# Ensure that we are using m4 macros, and libtool script from the same
+ltmain.sh:    func_fatal_configuration "not configured to build any kind of library"
+ltmain.sh:  # Darwin sucks
+ltmain.sh:# True iff FILE is a libtool `.la' library or `.lo' object file.
+ltmain.sh:# This function is only a basic sanity check; it will hardly flush out
+ltmain.sh:# True iff FILE is a libtool `.la' library or `.lo' object file.
+ltmain.sh:# closes it afterwards, without saving the original file descriptor.
+ltmain.sh:# This function is only a basic sanity check; it will hardly flush out
+ltmain.sh:# This function is only a basic sanity check; it will hardly flush out
+ltmain.sh:# temporary ltwrapper_script.
+ltmain.sh:# This function is only a basic sanity check; it will hardly flush out
+ltmain.sh:# FAIL_CMD may read-access the current command in variable CMD!
+ltmain.sh:# Source FILE, adding directory component if necessary.
+ltmain.sh:# Note that it is not necessary on cygwin/mingw to append a dot to
+ltmain.sh:# func_infer_tag arg
+ltmain.sh:# Infer tagged configuration to use if any are available and
+ltmain.sh:# arg is usually of the form 'gcc ...'
+ltmain.sh:      for arg in $CC; do
+ltmain.sh:        func_quote_for_eval "$arg"
+ltmain.sh:      # but not from the CC environment variable when configure was run.
+ltmain.sh:      # Blanks at the start of $base_compile will cause this to fail
+ltmain.sh:	    for arg in $CC; do
+ltmain.sh:	      # Double-quote args containing other shell metacharacters.
+ltmain.sh:	      func_quote_for_eval "$arg"
+ltmain.sh:# It is necessary for linking the library.
+ltmain.sh:# func_mode_compile arg...
+ltmain.sh:    arg_mode=normal
+ltmain.sh:    for arg
+ltmain.sh:      case $arg_mode in
+ltmain.sh:      arg  )
+ltmain.sh:	lastarg="$arg"
+ltmain.sh:	arg_mode=normal
+ltmain.sh:      target )
+ltmain.sh:	libobj="$arg"
+ltmain.sh:	arg_mode=normal
+ltmain.sh:	case $arg in
+ltmain.sh:	  arg_mode=target
+ltmain.sh:          pie_flag="$pie_flag $arg"
+ltmain.sh:	-shared | -static | -prefer-pic | -prefer-non-pic)
+ltmain.sh:	  later="$later $arg"
+ltmain.sh:	  arg_mode=arg  #  the next one goes into the "base_compile" arg list
+ltmain.sh:	  func_stripname '-Wc,' '' "$arg"
+ltmain.sh:	  args=$func_stripname_result
+ltmain.sh:	  lastarg=
+ltmain.sh:	  for arg in $args; do
+ltmain.sh:	    func_quote_for_eval "$arg"
+ltmain.sh:	    lastarg="$lastarg $func_quote_for_eval_result"
+ltmain.sh:	  func_stripname ' ' '' "$lastarg"
+ltmain.sh:	  lastarg=$func_stripname_result
+ltmain.sh:	  # Add the arguments to base_compile.
+ltmain.sh:	  base_compile="$base_compile $lastarg"
+ltmain.sh:	  # Accept the current argument as the source file.
+ltmain.sh:	  # The previous "srcfile" becomes the current argument.
+ltmain.sh:	  lastarg="$srcfile"
+ltmain.sh:	  srcfile="$arg"
+ltmain.sh:	esac  #  case $arg
+ltmain.sh:      esac    #  case $arg_mode
+ltmain.sh:      # Aesthetically quote the previous argument.
+ltmain.sh:      func_quote_for_eval "$lastarg"
+ltmain.sh:    done # for arg
+ltmain.sh:    case $arg_mode in
+ltmain.sh:    arg)
+ltmain.sh:      func_fatal_error "you must specify an argument for -Xcompile"
+ltmain.sh:    target)
+ltmain.sh:      func_fatal_error "you must specify a target with \`-o'"
+ltmain.sh:      # Get the name of the library object.
+ltmain.sh:      func_fatal_error "cannot determine name of library object from \`$libobj'"
+ltmain.sh:    for arg in $later; do
+ltmain.sh:      case $arg in
+ltmain.sh:      -shared)
+ltmain.sh:	  func_fatal_configuration "can not build a shared library"
+ltmain.sh:      && func_warning "libobj name \`$libobj' may not contain shell special characters."
+ltmain.sh:    # Delete any leftover library objects.
+ltmain.sh:      # non-PIC code in shared libraries is not supported
+ltmain.sh:    elif test "$need_locks" = warn; then
+ltmain.sh:temporary object file, and libtool could not work around it because
+ltmain.sh:avoid parallel builds (make -j) in this platform, or get a better
+ltmain.sh:    # Only build a PIC object if we are building libtool libraries.
+ltmain.sh:      if test "$need_locks" = warn &&
+ltmain.sh:temporary object file, and libtool could not work around it because
+ltmain.sh:avoid parallel builds (make -j) in this platform, or get a better
+ltmain.sh:    # Only build a position-dependent object if we build old libraries.
+ltmain.sh:      if test "$need_locks" = warn &&
+ltmain.sh:temporary object file, and libtool could not work around it because
+ltmain.sh:avoid parallel builds (make -j) in this platform, or get a better
+ltmain.sh:        # at the start of this file.
+ltmain.sh:(typically \`/bin/rm').  RM-OPTIONS are options (such as \`-f') to be passed
+ltmain.sh:If FILE is a libtool library, object or program, all the files associated
+ltmain.sh:with it are deleted. Otherwise, only FILE itself is deleted using RM."
+ltmain.sh:Compile a source file into a libtool library object.
+ltmain.sh:  -shared           do not build a \`.o' file suitable for static linking
+ltmain.sh:COMPILE-COMMAND is a command to be used in creating a \`standard' object file
+ltmain.sh:library object suffix, \`.lo'."
+ltmain.sh:Automatically set library path, then run a program.
+ltmain.sh:  -dlopen FILE      add the directory containing FILE to the library path
+ltmain.sh:This mode sets the library path environment variable according to \`-dlopen'
+ltmain.sh:If any of the ARGS are libtool executable wrappers, then they are translated
+ltmain.sh:into their corresponding uninstalled binary, and any of their required library
+ltmain.sh:directories are added to the library path.
+ltmain.sh:Then, COMMAND is executed, with ARGS as arguments."
+ltmain.sh:Complete the installation of libtool libraries.
+ltmain.sh:Each LIBDIR is a directory that contains libtool libraries.
+ltmain.sh:Install executables or libraries.
+ltmain.sh:The following components of INSTALL-COMMAND are treated specially:
+ltmain.sh:  -inst-prefix PREFIX-DIR  Use PREFIX-DIR as a staging area for installation
+ltmain.sh:The rest of the components are interpreted as arguments to that command (only
+ltmain.sh:BSD-compatible install options are recognized)."
+ltmain.sh:Link object files or libraries together to form another library, or to
+ltmain.sh:The following components of LINK-COMMAND are treated specially:
+ltmain.sh:  -LLIBDIR          search LIBDIR for required installed libraries
+ltmain.sh:  -lNAME            OUTPUT-FILE requires the installed library libNAME
+ltmain.sh:  -module           build a library that can dlopened
+ltmain.sh:  -no-undefined     declare that a library does not refer to external symbols
+ltmain.sh:  -rpath LIBDIR     the created library will eventually be installed in LIBDIR
+ltmain.sh:  -R[ ]LIBDIR       add LIBDIR to the runtime path of programs and libraries
+ltmain.sh:  -shared           only do dynamic linking of libtool libraries
+ltmain.sh:  -shrext SUFFIX    override the standard shared library file extension
+ltmain.sh:  -static           do not do any dynamic linking of uninstalled libtool libraries
+ltmain.sh:                    do not do any dynamic linking of libtool libraries
+ltmain.sh:                    specify library version info [each variable defaults to 0]
+ltmain.sh:  -weak LIBNAME     declare that the target provides the LIBNAME interface
+ltmain.sh:All other options (arguments beginning with \`-') are ignored.
+ltmain.sh:Every other argument is treated as a filename.  Files ending in \`.la' are
+ltmain.sh:treated as uninstalled libtool libraries, other files are standard or library
+ltmain.sh:If the OUTPUT-FILE ends in \`.la', then a libtool library is created,
+ltmain.sh:only library objects (\`.lo' files) may be specified, and \`-rpath' is
+ltmain.sh:required, except when creating a convenience library.
+ltmain.sh:If OUTPUT-FILE ends in \`.a' or \`.lib', then a standard library is created
+ltmain.sh:using \`ar' and \`ranlib', or on Windows using \`lib'.
+ltmain.sh:Remove libraries from an installation directory.
+ltmain.sh:(typically \`/bin/rm').  RM-OPTIONS are options (such as \`-f') to be passed
+ltmain.sh:If FILE is a libtool library, all the files associated with it are deleted.
+ltmain.sh:  # Now that we've collected a possible --mode arg, show help if necessary
+ltmain.sh:# func_mode_execute arg...
+ltmain.sh:    # The first argument is the command name.
+ltmain.sh:	# Check to see that this really is a libtool archive.
+ltmain.sh:	  || func_fatal_help "\`$lib' is not a valid libtool archive"
+ltmain.sh:	# Read the libtool library.
+ltmain.sh:	library_names=
+ltmain.sh:	# Skip this library if it cannot be dlopened.
+ltmain.sh:	  # Warn if it was a shared library.
+ltmain.sh:	  test -n "$library_names" && \
+ltmain.sh:	    func_warning "\`$file' was not linked with \`-export-dynamic'"
+ltmain.sh:	func_warning "\`-dlopen' is ignored for non-libtool libraries and objects"
+ltmain.sh:      # Now add the directory to shlibpath_var.
+ltmain.sh:      if eval "test -z \"\$$shlibpath_var\""; then
+ltmain.sh:	eval "$shlibpath_var=\"\$dir\""
+ltmain.sh:	eval "$shlibpath_var=\"\$dir:\$$shlibpath_var\""
+ltmain.sh:    # This variable tells wrapper scripts just to set shlibpath_var
+ltmain.sh:    # Check if any of the arguments is a wrapper script.
+ltmain.sh:    args=
+ltmain.sh:	  # Transform arg to wrapped name.
+ltmain.sh:	  # Transform arg to wrapped name.
+ltmain.sh:      # Quote arguments (to preserve shell metacharacters).
+ltmain.sh:      args="$args $func_quote_for_eval_result"
+ltmain.sh:      if test -n "$shlibpath_var"; then
+ltmain.sh:	# Export the shlibpath_var.
+ltmain.sh:	eval "export $shlibpath_var"
+ltmain.sh:      # Restore saved environment variables
+ltmain.sh:      for lt_var in LANG LANGUAGE LC_ALL LC_CTYPE LC_COLLATE LC_MESSAGES
+ltmain.sh:	eval "if test \"\${save_$lt_var+set}\" = set; then
+ltmain.sh:                $lt_var=\$save_$lt_var; export $lt_var
+ltmain.sh:		$lt_unset $lt_var
+ltmain.sh:      # Now prepare to actually exec the command.
+ltmain.sh:      exec_cmd="\$cmd$args"
+ltmain.sh:      if test -n "$shlibpath_var"; then
+ltmain.sh:	eval "\$ECHO \"\$shlibpath_var=\$$shlibpath_var\""
+ltmain.sh:	$ECHO "export $shlibpath_var"
+ltmain.sh:      $ECHO "$cmd$args"
+ltmain.sh:# func_mode_finish arg...
+ltmain.sh:    $ECHO "Libraries have been installed in:"
+ltmain.sh:    $ECHO "If you ever happen to want to link against installed libraries"
+ltmain.sh:    $ECHO "specify the full pathname of the library, or use the \`-LLIBDIR'"
+ltmain.sh:    if test -n "$shlibpath_var"; then
+ltmain.sh:      $ECHO "   - add LIBDIR to the \`$shlibpath_var' environment variable"
+ltmain.sh:    if test -n "$runpath_var"; then
+ltmain.sh:      $ECHO "   - add LIBDIR to the \`$runpath_var' environment variable"
+ltmain.sh:    if test -n "$hardcode_libdir_flag_spec"; then
+ltmain.sh:      eval flag=\"$hardcode_libdir_flag_spec\"
+ltmain.sh:    $ECHO "See any operating system documentation about shared libraries for"
+ltmain.sh:      solaris2.[6789]|solaris2.1[0-9])
+ltmain.sh:# func_mode_install arg...
+ltmain.sh:    # There may be an optional sh(1) argument at the beginning of
+ltmain.sh:      arg=$1
+ltmain.sh:      arg=$nonopt
+ltmain.sh:    # The real first argument should be the name of the installation program.
+ltmain.sh:    func_quote_for_eval "$arg"
+ltmain.sh:    for arg
+ltmain.sh:	dest=$arg
+ltmain.sh:      case $arg in
+ltmain.sh:	*) prev=$arg ;;
+ltmain.sh:	prev=$arg
+ltmain.sh:	# If the previous option needed an argument, then skip it.
+ltmain.sh:	  dest=$arg
+ltmain.sh:      # Aesthetically quote the argument.
+ltmain.sh:      func_quote_for_eval "$arg"
+ltmain.sh:      func_fatal_help "the \`$prev' option requires an argument"
+ltmain.sh:    # This variable tells wrapper scripts just to set variables rather
+ltmain.sh:	# Do the static libraries later.
+ltmain.sh:	# Check to see that this really is a libtool archive.
+ltmain.sh:	  || func_fatal_help "\`$file' is not a valid libtool archive"
+ltmain.sh:	library_names=
+ltmain.sh:	old_library=
+ltmain.sh:	  # location b/c this prevents finding dependent libraries that
+ltmain.sh:	  # are installed to the same prefix.
+ltmain.sh:	  # are installed into $libdir/../bin (currently, that works fine)
+ltmain.sh:	  func_warning "relinking \`$file'"
+ltmain.sh:	# See the names of the shared library.
+ltmain.sh:	set dummy $library_names; shift
+ltmain.sh:	  # Install the shared library and build the symlinks.
+ltmain.sh:	    # Try `ln -sf' first, because the `ln' binary might depend on
+ltmain.sh:	    # the symlink we replace!  Solaris /bin/ln does not understand -f,
+ltmain.sh:	# Install the pseudo-library for information purposes.
+ltmain.sh:	# Maybe install the static library, too.
+ltmain.sh:	test -n "$old_library" && staticlibs="$staticlibs $dir/$old_library"
+ltmain.sh:	  # Check the variables that should have been set.
+ltmain.sh:	    # Check to see that each library is installed.
+ltmain.sh:	      func_warning "\`$lib' has not been installed in \`$libdir'"
+ltmain.sh:	        func_warning "cannot relink \`$file'"
+ltmain.sh:	    # Install the binary that we compiled earlier.
+ltmain.sh:      # Set up the ranlib parameters.
+ltmain.sh:      func_warning "remember to run \`$progname --finish$future_libdirs'"
+ltmain.sh:      exec_cmd='$SHELL $progpath $preserve_args --finish$current_libdirs'
+ltmain.sh:	# Parse the name list into a source file.
+ltmain.sh:/* External symbol declarations for the compiler. */\
+ltmain.sh:	  # Prepare the list of exported symbols
+ltmain.sh:  const char *name;
+ltmain.sh:   runtime relocations are performed -- see ld's documentation
+ltmain.sh:/* This works around a problem in FreeBSD linker */
+ltmain.sh:	  # compiling the symbol table file with pic_flag works around
+ltmain.sh:	for arg in $LTCFLAGS; do
+ltmain.sh:	  case $arg in
+ltmain.sh:	  *) symtab_cflags="$symtab_cflags $arg" ;;
+ltmain.sh:# func_win32_libid arg
+ltmain.sh:# return the library type of file 'arg'
+ltmain.sh:# Has to be a shell function in order to 'eat' the argument
+ltmain.sh:  *ar\ archive\ import\ library*) # definitely import
+ltmain.sh:    win32_libid_type="x86 archive import"
+ltmain.sh:  *ar\ archive*) # could be an import, or static
+ltmain.sh:       $EGREP 'file format pe-i386(.*architecture: i386)?' >/dev/null ; then
+ltmain.sh:      import*)  win32_libid_type="x86 archive import";;
+ltmain.sh:      *)        win32_libid_type="x86 archive static";;
+ltmain.sh:  *executable*) # but shell scripts are "executable" too...
+ltmain.sh:# func_extract_an_archive dir oldlib
+ltmain.sh:func_extract_an_archive ()
+ltmain.sh:    f_ex_an_ar_dir="$1"; shift
+ltmain.sh:    f_ex_an_ar_oldlib="$1"
+ltmain.sh:    func_show_eval "(cd \$f_ex_an_ar_dir && $AR x \"\$f_ex_an_ar_oldlib\")" 'exit $?'
+ltmain.sh:    if ($AR t "$f_ex_an_ar_oldlib" | sort | sort -uc >/dev/null 2>&1); then
+ltmain.sh:      func_fatal_error "object name conflicts in archive: $f_ex_an_ar_dir/$f_ex_an_ar_oldlib"
+ltmain.sh:# func_extract_archives gentop oldlib ...
+ltmain.sh:func_extract_archives ()
+ltmain.sh:        case " $extracted_archives " in
+ltmain.sh:	  func_arith $extracted_serial + 1
+ltmain.sh:	  extracted_serial=$func_arith_result
+ltmain.sh:      extracted_archives="$extracted_archives $my_xlib_u"
+ltmain.sh:      *-darwin*)
+ltmain.sh:	  darwin_orig_dir=`pwd`
+ltmain.sh:	  darwin_archive=$my_xabs
+ltmain.sh:	  darwin_curdir=`pwd`
+ltmain.sh:	  darwin_base_archive=`basename "$darwin_archive"`
+ltmain.sh:	  darwin_arches=`$LIPO -info "$darwin_archive" 2>/dev/null | $GREP Architectures 2>/dev/null || true`
+ltmain.sh:	  if test -n "$darwin_arches"; then
+ltmain.sh:	    darwin_arches=`$ECHO "$darwin_arches" | $SED -e 's/.*are://'`
+ltmain.sh:	    darwin_arch=
+ltmain.sh:	    func_verbose "$darwin_base_archive has multiple architectures $darwin_arches"
+ltmain.sh:	    for darwin_arch in  $darwin_arches ; do
+ltmain.sh:	      func_mkdir_p "unfat-$$/${darwin_base_archive}-${darwin_arch}"
+ltmain.sh:	      $LIPO -thin $darwin_arch -output "unfat-$$/${darwin_base_archive}-${darwin_arch}/${darwin_base_archive}" "${darwin_archive}"
+ltmain.sh:	      cd "unfat-$$/${darwin_base_archive}-${darwin_arch}"
+ltmain.sh:	      func_extract_an_archive "`pwd`" "${darwin_base_archive}"
+ltmain.sh:	      cd "$darwin_curdir"
+ltmain.sh:	      $RM "unfat-$$/${darwin_base_archive}-${darwin_arch}/${darwin_base_archive}"
+ltmain.sh:	    done # $darwin_arches
+ltmain.sh:	    darwin_filelist=`find unfat-$$ -type f -name \*.o -print -o -name \*.lo -print | $SED -e "$basename" | sort -u`
+ltmain.sh:	    darwin_file=
+ltmain.sh:	    darwin_files=
+ltmain.sh:	    for darwin_file in $darwin_filelist; do
+ltmain.sh:	      darwin_files=`find unfat-$$ -name $darwin_file -print | $NL2SP`
+ltmain.sh:	      $LIPO -create -output "$darwin_file" $darwin_files
+ltmain.sh:	    done # $darwin_filelist
+ltmain.sh:	    cd "$darwin_orig_dir"
+ltmain.sh:	    cd $darwin_orig_dir
+ltmain.sh:	    func_extract_an_archive "$my_xdir" "$my_xabs"
+ltmain.sh:	  fi # $darwin_arches
+ltmain.sh:        func_extract_an_archive "$my_xdir" "$my_xabs"
+ltmain.sh:    func_extract_archives_result="$my_oldobjs"
+ltmain.sh:# func_emit_wrapper_part1 [arg=no]
+ltmain.sh:# Emit the first part of a libtool wrapper script on stdout.
+ltmain.sh:func_emit_wrapper_part1 ()
+ltmain.sh:	func_emit_wrapper_part1_arg1=no
+ltmain.sh:	  func_emit_wrapper_part1_arg1=$1
+ltmain.sh:# $output - temporary wrapper script for $objdir/$outputname
+ltmain.sh:# libraries that it depends on are installed.
+ltmain.sh:# metacharacters that are still active within double-quoted strings.
+ltmain.sh:  # is contrary to our usage.  Disable this feature.
+ltmain.sh:# The HP-UX ksh and POSIX shell print the target directory to stdout
+ltmain.sh:# This environment variable determines our operation mode.
+ltmain.sh:  # install mode needs the following variables:
+ltmain.sh:  # When we are sourced in execute mode, \$file and \$ECHO are already set.
+ltmain.sh:      # Discard the --no-reexec flag, and continue.
+ltmain.sh:      # Restart under the correct shell, and then maybe \$ECHO will work.
+ltmain.sh:# end: func_emit_wrapper_part1
+ltmain.sh:# func_emit_wrapper_part2 [arg=no]
+ltmain.sh:# Emit the second part of a libtool wrapper script on stdout.
+ltmain.sh:func_emit_wrapper_part2 ()
+ltmain.sh:	func_emit_wrapper_part2_arg1=no
+ltmain.sh:	  func_emit_wrapper_part2_arg1=$1
+ltmain.sh:  WRAPPER_SCRIPT_BELONGS_IN_OBJDIR=$func_emit_wrapper_part2_arg1
+ltmain.sh:    # relink executable if necessary
+ltmain.sh:	# Export our shlibpath_var if we have one.
+ltmain.sh:	if test "$shlibpath_overrides_runpath" = yes && test -n "$shlibpath_var" && test -n "$temp_rpath"; then
+ltmain.sh:    # Add our own library path to $shlibpath_var
+ltmain.sh:    $shlibpath_var=\"$temp_rpath\$$shlibpath_var\"
+ltmain.sh:    # Some systems cannot cope with colon-terminated $shlibpath_var
+ltmain.sh:    # The second colon is a workaround for a bug in BeOS R4 sed
+ltmain.sh:    $shlibpath_var=\`\$ECHO \"X\$$shlibpath_var\" | \$Xsed -e 's/::*\$//'\`
+ltmain.sh:    export $shlibpath_var
+ltmain.sh:	# fixup the dll searchpath if we need to.
+ltmain.sh:	if test -n "$dllsearchpath"; then
+ltmain.sh:    # Add the dll search path components to the executable PATH
+ltmain.sh:    PATH=$dllsearchpath:\$PATH
+ltmain.sh:      # Run the actual program with our arguments.
+ltmain.sh:	# Backslashes separate directories on plain windows
+ltmain.sh:# end: func_emit_wrapper_part2
+ltmain.sh:# func_emit_wrapper [arg=no]
+ltmain.sh:# func_mode_link because it depends on a number of variables
+ltmain.sh:# variable will take.  If 'yes', then the emitted script
+ltmain.sh:	func_emit_wrapper_arg1=no
+ltmain.sh:	  func_emit_wrapper_arg1=$1
+ltmain.sh:	# can call each part independently.
+ltmain.sh:	func_emit_wrapper_part1 "${func_emit_wrapper_arg1}"
+ltmain.sh:	func_emit_wrapper_part2 "${func_emit_wrapper_arg1}"
+ltmain.sh:# func_to_host_path arg
+ltmain.sh:# Similar accommodations are necessary for $host mingw and
+ltmain.sh:# $build cygwin.  Calling this function does no harm for other
+ltmain.sh:            # awkward: cmd appends spaces to result
+ltmain.sh:            # error code, so we are forced to check the contents of
+ltmain.sh:              # Allow warning below.
+ltmain.sh:# func_to_host_pathlist arg
+ltmain.sh:# following $build/$host combinations (but does no harm for
+ltmain.sh:# Path separators are also converted from $build format to
+ltmain.sh:# $host format. If ARG begins or ends with a path separator
+ltmain.sh:# character, it is preserved (but converted to $host format)
+ltmain.sh:        # Remove leading and trailing path separator characters from
+ltmain.sh:        # Once set for this call, this variable should not be
+ltmain.sh:            # Awkward: cmd appends spaces to result.
+ltmain.sh:        # Now, add the leading and trailing path separators back
+ltmain.sh:# it depends on a number of variable set therein.
+ltmain.sh:/* $cwrappersource - temporary wrapper executable for $objdir/$outputname
+ltmain.sh:   libraries that it depends on are installed.
+ltmain.sh:char *realpath (const char *, char *);
+ltmain.sh:int putenv (char *);
+ltmain.sh:int setenv (const char *, const char *, int);
+ltmain.sh:#include <stdarg.h>
+ltmain.sh:# define LTWRAPPER_DEBUGPRINTF(args) ltwrapper_debugprintf args
+ltmain.sh:ltwrapper_debugprintf (const char *fmt, ...)
+ltmain.sh:    va_list args;
+ltmain.sh:    va_start (args, fmt);
+ltmain.sh:    (void) vfprintf (stderr, fmt, args);
+ltmain.sh:    va_end (args);
+ltmain.sh:# define LTWRAPPER_DEBUGPRINTF(args)
+ltmain.sh:const char *program_name = NULL;
+ltmain.sh:char *xstrdup (const char *string);
+ltmain.sh:const char *base_name (const char *name);
+ltmain.sh:char *find_executable (const char *wrapper);
+ltmain.sh:char *chase_symlinks (const char *pathspec);
+ltmain.sh:int make_executable (const char *path);
+ltmain.sh:int check_executable (const char *path);
+ltmain.sh:char *strendzap (char *str, const char *pat);
+ltmain.sh:void lt_fatal (const char *message, ...);
+ltmain.sh:void lt_setenv (const char *name, const char *value);
+ltmain.sh:char *lt_extend_str (const char *orig_value, const char *add, int to_end);
+ltmain.sh:void lt_opt_process_env_set (const char *arg);
+ltmain.sh:void lt_opt_process_env_prepend (const char *arg);
+ltmain.sh:void lt_opt_process_env_append (const char *arg);
+ltmain.sh:int lt_split_name_value (const char *arg, char** name, char** value);
+ltmain.sh:void lt_update_exe_path (const char *name, const char *value);
+ltmain.sh:void lt_update_lib_path (const char *name, const char *value);
+ltmain.sh:static const char *script_text_part1 =
+ltmain.sh:	    func_emit_wrapper_part1 yes |
+ltmain.sh:static const char *script_text_part2 =
+ltmain.sh:	    func_emit_wrapper_part2 yes |
+ltmain.sh:const char * MAGIC_EXE = "$magic_exe";
+ltmain.sh:const char * LIB_PATH_VARNAME = "$shlibpath_var";
+ltmain.sh:	    if test "$shlibpath_overrides_runpath" = yes && test -n "$shlibpath_var" && test -n "$temp_rpath"; then
+ltmain.sh:const char * LIB_PATH_VALUE   = "$func_to_host_pathlist_result";
+ltmain.sh:const char * LIB_PATH_VALUE   = "";
+ltmain.sh:	    if test -n "$dllsearchpath"; then
+ltmain.sh:              func_to_host_pathlist "$dllsearchpath:"
+ltmain.sh:const char * EXE_PATH_VARNAME = "PATH";
+ltmain.sh:const char * EXE_PATH_VALUE   = "$func_to_host_pathlist_result";
+ltmain.sh:const char * EXE_PATH_VARNAME = "";
+ltmain.sh:const char * EXE_PATH_VALUE   = "";
+ltmain.sh:const char * TARGET_PROGRAM_NAME = "lt-$outputname"; /* hopefully, no .exe */
+ltmain.sh:const char * TARGET_PROGRAM_NAME = "$outputname"; /* hopefully, no .exe */
+ltmain.sh:static const char *ltwrapper_option_prefix = LTWRAPPER_OPTION_PREFIX;
+ltmain.sh:static const char *dumpscript_opt       = LTWRAPPER_OPTION_PREFIX "dump-script";
+ltmain.sh:static const char *env_set_opt          = LTWRAPPER_OPTION_PREFIX "env-set";
+ltmain.sh:  /* argument is putenv-style "foo=bar", value of foo is set to bar */
+ltmain.sh:static const char *env_prepend_opt      = LTWRAPPER_OPTION_PREFIX "env-prepend";
+ltmain.sh:  /* argument is putenv-style "foo=bar", new value of foo is bar${foo} */
+ltmain.sh:static const char *env_append_opt       = LTWRAPPER_OPTION_PREFIX "env-append";
+ltmain.sh:  /* argument is putenv-style "foo=bar", new value of foo is ${foo}bar */
+ltmain.sh:main (int argc, char *argv[])
+ltmain.sh:  char **newargz;
+ltmain.sh:  int  newargc;
+ltmain.sh:  char *tmp_pathspec;
+ltmain.sh:  char *actual_cwrapper_path;
+ltmain.sh:  char *actual_cwrapper_name;
+ltmain.sh:  char *target_name;
+ltmain.sh:  char *lt_argv_zero;
+ltmain.sh:  program_name = (char *) xstrdup (base_name (argv[0]));
+ltmain.sh:  LTWRAPPER_DEBUGPRINTF (("(main) argv[0]      : %s\n", argv[0]));
+ltmain.sh:  /* very simple arg parsing; don't want to rely on getopt */
+ltmain.sh:  for (i = 1; i < argc; i++)
+ltmain.sh:      if (strcmp (argv[i], dumpscript_opt) == 0)
+ltmain.sh:	  printf ("%s", script_text_part1);
+ltmain.sh:	  printf ("%s", script_text_part2);
+ltmain.sh:  newargz = XMALLOC (char *, argc + 1);
+ltmain.sh:  tmp_pathspec = find_executable (argv[0]);
+ltmain.sh:    lt_fatal ("Couldn't find %s", argv[0]);
+ltmain.sh:  /* target_name transforms -- use actual target program name; might have lt- prefix */
+ltmain.sh:  target_name = xstrdup (base_name (TARGET_PROGRAM_NAME));
+ltmain.sh:  strendzap (target_name, ".exe");
+ltmain.sh:  tmp_pathspec = lt_extend_str (target_name, ".exe", 1);
+ltmain.sh:  XFREE (target_name);
+ltmain.sh:  target_name = tmp_pathspec;
+ltmain.sh:  LTWRAPPER_DEBUGPRINTF (("(main) libtool target name: %s\n",
+ltmain.sh:			  target_name));
+ltmain.sh:  newargz[0] =
+ltmain.sh:    XMALLOC (char, (strlen (actual_cwrapper_path) +
+ltmain.sh:  strcpy (newargz[0], actual_cwrapper_path);
+ltmain.sh:  strcat (newargz[0], "$objdir");
+ltmain.sh:  strcat (newargz[0], "/");
+ltmain.sh:  tmp_pathspec = xstrdup (newargz[0]);
+ltmain.sh:  strcat (newargz[0], actual_cwrapper_name);
+ltmain.sh:  /* DO want the lt- prefix here if it exists, so use target_name */
+ltmain.sh:  lt_argv_zero = lt_extend_str (tmp_pathspec, target_name, 1);
+ltmain.sh:    char* p;
+ltmain.sh:    while ((p = strchr (newargz[0], '\\')) != NULL)
+ltmain.sh:    while ((p = strchr (lt_argv_zero, '\\')) != NULL)
+ltmain.sh:  XFREE (target_name);
+ltmain.sh:  newargc=0;
+ltmain.sh:  for (i = 1; i < argc; i++)
+ltmain.sh:      if (strncmp (argv[i], env_set_opt, env_set_opt_len) == 0)
+ltmain.sh:          if (argv[i][env_set_opt_len] == '=')
+ltmain.sh:              const char *p = argv[i] + env_set_opt_len + 1;
+ltmain.sh:          else if (argv[i][env_set_opt_len] == '\0' && i + 1 < argc)
+ltmain.sh:              lt_opt_process_env_set (argv[++i]); /* don't copy */
+ltmain.sh:            lt_fatal ("%s missing required argument", env_set_opt);
+ltmain.sh:      if (strncmp (argv[i], env_prepend_opt, env_prepend_opt_len) == 0)
+ltmain.sh:          if (argv[i][env_prepend_opt_len] == '=')
+ltmain.sh:              const char *p = argv[i] + env_prepend_opt_len + 1;
+ltmain.sh:          else if (argv[i][env_prepend_opt_len] == '\0' && i + 1 < argc)
+ltmain.sh:              lt_opt_process_env_prepend (argv[++i]); /* don't copy */
+ltmain.sh:            lt_fatal ("%s missing required argument", env_prepend_opt);
+ltmain.sh:      if (strncmp (argv[i], env_append_opt, env_append_opt_len) == 0)
+ltmain.sh:          if (argv[i][env_append_opt_len] == '=')
+ltmain.sh:              const char *p = argv[i] + env_append_opt_len + 1;
+ltmain.sh:          else if (argv[i][env_append_opt_len] == '\0' && i + 1 < argc)
+ltmain.sh:              lt_opt_process_env_append (argv[++i]); /* don't copy */
+ltmain.sh:            lt_fatal ("%s missing required argument", env_append_opt);
+ltmain.sh:      if (strncmp (argv[i], ltwrapper_option_prefix, opt_prefix_len) == 0)
+ltmain.sh:             report an error. Otherwise, targets might begin to believe
+ltmain.sh:             they are allowed to use options in the LTWRAPPER_OPTION_PREFIX
+ltmain.sh:                    ltwrapper_option_prefix, argv[i]);
+ltmain.sh:      newargz[++newargc] = xstrdup (argv[i]);
+ltmain.sh:  newargz[++newargc] = NULL;
+ltmain.sh:  LTWRAPPER_DEBUGPRINTF     (("(main) lt_argv_zero : %s\n", (lt_argv_zero ? lt_argv_zero : "<NULL>")));
+ltmain.sh:  for (i = 0; i < newargc; i++)
+ltmain.sh:      LTWRAPPER_DEBUGPRINTF (("(main) newargz[%d]   : %s\n", i, (newargz[i] ? newargz[i] : "<NULL>")));
+ltmain.sh:  rval = _spawnv (_P_WAIT, lt_argv_zero, (const char * const *) newargz);
+ltmain.sh:      /* failed to start process */
+ltmain.sh:      LTWRAPPER_DEBUGPRINTF (("(main) failed to launch target \"%s\": errno = %d\n", lt_argv_zero, errno));
+ltmain.sh:  execv (lt_argv_zero, newargz);
+ltmain.sh:  return rval; /* =127, but avoids unused variable warning */
+ltmain.sh:char *
+ltmain.sh:xstrdup (const char *string)
+ltmain.sh:  return string ? strcpy ((char *) xmalloc (strlen (string) + 1),
+ltmain.sh:const char *
+ltmain.sh:base_name (const char *name)
+ltmain.sh:  const char *base;
+ltmain.sh:  if (isalpha ((unsigned char) name[0]) && name[1] == ':')
+ltmain.sh:check_executable (const char *path)
+ltmain.sh:make_executable (const char *path)
+ltmain.sh:/* Searches for the full path of the wrapper.  Returns
+ltmain.sh:char *
+ltmain.sh:find_executable (const char *wrapper)
+ltmain.sh:  const char *p;
+ltmain.sh:  const char *p_next;
+ltmain.sh:  char tmp[LT_PATHMAX + 1];
+ltmain.sh:  char *concat_name;
+ltmain.sh:  if (isalpha ((unsigned char) wrapper[0]) && wrapper[1] == ':')
+ltmain.sh:      /* no slashes; search PATH */
+ltmain.sh:      const char *path = getenv ("PATH");
+ltmain.sh:	      const char *q;
+ltmain.sh:		    XMALLOC (char, tmp_len + 1 + strlen (wrapper) + 1);
+ltmain.sh:		    XMALLOC (char, p_len + 1 + strlen (wrapper) + 1);
+ltmain.sh:  concat_name = XMALLOC (char, tmp_len + 1 + strlen (wrapper) + 1);
+ltmain.sh:char *
+ltmain.sh:chase_symlinks (const char *pathspec)
+ltmain.sh:  char buf[LT_PATHMAX];
+ltmain.sh:  char *tmp_pathspec = xstrdup (pathspec);
+ltmain.sh:  char *p;
+ltmain.sh:	  /* search backwards for last DIR_SEPARATOR */
+ltmain.sh:	  char *errstr = strerror (errno);
+ltmain.sh:char *
+ltmain.sh:strendzap (char *str, const char *pat)
+ltmain.sh:lt_error_core (int exit_status, const char *mode,
+ltmain.sh:	       const char *message, va_list ap)
+ltmain.sh:lt_fatal (const char *message, ...)
+ltmain.sh:  va_start (ap, message);
+ltmain.sh:lt_setenv (const char *name, const char *value)
+ltmain.sh:    char *str = xstrdup (value);
+ltmain.sh:    char *str = XMALLOC (char, len);
+ltmain.sh:char *
+ltmain.sh:lt_extend_str (const char *orig_value, const char *add, int to_end)
+ltmain.sh:  char *new_value;
+ltmain.sh:      new_value = XMALLOC (char, add_len + orig_value_len + 1);
+ltmain.sh:lt_split_name_value (const char *arg, char** name, char** value)
+ltmain.sh:  const char *p;
+ltmain.sh:  if (!arg || !*arg)
+ltmain.sh:  p = strchr (arg, (int)'=');
+ltmain.sh:  len = strlen (arg) - strlen (*value);
+ltmain.sh:  *name = XMALLOC (char, len);
+ltmain.sh:  strncpy (*name, arg, len-1);
+ltmain.sh:lt_opt_process_env_set (const char *arg)
+ltmain.sh:  char *name = NULL;
+ltmain.sh:  char *value = NULL;
+ltmain.sh:  if (lt_split_name_value (arg, &name, &value) != 0)
+ltmain.sh:      lt_fatal ("bad argument for %s: '%s'", env_set_opt, arg);
+ltmain.sh:lt_opt_process_env_prepend (const char *arg)
+ltmain.sh:  char *name = NULL;
+ltmain.sh:  char *value = NULL;
+ltmain.sh:  char *new_value = NULL;
+ltmain.sh:  if (lt_split_name_value (arg, &name, &value) != 0)
+ltmain.sh:      lt_fatal ("bad argument for %s: '%s'", env_prepend_opt, arg);
+ltmain.sh:lt_opt_process_env_append (const char *arg)
+ltmain.sh:  char *name = NULL;
+ltmain.sh:  char *value = NULL;
+ltmain.sh:  char *new_value = NULL;
+ltmain.sh:  if (lt_split_name_value (arg, &name, &value) != 0)
+ltmain.sh:      lt_fatal ("bad argument for %s: '%s'", env_append_opt, arg);
+ltmain.sh:lt_update_exe_path (const char *name, const char *value)
+ltmain.sh:      char *new_value = lt_extend_str (getenv (name), value, 0);
+ltmain.sh:lt_update_lib_path (const char *name, const char *value)
+ltmain.sh:      char *new_value = lt_extend_str (getenv (name), value, 0);
+ltmain.sh:# func_mode_link arg...
+ltmain.sh:      # which system we are compiling for in order to pass an extra
+ltmain.sh:      # FIXME: Unfortunately, there are problems with the above when trying
+ltmain.sh:      # even a static library is built.  For now, we need to specify
+ltmain.sh:      # that all symbols are satisfied, otherwise we get a static library.
+ltmain.sh:    libtool_args=$nonopt
+ltmain.sh:    dllsearchpath=
+ltmain.sh:    lib_search_path=`pwd`
+ltmain.sh:    prevarg=
+ltmain.sh:    for arg
+ltmain.sh:      case $arg in
+ltmain.sh:      -shared)
+ltmain.sh:	  func_fatal_configuration "can not build a shared library"
+ltmain.sh:	case $arg in
+ltmain.sh:	    func_warning "complete static linking is impossible in this configuration"
+ltmain.sh:    # See if our shared archives depend on static archives.
+ltmain.sh:    test -n "$old_archive_from_new_cmds" && build_old_libs=yes
+ltmain.sh:    # Go through the arguments, transforming them on the way.
+ltmain.sh:      arg="$1"
+ltmain.sh:      func_quote_for_eval "$arg"
+ltmain.sh:      qarg=$func_quote_for_eval_unquoted_result
+ltmain.sh:      func_append libtool_args " $func_quote_for_eval_result"
+ltmain.sh:      # If the previous option needs an argument, assign it.
+ltmain.sh:	  case $arg in
+ltmain.sh:	      dlfiles="$dlfiles $arg"
+ltmain.sh:	      dlprefiles="$dlprefiles $arg"
+ltmain.sh:	  export_symbols="$arg"
+ltmain.sh:	  test -f "$arg" \
+ltmain.sh:	    || func_fatal_error "symbol file \`$arg' does not exist"
+ltmain.sh:	  export_symbols_regex="$arg"
+ltmain.sh:	    *-*-darwin*)
+ltmain.sh:		*" $qarg.ltframework "*) ;;
+ltmain.sh:		*) deplibs="$deplibs $qarg.ltframework" # this is fixed later
+ltmain.sh:	  inst_prefix_dir="$arg"
+ltmain.sh:	  if test -f "$arg"; then
+ltmain.sh:	    save_arg=$arg
+ltmain.sh:	    moreargs=
+ltmain.sh:	    for fil in `cat "$save_arg"`
+ltmain.sh:#	      moreargs="$moreargs $fil"
+ltmain.sh:	      arg=$fil
+ltmain.sh:	      if func_lalib_unsafe_p "$arg"; then
+ltmain.sh:		func_source "$arg"
+ltmain.sh:		  func_fatal_error "cannot find name of object for \`$arg'"
+ltmain.sh:		# Extract subdirectory from the argument.
+ltmain.sh:		func_dirname "$arg" "/" ""
+ltmain.sh:		      # If libtool objects are unsupported, then we need to preload.
+ltmain.sh:		  arg="$pic_object"
+ltmain.sh:		  # A standard non-PIC object
+ltmain.sh:		    arg="$non_pic_object"
+ltmain.sh:		  # Extract subdirectory from the argument.
+ltmain.sh:		  func_dirname "$arg" "/" ""
+ltmain.sh:		  func_lo2o "$arg"
+ltmain.sh:		  func_fatal_error "\`$arg' is not a valid libtool object"
+ltmain.sh:	    func_fatal_error "link input file \`$arg' does not exist"
+ltmain.sh:	  arg=$save_arg
+ltmain.sh:	  precious_files_regex="$arg"
+ltmain.sh:	  release="-$arg"
+ltmain.sh:	  case $arg in
+ltmain.sh:	    func_fatal_error "only absolute run-paths are allowed"
+ltmain.sh:	    *" $arg "*) ;;
+ltmain.sh:	    *) rpath="$rpath $arg" ;;
+ltmain.sh:	    *" $arg "*) ;;
+ltmain.sh:	    *) xrpath="$xrpath $arg" ;;
+ltmain.sh:	  shrext_cmds="$arg"
+ltmain.sh:	  weak_libs="$weak_libs $arg"
+ltmain.sh:	  linker_flags="$linker_flags $qarg"
+ltmain.sh:	  compiler_flags="$compiler_flags $qarg"
+ltmain.sh:	  func_append compile_command " $qarg"
+ltmain.sh:	  func_append finalize_command " $qarg"
+ltmain.sh:	  compiler_flags="$compiler_flags $qarg"
+ltmain.sh:	  func_append compile_command " $qarg"
+ltmain.sh:	  func_append finalize_command " $qarg"
+ltmain.sh:	  linker_flags="$linker_flags $qarg"
+ltmain.sh:	  compiler_flags="$compiler_flags $wl$qarg"
+ltmain.sh:	  func_append compile_command " $wl$qarg"
+ltmain.sh:	  func_append finalize_command " $wl$qarg"
+ltmain.sh:	  eval "$prev=\"\$arg\""
+ltmain.sh:      prevarg="$arg"
+ltmain.sh:      case $arg in
+ltmain.sh:	  func_fatal_error "more than one -exported-symbols argument is not allowed"
+ltmain.sh:	if test "X$arg" = "X-export-symbols"; then
+ltmain.sh:      # so, if we see these flags be careful not to treat them like -L
+ltmain.sh:	  func_append compile_command " $arg"
+ltmain.sh:	  func_append finalize_command " $arg"
+ltmain.sh:	func_stripname '-L' '' "$arg"
+ltmain.sh:	  lib_search_path="$lib_search_path $dir"
+ltmain.sh:	  case :$dllsearchpath: in
+ltmain.sh:	  ::) dllsearchpath=$dir;;
+ltmain.sh:	  *) dllsearchpath="$dllsearchpath:$dir";;
+ltmain.sh:	  case :$dllsearchpath: in
+ltmain.sh:	  ::) dllsearchpath=$testbindir;;
+ltmain.sh:	  *) dllsearchpath="$dllsearchpath:$testbindir";;
+ltmain.sh:	if test "X$arg" = "X-lc" || test "X$arg" = "X-lm"; then
+ltmain.sh:	    # These systems don't actually have a C or math library (as such)
+ltmain.sh:	    # These systems don't actually have a C library (as such)
+ltmain.sh:	    test "X$arg" = "X-lc" && continue
+ltmain.sh:	    test "X$arg" = "X-lc" && continue
+ltmain.sh:	  *-*-rhapsody* | *-*-darwin1.[012])
+ltmain.sh:	    # Rhapsody C and math libraries are in the System framework
+ltmain.sh:	    test "X$arg" = "X-lc" && continue
+ltmain.sh:	  *-*-sysv4.2uw2* | *-*-sysv5* | *-*-unixware* | *-*-OpenUNIX*)
+ltmain.sh:	    test "X$arg" = "X-lc" && continue
+ltmain.sh:	elif test "X$arg" = "X-lc_r"; then
+ltmain.sh:	deplibs="$deplibs $arg"
+ltmain.sh:      # Tru64 UNIX uses -model [arg] to determine the layout of C++
+ltmain.sh:      # Darwin uses the -arch flag to determine output architecture.
+ltmain.sh:      -model|-arch|-isysroot)
+ltmain.sh:	compiler_flags="$compiler_flags $arg"
+ltmain.sh:	func_append compile_command " $arg"
+ltmain.sh:	func_append finalize_command " $arg"
+ltmain.sh:	compiler_flags="$compiler_flags $arg"
+ltmain.sh:	func_append compile_command " $arg"
+ltmain.sh:	func_append finalize_command " $arg"
+ltmain.sh:	    *" $arg "*) ;;
+ltmain.sh:	    * ) new_inherited_linker_flags="$new_inherited_linker_flags $arg" ;;
+ltmain.sh:	*-*-cygwin* | *-*-mingw* | *-*-pw32* | *-*-os2* | *-*-darwin* | *-cegcc*)
+ltmain.sh:	  # and Darwin in order for the loader to find any dlls it needs.
+ltmain.sh:	  func_warning "\`-no-install' is ignored for $host"
+ltmain.sh:	  func_warning "assuming \`-no-fast-install' instead"
+ltmain.sh:	func_stripname '-R' '' "$arg"
+ltmain.sh:	  func_fatal_error "only absolute run-paths are allowed"
+ltmain.sh:      -shared)
+ltmain.sh:	# The effects of -shared are defined in a previous loop.
+ltmain.sh:	# The effects of -static are defined in a previous loop.
+ltmain.sh:	func_stripname '-Wc,' '' "$arg"
+ltmain.sh:	args=$func_stripname_result
+ltmain.sh:	arg=
+ltmain.sh:	for flag in $args; do
+ltmain.sh:	  arg="$arg $wl$func_quote_for_eval_result"
+ltmain.sh:	func_stripname ' ' '' "$arg"
+ltmain.sh:	arg=$func_stripname_result
+ltmain.sh:	func_stripname '-Wl,' '' "$arg"
+ltmain.sh:	args=$func_stripname_result
+ltmain.sh:	arg=
+ltmain.sh:	for flag in $args; do
+ltmain.sh:	  arg="$arg $wl$func_quote_for_eval_result"
+ltmain.sh:	func_stripname ' ' '' "$arg"
+ltmain.sh:	arg=$func_stripname_result
+ltmain.sh:	func_quote_for_eval "$arg"
+ltmain.sh:	arg="$func_quote_for_eval_result"
+ltmain.sh:      # -xarch=*, -xtarget=* enable 64-bit mode on the Sun compiler
+ltmain.sh:      # -q* pass through compiler args for the IBM compiler
+ltmain.sh:      # -m*, -t[45]*, -txscale* pass through architecture-specific
+ltmain.sh:      # compiler args for GCC
+ltmain.sh:      # -F/path gives path to uninstalled frameworks, gcc on darwin
+ltmain.sh:      -64|-mips[0-9]|-r[0-9][0-9]*|-xarch=*|-xtarget=*|+DA*|+DD*|-q*|-m*| \
+ltmain.sh:        func_quote_for_eval "$arg"
+ltmain.sh:	arg="$func_quote_for_eval_result"
+ltmain.sh:        func_append compile_command " $arg"
+ltmain.sh:        func_append finalize_command " $arg"
+ltmain.sh:        compiler_flags="$compiler_flags $arg"
+ltmain.sh:        func_quote_for_eval "$arg"
+ltmain.sh:	arg="$func_quote_for_eval_result"
+ltmain.sh:	# A standard object.
+ltmain.sh:	objs="$objs $arg"
+ltmain.sh:	if func_lalib_unsafe_p "$arg"; then
+ltmain.sh:	  func_source "$arg"
+ltmain.sh:	    func_fatal_error "cannot find name of object for \`$arg'"
+ltmain.sh:	  # Extract subdirectory from the argument.
+ltmain.sh:	  func_dirname "$arg" "/" ""
+ltmain.sh:		# If libtool objects are unsupported, then we need to preload.
+ltmain.sh:	    arg="$pic_object"
+ltmain.sh:	    # A standard non-PIC object
+ltmain.sh:	      arg="$non_pic_object"
+ltmain.sh:	    # Extract subdirectory from the argument.
+ltmain.sh:	    func_dirname "$arg" "/" ""
+ltmain.sh:	    func_lo2o "$arg"
+ltmain.sh:	    func_fatal_error "\`$arg' is not a valid libtool object"
+ltmain.sh:	# An archive.
+ltmain.sh:	deplibs="$deplibs $arg"
+ltmain.sh:	old_deplibs="$old_deplibs $arg"
+ltmain.sh:	# A libtool-controlled library.
+ltmain.sh:	  # This library was specified with -dlopen.
+ltmain.sh:	  dlfiles="$dlfiles $arg"
+ltmain.sh:	  # The library was specified with -dlpreopen.
+ltmain.sh:	  dlprefiles="$dlprefiles $arg"
+ltmain.sh:	  deplibs="$deplibs $arg"
+ltmain.sh:      # Some other compiler argument.
+ltmain.sh:	# Unknown arguments in both finalize_command and compile_command need
+ltmain.sh:	# to be aesthetically quoted because they are evaled later.
+ltmain.sh:	func_quote_for_eval "$arg"
+ltmain.sh:	arg="$func_quote_for_eval_result"
+ltmain.sh:      esac # arg
+ltmain.sh:      # Now actually substitute the argument into the commands.
+ltmain.sh:      if test -n "$arg"; then
+ltmain.sh:	func_append compile_command " $arg"
+ltmain.sh:	func_append finalize_command " $arg"
+ltmain.sh:    done # argument parsing loop
+ltmain.sh:      func_fatal_help "the \`$prevarg' option requires an argument"
+ltmain.sh:      eval arg=\"$export_dynamic_flag_spec\"
+ltmain.sh:      func_append compile_command " $arg"
+ltmain.sh:      func_append finalize_command " $arg"
+ltmain.sh:    if test -n "$shlibpath_var"; then
+ltmain.sh:      # get the directories listed in $shlibpath_var
+ltmain.sh:      eval shlib_search_path=\`\$ECHO \"X\${$shlibpath_var}\" \| \$Xsed -e \'s/:/ /g\'\`
+ltmain.sh:      shlib_search_path=
+ltmain.sh:    eval sys_lib_search_path=\"$sys_lib_search_path_spec\"
+ltmain.sh:    eval sys_lib_dlsearch_path=\"$sys_lib_dlsearch_path_spec\"
+ltmain.sh:    # Find all interdependent deplibs by searching for libraries
+ltmain.sh:    # that are linked more than once (e.g. -la -lb -la)
+ltmain.sh:      libs="$predeps $libs $compiler_lib_search_path $postdeps"
+ltmain.sh:      # Compute libraries that are listed more than once in $predeps
+ltmain.sh:      # $postdeps and mark them as special (i.e., whose duplicates are
+ltmain.sh:    newlib_search_path=
+ltmain.sh:    need_relink=no # whether we're linking any uninstalled libtool libraries
+ltmain.sh:    notinst_deplibs= # not-installed libtool libraries
+ltmain.sh:    notinst_path= # paths that contain not-installed libtool libraries
+ltmain.sh:	    func_fatal_help "libraries can \`-dlopen' only libtool libraries: $file"
+ltmain.sh:	# Collect and forward deplibs of preopened libtool libs
+ltmain.sh:	  # Collect preopened libtool deplibs, except any this library
+ltmain.sh:	  # has declared as weak libs
+ltmain.sh:	# Collect dlpreopened libraries
+ltmain.sh:	    func_warning "\`-l' is ignored for archives/objects"
+ltmain.sh:	    searchdirs="$newlib_search_path $lib_search_path $compiler_lib_search_dirs $sys_lib_search_path $shlib_search_path"
+ltmain.sh:	    searchdirs="$newlib_search_path $lib_search_path $sys_lib_search_path $shlib_search_path"
+ltmain.sh:	  for searchdir in $searchdirs; do
+ltmain.sh:	    for search_ext in .la $std_shrext .so .a; do
+ltmain.sh:	      # Search the libtool library
+ltmain.sh:	      lib="$searchdir/lib${name}${search_ext}"
+ltmain.sh:		if test "$search_ext" = ".la"; then
+ltmain.sh:	    # deplib doesn't seem to be a libtool library
+ltmain.sh:	  else # deplib is a libtool library
+ltmain.sh:		  library_names=
+ltmain.sh:		  old_library=
+ltmain.sh:		  for l in $old_library $library_names; do
+ltmain.sh:		  if test "X$ll" = "X$old_library" ; then # only static version available
+ltmain.sh:		    lib=$ladir/$old_library
+ltmain.sh:	    newlib_search_path="$newlib_search_path $func_stripname_result"
+ltmain.sh:	    newlib_search_path="$newlib_search_path $func_stripname_result"
+ltmain.sh:	    func_warning "\`-L' is ignored for archives/objects"
+ltmain.sh:	    # Linking convenience modules into shared libraries is allowed,
+ltmain.sh:	    # but linking other static libraries is non-portable.
+ltmain.sh:		$ECHO "*** Warning: Trying to link with static lib archive $deplib."
+ltmain.sh:		$ECHO "*** I have the capability to make that library automatically link in when"
+ltmain.sh:		$ECHO "*** you link to this library.  But I can only do this if you have a"
+ltmain.sh:		$ECHO "*** shared version of the library, which you do not appear to have"
+ltmain.sh:		$ECHO "*** because the file extensions .$libext of this argument makes me believe"
+ltmain.sh:		$ECHO "*** that it is just a static archive that I should not use here."
+ltmain.sh:		$ECHO "*** Warning: Linking the shared library $output against the"
+ltmain.sh:		$ECHO "*** static library $deplib is not portable!"
+ltmain.sh:	  func_fatal_error "cannot find the library \`$lib' or unhandled argument \`$deplib'"
+ltmain.sh:	# Check to see that this really is a libtool archive.
+ltmain.sh:	  || func_fatal_error "\`$lib' is not a valid libtool archive"
+ltmain.sh:	library_names=
+ltmain.sh:	old_library=
+ltmain.sh:	# If the library was installed with an old release of libtool,
+ltmain.sh:	# it will not redefine variables installed, or shouldnotlink
+ltmain.sh:	  # Only check for convenience libraries
+ltmain.sh:	    if test -z "$old_library"; then
+ltmain.sh:	      func_fatal_error "cannot find name of link library for \`$lib'"
+ltmain.sh:	    # It is a libtool convenience library, so add in its objects.
+ltmain.sh:	    convenience="$convenience $ladir/$objdir/$old_library"
+ltmain.sh:	    old_convenience="$old_convenience $ladir/$objdir/$old_library"
+ltmain.sh:	    func_fatal_error "\`$lib' is not a convenience library"
+ltmain.sh:	# Get the name of the library we link against.
+ltmain.sh:	for l in $old_library $library_names; do
+ltmain.sh:	  func_fatal_error "cannot find name of link library for \`$lib'"
+ltmain.sh:	# This library was specified with -dlopen.
+ltmain.sh:	    func_fatal_error "cannot -dlopen a convenience library: \`$lib'"
+ltmain.sh:	    # dependent libraries so libltdl's deplib preloader doesn't
+ltmain.sh:	    func_warning "cannot determine absolute directory name of \`$ladir'"
+ltmain.sh:	    func_warning "passing it literally to the linker, although it might fail"
+ltmain.sh:	# Find the relevant object directory and library name.
+ltmain.sh:	    func_warning "library \`$lib' was moved."
+ltmain.sh:	  test "X$hardcode_automatic" = Xyes && avoidtemprpath=yes
+ltmain.sh:	    # Remove this search path later
+ltmain.sh:	    # Remove this search path later
+ltmain.sh:	# This library was specified with -dlpreopen.
+ltmain.sh:	    func_fatal_error "only libraries may -dlpreopen a convenience library: \`$lib'"
+ltmain.sh:	  # Prefer using a static library (so that no silly _DYNAMIC symbols
+ltmain.sh:	  # are required to link).
+ltmain.sh:	  if test -n "$old_library"; then
+ltmain.sh:	    newdlprefiles="$newdlprefiles $dir/$old_library"
+ltmain.sh:	    # Keep a list of preopened convenience libraries to check
+ltmain.sh:	    # that they are being used correctly in the link pass.
+ltmain.sh:		dlpreconveniencelibs="$dlpreconveniencelibs $dir/$old_library"
+ltmain.sh:	  # Link the convenience library
+ltmain.sh:	    deplibs="$dir/$old_library $deplibs"
+ltmain.sh:	    compile_deplibs="$dir/$old_library $compile_deplibs"
+ltmain.sh:	    finalize_deplibs="$dir/$old_library $finalize_deplibs"
+ltmain.sh:	  newlib_search_path="$newlib_search_path $ladir"
+ltmain.sh:	  if test "$link_all_deplibs" != no || test -z "$library_names" ||
+ltmain.sh:	         newlib_search_path="$newlib_search_path $func_stripname_result"
+ltmain.sh:	      # Need to hardcode shared library paths
+ltmain.sh:	      # or/and link against static libraries
+ltmain.sh:	  if test -n "$library_names" &&
+ltmain.sh:	       test -z "$old_library"; }; then
+ltmain.sh:	    # We need to hardcode the library path
+ltmain.sh:	    if test -n "$shlibpath_var" && test -z "$avoidtemprpath" ; then
+ltmain.sh:	    # Hardcode the library path.
+ltmain.sh:	    # Skip directories that are in the system default run-time
+ltmain.sh:	    # search path.
+ltmain.sh:	    case " $sys_lib_dlsearch_path " in
+ltmain.sh:	    case " $sys_lib_dlsearch_path " in
+ltmain.sh:		 test -n "$library_names"; }; }; then
+ltmain.sh:	    # We only need to search for static libraries
+ltmain.sh:	if test -n "$library_names" &&
+ltmain.sh:	   { test "$use_static_libs" = no || test -z "$old_library"; }; then
+ltmain.sh:	      # No point in relinking DLLs because paths are not encoded
+ltmain.sh:	  # This is a shared library
+ltmain.sh:	  # Warn about portability, can't link against -module's on some
+ltmain.sh:	  # systems (darwin).  Don't bleat about dlopened modules though!
+ltmain.sh:	      $ECHO "*** Warning: Linking the executable $output against the loadable module"
+ltmain.sh:	      $ECHO "*** Warning: Linking the shared library $output against the loadable module"
+ltmain.sh:	     test "$hardcode_into_libs" = yes; then
+ltmain.sh:	    # Hardcode the library path.
+ltmain.sh:	    # Skip directories that are in the system default run-time
+ltmain.sh:	    # search path.
+ltmain.sh:	    case " $sys_lib_dlsearch_path " in
+ltmain.sh:	    case " $sys_lib_dlsearch_path " in
+ltmain.sh:	  if test -n "$old_archive_from_expsyms_cmds"; then
+ltmain.sh:	    set dummy $library_names
+ltmain.sh:	        func_arith $current - $age
+ltmain.sh:		major=$func_arith_result
+ltmain.sh:	    # If the library has no export list, then create one now
+ltmain.sh:	      func_verbose "generating import library for \`$soname'"
+ltmain.sh:	      func_execute_cmds "$old_archive_from_expsyms_cmds" 'exit $?'
+ltmain.sh:	    # make sure the library variables are pointing to the new library
+ltmain.sh:	  fi # test -n "$old_archive_from_expsyms_cmds"
+ltmain.sh:	    case $hardcode_action in
+ltmain.sh:	      if test "$hardcode_direct" = no; then
+ltmain.sh:		  *-*-sysv5OpenUNIX* | *-*-sysv5UnixWare7.[01].[10]* | \
+ltmain.sh:		    *-*-unixware7*) add_dir="-L$dir" ;;
+ltmain.sh:		  *-*-darwin* )
+ltmain.sh:		    # link against it, someone is ignoring the earlier warnings
+ltmain.sh:			$ECHO "*** Warning: lib $linklib is a module, not a shared library"
+ltmain.sh:			if test -z "$old_library" ; then
+ltmain.sh:			  $ECHO "*** And there doesn't seem to be a static archive available"
+ltmain.sh:			  add="$dir/$old_library"
+ltmain.sh:		      elif test -n "$old_library"; then
+ltmain.sh:			add="$dir/$old_library"
+ltmain.sh:	      elif test "$hardcode_minus_L" = no; then
+ltmain.sh:	      elif test "$hardcode_shlibpath_var" = no; then
+ltmain.sh:	      if test "$hardcode_direct" = yes &&
+ltmain.sh:	         test "$hardcode_direct_absolute" = no; then
+ltmain.sh:	      elif test "$hardcode_minus_L" = yes; then
+ltmain.sh:	      elif test "$hardcode_shlibpath_var" = yes; then
+ltmain.sh:	      func_fatal_configuration "unsupported hardcode properties"
+ltmain.sh:	      if test "$hardcode_direct" != yes &&
+ltmain.sh:		 test "$hardcode_minus_L" != yes &&
+ltmain.sh:		 test "$hardcode_shlibpath_var" = yes; then
+ltmain.sh:	    # Finalize command for both is simple: just hardcode it.
+ltmain.sh:	    if test "$hardcode_direct" = yes &&
+ltmain.sh:	       test "$hardcode_direct_absolute" = no; then
+ltmain.sh:	    elif test "$hardcode_minus_L" = yes; then
+ltmain.sh:	    elif test "$hardcode_shlibpath_var" = yes; then
+ltmain.sh:	    elif test "$hardcode_automatic" = yes; then
+ltmain.sh:	      # We cannot seem to hardcode it, guess we'll fake it.
+ltmain.sh:	  # Here we assume that one of hardcode_direct or hardcode_minus_L
+ltmain.sh:	  # shared platforms.
+ltmain.sh:	  if test "$hardcode_direct" != unsupported; then
+ltmain.sh:	    test -n "$old_library" && linklib="$old_library"
+ltmain.sh:	  # Not a shared library
+ltmain.sh:	    # We're trying link a shared library against a static one
+ltmain.sh:	    # Just print a warning and add the library to dependency_libs so
+ltmain.sh:	    # that the program can be linked against the static library.
+ltmain.sh:	    $ECHO "*** Warning: This system can not link to static lib archive $lib."
+ltmain.sh:	    $ECHO "*** I have the capability to make that library automatically link in when"
+ltmain.sh:	    $ECHO "*** you link to this library.  But I can only do this if you have a"
+ltmain.sh:	    $ECHO "*** shared version of the library, which you do not appear to have."
+ltmain.sh:	      $ECHO "*** But as you try to build a module library, libtool will still create "
+ltmain.sh:	    deplibs="$dir/$old_library $deplibs"
+ltmain.sh:	fi # link shared/static library?
+ltmain.sh:	     { test "$hardcode_into_libs" != yes ||
+ltmain.sh:	  newlib_search_path="$newlib_search_path $absdir"
+ltmain.sh:	  # Link against this library
+ltmain.sh:	    # Add the search paths of all dependency libraries
+ltmain.sh:		    func_warning "cannot determine absolute directory name of \`$dir'"
+ltmain.sh:		*-*-darwin*)
+ltmain.sh:		  eval deplibrary_names=`${SED} -n -e 's/^library_names=\(.*\)$/\1/p' $deplib`
+ltmain.sh:		  if test -n "$deplibrary_names" ; then
+ltmain.sh:		    for tmp in $deplibrary_names ; do
+ltmain.sh:		      darwin_install_name=`${OTOOL} -L $depdepl | awk '{if (NR == 2) {print $1;exit}}'`
+ltmain.sh:                      if test -z "$darwin_install_name"; then
+ltmain.sh:                          darwin_install_name=`${OTOOL64} -L $depdepl  | awk '{if (NR == 2) {print $1;exit}}'`
+ltmain.sh:		      compiler_flags="$compiler_flags ${wl}-dylib_file ${wl}${darwin_install_name}:${depdepl}"
+ltmain.sh:		      linker_flags="$linker_flags -dylib_file ${darwin_install_name}:${depdepl}"
+ltmain.sh:		    func_fatal_error "\`$deplib' is not a valid libtool archive"
+ltmain.sh:		    func_warning "\`$deplib' seems to be moved"
+ltmain.sh:	# Link the dlpreopened libraries before other libraries
+ltmain.sh:	  # Make sure lib_search_path contains only unique directories.
+ltmain.sh:	  lib_search_path=
+ltmain.sh:	  for dir in $newlib_search_path; do
+ltmain.sh:	    case "$lib_search_path " in
+ltmain.sh:	    *) lib_search_path="$lib_search_path $dir" ;;
+ltmain.sh:	  newlib_search_path=
+ltmain.sh:	  vars="deplibs"
+ltmain.sh:	  vars="compile_deplibs finalize_deplibs"
+ltmain.sh:	for var in $vars dependency_libs; do
+ltmain.sh:	  # Add libraries to $var in reverse order
+ltmain.sh:	  eval tmp_libs=\"\$$var\"
+ltmain.sh:	      # And here is the reason: when a library appears more
+ltmain.sh:	      # than once as an explicit dependence of a library, or
+ltmain.sh:	      # occurrences thereof are not removed.  Compare this
+ltmain.sh:	      # with having the same library being listed as a
+ltmain.sh:	      # dependency of multiple other libraries: in this case,
+ltmain.sh:	      # we know (pedantically, we assume) the library does not
+ltmain.sh:	      # last copy.  This is not always right, but it is rare
+ltmain.sh:	      # such unportable linking tricks to link the library
+ltmain.sh:	  eval $var=\"$tmp_libs\"
+ltmain.sh:	done # for var
+ltmain.sh:	case " $predeps $postdeps $compiler_lib_search_path " in
+ltmain.sh:	func_warning "\`-dlopen' is ignored for archives"
+ltmain.sh:	func_warning "\`-l' and \`-L' are ignored for archives" ;;
+ltmain.sh:	func_warning "\`-rpath' is ignored for archives"
+ltmain.sh:	func_warning "\`-R' is ignored for archives"
+ltmain.sh:	func_warning "\`-version-info/-version-number' is ignored for archives"
+ltmain.sh:	func_warning "\`-release' is ignored for archives"
+ltmain.sh:	func_warning "\`-export-symbols' is ignored for archives"
+ltmain.sh:      # Now set the variables for building old libraries.
+ltmain.sh:      # Make sure we only generate libraries of the form `libNAME.la'.
+ltmain.sh:	eval shared_ext=\"$shrext_cmds\"
+ltmain.sh:	  func_fatal_help "libtool library \`$output' must begin with \`lib'"
+ltmain.sh:	  eval shared_ext=\"$shrext_cmds\"
+ltmain.sh:	  func_fatal_error "cannot build libtool library \`$output' from non-libtool objects on this host:$objs"
+ltmain.sh:	  $ECHO "*** Warning: Linking the shared library $output against the non-libtool"
+ltmain.sh:	func_warning "\`-dlopen self' is ignored for libtool libraries"
+ltmain.sh:	func_warning "ignoring multiple \`-rpath's for a libtool library"
+ltmain.sh:	  # Building a libtool convenience library.
+ltmain.sh:	  # convenience libraries should have the same extension an
+ltmain.sh:	  # archive normally would.
+ltmain.sh:	  func_warning "\`-version-info/-version-number' is ignored for convenience libraries"
+ltmain.sh:	  func_warning "\`-release' is ignored for convenience libraries"
+ltmain.sh:	# Parse the version information argument.
+ltmain.sh:	  func_fatal_help "too many parameters to \`-version-info'"
+ltmain.sh:	  # There are really only two kinds -- those that
+ltmain.sh:	  darwin|linux|osf|windows|none)
+ltmain.sh:	    func_arith $number_major + $number_minor
+ltmain.sh:	    current=$func_arith_result
+ltmain.sh:	    func_arith $number_major + $number_minor
+ltmain.sh:	    current=$func_arith_result
+ltmain.sh:	# Check that each of the things are valid numbers.
+ltmain.sh:	# Calculate the version variables.
+ltmain.sh:	darwin)
+ltmain.sh:	  # verstring for coding it into the library header
+ltmain.sh:	  func_arith $current - $age
+ltmain.sh:	  major=.$func_arith_result
+ltmain.sh:	  # Darwin ld doesn't like 0 for these options...
+ltmain.sh:	  func_arith $current + 1
+ltmain.sh:	  minor_current=$func_arith_result
+ltmain.sh:	    func_arith $current - $age
+ltmain.sh:	    func_arith $current - $age + 1
+ltmain.sh:	  major=$func_arith_result
+ltmain.sh:	  # Add in all the interfaces that we are compatible with.
+ltmain.sh:	    func_arith $revision - $loop
+ltmain.sh:	    iface=$func_arith_result
+ltmain.sh:	    func_arith $loop - 1
+ltmain.sh:	    loop=$func_arith_result
+ltmain.sh:	  func_arith $current - $age
+ltmain.sh:	  major=.$func_arith_result
+ltmain.sh:	  func_arith $current - $age
+ltmain.sh:	  major=.$func_arith_result
+ltmain.sh:	  # Add in all the interfaces that we are compatible with.
+ltmain.sh:	    func_arith $current - $loop
+ltmain.sh:	    iface=$func_arith_result
+ltmain.sh:	    func_arith $loop - 1
+ltmain.sh:	    loop=$func_arith_result
+ltmain.sh:	  func_arith $current - $age
+ltmain.sh:	  major=$func_arith_result
+ltmain.sh:	  func_fatal_configuration "unknown library version type \`$version_type'"
+ltmain.sh:	# Clear the version info if we defaulted, and they specified a release.
+ltmain.sh:	  darwin)
+ltmain.sh:	    # we can't check for "0.0" in archive_cmds due to quoting
+ltmain.sh:	# Check to see if the archive will have undefined symbols.
+ltmain.sh:	    func_warning "undefined symbols not allowed in $host shared libraries"
+ltmain.sh:      # Now set the variables for building old libraries.
+ltmain.sh:      # Eliminate all temporary directories.
+ltmain.sh:      #	lib_search_path=`$ECHO "X$lib_search_path " | $Xsed -e "s% $path % %g"`
+ltmain.sh:	if test "$hardcode_into_libs" != yes || test "$build_old_libs" = yes; then
+ltmain.sh:	    # these systems don't actually have a c library (as such)!
+ltmain.sh:	  *-*-rhapsody* | *-*-darwin1.[012])
+ltmain.sh:	    # Rhapsody C library is in the System framework
+ltmain.sh:	  *-*-sysv4.2uw2* | *-*-sysv5* | *-*-unixware* | *-*-OpenUNIX*)
+ltmain.sh:	    # Add libc to deplibs on all other systems if necessary.
+ltmain.sh:	# Transform deplibs into only deplibs that can be linked in shared.
+ltmain.sh:	  # Don't check for shared/static.  Everything works.
+ltmain.sh:	  # whether the library exists or not.  But this is on
+ltmain.sh:	  # This code stresses the "libraries are programs" paradigm to its
+ltmain.sh:	  # against the deplibs as a proxy for the library.  Then we can check
+ltmain.sh:		  deplib_matches=`eval "\\$ECHO \"$library_names_spec\""`
+ltmain.sh:		    $ECHO "*** Warning: dynamic linker does not accept needed library $i."
+ltmain.sh:		    $ECHO "*** I have the capability to make that library automatically link in when"
+ltmain.sh:		    $ECHO "*** you link to this library.  But I can only do this if you have a"
+ltmain.sh:		    $ECHO "*** shared version of the library, which I believe you do not have"
+ltmain.sh:	    # the situation: Compile a separate program for each library.
+ltmain.sh:		    deplib_matches=`eval "\\$ECHO \"$library_names_spec\""`
+ltmain.sh:		      $ECHO "*** Warning: dynamic linker does not accept needed library $i."
+ltmain.sh:		      $ECHO "*** I have the capability to make that library automatically link in when"
+ltmain.sh:		      $ECHO "*** you link to this library.  But I can only do this if you have a"
+ltmain.sh:		      $ECHO "*** shared version of the library, which you do not appear to have"
+ltmain.sh:		  $ECHO "*** Warning!  Library $i is needed by this library but I was not able to"
+ltmain.sh:		  $ECHO "*** library that it depends on before this library will be fully"
+ltmain.sh:		for i in $lib_search_path $sys_lib_search_path $shlib_search_path; do
+ltmain.sh:		$ECHO "*** Warning: linker path does not have real file for library $a_deplib."
+ltmain.sh:		$ECHO "*** I have the capability to make that library automatically link in when"
+ltmain.sh:		$ECHO "*** you link to this library.  But I can only do this if you have a"
+ltmain.sh:		$ECHO "*** shared version of the library, which you do not appear to have"
+ltmain.sh:		$ECHO "*** because I did check the linker path looking for a file starting"
+ltmain.sh:	      # Add a -L argument.
+ltmain.sh:		for i in $lib_search_path $sys_lib_search_path $shlib_search_path; do
+ltmain.sh:		$ECHO "*** Warning: linker path does not have real file for library $a_deplib."
+ltmain.sh:		$ECHO "*** I have the capability to make that library automatically link in when"
+ltmain.sh:		$ECHO "*** you link to this library.  But I can only do this if you have a"
+ltmain.sh:		$ECHO "*** shared version of the library, which you do not appear to have"
+ltmain.sh:		$ECHO "*** because I did check the linker path looking for a file starting"
+ltmain.sh:	      # Add a -L argument.
+ltmain.sh:	      $ECHO "*** Warning: inter-library dependencies are not supported in this platform."
+ltmain.sh:	      $ECHO "*** Warning: inter-library dependencies are not known to be supported."
+ltmain.sh:	    $ECHO "*** All declared inter-library dependencies are being dropped."
+ltmain.sh:	*-*-rhapsody* | *-*-darwin1.[012])
+ltmain.sh:	  # On Rhapsody replace the C library with the System framework
+ltmain.sh:	    $ECHO "*** Warning: libtool could not satisfy all declared inter-library"
+ltmain.sh:	    $ECHO "*** The inter-library dependencies that have been dropped here will be"
+ltmain.sh:	    $ECHO "*** automatically added whenever a program is linked with this library"
+ltmain.sh:	    $ECHO "*** or is declared to -dlopen it."
+ltmain.sh:	      $ECHO "*** Since this library must not contain undefined symbols,"
+ltmain.sh:	*-*-darwin*)
+ltmain.sh:      # move library search paths that coincide with paths to not yet
+ltmain.sh:      # installed libraries to the beginning of the library search list
+ltmain.sh:      # All the library-specific variables (install_libdir is set above).
+ltmain.sh:      library_names=
+ltmain.sh:      old_library=
+ltmain.sh:	if test "$hardcode_into_libs" = yes; then
+ltmain.sh:	  # Hardcode the library paths
+ltmain.sh:	  hardcode_libdirs=
+ltmain.sh:	    if test -n "$hardcode_libdir_flag_spec"; then
+ltmain.sh:	      if test -n "$hardcode_libdir_separator"; then
+ltmain.sh:		if test -z "$hardcode_libdirs"; then
+ltmain.sh:		  hardcode_libdirs="$libdir"
+ltmain.sh:		  case $hardcode_libdir_separator$hardcode_libdirs$hardcode_libdir_separator in
+ltmain.sh:		  *"$hardcode_libdir_separator$libdir$hardcode_libdir_separator"*)
+ltmain.sh:		    hardcode_libdirs="$hardcode_libdirs$hardcode_libdir_separator$libdir"
+ltmain.sh:		eval flag=\"$hardcode_libdir_flag_spec\"
+ltmain.sh:	    elif test -n "$runpath_var"; then
+ltmain.sh:	  # Substitute the hardcoded libdirs into the rpath.
+ltmain.sh:	  if test -n "$hardcode_libdir_separator" &&
+ltmain.sh:	     test -n "$hardcode_libdirs"; then
+ltmain.sh:	    libdir="$hardcode_libdirs"
+ltmain.sh:	    if test -n "$hardcode_libdir_flag_spec_ld"; then
+ltmain.sh:	      eval dep_rpath=\"$hardcode_libdir_flag_spec_ld\"
+ltmain.sh:	      eval dep_rpath=\"$hardcode_libdir_flag_spec\"
+ltmain.sh:	  if test -n "$runpath_var" && test -n "$perm_rpath"; then
+ltmain.sh:	    # We should set the runpath_var.
+ltmain.sh:	    eval "$runpath_var='$rpath\$$runpath_var'; export $runpath_var"
+ltmain.sh:	  eval "$shlibpath_var='$shlibpath\$$shlibpath_var'; export $shlibpath_var"
+ltmain.sh:	# Get the real and link names of the library.
+ltmain.sh:	eval shared_ext=\"$shrext_cmds\"
+ltmain.sh:	eval library_names=\"$library_names_spec\"
+ltmain.sh:	set dummy $library_names
+ltmain.sh:	# Use standard objects if they are pic
+ltmain.sh:	      # which of the given symbols are data symbols and tag
+ltmain.sh:	      # export_symbols gets reassigned inside the "prepare
+ltmain.sh:	# Prepare the list of exported symbols
+ltmain.sh:		# Break out early, otherwise skipped_export may be
+ltmain.sh:	  # though. Also, the filter scales superlinearly with the number of
+ltmain.sh:	  # global variables. join(1) would be nice here, but unfortunately
+ltmain.sh:	  if test -n "$whole_archive_flag_spec" &&
+ltmain.sh:	    # extract the archives, so we have objects to list.
+ltmain.sh:	    # TODO: could optimize this to just extract one archive.
+ltmain.sh:	    whole_archive_flag_spec=
+ltmain.sh:	  if test -n "$whole_archive_flag_spec"; then
+ltmain.sh:	    eval libobjs=\"\$libobjs $whole_archive_flag_spec\"
+ltmain.sh:	    func_extract_archives $gentop $convenience
+ltmain.sh:	    libobjs="$libobjs $func_extract_archives_result"
+ltmain.sh:	# Make a backup of the uninstalled library when relinking
+ltmain.sh:	# Do each of the archive commands.
+ltmain.sh:	  if test -n "$export_symbols" && test -n "$archive_expsym_cmds"; then
+ltmain.sh:	    eval test_cmds=\"$archive_expsym_cmds\"
+ltmain.sh:	    cmds=$archive_expsym_cmds
+ltmain.sh:	    eval test_cmds=\"$archive_cmds\"
+ltmain.sh:	    cmds=$archive_cmds
+ltmain.sh:	  # use them later.  If we have whole_archive_flag_spec, we
+ltmain.sh:	  # whole_archive_flag_spec was expanded, because we can't
+ltmain.sh:	  # assume the linker understands whole_archive_flag_spec.
+ltmain.sh:	  # convenience libraries get linked in and end up exceeding
+ltmain.sh:	  if test -z "$convenience" || test -z "$whole_archive_flag_spec"; then
+ltmain.sh:	  # Clear the reloadable object creation command queue and
+ltmain.sh:		func_arith $len + $func_len_result
+ltmain.sh:		len=$func_arith_result
+ltmain.sh:		  func_arith $k + 1
+ltmain.sh:		  k=$func_arith_result
+ltmain.sh:		  func_arith $len0 + $func_len_result
+ltmain.sh:		  len=$func_arith_result
+ltmain.sh:	      func_verbose "creating a temporary reloadable object file: $output"
+ltmain.sh:		# Restore the uninstalled library and exit
+ltmain.sh:	      # though. Also, the filter scales superlinearly with the number of
+ltmain.sh:	      # global variables. join(1) would be nice here, but unfortunately
+ltmain.sh:	  if test -n "$convenience" && test -n "$whole_archive_flag_spec"; then
+ltmain.sh:	    eval libobjs=\"\$libobjs $whole_archive_flag_spec\"
+ltmain.sh:	  # Expand the library linking commands again to reset the
+ltmain.sh:	  # Do each of the archive commands.
+ltmain.sh:	    if test -n "$export_symbols" && test -n "$archive_expsym_cmds"; then
+ltmain.sh:	      cmds=$archive_expsym_cmds
+ltmain.sh:	      cmds=$archive_cmds
+ltmain.sh:	  # Append the command to remove temporary files to $cmds.
+ltmain.sh:	# Add any objects from preloaded convenience libraries
+ltmain.sh:	  func_extract_archives $gentop $dlprefiles
+ltmain.sh:	  libobjs="$libobjs $func_extract_archives_result"
+ltmain.sh:	    # Restore the uninstalled library and exit
+ltmain.sh:	# Restore the uninstalled library and exit
+ltmain.sh:	    if test -z "$whole_archive_flag_spec"; then
+ltmain.sh:	# Create links to the real library.
+ltmain.sh:	  # On all known operating systems, these are identical.
+ltmain.sh:	func_warning "\`-dlopen' is ignored for objects"
+ltmain.sh:	func_warning "\`-l' and \`-L' are ignored for objects" ;;
+ltmain.sh:	func_warning "\`-rpath' is ignored for objects"
+ltmain.sh:	func_warning "\`-R' is ignored for objects"
+ltmain.sh:	func_warning "\`-version-info' is ignored for objects"
+ltmain.sh:	func_warning "\`-release' is ignored for objects"
+ltmain.sh:	  func_fatal_error "cannot build library object \`$output' from non-libtool objects"
+ltmain.sh:      # Objects from convenience libraries.  This assumes
+ltmain.sh:      # single-version convenience libraries.  Whenever we create
+ltmain.sh:      # -Wl from whole_archive_flag_spec and hope we can get by with
+ltmain.sh:	if test -n "$whole_archive_flag_spec"; then
+ltmain.sh:	  eval tmp_whole_archive_flags=\"$whole_archive_flag_spec\"
+ltmain.sh:	  reload_conv_objs=$reload_objs\ `$ECHO "X$tmp_whole_archive_flags" | $Xsed -e 's|,| |g'`
+ltmain.sh:	  func_extract_archives $gentop $convenience
+ltmain.sh:	  reload_conv_objs="$reload_objs $func_extract_archives_result"
+ltmain.sh:      # Exit if we aren't doing a library object file.
+ltmain.sh:	func_warning "\`-version-info' is ignored for programs"
+ltmain.sh:	func_warning "\`-release' is ignored for programs"
+ltmain.sh:	  func_warning "\`LT_INIT([dlopen])' not used. Assuming no dlopen support."
+ltmain.sh:      *-*-rhapsody* | *-*-darwin1.[012])
+ltmain.sh:	# On Rhapsody replace the C library is the System framework
+ltmain.sh:      *-*-darwin*)
+ltmain.sh:      # move library search paths that coincide with paths to not yet
+ltmain.sh:      # installed libraries to the beginning of the library search list
+ltmain.sh:      # Now hardcode the library paths
+ltmain.sh:      hardcode_libdirs=
+ltmain.sh:	if test -n "$hardcode_libdir_flag_spec"; then
+ltmain.sh:	  if test -n "$hardcode_libdir_separator"; then
+ltmain.sh:	    if test -z "$hardcode_libdirs"; then
+ltmain.sh:	      hardcode_libdirs="$libdir"
+ltmain.sh:	      case $hardcode_libdir_separator$hardcode_libdirs$hardcode_libdir_separator in
+ltmain.sh:	      *"$hardcode_libdir_separator$libdir$hardcode_libdir_separator"*)
+ltmain.sh:		hardcode_libdirs="$hardcode_libdirs$hardcode_libdir_separator$libdir"
+ltmain.sh:	    eval flag=\"$hardcode_libdir_flag_spec\"
+ltmain.sh:	elif test -n "$runpath_var"; then
+ltmain.sh:	  case :$dllsearchpath: in
+ltmain.sh:	  ::) dllsearchpath=$libdir;;
+ltmain.sh:	  *) dllsearchpath="$dllsearchpath:$libdir";;
+ltmain.sh:	  case :$dllsearchpath: in
+ltmain.sh:	  ::) dllsearchpath=$testbindir;;
+ltmain.sh:	  *) dllsearchpath="$dllsearchpath:$testbindir";;
+ltmain.sh:      # Substitute the hardcoded libdirs into the rpath.
+ltmain.sh:      if test -n "$hardcode_libdir_separator" &&
+ltmain.sh:	 test -n "$hardcode_libdirs"; then
+ltmain.sh:	libdir="$hardcode_libdirs"
+ltmain.sh:	eval rpath=\" $hardcode_libdir_flag_spec\"
+ltmain.sh:      hardcode_libdirs=
+ltmain.sh:	if test -n "$hardcode_libdir_flag_spec"; then
+ltmain.sh:	  if test -n "$hardcode_libdir_separator"; then
+ltmain.sh:	    if test -z "$hardcode_libdirs"; then
+ltmain.sh:	      hardcode_libdirs="$libdir"
+ltmain.sh:	      case $hardcode_libdir_separator$hardcode_libdirs$hardcode_libdir_separator in
+ltmain.sh:	      *"$hardcode_libdir_separator$libdir$hardcode_libdir_separator"*)
+ltmain.sh:		hardcode_libdirs="$hardcode_libdirs$hardcode_libdir_separator$libdir"
+ltmain.sh:	    eval flag=\"$hardcode_libdir_flag_spec\"
+ltmain.sh:	elif test -n "$runpath_var"; then
+ltmain.sh:      # Substitute the hardcoded libdirs into the rpath.
+ltmain.sh:      if test -n "$hardcode_libdir_separator" &&
+ltmain.sh:	 test -n "$hardcode_libdirs"; then
+ltmain.sh:	libdir="$hardcode_libdirs"
+ltmain.sh:	eval rpath=\" $hardcode_libdir_flag_spec\"
+ltmain.sh:	# Transform all the library objects into standard objects.
+ltmain.sh:        # Disable wrappers for cegcc, we are cross compiling anyway.
+ltmain.sh:	# We have no uninstalled library dependencies, so finalize right now.
+ltmain.sh:	compile_command="$shlibpath_var=\"$compile_shlibpath$finalize_shlibpath\$$shlibpath_var\" $compile_command"
+ltmain.sh:	finalize_command="$shlibpath_var=\"$finalize_shlibpath\$$shlibpath_var\" $finalize_command"
+ltmain.sh:      compile_var=
+ltmain.sh:      finalize_var=
+ltmain.sh:      if test -n "$runpath_var"; then
+ltmain.sh:	  # We should set the runpath_var.
+ltmain.sh:	  compile_var="$runpath_var=\"$rpath\$$runpath_var\" "
+ltmain.sh:	  # We should set the runpath_var.
+ltmain.sh:	  finalize_var="$runpath_var=\"$rpath\$$runpath_var\" "
+ltmain.sh:	link_command="$compile_var$compile_command$compile_rpath"
+ltmain.sh:      if test "$hardcode_action" = relink; then
+ltmain.sh:	link_command="$compile_var$compile_command$compile_rpath"
+ltmain.sh:	relink_command="$finalize_var$finalize_command$finalize_rpath"
+ltmain.sh:	func_warning "this platform does not like uninstalled shared libraries"
+ltmain.sh:	func_warning "\`$output' will be relinked during installation"
+ltmain.sh:	  link_command="$finalize_var$compile_command$finalize_rpath"
+ltmain.sh:	    relink_command=`$ECHO "X$compile_var$compile_command$compile_rpath" | $Xsed -e 's%@OUTPUT@%\$progdir/\$file%g'`
+ltmain.sh:	  link_command="$compile_var$compile_command$compile_rpath"
+ltmain.sh:	  relink_command="$finalize_var$finalize_command$finalize_rpath"
+ltmain.sh:	# Preserve any variables that may affect compiler behavior
+ltmain.sh:	for var in $variables_saved_for_relink; do
+ltmain.sh:	  if eval test -z \"\${$var+set}\"; then
+ltmain.sh:	    relink_command="{ test -z \"\${$var+set}\" || $lt_unset $var || { $var=; export $var; }; }; $relink_command"
+ltmain.sh:	  elif eval var_value=\$$var; test -z "$var_value"; then
+ltmain.sh:	    relink_command="$var=; export $var; $relink_command"
+ltmain.sh:	    func_quote_for_eval "$var_value"
+ltmain.sh:	    relink_command="$var=$func_quote_for_eval_result; export $var; $relink_command"
+ltmain.sh:	# win32 will think the script is a binary if it has
+ltmain.sh:	    # compiling, it, like the target executable, must be
+ltmain.sh:    # See if we need to build an old-fashioned archive.
+ltmain.sh:	func_extract_archives $gentop $addlibs
+ltmain.sh:	oldobjs="$oldobjs $func_extract_archives_result"
+ltmain.sh:      # Do each command in the archive commands.
+ltmain.sh:      if test -n "$old_archive_from_new_cmds" && test "$build_libtool_libs" = yes; then
+ltmain.sh:	cmds=$old_archive_from_new_cmds
+ltmain.sh:	# Add any objects from preloaded convenience libraries
+ltmain.sh:	  func_extract_archives $gentop $dlprefiles
+ltmain.sh:	  oldobjs="$oldobjs $func_extract_archives_result"
+ltmain.sh:	# POSIX demands no paths to be encoded in archives.  We have
+ltmain.sh:	# to avoid creating archives with duplicate basenames if we
+ltmain.sh:	# might have to extract them afterwards, e.g., when creating a
+ltmain.sh:	# static archive out of a convenience library, or when linking
+ltmain.sh:	# the entirety of a libtool archive into another (currently
+ltmain.sh:		func_arith $counter + 1
+ltmain.sh:		counter=$func_arith_result
+ltmain.sh:	eval cmds=\"$old_archive_cmds\"
+ltmain.sh:	  cmds=$old_archive_cmds
+ltmain.sh:	  # the command line is too long to link in one step, link in parts
+ltmain.sh:	  func_verbose "using piecewise archive linking..."
+ltmain.sh:	  eval test_cmds=\"$old_archive_cmds\"
+ltmain.sh:	    func_arith $len + $func_len_result
+ltmain.sh:	    len=$func_arith_result
+ltmain.sh:	      eval concat_cmds=\"\${concat_cmds}$old_archive_cmds\"
+ltmain.sh:	    eval cmds=\"\$concat_cmds~\$old_archive_cmds\"
+ltmain.sh:    # Now create the libtool archive.
+ltmain.sh:      old_library=
+ltmain.sh:      test "$build_old_libs" = yes && old_library="$libname.$libext"
+ltmain.sh:      # Preserve any variables that may affect compiler behavior
+ltmain.sh:      for var in $variables_saved_for_relink; do
+ltmain.sh:	if eval test -z \"\${$var+set}\"; then
+ltmain.sh:	  relink_command="{ test -z \"\${$var+set}\" || $lt_unset $var || { $var=; export $var; }; }; $relink_command"
+ltmain.sh:	elif eval var_value=\$$var; test -z "$var_value"; then
+ltmain.sh:	  relink_command="$var=; export $var; $relink_command"
+ltmain.sh:	  func_quote_for_eval "$var_value"
+ltmain.sh:	  relink_command="$var=$func_quote_for_eval_result; export $var; $relink_command"
+ltmain.sh:      relink_command="(cd `pwd`; $SHELL $progpath $preserve_args --mode=relink $libtool_args @inst_prefix_dir@)"
+ltmain.sh:      if test "$hardcode_automatic" = yes ; then
+ltmain.sh:	    # Replace all uninstalled libtool libraries with the installed ones
+ltmain.sh:		  func_fatal_error "\`$deplib' is not a valid libtool archive"
+ltmain.sh:		  func_fatal_error "\`$lib' is not a valid libtool archive"
+ltmain.sh:		# Only pass preopened files to the pseudo-archive (for
+ltmain.sh:		# the library:
+ltmain.sh:		  func_fatal_error "\`$lib' is not a valid libtool archive"
+ltmain.sh:# $outputname - a libtool library file
+ltmain.sh:# It is necessary for linking the library.
+ltmain.sh:# Names of this library.
+ltmain.sh:library_names='$library_names'
+ltmain.sh:# The name of the static archive.
+ltmain.sh:old_library='$old_library'
+ltmain.sh:# Libraries that this one depends upon.
+ltmain.sh:# Names of additional weak libraries provided by this library
+ltmain.sh:weak_library_names='$weak_libs'
+ltmain.sh:# Is this an already installed library?
+ltmain.sh:# Should we warn about portability when linking against -modules?
+ltmain.sh:# Directory that this library needs to be installed in:
+ltmain.sh:      # Do a symbolic link so that the libtool archive can be found in
+ltmain.sh:# func_mode_uninstall arg...
+ltmain.sh:    # This variable tells wrapper scripts just to set variables rather
+ltmain.sh:    for arg
+ltmain.sh:      case $arg in
+ltmain.sh:      -f) RM="$RM $arg"; rmforce=yes ;;
+ltmain.sh:      -*) RM="$RM $arg" ;;
+ltmain.sh:      *) files="$files $arg" ;;
+ltmain.sh:      # Remember objdir for removal later, being careful to avoid duplicates
+ltmain.sh:	# Possibly a libtool archive, so verify it.
+ltmain.sh:	  # Delete the libtool libraries and symlinks.
+ltmain.sh:	  for n in $library_names; do
+ltmain.sh:	  test -n "$old_library" && rmfiles="$rmfiles $objdir/$old_library"
+ltmain.sh:	    case "  $library_names " in
+ltmain.sh:	    if test -n "$library_names"; then
+ltmain.sh:	    if test -n "$old_library"; then
+ltmain.sh:	    # FIXME: should reinstall the best remaining shared library.
+ltmain.sh:# The TAGs below are defined such that we never get into a situation
+ltmain.sh:# in which we disable both kinds of libraries.  Given conflicting
+ltmain.sh:# choices, we go for a static library, that is the most portable,
+ltmain.sh:# since we can't tell whether shared libraries were disabled because
+ltmain.sh:# them.  This is particularly important on AIX, because we don't
+ltmain.sh:# support having both static and shared libraries enabled at the same
+ltmain.sh:# time on that platform, so we default to a shared-only configuration.
+ltmain.sh:# If a disable-shared tag is given, we'll fallback to a static-only
+ltmain.sh:# configuration.  But we'll never go from static-only to shared-only.
+ltmain.sh:# ### BEGIN LIBTOOL TAG CONFIG: disable-shared
+ltmain.sh:# ### END LIBTOOL TAG CONFIG: disable-shared
+ltmain.sh:# Local Variables:
+Makefile.am:# note: when glib devel files are not available, make should not
+Makefile.am:	  fgrep -v 'Warning: explicit' ;} | { read x; exit $$x ;}
+Makefile.am:	rsync -rvz -e ssh --delete lcov/* sofia-sip.org:/var/www/coverage/lcov/
+Makefile.in:# 2003, 2004, 2005, 2006, 2007, 2008, 2009  Free Software Foundation,
+Makefile.in:# This Makefile.in is free software; the Free Software Foundation
+Makefile.in:# even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+Makefile.in:target_triplet = @target@
+Makefile.in:	$(top_srcdir)/m4/ltoptions.m4 $(top_srcdir)/m4/ltsugar.m4 \
+Makefile.in:DIST_ARCHIVES = $(distdir).tar.gz
+Makefile.in:am__tar = @am__tar@
+Makefile.in:am__untar = @am__untar@
+Makefile.in:datarootdir = @datarootdir@
+Makefile.in:sharedstatedir = @sharedstatedir@
+Makefile.in:target = @target@
+Makefile.in:target_alias = @target_alias@
+Makefile.in:target_cpu = @target_cpu@
+Makefile.in:target_os = @target_os@
+Makefile.in:target_vendor = @target_vendor@
+Makefile.in:# note: when glib devel files are not available, make should not
+Makefile.in:# This directory's subdirectories are mostly independent; you can cd
+Makefile.in:# To change the values of `make' variables: instead of editing Makefiles,
+Makefile.in:# (1) if the variable is set in `config.status', edit `config.status'
+Makefile.in:	target=`echo $@ | sed s/-recursive//`; \
+Makefile.in:	  echo "Making $$target in $$subdir"; \
+Makefile.in:	    local_target="$$target-am"; \
+Makefile.in:	    local_target="$$target"; \
+Makefile.in:	  ($(am__cd) $$subdir && $(MAKE) $(AM_MAKEFLAGS) $$local_target) \
+Makefile.in:	  $(MAKE) $(AM_MAKEFLAGS) "$$target-am" || exit 1; \
+Makefile.in:	target=`echo $@ | sed s/-recursive//`; \
+Makefile.in:	  echo "Making $$target in $$subdir"; \
+Makefile.in:	    local_target="$$target-am"; \
+Makefile.in:	    local_target="$$target"; \
+Makefile.in:	  ($(am__cd) $$subdir && $(MAKE) $(AM_MAKEFLAGS) $$local_target) \
+Makefile.in:	tardir=$(distdir) && $(am__tar) | GZIP=$(GZIP_ENV) gzip -c >$(distdir).tar.gz
+Makefile.in:	tardir=$(distdir) && $(am__tar) | bzip2 -9 -c >$(distdir).tar.bz2
+Makefile.in:	tardir=$(distdir) && $(am__tar) | lzma -9 -c >$(distdir).tar.lzma
+Makefile.in:	tardir=$(distdir) && $(am__tar) | xz -c >$(distdir).tar.xz
+Makefile.in:dist-tarZ: distdir
+Makefile.in:	tardir=$(distdir) && $(am__tar) | compress -c >$(distdir).tar.Z
+Makefile.in:dist-shar: distdir
+Makefile.in:	shar $(distdir) | GZIP=$(GZIP_ENV) gzip -c >$(distdir).shar.gz
+Makefile.in:	tardir=$(distdir) && $(am__tar) | GZIP=$(GZIP_ENV) gzip -c >$(distdir).tar.gz
+Makefile.in:# This target untars the dist file and tries a VPATH configuration.  Then
+Makefile.in:# it guarantees that the distribution is self-contained by making another
+Makefile.in:# tarfile.
+Makefile.in:	*.tar.gz*) \
+Makefile.in:	  GZIP=$(GZIP_ENV) gunzip -c $(distdir).tar.gz | $(am__untar) ;;\
+Makefile.in:	*.tar.bz2*) \
+Makefile.in:	  bunzip2 -c $(distdir).tar.bz2 | $(am__untar) ;;\
+Makefile.in:	*.tar.lzma*) \
+Makefile.in:	  unlzma -c $(distdir).tar.lzma | $(am__untar) ;;\
+Makefile.in:	*.tar.xz*) \
+Makefile.in:	  xz -dc $(distdir).tar.xz | $(am__untar) ;;\
+Makefile.in:	*.tar.Z*) \
+Makefile.in:	  uncompress -c $(distdir).tar.Z | $(am__untar) ;;\
+Makefile.in:	*.shar.gz*) \
+Makefile.in:	  GZIP=$(GZIP_ENV) gunzip -c $(distdir).shar.gz | unshar ;;\
+Makefile.in:	@(echo "$(distdir) archives ready for distribution: "; \
+Makefile.in:	dist-bzip2 dist-gzip dist-lzma dist-shar dist-tarZ dist-xz \
+Makefile.in:@HAVE_DOXYGEN_TRUE@	  fgrep -v 'Warning: explicit' ;} | { read x; exit $$x ;}
+Makefile.in:@HAVE_LCOV_TRUE@	-find . -name "*.gcda" | xargs rm -rf
+Makefile.in:@HAVE_LCOV_TRUE@	find . -name "*.gcda" | xargs rm -f || true
+Makefile.in:@HAVE_LCOV_TRUE@	find . -name "*.gcda" | xargs rm -f || true
+Makefile.in:@HAVE_LCOV_TRUE@	rsync -rvz -e ssh --delete lcov/* sofia-sip.org:/var/www/coverage/lcov/
+Makefile.in:# Tell versions [3.59,3.63) of GNU make to not export all variables.
+PrintPath:# Licensed to the Apache Software Foundation (ASF) under one or more
+PrintPath:# this work for additional information regarding copyright ownership.
+PrintPath:# Unless required by applicable law or agreed to in writing, software
+PrintPath:# Find out what OS we are running for later on
+PrintPath:# Parse command line
+PrintPath:for args in $*
+PrintPath:    case $args in
+PrintPath:	-p* ) pathname="`echo $args | sed 's/^..//'`" ;;
+PrintPath:	*   ) programs="$programs $args" ;;
+PrintPath:# be whitespace separated directories.
+test-driver:# Copyright (C) 2011-2013 Free Software Foundation, Inc.
+test-driver:# This program is free software; you can redistribute it and/or modify
+test-driver:# the Free Software Foundation; either version 2, or (at your option)
+test-driver:# but WITHOUT ANY WARRANTY; without even the implied warranty of
+test-driver:# distribute this file as part of a program that contains a
+test-driver:# Make unconditional expansion of undefined variables an error.  This
+test-driver:              [--enable-hard-errors={yes|no}] [--]
+test-driver:The '--test-name', '--log-file' and '--trs-file' options are mandatory.
+test-driver:enable_hard_errors=yes
+test-driver:  --enable-hard-errors) enable_hard_errors=$2; shift;;
+test-driver:  usage_error "the following mandatory options are missing:$missing_opts"
+test-driver:  usage_error "missing argument"
+test-driver:if test $enable_hard_errors = no && test $estatus -eq 99; then
+test-driver:# Local Variables:
+test-driver:# time-stamp-start: "scriptversion="
+TODO:	- nua_set_hparams()/nua_get_hparams() [DONE]
