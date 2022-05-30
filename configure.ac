@@ -5,7 +5,7 @@ dnl Licensed under LGPL. See file COPYING.
 dnl
 dnl ref: http://www.gnu.org/software/autoconf/manual/autoconf.info.gz
 dnl
-AC_PREREQ([2.71])
+AC_PREREQ([2.57])
 
 dnl information on the package
 dnl ---------------------------
