@@ -36,4 +36,8 @@ result
 default.nix
 =======
 shell.nix
+<<<<<<< HEAD
 >>>>>>> 672dcd72 (manually fix everything, bad)
+=======
+default.nix
+>>>>>>> 3fe5e40f (fixing* compilation warnings, still configuration warnings)
