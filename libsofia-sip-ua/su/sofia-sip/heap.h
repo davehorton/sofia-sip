@@ -160,7 +160,7 @@ scope type prefix##get(heaptype, size_t)
  * bytes in the heap.
  */
 #define HEAP_BODIES(scope, heaptype, prefix, type, less, set, alloc, null) \
-scope int prefix##resize(void *realloc_arg, heaptype h[1], size_t new_size) \
+scope int prefix##resize(void *realloc_arg, heaptype *h, size_t new_size) \
 { \
   struct prefix##priv { size_t _size, _used; type _heap[2]; }; \
   struct prefix##priv *_priv; \
@@ -198,7 +198,7 @@ scope int prefix##resize(void *realloc_arg, heaptype h[1], size_t new_size) \
 } \
  \
 /** Free heap. */ \
-scope int prefix##free(void *realloc_arg, heaptype h[1]) \
+scope int prefix##free(void *realloc_arg, heaptype *h) \
 { \
   (void)realloc_arg; \
   *(void **)h = alloc(realloc_arg, *(void **)h, 0); \

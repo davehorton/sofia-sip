@@ -47,23 +47,16 @@ SOFIA_BEGIN_DECLS
 
 typedef struct su_home_stat_t su_home_stat_t;
 
-SU_DLL void su_home_init_stats(su_home_t *h);
-SU_DLL void su_home_get_stats(su_home_t *, int include_clones,
-			      su_home_stat_t *stats, isize_t statssize);
-
-SU_DLL void su_home_stat_add(su_home_stat_t *total,
-			     su_home_stat_t const *hs);
-
 struct su_home_stat_t
 {
   int      hs_size;
-  usize_t hs_clones;		/**< Number of clones */
-  usize_t hs_rehash;		/**< Number of (re)allocations of hash table. */
-  usize_t hs_blocksize; 	/**< Current size of hash table */
+  usize_t hs_clones;    /**< Number of clones */
+  usize_t hs_rehash;    /**< Number of (re)allocations of hash table. */
+  usize_t hs_blocksize;   /**< Current size of hash table */
 
   struct {
-    unsigned hsp_size;		/**< Size of preload area */
-    unsigned hsp_used;		/**< Number of bytes used from preload */
+    unsigned hsp_size;    /**< Size of preload area */
+    unsigned hsp_used;    /**< Number of bytes used from preload */
   } hs_preload;
 
   struct {
@@ -71,14 +64,14 @@ struct su_home_stat_t
     uint64_t hsa_bytes;
     uint64_t hsa_rbytes;
     uint64_t hsa_maxrbytes;
-    uint64_t hsa_preload;	/**< Number of allocations from preload area */
+    uint64_t hsa_preload; /**< Number of allocations from preload area */
   } hs_allocs;
 
   struct {
     uint64_t hsf_number;
     uint64_t hsf_bytes;
     uint64_t hsf_rbytes;
-    uint64_t hsf_preload;	/**< Number of free()s from preload area */
+    uint64_t hsf_preload; /**< Number of free()s from preload area */
   } hs_frees;
 
   struct {
@@ -87,6 +80,13 @@ struct su_home_stat_t
     uint64_t hsb_rbytes;
   } hs_blocks;
 };
+
+SU_DLL void su_home_init_stats(su_home_t *h);
+SU_DLL void su_home_get_stats(su_home_t *, int include_clones,
+			      su_home_stat_t *stats, isize_t statssize);
+
+SU_DLL void su_home_stat_add(su_home_stat_t total[1],
+			     su_home_stat_t const hs[1]);
 
 SOFIA_END_DECLS
 
