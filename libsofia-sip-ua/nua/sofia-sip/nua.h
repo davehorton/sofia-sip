@@ -369,7 +369,7 @@ SOFIAPUBFUN int nua_save_event(nua_t *nua, nua_saved_event_t return_saved[1]);
 SOFIAPUBFUN nua_event_data_t const *nua_event_data(nua_saved_event_t const saved[1]);
 
 /** Destroy a save nua event */
-SOFIAPUBFUN void nua_destroy_event(nua_saved_event_t *saved);
+SOFIAPUBFUN void nua_destroy_event(nua_saved_event_t saved[1]);
 
 /** Get request message from saved nua event. */
 SOFIAPUBFUN msg_t *nua_saved_event_request(nua_saved_event_t const *saved);
