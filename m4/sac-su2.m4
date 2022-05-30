@@ -59,7 +59,7 @@ dnl Checks for typedefs, headers, structures, and compiler characteristics.
 dnl ===========================================================================
 
 AC_REQUIRE([AC_C_CONST])
-AC_REQUIRE([AC_HEADER_TIME])
+AC_CHECK_HEADERS([sys/time.h])
 AC_REQUIRE([AC_TYPE_SIZE_T])
 AC_REQUIRE([AC_C_VAR_FUNC])
 AC_REQUIRE([AC_C_MACRO_FUNCTION])
