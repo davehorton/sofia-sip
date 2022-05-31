@@ -96,8 +96,8 @@ AC_ARG_ENABLE(64,
 if test "x${ax_cv_c_compiler_vendor}"  =  "xsun" ; then
     if test "${enable_64}" = "yes"; then
         SOFIA_CFLAGS="$SOFIA_CFLAGS -m64"
-  LDFLAGS="-m64 -Wl,-64"
-  export PKG_CONFIG_PATH=/usr/lib/64/pkgconfig
+        LDFLAGS="-m64 -Wl,-64"
+        export PKG_CONFIG_PATH=/usr/lib/64/pkgconfig
     fi
 fi
 
