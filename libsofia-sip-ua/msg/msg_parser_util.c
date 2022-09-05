@@ -2003,3 +2003,44 @@ msg_t *msg_make(msg_mclass_t const *mc, int flags,
 
   return msg;
 }
+
+/** Clear encoded data from header fields.
+ *
+ * Clear encoded or cached unencoded headers from header fields.
+ *
+ * @param h pointer to header structure
+ */
+void msg_fragment_clear_chain(msg_header_t *h)
+{
+  char const *data;
+  msg_header_t *prev, *succ;
+
+  if (h == NULL || h->sh_data == NULL)
+    return;
+
+  data = (char *)h->sh_data + h->sh_len;
+
+  /* Find first field of header */
+  for (prev = (msg_header_t *)h->sh_prev;
+       prev && (void *)prev->sh_next == (void *)h;) {
+    if (!prev->sh_data)
+      break;
+    if ((char *)prev->sh_data + prev->sh_len != data)
+      break;
+    h = prev, prev = (msg_header_t *)h->sh_prev;
+  }
+
+  for (h = h; h; h = succ) {
+    succ = h->sh_succ;
+
+    h->sh_data = NULL, h->sh_len = 0;
+
+    if (!data ||
+	!succ ||
+	h->sh_next != succ ||
+	succ->sh_data != (void *)data ||
+	succ->sh_len)
+      return;
+  }
+}
+
