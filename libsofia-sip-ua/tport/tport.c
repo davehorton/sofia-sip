@@ -131,6 +131,8 @@ RBTREE_BODIES(su_inline, tprb, tport_t,
 #pragma clang diagnostic pop
 #endif
 
+static int secondaryCount = 0;
+
 static void tplist_insert(tport_t **list, tport_t *tp)
 {
   if (*list == NULL)
@@ -876,8 +878,9 @@ tport_t *tport_alloc_secondary(tport_primary_t *pri,
   self = su_home_clone(mr->mr_home, pri->pri_vtable->vtp_secondary_size);
 
   if (self) {
-    SU_DEBUG_7(("%s(%p): new secondary tport %p\n",
-		__func__, (void *)pri, (void *)self));
+    secondaryCount++;
+    SU_DEBUG_4(("%s(%p): new secondary tport %p, count %d\n",
+		__func__, (void *)pri, (void *)self, secondaryCount));
 
     self->tp_refs = -1;			/* Freshly allocated  */
     self->tp_master = mr;
@@ -901,6 +904,8 @@ tport_t *tport_alloc_secondary(tport_primary_t *pri,
 
 		if (pri->pri_vtable->vtp_deinit_secondary) {
 			pri->pri_vtable->vtp_deinit_secondary(self);
+      secondaryCount--;
+      SU_DEBUG_4(("%s(%p): deinit tport %p, count %d\n", __func__, (void *)pri, (void *)self, secondaryCount));
 		}
 		su_timer_destroy(self->tp_timer);
 		su_home_zap(self->tp_home);
@@ -1104,8 +1109,11 @@ void tport_zap_secondary(tport_t *self)
 
   /* Do not deinit primary as secondary! */
   if (tport_is_secondary(self) &&
-      self->tp_pri->pri_vtable->vtp_deinit_secondary)
-    self->tp_pri->pri_vtable->vtp_deinit_secondary(self);
+      self->tp_pri->pri_vtable->vtp_deinit_secondary) {
+        secondaryCount--;
+        self->tp_pri->pri_vtable->vtp_deinit_secondary(self);
+        SU_DEBUG_4(("%s(%p): deinit tport %p, count %d\n", __func__, (void *)self->tp_pri, (void *)self, secondaryCount));
+      }
 
   if (self->tp_msg) {
     msg_destroy(self->tp_msg), self->tp_msg = NULL;
@@ -1167,7 +1175,8 @@ void tport_unref(tport_t *tp)
     return;
 
   tp->tp_refs--;
-    SU_DEBUG_9(("%s(%p): refcount is now %ld\n", __func__, (void *)tp, tp->tp_refs));
+  if (0 == tp->tp_refs) SU_DEBUG_4(("%s(%p): refcount is now %ld\n", __func__, (void *)tp, tp->tp_refs));
+  else SU_DEBUG_9(("%s(%p): refcount is now %ld\n", __func__, (void *)tp, tp->tp_refs));
 
   if (tp->tp_refs > 0)
     return;
@@ -1176,7 +1185,7 @@ void tport_unref(tport_t *tp)
     return;
 
   if (tp->tp_params->tpp_idle == 0) {
-    SU_DEBUG_9(("%s(%p): refcount is 0 and its idle, so we can close it\n", __func__, (void *)tp));
+    SU_DEBUG_4(("%s(%p): refcount is 0 and its idle, so we can close it\n", __func__, (void *)tp));
     tport_close(tp);
   }
 
@@ -2114,7 +2123,7 @@ int tport_addrinfo_copy(su_addrinfo_t *dst, void *addr, socklen_t addrlen,
  */
 void tport_close(tport_t *self)
 {
-  SU_DEBUG_5(("%s(%p): " TPN_FORMAT "\n",
+  SU_DEBUG_4(("%s(%p): " TPN_FORMAT "\n",
 	      __func__, (void *)self, TPN_ARGS(self->tp_name)));
 
   if (self->tp_refs == -1) {
@@ -2182,7 +2191,7 @@ int tport_shutdown(tport_t *self, int how)
 /** Internal shutdown function */
 int tport_shutdown0(tport_t *self, int how)
 {
-  SU_DEBUG_7(("%s(%p, %d)\n", __func__, (void *)self, how));
+  SU_DEBUG_4(("%s(%p, %d)\n", __func__, (void *)self, how));
 
   if (!tport_is_tcp(self) ||
       how < 0 || how >= 2 ||

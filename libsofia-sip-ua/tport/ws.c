@@ -996,7 +996,7 @@ ssize_t ws_read_frame(wsh_t *wsh, ws_opcode_t *oc, uint8_t **data)
 	switch(*oc) {
 	case WSOC_CLOSE:
 		{
-			SU_DEBUG_9(("%s(%p): ws_raw_read opcode WSOC_CLOSE\n", __func__, (void *)wsh->ssl));
+			SU_DEBUG_4(("%s(%p): ws_raw_read opcode WSOC_CLOSE\n", __func__, (void *)wsh->ssl));
 			wsh->plen = wsh->buffer[1] & 0x7f;
 			*data = (uint8_t *) &wsh->buffer[2];
 			return ws_close(wsh, 1000);
