@@ -2616,7 +2616,7 @@ void tport_error_report(tport_t *self, int errcode,
   /* Close connection */
   if (!self->tp_closed && errcode > 0 && tport_has_connection(self)) {
     if (tport_is_secondary(self)) {
-      SU_DEBUG_7(("%s(%p) calling tport_shutdown0 due to error on secondary transport\n",__func__, (void *)self));
+      SU_DEBUG_4(("%s(%p) calling tport_shutdown0 due to error on secondary transport\n",__func__, (void *)self));
       tport_shutdown0(self, 2);
       tport_set_secondary_timer(self);
     }
@@ -2682,7 +2682,7 @@ int tport_accept(tport_primary_t *pri, int events)
       self->tp_conn_orient = 1;
       self->tp_is_connected = 1;
 
-      SU_DEBUG_5(("%s(%p): new connection from " TPN_FORMAT "\n",
+      SU_DEBUG_4(("%s(%p): new connection from " TPN_FORMAT "\n",
                   __func__,  (void *)self, TPN_ARGS(self->tp_name)));
 
       return 0;
@@ -2873,7 +2873,7 @@ int tport_continue(tport_t *self)
  */
 void tport_hup_event(tport_t *self)
 {
-  SU_DEBUG_7(("%s(%p)\n", __func__, (void *)self));
+  SU_DEBUG_4(("%s(%p) " TPN_FORMAT "\n", __func__, (void *)self, TPN_ARGS(self->tp_name)));
 
   if (self->tp_msg) {
     su_time_t now = su_now();
@@ -2947,6 +2947,9 @@ void tport_recv_event(tport_t *self)
 
   if (again == 0 && !tport_is_dgram(self)) {
     /* End of stream */
+    SU_DEBUG_4(("%s(%p): end of stream from " TPN_FORMAT "\n",
+		  __func__, (void *)self, TPN_ARGS(self->tp_name)));
+
     if (!self->tp_closed) {
       /* Don't shutdown completely if there are queued messages */
       tport_shutdown0(self, tport_has_queued(self) ? 0 : 2);

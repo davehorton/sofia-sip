@@ -961,17 +961,17 @@ ssize_t ws_read_frame(wsh_t *wsh, ws_opcode_t *oc, uint8_t **data)
 	ll = establish_logical_layer(wsh);
 
 	if (ll < 0) {
-		SU_DEBUG_9(("%s(%p): establish_logical_layer failed: %d\n", __func__, (void *)wsh, ll));
+		SU_DEBUG_4(("%s(%p): establish_logical_layer failed: %d\n", __func__, (void *)wsh, ll));
 		return ll;
 	}
 
 	if (wsh->down) {
-		SU_DEBUG_9(("%s(%p): wsh->down so returning -1\n", __func__, (void *)wsh));
+		SU_DEBUG_4(("%s(%p): wsh->down so returning -1\n", __func__, (void *)wsh));
 		return -1;
 	}
 
 	if (!wsh->handshake) {
-		SU_DEBUG_9(("%s(%p): handshake failed\n", __func__, (void *)wsh->ssl));
+		SU_DEBUG_4(("%s(%p): handshake failed\n", __func__, (void *)wsh->ssl));
 		return ws_close(wsh, WS_NONE);
 	}
 
@@ -1025,7 +1025,7 @@ ssize_t ws_read_frame(wsh_t *wsh, ws_opcode_t *oc, uint8_t **data)
 					ssize_t bytes = ws_raw_read_blocking(wsh, wsh->buffer + wsh->datalen, need - wsh->datalen, 10);
 					if (bytes < 0 || (wsh->datalen += bytes) < need) {
 						/* too small - protocol err */
-						SU_DEBUG_9(("%s(%p): too small %d\n", __func__, (void *)wsh->ssl, (int)bytes));
+						SU_DEBUG_4(("%s(%p): too small %d\n", __func__, (void *)wsh->ssl, (int)bytes));
 						*oc = WSOC_CLOSE;
 						return ws_close(wsh, WS_NONE);
 					}
@@ -1044,7 +1044,7 @@ ssize_t ws_read_frame(wsh_t *wsh, ws_opcode_t *oc, uint8_t **data)
 					ssize_t bytes = ws_raw_read_blocking(wsh, wsh->buffer + wsh->datalen, need - wsh->datalen, 10);
 					if (bytes < 0 || (wsh->datalen += bytes) < need) {
 						/* too small - protocol err */
-						SU_DEBUG_9(("%s(%p): too small\n", __func__, (void *)wsh->ssl));
+						SU_DEBUG_4(("%s(%p): too small\n", __func__, (void *)wsh->ssl));
 						*oc = WSOC_CLOSE;
 						return ws_close(wsh, WS_NONE);
 					}
@@ -1062,7 +1062,7 @@ ssize_t ws_read_frame(wsh_t *wsh, ws_opcode_t *oc, uint8_t **data)
 					ssize_t bytes = ws_raw_read_blocking(wsh, wsh->buffer + wsh->datalen, need - wsh->datalen, 10);
 					if (bytes < 0 || (wsh->datalen += bytes) < need) {
 						/* too small - protocol err */
-						SU_DEBUG_9(("%s(%p): too small (2) %d\n", __func__, (void *)wsh->ssl, (int) bytes));
+						SU_DEBUG_4(("%s(%p): too small (2) %d\n", __func__, (void *)wsh->ssl, (int) bytes));
 						*oc = WSOC_CLOSE;
 						return ws_close(wsh, WS_NONE);
 					}
@@ -1082,7 +1082,7 @@ ssize_t ws_read_frame(wsh_t *wsh, ws_opcode_t *oc, uint8_t **data)
 
 			if (need < 0) {
 				/* invalid read - protocol err .. */
-				SU_DEBUG_9(("%s(%p): need %d\n", __func__, (void *)wsh->ssl, (int) need));
+				SU_DEBUG_4(("%s(%p): need %d\n", __func__, (void *)wsh->ssl, (int) need));
 				*oc = WSOC_CLOSE;
 				return ws_close(wsh, WS_NONE);
 			}
@@ -1097,7 +1097,7 @@ ssize_t ws_read_frame(wsh_t *wsh, ws_opcode_t *oc, uint8_t **data)
 				if ((tmp = realloc(wsh->bbuffer, wsh->bbuflen))) {
 					wsh->bbuffer = tmp;
 				} else {
-					SU_DEBUG_9(("%s(%p): too big..aborting\n", __func__, (void *)wsh->ssl));
+					SU_DEBUG_4(("%s(%p): too big..aborting\n", __func__, (void *)wsh->ssl));
 					*oc = WSOC_CLOSE;
 					return ws_close(wsh, WS_DATA_TOO_BIG);				
 				}
@@ -1158,7 +1158,7 @@ ssize_t ws_read_frame(wsh_t *wsh, ws_opcode_t *oc, uint8_t **data)
 	default:
 		{
 			/* invalid op code - protocol err .. */
-			SU_DEBUG_9(("%s(%p): invalid opcode %d\n", __func__, (void *)wsh->ssl, *oc));
+			SU_DEBUG_4(("%s(%p): invalid opcode %d\n", __func__, (void *)wsh->ssl, *oc));
 			*oc = WSOC_CLOSE;
 			return ws_close(wsh, WS_PROTO_ERR);
 		}
