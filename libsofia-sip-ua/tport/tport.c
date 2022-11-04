@@ -131,7 +131,16 @@ RBTREE_BODIES(su_inline, tprb, tport_t,
 #pragma clang diagnostic pop
 #endif
 
-static int secondaryCount = 0;
+static int wssCount = 0;
+static int tcpCount = 0;
+void incrementSecondaryCount(tport_t* self) {
+  if (self && 0 == strncmp(self->tp_name->tpn_proto, "ws", 2)) wssCount++;
+  else if (self && 0 == strcmp(self->tp_name->tpn_proto, "tcp")) tcpCount++;
+}
+void decrementSecondaryCount(tport_t* self) {
+  if (self && 0 == strncmp(self->tp_name->tpn_proto, "ws", 2)) wssCount--;
+  else if (self && 0 == strcmp(self->tp_name->tpn_proto, "tcp")) tcpCount--;
+}
 
 static void tplist_insert(tport_t **list, tport_t *tp)
 {
@@ -878,9 +887,9 @@ tport_t *tport_alloc_secondary(tport_primary_t *pri,
   self = su_home_clone(mr->mr_home, pri->pri_vtable->vtp_secondary_size);
 
   if (self) {
-    secondaryCount++;
-    SU_DEBUG_4(("%s(%p): new secondary tport %p from " TPN_FORMAT ", count is %d\n",
-		__func__, (void *)pri, (void *)self, TPN_ARGS(self->tp_name), secondaryCount));
+    incrementSecondaryCount(self);
+    SU_DEBUG_4(("%s(%p): new secondary tport %p from " TPN_FORMAT ", count(wss) is %d, count(tcp) is %d\n",
+		  __func__, (void *)pri, (void *)self, TPN_ARGS(self->tp_name), wssCount, tcpCount));
 
     self->tp_refs = -1;			/* Freshly allocated  */
     self->tp_master = mr;
@@ -904,9 +913,9 @@ tport_t *tport_alloc_secondary(tport_primary_t *pri,
 
 		if (pri->pri_vtable->vtp_deinit_secondary) {
 			pri->pri_vtable->vtp_deinit_secondary(self);
-      secondaryCount--;
-      SU_DEBUG_4(("%s(%p): deinit after init failure tport %p from " TPN_FORMAT ", count is %d\n", 
-        __func__, (void *)pri, (void *)self, TPN_ARGS(self->tp_name), secondaryCount));
+      decrementSecondaryCount(self);
+      SU_DEBUG_4(("%s(%p): deinit after init failure tport %p from " TPN_FORMAT ", count(wss) is %d, count(tcp) is %d\n", 
+        __func__, (void *)pri, (void *)self, TPN_ARGS(self->tp_name),  wssCount, tcpCount));
 		}
 		su_timer_destroy(self->tp_timer);
 		su_home_zap(self->tp_home);
@@ -1111,10 +1120,10 @@ void tport_zap_secondary(tport_t *self)
   /* Do not deinit primary as secondary! */
   if (tport_is_secondary(self) &&
       self->tp_pri->pri_vtable->vtp_deinit_secondary) {
-        secondaryCount--;
         self->tp_pri->pri_vtable->vtp_deinit_secondary(self);
-        SU_DEBUG_4(("%s(%p): deinit tport %p from " TPN_FORMAT ", count is %d\n", 
-          __func__, (void *)self->tp_pri, (void *)self, TPN_ARGS(self->tp_name), secondaryCount));
+        decrementSecondaryCount(self);
+        SU_DEBUG_4(("%s(%p): deinit tport %p from " TPN_FORMAT ", count(wss) is %d, count(tcp) is %d\n", 
+          __func__, (void *)self->tp_pri, (void *)self, TPN_ARGS(self->tp_name), wssCount, tcpCount));
       }
 
   if (self->tp_msg) {

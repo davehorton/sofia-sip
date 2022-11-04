@@ -514,20 +514,20 @@ int tport_ws_init_secondary(tport_t *self, int socket, int accepted,
 	  return *return_reason = "TCP_NODELAY", -1;
 
 #if defined(SO_KEEPALIVE)
-  SU_DEBUG_4(("%s(%p): " TPN_FORMAT " Setting SO_KEEPALIVE to %d\n",
-                __func__, (void *)self, TPN_ARGS(self->tp_name), one));
+  SU_DEBUG_5(("%s(%p): Setting SO_KEEPALIVE to %d\n",
+                __func__, (void *)self, one));
 
   setsockopt(socket, SOL_SOCKET, SO_KEEPALIVE, (void *)&one, sizeof one);
 #endif
   one = 30;
 #if defined(TCP_KEEPIDLE)
-  SU_DEBUG_4(("%s(%p): " TPN_FORMAT " Setting TCP_KEEPIDLE to %d\n",
-                __func__, (void *)self, TPN_ARGS(self->tp_name), one));
+  SU_DEBUG_5(("%s(%p): Setting TCP_KEEPIDLE to %d\n",
+                __func__, (void *)self, one));
   setsockopt(socket, SOL_TCP, TCP_KEEPIDLE, (void *)&one, sizeof one);
 #endif
 #if defined(TCP_KEEPINTVL)
-  SU_DEBUG_4(("%s(%p): " TPN_FORMAT " Setting TCP_KEEPINTVL to %d\n",
-                __func__, (void *)self, TPN_ARGS(self->tp_name), one));
+  SU_DEBUG_5(("%s(%p): Setting TCP_KEEPINTVL to %d\n",
+                __func__, (void *)self, one));
   setsockopt(socket, SOL_TCP, TCP_KEEPINTVL, (void *)&one, sizeof one);
 #endif
 
