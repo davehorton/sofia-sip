@@ -887,10 +887,6 @@ tport_t *tport_alloc_secondary(tport_primary_t *pri,
   self = su_home_clone(mr->mr_home, pri->pri_vtable->vtp_secondary_size);
 
   if (self) {
-    incrementSecondaryCount(self);
-    SU_DEBUG_4(("%s(%p): new secondary tport %p from " TPN_FORMAT ", count(wss) is %d, count(tcp) is %d\n",
-		  __func__, (void *)pri, (void *)self, TPN_ARGS(self->tp_name), wssCount, tcpCount));
-
     self->tp_refs = -1;			/* Freshly allocated  */
     self->tp_master = mr;
     self->tp_pri = pri;
@@ -910,17 +906,13 @@ tport_t *tport_alloc_secondary(tport_primary_t *pri,
     if (pri->pri_vtable->vtp_init_secondary &&
 
 		pri->pri_vtable->vtp_init_secondary(self, socket, accepted, return_reason) < 0) {
+      if (pri->pri_vtable->vtp_deinit_secondary) {
+        pri->pri_vtable->vtp_deinit_secondary(self);
+      }
+      su_timer_destroy(self->tp_timer);
+      su_home_zap(self->tp_home);
 
-		if (pri->pri_vtable->vtp_deinit_secondary) {
-			pri->pri_vtable->vtp_deinit_secondary(self);
-      decrementSecondaryCount(self);
-      SU_DEBUG_4(("%s(%p): deinit after init failure tport %p from " TPN_FORMAT ", count(wss) is %d, count(tcp) is %d\n", 
-        __func__, (void *)pri, (void *)self, TPN_ARGS(self->tp_name),  wssCount, tcpCount));
-		}
-		su_timer_destroy(self->tp_timer);
-		su_home_zap(self->tp_home);
-
-		return NULL;
+      return NULL;
     }
 
     /* Set IP TOS if it is set in primary */
@@ -931,7 +923,6 @@ tport_t *tport_alloc_secondary(tport_primary_t *pri,
   else {
     *return_reason = "malloc";
   }
-
   return self;
 }
 
@@ -1093,6 +1084,12 @@ int tport_register_secondary(tport_t *self, su_wakeup_f wakeup, int events)
     self->tp_events = events;
 
     tprb_append(&self->tp_pri->pri_open, self);
+
+
+    incrementSecondaryCount(self);
+    SU_DEBUG_4(("%s(%p): register secondary tport %p from " TPN_FORMAT ", count(wss) is %d, count(tcp) is %d\n", 
+      __func__, (void *)self->tp_pri, (void *)self, TPN_ARGS(self->tp_name), wssCount, tcpCount));
+
     return 0;
   }
 
@@ -1118,13 +1115,9 @@ void tport_zap_secondary(tport_t *self)
     su_timer_destroy(self->tp_timer), self->tp_timer = NULL;
 
   /* Do not deinit primary as secondary! */
-  if (tport_is_secondary(self) &&
-      self->tp_pri->pri_vtable->vtp_deinit_secondary) {
-        self->tp_pri->pri_vtable->vtp_deinit_secondary(self);
-        decrementSecondaryCount(self);
-        SU_DEBUG_4(("%s(%p): deinit tport %p from " TPN_FORMAT ", count(wss) is %d, count(tcp) is %d\n", 
-          __func__, (void *)self->tp_pri, (void *)self, TPN_ARGS(self->tp_name), wssCount, tcpCount));
-      }
+  if (tport_is_secondary(self) && self->tp_pri->pri_vtable->vtp_deinit_secondary) {
+    self->tp_pri->pri_vtable->vtp_deinit_secondary(self);
+  }
 
   if (self->tp_msg) {
     msg_destroy(self->tp_msg), self->tp_msg = NULL;
@@ -1160,6 +1153,10 @@ void tport_zap_secondary(tport_t *self)
     su_close(self->tp_socket);
   self->tp_socket = INVALID_SOCKET;
 
+  decrementSecondaryCount(self);
+  SU_DEBUG_4(("%s(%p): zap tport %p from " TPN_FORMAT ", count(wss) is %d, count(tcp) is %d\n", 
+    __func__, (void *)self->tp_pri, (void *)self, TPN_ARGS(self->tp_name), wssCount, tcpCount));
+
   su_home_zap(self->tp_home);
 }
 
@@ -1187,7 +1184,7 @@ void tport_unref(tport_t *tp)
 
   tp->tp_refs--;
   if (tp->tp_refs <= 1) {
-    SU_DEBUG_4(("%s(%p): " TPN_FORMAT " refcount from is now %ld\n", 
+    SU_DEBUG_5(("%s(%p): " TPN_FORMAT " refcount from is now %ld\n", 
     __func__, (void *)tp, TPN_ARGS(tp->tp_name), tp->tp_refs));
   }
   else SU_DEBUG_9(("%s(%p): refcount is now %ld\n", __func__, (void *)tp, tp->tp_refs));
