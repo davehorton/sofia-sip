@@ -879,8 +879,8 @@ tport_t *tport_alloc_secondary(tport_primary_t *pri,
 
   if (self) {
     secondaryCount++;
-    SU_DEBUG_4(("%s(%p): new secondary tport %p, count %d\n",
-		__func__, (void *)pri, (void *)self, secondaryCount));
+    SU_DEBUG_4(("%s(%p): new secondary tport %p from " TPN_FORMAT ", count is %d\n",
+		__func__, (void *)pri, (void *)self, TPN_ARGS(self->tp_name), secondaryCount));
 
     self->tp_refs = -1;			/* Freshly allocated  */
     self->tp_master = mr;
@@ -905,7 +905,8 @@ tport_t *tport_alloc_secondary(tport_primary_t *pri,
 		if (pri->pri_vtable->vtp_deinit_secondary) {
 			pri->pri_vtable->vtp_deinit_secondary(self);
       secondaryCount--;
-      SU_DEBUG_4(("%s(%p): deinit tport %p, count %d\n", __func__, (void *)pri, (void *)self, secondaryCount));
+      SU_DEBUG_4(("%s(%p): deinit after init failure tport %p from " TPN_FORMAT ", count is %d\n", 
+        __func__, (void *)pri, (void *)self, TPN_ARGS(self->tp_name), secondaryCount));
 		}
 		su_timer_destroy(self->tp_timer);
 		su_home_zap(self->tp_home);
@@ -1112,7 +1113,8 @@ void tport_zap_secondary(tport_t *self)
       self->tp_pri->pri_vtable->vtp_deinit_secondary) {
         secondaryCount--;
         self->tp_pri->pri_vtable->vtp_deinit_secondary(self);
-        SU_DEBUG_4(("%s(%p): deinit tport %p, count %d\n", __func__, (void *)self->tp_pri, (void *)self, secondaryCount));
+        SU_DEBUG_4(("%s(%p): deinit tport %p from " TPN_FORMAT ", count is %d\n", 
+          __func__, (void *)self->tp_pri, (void *)self, TPN_ARGS(self->tp_name), secondaryCount));
       }
 
   if (self->tp_msg) {
@@ -1175,7 +1177,10 @@ void tport_unref(tport_t *tp)
     return;
 
   tp->tp_refs--;
-  if (0 == tp->tp_refs) SU_DEBUG_4(("%s(%p): refcount is now %ld\n", __func__, (void *)tp, tp->tp_refs));
+  if (tp->tp_refs <= 1) {
+    SU_DEBUG_4(("%s(%p): " TPN_FORMAT " refcount from is now %ld\n", 
+    __func__, (void *)tp, TPN_ARGS(tp->tp_name), tp->tp_refs));
+  }
   else SU_DEBUG_9(("%s(%p): refcount is now %ld\n", __func__, (void *)tp, tp->tp_refs));
 
   if (tp->tp_refs > 0)
@@ -1185,7 +1190,8 @@ void tport_unref(tport_t *tp)
     return;
 
   if (tp->tp_params->tpp_idle == 0) {
-    SU_DEBUG_4(("%s(%p): refcount is 0 and its idle, so we can close it\n", __func__, (void *)tp));
+    SU_DEBUG_4(("%s(%p): " TPN_FORMAT " refcount is 0 and its idle, so we can close it\n", 
+      __func__, (void *)tp, TPN_ARGS(tp->tp_name)));
     tport_close(tp);
   }
 
@@ -2191,7 +2197,7 @@ int tport_shutdown(tport_t *self, int how)
 /** Internal shutdown function */
 int tport_shutdown0(tport_t *self, int how)
 {
-  SU_DEBUG_4(("%s(%p, %d)\n", __func__, (void *)self, how));
+  SU_DEBUG_4(("%s(%p, %d) " TPN_FORMAT "\n", __func__, (void *)self, how, TPN_ARGS(self->tp_name)));
 
   if (!tport_is_tcp(self) ||
       how < 0 || how >= 2 ||
@@ -2616,12 +2622,13 @@ void tport_error_report(tport_t *self, int errcode,
   /* Close connection */
   if (!self->tp_closed && errcode > 0 && tport_has_connection(self)) {
     if (tport_is_secondary(self)) {
-      SU_DEBUG_4(("%s(%p) calling tport_shutdown0 due to error on secondary transport\n",__func__, (void *)self));
+      SU_DEBUG_4(("%s(%p) " TPN_FORMAT " calling tport_shutdown0 due to error on secondary transport\n",
+        __func__, (void *)self, TPN_ARGS(self->tp_name)));
       tport_shutdown0(self, 2);
       tport_set_secondary_timer(self);
     }
     else {
-      SU_DEBUG_9(("%s(%p): calling tport_close\n", __func__, (void *)self));
+      SU_DEBUG_9(("%s(%p): " TPN_FORMAT " calling tport_close\n", __func__, (void *)self, TPN_ARGS(self->tp_name)));
       tport_close(self);
     }
   }

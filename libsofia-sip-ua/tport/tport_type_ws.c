@@ -514,20 +514,20 @@ int tport_ws_init_secondary(tport_t *self, int socket, int accepted,
 	  return *return_reason = "TCP_NODELAY", -1;
 
 #if defined(SO_KEEPALIVE)
-  SU_DEBUG_4(("%s(%p): Setting SO_KEEPALIVE to %d\n",
-                __func__, (void *)self, one));
+  SU_DEBUG_4(("%s(%p): " TPN_FORMAT " Setting SO_KEEPALIVE to %d\n",
+                __func__, (void *)self, TPN_ARGS(self->tp_name), one));
 
   setsockopt(socket, SOL_SOCKET, SO_KEEPALIVE, (void *)&one, sizeof one);
 #endif
   one = 30;
 #if defined(TCP_KEEPIDLE)
-  SU_DEBUG_4(("%s(%p): Setting TCP_KEEPIDLE to %d\n",
-                __func__, (void *)self, one));
+  SU_DEBUG_4(("%s(%p): " TPN_FORMAT " Setting TCP_KEEPIDLE to %d\n",
+                __func__, (void *)self, TPN_ARGS(self->tp_name), one));
   setsockopt(socket, SOL_TCP, TCP_KEEPIDLE, (void *)&one, sizeof one);
 #endif
 #if defined(TCP_KEEPINTVL)
-  SU_DEBUG_4(("%s(%p): Setting TCP_KEEPINTVL to %d\n",
-                __func__, (void *)self, one));
+  SU_DEBUG_4(("%s(%p): " TPN_FORMAT " Setting TCP_KEEPINTVL to %d\n",
+                __func__, (void *)self, TPN_ARGS(self->tp_name), one));
   setsockopt(socket, SOL_TCP, TCP_KEEPINTVL, (void *)&one, sizeof one);
 #endif
 
@@ -562,10 +562,15 @@ static void tport_ws_deinit_secondary(tport_t *self)
 	tport_ws_t *wstp = (tport_ws_t *)self;
 
 	if (wstp->ws_initialized == 1) {
-		SU_DEBUG_4(("%p destroy ws%s transport %p.\n", (void *) self, wstp->ws_secure ? "s" : "", (void *) &wstp->ws));
+		SU_DEBUG_4(("%s(%p) " TPN_FORMAT " destroy ws%s transport %p.\n", 
+      __func__, (void *) self, TPN_ARGS(self->tp_name), wstp->ws_secure ? "s" : "", (void *) &wstp->ws));
 		ws_destroy(&wstp->ws);
 		wstp->ws_initialized = -1;
 	}
+  else {
+		SU_DEBUG_4(("%s(%p) "  TPN_FORMAT " NOT destroying ws%s transport %p because initialized is %d\n", 
+      __func__, (void *) self, TPN_ARGS(self->tp_name), wstp->ws_secure ? "s" : "", (void *) &wstp->ws, wstp->ws_initialized == 1));
+  }
 }
 
 static int tport_ws_setsndbuf(int socket, int atleast)
@@ -666,7 +671,7 @@ int tport_ws_next_timer(tport_t *self,
 	if (punt) {
 		tport_close(self);
 
-		SU_DEBUG_7(("%s(%p): %s to " TPN_FORMAT "%s\n",
+		SU_DEBUG_4(("%s(%p): %s to " TPN_FORMAT "%s\n",
 					__func__, (void *)self,
 					(punt == 2 ? "Timeout establishing SSL" : "Error establishing SSL"), TPN_ARGS(self->tp_name), ""));
 		if (wstp->ws.secure)
