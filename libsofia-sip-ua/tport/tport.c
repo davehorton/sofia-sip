@@ -1085,8 +1085,6 @@ int tport_register_secondary(tport_t *self, su_wakeup_f wakeup, int events)
 
     tprb_append(&self->tp_pri->pri_open, self);
 
-
-    incrementSecondaryCount(self);
     SU_DEBUG_4(("%s(%p): register secondary tport %p from " TPN_FORMAT ", count(wss) is %d, count(tcp) is %d\n", 
       __func__, (void *)self->tp_pri, (void *)self, TPN_ARGS(self->tp_name), wssCount, tcpCount));
 
@@ -2457,6 +2455,8 @@ int tport_setname(tport_t *self,
     assert(ai->ai_family), assert(ai->ai_socktype), assert(ai->ai_protocol);
     memcpy(self->tp_addr, ai->ai_addr, selfai->ai_addrlen = ai->ai_addrlen);
   }
+
+  if (tport_is_secondary(self)) incrementSecondaryCount(self);
 
   return 0;
 }
