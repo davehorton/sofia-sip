@@ -3310,8 +3310,6 @@ tport_t *tport_tsend(tport_t *self,
   tp_name_t tpn[1];
   struct sigcomp_compartment *cc;
 
-  assert(self);
-
   if (!self || !msg || !_tpn) {
     msg_set_errno(msg, EINVAL);
     return NULL;
