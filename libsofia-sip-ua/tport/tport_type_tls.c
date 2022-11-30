@@ -249,6 +249,9 @@ static int tport_tls_init_master(tport_primary_t *pri,
     }
   }
 
+  SU_DEBUG_4(("%s(%p): tls_policy: %d, tls_verify: %d\n", __func__, (void *)pri, tls_policy, tls_verify));
+  SU_DEBUG_4(("%s(%p): tls_version: %d, tls_timeout: %d\n", __func__, (void *)pri, tls_version, tls_timeout));
+
   ti.policy = tls_policy | (tls_verify ? TPTLS_VERIFY_ALL : 0);
   ti.verify_depth = tls_depth;
   ti.verify_date = tls_date;

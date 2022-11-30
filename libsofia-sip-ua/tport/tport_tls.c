@@ -426,6 +426,8 @@ int tls_init_context(tls_t *tls, tls_issues_t const *ti)
   tls->verify_subj_out = (ti->policy & 0x8) ? tls->verify_outgoing : 0;
   tls->verify_date     = (ti->verify_date)  ? 1 : 0;
 
+  SU_DEBUG_4(("%s: tls->verify_incoming: %d\n", __func__, tls->verify_incoming));
+
   if (tls->verify_incoming)
     verify = SSL_VERIFY_PEER | SSL_VERIFY_FAIL_IF_NO_PEER_CERT;
   else
@@ -620,12 +622,18 @@ int tls_post_connection_check(tport_t *self, tls_t *tls)
   if (!cert) {
     SU_DEBUG_7(("%s(%p): Peer did not provide X.509 Certificate.\n", 
 				__func__, (void *) self));
-    if (self->tp_accepted && tls->verify_incoming)
+    if (self->tp_accepted && tls->verify_incoming) {
+      SU_DEBUG_4(("%s(%p): returning X509_V_ERR_CERT_UNTRUSTED for incoming connection\n", __func__, (void*)self));
       return X509_V_ERR_CERT_UNTRUSTED;
-    else if (!self->tp_accepted && tls->verify_outgoing)
+    }
+    else if (!self->tp_accepted && tls->verify_outgoing) {
+      SU_DEBUG_4(("%s(%p): returning X509_V_ERR_CERT_UNTRUSTED for outgoing connection\n", __func__, (void*)self));
       return X509_V_ERR_CERT_UNTRUSTED;
-    else 
+    }
+    else {
+      SU_DEBUG_4(("%s(%p): returning X509_V_ERR_CERT_UNTRUSTED\n", __func__, (void*)self));
       return X509_V_OK;
+    }
   }
 
   tls->subjects = su_strlst_create(tls->home);
