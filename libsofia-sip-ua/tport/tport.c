@@ -1168,7 +1168,7 @@ tport_t *tport_ref(tport_t *tp)
     else if (tp->tp_refs == -1) {
       tp->tp_refs = 1;
     }
-    SU_DEBUG_9(("%s(%p): refcount is now %ld\n", __func__, (void *)tp, tp->tp_refs));
+    SU_DEBUG_4(("%s(%p): refcount is now %ld\n", __func__, (void *)tp, tp->tp_refs));
 
   }
   return tp;
@@ -1181,11 +1181,7 @@ void tport_unref(tport_t *tp)
     return;
 
   tp->tp_refs--;
-  if (tp->tp_refs <= 1) {
-    SU_DEBUG_5(("%s(%p): " TPN_FORMAT " refcount from is now %ld\n", 
-    __func__, (void *)tp, TPN_ARGS(tp->tp_name), tp->tp_refs));
-  }
-  else SU_DEBUG_9(("%s(%p): refcount is now %ld\n", __func__, (void *)tp, tp->tp_refs));
+  SU_DEBUG_4(("%s(%p): refcount is now %ld\n", __func__, (void *)tp, tp->tp_refs));
 
   if (tp->tp_refs > 0)
     return;
@@ -2171,8 +2167,9 @@ void tport_close(tport_t *self)
   if (self->tp_queue) {
     unsigned short i, N = self->tp_params->tpp_qsize;
     for (i = 0; i < N; i++) {
-      if (self->tp_queue[i])
-	msg_ref_destroy(self->tp_queue[i]), self->tp_queue[i] = NULL;
+      if (self->tp_queue[i]) {
+        msg_ref_destroy(self->tp_queue[i]), self->tp_queue[i] = NULL;
+      }
     }
   }
 
@@ -2208,6 +2205,7 @@ int tport_shutdown0(tport_t *self, int how)
       (how == 0 && self->tp_send_close) ||
       (how == 1 && self->tp_recv_close > 1)) {
     tport_close(self);
+    SU_DEBUG_4(("%s(%p): after tport_close refcount is now %ld\n", __func__, (void *)self, self->tp_refs));
     return 1;
   }
 
@@ -2216,11 +2214,14 @@ int tport_shutdown0(tport_t *self, int how)
   else
     shutdown(self->tp_socket, how);
 
+  SU_DEBUG_4(("%s(%p): after vtp_shutdown refcount is now %ld\n", __func__, (void *)self, self->tp_refs));
   if (how == 0) {
     self->tp_recv_close = 2;
     tport_set_events(self, 0, SU_WAIT_IN);
-    if (self->tp_params->tpp_sdwn_error && self->tp_pused)
+    if (self->tp_params->tpp_sdwn_error && self->tp_pused) {
       tport_error_report(self, -1, NULL);
+    }
+    SU_DEBUG_4(("%s(%p): after possibly reporting error refcount is now %ld\n", __func__, (void *)self, self->tp_refs));
   }
   else if (how == 1) {
     self->tp_send_close = 2;
@@ -2228,12 +2229,13 @@ int tport_shutdown0(tport_t *self, int how)
     if (tport_has_queued(self)) {
       unsigned short i, N = self->tp_params->tpp_qsize;
       for (i = 0; i < N; i++) {
-	if (self->tp_queue[i]) {
-	  tport_pending_errmsg(self, self->tp_queue[i], EPIPE);
-	  msg_ref_destroy(self->tp_queue[i]), self->tp_queue[i] = NULL;
-	}
+        if (self->tp_queue[i]) {
+          tport_pending_errmsg(self, self->tp_queue[i], EPIPE);
+          msg_ref_destroy(self->tp_queue[i]), self->tp_queue[i] = NULL;
+        }
       }
     }
+    SU_DEBUG_4(("%s(%p): after clearing queued messages refcount is now %ld\n", __func__, (void *)self, self->tp_refs));
   }
 
   return 0;
@@ -2960,12 +2962,13 @@ void tport_recv_event(tport_t *self)
 
   if (again == 0 && !tport_is_dgram(self)) {
     /* End of stream */
-    SU_DEBUG_4(("%s(%p): end of stream from " TPN_FORMAT "\n",
-		  __func__, (void *)self, TPN_ARGS(self->tp_name)));
+    SU_DEBUG_4(("%s(%p): end of stream from " TPN_FORMAT " refcount is %ld\n",
+		  __func__, (void *)self, TPN_ARGS(self->tp_name), self->tp_refs));
 
     if (!self->tp_closed) {
       /* Don't shutdown completely if there are queued messages */
       tport_shutdown0(self, tport_has_queued(self) ? 0 : 2);
+      SU_DEBUG_4(("%s(%p): back from tport_shutdown0 refcount is now %ld\n", __func__, (void *)self, self->tp_refs));
     }
   }
 
