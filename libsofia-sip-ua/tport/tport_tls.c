@@ -631,7 +631,7 @@ int tls_post_connection_check(tport_t *self, tls_t *tls)
       return X509_V_ERR_CERT_UNTRUSTED;
     }
     else {
-      SU_DEBUG_4(("%s(%p): returning X509_V_ERR_CERT_UNTRUSTED\n", __func__, (void*)self));
+      SU_DEBUG_4(("%s(%p): returning X509_V_OK\n", __func__, (void*)self));
       return X509_V_OK;
     }
   }
@@ -1030,7 +1030,7 @@ int tls_connect(su_root_magic_t *magic, su_wait_t *w, tport_t *self)
 
       case SSL_ERROR_NONE:
         /* TLS Handshake complete */
-	status = tls_post_connection_check(self, tls);
+        status = tls_post_connection_check(self, tls);
         if ( status == X509_V_OK ) {
           su_wait_t wait[1] = {SU_WAIT_INIT};
           tport_master_t *mr = self->tp_master;
@@ -1039,6 +1039,8 @@ int tls_connect(su_root_magic_t *magic, su_wait_t *w, tport_t *self)
           su_root_deregister(mr->mr_root, self->tp_index);
           self->tp_index = -1;
           self->tp_events = SU_WAIT_IN | SU_WAIT_ERR | SU_WAIT_HUP;
+
+          SU_DEBUG_9(("%s: TLS handshake complete.\n", __func__));
 
           if (((su_wait_create_ret = su_wait_create(wait, self->tp_socket, self->tp_events)) == -1) ||
              ((self->tp_index = su_root_register(mr->mr_root, wait, tport_wakeup,
