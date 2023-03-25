@@ -887,6 +887,9 @@ tport_t *tport_alloc_secondary(tport_primary_t *pri,
   self = su_home_clone(mr->mr_home, pri->pri_vtable->vtp_secondary_size);
 
   if (self) {
+    SU_DEBUG_7(("%s(%p): new secondary tport %p\n",
+		__func__, (void *)pri, (void *)self));
+
     self->tp_refs = -1;			/* Freshly allocated  */
     self->tp_master = mr;
     self->tp_pri = pri;
@@ -1080,6 +1083,9 @@ int tport_register_secondary(tport_t *self, su_wakeup_f wakeup, int events)
       &&
       (i = su_root_register(root, wait, wakeup, self, 0)) != -1) {
 
+    /* Can't be added to list of opened if already closed */
+    if (tport_is_closed(self)) goto fail;
+
     self->tp_index = i;
     self->tp_events = events;
 
@@ -1091,7 +1097,9 @@ int tport_register_secondary(tport_t *self, su_wakeup_f wakeup, int events)
     return 0;
   }
 
-  su_wait_destroy(wait);
+  fail:
+  SU_DEBUG_9(("%s(%p): tport is %s!\n", __func__, (void *)self, (tport_is_closed(self) ? "closed" : "opened")));
+su_wait_destroy(wait);
   return -1;
 }
 
@@ -1698,7 +1706,8 @@ int tport_bind_server(tport_master_t *mr,
   for (tbf = &mr->mr_primaries; *tbf; tbf = &(*tbf)->pri_next)
     ;
 
-  port = port0 = port1 = ntohs(((su_sockaddr_t *)res->ai_addr)->su_port);
+    if (!res) return -1;
+port = port0 = port1 = ntohs(((su_sockaddr_t *)res->ai_addr)->su_port);
   error = EPROTONOSUPPORT;
 
   /*
@@ -2307,6 +2316,8 @@ int tport_set_secondary_timer(tport_t *self)
     return 0;
 
   if (tport_is_closed(self)) {
+
+again:
     if (self->tp_refs == 0) {
       SU_DEBUG_7(("tport(%p): set timer at %u ms because %s\n",
 				  (void *)self, 0, "zap"));
@@ -2332,9 +2343,14 @@ int tport_set_secondary_timer(tport_t *self)
     }
   }
 
-  if (self->tp_pri->pri_vtable->vtp_next_secondary_timer)
-    self->tp_pri->pri_vtable->
-      vtp_next_secondary_timer(self, &target, &why);
+  if (self->tp_pri->pri_vtable->vtp_next_secondary_timer) {
+    if (self->tp_pri->pri_vtable->
+      vtp_next_secondary_timer(self, &target, &why) == -1) {
+      if (tport_is_closed(self)) {
+        goto again;
+      }
+    }
+  }
 
   if (su_time_cmp(target, infinity)) {
     SU_DEBUG_7(("tport(%p): set timer at %ld ms because %s\n",
@@ -2629,16 +2645,8 @@ void tport_error_report(tport_t *self, int errcode,
 
   /* Close connection */
   if (!self->tp_closed && errcode > 0 && tport_has_connection(self)) {
-    if (tport_is_secondary(self)) {
-      SU_DEBUG_4(("%s(%p) " TPN_FORMAT " calling tport_shutdown0 due to error on secondary transport\n",
-        __func__, (void *)self, TPN_ARGS(self->tp_name)));
-      tport_shutdown0(self, 2);
-      tport_set_secondary_timer(self);
-    }
-    else {
-      SU_DEBUG_9(("%s(%p): " TPN_FORMAT " calling tport_close\n", __func__, (void *)self, TPN_ARGS(self->tp_name)));
-      tport_close(self);
-    }
+    tport_close(self);
+    tport_set_secondary_timer(self);
   }
 }
 
@@ -2651,7 +2659,7 @@ int tport_accept(tport_primary_t *pri, int events)
 {
   tport_t *self;
   su_addrinfo_t ai[1];
-  su_sockaddr_t su[1];
+  su_sockaddr_t su[1] = { 0 };
   socklen_t sulen = sizeof su;
   su_socket_t s = INVALID_SOCKET, l = pri->pri_primary->tp_socket;
   char const *reason = "accept";
@@ -2688,7 +2696,9 @@ int tport_accept(tport_primary_t *pri, int events)
 
     SU_CANONIZE_SOCKADDR(su);
 
-    if (/* Name this transport */
+    if (/* Prevent being marked as connected if already closed */
+		!tport_is_closed(self) && 
+		/* Name this transport */
         tport_setname(self, pri->pri_protoname, ai, NULL) != -1 
 	/* Register this secondary */ 
 	&&
@@ -2824,6 +2834,7 @@ static int tport_wakeup_pri(su_root_magic_t *m, su_wait_t *w, tport_t *self)
 int tport_wakeup(su_root_magic_t *magic, su_wait_t *w, tport_t *self)
 {
   int events = su_wait_events(w, self->tp_socket);
+  int error;
 
 #if HAVE_POLL
   assert(w->fd == self->tp_socket);
@@ -2838,9 +2849,16 @@ int tport_wakeup(su_root_magic_t *magic, su_wait_t *w, tport_t *self)
 	      self->tp_closed ? " (closed)" : ""));
 
   if (self->tp_pri->pri_vtable->vtp_wakeup)
-    return self->tp_pri->pri_vtable->vtp_wakeup(self, events);
+    error = self->tp_pri->pri_vtable->vtp_wakeup(self, events);
   else
-    return tport_base_wakeup(self, events);
+    error = tport_base_wakeup(self, events);
+
+  if (tport_is_closed(self)) {
+    SU_DEBUG_9(("%s(%p): tport is closed! Setting secondary timer!\n", "tport_wakeup", (void *)self));
+    tport_set_secondary_timer(self);
+  }
+
+  return error;
 }
 
 static int tport_base_wakeup(tport_t *self, int events)
@@ -3396,7 +3414,6 @@ tport_t *tport_tsend(tport_t *self,
    * Try to find an already open connection to the destination,
    * or get a primary protocol
    */
-  
   else {
     /* If primary, resolve the destination address, store it in the msg */
     if (tport_resolve(primary->pri_primary, msg, tpn) < 0) {
@@ -4928,7 +4945,7 @@ int tport_name_dup(su_home_t *home,
     dst->tpn_canon = dst->tpn_host;
 
   if (n_comp)
-    dst->tpn_comp = memcpy(s, src->tpn_comp, n_comp), s += n_comp;
+    dst->tpn_comp = memcpy(s, src->tpn_comp, n_comp);
   else
     dst->tpn_comp = NULL;
 
