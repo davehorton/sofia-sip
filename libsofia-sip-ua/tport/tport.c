@@ -2870,12 +2870,15 @@ static int tport_base_wakeup(tport_t *self, int events)
 /** Stop reading from socket until tport_continue() is called. */
 int tport_stall(tport_t *self)
 {
+  SU_DEBUG_7(("%s(%p)\n", __func__, (void *)self));
   return tport_set_events(self, 0, SU_WAIT_IN);
 }
 
 /** Continue reading from socket. */
 int tport_continue(tport_t *self)
 {
+  SU_DEBUG_7(("%s(%p)\n", __func__, (void *)self));
+
   if (self == NULL || self->tp_recv_close)
     return -1;
   return tport_set_events(self, SU_WAIT_IN, 0);
@@ -2929,6 +2932,7 @@ void tport_recv_event(tport_t *self)
   do {
     /* Receive data from socket */
     again = tport_recv_data(self);
+    SU_DEBUG_7(("%s(%p)\n", "tport_recv_event returned, again %d", (void *)self, again));
 
     su_time(&self->tp_rtime);
 
@@ -2939,6 +2943,7 @@ void tport_recv_event(tport_t *self)
 
     if (again < 0) {
       int error = su_errno();
+      SU_DEBUG_7(("%s(%p)\n", "tport_recv_event error %d", (void *)self, error));
 
       if (!su_is_blocking(error)) {
 	tport_error_report(self, error, NULL);
@@ -3018,8 +3023,9 @@ static void tport_parse(tport_t *self, int complete, su_time_t now)
       break;
   }
 
-  if (stall)
+  if (stall) {
     tport_stall(self);
+  }
 
   if (self->tp_rlogged != msg)
     self->tp_rlogged = NULL;

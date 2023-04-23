@@ -213,8 +213,9 @@ int tport_recv_stream_ws(tport_t *self)
   if (wstp->ws_initialized < 0) {
 	  return -1;
   }
-
+  SU_DEBUG_9(("%s(%p): calling ws_read_frame\n", __func__, (void *)self));
   N = ws_read_frame(&wstp->ws, &oc, &data);
+  SU_DEBUG_9(("%s(%p): ws_read_frame returns N=%ld\n", __func__, (void *)self, (long)N));
 
   if (N == -2) {
 	  return 1;
@@ -258,6 +259,8 @@ int tport_recv_stream_ws(tport_t *self)
 
   /* Mark buffer as used */
   msg_recv_commit(msg, N, 0);
+
+  SU_DEBUG_7(("%s(%p): returns 1\n", __func__, (void *)self));
 
   return 1;
 }
