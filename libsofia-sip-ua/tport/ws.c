@@ -839,6 +839,10 @@ ssize_t ws_close(wsh_t *wsh, int16_t reason)
 		int ssl_error = 0;
 		const char* buf = "0";
 
+    if (!wsh->logical_established) {
+      fprintf(stderr, "%s SSL connection never established, bypass SSL_Shutdown\n", __func__);
+			goto ssl_finish_it;
+    }
 		/* check if no fatal error occurs on connection */
     fprintf(stderr, "%s calling SSL_write\n", __func__);
 
