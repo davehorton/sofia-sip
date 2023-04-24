@@ -821,6 +821,11 @@ ssize_t ws_close(wsh_t *wsh, int16_t reason)
 		int ssl_error = 0;
 		const char* buf = "0";
 
+    /* if SSL connection was never established, the SSL_write would block this thread */
+    if (!wsh->logical_established) {
+      goto ssl_finish_it;
+    }
+
 		/* check if no fatal error occurs on connection */
 		code = SSL_write(wsh->ssl, buf, 1);
 		ssl_error = SSL_get_error(wsh->ssl, code);

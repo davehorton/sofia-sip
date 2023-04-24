@@ -134,12 +134,12 @@ RBTREE_BODIES(su_inline, tprb, tport_t,
 static int wssCount = 0;
 static int tcpCount = 0;
 void incrementSecondaryCount(tport_t* self) {
-  if (!self || !self->tp_name || !self->tp_name->tpn_proto) return;
+  if (!self || !self->tp_name->tpn_proto) return;
   if (self && 0 == strncmp(self->tp_name->tpn_proto, "ws", 2)) wssCount++;
   else if (self && 0 == strcmp(self->tp_name->tpn_proto, "tcp")) tcpCount++;
 }
 void decrementSecondaryCount(tport_t* self) {
-  if (!self || !self->tp_name || !self->tp_name->tpn_proto) return;
+  if (!self || !self->tp_name->tpn_proto) return;
   if (self && 0 == strncmp(self->tp_name->tpn_proto, "ws", 2)) wssCount--;
   else if (self && 0 == strcmp(self->tp_name->tpn_proto, "tcp")) tcpCount--;
 }
