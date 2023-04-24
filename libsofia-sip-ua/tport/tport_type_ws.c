@@ -569,6 +569,8 @@ static void tport_ws_deinit_secondary(tport_t *self)
       __func__, (void *) self, TPN_ARGS(self->tp_name), wstp->ws_secure ? "s" : "", (void *) &wstp->ws));
 		ws_destroy(&wstp->ws);
 		wstp->ws_initialized = -1;
+		SU_DEBUG_4(("%s(%p) " TPN_FORMAT " ws%s transport destroyed\n", 
+      __func__, (void *) self, TPN_ARGS(self->tp_name), wstp->ws_secure ? "s" : ""));
 	}
   else {
 		SU_DEBUG_4(("%s(%p) "  TPN_FORMAT " NOT destroying ws%s transport %p because initialized is %d\n", 

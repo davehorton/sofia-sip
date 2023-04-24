@@ -791,7 +791,10 @@ void ws_destroy(wsh_t *wsh)
 ssize_t ws_close(wsh_t *wsh, int16_t reason)
 {
 
+  fprintf(stderr, "%s entering ws_close\n", __func__);
+
 	if (wsh->down) {
+    fprintf(stderr, "%s exiting ws_close already down\n", __func__);
 		return -1;
 	}
 
@@ -808,10 +811,14 @@ ssize_t ws_close(wsh_t *wsh, int16_t reason)
 
 		u16 = (uint16_t *) &fr[2];
 		*u16 = htons((int16_t)reason);
+    fprintf(stderr, "%s writing a reason %d to socket\n", __func__, reason);
 		ws_raw_write(wsh, fr, 4);
+    fprintf(stderr, "%s wrote a reason %d to socket\n", __func__, reason);
 	}
 
+  fprintf(stderr, "%s calling restore_socket\n", __func__);
 	restore_socket(wsh->sock);
+  fprintf(stderr, "%s back from calling restore_socket\n", __func__);
 
 	if (wsh->ssl) {
 		int code = 0;
@@ -819,25 +826,35 @@ ssize_t ws_close(wsh_t *wsh, int16_t reason)
 		const char* buf = "0";
 
 		/* check if no fatal error occurs on connection */
+    fprintf(stderr, "%s calling SSL_write\n", __func__);
+
 		code = SSL_write(wsh->ssl, buf, 1);
+    fprintf(stderr, "%s back from calling SSL_write\n", __func__);
 		ssl_error = SSL_get_error(wsh->ssl, code);
 
 		if (ssl_error == SSL_ERROR_SYSCALL || ssl_error == SSL_ERROR_SSL) {
+      fprintf(stderr, "%s goto ssl_finish_it\n", __func__);
 			goto ssl_finish_it;
 		}
 
+    fprintf(stderr, "%s call SSL_shutdown\n", __func__);
 		code = SSL_shutdown(wsh->ssl);
+    fprintf(stderr, "%s SSL_shutdown returned %d\n", __func__, code);
 		if (code == 0) {
 			/* need to make sure there is no more data to read */
 			ws_raw_read(wsh, wsh->buffer, 9, WS_BLOCK);
 		}
 
 ssl_finish_it:
+    fprintf(stderr, "%s call SSL_free\n", __func__);
 		SSL_free(wsh->ssl);
+    fprintf(stderr, "%s back from call SSL_free\n", __func__);
 		wsh->ssl = NULL;
 	}
 
 	if (wsh->close_sock && wsh->sock != ws_sock_invalid) {
+    fprintf(stderr, "%s closing socket\n", __func__);
+
 #ifndef WIN32
 		close(wsh->sock);
 #else
@@ -846,6 +863,8 @@ ssl_finish_it:
 	}
 
 	wsh->sock = ws_sock_invalid;
+
+  fprintf(stderr, "%s returning from ws_close\n", __func__);
 
 	return reason * -1;
 

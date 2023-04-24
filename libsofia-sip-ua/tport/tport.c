@@ -1106,6 +1106,10 @@ void tport_zap_secondary(tport_t *self)
   if (self == NULL)
     return;
 
+  SU_DEBUG_4(("%s(%p): zapping tport %p from " TPN_FORMAT "\n", 
+    __func__, (void *)self->tp_pri, (void *)self, TPN_ARGS(self->tp_name)));
+
+
   /* Remove from rbtree */
   if (!tport_is_closed(self))
     tprb_remove(&self->tp_pri->pri_open, self);
