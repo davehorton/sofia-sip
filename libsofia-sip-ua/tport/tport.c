@@ -1035,7 +1035,9 @@ tport_t *tport_base_connect(tport_primary_t *pri,
    * The tport_register_secondary() below makes the socket non-blocking anyway. */
   su_setblocking(s, 0);
 
+  SU_DEBUG_5(("%s: connecting to " TPN_FORMAT "\n", __func__, TPN_ARGS(self->tp_name)));
   if (connect(s, ai->ai_addr, (socklen_t)(ai->ai_addrlen)) == SOCKET_ERROR) {
+    SU_DEBUG_5(("%s: failed connecting to " TPN_FORMAT "\n", __func__, TPN_ARGS(self->tp_name)));
     err = su_errno();
     if (!su_is_blocking(err))
       TPORT_CONNECT_ERROR(err, connect);
@@ -1044,6 +1046,7 @@ tport_t *tport_base_connect(tport_primary_t *pri,
     what = "connecting";
   }
   else {
+    SU_DEBUG_5(("%s: successfully connected to " TPN_FORMAT "\n", __func__, TPN_ARGS(self->tp_name)));
     what = "connected";
     self->tp_is_connected = 1;
   }
@@ -2932,7 +2935,7 @@ void tport_recv_event(tport_t *self)
   do {
     /* Receive data from socket */
     again = tport_recv_data(self);
-    SU_DEBUG_7(("%s(%p)\n", "tport_recv_event returned, again %d", (void *)self, again));
+    SU_DEBUG_7(("%s(%p) tport_recv_event returned, again %d\n", __func__, (void *)self, again));
 
     su_time(&self->tp_rtime);
 
@@ -2943,7 +2946,7 @@ void tport_recv_event(tport_t *self)
 
     if (again < 0) {
       int error = su_errno();
-      SU_DEBUG_7(("%s(%p)\n", "tport_recv_event error %d", (void *)self, error));
+      SU_DEBUG_7(("%s(%p) tport_recv_event error %d\n", __func__, (void *)self, error));
 
       if (!su_is_blocking(error)) {
 	tport_error_report(self, error, NULL);
@@ -3448,7 +3451,9 @@ tport_t *tport_tsend(tport_t *self,
 	tpn->tpn_comp = NULL;
 
       /* Create a secondary transport which is connected to the destination */
+      SU_DEBUG_5(("%s: we need to create a new secondary transport to " TPN_FORMAT "\n", __func__, TPN_ARGS(tpn)));
       self = tport_connect(primary, msg_addrinfo(msg), tpn);
+      SU_DEBUG_5(("%s: created a new secondary transport (%p) to " TPN_FORMAT "\n", __func__, (void*) self, TPN_ARGS(tpn)));
 
 #if 0 && HAVE_UPNP /* We do not want to use UPnP with secondary transports! */
       upnp_deregister_upnp_client(0, 0);

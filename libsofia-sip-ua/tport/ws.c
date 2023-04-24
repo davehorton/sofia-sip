@@ -744,11 +744,14 @@ int ws_init(wsh_t *wsh, ws_socket_t sock, SSL_CTX *ssl_ctx, int close_sock, int 
 
 	setup_socket(sock);
 
+	printf("%s: calling establish_logical_layer\n", __func__);
 	if (establish_logical_layer(wsh) == -1) {
+  	printf("%s: failed calling establish_logical_layer\n", __func__);
 		return -1;
 	}
 
 	if (wsh->down) {
+  	printf("%s: failed wsh->down\n", __func__);
 		return -1;
 	}
 
