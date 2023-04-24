@@ -634,19 +634,24 @@ static int restore_socket(ws_socket_t sock)
 
 int establish_logical_layer(wsh_t *wsh)
 {
+  fprintf(stderr, "%s entering establish_logical_layer, wsh->ssl (%p)\n", __func__, (void *)wsh->ssl);
 
 	if (!wsh->sanity) {
+    fprintf(stderr, "%s exiting sanity is false\n", __func__);
 		return -1;
 	}
 
 	if (wsh->logical_established) {
+    fprintf(stderr, "%s exiting logical_established\n", __func__);
 		return 0;
 	}
 
 	if (wsh->secure && !wsh->secure_established) {
 		int code;
+    fprintf(stderr, "%s wsh->secure && !wsh->secure_established\n", __func__);
 
 		if (!wsh->ssl) {
+      fprintf(stderr, "%s calling SSL_new\n", __func__);
 			wsh->ssl = SSL_new(wsh->ssl_ctx);
 			assert(wsh->ssl);
 
@@ -655,6 +660,7 @@ int establish_logical_layer(wsh_t *wsh)
 
 		do {
 			code = SSL_accept(wsh->ssl);
+      fprintf(stderr, "%s SSL_accept returned %d\n", __func__, code);
 
 			if (code == 1) {
 				wsh->secure_established = 1;
@@ -682,30 +688,38 @@ int establish_logical_layer(wsh_t *wsh)
 			wsh->sanity--;
 
 			if (!wsh->block) {
+        fprintf(stderr, "%s return -2 due to non-blocking\n", __func__);
 				return -2;
 			}
 
 		} while (wsh->sanity > 0);
 
 		if (!wsh->sanity) {
+      fprintf(stderr, "%s exiting sanity is false (lower)\n", __func__);
 			return -1;
 		}
 
 	}
 
 	while (!wsh->down && !wsh->handshake) {
+    fprintf(stderr, "%s calling ws_handshake\n", __func__);
+
 		int r = ws_handshake(wsh);
+    fprintf(stderr, "%s back from calling ws_handshake, %d\n", __func__, r);
 
 		if (r < 0) {
 			wsh->down = 1;
+      fprintf(stderr, "%s set down to tue, return -1\n", __func__);
 			return -1;
 		}
 
 		if (!wsh->handshake && !wsh->block) {
+      fprintf(stderr, "%s !wsh->handshake && !wsh->block, return -2\n", __func__);
 			return -2;
 		}
 
 	}
+  fprintf(stderr, "%s returning establish_logical_layer success\n", __func__);
 
 	wsh->logical_established = 1;
 
@@ -744,14 +758,14 @@ int ws_init(wsh_t *wsh, ws_socket_t sock, SSL_CTX *ssl_ctx, int close_sock, int 
 
 	setup_socket(sock);
 
-	printf("%s: calling establish_logical_layer\n", __func__);
+	fprintf(stderr, "%s: calling establish_logical_layer\n", __func__);
 	if (establish_logical_layer(wsh) == -1) {
-  	printf("%s: failed calling establish_logical_layer\n", __func__);
+  	fprintf(stderr, "%s: failed calling establish_logical_layer\n", __func__);
 		return -1;
 	}
 
 	if (wsh->down) {
-  	printf("%s: failed wsh->down\n", __func__);
+  	fprintf(stderr, "%s: failed wsh->down\n", __func__);
 		return -1;
 	}
 
