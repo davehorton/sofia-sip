@@ -1037,8 +1037,8 @@ tport_t *tport_base_connect(tport_primary_t *pri,
 
   SU_DEBUG_5(("%s: connecting to " TPN_FORMAT "\n", __func__, TPN_ARGS(self->tp_name)));
   if (connect(s, ai->ai_addr, (socklen_t)(ai->ai_addrlen)) == SOCKET_ERROR) {
-    SU_DEBUG_5(("%s: failed connecting to " TPN_FORMAT "\n", __func__, TPN_ARGS(self->tp_name)));
     err = su_errno();
+    SU_DEBUG_5(("%s: failed connecting to " TPN_FORMAT " errno %d\n", __func__, TPN_ARGS(self->tp_name), err));
     if (!su_is_blocking(err))
       TPORT_CONNECT_ERROR(err, connect);
     events = SU_WAIT_CONNECT | SU_WAIT_ERR;
