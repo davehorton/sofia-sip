@@ -469,13 +469,13 @@ int wss_error(wsh_t *wsh, int ssl_err, char const *who)
 			return 0;			/* EOS */
     }
 
-    fprintf(stderr, "%s setting errno to EIO (who: %s)\n", __func__, who);
+    fprintf(stderr, "%s setting errno to EIO, was %d (who: %s)\n", __func__, errno, who);
 		errno = EIO;
 		return -1;
 
 	default:
 		wss_log_errors(1, who, ssl_err);
-    fprintf(stderr, "%s setting errno to EIO (who: %s)\n", __func__, who);
+    fprintf(stderr, "%s setting errno to EIO, was %d (who: %s)\n", __func__, errno, who);
 		errno = EIO;
 		return -1;
 	}
