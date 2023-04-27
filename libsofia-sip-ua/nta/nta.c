@@ -8357,8 +8357,9 @@ outgoing_send_via(nta_outgoing_t *orq, tport_t *tp)
   orq->orq_tport = tport_ref(tp);
 
   if (orq->orq_pending && tp != old_tp) {
-    tport_release(old_tp, orq->orq_pending,
-		  orq->orq_request, NULL, orq, 0);
+    SU_DEBUG_4(("%s: tport(%p) old_tp(%p) orq(%p) calling tport_release because we have pending %u\n", 
+      __func__, tp, old_tp, orq, orq->orq_pending));
+    tport_release(old_tp, orq->orq_pending, orq->orq_request, NULL, orq, 0);
     orq->orq_pending = 0;
   }
 
@@ -8461,6 +8462,9 @@ outgoing_send(nta_outgoing_t *orq, int retransmit)
       tag = tptag_mtu, value = 65535;
 
     if (orq->orq_pending) {
+      SU_DEBUG_4(("%s: tport(%p) orq(%p) calling tport_release because we have pending %u\n", 
+        __func__, tp,orq, orq->orq_pending));
+
       tport_release(orq->orq_tport, orq->orq_pending,
 		    orq->orq_request, NULL, orq, 0);
       orq->orq_pending = 0;
@@ -8524,6 +8528,9 @@ outgoing_send(nta_outgoing_t *orq, int retransmit)
 
   if (orq->orq_pending) {
     assert(orq->orq_tport);
+    SU_DEBUG_4(("%s: tport(%p) orq(%p) calling tport_release because we have pending %u\n", 
+        __func__, orq->orq_tport, orq, orq->orq_pending));
+
     tport_release(orq->orq_tport, orq->orq_pending,
 		  orq->orq_request, NULL, orq, 0);
     orq->orq_pending = 0;
@@ -8613,6 +8620,9 @@ outgoing_try_udp_instead(nta_outgoing_t *orq, int timeout)
   tp_name_t tpn[1];
 
   if (orq->orq_pending) {
+    SU_DEBUG_4(("%s: tport(%p) orq(%p) calling tport_release because we have pending %u\n", 
+      __func__, orq->orq_tport, orq, orq->orq_pending));
+
     tport_release(orq->orq_tport, orq->orq_pending,
 		  orq->orq_request, NULL, orq, 0);
     orq->orq_pending = 0;
@@ -8649,6 +8659,8 @@ outgoing_tport_error(nta_agent_t *agent, nta_outgoing_t *orq,
 
   if (orq->orq_pending) {
     assert(orq->orq_tport);
+    SU_DEBUG_4(("%s: tport(%p) orq(%p) calling tport_release because we have pending %u\n", 
+      __func__, orq->orq_tport, orq, orq->orq_pending));
     tport_release(orq->orq_tport, orq->orq_pending, orq->orq_request,
 		  NULL, orq, 0);
     orq->orq_pending = 0;
@@ -8707,8 +8719,8 @@ outgoing_print_tport_error(nta_outgoing_t *orq, int level, char *todo,
   char addr[SU_ADDRSIZE];
 
   su_llog(nta_log, level,
-	  "nta: %s (%u): %s%s (%u) with %s/[%s]:%u\n",
-	  orq->orq_method_name, orq->orq_cseq->cs_seq,
+	  "nta: %s %s (%u): %s%s (%u) with %s/[%s]:%u\n",
+	  orq->orq_method_name, orq->orq_call_id->i_id, orq->orq_cseq->cs_seq,
 	  todo, su_strerror(error), error,
 	  tpn->tpn_proto,
 	  su_inet_ntop(su->su_family, SU_ADDR(su), addr, sizeof(addr)),
@@ -8967,6 +8979,8 @@ outgoing_cut_off(nta_outgoing_t *orq)
   outgoing_reset_timer(orq);
 
   if (orq->orq_pending) {
+    SU_DEBUG_4(("%s: tport(%p) orq(%p) calling tport_release because we have pending %u\n", 
+      __func__, orq->orq_tport, orq, orq->orq_pending));
     tport_release(orq->orq_tport, orq->orq_pending,
 		  orq->orq_request, NULL, orq, 0);
   }
@@ -9579,6 +9593,9 @@ int outgoing_recv(nta_outgoing_t *_orq,
   }
 
   if (orq->orq_pending) {
+    SU_DEBUG_4(("%s: tport(%p) orq(%p) calling tport_release because we have pending %u\n", 
+      __func__, orq->orq_tport, orq, orq->orq_pending));
+
     tport_release(orq->orq_tport, orq->orq_pending, orq->orq_request,
 		  msg, orq, status < 200);
     if (status >= 200)
@@ -9966,9 +9983,13 @@ int outgoing_reply(nta_outgoing_t *orq, int status, char const *phrase,
 
   assert(status == 202 || status >= 400);
 
-  if (orq->orq_pending)
+  if (orq->orq_pending) {
+    SU_DEBUG_4(("%s: tport(%p) orq(%p) calling tport_release because we have pending %u\n", 
+      __func__, orq->orq_tport, orq, orq->orq_pending));
+
     tport_release(orq->orq_tport, orq->orq_pending,
 		  orq->orq_request, NULL, orq, 0);
+  }
   orq->orq_pending = 0;
 
   orq->orq_delayed = 0;
@@ -12233,10 +12254,12 @@ int nta_agent_close_tports(nta_agent_t *agent)
     /* while */ if (oht->oht_table[i]) {
       nta_outgoing_t *orq = oht->oht_table[i];
 
-      if (orq->orq_pending && orq->orq_tport)
-	tport_release(orq->orq_tport, orq->orq_pending, orq->orq_request,
-		      NULL, orq, 0);
+      if (orq->orq_pending && orq->orq_tport) {
+        SU_DEBUG_4(("%s: tport(%p) orq(%p) calling tport_release because we have pending %u\n", 
+          __func__, orq->orq_tport, orq, orq->orq_pending));
 
+        tport_release(orq->orq_tport, orq->orq_pending, orq->orq_request, NULL, orq, 0);
+      }
       orq->orq_pending = 0;
       tport_unref(orq->orq_tport), orq->orq_tport = NULL;
     }

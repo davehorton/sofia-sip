@@ -359,10 +359,21 @@ int tport_tls_events(tport_t *self, int events)
   int old_mask = tls_events(tlstp->tlstp_context, self->tp_events), mask;
   int ret, error = 0;
 
-  if (events & SU_WAIT_ERR)
+  SU_DEBUG_7(("%s(%p): events%s%s%s%s%s\n",
+	      __func__, (void *)self,
+	      events & SU_WAIT_IN ? " IN" : "",
+	      events & SU_WAIT_OUT ? " OUT" : "",
+	      events & SU_WAIT_HUP ? " HUP" : "",
+	      events & SU_WAIT_ERR ? " ERR" : "",
+	      self->tp_closed ? " (closed)" : ""));
+
+  if (events & SU_WAIT_ERR) {
+    SU_DEBUG_7(("%s(%p): handling SU_WAIT_ERR\n",  __func__, (void *)self));
     error = tport_error_event(self);
+  }
 
   if ((self->tp_events & SU_WAIT_OUT) && !self->tp_closed) {
+    SU_DEBUG_7(("%s(%p): handling SU_WAIT_OUT\n",  __func__, (void *)self));
     ret = tls_want_write(tlstp->tlstp_context, events);
     if (ret > 0)
       tport_send_event(self);
@@ -371,23 +382,31 @@ int tport_tls_events(tport_t *self, int events)
   }
 
   if ((self->tp_events & SU_WAIT_IN) && !self->tp_closed) {
+    SU_DEBUG_7(("%s(%p): handling SU_WAIT_IN\n",  __func__, (void *)self));
     for (;;) {
       ret = tls_want_read(tlstp->tlstp_context, events);
       if (ret > 1) {
-	tport_recv_event(self);
-	if ((events & SU_WAIT_HUP) && !self->tp_closed)
-	  continue;
+        tport_recv_event(self);
+        if ((events & SU_WAIT_HUP) && !self->tp_closed) {
+          continue;
+        }
       }
       break;
     }
 
     if (ret == 0) { 		/* End-of-stream */
-      if (self->tp_msg)
-	tport_recv_event(self);
+      SU_DEBUG_4(("%s(%p): end of stream\n",  __func__, (void *)self));
+      if (self->tp_msg) {
+        SU_DEBUG_4(("%s(%p): try to receive msg(%p)\n",  __func__, (void *)self, (void *)self->tp_msg));
+      	tport_recv_event(self);
+      }
+      SU_DEBUG_4(("%s(%p): shutting down tport\n",  __func__, (void *)self));
       tport_shutdown0(self, 2);
     }
 
     if (ret < 0)
+      SU_DEBUG_4(("%s(%p): return from tls_want_read %u, calling tport_error_report with errno %u\n",  
+        __func__, (void *)self, ret, errno));
       tport_error_report(self, errno, NULL);
   }
 
@@ -402,8 +421,11 @@ int tport_tls_events(tport_t *self, int events)
 
   events = self->tp_events;
   mask = tls_events(tlstp->tlstp_context, events);
-  if ((old_mask ^ mask) == 0)
+  if ((old_mask ^ mask) == 0) {
+    SU_DEBUG_7(("%s(%p): returning old mask(%u) mask(%u)\n",  
+        __func__, (void *)self, old_mask, mask));
     return 0;
+  }
 
   SU_DEBUG_7(("%s(%p): logical events%s%s real%s%s\n",
 	      "tport_tls_events", (void *)self,

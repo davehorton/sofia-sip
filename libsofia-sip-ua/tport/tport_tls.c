@@ -828,8 +828,10 @@ ssize_t tls_read(tls_t *tls)
   tls->read_events = SU_WAIT_IN;
 
   ret = SSL_read(tls->con, tls->read_buffer, tls_buffer_size);
-  if (ret <= 0)
+  if (ret <= 0) {
+    SU_DEBUG_4(("%s: SSL_read failed with %d\n",  __func__, (int) ret));
     return tls_error(tls, ret, "tls_read: SSL_read", NULL, 0);
+  }
 
   return (ssize_t)(tls->read_buffer_len = ret);
 }
