@@ -454,20 +454,28 @@ int wss_error(wsh_t *wsh, int ssl_err, char const *who)
 {
 	switch (ssl_err) {
 	case SSL_ERROR_ZERO_RETURN:
+    fprintf(stderr, "%s peer closed the TLS connection cleanly (who: %s)\n", __func__, who);
 		return 0;
 
 	case SSL_ERROR_SYSCALL:
+    fprintf(stderr, "%s a system call error occurred (who: %s)\n", __func__, who);
 		ERR_clear_error();
-		if (SSL_get_shutdown(wsh->ssl) & SSL_RECEIVED_SHUTDOWN)
+		if (SSL_get_shutdown(wsh->ssl) & SSL_RECEIVED_SHUTDOWN) {
+      fprintf(stderr, "%s peer sent a close notify alert (who: %s)\n", __func__, who);
 			return 0;			/* EOS */
-		if (errno == 0)
+    }
+		if (errno == 0) {
+      fprintf(stderr, "%s end of stream from peer (who: %s)\n", __func__, who);
 			return 0;			/* EOS */
+    }
 
+    fprintf(stderr, "%s setting errno to EIO (who: %s)\n", __func__, who);
 		errno = EIO;
 		return -1;
 
 	default:
 		wss_log_errors(1, who, ssl_err);
+    fprintf(stderr, "%s setting errno to EIO (who: %s)\n", __func__, who);
 		errno = EIO;
 		return -1;
 	}
@@ -635,7 +643,7 @@ static int restore_socket(ws_socket_t sock)
 
 int establish_logical_layer(wsh_t *wsh)
 {
-
+  fprintf(stderr, "%s entering establish_logical_layer, wsh->ssl (%p)\n", __func__, (void *)wsh->ssl);
 	if (!wsh->sanity) {
 		return -1;
 	}
@@ -648,6 +656,7 @@ int establish_logical_layer(wsh_t *wsh)
 		int code;
 
 		if (!wsh->ssl) {
+      fprintf(stderr, "%s calling SSL_new\n", __func__);
 			wsh->ssl = SSL_new(wsh->ssl_ctx);
 			assert(wsh->ssl);
 
@@ -656,7 +665,7 @@ int establish_logical_layer(wsh_t *wsh)
 
 		do {
 			code = SSL_accept(wsh->ssl);
-
+      fprintf(stderr, "%s SSL_accept returned %d\n", __func__, code);
 			if (code == 1) {
 				wsh->secure_established = 1;
 				break;
@@ -683,38 +692,44 @@ int establish_logical_layer(wsh_t *wsh)
 			wsh->sanity--;
 
 			if (!wsh->block) {
+        fprintf(stderr, "%s return -2 due to non-blocking\n", __func__);
 				return -2;
 			}
 
 		} while (wsh->sanity > 0);
 
 		if (!wsh->sanity) {
+      fprintf(stderr, "%s exiting sanity is false (lower)\n", __func__);
 			return -1;
 		}
 
 	}
 
 	while (!wsh->down && !wsh->handshake) {
+    fprintf(stderr, "%s calling ws_handshake\n", __func__);
 		int r = ws_handshake(wsh);
-
+    fprintf(stderr, "%s back from calling ws_handshake, %d\n", __func__, r);
 		if (r < 0) {
+      fprintf(stderr, "%s set down to tue, return -1\n", __func__);
 			wsh->down = 1;
 			return -1;
 		}
 
 		if (!wsh->handshake && !wsh->block) {
+      fprintf(stderr, "%s !wsh->handshake && !wsh->block, return -2\n", __func__);
 			return -2;
 		}
 
 	}
 
 	wsh->logical_established = 1;
-
+  fprintf(stderr, "%s returning establish_logical_layer success\n", __func__);
 	return 0;
 }
 
 void ws_set_global_payload_size_max(ssize_t bytes)
 {
+  fprintf(stderr, "%s setting max payload size to %zd\n", __func__, bytes);
 	ws_global_payload_size_max = bytes;
 }
 
@@ -793,8 +808,9 @@ void ws_destroy(wsh_t *wsh)
 
 ssize_t ws_close(wsh_t *wsh, int16_t reason)
 {
-
+  fprintf(stderr, "%s entering ws_close\n", __func__);
 	if (wsh->down) {
+    fprintf(stderr, "%s exiting ws_close already down\n", __func__);
 		return -1;
 	}
 
@@ -811,11 +827,14 @@ ssize_t ws_close(wsh_t *wsh, int16_t reason)
 
 		u16 = (uint16_t *) &fr[2];
 		*u16 = htons((int16_t)reason);
+    fprintf(stderr, "%s writing a reason %d to socket\n", __func__, reason);
 		ws_raw_write(wsh, fr, 4);
+    fprintf(stderr, "%s wrote a reason %d to socket\n", __func__, reason);
 	}
 
+  fprintf(stderr, "%s calling restore_socket\n", __func__);
 	restore_socket(wsh->sock);
-
+fprintf(stderr, "%s back from calling restore_socket - socket is now in blocking mode\n", __func__);
 	if (wsh->ssl) {
 		int code = 0;
 		int ssl_error = 0;
@@ -823,21 +842,27 @@ ssize_t ws_close(wsh_t *wsh, int16_t reason)
 
     /* if SSL connection was never established, the SSL_write would block this thread */
     if (!wsh->logical_established) {
+      fprintf(stderr, "%s SSL connection never established, bypass SSL_Shutdown\n", __func__);
       goto ssl_finish_it;
     }
 
 		/* check if no fatal error occurs on connection */
+    fprintf(stderr, "%s calling SSL_write\n", __func__);
 		code = SSL_write(wsh->ssl, buf, 1);
+    fprintf(stderr, "%s back from calling SSL_write\n", __func__);
 		ssl_error = SSL_get_error(wsh->ssl, code);
 
 		if (ssl_error == SSL_ERROR_SYSCALL || ssl_error == SSL_ERROR_SSL) {
 			goto ssl_finish_it;
 		}
-
+    fprintf(stderr, "%s call SSL_shutdown\n", __func__);
 		code = SSL_shutdown(wsh->ssl);
+    fprintf(stderr, "%s SSL_shutdown returned %d\n", __func__, code);
 		if (code == 0) {
 			/* need to make sure there is no more data to read */
+      fprintf(stderr, "%s calling ws_raw_read (BLOCKING) to make sure there is no more data\n", __func__);
 			ws_raw_read(wsh, wsh->buffer, 9, WS_BLOCK);
+      fprintf(stderr, "%s back from calling ws_raw_read (BLOCKING)\n", __func__);
 		}
 
 ssl_finish_it:
@@ -846,6 +871,7 @@ ssl_finish_it:
 	}
 
 	if (wsh->close_sock && wsh->sock != ws_sock_invalid) {
+    fprintf(stderr, "%s closing socket\n", __func__);
 #ifndef WIN32
 		close(wsh->sock);
 #else
@@ -854,7 +880,7 @@ ssl_finish_it:
 	}
 
 	wsh->sock = ws_sock_invalid;
-
+  fprintf(stderr, "%s returning from ws_close\n", __func__);
 	return reason * -1;
 
 }
@@ -885,6 +911,8 @@ ssize_t ws_read_frame(wsh_t *wsh, ws_opcode_t *oc, uint8_t **data)
 	wsh->body = wsh->bbuffer;
 	wsh->packetlen = 0;
 
+  fprintf(stderr, "%s entering, blocking %d\n", __func__, wsh->block);
+
  again:
 	need = 2;
 	maskp = NULL;
@@ -901,18 +929,24 @@ ssize_t ws_read_frame(wsh_t *wsh, ws_opcode_t *oc, uint8_t **data)
 	}
 
 	if (!wsh->handshake) {
+    fprintf(stderr, "%s no handshake, calling ws_close\n", __func__);
 		return ws_close(wsh, WS_NONE);
 	}
 
+  fprintf(stderr, "%s calling ws_raw_read\n", __func__);
 	if ((wsh->datalen = ws_raw_read(wsh, wsh->buffer, 9, wsh->block)) < 0) {
+    fprintf(stderr, "%s back from calling ws_raw_read, failed ret %zd\n", __func__, wsh->datalen);
 		if (wsh->datalen == -2) {
 			return -2;
 		}
 		return ws_close(wsh, WS_NONE);
 	}
+  fprintf(stderr, "%s back from calling ws_raw_read\n", __func__);
 
 	if (wsh->datalen < need) {
+    fprintf(stderr, "%s calling ws_raw_read (BLOCKING!!) because we did not get %zd bytes\n", __func__, need);
 		ssize_t bytes = ws_raw_read(wsh, wsh->buffer + wsh->datalen, 9 - wsh->datalen, WS_BLOCK);
+    fprintf(stderr, "%s back calling ws_raw_read (BLOCKING!!), got %zd bytes\n", __func__, need);
 		
 		if (bytes < 0 || (wsh->datalen += bytes) < need) {
 			/* too small - protocol err */
@@ -921,6 +955,8 @@ ssize_t ws_read_frame(wsh_t *wsh, ws_opcode_t *oc, uint8_t **data)
 	}
 
 	*oc = *wsh->buffer & 0xf;
+
+  fprintf(stderr, "%s got opcode %d\n", __func__, *oc);
 
 	switch(*oc) {
 	case WSOC_CLOSE:
@@ -950,7 +986,9 @@ ssize_t ws_read_frame(wsh_t *wsh, ws_opcode_t *oc, uint8_t **data)
 				need += 4;
 
 				if (need > wsh->datalen) {
+          fprintf(stderr, "%s calling ws_raw_read_blocking because we did not get %zd bytes\n", __func__, need);
 					ssize_t bytes = ws_raw_read_blocking(wsh, wsh->buffer + wsh->datalen, need - wsh->datalen, 10);
+          fprintf(stderr, "%s back from ws_raw_read_blocking with %zd bytes\n", __func__, bytes);
 					if (bytes < 0 || (wsh->datalen += bytes) < need) {
 						/* too small - protocol err */
 						*oc = WSOC_CLOSE;
@@ -968,7 +1006,9 @@ ssize_t ws_read_frame(wsh_t *wsh, ws_opcode_t *oc, uint8_t **data)
 				need += 8;
 
 				if (need > wsh->datalen) {
+          fprintf(stderr, "%s calling ws_raw_read_blocking because we did not get %zd bytes\n", __func__, need);
 					ssize_t bytes = ws_raw_read_blocking(wsh, wsh->buffer + wsh->datalen, need - wsh->datalen, 10);
+          fprintf(stderr, "%s back from ws_raw_read_blocking with %zd bytes\n", __func__, bytes);
 					if (bytes < 0 || (wsh->datalen += bytes) < need) {
 						/* too small - protocol err */
 						*oc = WSOC_CLOSE;
@@ -985,7 +1025,9 @@ ssize_t ws_read_frame(wsh_t *wsh, ws_opcode_t *oc, uint8_t **data)
 				need += 2;
 
 				if (need > wsh->datalen) {
+          fprintf(stderr, "%s calling ws_raw_read_blocking because we did not get %zd bytes\n", __func__, need);
 					ssize_t bytes = ws_raw_read_blocking(wsh, wsh->buffer + wsh->datalen, need - wsh->datalen, 10);
+          fprintf(stderr, "%s back from ws_raw_read_blocking with %zd bytes\n", __func__, bytes);
 					if (bytes < 0 || (wsh->datalen += bytes) < need) {
 						/* too small - protocol err */
 						*oc = WSOC_CLOSE;
@@ -1020,6 +1062,7 @@ ssize_t ws_read_frame(wsh_t *wsh, ws_opcode_t *oc, uint8_t **data)
 
 				if (wsh->payload_size_max && wsh->bbuflen > wsh->payload_size_max) {
 					/* size limit */
+          fprintf(stderr, "%s payload size %zd is greater than max %zd\n", __func__, wsh->bbuflen, wsh->payload_size_max);
 					*oc = WSOC_CLOSE;
 					return ws_close(wsh, WS_NONE);
 				}
@@ -1040,7 +1083,9 @@ ssize_t ws_read_frame(wsh_t *wsh, ws_opcode_t *oc, uint8_t **data)
 			}
 
 			while(need) {
+        fprintf(stderr, "%s calling ws_raw_read (BLOCKING) because we did not get %zd bytes\n", __func__, need);
 				ssize_t r = ws_raw_read(wsh, wsh->body + wsh->rplen, need, WS_BLOCK);
+        fprintf(stderr, "%s back from ws_raw_read_blocking with %zd bytes\n", __func__, r);
 
 				if (r < 1) {
 					/* invalid read - protocol err .. */
@@ -1063,7 +1108,9 @@ ssize_t ws_read_frame(wsh_t *wsh, ws_opcode_t *oc, uint8_t **data)
 
 
 			if (*oc == WSOC_PING) {
+        fprintf(stderr, "%s got PING writing PONG\n", __func__);
 				ws_write_frame(wsh, WSOC_PONG, wsh->body, wsh->rplen);
+        fprintf(stderr, "%s back from writing PONG\n", __func__);
 				goto again;
 			}
 
@@ -1087,6 +1134,7 @@ ssize_t ws_read_frame(wsh_t *wsh, ws_opcode_t *oc, uint8_t **data)
 		{
 			/* invalid op code - protocol err .. */
 			*oc = WSOC_CLOSE;
+      fprintf(stderr, "%s invalid opcode %d\n", __func__, *oc);
 			return ws_close(wsh, WS_PROTO_ERR);
 		}
 		break;
