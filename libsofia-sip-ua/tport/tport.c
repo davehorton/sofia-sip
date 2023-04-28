@@ -2682,7 +2682,7 @@ int tport_accept(tport_primary_t *pri, int events)
   s = accept(l, &su->su_sa, &sulen);
 
   if (s < 0) {
-    SU_DEBUG_4(("%s(%p) calling tport_error_report\n",  __func__, (void *)self));
+    SU_DEBUG_4(("%s calling tport_error_report\n",  __func__));
     tport_error_report(pri->pri_primary, su_errno(), NULL);
     return 0;
   }
