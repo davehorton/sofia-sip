@@ -2157,8 +2157,11 @@ void tport_close(tport_t *self)
   self->tp_send_close = 3;
   self->tp_recv_close = 3;
 
-  if (self->tp_params->tpp_sdwn_error && self->tp_pused)
+  if (self->tp_params->tpp_sdwn_error && self->tp_pused) {
+    SU_DEBUG_4(("%s(%p) calling tport_error_report\n",  __func__, (void *)self));
     tport_error_report(self, -1, NULL);
+
+  }
 
   if (self->tp_pri->pri_vtable->vtp_shutdown)
     self->tp_pri->pri_vtable->vtp_shutdown(self, 2);
@@ -2230,6 +2233,7 @@ int tport_shutdown0(tport_t *self, int how)
     self->tp_recv_close = 2;
     tport_set_events(self, 0, SU_WAIT_IN);
     if (self->tp_params->tpp_sdwn_error && self->tp_pused) {
+      SU_DEBUG_4(("%s(%p) calling tport_error_report\n",  __func__, (void *)self));
       tport_error_report(self, -1, NULL);
     }
     SU_DEBUG_4(("%s(%p): after possibly reporting error refcount is now %ld\n", __func__, (void *)self, self->tp_refs));
@@ -2678,6 +2682,7 @@ int tport_accept(tport_primary_t *pri, int events)
   s = accept(l, &su->su_sa, &sulen);
 
   if (s < 0) {
+    SU_DEBUG_4(("%s(%p) calling tport_error_report\n",  __func__, (void *)self));
     tport_error_report(pri->pri_primary, su_errno(), NULL);
     return 0;
   }
@@ -2775,6 +2780,7 @@ static int tport_connected(su_root_magic_t *magic, su_wait_t *w, tport_t *self)
 
   error = su_soerror(self->tp_socket);
   if (error) {
+    SU_DEBUG_4(("%s(%p) calling tport_error_report\n",  __func__, (void *)self));
     tport_error_report(self, error, NULL);
     return 0;
   }
@@ -2883,6 +2889,7 @@ static int tport_base_wakeup(tport_t *self, int events)
     if (self->tp_closed && error == EPIPE)
       return 0;
 
+    SU_DEBUG_4(("%s(%p) calling tport_error_report\n",  __func__, (void *)self));
     tport_error_report(self, error, NULL);
   }
 
@@ -2963,8 +2970,9 @@ void tport_recv_event(tport_t *self)
       int error = su_errno();
 
       if (!su_is_blocking(error)) {
-	tport_error_report(self, error, NULL);
-	return;
+        SU_DEBUG_4(("%s(%p) calling tport_error_report\n",  __func__, (void *)self));
+        tport_error_report(self, error, NULL);
+        return;
       }
       else {
 	SU_DEBUG_3(("%s: recvfrom(): %s (%d)\n", __func__,
@@ -3306,6 +3314,7 @@ int tport_recv_error_report(tport_t *self)
     return 1;
 
   /* Report error */
+  SU_DEBUG_4(("%s(%p) calling tport_error_report\n",  __func__, (void *)self));
   tport_error_report(self, su_errno(), NULL);
 
   return -1;
@@ -3759,6 +3768,7 @@ int tport_send_fatal(tport_t *self, msg_t *msg, tp_name_t const *tpn,
 #endif
 
   if (tport_is_connection_oriented(self)) {
+    SU_DEBUG_4(("%s(%p) calling tport_error_report\n",  __func__, (void *)self));
     tport_error_report(self, error, NULL);
     if (tport_has_connection(self))
       tport_close(self);
@@ -4232,6 +4242,7 @@ int tport_error_event(tport_t *self)
   if (errcode == 0 || errcode == EPIPE)
     return errcode;
 
+  SU_DEBUG_4(("%s(%p) calling tport_error_report\n",  __func__, (void *)self));
   tport_error_report(self, errcode, name);
 
   return 0;
