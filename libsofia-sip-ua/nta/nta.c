@@ -11043,10 +11043,7 @@ void outgoing_answer_aaaa(sres_context_t *orq, sres_query_t *q,
 
   sres_free_answers(orq->orq_agent->sa_resolver, answers);
 
-  if (results)
-    outgoing_query_results(orq, sq, results, found);
-  else if (!q)
-    outgoing_resolving_error(orq, SIPDNS_503_ERROR);
+  outgoing_query_results(orq, sq, results, found);
 }
 #endif /* SU_HAVE_IN6 */
 
@@ -11135,10 +11132,7 @@ void outgoing_answer_a(sres_context_t *orq, sres_query_t *q,
 
   sres_free_answers(orq->orq_agent->sa_resolver, answers);
 
-  if (results)
-    outgoing_query_results(orq, sq, results, found);
-  else if (!q)
-    outgoing_resolving_error(orq, SIPDNS_503_ERROR);
+  outgoing_query_results(orq, sq, results, found);
 }
 
 /** Store A/AAAA query results */
