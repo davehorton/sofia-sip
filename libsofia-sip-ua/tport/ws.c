@@ -860,12 +860,6 @@ SU_DEBUG_9(("%s back from calling restore_socket - socket is now in blocking mod
     SU_DEBUG_9(("%s call SSL_shutdown\n", __func__));
 		code = SSL_shutdown(wsh->ssl);
     SU_DEBUG_9(("%s SSL_shutdown returned %d\n", __func__, code));
-		if (code == 0) {
-			/* need to make sure there is no more data to read */
-      SU_DEBUG_9(("%s calling ws_raw_read (BLOCKING) to make sure there is no more data\n", __func__));
-			ws_raw_read(wsh, wsh->buffer, 9, WS_BLOCK);
-      SU_DEBUG_9(("%s back from calling ws_raw_read (BLOCKING)\n", __func__));
-		}
 
 ssl_finish_it:
 		SSL_free(wsh->ssl);
