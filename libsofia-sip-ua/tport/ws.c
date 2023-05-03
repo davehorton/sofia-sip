@@ -835,10 +835,14 @@ ssize_t ws_close(wsh_t *wsh, int16_t reason)
 		}
 
 		code = SSL_shutdown(wsh->ssl);
-		if (code == 0) {
-			/* need to make sure there is no more data to read */
-			ws_raw_read(wsh, wsh->buffer, 9, WS_BLOCK);
-		}
+    /**
+     * for a bidirectional shutdown, we would call SSL_shutdown again
+     * if the return code is 0 (and would expect a return code of 1 on the second call).
+     * However, the spec says that performing uni-directional shutdown
+     * is sufficient, so we don't call SSL_shutdown again here.
+     * We are in blocking mode and do not want the possibility of blocking this thread
+     * for a nicety that is optional in the first place.
+     */
 
 ssl_finish_it:
 		SSL_free(wsh->ssl);
