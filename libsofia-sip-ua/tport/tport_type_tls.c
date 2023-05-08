@@ -404,10 +404,11 @@ int tport_tls_events(tport_t *self, int events)
       tport_shutdown0(self, 2);
     }
 
-    if (ret < 0)
+    if (ret < 0) {
       SU_DEBUG_4(("%s(%p): return from tls_want_read %u, calling tport_error_report with errno %u\n",  
         __func__, (void *)self, ret, errno));
       tport_error_report(self, errno, NULL);
+    }
   }
 
   if ((events & SU_WAIT_HUP) && !self->tp_closed)
