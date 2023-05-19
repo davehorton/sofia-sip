@@ -28,3 +28,4 @@ TAGS
 *_tag_ref.c
 
 Makefile.in
+depcomp

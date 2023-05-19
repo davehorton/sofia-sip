@@ -131,7 +131,7 @@
 #define USIZE_MAX UINT_MAX
 
 /**On Solaris define this in order to get POSIX extensions. */
-#define __EXTENSIONS__ 1
+/* #undef __EXTENSIONS__ */
 
 /** Define this in order to get GNU extensions. */
 #ifndef _GNU_SOURCE

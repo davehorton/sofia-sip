@@ -10974,6 +10974,8 @@ int outgoing_query_aaaa(nta_outgoing_t *orq, struct sipdns_query *sq)
   sr->sr_target = sq->sq_domain;
   sr->sr_current = sq;
 
+  SU_DEBUG_5(("%s:\n", __func__));
+
   answers = SRES_NO_CACHE ? NULL : sres_cached_answers(orq->orq_agent->sa_resolver,
 				sres_type_aaaa, sq->sq_domain);
 
@@ -10982,6 +10984,7 @@ int outgoing_query_aaaa(nta_outgoing_t *orq, struct sipdns_query *sq)
               answers ? " (cached)" : ""));
 
   if (answers) {
+    SU_DEBUG_5(("%s: got answers\n", __func__));
     outgoing_answer_aaaa(orq, NULL, answers);
     return 0;
   }
@@ -11004,6 +11007,8 @@ void outgoing_answer_aaaa(sres_context_t *orq, sres_query_t *q,
 
   size_t i, j, found;
   char *result, **results = NULL;
+
+  SU_DEBUG_5(("%s:\n", __func__));
 
   assert(sq); assert(sq->sq_type == sres_type_aaaa);
 
@@ -11043,8 +11048,14 @@ void outgoing_answer_aaaa(sres_context_t *orq, sres_query_t *q,
 
   sres_free_answers(orq->orq_agent->sa_resolver, answers);
 
-  outgoing_query_results(orq, sq, results, found);
-}
+  if (results) {
+    SU_DEBUG_5(("%s:  got results\n", __func__));
+    outgoing_query_results(orq, sq, results, found);
+  }
+  else if (!q)
+    SU_DEBUG_5(("%s:  no results, resolving error\n", __func__));
+    outgoing_resolving_error(orq, SIPDNS_503_ERROR);
+  }
 #endif /* SU_HAVE_IN6 */
 
 /* Query A records */
@@ -11056,6 +11067,8 @@ int outgoing_query_a(nta_outgoing_t *orq, struct sipdns_query *sq)
 
   sr->sr_target = sq->sq_domain;
   sr->sr_current = sq;
+
+  SU_DEBUG_5(("%s:\n", __func__));
 
   answers = SRES_NO_CACHE ? NULL :  sres_cached_answers(orq->orq_agent->sa_resolver,
 				sres_type_a, sq->sq_domain);
