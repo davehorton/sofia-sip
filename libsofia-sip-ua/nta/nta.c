@@ -685,6 +685,7 @@ static void leg_recv(nta_leg_t *, msg_t *, sip_t *, tport_t *);
 static void leg_free(nta_agent_t *sa, nta_leg_t *leg);
 
 #define NTA_HASH(i, cs) ((i)->i_hash + 26839U * (uint32_t)(cs))
+#define NTA_HASH_WITH_VIA(i, cs, v) ((i)->i_hash + 26839U * (uint32_t)(cs) + (v ? 39581U * msg_hash_string(v) : 0))
 
 HTABLE_PROTOS_WITH(incoming_htable, iht, nta_incoming_t, size_t, hash_value_t);
 static nta_incoming_t *incoming_create(nta_agent_t *agent,
@@ -5695,7 +5696,8 @@ nta_incoming_t *incoming_create(nta_agent_t *agent,
       irq->irq_tport = tport_ref(tport);
     }
 
-    irq->irq_hash = NTA_HASH(irq->irq_call_id, irq->irq_cseq->cs_seq);
+    /* DCH: added via branch to hash calculation so when receiving forked invites we can track each as a server txn */
+    irq->irq_hash = NTA_HASH_WITH_VIA(irq->irq_call_id, irq->irq_cseq->cs_seq, irq->irq_via->v_branch);
 
     incoming_insert(agent, queue, irq);
   }
@@ -6255,7 +6257,8 @@ static nta_incoming_t *incoming_find(nta_agent_t const *agent,
 
   assert(cseq);
 
-  hash = NTA_HASH(i, cseq->cs_seq);
+  /* DCH: changed to include not only call-id and cseq but via branch to find server txn */
+  hash = NTA_HASH_WITH_VIA(i, cseq->cs_seq, v->v_branch);
 
 if (v->v_branch && su_casenmatch(v->v_branch, "z9hG4bK", 7))
     magic_branch = v->v_branch + 7;
@@ -8275,6 +8278,10 @@ nta_outgoing_t *outgoing_create(nta_agent_t *agent,
   /* Now we are committed in sending the transaction */
   orq->orq_request = msg;
   agent->sa_stats->as_client_tr++;
+
+  /* DCH: this is a client txn, currently I have not made changes to include via branch here
+    * we may want to do so in the future.
+  */
   orq->orq_hash = NTA_HASH(sip->sip_call_id, sip->sip_cseq->cs_seq);
 
   if (orq->orq_user_tport)
@@ -9503,6 +9510,7 @@ nta_outgoing_t *outgoing_find(nta_agent_t const *sa,
   if (cseq == NULL)
     return NULL;
 
+  /* DCH: I have not made changes to include via branch in client txns yet */
   hash = NTA_HASH(i, cseq->cs_seq);
 
   method = cseq->cs_method;
@@ -11441,8 +11449,11 @@ nta_reliable_t *reliable_find(nta_agent_t const *agent,
   incoming_htable_t const *iht = agent->sa_incoming;
   nta_incoming_t *irq, **ii;
   sip_call_id_t const *i = sip->sip_call_id;
+  sip_via_t const *v = sip->sip_via;
   sip_rack_t const *rack = sip->sip_rack;
-  hash_value_t hash = NTA_HASH(i, rack->ra_cseq);
+
+  /* DCH: changed incoming hash (server txns) to include via branch */
+  hash_value_t hash = NTA_HASH_WITH_VIA(i, rack->ra_cseq, v->v_branch);
 
   /* XXX - add own hash table for 100rel */
 
