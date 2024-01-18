@@ -830,7 +830,7 @@ void tport_log_msg(tport_t *self, msg_t *msg,
 
 #define MSG_SEPARATOR \
   "------------------------------------------------------------------------\n"
-#define MAX_LINELEN 2047
+#define MAX_LINELEN 4095
 
   for (i = n = 0; i < iovlen && i < 80; i++)
     n += iov[i].mv_len;
@@ -900,9 +900,12 @@ void tport_log_msg(tport_t *self, msg_t *msg,
 
   su_log("%s   " MSG_SEPARATOR, linelen > 0 ? "\n" : "");
 
-  if (!truncated && i == 80)
-    truncated = logged;
+    if (!truncated && i == 80) {
+        truncated = logged;
+    }
 
-  if (truncated)
-    su_log("   *** message truncated at "MOD_ZU" ***\n", truncated);
+    if (truncated) {
+        su_log("   *** message truncated at "MOD_ZU" ***\n", truncated);
+        msg_mark_as_complete(msg, MSG_FLG_TRUNC);
+    }
 }
