@@ -830,7 +830,7 @@ void tport_log_msg(tport_t *self, msg_t *msg,
 
 #define MSG_SEPARATOR \
   "------------------------------------------------------------------------\n"
-#define MAX_LINELEN 4095
+#define MAX_LINELEN 8192
 
   for (i = n = 0; i < iovlen && i < 80; i++)
     n += iov[i].mv_len;
