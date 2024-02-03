@@ -308,9 +308,9 @@ typedef int nua_stack_signal_handler(nua_t *,
 				     nua_event_t,
 				     tagi_t const *);
 
-void nua_move_signal(nua_saved_signal_t a[1], nua_saved_signal_t b[1]);
-nua_signal_data_t const *nua_signal_data(nua_saved_signal_t const saved[1]);
-void nua_destroy_signal(nua_saved_signal_t saved[1]);
+void nua_move_signal(nua_saved_signal_t *a, nua_saved_signal_t *b);
+nua_signal_data_t const *nua_signal_data(nua_saved_signal_t const *saved);
+void nua_destroy_signal(nua_saved_signal_t *saved);
 
 nua_stack_signal_handler
   nua_stack_set_params, nua_stack_get_params,

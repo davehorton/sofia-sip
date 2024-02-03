@@ -690,23 +690,23 @@ nua_event_data_t const *nua_event_data(nua_saved_event_t const saved[1])
  *
  * @sa #nua_event_e, nua_event_save(), nua_event_data(), nua_saved_event_request().
  */
-void nua_destroy_event(nua_saved_event_t saved[1])
+void nua_destroy_event(nua_saved_event_t *saved)
 {
   if (saved && saved[0]) su_msg_destroy(saved);
 }
 
 /** @internal Move signal. */
-void nua_move_signal(nua_saved_signal_t a[1], nua_saved_signal_t b[1])
+void nua_move_signal(nua_saved_signal_t *a, nua_saved_signal_t *b)
 {
   su_msg_save(a, b);
 }
 
-void nua_destroy_signal(nua_saved_signal_t saved[1])
+void nua_destroy_signal(nua_saved_signal_t *saved)
 {
   if (saved) su_msg_destroy(saved);
 }
 
-nua_signal_data_t const *nua_signal_data(nua_saved_signal_t const saved[1])
+nua_signal_data_t const *nua_signal_data(nua_saved_signal_t const *saved)
 {
   return nua_event_data(saved);
 }

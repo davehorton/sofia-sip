@@ -323,9 +323,6 @@ int sip_is_callerpref(char const *param)
   if (param[0] == '+')
     param++, xor = 1;
 
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wstring-plus-int"
-
   switch (param[0]) {
   case 'a': case 'A':
     base = MATCH("audio") || MATCH("automata") || MATCH("application") ||
@@ -365,7 +362,6 @@ int sip_is_callerpref(char const *param)
     base = 0;
     break;
   }
-#pragma GCC diagnostic pop
 
 #undef MATCH
 

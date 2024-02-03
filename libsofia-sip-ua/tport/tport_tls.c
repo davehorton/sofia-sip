@@ -137,6 +137,7 @@ enum { tls_buffer_size = 16384 };
  * Log the TLS error specified by the error code @a e and all the errors in
  * the queue. The error code @a e implies no error, and it is not logged.
  */
+/*
 void tls_log_errors(unsigned level, char const *s, unsigned long e)
 {
   if (e == 0)
@@ -157,6 +158,28 @@ void tls_log_errors(unsigned level, char const *s, unsigned long e)
 	      s, e, error, func, reason);
     }
   }
+}
+*/
+void tls_log_errors(unsigned level, char const *s, unsigned long e)
+{
+    char err_buf[256];
+
+    if (e == 0)
+        e = ERR_get_error();
+
+    if (!tport_log->log_init)
+        su_log_init(tport_log);
+
+    if (s == NULL) s = "tls";
+
+    for (; e != 0; e = ERR_get_error()) {
+        if (level <= tport_log->log_level) {
+            ERR_error_string_n(e, err_buf, sizeof(err_buf));
+
+            su_llog(tport_log, level, "%s: %08lx:%s\n",
+                s, e, err_buf);
+        }
+    }
 }
 
 /*
