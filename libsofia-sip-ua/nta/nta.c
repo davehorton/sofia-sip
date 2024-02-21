@@ -9584,8 +9584,14 @@ int outgoing_recv(nta_outgoing_t *_orq,
     cancel->orq_delayed = 0;
 
     if (status < 200) {
+      SU_DEBUG_3(("%s: sending CANCEL after receiving late arriving 100 Trying\n", __func__));
       outgoing_send(cancel, 0);
-      outgoing_complete(orq);
+
+      /** DH: fix crash when it continued and asserted on or about line 9719 due to orq being cleared */
+      if (outgoing_complete(orq)) {
+         msg_destroy(msg);
+        return 0;
+      }
     }
     else {
       outgoing_reply(cancel, SIP_481_NO_TRANSACTION, 0);
