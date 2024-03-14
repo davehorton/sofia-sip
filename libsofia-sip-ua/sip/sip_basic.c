@@ -775,7 +775,16 @@ issize_t sip_name_addr_e(char b[], isize_t bsiz,
   brackets = brackets || display ||
     (url && (url->url_params ||
 	     url->url_headers ||
-	     ((u = url->url_user) && u[strcspn(u, ";,?")]) ||
+       /**
+        * actually RFC 3261 allows all these characters in user part of sip uri
+        *
+        * SIPS-URI         =  "sips:" [ userinfo ] hostport
+        * uri-parameters [ headers ]
+        * userinfo         =  ( user / telephone-subscriber ) [ ":" password ] "@"
+        * user             =  1*( unreserved / escaped / user-unreserved )
+        * user-unreserved  =  "&" / "=" / "+" / "$" / "," / ";" / "?" / "/"
+        */
+	     /*((u = url->url_user) && u[strcspn(u, ";,?")]) ||*/
 	     ((u = url->url_password) && u[strcspn(u, ",")])));
 
   if (display && display[0]) {
@@ -1258,7 +1267,7 @@ char *sip_cseq_dup_one(sip_header_t *dst, sip_header_t const *src,
 
 /**@ingroup sip_cseq
  *
- * Create a @CSeq header object.
+ * Create a @CSeq header object.
  *
  * Create a @CSeq header object with the
  * sequence number @a seq, method enum @a method and method name @a
@@ -1557,7 +1566,7 @@ issize_t sip_content_length_e(char b[], isize_t bsiz, sip_header_t const *h, int
 
 /**@ingroup sip_content_length
  *
- * Create a @ContentLength header object.
+ * Create a @ContentLength header object.
  *
  * Create a @ContentLength
  * header object with the value @a n.  The memory for the header is
