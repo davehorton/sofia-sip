@@ -233,6 +233,16 @@ int tport_recv_stream_ws(tport_t *self)
 	  return 0;
   }
 
+  // DH: Check for "ping" message (CRLF)
+  if (N == 2 || N == 4) {
+    if ((data[0] == '\r' && data[1] == '\n') &&
+        (N == 2 || (data[2] == '\r' && data[3] == '\n'))) {
+      // "ping" message detected, send "pong"
+      tport_ws_pong(self);
+      return 1;
+    }
+  }
+
   veclen = tport_recv_iovec(self, &self->tp_msg, iovec, N, 0);
   if (veclen < 0)
     return -1;
