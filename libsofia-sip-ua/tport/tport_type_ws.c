@@ -238,7 +238,7 @@ int tport_recv_stream_ws(tport_t *self)
     if ((data[0] == '\r' && data[1] == '\n') &&
         (N == 2 || (data[2] == '\r' && data[3] == '\n'))) {
       // "ping" message detected, send "pong"
-      tport_ws_pong(self);
+      tport_ws_send_crlf_text_frame(self);
       return 1;
     }
   }
@@ -646,16 +646,42 @@ int tport_ws_ping(tport_t *self, su_time_t now)
 /** Send pong */
 int tport_ws_pong(tport_t *self)
 {
+  ssize_t n;
   self->tp_ping = 0;
 
   if (tport_has_queued(self) || !self->tp_params->tpp_pong2ping)
     return 0;
 
-  SU_DEBUG_7(("%s(%p): %s to " TPN_FORMAT "%s\n",
-	      __func__, (void *)self,
-	      "sending PONG", TPN_ARGS(self->tp_name), ""));
+  n = send(self->tp_socket, "\r\n", 2, 0);
 
-  return send(self->tp_socket, "\r\n", 2, 0);
+  SU_DEBUG_7(("%s(%p): %u bytes %s to " TPN_FORMAT "%s\n",
+	      __func__, (void *)self, n, 
+	      "sent PONG", TPN_ARGS(self->tp_name), ""));
+
+  return n;
+}
+
+/** Send WebSocket text frame with payload CRLF */
+int tport_ws_send_crlf_text_frame(tport_t *self)
+{
+    tport_ws_t *wstp = (tport_ws_t *)self;
+    ssize_t n;
+    self->tp_ping = 0;
+
+    if (tport_has_queued(self) || !self->tp_params->tpp_pong2ping)
+        return 0;
+
+    // Prepare the CRLF payload
+    char crlf_payload[2] = { '\r', '\n' };
+
+    // Use ws_write_frame to send a text frame with the CRLF payload
+    n = ws_write_frame(&wstp->ws, 0x1 /* opcode for text frame */, crlf_payload, sizeof(crlf_payload));
+
+    SU_DEBUG_7(("%s(%p): %u bytes %s to " TPN_FORMAT "%s\n",
+                __func__, (void *)self, n, 
+                "sent TEXT FRAME with CRLF", TPN_ARGS(self->tp_name), ""));
+
+    return n;
 }
 
 /** Calculate next timer for WS. */
