@@ -78,6 +78,7 @@ ssize_t tport_send_stream_ws(tport_t const *self, msg_t *msg,
 
 int tport_ws_ping(tport_t *self, su_time_t now);
 int tport_ws_pong(tport_t *self);
+int tport_ws_send_crlf_text_frame(tport_t *self);
 
 int tport_ws_init_primary(tport_primary_t *,
  			  tp_name_t  tpn[1],
