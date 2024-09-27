@@ -66,18 +66,15 @@ int http_request_complete(msg_t *msg)
   http_payload_t const *pl;
   su_home_t *home = msg_home(msg);
 
-  if (!http)
-    return -1;
-  if (!http->http_request)
-    return -1;
-  if (!http->http_host)
-    return -1;
+  if (!http) return -1;
+  if (!http->http_request) return -1;
+  if (!http->http_host) return -1;
 
-    for (pl = http->http_payload; pl; pl = pl->pl_next)
-      len += pl->pl_len;
+  for (pl = http->http_payload; pl; pl = pl->pl_next) {
+    len += pl->pl_len;
+  }
 
-  if (len > UINT32_MAX)
-    return -1;
+  if (len > UINT32_MAX) return -1;
 
   if (!http->http_content_length) {
     http->http_content_length = http_content_length_create(home, (uint32_t)len);
@@ -89,8 +86,9 @@ int http_request_complete(msg_t *msg)
     }
   }
 
-  if (!http->http_separator)
+  if (!http->http_separator) {
     http->http_separator = http_separator_create(home);
+  }
 
   return 0;
 }

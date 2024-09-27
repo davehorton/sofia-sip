@@ -100,7 +100,7 @@ typedef unsigned long hash_value_t;
   HTABLE_PROTOS_WITH(prefix, pr, entry_t, unsigned, hash_value_t)
 
 #define HTABLE_PROTOS_WITH(prefix, pr, entry_t, size_t, hash_value_t)	\
-HTABLE_SCOPE int prefix##_resize(su_home_t *, prefix##_t pr[1], size_t); \
+HTABLE_SCOPE int prefix##_resize(su_home_t *, prefix##_t *pr, size_t); \
 HTABLE_SCOPE int prefix##_is_full(prefix##_t const *); \
 HTABLE_SCOPE entry_t **prefix##_hash(prefix##_t const *, hash_value_t hv); \
 HTABLE_SCOPE entry_t **prefix##_next(prefix##_t const *, entry_t * const *ee); \
@@ -127,7 +127,7 @@ HTABLE_SCOPE int prefix##_remove(prefix##_t *, entry_t const *e)
 /** Reallocate new hash table */ \
 HTABLE_SCOPE \
 int prefix##_resize(su_home_t *home, \
-                    prefix##_t pr[], \
+                    prefix##_t *pr, \
 		    size_t new_size) \
 { \
   entry_t **new_hash; \
