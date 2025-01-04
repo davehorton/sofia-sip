@@ -159,6 +159,88 @@ void tls_log_errors(unsigned level, char const *s, unsigned long e)
   }
 }
 
+// Function to split mixed ciphers into TLS 1.2 and TLS 1.3 lists
+static void split_ciphers(const char *mixed_ciphers, char **tls12_list, char **tls13_list) {
+    // Buffers for the separated lists
+    size_t tls12_buf_size = 1024;
+    size_t tls13_buf_size = 1024;
+    *tls12_list = malloc(tls12_buf_size);
+    *tls13_list = malloc(tls13_buf_size);
+
+    if (!(*tls12_list) || !(*tls13_list)) {
+      SU_DEBUG_1(("Memory allocation (%s):\n", "failed"));
+      exit(1);
+    }
+
+    // Initialize buffers to empty strings
+    (*tls12_list)[0] = '\0';
+    (*tls13_list)[0] = '\0';
+
+    // Temporary SSL context to validate ciphers
+    SSL_CTX *ctx = SSL_CTX_new(TLS_method());
+    if (!ctx) {
+        SU_DEBUG_1(("Failed to create (%s):\n", "SSL_CTX"));
+        exit(1);
+    }
+
+    // Tokenize the input cipher list
+    char *ciphers = strdup(mixed_ciphers);
+    char *cipher = strtok(ciphers, ":");
+
+    while (cipher) {
+        // Check if the cipher is valid for TLS 1.2
+        if (SSL_CTX_set_cipher_list(ctx, cipher)) {
+            // Add to the TLS 1.2 list
+            if (strlen(*tls12_list) + strlen(cipher) + 2 >= tls12_buf_size) {
+                tls12_buf_size *= 2;
+                *tls12_list = realloc(*tls12_list, tls12_buf_size);
+            }
+            strcat(*tls12_list, cipher);
+            strcat(*tls12_list, ":");
+        }
+
+        // Check if the cipher is valid for TLS 1.3
+        if (SSL_CTX_set_ciphersuites(ctx, cipher)) {
+            // Add to the TLS 1.3 list
+            if (strlen(*tls13_list) + strlen(cipher) + 2 >= tls13_buf_size) {
+                tls13_buf_size *= 2;
+                *tls13_list = realloc(*tls13_list, tls13_buf_size);
+            }
+            strcat(*tls13_list, cipher);
+            strcat(*tls13_list, ":");
+        }
+
+        cipher = strtok(NULL, ":");
+    }
+
+    // Remove trailing colons
+    if (strlen(*tls12_list) > 0) (*tls12_list)[strlen(*tls12_list) - 1] = '\0';
+    if (strlen(*tls13_list) > 0) (*tls13_list)[strlen(*tls13_list) - 1] = '\0';
+
+    // Cleanup
+    free(ciphers);
+    SSL_CTX_free(ctx);
+}
+
+static void print_tls12_cipher_list(SSL_CTX *ctx) {
+    const SSL_CIPHER *cipher;
+    STACK_OF(SSL_CIPHER) *ciphers;
+    int i;
+
+    ciphers = SSL_CTX_get_ciphers(ctx);
+    if (!ciphers) {
+        SU_DEBUG_1(("No ciphers available %s\n", ""));
+        return;
+    }
+
+    SU_DEBUG_5(("Configured TLS Ciphers (%s):\n", "tls connections"));
+    for (i = 0; i < sk_SSL_CIPHER_num(ciphers); i++) {
+        cipher = sk_SSL_CIPHER_value(ciphers, i);
+        SU_DEBUG_5(("  %s\n", SSL_CIPHER_get_name(cipher)));
+    }
+}
+
+
 /*
  * This callback hands back the password to be used during decryption.
  *
@@ -444,12 +526,40 @@ int tls_init_context(tls_t *tls, tls_issues_t const *ti)
     SU_DEBUG_3(("%s\n", "tls: failed to initialize ECDH"));
   }
 #endif
-  if (!SSL_CTX_set_cipher_list(tls->ctx, ti->ciphers)) {
-    SU_DEBUG_1(("%s: error setting cipher list\n", "tls_init_context"));
-    tls_log_errors(3, "tls_init_context", 0);
-    errno = EIO;
-    return -1;
+  if (0 == strcmp(ti->ciphers, "!eNULL:!aNULL:!EXP:!LOW:!MD5:ALL:@STRENGTH")) {
+    /* default ciphers */
+    if (!SSL_CTX_set_cipher_list(tls->ctx, ti->ciphers)) {
+      tls_log_errors(3, "tls_init_context", 0);
+      errno = EIO;
+      return -1;
+    }
   }
+  else {
+    char *tls12_list = NULL;
+    char *tls13_list = NULL;
+ 
+    split_ciphers(ti->ciphers, &tls12_list, &tls13_list);
+    SU_DEBUG_1(("Enabling TLS 1.2 and earlier ciphers: %s\n", tls12_list));
+    SU_DEBUG_1(("Enabling TLS 1.3 ciphers:             %s\n", tls13_list));
+    if (tls12_list && strlen(tls12_list) > 0) {
+      if (!SSL_CTX_set_cipher_list(tls->ctx, tls12_list)) {
+        tls_log_errors(3, "tport_ws_init_primary_secure - failed initializing TLS 1.2 cipher list", 0);
+        errno = EIO;
+        return -1;
+      }
+    }
+    if (tls13_list && strlen(tls13_list) > 0) {
+      if (!SSL_CTX_set_ciphersuites(tls->ctx, tls13_list)) {
+        tls_log_errors(3, "tport_ws_init_primary_secure - failed initializing TLS 1.3 cipher list", 0);
+        errno = EIO;
+        return -1;
+      }
+    }
+    if (tls12_list) free(tls12_list);
+    if (tls13_list) free(tls13_list);
+  }
+
+  print_tls12_cipher_list(tls->ctx);
 
   return 0;
 }

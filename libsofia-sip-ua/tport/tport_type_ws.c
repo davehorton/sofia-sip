@@ -181,6 +181,85 @@ tport_vtable_t const tport_wss_client_vtable =
   /* vtp_secondary_timer     */ tport_ws_timer,
 };
 
+// Function to split mixed ciphers into TLS 1.2 and TLS 1.3 lists
+static void split_ciphers(const char *mixed_ciphers, char **tls12_list, char **tls13_list) {
+    // Buffers for the separated lists
+    size_t tls12_buf_size = 1024;
+    size_t tls13_buf_size = 1024;
+    *tls12_list = malloc(tls12_buf_size);
+    *tls13_list = malloc(tls13_buf_size);
+
+    if (!(*tls12_list) || !(*tls13_list)) {
+      SU_DEBUG_1(("Memory allocation (%s):\n", "failed"));
+      exit(1);
+    }
+
+    // Initialize buffers to empty strings
+    (*tls12_list)[0] = '\0';
+    (*tls13_list)[0] = '\0';
+
+    // Temporary SSL context to validate ciphers
+    SSL_CTX *ctx = SSL_CTX_new(TLS_method());
+    if (!ctx) {
+        SU_DEBUG_1(("Failed to create (%s):\n", "SSL_CTX"));
+        exit(1);
+    }
+
+    // Tokenize the input cipher list
+    char *ciphers = strdup(mixed_ciphers);
+    char *cipher = strtok(ciphers, ":");
+
+    while (cipher) {
+        // Check if the cipher is valid for TLS 1.2
+        if (SSL_CTX_set_cipher_list(ctx, cipher)) {
+            // Add to the TLS 1.2 list
+            if (strlen(*tls12_list) + strlen(cipher) + 2 >= tls12_buf_size) {
+                tls12_buf_size *= 2;
+                *tls12_list = realloc(*tls12_list, tls12_buf_size);
+            }
+            strcat(*tls12_list, cipher);
+            strcat(*tls12_list, ":");
+        }
+
+        // Check if the cipher is valid for TLS 1.3
+        if (SSL_CTX_set_ciphersuites(ctx, cipher)) {
+            // Add to the TLS 1.3 list
+            if (strlen(*tls13_list) + strlen(cipher) + 2 >= tls13_buf_size) {
+                tls13_buf_size *= 2;
+                *tls13_list = realloc(*tls13_list, tls13_buf_size);
+            }
+            strcat(*tls13_list, cipher);
+            strcat(*tls13_list, ":");
+        }
+
+        cipher = strtok(NULL, ":");
+    }
+
+    // Remove trailing colons
+    if (strlen(*tls12_list) > 0) (*tls12_list)[strlen(*tls12_list) - 1] = '\0';
+    if (strlen(*tls13_list) > 0) (*tls13_list)[strlen(*tls13_list) - 1] = '\0';
+
+    // Cleanup
+    free(ciphers);
+    SSL_CTX_free(ctx);
+}
+static void print_tls12_cipher_list(SSL_CTX *ctx) {
+    const SSL_CIPHER *cipher;
+    STACK_OF(SSL_CIPHER) *ciphers;
+    int i;
+
+    ciphers = SSL_CTX_get_ciphers(ctx);
+    if (!ciphers) {
+        SU_DEBUG_1(("No ciphers available %s\n", ""));
+        return;
+    }
+
+    SU_DEBUG_5(("Configured TLS Ciphers (%s):\n", "wss connections"));
+    for (i = 0; i < sk_SSL_CIPHER_num(ciphers); i++) {
+        cipher = sk_SSL_CIPHER_value(ciphers, i);
+        SU_DEBUG_5(("  %s\n", SSL_CIPHER_get_name(cipher)));
+    }
+}
 
 static void tport_ws_deinit_primary(tport_primary_t *pri)
 {
@@ -362,6 +441,10 @@ static int tport_ws_init_primary_secure(tport_primary_t *pri,
   const char *cert = "/ssl.pem";
   const char *key = "/ssl.pem";
   const char *chain = NULL;
+  char const *tls_ciphers = NULL;
+  char *tls12_list = NULL;
+  char *tls13_list = NULL;
+
   //char *homedir;
   //char *tbf = NULL;
   su_home_t autohome[SU_HOME_AUTO_SIZE(1024)];
@@ -375,6 +458,7 @@ static int tport_ws_init_primary_secure(tport_primary_t *pri,
     TPTAG_TLS_CERTIFICATE_KEY_FILE_REF(tls_key_file),
     TPTAG_TLS_CERTIFICATE_FILE_REF(tls_certificate_file),
     TPTAG_TLS_CERTIFICATE_CHAIN_FILE_REF(tls_chain_file),
+    TPTAG_TLS_CIPHERS_REF(tls_ciphers),
 	  TAG_END());
 
   if( NULL != tls_key_file ) {
@@ -466,10 +550,33 @@ static int tport_ws_init_primary_secure(tport_primary_t *pri,
   /* Disable Compression CRIME (Compression Ratio Info-leak Made Easy) */
   SSL_CTX_set_options(wspri->ssl_ctx, SSL_OP_NO_COMPRESSION);
   
-  if ( !SSL_CTX_set_cipher_list(wspri->ssl_ctx, "!eNULL:!aNULL:!DSS:HIGH:@STRENGTH") ) {
-      tls_log_errors(3, "tport_ws_init_primary_secure", 0);
-      goto done;
+  if (tls_ciphers) {
+    split_ciphers(tls_ciphers, &tls12_list, &tls13_list);
+    SU_DEBUG_1(("Enabling TLS 1.2 and earlier ciphers: %s\n", tls12_list));
+    SU_DEBUG_1(("Enabling TLS 1.3 ciphers:             %s\n", tls13_list));
+    if (tls12_list && strlen(tls12_list) > 0) {
+      if (!SSL_CTX_set_cipher_list(wspri->ssl_ctx, tls12_list)) {
+        tls_log_errors(3, "tport_ws_init_primary_secure - failed initializing TLS 1.2 cipher list", 0);
+        goto done;
+      }
+    }
+    if (tls13_list && strlen(tls13_list) > 0) {
+      if (!SSL_CTX_set_ciphersuites(wspri->ssl_ctx, tls13_list)) {
+        tls_log_errors(3, "tport_ws_init_primary_secure - failed initializing TLS 1.3 cipher list", 0);
+        goto done;
+      }
+    }
+    if (tls12_list) free(tls12_list);
+    if (tls13_list) free(tls13_list);
   }
+  else {
+    if ( !SSL_CTX_set_cipher_list(wspri->ssl_ctx, "!eNULL:!aNULL:!DSS:HIGH:@STRENGTH") ) {
+        tls_log_errors(3, "tport_ws_init_primary_secure", 0);
+        goto done;
+    }
+  }
+
+  print_tls12_cipher_list(wspri->ssl_ctx);
 
   ret = tport_ws_init_primary(pri, tpn, ai, tags, return_culprit);
 
@@ -654,7 +761,7 @@ int tport_ws_pong(tport_t *self)
 
   n = send(self->tp_socket, "\r\n", 2, 0);
 
-  SU_DEBUG_7(("%s(%p): %u bytes %s to " TPN_FORMAT "%s\n",
+  SU_DEBUG_7(("%s(%p): %ld bytes %s to " TPN_FORMAT "%s\n",
 	      __func__, (void *)self, n, 
 	      "sent PONG", TPN_ARGS(self->tp_name), ""));
 
@@ -677,7 +784,7 @@ int tport_ws_send_crlf_text_frame(tport_t *self)
     // Use ws_write_frame to send a text frame with the CRLF payload
     n = ws_write_frame(&wstp->ws, 0x1 /* opcode for text frame */, crlf_payload, sizeof(crlf_payload));
 
-    SU_DEBUG_7(("%s(%p): %u bytes %s to " TPN_FORMAT "%s\n",
+    SU_DEBUG_7(("%s(%p): %ld bytes %s to " TPN_FORMAT "%s\n",
                 __func__, (void *)self, n, 
                 "sent TEXT FRAME with CRLF", TPN_ARGS(self->tp_name), ""));
 
