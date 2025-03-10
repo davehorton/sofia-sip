@@ -463,8 +463,8 @@ http_method_t http_method_d(char **ss, char const **nname)
   case 'H': if (MATCH(s, "HEAD")) code = http_method_head; break;
   case 'O': if (MATCH(s, "OPTIONS")) code = http_method_options; break;
   case 'P': if (MATCH(s, "POST")) code = http_method_post;
-            else
-            if (MATCH(s, "PUT")) code = http_method_put; break;
+            else if (MATCH(s, "PUT")) code = http_method_put; 
+            break;
   case 'T': if (MATCH(s, "TRACE")) code = http_method_trace; break;
   }
 

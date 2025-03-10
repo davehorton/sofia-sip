@@ -143,7 +143,8 @@ int time_d(char const **ss,
     return -1;
   *sec = 10 * s[0] + s[1] - 11 * '0'; s += 2;
   if (*s) {
-    if (!IS_LWS(*s)) return -1; skip_lws(&s);
+    if (!IS_LWS(*s)) return -1; 
+    skip_lws(&s);
   }
   *ss = s;
   return 0;
@@ -247,8 +248,10 @@ issize_t msg_date_d(char const **ss, msg_time_t *date)
   else {
     /* actime-date =
        wkday SP month SP ( 2DIGIT | ( SP 1DIGIT )) SP time SP 4DIGIT */
-    mon = month_d(s); skip_token(&s);
-    if (mon < 0 || !IS_LWS(*s)) return -1; s++;
+    mon = month_d(s); 
+    skip_token(&s);
+    if (mon < 0 || !IS_LWS(*s)) return -1; 
+    s++;
     while (IS_LWS(*s)) s++;
     if (!is_digit(*s)) return -1;
     day = *s++ - '0'; if (is_digit(*s)) day = 10 * day + *s++ - '0';

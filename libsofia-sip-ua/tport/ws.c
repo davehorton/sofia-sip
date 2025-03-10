@@ -1,6 +1,9 @@
 #include <switch.h>
 #include "ws.h"
 #include <pthread.h>
+#include <string.h>
+#include <openssl/evp.h>
+#include <openssl/err.h>
 
 #ifndef _MSC_VER
 #include <fcntl.h>
@@ -241,6 +244,41 @@ static void sha1_digest(char *digest, unsigned char *in)
 
 static void sha1_digest(unsigned char *digest, char *in)
 {
+    EVP_MD_CTX *mdctx;
+    unsigned int digest_len;
+
+    if((mdctx = EVP_MD_CTX_new()) == NULL) {
+        // handle error, e.g. print an error message and return or exit
+        printf("Failed to create new OpenSSL digest context\n");
+        return;
+    }
+
+    if(EVP_DigestInit_ex(mdctx, EVP_sha1(), NULL) != 1) {
+        // handle error
+        printf("Failed to initialize OpenSSL digest\n");
+        EVP_MD_CTX_free(mdctx);
+        return;
+    }
+
+    if(EVP_DigestUpdate(mdctx, in, strlen(in)) != 1) {
+        // handle error
+        printf("Failed to update OpenSSL digest\n");
+        EVP_MD_CTX_free(mdctx);
+        return;
+    }
+
+    if(EVP_DigestFinal_ex(mdctx, digest, &digest_len) != 1) {
+        // handle error
+        printf("Failed to finalize OpenSSL digest\n");
+        EVP_MD_CTX_free(mdctx);
+        return;
+    }
+
+    EVP_MD_CTX_free(mdctx);
+}
+/*
+static void sha1_digest(unsigned char *digest, char *in)
+{
 	SHA_CTX sha;
 
 	SHA1_Init(&sha);
@@ -248,7 +286,7 @@ static void sha1_digest(unsigned char *digest, char *in)
 	SHA1_Final(digest, &sha);
 
 }
-
+*/
 #endif
 
 int ws_handshake(wsh_t *wsh)
@@ -439,6 +477,7 @@ ssize_t ws_raw_read(wsh_t *wsh, void *data, size_t bytes, int block)
  * Log the WSS error specified by the error code @a e and all the errors in
  * the queue. The error code @a e implies no error, and it is not logged.
  */
+/*
 void wss_log_errors(unsigned level, char const *s, unsigned long e)
 {
 	if (e == 0)
@@ -460,6 +499,29 @@ void wss_log_errors(unsigned level, char const *s, unsigned long e)
 		}
 	}
 }
+*/
+void wss_log_errors(unsigned level, char const *s, unsigned long e)
+{
+    char err_buf[256];
+
+    if (e == 0)
+        e = ERR_get_error();
+
+    if (!tport_log->log_init)
+        su_log_init(tport_log);
+
+    if (s == NULL) s = "tls";
+
+    for (; e != 0; e = ERR_get_error()) {
+        if (level <= tport_log->log_level) {
+            ERR_error_string_n(e, err_buf, sizeof(err_buf));
+
+            su_llog(tport_log, level, "%s: %08lx:%s\n",
+                s, e, err_buf);
+        }
+    }
+}
+
 
 int wss_error(wsh_t *wsh, int ssl_err, char const *who)
 {
