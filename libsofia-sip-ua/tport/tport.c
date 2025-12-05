@@ -4586,8 +4586,10 @@ tport_t *tport_primary_by_name(tport_t const *tp, tp_name_t const *tpn)
     //break;
     if (!tport_default) tport_default = tp ;
 
-    strncpy(szRemote, tpn->tpn_host, 64);
-    strncpy(szLocal, current->tp_name->tpn_host, 64);
+    strncpy(szRemote, tpn->tpn_host, sizeof(szRemote) - 1);
+    szRemote[sizeof(szRemote) - 1] = '\0';
+    strncpy(szLocal, current->tp_name->tpn_host, sizeof(szLocal) - 1);
+    szLocal[sizeof(szLocal) - 1] = '\0';
 
     char *pLocal[4] = {0,0,0,0};
     char *pRemote[4] = {0,0,0,0};
