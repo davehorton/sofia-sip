@@ -3599,6 +3599,18 @@ int tport_send_msg(tport_t *self, msg_t *msg,
 
   n = (size_t)nerror;
 
+  /* EAGAIN on UDP: tport_vsend returns 0 when sendmsg returned EAGAIN.
+   * For connection-oriented transports, 0 bytes sent means queue the rest.
+   * For UDP (datagram), we can't partially send, so n==0 means the send
+   * failed transiently. Drop the message gracefully rather than treating
+   * it as a truncated send with EIO. */
+  if (n == 0 && !tport_is_connection_oriented(self)) {
+    SU_DEBUG_3(("tport_send_msg(%p): "
+                "UDP send buffer full (EAGAIN), message to %s/%s:%s dropped\n",
+                (void *)self, tpn->tpn_proto, tpn->tpn_host, tpn->tpn_port));
+    return -1;
+  }
+
   self->tp_unsent = NULL, self->tp_unsentlen = 0;
 
   if (n > 0 && self->tp_master->mr_log && self->tp_slogged != msg) {

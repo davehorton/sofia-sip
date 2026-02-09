@@ -248,7 +248,10 @@ int tport_udp_init_client(tport_primary_t *pri,
 			  tagi_t const *tags,
 			  char const **return_culprit)
 {
-  pri->pri_primary->tp_conn_orient = 1;
+  /* Don't mark UDP as connection-oriented.
+   * UDP is connectionless; creating per-destination secondary transports
+   * wastes sockets, memory, and causes accumulation issues under high
+   * volume. Use the primary transport for all UDP sends. */
   return 0;
 }
 
