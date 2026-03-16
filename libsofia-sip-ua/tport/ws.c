@@ -1,5 +1,6 @@
 #include <switch.h>
 #include "ws.h"
+#include <openssl/evp.h>
 #include <pthread.h>
 
 #ifndef _MSC_VER
@@ -241,12 +242,8 @@ static void sha1_digest(char *digest, unsigned char *in)
 
 static void sha1_digest(unsigned char *digest, char *in)
 {
-	SHA_CTX sha;
-
-	SHA1_Init(&sha);
-	SHA1_Update(&sha, in, strlen(in));
-	SHA1_Final(digest, &sha);
-
+	unsigned int len = SHA_DIGEST_LENGTH;
+	EVP_Digest(in, strlen(in), digest, &len, EVP_sha1(), NULL);
 }
 
 #endif
@@ -452,11 +449,10 @@ void wss_log_errors(unsigned level, char const *s, unsigned long e)
 	for (; e != 0; e = ERR_get_error()) {
 		if (level <= tport_log->log_level) {
 			const char *error = ERR_lib_error_string(e);
-			const char *func = ERR_func_error_string(e);
 			const char *reason = ERR_reason_error_string(e);
 
-			su_llog(tport_log, level, "%s: %08lx:%s:%s:%s\n",
-				s, e, error, func, reason);
+			su_llog(tport_log, level, "%s: %08lx:%s:%s\n",
+				s, e, error, reason);
 		}
 	}
 }

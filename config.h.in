@@ -12,7 +12,7 @@
 /* Define to 1 if you have addrinfo structure. */
 #undef HAVE_ADDRINFO
 
-/* Define to 1 if you have the `alarm' function. */
+/* Define to 1 if you have the 'alarm' function. */
 #undef HAVE_ALARM
 
 /* Define to 1 if you have 'alloca', as a function or macro. */
@@ -30,10 +30,10 @@
 /* Define to 1 if check library is available */
 #undef HAVE_CHECK
 
-/* Define to 1 if you have the `clock_getcpuclockid' function. */
+/* Define to 1 if you have the 'clock_getcpuclockid' function. */
 #undef HAVE_CLOCK_GETCPUCLOCKID
 
-/* Define to 1 if you have the `clock_gettime' function. */
+/* Define to 1 if you have the 'clock_gettime' function. */
 #undef HAVE_CLOCK_GETTIME
 
 /* Define to 1 if you have CLOCK_MONOTONIC */
@@ -54,7 +54,7 @@
 /* Define to 1 if you have epoll interface. */
 #undef HAVE_EPOLL
 
-/* Define to 1 if you have the `epoll_create' function. */
+/* Define to 1 if you have the 'epoll_create' function. */
 #undef HAVE_EPOLL_CREATE
 
 /* Define to 1 if you have the <fcntl.h> header file. */
@@ -64,13 +64,13 @@
    */
 #undef HAVE_FILETIME
 
-/* Define to 1 if you have the `flock' function. */
+/* Define to 1 if you have the 'flock' function. */
 #undef HAVE_FLOCK
 
 /* Define to 1 if you have the <fnmatch.h> header file. */
 #undef HAVE_FNMATCH_H
 
-/* Define to 1 if you have the `freeaddrinfo' function. */
+/* Define to 1 if you have the 'freeaddrinfo' function. */
 #undef HAVE_FREEADDRINFO
 
 /* Define this as 1 if your c library does not crash with free(0) */
@@ -82,37 +82,37 @@
 /* Define to 1 if the C compiler supports __FUNCTION__ */
 #undef HAVE_FUNCTION
 
-/* Define to 1 if you have the `gai_strerror' function. */
+/* Define to 1 if you have the 'gai_strerror' function. */
 #undef HAVE_GAI_STRERROR
 
-/* Define to 1 if you have the `getaddrinfo' function. */
+/* Define to 1 if you have the 'getaddrinfo' function. */
 #undef HAVE_GETADDRINFO
 
-/* Define to 1 if you have the `getdelim' function. */
+/* Define to 1 if you have the 'getdelim' function. */
 #undef HAVE_GETDELIM
 
-/* Define to 1 if you have the `gethostbyname' function. */
+/* Define to 1 if you have the 'gethostbyname' function. */
 #undef HAVE_GETHOSTBYNAME
 
-/* Define to 1 if you have the `gethostname' function. */
+/* Define to 1 if you have the 'gethostname' function. */
 #undef HAVE_GETHOSTNAME
 
-/* Define to 1 if you have the `getifaddrs' function. */
+/* Define to 1 if you have the 'getifaddrs' function. */
 #undef HAVE_GETIFADDRS
 
-/* Define to 1 if you have the `getipnodebyname' function. */
+/* Define to 1 if you have the 'getipnodebyname' function. */
 #undef HAVE_GETIPNODEBYNAME
 
-/* Define to 1 if you have the `getline' function. */
+/* Define to 1 if you have the 'getline' function. */
 #undef HAVE_GETLINE
 
-/* Define to 1 if you have the `getnameinfo' function. */
+/* Define to 1 if you have the 'getnameinfo' function. */
 #undef HAVE_GETNAMEINFO
 
-/* Define to 1 if you have the `getpass' function. */
+/* Define to 1 if you have the 'getpass' function. */
 #undef HAVE_GETPASS
 
-/* Define to 1 if you have the `gettimeofday' function. */
+/* Define to 1 if you have the 'gettimeofday' function. */
 #undef HAVE_GETTIMEOFDAY
 
 /* Define to 1 if you have the <ifaddr.h> header file. */
@@ -130,16 +130,16 @@
 /* Define to 1 if you have ifr_index in <net/if.h> */
 #undef HAVE_IFR_INDEX
 
-/* Define to 1 if you have the `if_nameindex' function. */
+/* Define to 1 if you have the 'if_nameindex' function. */
 #undef HAVE_IF_NAMEINDEX
 
-/* Define to 1 if you have the `inet_ntop' function. */
+/* Define to 1 if you have the 'inet_ntop' function. */
 #undef HAVE_INET_NTOP
 
-/* Define to 1 if you have the `inet_pton' function. */
+/* Define to 1 if you have the 'inet_pton' function. */
 #undef HAVE_INET_PTON
 
-/* Define to 1 if you have the `initstate' function. */
+/* Define to 1 if you have the 'initstate' function. */
 #undef HAVE_INITSTATE
 
 /* Define to 1 if you have inlining compiler */
@@ -169,40 +169,40 @@
 /* Define to 1 if you have IP_RECVERR in <netinet/in.h> */
 #undef HAVE_IP_RECVERR
 
-/* Define to 1 if you have the `kqueue' function. */
+/* Define to 1 if you have the 'kqueue' function. */
 #undef HAVE_KQUEUE
 
-/* Define to 1 if you have the `crypto' library (-lcrypto). */
+/* Define to 1 if you have the 'crypto' library (-lcrypto). */
 #undef HAVE_LIBCRYPTO
 
 /* Define to 1 if dl library is available */
 #undef HAVE_LIBDL
 
-/* Define to 1 if you have the `gcov' library (-lgcov). */
+/* Define to 1 if you have the 'gcov' library (-lgcov). */
 #undef HAVE_LIBGCOV
 
-/* Define to 1 if you have the `pthread' library (-lpthread). */
+/* Define to 1 if you have the 'pthread' library (-lpthread). */
 #undef HAVE_LIBPTHREAD
 
-/* Define to 1 if you have the `socket' library (-lsocket). */
+/* Define to 1 if you have the 'socket' library (-lsocket). */
 #undef HAVE_LIBSOCKET
 
-/* Define to 1 if you have the `ssl' library (-lssl). */
+/* Define to 1 if you have the 'ssl' library (-lssl). */
 #undef HAVE_LIBSSL
 
-/* Define to 1 if you have the `memccpy' function. */
+/* Define to 1 if you have the 'memccpy' function. */
 #undef HAVE_MEMCCPY
 
-/* Define to 1 if you have the `memcspn' function. */
+/* Define to 1 if you have the 'memcspn' function. */
 #undef HAVE_MEMCSPN
 
 /* Define to 1 for memory-leak-related logging */
 #undef HAVE_MEMLEAK_LOG
 
-/* Define to 1 if you have the `memmem' function. */
+/* Define to 1 if you have the 'memmem' function. */
 #undef HAVE_MEMMEM
 
-/* Define to 1 if you have the `memspn' function. */
+/* Define to 1 if you have the 'memspn' function. */
 #undef HAVE_MEMSPN
 
 /* Define to 1 if you are compiling in MinGW environment */
@@ -238,7 +238,7 @@
 /* Define to 1 if you have the <openssl/tls1.h> header file. */
 #undef HAVE_OPENSSL_TLS1_H
 
-/* Define to 1 if you have the `poll' function. */
+/* Define to 1 if you have the 'poll' function. */
 #undef HAVE_POLL
 
 /* Define to 1 if you use poll in su_port. */
@@ -257,7 +257,7 @@
 /* Define if you have pthread_setschedparam() */
 #undef HAVE_PTHREAD_SETSCHEDPARAM
 
-/* Define to 1 if you have the `random' function. */
+/* Define to 1 if you have the 'random' function. */
 #undef HAVE_RANDOM
 
 /* Define to 1 if you have sa_len in struct sockaddr */
@@ -266,7 +266,7 @@
 /* Define to 1 if you have SCTP */
 #undef HAVE_SCTP
 
-/* Define to 1 if you have the `select' function. */
+/* Define to 1 if you have the 'select' function. */
 #undef HAVE_SELECT
 
 /* Define to 1 if you have Sofia sigcomp >= 2.5 */
@@ -275,7 +275,7 @@
 /* Define to 1 if you have the <sigcomp.h> header file. */
 #undef HAVE_SIGCOMP_H
 
-/* Define to 1 if you have the `signal' function. */
+/* Define to 1 if you have the 'signal' function. */
 #undef HAVE_SIGNAL
 
 /* Define to 1 if you have SIGPIPE */
@@ -287,7 +287,7 @@
 /* Define to 1 if you have WIN32 WSAIoctl SIO_ADDRESS_LIST_QUERY. */
 #undef HAVE_SIO_ADDRESS_LIST_QUERY
 
-/* Define to 1 if you have the `socketpair' function. */
+/* Define to 1 if you have the 'socketpair' function. */
 #undef HAVE_SOCKETPAIR
 
 /* Define to 1 if we use HTTP parser library */
@@ -332,7 +332,7 @@
 /* Define to 1 if you have the <stdlib.h> header file. */
 #undef HAVE_STDLIB_H
 
-/* Define to 1 if you have the `strerror' function. */
+/* Define to 1 if you have the 'strerror' function. */
 #undef HAVE_STRERROR
 
 /* Define to 1 if you have the <strings.h> header file. */
@@ -341,10 +341,10 @@
 /* Define to 1 if you have the <string.h> header file. */
 #undef HAVE_STRING_H
 
-/* Define to 1 if you have the `strnlen' function. */
+/* Define to 1 if you have the 'strnlen' function. */
 #undef HAVE_STRNLEN
 
-/* Define to 1 if you have the `strtoull' function. */
+/* Define to 1 if you have the 'strtoull' function. */
 #undef HAVE_STRTOULL
 
 /* Define to 1 if your CC supports C99 struct initialization */
@@ -380,7 +380,7 @@
 /* Define to 1 if you have the <sys/types.h> header file. */
 #undef HAVE_SYS_TYPES_H
 
-/* Define to 1 if you have the `tcsetattr' function. */
+/* Define to 1 if you have the 'tcsetattr' function. */
 #undef HAVE_TCSETATTR
 
 /* Define to 1 if you have the <time.h> header file. */
@@ -457,7 +457,7 @@
 	STACK_DIRECTION = 0 => direction of growth unknown */
 #undef STACK_DIRECTION
 
-/* Define to 1 if all of the C90 standard headers exist (not just the ones
+/* Define to 1 if all of the C89 standard headers exist (not just the ones
    required in a freestanding environment). This macro is provided for
    backward compatibility; new code need not use it. */
 #undef STDC_HEADERS
@@ -477,10 +477,10 @@
 # endif
 #endif
 
-/* Define to empty if `const' does not conform to ANSI C. */
+/* Define to empty if 'const' does not conform to ANSI C. */
 #undef const
 
-/* Define to `__inline__' or `__inline' if that's what the C compiler
+/* Define to '__inline__' or '__inline' if that's what the C compiler
    calls it, or to nothing if 'inline' is not supported under any name.  */
 #ifndef __cplusplus
 #undef inline
@@ -489,5 +489,5 @@
 /* Define to a at least 64-bit int type */
 #undef longlong
 
-/* Define to `unsigned int' if <sys/types.h> does not define. */
+/* Define as 'unsigned int' if <stddef.h> doesn't define. */
 #undef size_t

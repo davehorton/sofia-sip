@@ -2280,7 +2280,6 @@ static
 int sres_parse_config(sres_config_t *c, FILE *f)
 {
   su_home_t *home = c->c_home;
-  int line;
   char const *localdomain;
   char *search = NULL, *domain = NULL;
   char buf[1025];
@@ -2296,7 +2295,7 @@ int sres_parse_config(sres_config_t *c, FILE *f)
   c->c_port = _sres_default_port;
 
   if (f != NULL) {
-    for (line = 1; fgets(buf, sizeof(buf), f); line++) {
+    while (fgets(buf, sizeof(buf), f)) {
       size_t len;
       char *value, *b;
 

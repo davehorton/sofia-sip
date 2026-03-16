@@ -150,11 +150,10 @@ void tls_log_errors(unsigned level, char const *s, unsigned long e)
   for (; e != 0; e = ERR_get_error()) {
     if (level <= tport_log->log_level) {
       const char *error = ERR_lib_error_string(e);
-      const char *func = ERR_func_error_string(e);
       const char *reason = ERR_reason_error_string(e);
 
-      su_llog(tport_log, level, "%s: %08lx:%s:%s:%s\n",
-	      s, e, error, func, reason);
+      su_llog(tport_log, level, "%s: %08lx:%s:%s\n",
+	      s, e, error, reason);
     }
   }
 }
@@ -469,6 +468,27 @@ int tls_init_context(tls_t *tls, tls_issues_t const *ti)
 #endif
 #ifndef OPENSSL_NO_DH
   } else {
+#if OPENSSL_VERSION_NUMBER >= 0x30000000L
+    EVP_PKEY *pkey = NULL;
+    BIO *bio = BIO_new_file(ti->key, "r");
+    if (bio != NULL) {
+      pkey = PEM_read_bio_Parameters(bio, NULL);
+      if (pkey != NULL) {
+        if (!SSL_CTX_set0_tmp_dh_pkey(tls->ctx, pkey)) {
+          SU_DEBUG_1(("%s: invalid DH parameters (PFS) because %s: %s\n",
+                      "tls_init_context",
+                      ERR_reason_error_string(ERR_get_error()),
+                      ti->key));
+          EVP_PKEY_free(pkey);
+        } else {
+          long options = SSL_OP_CIPHER_SERVER_PREFERENCE | SSL_OP_SINGLE_DH_USE;
+          SSL_CTX_set_options(tls->ctx, options);
+          SU_DEBUG_3(("%s\n", "tls: initialized DHE"));
+        }
+      }
+      BIO_free(bio);
+    }
+#else
     BIO *bio = BIO_new_file(ti->key, "r");
     if (bio != NULL) {
       DH *dh = PEM_read_bio_DHparams(bio, NULL, NULL, NULL);
@@ -487,6 +507,7 @@ int tls_init_context(tls_t *tls, tls_issues_t const *ti)
       }
       BIO_free(bio);
     }
+#endif
 #endif
   }
 
