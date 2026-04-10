@@ -8304,7 +8304,13 @@ nta_outgoing_t *outgoing_create(nta_agent_t *agent,
     orq->orq_destroyed = 1 ;
   }
 
-  assert(orq->orq_queue);
+  if (!orq->orq_queue) {
+    SU_DEBUG_3(("nta: outgoing_create: send failed to queue %s (%u)\n",
+                orq->orq_method_name, orq->orq_cseq->cs_seq));
+    orq->orq_request = NULL;
+    outgoing_free(orq);
+    return NULL;
+  }
 
   outgoing_insert(agent, orq);
 

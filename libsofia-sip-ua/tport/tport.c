@@ -3608,6 +3608,7 @@ int tport_send_msg(tport_t *self, msg_t *msg,
     SU_DEBUG_3(("tport_send_msg(%p): "
                 "UDP send buffer full (EAGAIN), message to %s/%s:%s dropped\n",
                 (void *)self, tpn->tpn_proto, tpn->tpn_host, tpn->tpn_port));
+    msg_set_errno(msg, EAGAIN);
     return -1;
   }
 
