@@ -28,6 +28,18 @@ AM_CPPFLAGS +=		-I${top_srcdir}/s2check
 
 TESTS += 		torture_sresolv run_test_sresolv
 
+check_PROGRAMS +=	torture_sres_domain
+TESTS +=		torture_sres_domain
+# Includes sres.c to reach the static name decoder, so link the sibling
+# objects directly instead of libsresolv.la (which carries its own sres.o).
+torture_sres_domain_SOURCES = torture_sres_domain.c \
+			sres_cache.c sres_blocking.c sresolv.c sres_sip.c
+# Per-target flags give these shared sources unique object names
+# (torture_sres_domain-*.o), so they do not clash with the libtool objects
+# libsresolv.la builds from the same files.
+torture_sres_domain_CPPFLAGS = $(AM_CPPFLAGS)
+torture_sres_domain_LDADD = ../url/liburl.la ../bnf/libbnf.la ../su/libsu.la
+
 CLEANFILES =		resolv.conf error.conf named.conf.tmp \
 			.test_sresolv.api.conf.?????? \
 			named.run
