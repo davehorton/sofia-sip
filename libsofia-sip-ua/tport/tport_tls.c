@@ -41,6 +41,7 @@
 #include <sofia-sip/su_alloc.h>
 #include <sofia-sip/su_wait.h>
 #include <sofia-sip/su_string.h>
+#include <sofia-sip/hostdomain.h>
 
 #include <openssl/lhash.h>
 #include <openssl/bn.h>
@@ -114,7 +115,9 @@ struct tls_s {
 	       verify_subj_in:1,
 	       verify_subj_out:1,
 	       verify_date:1,
-               x509_verified:1;
+               x509_verified:1,
+               sni:1,
+               sni_sent:1;
 
   /* Receiving */
   int read_events;
@@ -429,9 +432,17 @@ int tls_init_context(tls_t *tls, tls_issues_t const *ti)
     SSL_CTX_set_default_passwd_cb_userdata(tls->ctx, (void *)ti);
   }
 
-  if (!SSL_CTX_use_certificate_file(tls->ctx,
-				    ti->cert,
-				    SSL_FILETYPE_PEM)) {
+  /* The client (outbound) context loads the certificate with
+     SSL_CTX_use_certificate_chain_file() so that any intermediates present in
+     the file are sent as well -- a certificate issued to us by a peer's
+     private CA usually needs them.  The listener keeps the historical
+     single-certificate load so that what it puts on the wire does not
+     change. */
+  if (!(ti->use_cert_chain
+	? SSL_CTX_use_certificate_chain_file(tls->ctx, ti->cert)
+	: SSL_CTX_use_certificate_file(tls->ctx,
+				       ti->cert,
+				       SSL_FILETYPE_PEM))) {
     if (ti->configured > 0) {
       SU_DEBUG_1(("%s: invalid local certificate: %s\n",
 		 "tls_init_context", ti->cert));
@@ -528,6 +539,7 @@ int tls_init_context(tls_t *tls, tls_issues_t const *ti)
   tls->verify_subj_in  = (ti->policy & 0x4) ? tls->verify_incoming : 0;
   tls->verify_subj_out = (ti->policy & 0x8) ? tls->verify_outgoing : 0;
   tls->verify_date     = (ti->verify_date)  ? 1 : 0;
+  tls->sni             = (ti->sni)          ? 1 : 0;
 
   SU_DEBUG_4(("%s: tls->verify_incoming: %d\n", __func__, tls->verify_incoming));
 
@@ -539,9 +551,10 @@ int tls_init_context(tls_t *tls, tls_issues_t const *ti)
   SSL_CTX_set_verify_depth(tls->ctx, ti->verify_depth);
   SSL_CTX_set_verify(tls->ctx, verify, tls_verify_cb);
 #ifndef OPENSSL_NO_EC
-  if (tls->accept == 0) {
-    SU_DEBUG_3(("%s\n", "tls: initialized ECDH"));
-  } else if (tls_init_ecdh_curve(tls) == 0) {
+  /* NB: this used to be guarded by (tls->accept == 0), but a master context
+     always has accept == 0, so the curve was never actually initialized -- we
+     only logged that it had been. */
+  if (tls_init_ecdh_curve(tls) == 0) {
     SU_DEBUG_3(("%s\n", "tls: initialized ECDH"));
   } else {
     SU_DEBUG_3(("%s\n", "tls: failed to initialize ECDH"));
@@ -692,6 +705,7 @@ tls_t *tls_init_secondary(tls_t *master, int sock, int accept)
     tls->verify_subj_in  = master->verify_subj_in;
     tls->verify_date     = master->verify_date;
     tls->x509_verified   = master->x509_verified;
+    tls->sni             = master->sni;
 
     if (!(tls->read_buffer = su_alloc(tls->home, tls_buffer_size)))
       su_home_unref(tls->home), tls = NULL;
@@ -1143,6 +1157,24 @@ int tls_connect(su_root_magic_t *magic, su_wait_t *w, tport_t *self)
   if (self->tp_is_connected == 0) {
     int ret, status;
 
+    /* Offer the server_name (SNI) extension on outbound connections so that a
+       peer fronted by a load balancer can select the right certificate.  RFC
+       6066 forbids a literal address here, so only a DNS name is sent. */
+    if (!self->tp_accepted && tls->sni && !tls->sni_sent) {
+      char const *sni = self->tp_canon ? self->tp_canon : self->tp_host;
+
+      tls->sni_sent = 1;
+      if (sni && *sni && !host_is_ip_address(sni)) {
+        if (SSL_set_tlsext_host_name(tls->con, sni) != 1) {
+          tls_log_errors(3, "SSL_set_tlsext_host_name", 0);
+        }
+        else {
+          SU_DEBUG_9(("%s(%p): sending SNI \"%s\"\n",
+                      __func__, (void *)self, sni));
+        }
+      }
+    }
+
     ret = self->tp_accepted ? SSL_accept(tls->con) : SSL_connect(tls->con);
     status = SSL_get_error(tls->con, ret);
 
@@ -1204,7 +1236,17 @@ int tls_connect(su_root_magic_t *magic, su_wait_t *w, tport_t *self)
 	break;
 
       default:
-        tls_log_errors(3, "TLS setup failed", status);
+        /* Log at level 1: for an outbound connection this is the only place a
+           peer's handshake_failure / certificate_required alert is visible, and
+           without it a peer that requires client authentication (mutual TLS)
+           just presents as an unexplained transport failure. */
+        SU_DEBUG_1(("%s(%p): TLS handshake failed %s %s:%s (SSL_get_error %d)\n",
+                    __func__, (void *)self,
+                    self->tp_accepted ? "from" : "to",
+                    self->tp_canon ? self->tp_canon : (self->tp_host ? self->tp_host : "?"),
+                    self->tp_port ? self->tp_port : "?",
+                    status));
+        tls_log_errors(1, "TLS setup failed", 0);
         break;
     }
   }
