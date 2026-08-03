@@ -151,13 +151,17 @@ void tls_log_errors(unsigned level, char const *s, unsigned long e)
   if (s == NULL) s = "tls";
 
   for (; e != 0; e = ERR_get_error()) {
-    if (level <= tport_log->log_level) {
-      const char *error = ERR_lib_error_string(e);
-      const char *reason = ERR_reason_error_string(e);
+    /* NB: no manual 'level <= tport_log->log_level' test here.  su_llog() does
+       the filtering, and it correctly falls back to su_log_default's level when
+       tport_log was never explicitly set (log_init <= 1).  Testing the raw field
+       instead compared against 0 for any caller that sets only the default log
+       level -- which is what nta/nua callers do -- so every TLS error was
+       silently discarded. */
+    const char *error = ERR_lib_error_string(e);
+    const char *reason = ERR_reason_error_string(e);
 
-      su_llog(tport_log, level, "%s: %08lx:%s:%s\n",
-	      s, e, error, reason);
-    }
+    su_llog(tport_log, level, "%s: %08lx:%s:%s\n",
+	    s, e, error ? error : "", reason ? reason : "");
   }
 }
 
@@ -936,7 +940,13 @@ int tls_error(tls_t *tls, int ret, char const *who,
     return -1;
 
   default:
-    tls_log_errors(1, who, err);
+    /* NB: 0, not err -- tls_log_errors() expects an OpenSSL ERR code and drains
+       the error queue when passed 0.  'err' is an SSL_get_error() code, which
+       would be decoded as a nonsense ERR value and lose the real reason.  That
+       reason matters: with TLS 1.3 a peer's rejection of our client certificate
+       arrives as a post-handshake alert, so this is the only place it is
+       visible. */
+    tls_log_errors(1, who, 0);
     errno = EIO;
     return -1;
   }
