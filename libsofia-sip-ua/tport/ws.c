@@ -736,8 +736,9 @@ int ws_init(wsh_t *wsh, ws_socket_t sock, SSL_CTX *ssl_ctx, int close_sock, int 
 	wsh->buflen = 1024 * 64;
 	wsh->bbuflen = wsh->buflen;
 
-	wsh->buffer = malloc(wsh->buflen);
-	wsh->bbuffer = malloc(wsh->bbuflen);
+	/* +1 NUL slot — see wsh_t in ws.h. */
+	wsh->buffer = malloc(wsh->buflen + 1);
+	wsh->bbuffer = malloc(wsh->bbuflen + 1);
 	//printf("init %p %ld\n", (void *) wsh->bbuffer, wsh->bbuflen);
 	//memset(wsh->buffer, 0, wsh->buflen);
 	//memset(wsh->bbuffer, 0, wsh->bbuflen);
@@ -1039,10 +1040,12 @@ ssize_t ws_read_frame(wsh_t *wsh, ws_opcode_t *oc, uint8_t **data)
 
 			blen = wsh->body - wsh->bbuffer;
 
-			if (need + blen > (ssize_t)wsh->bbuflen) {
+			/* Body must hold blen accumulated bytes plus this frame's
+			 * full payload. */
+			if (blen + wsh->plen > (ssize_t)wsh->bbuflen) {
 				void *tmp;
 
-				wsh->bbuflen = need + blen + wsh->rplen;
+				wsh->bbuflen = blen + wsh->plen;
 
 				if (wsh->payload_size_max && wsh->bbuflen > wsh->payload_size_max) {
 					/* size limit */
@@ -1050,7 +1053,8 @@ ssize_t ws_read_frame(wsh_t *wsh, ws_opcode_t *oc, uint8_t **data)
 					return ws_close(wsh, WS_NONE);
 				}
 
-				if ((tmp = realloc(wsh->bbuffer, wsh->bbuflen))) {
+				/* +1 NUL slot — see wsh_t in ws.h. */
+				if ((tmp = realloc(wsh->bbuffer, wsh->bbuflen + 1))) {
 					wsh->bbuffer = tmp;
 				} else {
 					abort();
@@ -1082,7 +1086,9 @@ ssize_t ws_read_frame(wsh_t *wsh, ws_opcode_t *oc, uint8_t **data)
 			if (mask && maskp) {
 				ssize_t i;
 
-				for (i = 0; i < wsh->datalen; i++) {
+				/* Unmask payload only. wsh->datalen tracks bytes in wsh->buffer
+				 * (header + frame), but wsh->body holds just the rplen payload bytes.*/
+				for (i = 0; i < wsh->rplen; i++) {
 					wsh->body[i] ^= maskp[i % 4];
 				}
 			}

@@ -92,6 +92,9 @@ typedef enum {
 
 typedef struct wsh_s {
 	ws_socket_t sock;
+	/* buffer/bbuffer are allocated as buflen+1 / bbuflen+1; the trailing
+	 * byte is reserved as a NUL terminator slot. buflen/bbuflen track
+	 * usable content length, not allocation size. */
 	char *buffer;
 	char *bbuffer;
 	char *body;
