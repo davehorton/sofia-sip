@@ -331,12 +331,14 @@ int tport_recv_stream_ws(tport_t *self)
   msg_set_address(msg, self->tp_addr, self->tp_addrlen);
 
   for (i = 0, n = 0; i < veclen; i++) {
-    m = iovec[i].mv_len; assert(N >= n + m);
+    m = iovec[i].mv_len;
+    assert(N >= n + m);
+
     memcpy(iovec[i].mv_base, data + n, m);
     n += m;
   }
 
-  assert(N == n);
+  assert(n <= N);
 
   /* Write the received data to the message dump file */
   if (self->tp_master->mr_dump_file)
@@ -345,8 +347,10 @@ int tport_recv_stream_ws(tport_t *self)
   if (self->tp_master->mr_capt_sock)
       tport_capt_msg(self, msg, n, iovec, veclen, "recv");
 
-  /* Mark buffer as used */
-  msg_recv_commit(msg, N, 0);
+  /* Mark buffer as used. The provisioned buffer is shorter than the frame
+   * when the message exceeds its size limit: the parser gets a prefix,
+   * flags it, and the reply path answers 413. */
+  msg_recv_commit(msg, n, 0);
 
   return 1;
 }
