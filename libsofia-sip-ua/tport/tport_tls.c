@@ -1243,6 +1243,16 @@ int tls_connect(su_root_magic_t *magic, su_wait_t *w, tport_t *self)
 
           return 0;
 	}
+        /* The handshake itself succeeded but the peer's certificate was
+           rejected -- untrusted issuer, expired, or a subject that does not
+           match where we dialed.  Say so: without this the connection is just
+           closed and the only symptom is a 503, with nothing logged at all. */
+        SU_DEBUG_1(("%s(%p): TLS peer certificate rejected %s %s:%s: %s\n",
+                    __func__, (void *)self,
+                    self->tp_accepted ? "from" : "to",
+                    self->tp_canon ? self->tp_canon : (self->tp_host ? self->tp_host : "?"),
+                    self->tp_port ? self->tp_port : "?",
+                    X509_verify_cert_error_string(status)));
 	break;
 
       default:
