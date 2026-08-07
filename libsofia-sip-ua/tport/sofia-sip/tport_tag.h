@@ -203,6 +203,35 @@ TPORT_DLL extern tag_typedef_t tptag_tls_certificate_chain_file;
 TPORT_DLL extern tag_typedef_t tptag_tls_certificate_chain_file_ref;
 #define TPTAG_TLS_CERTIFICATE_CHAIN_FILE_REF(x) tptag_tls_certificate_chain_file_ref, tag_str_vr(&(x))
 
+/* Client-side (outbound) TLS identity.  When these are not supplied, outbound
+   connections continue to use the same certificate as the listener, which is
+   the historical behaviour. */
+
+TPORT_DLL extern tag_typedef_t tptag_tls_client_certificate_file;
+#define TPTAG_TLS_CLIENT_CERTIFICATE_FILE(x) tptag_tls_client_certificate_file, tag_str_v((x))
+TPORT_DLL extern tag_typedef_t tptag_tls_client_certificate_file_ref;
+#define TPTAG_TLS_CLIENT_CERTIFICATE_FILE_REF(x) tptag_tls_client_certificate_file_ref, tag_str_vr(&(x))
+
+TPORT_DLL extern tag_typedef_t tptag_tls_client_certificate_key_file;
+#define TPTAG_TLS_CLIENT_CERTIFICATE_KEY_FILE(x) tptag_tls_client_certificate_key_file, tag_str_v((x))
+TPORT_DLL extern tag_typedef_t tptag_tls_client_certificate_key_file_ref;
+#define TPTAG_TLS_CLIENT_CERTIFICATE_KEY_FILE_REF(x) tptag_tls_client_certificate_key_file_ref, tag_str_vr(&(x))
+
+TPORT_DLL extern tag_typedef_t tptag_tls_client_passphrase;
+#define TPTAG_TLS_CLIENT_PASSPHRASE(x) tptag_tls_client_passphrase, tag_str_v((x))
+TPORT_DLL extern tag_typedef_t tptag_tls_client_passphrase_ref;
+#define TPTAG_TLS_CLIENT_PASSPHRASE_REF(x) tptag_tls_client_passphrase_ref, tag_str_vr(&(x))
+
+TPORT_DLL extern tag_typedef_t tptag_tls_client_ca_file;
+#define TPTAG_TLS_CLIENT_CA_FILE(x) tptag_tls_client_ca_file, tag_str_v((x))
+TPORT_DLL extern tag_typedef_t tptag_tls_client_ca_file_ref;
+#define TPTAG_TLS_CLIENT_CA_FILE_REF(x) tptag_tls_client_ca_file_ref, tag_str_vr(&(x))
+
+TPORT_DLL extern tag_typedef_t tptag_tls_sni;
+#define TPTAG_TLS_SNI(x) tptag_tls_sni, tag_uint_v((x))
+TPORT_DLL extern tag_typedef_t tptag_tls_sni_ref;
+#define TPTAG_TLS_SNI_REF(x) tptag_tls_sni_ref, tag_uint_vr(&(x))
+
 
 
 TPORT_DLL extern tag_typedef_t tptag_tls_ciphers;

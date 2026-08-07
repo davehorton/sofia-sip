@@ -66,6 +66,14 @@ typedef struct tls_issues_s {
   int   version;	/* For tls1, version is 1. When ssl3/ssl2 is
 			 * used, it is 0. */
   unsigned timeout;	/* Maximum session lifetime in seconds */
+  int   use_cert_chain; /* If non-zero, load 'cert' with
+			 * SSL_CTX_use_certificate_chain_file() so that any
+			 * intermediates in the file are sent too.  Only the
+			 * client (outbound) context sets this; the listener
+			 * keeps the historical single-certificate load. */
+  int   sni;		/* If non-zero, send the server_name (SNI) extension
+			 * on outbound connections.  Never sent for bare IP
+			 * destinations (RFC 6066). */
 } tls_issues_t;
 
 typedef struct tport_tls_s {
@@ -77,6 +85,10 @@ typedef struct tport_tls_s {
 typedef struct tport_tls_primary_s {
   tport_primary_t tlspri_pri[1];
   tls_t *tlspri_master;
+  /* Context used for outbound (client) connections.  Aliases tlspri_master
+     unless a distinct client identity was configured, so it is only freed when
+     the two differ. */
+  tls_t *tlspri_client_master;
 } tport_tls_primary_t;
 
 tls_t *tls_init_master(tls_issues_t *tls_issues);

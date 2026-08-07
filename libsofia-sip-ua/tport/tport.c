@@ -496,6 +496,22 @@ msg_t *tport_destroy_alloc(tp_stack_t *stack, int flags,
 /** Name for "any" transport. @internal */
 static char const tpn_any[] = "*";
 
+/** Does a primary transport's identity satisfy a requested one? @internal
+ *
+ * A request with no ident (or "*") matches any transport, which is what
+ * happens when TPTAG_IDENT is not used at all.  Otherwise the idents must be
+ * equal; a transport with no ident satisfies only a request with no ident.
+ */
+su_inline
+int tport_ident_matches(char const *ident, char const *transport_ident)
+{
+  /* NB: the parameter cannot be called tp_ident -- that is a macro for
+     tp_name->tpn_ident. */
+  if (ident == NULL || strcmp(ident, tpn_any) == 0)
+    return 1;
+  return transport_ident != NULL && strcmp(ident, transport_ident) == 0;
+}
+
 /** Create the master transport.
  *
  * Master transport object is used to bind the protocol using transport with
@@ -3429,8 +3445,15 @@ tport_t *tport_tsend(tport_t *self,
     tport_t* tp = tport_primaries( self ) ;
     if (tp) {
       do {
-        // Only search primaries with matching protocol
-        if (su_casematch(tpn->tpn_proto, tp->tp_protoname)) {
+        /* Only search primaries with matching protocol and identity.  The
+           identity check matters because a connection is bound to the
+           credentials of the primary that opened it -- for TLS, the certificate
+           presented to the peer.  Reusing a connection from a primary with a
+           different ident would silently authenticate as the wrong identity.
+           When no ident is requested (the common case) this matches as
+           before. */
+        if (su_casematch(tpn->tpn_proto, tp->tp_protoname) &&
+            tport_ident_matches(tpn->tpn_ident, tp->tp_ident)) {
           secondary = tport_by_addrinfo((tport_primary_t *)tp, msg_addrinfo(msg), tpn);
           if (secondary) break;
         }
@@ -4577,7 +4600,9 @@ tport_t *tport_primary_by_name(tport_t const *tp, tp_name_t const *tpn)
 
     tp = self->pri_primary;
 
-    if (ident && strcmp(ident, tp->tp_ident))
+    /* NB: not strcmp(ident, tp->tp_ident) -- tp_ident is NULL for any transport
+       bound without TPTAG_IDENT, which is the norm. */
+    if (!tport_ident_matches(ident, tp->tp_ident))
       continue;
     if (family) {
       if (family == AF_INET && !tport_has_ip4(tp)) 

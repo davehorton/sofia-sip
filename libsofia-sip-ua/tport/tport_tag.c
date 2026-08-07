@@ -299,6 +299,65 @@ tag_typedef_t tptag_tls_certificate_file = STRTAG_TYPEDEF(tls_certificate_file);
  */
 tag_typedef_t tptag_tls_certificate_chain_file = STRTAG_TYPEDEF(tls_certificate_chain_file);
 
+/**@def TPTAG_TLS_CLIENT_CERTIFICATE_FILE(x)
+ *
+ * Path to the certificate presented on *outbound* TLS connections when the
+ * peer requests client authentication (mutual TLS).  Unlike
+ * TPTAG_TLS_CERTIFICATE_FILE, this file may contain the leaf certificate
+ * followed by any intermediates; the whole chain is sent.
+ *
+ * If this and TPTAG_TLS_CLIENT_CERTIFICATE_KEY_FILE are both omitted,
+ * outbound connections use the listener's certificate, as before.
+ *
+ * Use with tport_tbind(), nua_create(), nta_agent_create(),
+ * nta_agent_add_tport(), nth_engine_create(), or initial nth_site_create().
+ */
+tag_typedef_t tptag_tls_client_certificate_file = STRTAG_TYPEDEF(tls_client_certificate_file);
+
+/**@def TPTAG_TLS_CLIENT_CERTIFICATE_KEY_FILE(x)
+ *
+ * Path to the private key for TPTAG_TLS_CLIENT_CERTIFICATE_FILE.
+ *
+ * Use with tport_tbind(), nua_create(), nta_agent_create(),
+ * nta_agent_add_tport(), nth_engine_create(), or initial nth_site_create().
+ */
+tag_typedef_t tptag_tls_client_certificate_key_file = STRTAG_TYPEDEF(tls_client_certificate_key_file);
+
+/**@def TPTAG_TLS_CLIENT_PASSPHRASE(x)
+ *
+ * Passphrase protecting TPTAG_TLS_CLIENT_CERTIFICATE_KEY_FILE.
+ *
+ * Use with tport_tbind(), nua_create(), nta_agent_create(),
+ * nta_agent_add_tport(), nth_engine_create(), or initial nth_site_create().
+ */
+tag_typedef_t tptag_tls_client_passphrase = STRTAG_TYPEDEF(tls_client_passphrase);
+
+/**@def TPTAG_TLS_CLIENT_CA_FILE(x)
+ *
+ * PEM file of CAs trusted to have signed the *peer's server* certificate on
+ * outbound connections.  This is distinct from
+ * TPTAG_TLS_CERTIFICATE_CHAIN_FILE, which on the listener doubles as the set
+ * of CAs allowed to sign a client's certificate and is advertised in the TLS
+ * CertificateRequest.  Defaults to TPTAG_TLS_CERTIFICATE_CHAIN_FILE.
+ *
+ * Only consulted when the verify policy includes TPTLS_VERIFY_OUT.
+ *
+ * Use with tport_tbind(), nua_create(), nta_agent_create(),
+ * nta_agent_add_tport(), nth_engine_create(), or initial nth_site_create().
+ */
+tag_typedef_t tptag_tls_client_ca_file = STRTAG_TYPEDEF(tls_client_ca_file);
+
+/**@def TPTAG_TLS_SNI(x)
+ *
+ * Send the TLS server_name (SNI) extension on outbound connections, using the
+ * canonical name of the destination.  Non-zero (send SNI) by default.  Per RFC
+ * 6066 SNI is never sent when the destination is a bare IP address.
+ *
+ * Use with tport_tbind(), nua_create(), nta_agent_create(),
+ * nta_agent_add_tport(), nth_engine_create(), or initial nth_site_create().
+ */
+tag_typedef_t tptag_tls_sni = UINTTAG_TYPEDEF(tls_sni);
+
 
 
 
