@@ -350,9 +350,60 @@ static int tport_tls_init_master(tport_primary_t *pri,
   return 0;
 }
 
+/** Build new contexts for a primary; they are swapped in by
+ * tport_tls_reload_finish().
+ *
+ * @retval 1 prepared, 0 nothing to reload, -1 failed (nothing kept)
+ */
+int tport_tls_reload_prepare(tport_primary_t *pri)
+{
+  tport_tls_primary_t *tlspri = (tport_tls_primary_t *)pri;
+
+  if (!tlspri->tlspri_master)
+    return 0;
+
+  if (!(tlspri->tlspri_reload = tls_reload_prepare(tlspri->tlspri_master)))
+    return -1;
+
+  /* A client context that aliases the listener's is swapped along with it */
+  if (tlspri->tlspri_client_master != tlspri->tlspri_master &&
+      !(tlspri->tlspri_client_reload =
+	tls_reload_prepare(tlspri->tlspri_client_master))) {
+    tls_free(tlspri->tlspri_reload), tlspri->tlspri_reload = NULL;
+    return -1;
+  }
+
+  return 1;
+}
+
+/** Swap in the contexts prepared for a primary, or drop them. */
+void tport_tls_reload_finish(tport_primary_t *pri, int commit)
+{
+  tport_tls_primary_t *tlspri = (tport_tls_primary_t *)pri;
+
+  if (tlspri->tlspri_reload) {
+    if (commit)
+      tls_reload_commit(tlspri->tlspri_master, tlspri->tlspri_reload);
+    else
+      tls_free(tlspri->tlspri_reload);
+    tlspri->tlspri_reload = NULL;
+  }
+
+  if (tlspri->tlspri_client_reload) {
+    if (commit)
+      tls_reload_commit(tlspri->tlspri_client_master,
+			tlspri->tlspri_client_reload);
+    else
+      tls_free(tlspri->tlspri_client_reload);
+    tlspri->tlspri_client_reload = NULL;
+  }
+}
+
 static void tport_tls_deinit_primary(tport_primary_t *pri)
 {
   tport_tls_primary_t *tlspri = (tport_tls_primary_t *)pri;
+
+  tport_tls_reload_finish(pri, 0);
 
   /* Only a distinct client context needs freeing; when no outbound identity was
      configured it aliases tlspri_master. */

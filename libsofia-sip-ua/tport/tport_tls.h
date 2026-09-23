@@ -89,10 +89,14 @@ typedef struct tport_tls_primary_s {
      unless a distinct client identity was configured, so it is only freed when
      the two differ. */
   tls_t *tlspri_client_master;
+  /* New contexts prepared by a reload, until it swaps them in */
+  tls_t *tlspri_reload, *tlspri_client_reload;
 } tport_tls_primary_t;
 
 tls_t *tls_init_master(tls_issues_t *tls_issues);
 tls_t *tls_init_secondary(tls_t *tls_master, int sock, int accept);
+tls_t *tls_reload_prepare(tls_t *tls_master);
+void tls_reload_commit(tls_t *tls_master, tls_t *fresh);
 void tls_free(tls_t *tls);
 int tls_get_socket(tls_t *tls);
 void tls_log_errors(unsigned level, char const *s, unsigned long e);

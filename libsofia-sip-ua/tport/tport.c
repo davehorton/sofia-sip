@@ -293,6 +293,83 @@ int tport_is_verified(tport_t const *self)
   return tport_has_tls(self) && self->tp_is_connected && self->tp_verified;
 }
 
+static int tport_reload_prepare(tport_primary_t *pri)
+{
+  tport_vtable_t const *vtable = pri->pri_vtable;
+
+#if HAVE_TLS
+  if (vtable == &tport_tls_vtable || vtable == &tport_tls_client_vtable)
+    return tport_tls_reload_prepare(pri);
+#endif
+#if HAVE_SOFIA_NTH
+  if (vtable == &tport_wss_vtable || vtable == &tport_wss_client_vtable)
+    return tport_ws_reload_prepare(pri);
+#endif
+
+  return 0;
+}
+
+static void tport_reload_finish(tport_primary_t *pri, int commit)
+{
+  tport_vtable_t const *vtable = pri->pri_vtable;
+
+#if HAVE_TLS
+  if (vtable == &tport_tls_vtable || vtable == &tport_tls_client_vtable)
+    tport_tls_reload_finish(pri, commit);
+#endif
+#if HAVE_SOFIA_NTH
+  if (vtable == &tport_wss_vtable || vtable == &tport_wss_client_vtable)
+    tport_ws_reload_finish(pri, commit);
+#endif
+}
+
+/** Reload the certificates of all TLS and WSS primaries.
+ *
+ * Each primary rebuilds its context from the key, certificate and chain files
+ * it was created with, so a certificate renewed in place is picked up. Open
+ * connections keep the context they were set up with; only new connections
+ * see the new certificate. The reload is all or nothing: if the files of any
+ * primary, or of a distinct client identity, cannot be loaded, every primary
+ * keeps its old certificate. Call from the thread running the tport root.
+ *
+ * An encrypted key is decrypted with the passphrase given when the transport
+ * was bound, TPTAG_TLS_PASSPHRASE() or TPTAG_TLS_CLIENT_PASSPHRASE(); a
+ * reload cannot change it. A renewed key encrypted with another passphrase
+ * does not load, and the reload fails.
+ *
+ * @return the number of primaries reloaded, or -1 if any of them failed
+ */
+int tport_reload_tls_files(tport_t *self)
+{
+  tport_t *tp;
+  int reloaded = 0, failed = 0;
+
+  if (!self || !self->tp_master) {
+    errno = EINVAL;
+    return -1;
+  }
+
+  /* Build every new context first, and swap them in only if all load */
+  for (tp = tport_primaries(self); tp && !failed; tp = tport_next(tp)) {
+    int rv = tport_reload_prepare(tp->tp_pri);
+
+    if (rv < 0)
+      failed = 1;
+    else
+      reloaded += rv;
+  }
+
+  for (tp = tport_primaries(self); tp; tp = tport_next(tp))
+    tport_reload_finish(tp->tp_pri, !failed);
+
+  if (failed) {
+    errno = EIO;
+    return -1;
+  }
+
+  return reloaded;
+}
+
 /** Return true if transport is being updated. */
 int tport_is_updating(tport_t const *self)
 {

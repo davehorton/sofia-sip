@@ -134,6 +134,9 @@ SOFIAPUBFUN void nta_agent_destroy(nta_agent_t *agent);
 SOFIAPUBFUN char const *nta_agent_version(nta_agent_t const *a);
 SOFIAPUBFUN nta_agent_magic_t *nta_agent_magic(nta_agent_t const *a);
 
+/** Reload TLS and WSS certificates from the files the transports use. */
+SOFIAPUBFUN int nta_agent_reload_tls_files(nta_agent_t *agent);
+
 SOFIAPUBFUN
 int nta_agent_add_tport(nta_agent_t *agent,
 			url_string_t const *url,

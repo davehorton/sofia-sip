@@ -545,6 +545,15 @@ extern tport_vtable_t const tport_sctp_vtable;
 extern tport_vtable_t const tport_sctp_client_vtable;
 extern tport_vtable_t const tport_tls_vtable;
 extern tport_vtable_t const tport_tls_client_vtable;
+
+/* Reload a primary's certificate in two steps, so that a reload either
+ * swaps in every new context or none: prepare returns 1 when prepared, 0 when
+ * there is nothing to reload and -1 on failure; finish swaps in (commit) or
+ * drops what was prepared. */
+int tport_tls_reload_prepare(tport_primary_t *pri);
+void tport_tls_reload_finish(tport_primary_t *pri, int commit);
+int tport_ws_reload_prepare(tport_primary_t *pri);
+void tport_ws_reload_finish(tport_primary_t *pri, int commit);
 extern tport_vtable_t const tport_stun_vtable;
 extern tport_vtable_t const tport_http_connect_vtable;
 extern tport_vtable_t const tport_threadpool_vtable;

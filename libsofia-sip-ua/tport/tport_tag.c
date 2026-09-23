@@ -326,6 +326,7 @@ tag_typedef_t tptag_tls_client_certificate_key_file = STRTAG_TYPEDEF(tls_client_
 /**@def TPTAG_TLS_CLIENT_PASSPHRASE(x)
  *
  * Passphrase protecting TPTAG_TLS_CLIENT_CERTIFICATE_KEY_FILE.
+ * tport_reload_tls_files() decrypts a renewed key with the same passphrase.
  *
  * Use with tport_tbind(), nua_create(), nta_agent_create(),
  * nta_agent_add_tport(), nth_engine_create(), or initial nth_site_create().
@@ -413,6 +414,9 @@ tag_typedef_t tptag_tls_verify_peer = UINTTAG_TYPEDEF(tls_verify_peer);
  *
  * Sets the passphrase password to be used by openSSL to encrypt/decrypt
  * private key files.
+ *
+ * tport_reload_tls_files() decrypts a renewed key with the same passphrase;
+ * it can only be changed by binding the transport again.
  *
  * @NEW_1_12_11.
  */
