@@ -212,7 +212,7 @@ su_inline void safefree(void *b) { b ? free(b) : (void)0; }
 
 static inline su_block_t* MEMLOCK(const su_home_t *h) {
   if (h && h->suh_lock) _su_home_locker(h->suh_lock);
-  return h->suh_blocks;
+  return h ? h->suh_blocks : NULL;
 }
 static inline void* UNLOCK(const su_home_t *h) {
   if (h && h->suh_lock) _su_home_unlocker(h->suh_lock);
@@ -1520,8 +1520,9 @@ void *su_realloc(su_home_t *home, void *data, isize_t size)
     ndata = realloc(data, size + MEMCHECK_EXTRA);
     if (ndata) {
       if (sub->sub_stats) {
-	su_home_stats_free(sub, data, 0, sua->sua_size);
-	su_home_stats_alloc(sub, data, 0, size, 1);
+	/* 'data' is invalid after realloc(); the stats functions ignore p */
+	su_home_stats_free(sub, ndata, 0, sua->sua_size);
+	su_home_stats_alloc(sub, ndata, 0, size, 1);
       }
 
 #if MEMCHECK_EXTRA

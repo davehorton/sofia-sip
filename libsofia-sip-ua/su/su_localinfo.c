@@ -245,6 +245,7 @@ int su_getlocalinfo(su_localinfo_t const *hints,
 
 #if USE_LOCALINFO0
   error = localinfo0(hh, rr);
+  (void)ip4;
 #else
 
 #  if SU_HAVE_IN6

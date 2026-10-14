@@ -184,6 +184,7 @@ scope int prefix##resize(void *realloc_arg, heaptype h[1], size_t new_size) \
     new_size = _min_size; \
  \
   _bytes = (_offset + 1 + new_size) * sizeof (type); \
+  assert(_bytes > 0); /* alloc() frees when asked for zero bytes */ \
  \
   (void)realloc_arg; /* avoid warning */ \
   _priv = alloc(realloc_arg, *(struct prefix##priv **)h, _bytes); \
@@ -328,6 +329,7 @@ scope void prefix##sort(heaptype h) \
 } \
 extern int const prefix##dummy_heap
 
+#include <assert.h>
 #include <sofia-sip/su_types.h>
 
 SOFIA_BEGIN_DECLS
