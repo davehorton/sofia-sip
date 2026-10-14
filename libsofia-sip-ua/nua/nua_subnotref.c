@@ -580,7 +580,7 @@ int nua_notify_server_preprocess(nua_server_request_t *sr)
   sip_event_t *o = sip->sip_event;
   enum nua_substate substate = nua_substate_terminated;
   sip_subscription_state_t *subs = sip->sip_subscription_state;
-  char const *what = "", *reason = NULL;
+  char const *what, *reason = NULL;
   int solicited = 1;
 
   du = nua_dialog_usage_get(ds, nua_subscribe_usage, o);

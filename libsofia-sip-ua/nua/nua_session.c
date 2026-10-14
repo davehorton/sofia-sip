@@ -774,7 +774,6 @@ static int nua_invite_client_request(nua_client_request_t *cr,
   nua_dialog_usage_t *du = cr->cr_usage;
   nua_session_usage_t *ss;
   int offer_sent = 0, retval;
-  sip_time_t invite_timeout;
 
   if (du == NULL)		/* Call terminated */
     return nua_client_return(cr, SIP_481_NO_TRANSACTION, msg);
@@ -784,11 +783,8 @@ static int nua_invite_client_request(nua_client_request_t *cr,
   if (ss->ss_state >= nua_callstate_terminating)
     return nua_client_return(cr, 900, "Session is terminating", msg);
 
-  invite_timeout = NH_PGET(nh, invite_timeout);
-  if (invite_timeout == 0)
-    invite_timeout = UINT_MAX;
   /* Send CANCEL if we don't get response within timeout*/
-  /* nua_dialog_usage_set_expires(du, invite_timeout); Xyzzy */
+  /* nua_dialog_usage_set_expires(du, NH_PGET(nh, invite_timeout)); Xyzzy */
   nua_dialog_usage_reset_refresh(du);
 
   /* Add session timer headers */
@@ -855,7 +851,6 @@ static int nua_invite_client_response(nua_client_request_t *cr,
 {
   nua_dialog_usage_t *du = cr->cr_usage;
   nua_session_usage_t *ss = nua_dialog_usage_private(du);
-  int uas;
 
   if (ss == NULL || sip == NULL) {
     /* Xyzzy */
@@ -866,7 +861,7 @@ static int nua_invite_client_response(nua_client_request_t *cr,
     if (session_timer_is_supported(ss->ss_timer))
       session_timer_store(ss->ss_timer, sip);
 
-    session_timer_set(ss, uas = 0);
+    session_timer_set(ss, 0 /* uac */);
   }
 
   return nua_session_client_response(cr, status, phrase, sip);
@@ -1379,7 +1374,7 @@ int nua_invite_client_ack(nua_client_request_t *cr, tagi_t const *tags)
 			NULL);
     }
     else if (!reason) {
-      status = 900, phrase = "Cannot send ACK";
+      status = 900;		/* Cannot send ACK */
       reason = "SIP;cause=500;text=\"Internal Error\"";
     }
 
@@ -2603,7 +2598,6 @@ int process_ack(nua_server_request_t *sr,
   nua_session_usage_t *ss = nua_dialog_usage_private(sr->sr_usage);
   msg_t *msg = nta_incoming_getrequest_ackcancel(irq);
   char const *recv = NULL;
-  int uas;
 
   if (ss == NULL)
     return 0;
@@ -2667,7 +2661,7 @@ int process_ack(nua_server_request_t *sr,
 
   nua_stack_event(nh->nh_nua, nh, msg, nua_i_ack, SIP_200_OK, NULL);
   signal_call_state_change(nh, ss, 200, "OK", nua_callstate_ready);
-  session_timer_set(ss, uas = 1);
+  session_timer_set(ss, 1 /* uas */);
 
   nua_server_request_destroy(sr);
 
@@ -3394,7 +3388,6 @@ static int nua_update_client_response(nua_client_request_t *cr,
   nua_handle_t *nh = cr->cr_owner;
   nua_dialog_usage_t *du = cr->cr_usage;
   nua_session_usage_t *ss = nua_dialog_usage_private(du);
-  int uas;
 
   assert(200 <= status);
 
@@ -3409,7 +3402,7 @@ static int nua_update_client_response(nua_client_request_t *cr,
 
       if (!sr && (!du->du_cr || !du->du_cr->cr_orq)) {
 	session_timer_store(ss->ss_timer, sip);
-	session_timer_set(ss, uas = 0);
+	session_timer_set(ss, 0 /* uac */);
       }
     }
   }
@@ -3524,7 +3517,7 @@ int nua_update_server_init(nua_server_request_t *sr)
   ss = nua_dialog_usage_private(sr->sr_usage);
 
   /* Do session timer negotiation */
-  if (request->sip_session_expires)
+  if (ss && request->sip_session_expires)
     session_timer_store(ss->ss_timer, request);
 
   if (sr->sr_sdp) {		/* Check for overlap */
@@ -3619,7 +3612,6 @@ int nua_update_server_respond(nua_server_request_t *sr, tagi_t const *tags)
 
     if (session_timer_is_supported(ss->ss_timer)) {
       nua_server_request_t *sr0;
-      int uas;
 
       session_timer_add_headers(ss->ss_timer, 0, msg, sip, nh);
 
@@ -3628,7 +3620,7 @@ int nua_update_server_respond(nua_server_request_t *sr, tagi_t const *tags)
 	  break;
 
       if (!sr0 && (!sr->sr_usage->du_cr || !sr->sr_usage->du_cr->cr_orq))
-	session_timer_set(ss, uas = 1);
+	session_timer_set(ss, 1 /* uas */);
     }
   }
 

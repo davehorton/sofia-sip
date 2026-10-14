@@ -175,7 +175,7 @@ int nua_stack_process_request(nua_handle_t *nh,
 
   if (!sm) {
     nta_incoming_treply(irq,
-			status = 481, "Call Does Not Exist",
+			481, "Call Does Not Exist",
 			SIPTAG_ALLOW(allow),
 			SIPTAG_SUPPORTED(supported),
 			SIPTAG_USER_AGENT_STR(user_agent),
