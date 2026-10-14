@@ -1188,10 +1188,12 @@ int sdp_session_cmp(sdp_session_t const *a, sdp_session_t const *b)
     return rv;
 
   for (ab = a->sdp_bandwidths, bb = b->sdp_bandwidths;
-       ab || bb;
+       ab && bb;
        ab = ab->b_next, bb = bb->b_next)
-    if ((rv = sdp_bandwidth_cmp(a->sdp_bandwidths, b->sdp_bandwidths)))
+    if ((rv = sdp_bandwidth_cmp(ab, bb)))
       return rv;
+  if ((rv = sdp_bandwidth_cmp(ab, bb)))	/* one list is longer */
+    return rv;
 
   if ((rv = sdp_time_cmp(a->sdp_time, b->sdp_time)))
     return rv;
@@ -1477,10 +1479,12 @@ int sdp_media_cmp(sdp_media_t const *a, sdp_media_t const *b)
     return a->m_mode < b->m_mode ? -1 : 1;
 
   for (arm = a->m_rtpmaps, brm = b->m_rtpmaps;
-       arm || brm;
+       arm && brm;
        arm = arm->rm_next, brm = brm->rm_next)
     if ((rv = sdp_rtpmap_cmp(arm, brm)))
       return rv;
+  if ((rv = sdp_rtpmap_cmp(arm, brm)))	/* one list is longer */
+    return rv;
 
   if ((rv = sdp_list_cmp(a->m_format, b->m_format)))
     return rv;
@@ -1489,16 +1493,20 @@ int sdp_media_cmp(sdp_media_t const *a, sdp_media_t const *b)
     return rv;
 
   for (ac = a->m_connections, bc = b->m_connections;
-       ac || bc;
+       ac && bc;
        ac = ac->c_next, bc = bc->c_next)
-  if ((rv = sdp_connection_cmp(ac, bc)))
+    if ((rv = sdp_connection_cmp(ac, bc)))
+      return rv;
+  if ((rv = sdp_connection_cmp(ac, bc)))	/* one list is longer */
     return rv;
 
   for (ab = a->m_bandwidths, bb = b->m_bandwidths;
-       ab || bb;
+       ab && bb;
        ab = ab->b_next, bb = bb->b_next)
-    if ((rv = sdp_bandwidth_cmp(a->m_bandwidths, b->m_bandwidths)))
+    if ((rv = sdp_bandwidth_cmp(ab, bb)))
       return rv;
+  if ((rv = sdp_bandwidth_cmp(ab, bb)))	/* one list is longer */
+    return rv;
 
   if ((rv = sdp_key_cmp(a->m_key, b->m_key)))
     return rv;
