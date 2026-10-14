@@ -1542,7 +1542,7 @@ static void parse_payload(sdp_parser_t *p, char *r, sdp_rtpmap_t **result)
     else if (p->pr_config && r[0] == '*' && (r[1] == ' ' || r[1] == '\0')) {
       PARSE_ALLOC(p, sdp_rtpmap_t, rm);
 
-      *result = rm; result = &rm->rm_next;
+      *result = rm;
 
       rm->rm_predef = 1;
       rm->rm_any = 1;
@@ -1767,6 +1767,7 @@ static void parse_descs(sdp_parser_t *p,
       break;
 
     case 'k':
+      assert(m);
       parse_key(p, rest, &m->m_key);
       break;
 
