@@ -3828,7 +3828,7 @@ int test_fix_467(agent_t *ag)
 #include <unistd.h>
 #include <signal.h>
 
-static RETSIGTYPE sig_alarm(int s)
+static void sig_alarm(int s)
 {
   fprintf(stderr, "%s: FAIL! test timeout!\n", name);
   exit(1);

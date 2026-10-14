@@ -62,7 +62,7 @@ int tstflags = 0;
 #endif
 
 #if HAVE_ALARM
-static RETSIGTYPE sig_alarm(int s)
+static void sig_alarm(int s)
 {
   fprintf(stderr, "%s: FAIL! test timeout!\n", name);
   if (tstflags & tst_abort)

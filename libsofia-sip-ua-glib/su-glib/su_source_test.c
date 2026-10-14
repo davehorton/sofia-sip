@@ -374,7 +374,7 @@ init_ping(struct pinger *p, su_msg_r msg, su_sockaddr_t *arg)
 
 #if HAVE_SIGNAL
 static
-RETSIGTYPE term(int n)
+void term(int n)
 {
   exit(1);
 }

@@ -1621,7 +1621,7 @@ static int filter_test(tp_test_t *tt)
 #if HAVE_ALARM
 #include <signal.h>
 
-static RETSIGTYPE sig_alarm(int s)
+static void sig_alarm(int s)
 {
   fprintf(stderr, "%s: FAIL! test timeout!\n", name);
   exit(1);
