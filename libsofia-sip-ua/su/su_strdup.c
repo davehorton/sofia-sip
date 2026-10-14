@@ -54,7 +54,7 @@ char *su_strdup(su_home_t *home, char const *s)
     size_t n = strlen(s);
     char *retval = su_alloc(home, n + 1);
     if (retval)
-      strncpy(retval, s, n)[n] = 0;
+      ((char *)memcpy(retval, s, n))[n] = 0;
     return retval;
   }
   return NULL;
