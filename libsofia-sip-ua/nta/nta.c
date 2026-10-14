@@ -11042,6 +11042,9 @@ void outgoing_answer_aaaa(sres_context_t *orq, sres_query_t *q,
   else if (found)
     results = &result;
 
+  if (results == NULL)
+    found = 0;			/* nothing found, or out of memory */
+
   for (i = j = 0; results && answers && answers[i]; i++) {
     char addr[SU_ADDRSIZE];
     sres_aaaa_record_t const *aaaa = answers[i]->sr_aaaa;
@@ -11139,7 +11142,10 @@ void outgoing_answer_a(sres_context_t *orq, sres_query_t *q,
   else if (found)
     results = &result;
 
-  for (i = j = 0; answers && answers[i]; i++) {
+  if (results == NULL)
+    found = 0;			/* nothing found, or out of memory */
+
+  for (i = j = 0; results && answers && answers[i]; i++) {
     char addr[SU_ADDRSIZE];
     sres_a_record_t const *a = answers[i]->sr_a;
 
