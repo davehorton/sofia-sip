@@ -8469,7 +8469,7 @@ outgoing_send(nta_outgoing_t *orq, int retransmit)
 
     if (orq->orq_pending) {
       SU_DEBUG_4(("%s: tport(%p) orq(%p) calling tport_release because we have pending %u\n", 
-        __func__, tp,orq, orq->orq_pending));
+        __func__, (void *)orq->orq_tport, (void *)orq, orq->orq_pending));
 
       tport_release(orq->orq_tport, orq->orq_pending,
 		    orq->orq_request, NULL, orq, 0);
@@ -10217,16 +10217,10 @@ static int outgoing_query_a(nta_outgoing_t *orq, struct sipdns_query *);
 static void outgoing_answer_a(sres_context_t *orq, sres_query_t *q,
 			      sres_record_t *answers[]);
 
-#ifdef __clang_analyzer__
-#define FUNC_ATTR_NONNULL(...) __attribute__((nonnull(__VA_ARGS__)))
-#else
-#define FUNC_ATTR_NONNULL(...)
-#endif
-
 static void outgoing_query_results(nta_outgoing_t *orq,
 				   struct sipdns_query *sq,
 				   char *results[],
-				   size_t rlen) FUNC_ATTR_NONNULL(3);
+				   size_t rlen);
 
 
 #define SIPDNS_503_ERROR 503, "DNS Error"
