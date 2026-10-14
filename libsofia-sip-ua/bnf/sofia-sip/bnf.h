@@ -262,7 +262,7 @@ su_inline isize_t span_word(char const *s)
 su_inline isize_t span_unreserved(char const *s)
 {
   char const *e = s;
-  while (IS_UNRESERVED(*e))
+  while (*e && IS_UNRESERVED(*e))
     e++;
   return e - s;
 }

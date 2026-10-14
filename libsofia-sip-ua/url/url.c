@@ -982,7 +982,7 @@ issize_t url_e(char buffer[], isize_t n, url_t const *url)
     }
   }
 
-  if (do_copy && (do_copy = 1 <= n))
+  if (do_copy && 1 <= n)
     *b = '\0';
   else if (buffer && m > 0)
     buffer[m - 1] = '\0';
@@ -1957,9 +1957,8 @@ void url_string_update(su_md5_t *md5, char const *s)
   if (n >= sizeof schema) {
     su_md5_update(md5, ":", 1);
   }
-  else if (n && s[n] == ':' ) {
-    at = url_canonize(schema, s, n, 0, "+");
-
+  else if (n && s[n] == ':' &&
+	   (at = url_canonize(schema, s, n, 0, "+"))) {
     type = url_get_type(schema, at - schema);
     su_md5_iupdate(md5, schema, at - schema);
 
