@@ -1724,7 +1724,7 @@ int tport_bind_server(tport_master_t *mr,
   for (tbf = &mr->mr_primaries; *tbf; tbf = &(*tbf)->pri_next)
     ;
 
-    if (!res) return -1;
+  if (!res) return -1;
 port = port0 = port1 = ntohs(((su_sockaddr_t *)res->ai_addr)->su_port);
   error = EPROTONOSUPPORT;
 
