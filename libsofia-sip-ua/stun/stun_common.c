@@ -547,6 +547,7 @@ int stun_validate_message_integrity(stun_msg_t *msg, stun_buffer_t *pwd)
     /* does not match, but try the test server's password */
     if (memcmp(msg->enc_buf.data+msg->enc_buf.size-20, "hmac-not-implemented", 20) != 0) {
       SU_DEBUG_5(("%s: error: message digest problem.\n", __func__));
+      free(padded_text);
       return -1;
     }
   }

@@ -154,7 +154,7 @@ stun_dns_lookup_t *stun_dns_lookup(stun_magic_t *magic,
 
     snprintf(srvname, sizeof srvname, "%s.%s", STUN_SRV_SERVICE_UDP, domain);
 
-    query = sres_query(self->stun_sres, priv_sres_cb, self,
+    sres_query(self->stun_sres, priv_sres_cb, self,
 		       sres_type_srv,
 		       srvname);
 
