@@ -10423,6 +10423,14 @@ outgoing_try_another(nta_outgoing_t *orq)
   if (sr == NULL)
     return 0;
 
+  /* Already resolving the next destination: starting another query here
+     would orphan sr_query, whose answer later runs against the wrong
+     sr_current (or, after the orq is freed, against freed memory). */
+  if (sr->sr_query) {
+    SU_DEBUG_5(("nta(%p): already resolving next destination\n", (void *)orq));
+    return 1;
+  }
+
   *orq->orq_tpn = *sr->sr_tpn;
   orq->orq_try_tcp_instead = 0, orq->orq_try_udp_instead = 0;
   outgoing_reset_timer(orq);
@@ -11017,6 +11025,13 @@ void outgoing_answer_aaaa(sres_context_t *orq, sres_query_t *q,
   size_t i, j, found;
   char *result, **results = NULL;
 
+  if (q && q != sr->sr_query) {
+    /* Answer to a query this resolver no longer tracks */
+    SU_DEBUG_3(("nta(%p): ignoring stale AAAA answer\n", (void *)orq));
+    sres_free_answers(orq->orq_agent->sa_resolver, answers);
+    return;
+  }
+
   assert(sq); assert(sq->sq_type == sres_type_aaaa);
 
   sr->sr_query = NULL;
@@ -11106,6 +11121,13 @@ void outgoing_answer_a(sres_context_t *orq, sres_query_t *q,
 
   int i, j, found;
   char *result, **results = NULL;
+
+  if (q && q != sr->sr_query) {
+    /* Answer to a query this resolver no longer tracks */
+    SU_DEBUG_3(("nta(%p): ignoring stale A answer\n", (void *)orq));
+    sres_free_answers(orq->orq_agent->sa_resolver, answers);
+    return;
+  }
 
   assert(sq); assert(sq->sq_type == sres_type_a);
 
