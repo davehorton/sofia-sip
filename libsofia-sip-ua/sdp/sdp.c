@@ -1201,10 +1201,12 @@ int sdp_session_cmp(sdp_session_t const *a, sdp_session_t const *b)
     return rv;
 
   for (aa = a->sdp_attributes, ba = b->sdp_attributes;
-       aa || bb;
+       aa && ba;
        aa = aa->a_next, ba = ba->a_next)
     if ((rv = sdp_attribute_cmp(aa, ba)))
       return rv;
+  if ((rv = sdp_attribute_cmp(aa, ba)))	/* one list is longer */
+    return rv;
 
   for (am = a->sdp_media, bm = b->sdp_media;
        am || bm;
@@ -1512,10 +1514,12 @@ int sdp_media_cmp(sdp_media_t const *a, sdp_media_t const *b)
     return rv;
 
   for (aa = a->m_attributes, ba = b->m_attributes;
-       aa || bb;
+       aa && ba;
        aa = aa->a_next, ba = ba->a_next)
     if ((rv = sdp_attribute_cmp(aa, ba)))
       return rv;
+  if ((rv = sdp_attribute_cmp(aa, ba)))	/* one list is longer */
+    return rv;
 
   return 0;
 }
