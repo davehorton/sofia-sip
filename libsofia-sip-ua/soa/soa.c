@@ -2192,7 +2192,7 @@ soa_init_sdp_origin_with_session(soa_session_t *ss,
 				 sdp_session_t const *sdp)
 {
   if (ss == NULL || o == NULL || buffer == NULL)
-    return su_seterrno(EFAULT);
+    return su_seterrno(EFAULT), -1;
 
   assert(o->o_address);
 
