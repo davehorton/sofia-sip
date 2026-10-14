@@ -782,7 +782,7 @@ sres_resolver_new_internal(sres_cache_t *cache,
   if (conf_file_path && conf_file_path != sres_conf_file_path)
     res->res_cnffile = su_strdup(res->res_home, conf_file_path);
   else
-    res->res_cnffile = conf_file_path = sres_conf_file_path;
+    res->res_cnffile = sres_conf_file_path;
 
   if (!res->res_cache || !res->res_cnffile) {
     perror("sres: malloc");
@@ -3309,29 +3309,27 @@ int sres_resolver_error(sres_resolver_t *res, int socket)
 	|| (c->cmsg_level == SOL_IPV6 && c->cmsg_type == IPV6_RECVERR)
 #endif
 	) {
-      char const *origin;
-
       ee = (struct sock_extended_err *)CMSG_DATA(c);
       from = (void *)SO_EE_OFFENDER(ee);
       info[0] = '\0';
 
       switch (ee->ee_origin) {
       case SO_EE_ORIGIN_LOCAL:
-	strcpy(info, origin = "local");
+	strcpy(info, "local");
 	break;
       case SO_EE_ORIGIN_ICMP:
 	snprintf(info, sizeof(info), "%s type=%u code=%u",
-		 origin = "icmp", ee->ee_type, ee->ee_code);
+		 "icmp", ee->ee_type, ee->ee_code);
 	break;
       case SO_EE_ORIGIN_ICMP6:
 	snprintf(info, sizeof(info), "%s type=%u code=%u",
-		 origin = "icmp6", ee->ee_type, ee->ee_code);
+		 "icmp6", ee->ee_type, ee->ee_code);
 	break;
       case SO_EE_ORIGIN_NONE:
-	strcpy(info, origin = "none");
+	strcpy(info, "none");
 	break;
       default:
-	strcpy(info, origin = "unknown");
+	strcpy(info, "unknown");
 	break;
       }
 
@@ -3804,14 +3802,14 @@ sres_create_record(sres_resolver_t *res, sres_message_t *m, int nth)
   case sres_type_soa:
     sr = sres_init_rr_soa(cache, sr->sr_soa, m);
     break;
-  case sres_type_a:
-    sr = sres_init_rr_a(cache, sr->sr_a, m);
+  case sres_type_a:		/* decoded in place, sr stays sr0 */
+    sres_init_rr_a(cache, sr->sr_a, m);
     break;
   case sres_type_a6:
     sr = sres_init_rr_a6(cache, sr->sr_a6, m);
     break;
-  case sres_type_aaaa:
-    sr = sres_init_rr_aaaa(cache, sr->sr_aaaa, m);
+  case sres_type_aaaa:		/* decoded in place, sr stays sr0 */
+    sres_init_rr_aaaa(cache, sr->sr_aaaa, m);
     break;
   case sres_type_cname:
     sr = sres_init_rr_cname(cache, sr->sr_cname, m);
@@ -4059,7 +4057,7 @@ static sres_record_t *sres_init_rr_naptr(sres_cache_t *cache,
     m_get_string(na->na_flags = s, len[0], m, offset[0]), s += len[0];
     m_get_string(na->na_services = s, len[1], m, offset[1]), s += len[1];
     m_get_string(na->na_regexp = s, len[2], m, offset[2]), s += len[2];
-    m_get_domain(na->na_replace = s, len[3], m, offset[3]), s += len[3];
+    m_get_domain(na->na_replace = s, len[3], m, offset[3]);
   }
 
   return (sres_record_t *)na;
