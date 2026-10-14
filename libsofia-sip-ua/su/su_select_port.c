@@ -579,7 +579,7 @@ int su_select_port_wait_events(su_port_t *self, su_duration_t tout)
 		(void *)self, su_strerror(su_errno()), su_errno()));
     return 0;
   }
-  else if (n == 0)
+  else if (n == 0 || bytes == 0)
     return 0;
 
   for (j = 1; j <= self->sup_max_index; j++) {

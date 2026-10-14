@@ -8469,7 +8469,7 @@ outgoing_send(nta_outgoing_t *orq, int retransmit)
 
     if (orq->orq_pending) {
       SU_DEBUG_4(("%s: tport(%p) orq(%p) calling tport_release because we have pending %u\n", 
-        __func__, tp,orq, orq->orq_pending));
+        __func__, (void *)orq->orq_tport, (void *)orq, orq->orq_pending));
 
       tport_release(orq->orq_tport, orq->orq_pending,
 		    orq->orq_request, NULL, orq, 0);
@@ -10217,16 +10217,10 @@ static int outgoing_query_a(nta_outgoing_t *orq, struct sipdns_query *);
 static void outgoing_answer_a(sres_context_t *orq, sres_query_t *q,
 			      sres_record_t *answers[]);
 
-#ifdef __clang_analyzer__
-#define FUNC_ATTR_NONNULL(...) __attribute__((nonnull(__VA_ARGS__)))
-#else
-#define FUNC_ATTR_NONNULL(...)
-#endif
-
 static void outgoing_query_results(nta_outgoing_t *orq,
 				   struct sipdns_query *sq,
 				   char *results[],
-				   size_t rlen) FUNC_ATTR_NONNULL(3);
+				   size_t rlen);
 
 
 #define SIPDNS_503_ERROR 503, "DNS Error"
@@ -11048,6 +11042,9 @@ void outgoing_answer_aaaa(sres_context_t *orq, sres_query_t *q,
   else if (found)
     results = &result;
 
+  if (results == NULL)
+    found = 0;			/* nothing found, or out of memory */
+
   for (i = j = 0; results && answers && answers[i]; i++) {
     char addr[SU_ADDRSIZE];
     sres_aaaa_record_t const *aaaa = answers[i]->sr_aaaa;
@@ -11145,7 +11142,10 @@ void outgoing_answer_a(sres_context_t *orq, sres_query_t *q,
   else if (found)
     results = &result;
 
-  for (i = j = 0; answers && answers[i]; i++) {
+  if (results == NULL)
+    found = 0;			/* nothing found, or out of memory */
+
+  for (i = j = 0; results && answers && answers[i]; i++) {
     char addr[SU_ADDRSIZE];
     sres_a_record_t const *a = answers[i]->sr_a;
 

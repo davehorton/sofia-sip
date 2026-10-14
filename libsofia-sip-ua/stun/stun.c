@@ -536,7 +536,6 @@ int stun_obtain_shared_secret(stun_handle_t *sh,
   int one, err = -1;
   su_wait_t wait[1] = { SU_WAIT_INIT };
   su_socket_t s = INVALID_SOCKET;
-  int family;
   su_addrinfo_t *ai = NULL;
   stun_discovery_t *sd;
   /* stun_request_t *req; */
@@ -570,7 +569,7 @@ int stun_obtain_shared_secret(stun_handle_t *sh,
   }
 
   /* open tcp connection to server */
-  s = su_socket(family = AF_INET, SOCK_STREAM, 0);
+  s = su_socket(AF_INET, SOCK_STREAM, 0);
 
   if (s == INVALID_SOCKET) {
     return STUN_ERROR(errno, socket);
@@ -763,7 +762,6 @@ int assign_socket(stun_discovery_t *sd, su_socket_t s, int register_socket)
   su_sockaddr_t su[1];
   socklen_t sulen;
   char addr[SU_ADDRSIZE];
-  int err;
 
   su_wait_t wait[1] = { SU_WAIT_INIT };
 
@@ -806,7 +804,7 @@ int assign_socket(stun_discovery_t *sd, su_socket_t s, int register_socket)
     get_localinfo(AF_INET, su, &sulen);
 #endif
 
-    if ((err = bind(s, &su->su_sa, sulen)) < 0) {
+    if (bind(s, &su->su_sa, sulen) < 0) {
       SU_DEBUG_3(("%s: bind(%s:%u): %s\n",  __func__,
 		  su_inet_ntop(su->su_family, SU_ADDR(su), addr, sizeof(addr)),
 		  (unsigned) ntohs(su->su_port),
@@ -1188,7 +1186,7 @@ int stun_test_nattype(stun_handle_t *sh,
 		       tag_type_t tag, tag_value_t value,
 		       ...)
 {
-  int err = 0, index = 0, s_reg = 0;
+  int err = 0, s_reg = 0;
   ta_list ta;
   char const *server = NULL;
   stun_request_t *req = NULL;
@@ -1225,7 +1223,7 @@ int stun_test_nattype(stun_handle_t *sh,
   sd = stun_discovery_create(sh, stun_action_test_nattype, sdf, magic);
   sd->sd_mapped_addr_match = -1;
 
-  if ((index = assign_socket(sd, s, s_reg)) < 0)
+  if (assign_socket(sd, s, s_reg) < 0)
     return errno = EFAULT, -1;
 
   /* If no server given, use default address from stun_handle_init() */
@@ -1234,8 +1232,8 @@ int stun_test_nattype(stun_handle_t *sh,
     memcpy(sd->sd_pri_addr, sh->sh_pri_addr, sizeof(su_sockaddr_t));
   }
   else {
-    err = stun_atoaddr(sh->sh_home, AF_INET, &sd->sd_pri_info, server);
-    memcpy(sd->sd_pri_addr, &sd->sd_pri_info.ai_addr, sizeof(su_sockaddr_t));
+    /* sd_pri_info.ai_addr points to sd_pri_addr */
+    stun_atoaddr(sh->sh_home, AF_INET, &sd->sd_pri_info, server);
   }
   destination = (su_sockaddr_t *) sd->sd_pri_addr;
 
@@ -1607,7 +1605,6 @@ int stun_make_sharedsecret_req(stun_msg_t *msg)
   len+=sizeof(tmp);
 
   memcpy(msg->enc_buf.data+len, msg->stun_hdr.tran_id, STUN_TID_BYTES);
-  len+=STUN_TID_BYTES;
 
   return 0;
 }
@@ -2485,7 +2482,7 @@ int stun_make_binding_req(stun_handle_t *sh,
     tmp->attr_type = MESSAGE_INTEGRITY;
     tmp->pattr = NULL;
     tmp->next = NULL;
-    *p = tmp; p = &(tmp->next);
+    *p = tmp;
   }
 
   /* no buffer assigned yet */
@@ -2681,7 +2678,7 @@ int stun_test_lifetime(stun_handle_t *sh,
   stun_discovery_t *sd = NULL;
   ta_list ta;
   su_socket_t s = INVALID_SOCKET;
-  int err, index = 0, s_reg = 0;
+  int err, s_reg = 0;
   char addr[SU_ADDRSIZE];
   char const *server = NULL;
   su_socket_t sockfdy;
@@ -2714,7 +2711,7 @@ int stun_test_lifetime(stun_handle_t *sh,
 	  TAG_END());
 
   sd = stun_discovery_create(sh, stun_action_test_lifetime, sdf, magic);
-  if ((index = assign_socket(sd, s, s_reg)) < 0)
+  if (assign_socket(sd, s, s_reg) < 0)
       return errno = EFAULT, -1;
 
   /* If no server given, use default address from stun_handle_init() */
@@ -2723,8 +2720,8 @@ int stun_test_lifetime(stun_handle_t *sh,
     memcpy(sd->sd_pri_addr, sh->sh_pri_addr, sizeof(su_sockaddr_t));
   }
   else {
-    err = stun_atoaddr(sh->sh_home, AF_INET, &sd->sd_pri_info, server);
-    memcpy(sd->sd_pri_addr, &sd->sd_pri_info.ai_addr, sizeof(su_sockaddr_t));
+    /* sd_pri_info.ai_addr points to sd_pri_addr */
+    stun_atoaddr(sh->sh_home, AF_INET, &sd->sd_pri_info, server);
   }
   destination = (su_sockaddr_t *) sd->sd_pri_addr;
 
@@ -3108,7 +3105,7 @@ int stun_process_request(su_socket_t s, stun_msg_t *req,
   /* memcpy(chg_addr, &stun_change_map[3][sid], sizeof(*chg_addr)); */
   tmp->pattr = chg_addr;
   tmp->next = NULL;
-  *p = tmp; p = &(tmp->next);
+  *p = tmp;
 
 
   /* no buffer assigned yet */

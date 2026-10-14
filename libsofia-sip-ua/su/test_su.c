@@ -437,7 +437,7 @@ time_test(void)
 
 #if HAVE_ALARM
 
-static RETSIGTYPE sig_alarm(int s)
+static void sig_alarm(int s)
 {
   enter;
 
@@ -450,7 +450,7 @@ static char const no_alarm[] = "";
 #endif
 
 static
-RETSIGTYPE term(int n)
+void term(int n)
 {
   enter;
 

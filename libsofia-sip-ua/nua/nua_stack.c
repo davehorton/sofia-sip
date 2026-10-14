@@ -657,7 +657,7 @@ void nua_stack_signal(nua_t *nua, su_msg_r msg, nua_ee_data_t *ee)
     nua_stack_respond(nua, nh, e->e_status, e->e_phrase, tags);
     break;
   case nua_r_destroy:
-	  if (!nh->nh_destroyed) {
+	  if (nh && !nh->nh_destroyed) {
 		  nua_stack_destroy_handle(nua, nh, tags);
 		  su_msg_destroy(nua->nua_signal);
 	  }
@@ -667,7 +667,7 @@ void nua_stack_signal(nua_t *nua, su_msg_r msg, nua_ee_data_t *ee)
   }
 
   if (error < 0) {
-    nua_stack_event(nh->nh_nua, nh, NULL, event,
+    nua_stack_event(nua, nh, NULL, event,
 		    NUA_ERROR_AT(__FILE__, __LINE__), NULL);
   }
 
@@ -690,7 +690,7 @@ nua_event_data_t const *nua_event_data(nua_saved_event_t const saved[1])
  *
  * @sa #nua_event_e, nua_event_save(), nua_event_data(), nua_saved_event_request().
  */
-void nua_destroy_event(nua_saved_event_t saved[1])
+void nua_destroy_event(nua_saved_event_t *saved)
 {
   if (saved && saved[0]) su_msg_destroy(saved);
 }

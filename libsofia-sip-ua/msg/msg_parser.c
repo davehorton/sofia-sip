@@ -564,7 +564,6 @@ isize_t msg_recv_commit(msg_t *msg, usize_t n, int eos)
 msg_t *msg_next(msg_t *msg)
 {
   msg_t *next;
-  usize_t n;
 
   if (msg && msg->m_next) {
     next = msg->m_next;
@@ -572,7 +571,7 @@ msg_t *msg_next(msg_t *msg)
     return next;
   }
 
-  if ((n = msg_buf_committed(msg))) {
+  if (msg_buf_committed(msg)) {
     if (msg_buf_move(next = msg_create(msg->m_class, msg->m_oflags), msg)) {
       msg_addr_copy(next, msg);
       return next;
@@ -1244,7 +1243,7 @@ issize_t msg_parse_next_field(su_home_t *home, msg_header_t *prev,
 msg_header_t *msg_header_d(su_home_t *home, msg_t const *msg, char const *b)
 {
   msg_mclass_t const *mc = msg->m_class;
-  msg_href_t const *hr = mc->mc_unknown;
+  msg_href_t const *hr;
   isize_t n;			/* Length of header contents */
   isize_t name_len, xtra;
   msg_header_t *h;
@@ -1384,7 +1383,6 @@ issize_t msg_extract_payload(msg_t *msg, msg_pub_t *mo,
     usize_t current, rest;
 
     current = msg->m_buffer->mb_size - msg->m_buffer->mb_used;
-    rest = body_len - current;
 
     /* Use all the data from our current buffer */
     msg_buf_used(msg, current);
@@ -1916,6 +1914,8 @@ int msg_serialize(msg_t *msg, msg_pub_t *pub)
     return errno = EINVAL, -1;
   if (pub == NULL)
     pub = msg->m_object;
+  if (pub == NULL)
+    return errno = EINVAL, -1;
 
   /* There must be a first line */
   if (pub->msg_request)
@@ -2017,7 +2017,7 @@ msg_header_t **serialize_one(msg_t *msg, msg_header_t *h, msg_header_t **prev)
     for (last = h; last->sh_succ; last = last->sh_succ) {
       /* Ensure that chain is connected */
       assert(last->sh_next == last->sh_succ);
-      assert(last->sh_succ->sh_prev = &last->sh_succ);
+      assert(last->sh_succ->sh_prev == &last->sh_succ);
     }
     prev = &last->sh_succ;
   }

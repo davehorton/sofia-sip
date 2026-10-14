@@ -245,6 +245,7 @@ int su_getlocalinfo(su_localinfo_t const *hints,
 
 #if USE_LOCALINFO0
   error = localinfo0(hh, rr);
+  (void)ip4;
 #else
 
 #  if SU_HAVE_IN6
@@ -1164,7 +1165,7 @@ err:
 #include <ifaddrs.h>
 
 static
-int bsd_localinfo(su_localinfo_t const hints[1],
+int bsd_localinfo(su_localinfo_t const *hints,
 		  su_localinfo_t **return_result)
 {
   struct ifaddrs *ifa, *results;

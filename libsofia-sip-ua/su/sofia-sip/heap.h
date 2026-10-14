@@ -160,7 +160,7 @@ scope type prefix##get(heaptype, size_t)
  * bytes in the heap.
  */
 #define HEAP_BODIES(scope, heaptype, prefix, type, less, set, alloc, null) \
-scope int prefix##resize(void *realloc_arg, heaptype h[1], size_t new_size) \
+scope int prefix##resize(void *realloc_arg, heaptype *h, size_t new_size) \
 { \
   struct prefix##priv { size_t _size, _used; type _heap[2]; }; \
   struct prefix##priv *_priv; \
@@ -184,6 +184,7 @@ scope int prefix##resize(void *realloc_arg, heaptype h[1], size_t new_size) \
     new_size = _min_size; \
  \
   _bytes = (_offset + 1 + new_size) * sizeof (type); \
+  assert(_bytes > 0); /* alloc() frees when asked for zero bytes */ \
  \
   (void)realloc_arg; /* avoid warning */ \
   _priv = alloc(realloc_arg, *(struct prefix##priv **)h, _bytes); \
@@ -198,7 +199,7 @@ scope int prefix##resize(void *realloc_arg, heaptype h[1], size_t new_size) \
 } \
  \
 /** Free heap. */ \
-scope int prefix##free(void *realloc_arg, heaptype h[1]) \
+scope int prefix##free(void *realloc_arg, heaptype *h) \
 { \
   (void)realloc_arg; \
   *(void **)h = alloc(realloc_arg, *(void **)h, 0); \
@@ -328,6 +329,7 @@ scope void prefix##sort(heaptype h) \
 } \
 extern int const prefix##dummy_heap
 
+#include <assert.h>
 #include <sofia-sip/su_types.h>
 
 SOFIA_BEGIN_DECLS

@@ -342,6 +342,11 @@ nth_site_t *nth_site_create(nth_site_t *parent,
       size_t i, j;
 
       path = (char *)url->url_path;
+      if (path == NULL) {
+	SU_DEBUG_3(("nth_site_create(): path is required\n" VA_NONE));
+	errno = EINVAL;
+	goto error;
+      }
       while (path[0] == '/')
 	path++;
 
@@ -837,12 +842,12 @@ void server_request(server_t *srv,
   if (path == NULL)
     path = "";
 
-  if (path[0])
+  if (site && path[0])
     subsite = site_get_subdir(site, path, &subpath);
 
   if (subsite)
     subsite->site_access = now;
-  else
+  else if (site)
     site->site_access = now;
 
   if (subsite && subsite->site_isdir && subpath == site_nodir_match) {

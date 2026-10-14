@@ -844,7 +844,8 @@ int nea_view_update(nea_server_t *nes,
     nea_view_queue(nes, evv, evq);
 
   SU_DEBUG_7(("nea_server_update(%p): %s (%s)\n", (void *)nes,
-	      ev->ev_event->o_type, evv->evv_content_type->c_type));
+	      ev->ev_event->o_type,
+	      evv->evv_content_type ? evv->evv_content_type->c_type : "<none>"));
 
   return 1;
 }
@@ -1576,7 +1577,7 @@ int nea_sub_process_incoming(nea_sub_t *s,
 
   default:
     nta_incoming_treply(irq,
-			retval = SIP_405_METHOD_NOT_ALLOWED,
+			SIP_405_METHOD_NOT_ALLOWED,
 			SIPTAG_ALLOW_STR("SUBSCRIBE"),
 			TAG_END());
     retval = 405;

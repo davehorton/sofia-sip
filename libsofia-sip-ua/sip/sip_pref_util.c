@@ -323,8 +323,10 @@ int sip_is_callerpref(char const *param)
   if (param[0] == '+')
     param++, xor = 1;
 
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wstring-plus-int"
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wstring-plus-int"
+#endif
 
   switch (param[0]) {
   case 'a': case 'A':
@@ -365,7 +367,9 @@ int sip_is_callerpref(char const *param)
     base = 0;
     break;
   }
-#pragma GCC diagnostic pop
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
 
 #undef MATCH
 
