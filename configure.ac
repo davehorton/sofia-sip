@@ -49,6 +49,13 @@ AC_PROG_INSTALL
 AC_PROG_CPP
 AC_CHECK_PROG(ETAGS, etags, etags, echo)
 AC_CHECK_TOOL(AR, ar, ar)
+dnl automake < 1.17 defaults ARFLAGS to 'cru'; modern ar ignores 'u'
+dnl (deterministic mode is the default) and warns on every archive.
+dnl ARFLAGS is automake's (plain .a), AR_FLAGS is libtool's.
+: ${ARFLAGS=cr}
+: ${AR_FLAGS=cr}
+AC_SUBST([ARFLAGS])
+AC_SUBST([AR_FLAGS])
 AC_CHECK_TOOL(LD, ld, ld)
 LT_INIT
 
