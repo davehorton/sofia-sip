@@ -582,6 +582,8 @@ int tls_init_context(tls_t *tls, tls_issues_t const *ti)
     if (tls12_list && strlen(tls12_list) > 0) {
       if (!SSL_CTX_set_cipher_list(tls->ctx, tls12_list)) {
         tls_log_errors(3, "tport_ws_init_primary_secure - failed initializing TLS 1.2 cipher list", 0);
+        free(tls12_list);
+        free(tls13_list);
         errno = EIO;
         return -1;
       }
@@ -589,6 +591,8 @@ int tls_init_context(tls_t *tls, tls_issues_t const *ti)
     if (tls13_list && strlen(tls13_list) > 0) {
       if (!SSL_CTX_set_ciphersuites(tls->ctx, tls13_list)) {
         tls_log_errors(3, "tport_ws_init_primary_secure - failed initializing TLS 1.3 cipher list", 0);
+        free(tls12_list);
+        free(tls13_list);
         errno = EIO;
         return -1;
       }
