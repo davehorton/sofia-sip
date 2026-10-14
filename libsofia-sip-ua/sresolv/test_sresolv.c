@@ -1924,7 +1924,7 @@ fill_stack(void)
 }
 
 #if HAVE_ALARM
-static RETSIGTYPE sig_alarm(int s)
+static void sig_alarm(int s)
 {
   fprintf(stderr, "%s: FAIL! test timeout!\n", name);
   exit(1);
