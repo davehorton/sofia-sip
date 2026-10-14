@@ -438,8 +438,8 @@ static int tport_ws_init_primary_secure(tport_primary_t *pri,
   char const *tls_certificate_file = NULL ;
   char const *tls_chain_file = NULL ;
 
-  const char *cert = "/ssl.pem";
-  const char *key = "/ssl.pem";
+  const char *cert = NULL;
+  const char *key = NULL;
   const char *chain = NULL;
   char const *tls_ciphers = NULL;
   char *tls12_list = NULL;
@@ -566,8 +566,6 @@ static int tport_ws_init_primary_secure(tport_primary_t *pri,
         goto done;
       }
     }
-    if (tls12_list) free(tls12_list);
-    if (tls13_list) free(tls13_list);
   }
   else {
     if ( !SSL_CTX_set_cipher_list(wspri->ssl_ctx, "!eNULL:!aNULL:!DSS:HIGH:@STRENGTH") ) {
@@ -581,6 +579,8 @@ static int tport_ws_init_primary_secure(tport_primary_t *pri,
   ret = tport_ws_init_primary(pri, tpn, ai, tags, return_culprit);
 
  done:
+  free(tls12_list);
+  free(tls13_list);
   su_home_zap(autohome);
   return ret;
 }
