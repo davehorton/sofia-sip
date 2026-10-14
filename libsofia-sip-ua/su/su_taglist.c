@@ -411,7 +411,7 @@ int tl_gets(tagi_t const lst[], tag_type_t tag, tag_value_t value, ...)
       n += tl_get(tt, (void *)t->t_value, lst);
     }
 #if !defined(NDEBUG)
-    else if (tt->tt_class && tt->tt_class->tc_ref_set) {
+    else if (tt->tt_class->tc_ref_set) {
       fprintf(stderr, "WARNING: tag %s::%s directly used by tl_gets()\n",
 			  tt->tt_ns ? tt->tt_ns : "", tt->tt_name ? tt->tt_name : "");
       assert(tt->tt_class == ref_tag_class);
@@ -526,7 +526,7 @@ tagi_t *tl_filter(tagi_t dst[],
   else {
     size_t rv = 0;
 
-    for (s = src, d = dst; s; s = t_next(s)) {
+    for (s = src; s; s = t_next(s)) {
       d = t_filter(NULL, filter, s, b);
       rv += (char *)d - (char *)NULL;
     }
