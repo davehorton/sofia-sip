@@ -2859,12 +2859,17 @@ sres_server_t *sres_next_server(sres_resolver_t *res,
 
   assert(res->res_servers && res->res_servers[i]);
 
+  /* Test for the SRES_TIME_MAX ("never") sentinel before adding a timeout:
+   * SRES_TIME_MAX + timeout overflows, and the compiler may then drop the
+   * sentinel check, so a server marked unusable would be revived forever
+   * and sres_send_dns_query() would loop without end. */
   for (j=0; j < N; j++) {
     dns = servers[j]; if (!dns) continue;
-    if (dns->dns_icmp + DNS_ICMP_TIMEOUT < now)
+    if (dns->dns_icmp != SRES_TIME_MAX &&
+	dns->dns_icmp < now - DNS_ICMP_TIMEOUT)
       dns->dns_icmp = 0;
-    if (dns->dns_error + DNS_ERROR_TIMEOUT < now &&
-	dns->dns_error != SRES_TIME_MAX)
+    if (dns->dns_error != SRES_TIME_MAX &&
+	dns->dns_error < now - DNS_ERROR_TIMEOUT)
       dns->dns_error = 0;
   }
 
