@@ -44,10 +44,19 @@ SOFIA_BEGIN_DECLS
 #undef tcase_add_test
 #undef tcase_add_loop_test
 
+/* check 0.13 replaced test functions (TFun) with TTest descriptors and
+ * dropped the name argument of _tcase_add_test() */
+#if CHECK_MAJOR_VERSION > 0 || CHECK_MINOR_VERSION >= 13
+#define S2_HAVE_TTEST 1
+typedef TTest const *s2_test_t;
+#else
+typedef TFun s2_test_t;
+#endif
+
 /* Redirect tcase_add_test() to our function */
 #define tcase_add_test(tc, tf) s2_tcase_add_test(tc, tf, "" #tf "", 0, 0, 1)
 
-void s2_tcase_add_test(TCase *, TFun, char const *name,
+void s2_tcase_add_test(TCase *, s2_test_t, char const *name,
 		       int signo, int start, int end);
 
 #define tcase_add_loop_test(tc, tf, s, e) \

@@ -32,7 +32,7 @@
 #include <stdio.h>
 #include <assert.h>
 
-#include <check.h>
+#include "s2check.h"
 
 #if HAVE_FNMATCH_H
 #include <fnmatch.h>
@@ -46,7 +46,7 @@ static char const * const *test_patterns = default_patterns;
  * A special version of tcase_add_test() that inserts test function into
  * tcase only if its name matches given pattern.
  */
-void s2_tcase_add_test(TCase *tc, TFun tf, char const *name,
+void s2_tcase_add_test(TCase *tc, s2_test_t tf, char const *name,
 		       int signo, int start, int end)
 {
   char const * const *patterns;
@@ -57,7 +57,11 @@ void s2_tcase_add_test(TCase *tc, TFun tf, char const *name,
       if (strcmp(*patterns, "*")) {
 	printf("%s: selected\n", name);
       }
+#if S2_HAVE_TTEST
+      _tcase_add_test(tc, tf, signo, 0, start, end);
+#else
       _tcase_add_test(tc, tf, name, signo, start, end);
+#endif
       return;
     }
   }
@@ -67,7 +71,11 @@ void s2_tcase_add_test(TCase *tc, TFun tf, char const *name,
       if (strcmp(*patterns, "*")) {
 	printf("%s: selected\n", name);
       }
+#if S2_HAVE_TTEST
+      _tcase_add_test(tc, tf, signo, 0, start, end);
+#else
       _tcase_add_test(tc, tf, name, signo, start, end);
+#endif
       return;
     }
   }
