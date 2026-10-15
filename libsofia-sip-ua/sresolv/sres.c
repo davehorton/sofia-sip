@@ -4238,7 +4238,8 @@ m_get_uint32(sres_message_t *m)
     return 0;
   }
 
-  return (p[0] << 24) | (p[1] << 16) | (p[2] << 8) | p[3];
+  return ((uint32_t)p[0] << 24) | ((uint32_t)p[1] << 16) |
+    ((uint32_t)p[2] << 8) | p[3];
 }
 
 static
