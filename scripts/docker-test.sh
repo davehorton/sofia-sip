@@ -18,7 +18,8 @@ docker build -q -t "$image" -f "$src/ci/Dockerfile" "$src/ci" > /dev/null
 
 rc=0
 for mode in $modes; do
-  docker run --rm -v "$src:/src:ro" "$image" /src/scripts/test.sh "$mode" || rc=1
+  docker run --rm --security-opt apparmor=unconfined -v "$src:/src:ro" "$image" \
+    /src/scripts/test.sh "$mode" || rc=1
 done
 
 exit $rc
