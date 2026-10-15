@@ -225,7 +225,7 @@ s2_nta_vwait_for(enum wait_for wait_for0,
 	    goto next;
 	  break;
 	case wait_for_status:
-	  if ((int)value != e->status)
+	  if ((int)(intptr_t)value != e->status)
 	    goto next;
 	  break;
 	case wait_for_phrase:

@@ -990,7 +990,7 @@ int test_sip_msg_class(msg_mclass_t const *mc)
 msg_t *read_message(int flags, char const buffer[])
 {
   size_t n;
-  int m;
+  
   msg_t *msg;
   msg_iovec_t iovec[2];
 
@@ -1005,7 +1005,7 @@ msg_t *read_message(int flags, char const buffer[])
   memcpy(iovec->mv_base, buffer, n);
   msg_recv_commit(msg, n, 1);
 
-  m = msg_extract(msg);
+  msg_extract(msg);
 
   return msg;
 }
@@ -3520,7 +3520,7 @@ static int test_sec_ext(void)
   sip_privacy_t *priv;
 
   msg_t *msg;
-  sip_t *sip;
+  
 
   BEGIN();
 
@@ -3534,7 +3534,7 @@ static int test_sec_ext(void)
     "Content-Length: 0\r\n"
     "\r\n");
 
-  sip = sip_object(msg);
+  sip_object(msg);
 
   TEST_1(home = msg_home(msg));
 

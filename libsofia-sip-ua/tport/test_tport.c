@@ -1012,7 +1012,6 @@ static int test_incomplete(tp_test_t *tt)
 
   su_addrinfo_t const *ai = tt->tt_tcp_addr;
   su_socket_t s;
-  int connected;
 
   TEST_1(ai != NULL);
 
@@ -1022,7 +1021,7 @@ static int test_incomplete(tp_test_t *tt)
   TEST_1(s != SOCKET_ERROR);
 
   su_setblocking(s, 1);
-  connected = connect(s, ai->ai_addr, (socklen_t)ai->ai_addrlen);
+  (void)connect(s, ai->ai_addr, (socklen_t)ai->ai_addrlen);
 
   su_root_step(tt->tt_root, 50);
 
@@ -1690,8 +1689,9 @@ int main(int argc, char *argv[])
     retval |= test_incomplete(tt); fflush(stdout);
     retval |= reuse_test(tt); fflush(stdout);
     retval |= tls_test(tt); fflush(stdout);
-    if (0)			/* Not yet working... */
+    if (0) {			/* Not yet working... */
       retval |= stun_test(tt); fflush(stdout);
+    }
     retval |= deinit_test(tt); fflush(stdout);
   }
 

@@ -357,7 +357,7 @@ int test_sip(void)
 
   for (i = 32; i <= 256; i++) {
     char pu[512];
-    char param[512];
+    char param[256 + 1];
 
     for (j = 0; j < i; j++)
       param[j] = 'x';

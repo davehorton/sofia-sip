@@ -1502,7 +1502,6 @@ START_TEST(call_2_4_5)
   struct message *invite, *prack, *cancel;
   int i;
   int with_sdp;
-  sip_from_t *branch1, *branch2;
 
   /* Testcase for bug FSCORE-338 -
      forked transactions getting canceled and terminated properly. */
@@ -1547,8 +1546,7 @@ START_TEST(call_2_4_5)
   fail_unless(s2_check_callstate(nua_callstate_proceeding));
   fail_unless_event(nua_r_prack, 200);
 
-  branch1 = dialog->local;
-  branch2 = dialog->local = sip_from_dup(dialog->home, invite->sip->sip_to);
+  dialog->local = sip_from_dup(dialog->home, invite->sip->sip_to);
   sip_from_tag(dialog->home, dialog->local, s2_sip_generate_tag(dialog->home));
 
   nua_handle_destroy(nh), nh = NULL;
@@ -3492,7 +3490,6 @@ START_TEST(refer_5_2_1)
 {
   nua_handle_t *nh;
   sip_refer_to_t r[1];
-  struct event *refer;
   struct message *notify;
 
   S2_CASE("5.2.1", "Receive REFER",
@@ -3507,7 +3504,7 @@ START_TEST(refer_5_2_1)
   s2_sip_request_to(dialog, SIP_METHOD_REFER, NULL,
 		SIPTAG_REFER_TO(r),
 		TAG_END());
-  refer = s2_wait_for_event(nua_i_refer, 202);
+  s2_wait_for_event(nua_i_refer, 202);
 
   bye_by_nua(nh, TAG_END());
 
@@ -3524,7 +3521,7 @@ START_TEST(refer_5_2_2)
   nua_handle_t *nh, *nh2;
   sip_refer_to_t r[1];
   sip_referred_by_t by[1];
-  struct event *refer, *notified;
+  struct event *refer;
   sip_t const *sip;
   sip_event_t const *refer_event = NULL;
   sip_subscription_state_t const *ss;
@@ -3572,7 +3569,7 @@ START_TEST(refer_5_2_2)
   fail_unless((ss = notify0->sip->sip_subscription_state) != NULL);
   fail_unless(su_casematch("active", ss->ss_substate));
   s2_sip_respond_to(notify0, dialog1, SIP_200_OK, TAG_END());
-  notified = s2_wait_for_event(nua_r_notify, 200);
+  s2_wait_for_event(nua_r_notify, 200);
 
   nh2 = nua_handle(nua, NULL, NUTAG_URL(r->r_url), TAG_END());
 

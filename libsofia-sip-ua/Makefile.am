@@ -55,10 +55,9 @@ libsofia_sip_ua_la_LIBADD = 	bnf/libbnf.la \
 				url/liburl.la \
 				$(OPT_LIBADD)
 
-# set the libtool version info version:revision:age for libsofia-sip-ua
-# - soname to 'libsofia-sip-ua.so.(CUR-AGE)'
-libsofia_sip_ua_la_LDFLAGS = \
-	-version-info $(LIBVER_SOFIA_SIP_UA_CUR):$(LIBVER_SOFIA_SIP_UA_REV):$(LIBVER_SOFIA_SIP_UA_AGE) 
+# libsofia-sip-ua is a convenience (noinst) library in this tree, linked
+# statically, so it has no libtool -version-info (libtool ignores it)
+libsofia_sip_ua_la_LDFLAGS =
 
 if HAVE_ZLIB
 libsofia_sip_ua_la_LDFLAGS += -lz

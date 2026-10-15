@@ -1475,10 +1475,10 @@ int main(int argc, char *argv[])
   }
 
   if (o_attach) {
-    char *response, line[10];
+    char line[10];
     printf("nua_test: pid %lu\n", (unsigned long)getpid());
     printf("<Press RETURN to continue>\n");
-    response = fgets(line, sizeof line, stdin);
+    (void)!fgets(line, sizeof line, stdin);
   }
 #if HAVE_ALARM
   else if (o_alarm) {

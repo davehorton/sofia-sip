@@ -394,9 +394,6 @@ static client_check_f * const default_checks[] = {
   NULL
 };
 
-static client_check_f * const no_default_checks[] = {
-  NULL
-};
 
 /** Callback from client transaction */
 int outgoing_callback(client_t *ctx,
@@ -1073,7 +1070,7 @@ int save_and_check_tcp(client_t *ctx, nta_outgoing_t *orq, sip_t const *sip)
 
 int test_tports(agent_t *ag)
 {
-  int udp = 0, tcp = 0, sctp = 0, tls = 0;
+  int udp = 0, tcp = 0, sctp = 0;
   sip_via_t const *v, *v_udp_only = NULL;
   char const *udp_comp = NULL;
   char const *tcp_comp = NULL;
@@ -1111,9 +1108,6 @@ int test_tports(agent_t *ag)
     }
     else if (su_casematch(v->v_protocol, sip_transport_sctp)) {
       sctp = 1;
-    }
-    else if (su_casematch(v->v_protocol, sip_transport_tls)) {
-      tls = 1;
     }
   }
 
@@ -1777,7 +1771,6 @@ int test_destroy_incoming(agent_t *ag)
 
 int test_resolv(agent_t *ag, char const *resolv_conf)
 {
-  int udp = 0, tcp = 0, sctp = 0, tls = 0;
   sip_via_t const *v;
 
   url_t *url;
@@ -1797,16 +1790,6 @@ int test_resolv(agent_t *ag, char const *resolv_conf)
 
 
   TEST_1(v = nta_agent_via(ag->ag_agent));
-  for (; v; v = v->v_next) {
-    if (su_casematch(v->v_protocol, sip_transport_udp))
-      udp = 1;
-    else if (su_casematch(v->v_protocol, sip_transport_tcp))
-      tcp = 1;
-    else if (su_casematch(v->v_protocol, sip_transport_sctp))
-      sctp = 1;
-    else if (su_casematch(v->v_protocol, sip_transport_tls))
-      tls = 1;
-  }
 
   url = url_hdup(ag->ag_home, (void *)"sip:example.org"); TEST_1(url);
 
@@ -3379,9 +3362,8 @@ int bob_leg_callback3(agent_t *ag,
     return 200;
   }
   else {
-    nta_reliable_t *rel;
     nta_incoming_bind(irq, test_for_ack_or_timeout, ag);
-    rel = nta_reliable_treply(irq, process_prack, ag,
+    nta_reliable_treply(irq, process_prack, ag,
 			      SIP_183_SESSION_PROGRESS,
 			      SIPTAG_CONTENT_TYPE(ag->ag_content_type),
 			      SIPTAG_PAYLOAD(ag->ag_payload),

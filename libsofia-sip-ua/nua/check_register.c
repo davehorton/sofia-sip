@@ -121,7 +121,7 @@ START_TEST(register_1_0_1)
 
   nua_register(nh, TAG_END());
 
-  fail_unless((m = s2_sip_wait_for_request(SIP_METHOD_REGISTER)) != NULL, NULL);
+  fail_unless((m = s2_sip_wait_for_request(SIP_METHOD_REGISTER)) != NULL);
 
   s2_sip_respond_to(m, NULL,
 		SIP_403_FORBIDDEN,
