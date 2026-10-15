@@ -29,8 +29,8 @@ jobs:
         run: docker build -t sofia-sip-ci -f ci/Dockerfile ci
       - name: Fuzz ${{ matrix.target }}
         run: |
-          mkdir -p out
-          docker run --rm -v "$PWD:/src:ro" -v "$PWD/out:/out" \
+          mkdir -p fuzz-out
+          docker run --rm -v "$PWD:/src:ro" -v "$PWD/fuzz-out:/out" \
             -e BUILD_DIR=/out/build sofia-sip-ci \
             /src/scripts/fuzz.sh "$SECONDS_PER_TARGET" ${{ matrix.target }}
       - name: Upload crashes
@@ -39,11 +39,11 @@ jobs:
         with:
           name: crashes-${{ matrix.target }}
           path: |
-            out/build/crashes/${{ matrix.target }}
-            out/build/fuzz_${{ matrix.target }}.log
+            fuzz-out/build/crashes/${{ matrix.target }}
+            fuzz-out/build/fuzz_${{ matrix.target }}.log
       - name: Upload grown corpus
         if: github.event_name == 'schedule'
         uses: actions/upload-artifact@v4
         with:
           name: corpus-${{ matrix.target }}
-          path: out/build/corpus/${{ matrix.target }}
+          path: fuzz-out/build/corpus/${{ matrix.target }}
