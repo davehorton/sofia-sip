@@ -22,4 +22,4 @@ jobs:
       - name: Build and test (${{ matrix.mode }})
         # apparmor=unconfined: the runner host confines named, which the
         # DNS tests start inside the container
-        run: docker run --rm --security-opt apparmor=unconfined -v "$PWD:/src:ro" sofia-sip-ci /src/scripts/test.sh ${{ matrix.mode }}
+        run: docker run --rm --security-opt apparmor=unconfined -e REQUIRE_NAMED=1 -v "$PWD:/src:ro" sofia-sip-ci /src/scripts/test.sh ${{ matrix.mode }}

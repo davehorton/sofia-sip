@@ -37,7 +37,9 @@ PATH=/usr/sbin:/usr/local/sbin:/sbin:$PATH
 export PATH
 
 # Test for support for IPv6 on Linux. This probably fails on everything else.
-ipv6='sysctl net.ipv6.conf.default.mtu >/dev/null 2>&1'
+# Use IPv6 only if the loopback ::1 is configured (it often is not in
+# containers, e.g. on CI runners, even when the sysctls exist)
+ipv6='grep -q "^00000000000000000000000000000001 " /proc/net/if_inet6 2>/dev/null'
 # Bind not working with IPv6 on RHEL 4:
 # client.c:1325: unexpected error: failed to get request's destination: failure
 #ipv6=false
@@ -158,16 +160,17 @@ zone "0.0.0.c.2.1.0.3.0.0.2.1.e.f.f.3.ip6.arpa" in {
 
 EOF
 
-named -f -d 999 -c $t/named.conf &
+named -f -d 999 -c $t/named.conf > $t/named.log 2>&1 &
 
 echo $0: started named pid $!
-for i in 1 2 3 4 5; do
+for i in 1 2 3 4 5 6 7 8 9 10; do
     test -r $t/named.pid && break
     sleep 1;
 done
 
 test -r $t/named.pid || {
     echo $0: cannot start named >&2 ;
+    tail -20 $t/named.log >&2
     if fgrep -i -e SELINUX=enforcing /etc/selinux/config >/dev/null 2>&1 ; then
 	echo $0: perhaps you have to disable SELinux protection for named
     elif test -d /etc/apparmor.d ; then

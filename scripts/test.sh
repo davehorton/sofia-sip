@@ -77,6 +77,14 @@ else
   done
 fi
 
+# The DNS tests in run_test_sresolv and run_test_nta need a private BIND
+# named; without it they quietly skip or degrade. CI sets REQUIRE_NAMED=1
+# so that losing them fails the run.
+if grep -l "cannot start named" $(find libsofia-sip-ua -name '*.log') 2>/dev/null; then
+  echo "== WARNING: named could not be started; DNS tests did not run"
+  if [ "${REQUIRE_NAMED:-0}" = 1 ]; then rc=1; fi
+fi
+
 # Skipped suites are a coverage gap, so say why they skipped
 for f in $(grep -lE "^:test-result: SKIP" $(find libsofia-sip-ua -name '*.trs') 2>/dev/null); do
   log=${f%.trs}.log

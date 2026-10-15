@@ -192,7 +192,7 @@ down2	A	0.0.0.2
 EOF
 
 # -g is also very nice option for named
-named -f -c $namedfile &
+named -f -c $namedfile > .test$$.named.log 2>&1 &
 pid=$!
 while ! test -r $pidfile && kill -0 $! 2>/dev/null
 do
@@ -209,10 +209,12 @@ if test -r $pidfile ; then
     $VALGRIND ./test_nta "$@" - $resolvfile
     exit=$?
     kill $(cat $pidfile)
-    rm $pidfile $zonefile $resolvfile $namedfile 2>/dev/null
+    rm $pidfile $zonefile $resolvfile $namedfile .test$$.named.log 2>/dev/null
     exit $exit
 else
     echo "$0: cannot start named (check apparmor/selinux)"
+    tail -20 .test$$.named.log
+    rm -f .test$$.named.log
     ipv6=$ipv6 $VALGRIND exec ./test_nta "$@"
 fi
 
