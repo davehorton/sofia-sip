@@ -105,9 +105,11 @@ domain example.com
 port $port
 EOF
 
-# Resolv.conf with bad namserver addresses
+# Resolv.conf with bad namserver addresses. 255.255.255.255 fails at
+# sendto() (broadcast without SO_BROADCAST); 0.0.0.2 no longer does,
+# since Linux 5.3 made 0.0.0.0/8 routable.
 cat > $t/error.conf <<EOF
-nameserver 0.0.0.2
+nameserver 255.255.255.255
 nameserver 1.1.1.1.1
 search example.com
 port $port

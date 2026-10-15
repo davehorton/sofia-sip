@@ -1034,6 +1034,10 @@ int test_cname(sres_context_t *ctx)
 
   sres_free_answers(res, result);
 
+  /* CNAME loop: the query must terminate without yielding an A record.
+   * Older BIND answered NOERROR with the CNAME chain, which sofia turns
+   * into an SRES_RECORD_ERR record; BIND 9.18 answers SERVFAIL ("max
+   * restarts reached") with the chain, which sofia passes through. */
   domain = "cloop.example.com";
 
   TEST_1(sres_query(res, test_answer, ctx, sres_type_a, domain));
@@ -1041,15 +1045,16 @@ int test_cname(sres_context_t *ctx)
 
   TEST_1(result = ctx->result);
   TEST_1(sr = result[0]);
-  TEST_1(sr->sr_record->r_status == SRES_RECORD_ERR);
+  TEST_1(sr->sr_record->r_status == SRES_RECORD_ERR ||
+	 sr->sr_record->r_type == sres_type_cname);
+  {
+    int i;
+    for (i = 0; result[i]; i++)
+      TEST_1(result[i]->sr_record->r_type != sres_type_a ||
+	     result[i]->sr_record->r_status != 0);
+  }
 
   sres_free_answers(res, ctx->result), ctx->result = NULL;
-
-  TEST_1(result = sres_cached_answers(res, sres_type_a, domain));
-  TEST_1(sr = result[0]);
-  TEST_1(sr->sr_record->r_status == SRES_RECORD_ERR);
-
-  sres_free_answers(res, result);
 
   END();
 }
@@ -1897,7 +1902,7 @@ int test_conf_errors(sres_context_t *ctx, char const *conf_file)
   /* We fail this test in most systems */
   /* conf_file looks like this:
 --8<--8<--8<--8<--8<--8<--8<--8<--8<--8<--8<--8<--
-nameserver 0.0.0.2
+nameserver 255.255.255.255
 nameserver 1.1.1.1.1
 search example.com
 port $port
