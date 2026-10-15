@@ -1,0 +1,60 @@
+ÿREGISTER sip:garage.sr.ntc.nokia.com SIP/2.0M
+Via: SIP/2.0/UDP 3rlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Record-Route: <sip:gar>3?1414@c.bell-tel.com
+CSeq:    1l.com
+From: org>sted c
+Call-ID: 31414@c.bell-tel.com
+CSeq:    1l.com
+From:    A. Bell e..watson@ieee.org SIP/2.0
+Via: 0   SIP/2.0/UDP c.bell-tel.com
+/2.0
+Min-SE: Via/UDP c.bell-tel.com
+/2.0
+Min-SE: Via:     SIP/2.0/UDP c.bell-tel.com
+Fromcom
+/2.0
+Min-SE: Via/UDP c.bell-tel.com
+/2.0
+Min-SE: Via:     SIP/2.0/UDP c.bell-tel.com
+From:    A. Bell <sip:a.g.bell@bell-tel.5
+com>
+To:      T. Watson+ <sip:t.watson@ieesip:a.g.-tel.Refer-To: com>
+To:      T. Watson+ <sip:efer-To: com>
+To:      T. Watson+ <sip:t.watson@ieesip:a.g.bell@bell-tel.com>
+To:    ieesip:a.g.bell@bell-tel.com>
+To:      T. Watson+ <sip:t.watson@ieee.org>
+Call-ID: 3?1414@c.bell-tel.com
+CSeq:    1l.com
+From: org>sted c
+Call-ID: 31414@c.bell-tel.com
+CSeq:    1l.com
+From:    A. Bell e..watson@ieee.org SIP/2.0
+Via: 0   SIP/2.0/UDP c.bell-tel.com
+/2.0
+Min-SE: Via/UDP c.bell-tel.com
+/2.0
+Min-SE: Via:     SIP/2.0/UDP c.bell-tel.com
+From:    A. Bell <sip:a.g.bell@bell-tel.5
+com>
+To:      T. Watson+ <sip:t.watson@ieesip:a.g.bell@bell-tel.rage.sr.ntc.nokia.com", NONC
+E="MjA  T. Watson+ <sip:t.watson@ieee.org>
+Call-ID: 3?1414@c.bell-tel.com
+CSeq:    1l.com
+From: org>sted c
+Call-ID: 31414@c.bell-tel.com
+CSeq:    1l.com
+From:    A. Bell e..watson@ieee.org SIP/2.0
+Via: 0   SIP/2.0/UDP c.bell-tel.com
+/2.0
+Min-SE: Via/UDP c.bell-tel.com
+/2.0
+Min-SE: Via:     SIP/2.0/UDP c.bell-tel.com
+From:    A. Bell <sip:a.g.bell@bell-tel.5
+com>
+To:      T. Watson+ <sip:t.watson@ieesip:a.g.bell@bell-tel.rage.sr.ntc.nokia.com", NONC
+E="MjAwMS0wMS0yMSAxNTow\ODo1OA==",
+  RESPONSE="d9d7f1ae<sip:3cb05f319f0f678251d",
+  URI="sip:garage.sr.ntc.nokia.com"
+Via: SIP/2.0/UDP 172.21.9.15m = secondvalue  ; q = 0.33
+  (((nested c5
+

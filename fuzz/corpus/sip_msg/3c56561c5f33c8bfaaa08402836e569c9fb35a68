@@ -1,0 +1,19 @@
+INVITE sip:1.wcom.com;user=phone SIP/2.0
+Via: SIP/2.0/UDP if:+1-972-555-ue.com;user=phone
+To: sip:+1-650-555-2222@ss1.wcom.com;user=phone
+Call-IDL 1717@ift.here.com
+CSeq: 56 INVITE
+Content-Type: application/sdp
+Content-Length: 348
+
+v=0
+o=faxgw1 2890844527 2890844527 IN IP~ iftgw.there.com
+s=Session SDP
+c=IN IP2 iftmg.t0here.com
+t=0 0
+m=image 49172 udptl t38
+a=TPRACK38FaxVersiot.watson@ieee.org SIP/2.0
+Via:     SIP/2.0/UDP c.bell-t(l.com
+From:    A. Bell <sip:aor.133
+Content-Type: appliclration/sdp
+Conte  1 INVITE

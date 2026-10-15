@@ -1,0 +1,15 @@
+REGISTER sip:company.com SIP/2.0
+Via: SIP/2.0/UDP rama.research.nokia.com
+Via: SIP/2.0/UDP 135.180.130.13ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ3
+To: sip:j.user@COMP;branch=z9hG4bKANY.COM;maddr=135.180.130.133;tag=foo
+rom: sip:j.user@COMPANY.COM;tag=bar
+Call-ID: 0ha0isndaksdj@10.0.2.2  
+Contact: *
+CSeq: 9 REGISTER
+ConteINVITE sip:t.watson@ieee.org SIP/2.0
+Via:     ÿÿÿÿÿÿÿSIP/2.0/UDP c.bell ¾š“Š <sip:a.g.bell@bell-tel.com>
+To:      T.RAck:  Watson <sip:t.watson@ieee.org>
+Call-ID: 31414@c.bell-tel.com
+CSeq:    Ro-tnt-Length:el.com
+CSeq:   0  Rout
+e: E

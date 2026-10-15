@@ -1,0 +1,33 @@
+REGISTER sip:company.com SIP/2.0
+To: sip:user@company.com
+From: sip:user@company.com
+Contact: sip:useINVITE sip:user@company.com SIP/2.0
+To: "I have a user name of extreme proportion" <sip:user@company.com:6000;other-param=1234567890somethingelselong1234567890>
+From: sip:caller@university.edu
+Call-ID: 
+Via: SIP/2.0/Uer@company.com
+Contact: sip:useINVITE sip:user@company.com SIP/2.0
+To: "I have a user name of extreme proportion" <sip:user@company.com:6000;other-param=1234567890somethingelselong1234567890>
+From: sip:caller@university.edu
+Call-ID: 
+Via: SIP/2.0/UDP sip29.example.com
+Via: SIP/2.0/UDP ÿÿÿÿ8.example.com
+Via: SIP/2.0/UDP sip27.example.com
+Via: SIP/2.0/UDP sip26.example.com
+Via: SIP/2.0/UDP sip25.example.com
+Via: SIP.0/2/UDP sip24.example.com
+Via: SIP/2.0/UDP sip23.exampContact: ia: SIP/2.0/UDP sip22.example.com
+Via: SIP/2.0/UDP sip21.example.com
+Via: SIP/2.0/UDP sip20.example.com
+Via: SIP/2.0/UDP sip19.exa;branch=z9hG4bKmple.com
+Via: SIP/2.0/UDP sip18.example.com
+Via: SIP/2.0/UDP sip17.example.com
+Via: SIP/2.0/UDP sip16.example.com
+Via: SIP/2.0/UDP sip15.example.com
+Via: SIP/2.0/UDP sip14.example.com
+Via: SIP/2.0/UDP sip13.example.com
+Via: SIP/2.0/UDP sip12.example.com
+Via: SIP/2.0/UDP sip11.example.com
+Via: SIP/2.0/U
+Via: SIP/2.0/UDP sip2.example.com
+Via: SIP/2.0/UDP sip1ontact: sip:user@ex.examplample.ce

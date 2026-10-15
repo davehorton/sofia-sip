@@ -1,0 +1,5 @@
+OPTIONS sip:user@company.com SIP/2.0
+To: sip:ubcJUNK * SIdP/1.0@10.0°S
+Via: SAP/2.0/UDP 135.180.130
+ .133
+ 

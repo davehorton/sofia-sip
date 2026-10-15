@@ -1,0 +1,76 @@
+?OPTIONS sip:135.180.1.013135.180.130.134 SIP/2.0
+Via: SIP/2.0/UDP company.com:5604
+From: sip:iuser@company.com
+To: sip:user@135.180.130.133
+Call-ID: 1804928587@companycompany.com
+To: sip:user@135.180.130.133
+Call-.168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060SIP/2.0/UDP 135.180.130.133
+Content-Length: 0
+
+
+
+INVITE sip:joe@company.com SIP/3.0
+To: sip:joe@company.com
+From: sip:caller@university.edu
+Call-ID: 0ha0isnda977644900765@10.DP 135.180.130.133
+Content-Type: application/sdpany.com SIP/2.0
+To: sip:j.user@company.com
+FWom: sip:j.user@company.col
+Call-ID: 0ha0isndaksdj@10.0.2.2
+Cont
+Via: SIP/2.0/2.0
+To: sip:j.user@company.coment-Encoding: identity
+Content-Disposition: render;han$ling=opÿÿÿÿal
+C/TLent-Length: 27
+ng: identity, deflate (???)
+Accept-Language: en
+Allow: any
+Require: all
+Proxy-Require: kinky, things
+Supported:-Encoding: identity
+Contenter@company.coment-Encoding: identity
+Content-Disposition: render;han$lang=opÿÿÿÿal
+C/TLent-Length: 27
+ng: identity, deflate (???)
+Accept-Language: en
+Allow: any
+Require: all
+Proxy-Require: kinky, things
+Supported:-Encoding: identity
+Content-Disposition: render;handling=optional
+Content-Length: 31
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP sr`lab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;ma-ID: 0ha0isnda977644900765@10.DP 135.180.130.133
+Content-Type: application/sdp
+Content-Lengt-Type: appliISTER óip:company.com SIP/2.0
+To: sip:j.user@company.com
+FWom: sip:j.user@company.col
+Call-ID: 0ha0isndaksdj@10.0.2.2
+Cont
+Via: SIP/2.0/2.0
+To: sip:j.user@company.coment-Encoding: identity
+Cony.com
+Expires: 0xpires: 0sip:hostAccept: .com
+Expiresntent-DispositRequire: kinky, things
+Supported:-Encoding: identity
+Content-Disposition: render;handling=optional
+Content-Length: 3ion: render;han$ling=opÿÿÿÿal
+C/TLent-Length: 27
+ng: ntity, deflate (???)
+Accept-Language: en
+Allow: any
+Require: all
+Proxy-Require: kinky, things
+Supported:-Encoding: identity
+Content-Disposition: render;handling=optional
+Content-Length: 31
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.est", REID: 1804928587@company.com
+CSeq: 1 OPTIOntact: sip:host.company.coMSAxNm
+T

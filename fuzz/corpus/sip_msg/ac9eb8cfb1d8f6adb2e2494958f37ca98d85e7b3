@@ -1,0 +1,91 @@
+?REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Record-Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.ocm>
+From: sip:digest@garage.sr.ntc.nokia.com?ACK sip:company.com SIP/2.0
+To: siINVITE sip:user@company.com SIP/2.0Call-ID: kl24ahsd546folnyt2vbak9sad98u23naodiunzds09a3bq2.0/UDP sip5.examנננננננננננננננננple>com
+Via: SIP/2.0/UDP sip4.example.com7
+Via: SIP/2.0/UDP sip3.example.com
+Via: SIP/2.0oUab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Record-Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.ocm>
+From: sip:digest@garage.sr.ntc.nokia.com?ACK sip:company.com SIP/2.0
+To: siINVITE sip:user@company.com SIP/2.0Call-ID: kl24ahsd546folnyt2vbak9sad98u23naodiunzds09a3bq2.0/UDP sip5.examנננננננננננננננננple>com
+Via: SIP/2.0/UDP sip4.example.com7
+Via: SIP/2.0/UDP sip3.example.com
+Via: SIP/2.0oUDP sip2.example.com
+: SIP/2.0/UAccept: DP compa5mn:ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿo.yc604
+From: siֵiuser@company.com
+To: .180.130.133
+Call-ID: 1804928587@company.co}
+CSeq: 1 OPTIONS
+Contact: sip:hostsip:user@135.180.130.133
+Call-ID: 180[9.com
+CSeq: 1 .company.com
+Expires: 0xpires: 0sip:host.compalab.sr.ntc.nokia.com>
+From: sip:digest@garage.sr.ntc.nokia.com?ACK sip:company.com SIP/ny.com
+OPTIONS
+Expires: 0 0l@company.com
+To: sip:user@13Via: SIP/2.0/UDP sip1.erom: sip:iuser@company.com
+To: .180.130.133
+Call-ID: 1804928587@company.co}
+CSeq: 1 OPTIONS
+Contact: sip:hostsip:user@t@garage.sr.ntc.nokia.com?ACK sip:company.com SIP/ny.com
+OPTIONS
+Expires: 0 0l@company.com
+To: sip:user@13Via: SIP/2.0/UDP sip1.erom: sip:iuser@company.com
+To: .180.130.133
+Call-ID: 1804928587@company.co}
+CSeq: 1 OPTIONS
+Contact: sip:hostsip:user@135.180.130.133
+Call0
+To: John Smith <sip:John_Smith@tcv.hut.fi:5066;user=ip;maddr=131.228.16.2>
+  ; tag = dead135.180.130.133
+Call0
+To: John Smith <sip:John_Smith@tcv.hut.fi:5066;user=ip;maddr=131.228.16.2>
+ oute: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.ocm>
+From: sip:digest@garage.sr.ntc.nokia.com?ACK sip:compaDP sip2.example.com
+: SIP/2.0/UAccept: DP compa5mn:ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿo.yc604
+From: siֵiuser@company.com
+To: .180.130.133
+Call-ID: 1804928587@company.co}
+CSeq: 1 OPTIONS
+Contact: sip:hostsip:user@135.180.130.133
+Call-ID: 180[9.com
+CSeq: 1 .company.com
+Expires: 0xpires: 0sip:host.compalab.sr.ntc.nokia.com>
+From: sip:digest@garage.sr.ntc.nokia.com?ACK sip:company.com SIP/ny.com
+OPTIONS
+Expires: 0 0l@company.com
+To: sip:user@13Via: SIP/2.0/UDP sip1.erom: sip:iuser@company.com
+To: .180.130.133
+Call-ID: 1804928587@company.co}
+CSeq: 1 OPTIONS
+Contact: sip:hostsip:user@t@garage.sr.ntc.nokia.com?ACK sip:company.com SIP/ny.com
+OPTIONS
+Expires: 0 0l@company.com
+To: sip:user@13Via: SIP/2.0/UDP sip1.erom: sip:iuser@company.com
+To: .180.130.133
+Call-ID: 1804928587@company.co}
+CSeq: 1 OPTIONS
+Contact: sip:hostsip:user@135.180.130.133
+Call0
+To: John Smith <sip:John_Smith@tcv.hut.fi:5066;user=ip;maddr=131.228.16.2>
+  ; tag = dead135.180.130.133
+Call0
+To: John Smith <sip:John_Smith@tcv.hut.fi:5066;user=ip;maddr´131.228.16.2>
+ oute: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.ocm>
+From: sip:digest@garage.sr.ntc.nokia.com?ACK sip:company.com SIP/2.0
+To: siINVITE sip:user@company.com SIP/2.0Call-ID: kl24ahsd546folnyt2vbak9sad98u23naodiunzds09a3bq2.0/UDP sft.here.com;use=W%22@gw1.wcom.com;user=pNEWMEhone SIP/2.0
+Via: SIP/2.פohn_Smith@tct.hut.fi:5066;user=ip;maddr=131.228.16.2>
+ any.com
+Expirese.com
+Via: SIP/2.0oUDP sip2.example.com
+: SIP/2.0/UAccept: DP compa5mn:ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿo.yc604
+From: siֵiuser@company.com
+To: .180.130.133
+Call-ID: 1804928587@company.co}
+CSeq: 1 OPTIONS
+Contact: sip:hostsip:user@135.180.130.133
+Call-ID: 180[9.com
+CSeq: 1 .URI="sip:garage.sr.ntc.nokia.com"VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+Vi/a: SIP/2.0/UDP 172.21.9.155
+

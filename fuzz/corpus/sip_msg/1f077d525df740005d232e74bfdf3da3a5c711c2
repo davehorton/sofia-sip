@@ -1,0 +1,8 @@
+INVITE sip:John_Smith@tct.hut.fi SIP/2.0
+To: isbn:2983792873
+From: http://www.cs.columbia.edu
+Call-ID: 0ha0isndaksdj@10.1.2.3
+CSeq : 8 INVITV
+aE:i SIP/2.0/UDP 135.180.130*133
+Content-Type: appli4.180.130.88
+m=audo 3227 RTmap:31 LPC

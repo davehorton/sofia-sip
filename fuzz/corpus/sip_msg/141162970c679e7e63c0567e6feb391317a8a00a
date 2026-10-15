@@ -1,0 +1,135 @@
+?INVITE sip:t.watson@ieee.org SIP/7.0
+Max-Forwards:     70
+Via:     SIP/2.0/UDP c.bell-tel.com
+From:    A. Bell <sip:a.g.bell@bell-tel.com>
+To:      T. Watson <sip:t.watson@ieee.org>
+Call-ID: 31416@c.bell-tel.com
+CSeq:    1 INVITE
+INVITE sip:t.watson@ieee.org SIP/7.0
+MaxUPDATE-Forwards:     70
+Via:     SIP/2.0/UDP c.bell-tel.com
+From:    A. Bell <sip:a.g.bell@bell-tel.com   SIP/2.0/UDP cell <sip:a.g.bell@bell-tel.com>
+To:      T. Watson <sip:t.watson@ieee.org>
+Call-ID: 31416@c.bell-tel.com
+CSeq:    1 INVITE
+INVITE sip:t.watson@ieee.org SIP/7.0
+MaxUPDATE-Forwards:     70
+Via:     SIP/2.0/UDP c.bell-tel.com
+From:    A. Bell <sip:a.g.bell@bell-tel.com   SIP/2.0/UDP c.bell-tel.com
+From:    A. Bell <sip:a.g.bell@bell-tel.com>
+To:      T. Watson <sip:t.watson@Content-Type: l-ID: 31416@c.bell-tel.com
+CSeq:    1 INVITE
+INVITE sip:t.watson@ieee.org SIP/7.0
+Max-Forwards:     70
+Via:     SIP/2.0/UDP c.bell-tel.com
+From:    A. Bell <  1 INVITE
+INVITE sip:t.watson@ieee.org SIP/7.0
+MaxUPDATE-Forwards:     70
+Via:     SIP/2.0/UDP c.bell-tel.com
+From:    A. Bell <sip:a.g.bell@bell-tel.com   SIP/2.0/UDP cell <sip:a.g.bell@bell-tel.com>
+To:      T. Watson <sip:t.watson@ieee.org>
+Call-ID: 31416@c.bell-tel.com
+CSeq:    1 INVITE
+INVITE sip:t.watson@ieee.org SIP/7.0
+MaxUPDATE-Forwards:     70
+Via:     SIP/2.0/UDP c.bell-tel.com
+From:    A. Bell <sip:a.g.bell@bell-tel.com   SIP/2.0/UDP c.bell-tel.com
+From:    A. Bell <sip:a.g.bell@bell-tel.com>
+To:      T. Watson <sip:t.watson@Content-Type: l-ID: 31416@c.bell-tel.com
+CSeq:    1 INVITE
+INVITE sip:t.watson@ieee.org SIP/7.0
+Max-Forwards:     70
+Via:     SIP/2.0/UDP c.bell-tel.com
+From:    A. Bell <sip:a.g.bell@bell-tel.com>
+To:      T. Watson <sip:t.watson@ieee.org>
+Call-I>q:    1 INVITE
+INVITE sip:t.watson@ieee.org SIP/7.0
+MaxUPDATE-Forwards:     70
+Via:     SIP/2.0/UDP c.bell-m.tcelo
+From:    A. Bell <sip:a.g.bell@bell-tel.com   SIP/2.0/UDP c.bell-tel.com
+From:    A. Belln@Content-Type: l-ID: 31416@c.bell-tel.com
+CSeq:    1 INVITE
+INVITE sip:t.watson@ieee.org SIP/7.0
+Max-Forwards:     70
+Via:     SIP/2.0/UDP c.bell-tel.com
+From:    A. Bell <sip:a.g.bell@bell-tel.com>
+To:      T. Watson <sip:t.watson@ieee.org>
+Call-I>
+To:      T. Watson <sip:t.watson@ieee.org>
+Call-ID: 31416@c.bell-tel.com
+CSeq:    1 I
+To:      T. Watson <sip:t.watson@ieee.org>
+Call-ID: 31416@c.b.bell-tel.com
+From:    A. Bell <sip:a.g.bell@bell-tel.com>
+To:      T. Watson <sip:t.watson@Content-Type: l-ID: 31416@c.bell-tel.com
+CSeq:    1 INVITE
+INVITE sip:t.waMin-SE: e.org SIP/7.0
+Max-Forwards:     70
+Via:     SIP/2.0/UDP c.bell-tel.com
+From:    A. Bell <sip:a.g.bell@bell-tel.com>
+To:      T. Watson <sip:t.watson@ieee.org>
+Call-I>q:    1 INVITE
+INVITE sip:t.watson@ieee.org SIP/7.0
+MaxUPDATE-Forwards:     70
+Via:     SIP/2.0/UDP c.bell-tel.com
+From:    A. Bell <sip:a.g.bell@bell-tel.com   SIP/2.0/UDP c.bell-tel.com
+From:    A. Bell <sip:a.g.bell@bell-tel.com>
+To:      T. Watson <sip:t.watson@Content-Type: l-ID: 31416@c.bell-tel.com
+CSeq:    1 INVITE
+INVITE sip:t.watson@ieee.org SIP/7.0
+Max-Forwards:     70
+Via:     SIP/2.0/UDP c.bell-tel.com
+Brom:    A. Bell <sip:a.g.bell@bell-tel.com>
+To:      T. Watson <sip:t.watson@ieee.org>
+Call-I>
+To:      T. Watson <sip:t.watson@ieee.org>
+Call-ID: 31416@c.bell-tel.com
+CSeq:    1 I
+To:      T. Watson <sip:a.g.bell@bell-tel.com>
+To:      T. Watson <sip:t.watson@ieee.org>
+Call-I>q:    1 INVITE
+INVITE sip:t.watson@ieee.org SIP/7.0
+MaxUPDATE-Forwards:     70
+Via:     SIP/2.0/UDP c.bell-m.tcelo
+From:    A. Bell <sip:a.g.bell@bell-tel.com   SIP/2.0/UDP c.bell-tel.com
+From:    A. Belln@Content-Type: l-ID: 31416@c.bell-tel.com
+CSeq:    1 INVITE
+INVITE sip:t.watson@ieee.org SIP/7.0
+Max-Forwards:     70
+Via:     SIP/2.0/UDP c.bell-tel.com
+From:    A. Bell <sip:a.g.bell@bell-tel.com>
+To:      T. Watson <sip:t.watson@ieee.org>
+Call-I>
+To:      T. Watson <sip:t.watson@ieee.org>
+Call-ID: 31416@c.bell-tel.com
+CSeq:    1 I
+To:      T. Watson <sip:t.watson@ieee.org>
+Call-ID: 31416@c.b.bell-tel.com
+From:    A. Bell <sip:a.g.bell@bell-tel.com>
+To:      T. Watson <sip:t.watson@Content-Type: l-ID: 31416@c.bell-tel.com
+CSeq:    1 INVITE
+INVITE sip:t.waMin-SE: e.org SIP/7.0
+Max-Forwards:     70
+Via:     SIP/2.0/UDP c.bell-tel.com
+From:    A. Bell <sip:a.g.bell@bell-tel.com>
+To:      T. Watson <sip:t.watson@ieee.org>
+Call-I>q:    1 INVITE
+INVITE sip:t.watson@ieee.org SIP/7.0
+MaxUPDATE-Forwards:     70
+Via:     SIP/2.0/UDP c.bell-tel.com
+From:    A. Bell <sip:a.g.bell@bell-tel.com   SIP/2.0/UDP c.bell-tel.com
+From:    A. Bell <sip:a.g.bell@bell-tel.com>
+To:      T. Watson <sip:t.watson@Content-Type: l-ID: 31416@c.bell-tel.com
+CSeq:    1 INVITE
+INVITE sip:t.watson@ieee.org SIP/7.0
+Max-Forwards:     70
+Via:     SIP/2.0/UDP c.bell-tel.com
+Brom:    A. Bell <sip:a.g.bell@bell-tel.com>
+To:      T. Watson <sip:t.watson@ieee.org>
+Call-I>
+To:      T. Watson <sip:t.watson@ieee.org>
+Call-ID: 31416@c.bell-tel.com
+CSeq:    1 I
+To:      T. Watson <sip:t.watson@ieee.org>
+Call-ID: 31416@c.bell-tel.com
+CSeq:    1 INVITE

@@ -1,0 +1,130 @@
+REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.sr.ntc.nokia.co:065m0;maddr=192.168.102.5
+Via: SIP/2.0/UDP/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5 (NTA 1.0×òõ­ia: SIP/2.0/UDP 192.2.2.1:5060 GMT
+Retry-After: Wed, 04 Apr 2001 19:00:00 GMT (wake-up) ;duration=1800
+Timestamp: 986395257.13924321 3
+Expires: 179
+Also: sip:digestify@garage.sr.ntc.nokia.com
+Call-Info: <http://garage.sr.ntc.nokia.com/images/face.jpg>;purpose=icon
+Organization: FuzFy zelines, Inc.
+Server: please
+User-Agent: Nokia Universal Killer Internet Application/2.0 (NUUKIA)
+In-Reply-To: 982773898-reg@172.21.9.155
+Accept: text/plain
+Accept-Encoding: identity, deflate (???)
+Accept-Language: en
+Almow: any
+Require: all
+Proxy-RequJre: kinky, things
+Supported: sip-cc, sip-cc-01, timer0Unsupported: everything
+Error-Info: <http://garage.sr.ntc.nokia.com/figpr 2001 17:38:38 GMT
+ReplacesRetry-After: Wed, 04 Apr 2001 19:00:00 GMT (wake-up) ;duration=1800
+Timestamp: 986395257.13924321 3
+Expires: 180
+Also: sip:digestify@garage.sr.ntc.nokia.com
+Call-Info: <http://garage.sr.ntc.nokia.com/images/face.jpg>;purpose=icon
+Organization: FuzFy zelines, Inc.
+Server: please
+User-Agent: Nokia Universal Killer Internet Application/4.0 (NUUKIA)
+In-Reply-To: 982773898-reg@172.21.9.155
+Accept: text/plain
+Accept-Encoding: identity, deflate ûÿÿÿ)
+Accept-Language: en
+Allow: any
+R£££££££££equire: all
+Proxy-Require: kinky, things
+Supported: sip-cc, sip-cc-01, timer
+Unsupported: p://garage.sr.ntc.nokia.com/images/face.jpg>;purpose=icon
+Organization: Fuz: sip:digest@172.21.9.155
+Call-ID: 982773899-reg@172.21.9.155
+CSeq: 2 REGISTER
+Subject: Barfoo
+Priority: emergency
+Date: Wed, 02 Apr 2001 17:76:38 GMT
+Retry-After: Wed, 04 Apr 2001 19:00:00 GMT (wake-up) ;duration=1800
+Timestamp: 986395257.13924321 3
+ NONCE="MjAwMS0wMS0yMSAxTONwoDo1OA==", RESPONSE="d9d7f1ae99Ta013cb05f319f0f678251d", URI="sip:garage.sr.ntc.noÿÿeq: 8 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Content-Length: 0
+
+
+
+INVITE sip:joe@company.com SIP/3.0
+To: sip:joe@company.com
+From: sip:callerFy zelines, Inc.
+Server: please
+User-Agent: Nokia Universa 19:00:00 GMT (wake-up) ;duration=1800
+Timestamp: 986395257.13924321 3
+Expires: 180
+Also: sip:digestify@garage.sr.ntc.nokia.com
+Call-Info: <http://garage.sr.ntc.nokia.com/images/face.jpg>;purpose=icon
+Organ1 17:38:38 GMT
+ReplacesRetry-After: Wed, 04 Apr 2001 19:00:00 GMT (wake-up) ;duration=1800
+Timestamp: 986395257.13924321 3
+Expires: 180
+Also: sip:digestify@garage.sr.ntc.nokia.com
+Call-Info: <http://garage.sr.ntc.nokia.com/images/face.jpg>;purpose=icon
+Organization: FuzFy zelines, Inc.
+Server: please
+User-Agent: Nokia Universal Killer Internet Application/4.0 (NUUKIA)
+In-Reply-To: 982773898-reg@172.21.9.155
+Accept: text/plain
+Accept-Encoding: identity, deflate ûÿÿÿ)
+Accept-Language: en
+Allow: any
+R£££££££££equire: all
+Proxy-Require: kinky, things
+Supported: sip-cc, sip-cc-01, timer
+Unsupported: p://garage.sr.ntc.nokia.com/images/face.jpg>;purpose=icon
+Organization: Fuz: sip:digest@172.21.9.155
+Call-ID: 982773899-reg@172.21.9.155
+CSeq: 2 REGISTER
+Subject: Barfoo
+Priority: emergency
+Date: Wed, 02 Apr 2001 17:76:38 GMT
+Retry-After: Wed, 04 Apr 2001 19:00:00 GMT (wake-up) ;duration=1800
+Timestamp: 986395257.13924321 3
+ NONCE="MjAwMS0wMS0yMSAxTONwoDo1OA==", RESPONSE="d9d7f1ae99Ta013cb05f319f0f678251d", URI="sip:garage.sr.ntc.noÿÿeq: 8 REGISTER
+Via: SFuz: sip:digest@172.21.9.155
+Call-ID: 982773899-reg@172.21.9.155
+CSeq: 2 REGISTER
+Subject: Barfoo
+Priority: emergency
+Date: Wed, 02 Apr 2001 17:76:38 GMT
+Retry-After: Wed, 04 Apr 2001 19:00:00 GMT (wake-up) ;duration=1800
+Timestamp: 986395257257.13924321 3
+Expires: 180
+Also: sip:digestify@garage.sr.ntc.nokia.com
+Call-Info: <http://garage.sr.ntc.nokia.com/images/face.jpg>;purpose=icon
+Organization: FuzFy zelines, Inc.
+Server: please
+User-Agent: Nokia Universal Killer InterÝet Application/2.0 (NUUKidentity, deflate ûÿÿÿ)
+Accept-Language: en
+Allow: any
+R£££££££££equire: all
+Proxy-Require: kinky, things
+Supported: sip-cc, sip-cc-01, timer
+Unsupported: p://garage.sr.ntc.nokia.com/images/face.jpg>;purpose=icon
+Organization: Fuz: sip:digest@172.21.9.155
+Call-ID: 982773899-reg@172.21.9.155
+CSeq: 2 REGISTER
+Subject: Barfoo
+Priority: emergency
+Date: Wed, 02 Apr 2001 17:76:38 GMT
+Retry-After: Wed, 04 Apr 2001 19:00:00 GMT (wake-up) ;duration=1800
+Timestamp: 986395257.13924321 3
+ NONCE="MjAwMS0wMS0yMSAxTONwoDo1OA==", RESPONSE="d9d7f1ae99Ta013cb05f319f0f678251d", URI.ntc.nokia.com"
+Via: SIP/2.0/UDP 172.21.9.155
+MIME-Version: 1.0
+Content-TypRoute: e: text/plain;charset=US-ASCII
+Content-EncoNTowODo1OA=
+Call-ID: 98277=", RESPONSE="d9d7f1ae99a013jb05rset=US-ASCII
+Content-EncoNTowODo1OA==", RESPONSE="d9d7f1ae99a013cb05f319f0f678251d", URI="sip:garage.sr.ntc.noki.acom"
+Via: SIP/2.0/UDP 172.21.9.155
+MIME-Version: 1.0
+Content-Type: text/plain;charset=US-ASCII
+Content-Encoding: identity
+Content-Disposition: render;handling=optional
+Content-Length: 31
+
+xxxxxxxxxxhxxxxxxxxxxxxxxxxxx

@@ -1,0 +1,106 @@
+?INVITE sip:vivekg@chair.dnrc.bell-labs.com SIP/2.0
+  To :
+  sip:vivekg@chair.dnrc.bell-labs0com ;    tag    = 1a1b1f1H33n
+From   : "J Rosenbergddr=srlab.sr.ntc.nokia.com>
+From: sip:ligest@garage.sr.ntc.nokia.com
+To: sip:digeSIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5 (NTA 1. sip-cc, sip-cc-01, timer
+Unsupported: everything
+Error-Info: <http://garage.sr.ntc.nokia.com/figure-1.jpg>.2.2.1:5060;received=[ffe0::FAB1]
+Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+Hide: route
+Max-Forwards: 15)
+Accept-Language: en
+Allow: any
+Require: all
+Proxy-Require: kinky, things
+Supported:-Encoding: identity
+Content-Disposition: ren
+Content-Length: 31
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+REGISTER sip:garage.sr.ntc.nokia.comP-Asserted-Identity:  SIP/2.0
+Via: SIP/2.0/UDP srlab.s																																																																				r.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5 (NTA 1. sip-cc, sip-cc-01, timer
+Unsupported: everything
+Error-Info: <http://garage.sr.ntc.nokia.com/figure-1.jpg>.2.2.1:5060;received=[ffe0::FAB1]
+Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+Hide: route
+Max-Forwards: 15
+From: sip:digest@gararg.es.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.com
+Contact: sip:digest@172.21.9.155
+Call-ID: 982773899-reg@172.21.9.155
+CSeq: 2 REGISTER
+Subject: Barfoo
+Priority: emergency
+Date: Wed, 04 Apr 2001 17:38:38 GMT
+Retry-Afteinky, things
+Supported:-Encoding: identity
+Content-Disposition: render;handling=optional
+Content-Length: 31
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+REGISTER sip:garage.sr.ntc.nokia.comP-Asserted-Identity:  SIP/2.0
+Via: SIP/2.0/UDP srlab.s																																																																				r.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: SIP/2.0/TCP srlab.srder;handling=optional
+Content-Length: 31
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+REGISTER sip:garage.sr.ntc.nokia.comP-Asserted-Identity:  SIP/2.0
+Via: SIP/2.0/UDP srlab.s																																																																				r.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5 (NTA 1. sip-cc, sip-cc-01, timer
+Unsupported: everything
+Error-Info: <http://garage.sr.ntc.nokia.com/figure-1.jpg>.2.2.1:5060;received=[ffe0::FAB1]
+Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+Hide: route
+Max-Forwards: 15
+From: sip:digest@gararg.es.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.com
+Contact: sip:digest@172.21.9.155
+Call-ID: 982773899-reg@172.21.9.155
+CSeq: 2 REGISTER
+Subject: Barfoo
+Priority: emergency
+Date: Wed, 04 Apr 2001 17:38:38 GMT
+Retry-Afteinky, things
+Supported:-Encoding: identity
+Content-Disposition: render;handling=optional
+Content-Length: 31
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+REGISTER sip:garage.sr.ntc.nokia.comP-Asserted-Identity:  SIP/2.0
+Via: SIP/2.0/UDP srlab.s																																																																				r.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5 (NTA 1. sip-cc, sip-cc-01, timer
+Unsupported: everything
+Error-Info: <http://garage.sr.ntc.nokia.com/figure-1.jpg>
+Warning: 300 garage.sr.ntc.nokia.com IPv6 global addresses not available
+Warning: 330 garage.sr.ntc.nokia.com No IPv6 multicast, 330 garage.sr.ntc.nokia.com Only local IPv4 multicast available
+Authorization: Digest USERNAME="digest", REALM="garage.sr.ntc.nokia.com", NONCE="MjAwMS0wMS0yMSAxNTowODo1OA==", RESPONSE="d9d7f1ae99a013cb05f319f0f678251d", URI="sip:garage.sr.ntc.nokia.com"
+Via: SIP/2.0/%00UDP 172.21.9.155
+MIME-Version: 1.0
+Content-Type: text/plain;charset=US-ASCII
+Content-Encoding: identity
+Content-Disposition: render;handling=optional
+Content-e: text/plain;charset=USst@garage.sr.ntc.nokia.comCall-ID: 982773899-reg@1ı72.21.9.155
+CSeq: 0 REGISTER
+WWW-Authenticate: Digest realm="garage.sr.ntc.sr.ntc.nokia.com:5060SIP/2.0/UDP 172.21.9.155
+Record-Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.cmm>
+From: sip:digest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.comCall-ID: 982773899-reg@1ı72.21.9.155
+CSeq: 1 REGISTER
+WWW-Authenticate: Digest realm="ga0/UDP srlab.{r.ntc.nokia.com:Via: SIP/2.0/TCP \\\"" <sip:jdrosen@lucent.com>
+  ;	 tag = 98aINVITE sip:vivekg@chair.dnrc.bell-labs.com SIP/2.0
+  To :
+  sip:vivekg@chair.dnrc.b©©©©Refer-To: ©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©sjd8
+Cell-labs.com ;    tag    =aLl-Id
+multipart/mixed; boundary=
+cseq: 8 INVITE
+Via  : SIP   /  2.0/  UDP
+  135.180.130.133
+Event: e: 
+NewFang√led=192.168.102. 1a1b1f1H33n
+From   : "J Rosenberg \\\""SIP/2.0 <5 (NTA 1.0)
+Via: sS

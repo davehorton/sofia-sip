@@ -1,0 +1,8 @@
+REGISTER sip:company.com SIP/2.0
+Via: SIP/2.0/UDP rama.reseaÿÿÿÿÿrch.nokia.com
+Via: S
+To: sip:j.user@COMPANY.COM;maddr=13;tag=0.130.133;tag=foo
+From: sip:j.user@COMPANY.COM;tag=bar
+Call-ID: 0ha0isndaksdj@10.0.2.2  
+Contact: *9739 72729EGISTER
+Content-Length: 00

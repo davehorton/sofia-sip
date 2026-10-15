@@ -1,0 +1,78 @@
+INVITE sip:1234@10.50.71.28 SIP/2.0
+To: <sip:1234@10.50.71.28>
+From: "Displayname" <s—ÅØ234@testaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+ aaaaaa#aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.example.local:5059>;tag=10052
+Via: SIP/2.0/UDP 10.50.71.29:5060;branch=z9hG4bK10052t1174659568681
+Call-½ 98asjd8
+CaLl-Id
+ : 0ha0isndaksdj@10.1.1.1
+cseq: 8 INV
+  br :
+  sip:vivekg@chair.dnrc.bell-labs.com ;    tag    = 1a1b1f1H3&nrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
+From   : "J RoseINVITE sip:vivekg@chair.dnrc.bell-labs.com SIP/2.0
+  To :
+  sip:vivekg@chair.dnrc.bell-labs.com ;    tag    = 1a1b1f1H33n
+From   : "J Rosenberg \\\"" <sip:jdrosen@lucent.com>
+  ;
+ tag ½ 98asjd8
+CaLl-Id
+ : 0ha0isndaksdj@10.1.aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+ aaaaaa#aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.example.local:5059>;tag=10052
+Via: SIP/2.0/UDP 10.50.71.29:5060;branch=z9hG4bK10052t1174659568681
+Call-½ 98asjd8
+CaLl-Id
+ : 0ha0isndaksdj@10.1.1.1
+cseq: 8 INV
+  br :
+  sip:vivekg@chair.dnrc.bell-labs.com ;    tag    = 1a1b1f1H3&nrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
+From   : "J RoseINVITE sip:vivekg@chair.dnrc.bell-labs.com SIP/2.0
+  To :
+  sip:vivekg@chair.dnrc.bell-labs.com ;    tag    = 1a1b1f1H33n
+From   : "J Rosenberg \\\"" <sip:jdrosen@lucent.com>
+  ;
+ tag ½ 98asjd8
+CaLl-Id
+ : 0ha0isndaksdj@10.1.1.1
+cseq: 8 INV
+  br :
+  sip:vivekg@chair.dnrc.bell-labs.com ;    tag    = 1a1b1f1H3&nrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
+From   : "J Rosenberg \\\"" <zsip:jdrosen@lanch  =   9ikj8  ,
+  SIP  /    2.0   / UDP  0.2.3.4   ; hidden
+ÿ:"Quoted string \"\"" <sip:jdrosen@bell-labs.com> ; newparam = newvalue ;
+  secondparam = secondvalue  ; 0  q=.33
+Ë(((nested comments) and (more)))   ,
+ tel:444nberg \\\"" <zsip:jdrosen@lanch  =   9ikj8  ,
+  SIP  /    2.0   / UDP  0.2.3.4   ; hidden
+ÿ:"Quoted string \"\"" <sip:jdrosen@bell-labs.com> ; newparam = newvalue ;
+  seconID: s0c00010052i0t1174659568681@10.50.71.29
+Contact: "999" <sip:999@10.50.71.29;transport=udp>
+Content-Length: 180
+Content-Type: application/sdp
+CSeq: 1aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+ aaaaaa#aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.example.local:5059>;tag=10052
+Via: SIP/2
+s=Codenomicon SIP UAS Test Tool 3.0.2 (http://www.codenomicon.com/)
+c=IN IP4 11.1
+cseq: 8 INV
+  br :
+  sip:vivekg@chair.dnrc.bell-labs.com ;    tag    = 1a1b1f1H3&nrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
+From   : "J Rosenberg \\\"" <zsip:jdrosen@lanch  =   9ikj8  ,
+  SIP  /    2.0   / UDP  0.2.3.4   ; hidden
+ÿ:"Quoted string \"\"" <sip:jdrosen@bell-labs.com> ; newparam = newvalue ;
+  secondparam = secondvalue  ; 0  q=.33
+Ë(((nested comments) and (more)))   ,
+ tel:444nberg \\\"" <zsip:jdrosen@lanch  =   9ikj8  ,
+  SIP  /    2.0   / UDP  0.2.3.4   ; hidden
+ÿ:"Quoted string \"\"" <sip:jdrosen@bell-labs.com> ; newparam = newvalue ;
+  seconID: s0c00010052i0t1174659568681@10.50.71.29
+Contact: "999" <sip:999@10.50.71.29;transport=udp>
+Content-Length: 180
+Content-Type: application/sdp
+CSeq: 1aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+ aaaaaa#aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.example.local:5059>;tag=10052
+Via: SIP/2
+s=Codenomicon SIP UAS Test Tool 3.0.2 (http://www.codenomicon.com/)
+c=IN IP4 10.50.71.29
+t=0 0
+m=audio 49152 RTP/AVP 0
+a=rtddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddpmap:0 PCMU/8000

@@ -1,0 +1,150 @@
+INVITE sip:user;pir=u%80h.com@company.com SIP/2.0 
+To: sip:j_user@company.com 
+From: sip:caller@university“öõäƒãûò=66484 
+Max-Forwards: 3 
+Call-ID: 0ha0isnda:user;par=u%80h.co&@c\ompany.com SIP/Event: 2.0 
+To: sip:j_user@company.com 
+From: sip:caller@univers: sip:j_user@company.com 
+From: sip:caller@university“öõäƒãûò=66484 
+Max-Forwards: 3 
+Call-ID: 0ha0isnda:user;par=u%80h.co&@c\ompany.com SIP/2.0 
+To: sip:j_user@company.com 
+F=rom: sip:caller@univContent-Type: application/sdp
+v:  SIP  / 2.0  / TCP     12.3.4.5   ;
+  ßranch  =   9ikj8 ““““““““““““““““““““““““““““““““““““““““““““““““““““““““““““““““““““““““““““““““““““““““““““““%--ﬂ”Úıﬂ S+IP  /    2.0   / UDP  1.2.3.4   ; hidden
+m:"Quoted string \"\"" <sip:jdrosen@bell-labs.com> ;e ;
+  secondp-Id
+ : 0ha0isndaksd133
+Subject :
+NewFangledH`eader:   newfangled value
+ more newf  / UDP  1.2.3.4   ; hidden
+m:"Quoted string \"\"" <sip:jdrosen@bell-labs.com> ;
+v:  SIP  / 1.0  / TCP     12.3.4.5  
+  ;
+ tag = 98asjd8Content-Type: application/sdp
+v:  SIP  / 2.0  / TCP     12.3.4.5   ;
+  ßranch  =   9ikj8 ““““““““““““““““““““““““““““““““““““““““““““““““““““““““l-Id
+ : 5ha0isndaksd133
+Subject :
+NewFangledHeader:   newhangled value
+ more newfangled value
+Content-Type: application/sdpEV siIpT:vivekg@cha 5ha0isndaksd133
+Subject :
+NewFangledHeader:   newfangled value
+ more newfangled value
+Content-Type: application/sdp
+v:  SIP  / 1.0  / TCP     12.3.4.5  
+  ;
+ tag = 98asjd8
+CaLl-Id
+ : 0ha0isndaksdj@10.1.1.1
+cseq: 8 INVITE
+Via  : SIP   /  1.0/  UDP
+  1315.80.130.133
+Subject :
+NewFangledHeader:   newfangled value
+ more newfang:ed value
+Content-Type: application/sdp
+v:  SIP  / 2.0  / TCP     12.3.4.5   ;
+  ßranch  =   9ikj8 ““““““““““““““““““““““““““““““““““““““““““““““““““““““““““““““““““““““““““““““““ir.dnrc.bell-labs.com SIP/2.0
+  T>
+  ;
+ tag = 98asjd8
+CaLl-Id
+ : 5ha0isndaksd133
+Subject :
+NewFangledHeader:   newfangled value
+ more newfangled value
+Content-Type: application/sdp
+v:  SIP  / 1.0  / TCP     12.3.4.5  
+  ;
+ tag = 98asjd8
+CaLl-Id
+ : 0ha0isndaksdj@10.1.1.1
+cseq: 8 INVITE
+Via  : SIP   /  1.0/  UDP
+  1315.80.130.133
+Subject :
+NewFangledHeader:   newfangled value
+ more newfang:ed value
+= 98asjd8
+CaLl-Id
+ : 5ha0isndaksd133
+Subject :
+NewFangledHeader:   newhangled value
+ more newfangled value
+Content-Type: application/sdpEV siIpT:vivekg@chair.dnrc.bell-labs.com SIP/2.0
+  T>
+  ;
+ tag =PRACKjd8
+CaLl-Id
+ : 5ha0isndaksd133
+Subject :
+NewFangledHeader:   newfangled value
+ more newfangled value
+Content-Type: application/sdp
+v:  SIP  / 0.0  / TCP    
+ : 0ha0isndaksd133
+Subject :
+NewFangledH`eader:   newfangled value
+ more newf  / UDP  1.2.3.4   ; hidden
+m:"Quoted string \"\"" <sip:jdrosen@bell-labs.com> ;
+v:  SIP  / 1.0  / TCP     12.3.4.5  
+  ;
+ tag = 98asjd8Content-Type: application/sdp
+v:  SIP  / 2.0  / TCP     12.3.4.5   ;
+  ßranch  =   9ikj8 ““““““““““““““““““““““““““““““““““““““““““““““““““““““““l-Id
+ : 5ha0isndaksd133
+Subject :
+NewFangledHeader:   newhangled value
+ more newfangled value
+Content-Type: application/sdpEV siIpT:vivekg@cha 5ha0isndaksd133
+Subj 12.3.4.5  
+  ;
+ tag = 98asjd8
+CaLl-Id
+ : 0ha _CSeq: 8 INVITE 
+Via: SIP/2.0/UDP 135.180.130.133;branch=z9
+Call-ID: 0ha0isnda:ustel:er;par=u%80h.co&@c\ompany.com SIP/2.0 
+To: sip:BYEser@company.com 
+FromBYEser@company.com 
+From: sip:caller@university.eduªtag=33242 
+Max-Forwards: 3 
+Call-ID: 0ha0isndaksdj@10.1.1.1 _CSeq: 8 INVITE 
+Via: SIP/2.0/TCP 135.180.130.133;branch=z9hG4bKkdjuw 
+Content-Lengthksdj@œœ—Œ—Œ—Œ _CSeq: 8 INVITE 
+Via: SIP/2.0/UDP 135.180.1302.133;brag=33242 
+Max-Forwards: 3 
+Call-ID: 0ha0isndakService-Route_CSeq: 8 INVITE 
+Via: SIP/2.0/UDP 135.180.130.133;branch=z9hG4bKbdjity.edu;ta 
+Max-Forwards: 3 sndaksdj@10.1.1.1 _CSeq: 8 INVITE 
+Via: SIP/2.0/UDP 135.180.130.133;branch=z9hG4bKkdjuw 
+Coia: SIP/2.0/UDP 135.180.130.133;branch=z9hG4bKkdjity.edu;ta 
+Max-Forwards: 3 sndaksdj@10.1.1.1 _CSeq: 8 INVITE 
+Via: SIP/2.0/UDP 135.180.130.133;branch=z9hG4bKkdjuw 
+Content-Lengthksdj@œœ—Œ—Œ—Œ _CSeq: 8 INVITE 
+Via: SIP/2.0/UDP 135.180.130.133;brag=33242 
+Max-Forwards: 3`
+Call-ID: 0ha0isndaksdj@10.1.1.1 _CSeq: 8 INVITE 
+Via: SIP/TLS/2.0/UDP 135.180.130.133;branch=z9hG4bKkdjuw 
+CoAllow: ntent-Lengthksdj@œœ—Œ—Œ—Œ _CSeq: 8 INVITE 
+Via: SIP/2NVITE 
+Via: SIP/2.0/UDP 135.180.130.133;brag=33242 djuw 
+CoAllow: ntent-Lengthksdj@œœ—Œ—Œ—Œ Y_CSeq: 8 INVITE 
+Via: SIP/2.0/UDP 135.180.130.133;branch=z9
+Call-ID: 0ha0isnda:user;par=u%80h.co&RSeq: @c\ompany.com SIP/ACK2.0 
+To: sip:BYEser@company.com 
+FromBYEser@company.com 
+From: sip:caller@university.eduªtag=33242 
+Max-Forwards: 3 
+Call-ID: 0ha0isndaksdj@10.1.1.1 _CSeq: 8 INVITE 
+Via: SIP/2.0/TCP 135.180.130.133;branch=z9hG4bKkdjuw 
+Content-Lengthksdj@œœ—Œ—Œ—Œ _CSeq: 8 INVITE 
+Via: SIP/2.0/UDP 135.180.1302.133;brag=33242 
+Max-Forwards: 3 
+Call-ID: 0ha0isndaksdj@10.1.1.1 _CSeq: 8 INVITE 
+Via: SIP/2.0/UDP 135.180.130.133;branch=z9hG4bKkdjuw 
+CoAllow: ntent-Lengthksdj@œœ—Œ—Œ—Œ _CSeq: 8 INVITE 
+Via: SIP/2.0/UDP 135.180.130.133;branch=z9hG4bKkdjuw 
+Content-Length: 0
+

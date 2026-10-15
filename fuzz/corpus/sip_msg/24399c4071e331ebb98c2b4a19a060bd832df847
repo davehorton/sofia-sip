@@ -1,0 +1,111 @@
+INVITE sip:useb;par=u%40h.com@company.com SIP/2.0 
+To: sip:j_user@company.com 
+FÿREGISTER sip:company.com Sÿÿÿÿÿÿÿ=To: sip:j.user@company.com
+From: sip:j.ussieu.;dyttag=3324Expires:s ips:ax-FoMample.com
+Via: SIP/2.0/UDP sip20.example.com
+Via: SIP/2.0/UDP sip19.example.com
+Via: SIP/2.0/UDP sip18.example.comQQQQQQQQQQ
+Via: SIxample.comGMTa: SIP/2.0/UDP sip11.example.com
+Via: SIÿÿÿÿÿÿÿ0/UDP sip28.example.com
+Via: SIP/2.0/UDPTo:  sip27.example.c>m
+Via: SIP/2.0/UDP sip26.example.com
+Via: SIP/2.0/TLS sip25.example.com
+Via: SIP/2.0/UDPxample.com
+Via: SIP/2.0/UDP sip24.exaNOTIFYom
+Via: SIP/2.0/UDP sip23.example.com
+Via: SIP/2.0/UDP sip22.example.com
+Via: SIP/ÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚ2.0/UDsPi p21.example.com
+Via: SIP/2.0/UDP sip20.exames not available
+Warning: 330 garage.sr.ntc.nokia.co Killer Internet Application/2.0 (NUUKIA)
+In-Reply-To: 982773898-reg@172.21.ailable
+Au0/UDP thorization: Dige everything
+Error-Info: <http:IP/2.//garage.sr.ntc.nokia.com/figure-1.jpg>
+Warning: 300 garage.sr.ntIÿÿÿÿÿÿÿ0/ sip26.exampl
+  135.180.130.133
+Subject :
+NewFangledHeader:   newfangled value
+ more newfangled value
+Content-Type: :3012:c000:210:a4ff:fe8d:6a46]>
+     ;tag=ud6a29947
+To: <sip:bob@example.com;maddr=[3ffe:1#00:3012:c006:206:5bffapplication/sdp
+v:  SIP  / 2.0  / TCP     12.3.4.5   ;ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿP  1.2.3.4   ; hidden
+m:"Quoted string \"\"" <sip:jdrosen@bell-labs.coINVITEö©– : SIP/2.0/UDP 135.Allow: 180.130.133
+ContNOTIFYpeINVIn: render;handling.bell-tem> ; nar=u%40h.com@company.com SIP/2.0 
+To: sip:j_user@company.com 
+FÿREGISTER sip:company.com Sÿÿÿÿÿÿÿ=To: sip:j.user@company.com
+From: sip:j.ussieu.;dyttag=3324Expires:s ips:ax-FoMample.com
+Via: SIP/2.0/UDP sip20.example.cP/2.0/UDPxample.com
+Via: SIP/2.0/UDP sip24.exaNOTIFYom
+Via: SIP/2.0/UDP sip23.example.com
+Via: SIP/2.0/UDP sip22.example.com
+Via: SIP/ÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚÚ2.0/UDsPi p21.example.com
+Via: SIP/2.0/UDP sip20.exames not available
+Warning: 330 garage.sr.ntc.nokia.co Killer Internet Application/2.0 (NUUKIA)
+In-Reply-To: 982773898-reg@172.21.ailable
+Au0/UDP thorization: Dige everything
+Error-Info: <http:IP/2.//garage.sr.ntc.nokia.com/figure-1.jpg>
+Warning: 300 garage.sr.ntIÿÿÿÿÿÿÿ0/ sip26.exampl
+  135.180.130.133
+Subject :
+NewFangledHeader:   newfangled value
+ more newfangled value
+Content-Type: :3012:c000:210:a4ff:fe8d:6a46]>
+     ;tag=ud6a29947
+To: <sip:bob@example.com;maddr=[3ffe:1#00:3012:c006:206:5bffapplication/sdp
+v:  SIP  / 2.0  / TCP     12.3.4.5   ;ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿP  1.2.3.4   ; hidden
+m:"Quoted string \"\"" <sip:jdrosen@bell-labs.coINVITEö©– : SIP/2.0/UDP 135.Allow: 180.130.133
+ContNOTIFYpeINVIn: render;handling.bell-tem> ; nar=u%40h.com@company.com SIP/2.0 
+To: sip:j_user@company.com 
+FÿREGISTER sip:company.com Sÿÿÿÿÿÿÿ=To: sip:j.user@company.com
+From: sip:j.ussieu.;dyttag=3324Expires:s ips:ax-FoMample.com
+Via: SIP/2.0/UDP sip20.example.com
+Via: SIP/2.0/UDP sip19.example.com
+Via: SIP/2.0/UDP sip18.example.comQQQQQQQQQQ
+Via: SIxample.comGMTa: SIP/2.0/UDP sip11.example.com
+Via: SIÿÿÿÿÿÿÿ0/UDP sip28.example.com
+Via: SIP/2.0/UDPTo:  sip27.example.c>m
+Via: SIP/2.0/UDP sip26.example.com
+Via: SIP/2.0/TLS sip25.example.com
+Via: SIP/2.0/UDPxample.com
+Via: SIP/2.0/UDP sip24.Call-ID: omoReplaces: e@company.com
+From: sip:caller@university.edu
+Call-zID: 0ha0isnd/UDP 135.180.130.133sip:joReplaces: e@company.com
+From: sip:caller@university.edu
+Call-ID: 0ha0isnda377644900765@10.0.0.1
+CSeq: 8 INVITEö©– : SIP/2.0/UDP 135.Allow: 180.130.133
+ContNOTIFYpeINVIn: render;handlin
+Via: SIP/2.0/UDP sip23.exampleom
+Via: SIP/2.0/UDP sip19.example.com
+Via: SIP/2.0/UDP sip18.example.comQQQQQQQQQQ
+Via: SIxample.comGMTa: SIP/2.0/UDP sip11.example.com
+Via: SIÿÿÿÿÿÿÿ0/UDP sip28.example.com
+Via: SIP/2.0/UDPTo:  sip27.example.c>m
+Via: SIP/2.0/UDP sip26.example.com
+Via: SIP/2.0/TLS sip25.example.com
+Via: SIP/2.0/UDPxample.com
+Via: SIP/2.0/UDP sip24.Call-ID: omoReplaces: e@company.com
+From: sip:caller@university.edu
+Call-zID: 0ha0isnd/UDP 135.180.130.133sip:joReplaces: e@company.com
+From: sip:caller@university.edu
+Call-ID: 0ha0isnda377644900765@10.0.0.1
+CSeq: 8 INVITEö©– : SIP/2.0/UDP 135.Allow: 180.130.133
+ContNOTIFYpeINVIn: render;handlin
+Via: SIP/2.0/UDP sip23.example.com
+Via: SIP/2.0/UDP sip22.example.com
+Via: SIP/2.0/UDsPi p21.example.coma: SIP/2.0/UDP sip10.example.com
+Via: SIP/2.0/UDP sip9.example.com
+Via: SIP/2.0/UDP sip8.example.com
+Via: SIP/2.0/UDP sip7.example.com
+Via: SIP/2.0/UDP sip6.example.com
+Via: SIP/2.0/UDP sip5.example.com
+Via: SIP/2.0/UDP sip4.example.m SIP/2.0
+To: "I have a user name of extreme prole.com
+Via: SIP/2.0/U?DP sip29.example.com
+Vfa: SIP/2.0/UDP si: SIP/2.0/UDP sip2P/2.0/UDP sip10.example.com
+Via: SIP/1.0/UDP sip9.example.com
+Via: SIP/2.0/UDP sip8.example.com
+Via: SIP/2.0/UDP Max-Forwards: 70 
+From: 
+sip:caller@university.edu;tag=3324Expires: siSupported: ps:ax-Forwards: 3 
+Call-ID:h: 0
+

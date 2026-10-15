@@ -1,0 +1,8 @@
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP 135.180.130.57;branch=0
+Via: SIP/2.0/UDP 255.255.255.255;branch=0
+Call-ID: 0384840201@10.1.1.1m
+To: sip:user@university.edu;tag 7272939 IN IP4 126.5.4.3
+c=INm=audio 4?2170 RTP/AVP 0 1pt-Language: en
+Allow: any
+Require:31 LPC

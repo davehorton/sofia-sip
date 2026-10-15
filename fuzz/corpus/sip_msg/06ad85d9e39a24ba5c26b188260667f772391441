@@ -1,0 +1,13 @@
+?ACK sip:company.com SIP/2.0
+To: siINVITE sip:user@company.com SIP/20.example.com
+Via: SIP/2.0/UDP sip9.example.com
+Via: SIP/2.0/UDP sip8.example.com
+Via: SIP/2.0/UDP sip7nt-Length: 0
+.example.com
+Via: SIP/2.0/UDP sip6.example.com
+Via: SIP/2.0/UDP sip5.example.com
+Via: SIP/2.0/UDP sip4.example.com
+Via: SIP/2.0/UDP sip3.example.com
+Via: SIP/2.0/UDP sip2.example.com
+Via: SIP/2.0/UDP sip1.example.com
+Via: SIP/2.0/UDP host.example.com;received=135.180.130.133;branch=C1C3344E2710000000E299E568

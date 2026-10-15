@@ -1,0 +1,35 @@
+?REGISTER sip:gar`ge.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5 srl?REGISTER sip:gar`ge.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.sr.ntc.nokia.coab.s	
+																																																	m:5060;maddr=192.168.102.5
+Via: SIP/2.0/TCP 															srlabs.r.ntc.nokia.com:5060;maddr=192.168.102.5 (NTA 1.0)
+Vi™Åß¬
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5 (NTA 1.0)
+Via: SIP/2.0/UDP 192.2.2.1:5060;received=[ffe0::FAB1]
+Route: <sip:gargae.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Routem: sip:digest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿnokia.comREFERl-Id:r.ntc.nokia.com:5060;maddr=192.168.102.5 srl?REGISTER sip:gar`ge.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.sr.ntc.nokia.coab.s	
+																																																	m:5060;maddr=192.168.102.5
+Via: SIP/2.0/TCP 															srlabs.r.ntc.nokia.com:5060;maddr=192.168.102.5 (NTA 1.0)
+Vi™Åß¬
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5 (NTA 1.0)
+Via: SIP/2.0/UDP 192.2.2.1:5060;received=[ffe0::FAB1]
+Route: <sip:gargae.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Routem: sip:digest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ 982773899-reg@172.21.c-01, timP-Asserted-Identity: er
+U
+To: sip:digest@garage.sr.ntc.nokia.com
+Contact: sip:digest@172.21.9.155
+Call-ID: 982773899-reg@172.2n: render;handling=optional
+Content-Length: 31
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxx€
+REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srl?REGISTER sip:gar`ge.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.sr.ntc.nokia.coab.s	
+																																																	m:5060;maddr=192.168.102.5
+Via: SIP/2.0/TCP 															srlabs.r.ntc.nokisr.ntc.nokia.com
+Contact: sip:digest@172.21.9.155
+Call-ID: 982773899-reg@172.2n: render;handling=optional
+Content-Lengtab.sr.nt 1

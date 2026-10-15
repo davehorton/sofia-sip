@@ -1,0 +1,4 @@
+REGISTER sip:company.com SIP/2.0
+To: sip:user@Cal3
+Expires:$Thu, 01 Dec 2040 16:00:00 GMT
+

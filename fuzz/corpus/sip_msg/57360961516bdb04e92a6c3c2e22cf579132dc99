@@ -1,0 +1,62 @@
+?REGISTER sip:garage.sr.ntc.nokia,com SIP/2.0
+Via: SIP/2.0/UDR srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.103.5 (NTA 1.0)	Via: SIP/2.0/UDP rted: sip-cccc-01, timer
+Unsupported: everything
+Error-Info: <htt://pgarage.sr.ntc.nokia.com/figure-1.jpg>
+Warning: 300 garage.sr.ntc.nokia.com IPv6 global addresses not available
+Warning: 330 garage.sr.ntc.nokia.com No IPv6 multicast, 330 garage.sr.ntc.nokia.com Only local IPv4 multicast available
+Authorization: Digest USERNAME="digest", REALM="garage.sr.ntc.nokia.com", NONCE="IjAwMS0wMS0yMSAxNTowODo1OA=="楸首SPONSE="d9d7f1ae99a013cb05f319f0f678251d", URI="om SIP/2.0
+Via: SIP/2.0/UDR srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.103.5 (NTA 1.0)	Via: SIP/2.0/UDP rted: sip-cccc-01, timer
+Unsupportkia.com Only local IPv4 multicast available
+Authorization: Digest USERNAME="digest", REALM="garage.sr.ntc.nokia.com", NONCE="IjAwMS0wMS0yMSAxNTowODo1OA=="楸首SPONSE="d9d7f1ae99a013cb05f319f0f678251d", URI="om SIP/2.0
+Via: SIP/2.0/UDR srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.103.5 (NTA 1.0)	Via: SIP/2.0/UDP rted: sip-cccc-01, timer
+Unsupported: everything
+Error-Info: <htt://pgarage.sr.n2.0
+Via: SIP/2.0/UDP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5 (NTA 1.0)
+Via: SIP/2.0/UDP ed, 04 Apr 2001 1~7:38:38 GMT
+Retry-After: Wed, 04 Apr 2001 39:00:00 GMT (wake-up) ;duration=1800
+Timestamp: 986395257.1392!321 3?REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.sip:iuser@coived=[ffe0:@FAB1]UDP srlab.sip:iuser@coived=[ffe0::FAB1]
+R:ou)	Via: SIP/2.0/Uet <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record192.2.2.1:5060;receiveoxy-Require: kin>ky, things
+Supported: sip-cc, sip-kc-01, timer
+Unsupported: everything
+DP rteErtel:ror-Info: <http://garage.sr.ntc.nd: oked: everything
+Error-Info: <htt://pgarage.sr.n2.0
+Via: SIP/2.0/UDP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Viaal addresses not available
+Warning: 330 garage.sr.ntc.nokia.com No IPv6 multicast, 330 garage.sr.ntc.nokia.com Only local IPv4 multicast available
+Authorization: Digest USERNAME="digest", REALM="garage.sr.ntc.nokia.com", NONCE="IjAwMS0wMS0yMSAxNTowODo1OA=="楸首SPONSE="d9d7f1ae99a013cb05f319f0f678251d", URI="om SIP/2.0
+Via: SIP/2.0/UDR srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.103.5 (NTA 1.0)	Via: SIP/2.0/UDP rted: sip-cccc-01, timer
+Unsupportkia.com Only local IPv4 multicast available
+Authorization: Digest USERNAME="digest", REALM="garage.sr.ntc.nokia.com", NONCE="IjAwMS0wMS0yMSAxNTowODo1OA=="楸首SPONSE="d9d7f1ae99a013cb05f319f0f678251d", URI="om SIP/2.0
+Via: SIP/2.0/UDR srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.103.5 (NTA 1.0)	Via: SIP/2.0/UDP rted: sip-cccc-01, timer
+Unsupported: everything
+Error-Info: <htt://pgarage.sr.n2.0
+Via: SIP/2.0/UDP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5 (NTA 1.0)
+Via: SIP/2.0/UDP ed, 04 Apr 2001 1~7:38:38 GMT
+Retry-After: Wed, 04 Apr 2001 39:00:00 GMT (wake-up) ;duration=1800
+Timestamp: 986395257.1392!321 3?REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.sip:iuser@coived=[ffe0:@FAB1]UDP srlab.sip:iuser@coived=[ffe0::FAB1]
+R:ou)	Via: SIP/2.0/Uet <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record192.2.2.1:5060;receiveoxy-Require: kin>ky, things
+Supported: sip-cc, sip-kc-01, timer
+Unsupported: everything
+DP rteErtel:ror-Info: <http://garage.sr.ntc.nd: oked: everything
+Error-In 04 Apr 2001 39:00:00 GMT (wake-up) ;duration=1800
+Timestamp: 986395257.1392!321 3?REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.sip:iuser@coived=[ffe0:@FAB1]UDP srlab.sip:iuser@coived=[ffe0::FAB1]
+R:ou)	Via: SIP/2.0/Uet <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab0
+Timestamp: 986395257.1392!321 3?REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.sip:iuser@coived=[ffe0:@FAB1]UDP srlab.sip:iuser@coived=[ffe0::FAB1]
+R:ou)	Via: SIP/2.0/Uet <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record192.2.2.1:5060;receiveoxy-Require: kin>ky, things
+Supported: sip-cc, sip-kc-01, timer
+Unsupported: everything
+DP rteErtel:ror-Info: <http://garage.sr.ntc.nd: okia.T)

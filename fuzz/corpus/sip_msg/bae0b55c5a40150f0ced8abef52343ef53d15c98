@@ -1,0 +1,55 @@
+OPTIONS sip:bob@example.com SIP/2.0
+Via: SIP/2.0/UDP 172.21.40.44;branch=z9hG4bKitIIzAialKS
+Via: SIP/2.0/UDP [3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]:5062
+     ;branch=z9hG4bKJv+PsUQdfOb
+     ;received=172.21.40.24
+Record-Route: <sip:bob@example.com;maddr=172.21.40.44>
+Record-Route: <sip:bob@example.com
+     ;maddr=[3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]>
+From: <sip:alice@example.com>;tag=ud6a229947
+To: <sip:bob@example.com>
+Call-ID: f3359e42-5109-11d6-998d-0010a47e1c0f
+CSeq: 1 OPTIONS
+ContactREGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: : <sip:[3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]:5062>
+Content- SIPalKS
+Via: SIP/2.0/UDP [3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]:5062
+     ;branch=z9hG4bKJv+PsUQdfOb
+     ;received=172.21.40.24
+Record-Route: <sip:bob@example.com;maddr=172.21.40.44>
+Record-Route: <sip:bob@example.com
+     ;maddr=[3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]>
+From: <sip:alice@example.com>;tag=ud6a229947
+To: <sip:bob@example.com>
+Call-ID: f3359e42-5109-11d6-998d-0010a47e1c0f
+CSeq: 1 OPTIONS
+ContactREGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: : <sip:[3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]:5062>
+Content-Length: 0
+Accept:
+Allow:SIP/2.0/UDP srlab.sr.ntc.nokia.com:5060;maddr=192.Length: 0
+Accept:
+Allow:SIP/28d-0010a47e1c0f
+CSeq: 1 OPTIONS
+ContactREGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: : <sip:[3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]:5062>
+Content- SIP/2.0
+Via: SIP/2.0/UDP 172.21.40.44;branch=z9hG4bKitIIzAialKS
+Via: SIP/2.060;maddr=srlab.sr.ntc.nokia.com>
+From: sip:digest@garage.sr.ntc.nokRSeq: ia.com
+To: sip:digest@garage.sr.ntc.nokia.com
+Call-Id: 982773
+899-reg@17CANCEL.155e
+sqC: 2 REGISTER
+Contact: sip:digest@172.21.9.155 s
+Expires: 180
+Content-Length: 0
+Accept-Language: en
+Supported: sip-cc, sip-cc-01, timer
+User-Agent: Pingtel/0.8.0 (WinNT)
+Authorization: Digest USERNAME="digest",
+  REALM="garage.sr.ntc.nokia.com", NONCE="MjAwMS0wMS0yMSAxNTowODo1OA==",
+  RESPONSE="d9d7f1ae99a013cb05f319f0f678251d"(
+  URI="sip:garage.sr.ntc.nokia.com"
+Via: SIP/2.0/UDP 172.21.9.155
+

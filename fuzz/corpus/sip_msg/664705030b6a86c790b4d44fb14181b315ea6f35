@@ -1,0 +1,4 @@
+REGISTER sip:compan??????m SIP/4.0
+Via: SIP/2.a0isndaksdj@10.0.2.2  
+Contact: *
+CSeq: 9 REGEvent: Content-Length: 0

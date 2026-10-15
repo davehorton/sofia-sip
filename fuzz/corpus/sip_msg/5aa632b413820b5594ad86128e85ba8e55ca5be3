@@ -1,0 +1,3 @@
+?INVITE sips:.watson@ieee.org/ SIP`/7.0
+Max-Forwards:all-ID: 31416@c.bell-tel.com
+CS:eq    1 INVITE

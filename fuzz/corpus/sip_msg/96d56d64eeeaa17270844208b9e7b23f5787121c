@@ -1,0 +1,35 @@
+INVITE sip:useu@company.com SIP/tag522444
+From: sip:caller@university.edu
+Call-ID: 0ha0i33ndaksdj@10.0.0.1
+;ÿÿÿÿÿÿÿntext=name%40@ift.here.com;use=W%22@gw1.wcom.com;user=pNEWMEhone SIP/2.0
+Via: SIP/2.0
+  ; tag = deadbeef
+From: http://w1Route%3a%20X%50Y%3bZ<si/2.0
+  ; tag = deadbeef
+From: http://w1Route%3a@example.com?Route=%3Csip:MEhone SIP/2.0
+Via: SIP/2.0/UDP iftgw.there.com:5060
+From: sip:+1lr-303-555-1111/UDP ift/sDPgw.there.com:5060
+From: sip:+1-303-555-1111@ift.here.coCSeq: 8 INVITCSeq:-1111@ift.here.coCSeq: 8 INVITCSeq: E
+Vda: SIP/2.0/UDP 135.180.130.133;;,;
+CReason: ÿÿÿÿÿÿ*"EEEEEndaksdj@10.0.0.1
+;ÿÿÿÿÿÿÿntext=name%40@ift.here.com;use=W%22@gw1.wcom.com;user=pNEWMEhone SIP/2.0
+Via: SIP/2.0
+  ; tag = deadbeef
+From: http://w1Route%3a%20X%50Y%3bZ<sD: 0ha0i33ndaksdj@10.0.0.1
+;ÿÿÿÿÿÿÿntext=name%40@ift.here.com;use=W%22@gw1.wcom.com;user=pNEWMEhone SIP/2.0
+Via: SIP/2.0
+  ; tag = deadbeef
+From: http://w1Route%3a%20X%50Y%3bZ<si/2.0
+  ; tag = deadbeef
+From: http://w1Route%3a@example.com?Route=%3Csip:MEhone SIP/2.0
+Via: SIP/2.0/UDP iftgw.there.com:5060
+From: sip:+1lr-303-555-1111/UDP ift/sDPgw.there.com:5060
+From: sip:+1-303-555-1111@ift.here.coCSeq: 8 INVITCSeq:-1111@ift.here.coCSeq: 8 INVITCSeq: E
+Vda: SIP/2.0/UDP 135.180.13i/2.0
+  ; tag = deadbeef
+From: http://w1Route%3a@example.com?Route=%3Csip:MEhone SIP/2.0
+Via: SIP/2.0/UDP iftgw.there.com:5060
+From: sip:+1lr-303-555-1111/UDP iftgw.there.com:5060
+From: sip:+1-303-555-1111@ift.here.coCSeq: 8 INVITCSeq:-1111@ift.here.coCSeq: 8 INVITCSeq: E
+Vda: SIP/2.0/UDP 135.180.130.133;;,;
+CReason: ÿÿÿÿÿÿ*"EEEEEE>; ,<E" "Joe" LPC

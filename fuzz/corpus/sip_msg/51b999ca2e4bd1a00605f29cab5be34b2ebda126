@@ -1,0 +1,12 @@
+INVITE sip:user@company.com SIP/2.0
+To: <sip:j.user@cip:userFrom: sip:caller@university.edu
+Call-ID: 9@10.0.0.1
+CSeq: 1 INVITE
+mer
+Unsupported:1
+a=rtpmaINVITE sip:t.watson@ieee.org SIP/2.0
+Via:     SIP/2.0/UDP c.bell-te.lcom
+From:    A. Bell <sip:a.g.bell@bell-tel.com>
+To:      TI LPCD: 31
+414@c.bell-tel.com
+CSeq:    1 INVITE

@@ -1,0 +1,116 @@
+INVITE sip:user@company.com SIP/2.0
+To: sip:user@company.com
+From: sip:caller@university.edu
+Call]-;maddr=ID: 7@10.0Proxy-Authorization: 
+Via: SKP/2.0/UDP 135n180.130.133
+Expires: Fri, 01 J½an 2010 16:00:00 EST
+Content-:eODo1OA==", RESPONSE="d9d7f1ae99a013cb05f319f0f678251d", URI="sip:garage.sr.ntc.nokia.com"
+Via: SIP/2.0/UDP 172.21.9.155
+MIME-Version: 1.0
+Content-Type: text/plain;charset=US-ASCII
+Content-Encoding: identity
+Content-Disposition: render;handling=optional
+Content-Length: 31
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: e.com
+     ;maddr=[3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]>
+From <sip:alice@e~ample.com>;tag=ud6a29947
+To: <sip:bob@example.com>
+Call-ID: f3359e42-5109-11d6-998d-0010a47e1c0f
+CSeq: 1 OPTIONS
+Contact: <sip:[3ffe:1200:3.org>
+Call-ID: 31416@c.bell-tel.com
+CSeq:    1 INVITE
+INVITE sip:t.wats‘ß[3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]:5062
+     ;branch=z9hG4bKuNCTHs8Lu
+m: <sip:alice@[3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]>
+     ;tag=ud6a29947
+To: <sip:bob@example.com;maddr=[2ffe:1200:3012:c006:206:5bff:fe55:462f]>
+Call-ID: f89fa68e-5109-11d6-0581-0010A48D6A46
+CSeq: 2 INVITE
+Contact: <sip:[3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]:5062>
+Call-Info: <http://[3ffe:1200:>
+     ;purpose=icon;g-parProxy-Authorization: 00:210:Replaces: a4ff:fe8d:6a46]
+Content-Type: applic@example.com;maddr=[3ffe:1200:3012:c006:206:5bff:fe55:462f]>
+Call-ID: f89fa68e-5109-11d6-0581-0010A48D6A46
+CSeq: 2 INVITE
+Contact: <sip:[3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]:5062>
+Call-Info: <http://[3ffe:1200:>
+     ;purpose=icon;g-parProxy-Authorization: 00:210:Replaces: a4ff:fe8d:6a46]
+Content-Type: application6-998d-0010a47e1c0f
+CSeq: 1 OPTIONS
+Contact: <sip:[3ffe:1200:3.org>
+Call-ID: 31416@c.bell-tel.com
+CSeq: :210:a4ff:fe8d:6a46]:5062>
+Call-Info: <http://[3ffe:1200:>
+     ;purpose=icon;g-parProxy-Authorization: 00:210:Replaces: a4ff:fe8d:6a46]
+Content-Type: applic@example.com;maddr=[3ffe:1200:3012:c006:206:5bff:fe55:462f]>
+Call-ID: f89fa68e-5109-11d6-0581-0010A48D6A46
+CSeq: 2 INVITE
+Contact: <sip:[3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]:5062>
+Call-Info: <http://[3ffe:1200:>
+     ;purpo
+Contact: <sip:[3ffe:1200:3.org>
+Call-ID: 31416@c.bell-tel.com
+CSeq:    1 INVITE
+INVITE sip:t.wats‘ß[3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]:5062
+     ;branch=z9hG4bKuNCTHs8Lu
+m: <sip:alice@[3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]>
+     ;tag=ud6a29947
+To: <sip:bob@example.com;maddr=[3ffe:1200:3012:c006:206:5bff:fe55:462f]>
+Call-ID: f89fa68e-5109-11d6-0581-0010A48D6A46
+CSeq: 2 INVITE
+Contact: <sip:[3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]:5062>
+Call-Info: <http://[3ffe:1200:>
+     ;purpose=icon;g-parProxy-Authorization: 00:210:Replaces: a4ff:fe8d:6a46]
+Content-Type: applic@example.com;maddr=[3ffe:1200:3012:c006:206:5bff:fe55:462f]>
+Call-ID: f89fa68e-5109-11d6-0581-0010A48D6A46
+CSeq: 2 INVITE
+Contact: <sip:[3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]:5062>
+Call-Info: <http://[3ffe:1200:>
+     ;purpose=icon;g-parProxy-Authorization: 00:210:Replaces: a4ff:fe8d:6a46]
+Content-Type: application6-998d-0010a47e1c0f
+CSeq: 1 OPTIONS
+Contact: <sip:[3ffe:1200:3.org>
+Call-ID: 31416@c.bell-tel.com
+CSeq: :210:a4ff:fe8d:6a46]:5062>
+Call-Info: <http://[3ffe:1200:>
+     ;purpose=icon;g-parProxy-Authorization: 00:210:Replaces: a4ff:fe8d:6a46]
+Content-Type: applic@example.com;maddr=[3ffe:1200:3012:c006:206:5bff:fe55:462f]>
+Call-ID: f89fa68e-5109-11d6-0581-0010A48D6A46
+CSeq: 2 INVITE
+Contact: <sip:[3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]:5062>
+Call-Info: <http://[3ffe:1200:>
+     ;purpose=icon;g-parProxy-Authorization: 00:210:Replaces: a4ff:fe8d:6a46]
+Content-Type: application6-998d-0010a47e1c0f
+CSeq: 1 OPTIONS
+Contact: <sip:[3ffe:1200:3.org>
+Call-ID: 31416@c.bell-tel.com
+CSeq:    1 INVITE
+INVITE sip:t.wats‘ß[4ffe:1200:3012:c000:210:a4ff:fe8d:6a46]:5062
+     ;branch=z9hG4bKuNCTHs8Lu
+m: <sip:alice@[3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]>
+     ;tag=ud6a29947
+To: <sip:bob@example.com;maddr=[3ffe:1200:3012:c006:206:5bff:fe55:462f]>
+Call-ID: f89fa68e-5109-11d6-0581-0010A48D6A46
+CSeq: 2 INVITE
+Contact: <sip:[3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]:5062>
+Call-Info: <http://[3ffe:1200:>   1 INVITE
+INVITE sip:t.wats‘ß[3ffe:1200:3012:cbob@example.com;maddr=[3ffe:1200:3012:c006:206:5bff:fe55:462f]>
+Call-ID: f89fa68e-5109-11d6-0581-0010A48D6A46
+CSeq: 2 INVITE
+Contact: <sip:[3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]:5062>
+Call-Info: <http://[3ffe:1200:>
+     ;purpose=icon;g-parProxy-Authorization: 00:210:Replaces: a4ff:fe8d:6a46]
+Content-Type: applic@example.com;000:210:a4ff:fe8d:6a46]:5062
+     ;branch=z9hG4bKuNCTHs8Lu
+m: <sip:alice@[3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]>
+     ;tag=ud6a29947
+To: <sip:bob@example.com;maddr=[3ffe:1200:3012:c006:206:5bff:fe55:4EST
+Content-Type: applicat<sip:ion/sdp
+Content-Length: 92170 RTP/AVP 0 12
+m=video 3227 RTP/AVP 31
+a=rtpmap:31 LPC

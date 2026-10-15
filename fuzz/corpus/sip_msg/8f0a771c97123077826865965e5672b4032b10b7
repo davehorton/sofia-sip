@@ -1,0 +1,35 @@
+?INVITE sip:vivekg@chair.dnrc.bell-labs.com SIP/2.0
+  To :
+  sip:vivekg@chair.dnrc.bell-labs0com ;    tag    = 1a1b1f1H33n
+From   : "J Rosenbergddr=srlab.sr.ntc.nokia.com>
+From: sip:digest
+m=video ires: Thu, 01 Dec 1994 16:00:00 GMT
+Content-Type: application/sŸŸŸŸŸ0.88
+m=audio 492170 RTP/AVP 0 12
+m=video 3227 RTP/AVP 31
+a=rtpmap:31 LPC
+INVITE sip:user@comP/AVP 31
+a=rtpmaCall
+t=0 0
+c=IN IP4 135ÿÿÿÿÿÿÿ.180.130.88
+m=audio 492170 RTP3227 RTmaddr=srlab.sr.ntc.nokia.com>
+From: sip:digest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.comCall-ID: 982773899-reg@1õ72.21.9.155:vivekg@chair.dnrc.b©©©©©©©©©©©©©©©©©©©©©©©©©©©©©a: ’IP/2.0/UDP 135.180.130.133
+Expires: Fri, 01 Jan 2010 16:00:00 EST
+Content-Type: application/sdp
+Content-Length: 16	3
+
+v=0
+o=mhandley 29739 7272939 IN IP4 126.5.4.3
+sap:31 LPC
+INVITE sip:user@company.com SIP/2.0
+To: sip:user@company.com©©©©©©©©©©©©©©sjd8
+Cell-lSubscription-State: =aLl-Id
+multipart/mixed; boundary=
+cseq: 8 INVITE
+Via  : SIP   /  2.0/  UDP
+  135.180.130.133
+Event: e: 
+NewFangÃled=192.168.102. 1a1b1f1H33n
+From   : "J Rosenberg \\\"" <5 (NTA 1.0)
+Via: sS

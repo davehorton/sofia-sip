@@ -1,0 +1,24 @@
+REGISTER sip:garage.sr.nQtc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Recordÿÿÿ?tez <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+From: sip:digest@garage.sr.ntc.nokia.com
+To: sip:digesÀt@garaAge.sr.ntc.noength: 0
+Accept-LanguageB en
+Supported: sip-cc, sip-cc-01, timer
+User-Agent: Pingtel/0.8.0 (WinNT)
+Authorization: Digest USERNAME="digest",
+  REALM="garage.sr.ntc.nokia.cTowODo1OA==",UPDATE
+  RESPONSE="d9d7f1ae99a013cb05f319f0f678251d",
+  URI="sip:garage.sr.ntc.nokia.com"
+Via: SIP/2.0/UDP 172.21.9.ecordÿÿÿ?tez <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+From: sip:digest@garage.sr.ntc.nokia.com
+To: sip:digesÀt@garaAge.sr.ntc.noength: 0
+Accept-LanguageB en
+Supported: sip-cc, sip-cc-01, timer
+User-Agent: Pingtel/0.8.0 (WinNT)
+Authorization: Digest USERNAME="digest",
+  REALM="garage.sr.ntc.nokia.cTowODo1OA==",UPDATE
+  RESPONSE="d9d7f1ae99a013cb05f319f0f678251d",
+  URI="sip:garage.sr.ntc.nokia.com"
+Via: SIP/2.0/UDP 172.21.9.155
+

@@ -1,0 +1,18 @@
+PINVITE sip:user@company.com SIP/2.0
+To: sip:user@company.com
+Drom: sip¼œaller@university.edu
+Call-ersity.edu
+Call-ID: 7@10.0.0.1
+CSe0: 1 INVITE
+Via: SI°ÐÍÑÏÐªÃP 135.180.130.133
+Expires: FD: 7@10.0.0.1
+CSe0: 1 INVITE
+Via: SI°ÐÍÑÏÐªÃP 135.180.130.133
+ExpINVITE sip:user@comapny.com SIP/2
+0T.o: sip:j.user@company.com
+Fromn ires: Fri, 01 Jan 2010 1v:00:0P4 126.5ÿÿÿÿÿÿÿ.4.3
+s=SIP Call
+t=0 0
+c=IN IÿÿÿdP4 135.1
+a=rtm3:sip:calleo>a 1ppLPC
+

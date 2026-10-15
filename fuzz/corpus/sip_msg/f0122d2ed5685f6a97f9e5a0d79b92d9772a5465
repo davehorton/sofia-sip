@@ -1,0 +1,17 @@
+INVITE sip:+1-972-555-2222;ÿÿÿÿÿÿÿntext=name%40@ift.here.com;use=W%22@gw1.wcom.com;user=pNEWMEhone SIP/2.0
+Via: SIP/2.0
+  ; tag = deadbeef
+From: http://w1Route%3a%20X%50Y%3bZ<sip:John_Smith@tct.hut.fi:5066;user=ip;maddr=131.228.16.2>
+  ; tag = deadbeef
+From: http://w2Route%3a%20X: <sip:user@example.com?Route=%3Csip:MEhone SIP/2.0
+Via: SIP/2.0/UDP iftgw.there.com:5060
+From: sip:+1-303-555-1111/UDP iftgw.there.com:5060
+From: sip:+1-303-555-1111@ift.here.com;user=phone
+To: sip:+1-650-555-2222@%ss1.wcom.com;usœÂ—‘š
+Call-0
+a=T38FaxFillBitRemoval:0
+a=T38FaxTranscodingMMR:0
+a=T38FaxTranscodingJBIG:0
+a=T38FaxRateManagement:transferredTCF
+a=T38FaxMaxBuffer:260
+a=T38FaxU«dpEC:t38UDPRedundancy

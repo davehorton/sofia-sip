@@ -1,0 +1,140 @@
+NEWMETHOD sip:user@comapny.com SIP/2.0
+To: sip:j.user@company.com
+From: sip:caller@university.edu
+Call-ID: 0ha0isndaksdj@10.0.0.1
+CSeq: ivekg@chair.dnrc.bell-labs.com ;    tag    = 2a1b1f1H33n
+From   : "J Rosenberg \\\"" <sip:jdrosen@lucent.com>
+  ;
+ tag = 98asjd8
+CaLl-Id
+ : 0ha0isndaksdj@10.1.1.1
+csl-Id
+ : 0ha0isndaksdj@10.1.1.1
+cseq: 8 INVITE.0
+  To :
+  sip:vivekg@chair.dnrc.bell-labs.com ;    tag    = 1a1b1f1H33n
+From   : "J Rosenbebg \\\""
+ <sip:jdrosen@lucent.com>
+  ;
+ tag =5060;maddr=srlab.sr.ntc.noki}}}}}}}}}}}}}}}}}}}}}}}}}}} 98asjd8
+CaLl-Id
+ : 0ha0isndaksdj@10.1.1.1
+cseq: 8 INVSubscription-State:  ÿÿÿÿ2.0/  UDP
+  135.180.130.133
+Subject :
+NewangFledHeader:   newfangled val
+  135.180.130.133
+Subject :
+NewFangledHeader:   newfan"led value
+ more new
+Via  : SIP   /  2.0/  UDP
+  13
+Subject :
+NewFangledHpplicati/      (((nested comments) and (more)))   ,
+ tel:444g \"\"" <sip8 NEWMETHOD
+Via: SIP/2.0/UDP 135.180.130.133
+Content-Type: application/sd 135.180.130.88
+m=audio 492170 RTP/AVP 0 12
+m=video 3227 RTP/AVP 31
+a=rt 0hÿREGISTER sip:garage.sr.ntc.nokia.com SIP/2. 0ha0isndaksdj@10.1.1.1
+cseq: 8 INVITE.0
+  To :
+  sip:vivekg@chair.dnrc.bell-labs.com ;    tag    = 1a1b1f1H33n
+From   : "J Rosenbebg \\\""
+ <sip:jdrosen@lucent.com>
+  ;
+ tag = 98asjd8
+CaLl-Id
+ : 0ha0isndaksdj@10.1.1.1
+cseq: 8Contact:  INVITE
+Via  : SIP   /  2.0/  UDP
+  135.180.130.133
+Subject :
+NewangFledHeader:   newfangled val
+  135.180.130.133
+Subject :
+NewFangledHeader:   newfan"led value
+ more new
+Via  : SIP   /  2.0/  UDP
+  13
+Subjeq: 8 INVITE.0
+  To :
+  sip:vivekg@chair.dnrc.bell-labs.com ;    tag    = 1a1b1f1H33n
+From   : "J Rosenbebg \\\""
+ <sip:jdrosen@lucent.com>
+  ;
+ tag =5060;maddr=srlab.sr.ntc.noki}}}}}}}}}}}}}}}}}}}}}}}}}}} 98asjd8
+CaLl-Id
+ : 0ha0isndaksdj@10.1.1.1
+cseq: 8 INVSubscription-State:  ÿÿÿÿ2.0/  UDP
+  135.180.130.133
+Subject :
+NewangFledHeader:   newfangled val
+  135.180.130.133
+Subject :
+NewFangledHeader:   newfan"led value
+ more new
+Via  : SIP   /  2.0/  UDP
+  13
+Subject :
+NewFangledHpplicati/      (((nested comments) and (more)))   ,
+ tel:444g \"\"" <sip8 NEWMETHOD
+Via: SIP/2.0/UDP 135.180.130.133
+Content-Type: application/sd 135.180.130.88
+m=audio 492170 RTP/AVP 0 12
+m=video 3227 RTP/AVP 31
+a=rt 0hÿREGISTER sip:garage.sr.ntc.nokia.com SIP/2. 0ha0isndaksdj@10.1.1.1
+cseq: 8 INVITE.0
+  To :
+  sip:vivekg@chair.dnrc.bell-labs.com ;    tag    = 1a1b1f1H33n
+From   : "J Rosenbebg \\\""
+ <sip:jdrosen@lucent.com>
+  ;
+ tag = 98asjd8
+CaLl-Id
+ : 0ha0isndaksdj@10.1.1.1
+cseq: 8Contact:  INVITE
+Via  : SIP   /  2.0/  UDP
+  135.180.130.133
+Subject :
+NewangFledHeader:   newfangled val
+  135.180.130.133
+Subject :
+NewFangledHeader:   newfan"led value
+ more new
+Via  : SIP   /  2.0/  UDP
+  13
+Subject :060;maddr=srlab.sr.ntc.noki}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}a.coVia: SIP/2.0/WSS d-Roosenberg \\\"" <sip:jdrosen@lucent.com>
+  ;
+ tag = 98asjd8
+CaLl-Id
+ : 0ha0isndaksdj@10.1.1.1
+cseq: 8 INVITE.0
+  To :
+  sip:vivekg@chair.dnrc.bell-labs.com ;    tag    = 1a1b1f1H33n
+From   : "J Rosenbebg \\\""
+ <sip:jdrosen@lucenUPDATE
+  ;
+ tag = 98asjd8
+CaLl-Id
+ : 0ha0isndaksdj@10.1.1.1
+cseq: 8 INVITE
+Via  : SIP   /  2.0/  UDP
+  135.180.130.133
+Subject :
+NewangFledHeader:   newfangled val
+  135.180.130.133
+Subject :
+NewFangledHeader:   newfan"led value
+ more new
+Via  : SIP   /  2.0/  UDP
+  13
+Subject :
+NewFangledHpplicati/      (((nested comments) and (more)))   ,
+ tel:444g \"\"" <sip:jdrosen@bell-labs.com> ; newparam = newvalue ;
+  secSet-Language: en
+Allow: any
+
+Require: all
+Proxy-®šŽŒire: kinky, things
+S

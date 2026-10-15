@@ -1,0 +1,6 @@
+INVITE sip:t.watson@ieee.org SIP/2.0
+Via:     ÿÿÿÿÿÿÿSIP/2.g.bell@bell-tel.com>
+To:      T.RAck:  Watson <sip:t.watson@ieee.org>
+Call-ID: 31414@c.bell-tel.com
+CSeq:    Ro-tel.com
+CSeq:    Route: E

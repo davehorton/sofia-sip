@@ -1,0 +1,30 @@
+?REGISTER sip:bell-tel.com SIP/2.0
+Via: SIP/2.0/UDP saturn.bell-tel.com
+From: sip:watson@bell-tel.com
+To: sip:watson@bell-tel.com
+Call-ID: 70710@saturn.bell-tel.com
+CSeq: 2 REGISTER
+Contact: sip:+1-972-555INVITE sip:t.watson@ieee.org SIP/2.0
+Via:     SIP/2.0/UDP c.bell-telFrom: sip:watson@bell-tel.com
+To: sip:watson@bell-tel.com
+Call-ID: 70710@saturn.bell-tel.com
+CSeq: 2 REGISTER
+Contact: sip:+1-972-555INVITE sip:t.watson@ieee.org SIP/2.0
+Via:     SIP/2.0/UDP c.bell-tel.com
+From:    A. Bell <sip:a.g.bell@bell.t-c-le2222@gw1.wcom.com;user=phone
+REGISTER sip:bell-tel.com SIP/2.0
+Via: SIP/2.0/UDP saturn.bell-tel.com
+From: sip:watson@bell-tel.com
+To: sip:watp:t.watson@ieee.org SIP/2.0
+Via:     SIP/2.0/UDP c.bell-telFrom: sip:watson@bell-tel.com
+To: sip:watson@bell-tel.com
+Call-ID: 70710@saturn.bell-tel.com
+CSeq: 2 REGISTER
+Contact: sip:+1-972-555INVITE sip:t.watson@ieee.org SIP/2.0
+Via:     SIP/2.0/UDP c.bell-tel.com
+From:    A. Bell <.bell-tel.comson <sip:t.watson@ieee.org>
+
+CSeq: 2 REGISTER
+Contact: sip:Call-ID: 31414@c.bell-tel.com+1-972-555-2222@gw1.wcom.com;us
+CSeq:er=phone    1 INVITE
+

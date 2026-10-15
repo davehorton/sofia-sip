@@ -1,0 +1,83 @@
+ÿREGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5 (NTA 1.0)
+Via: SIP/2.0/UP  192.2.2.1:5060;rec'eivedOPTIONS sip:user@company.com SIP/2.0
+To: sip:user@company.com
+From: "cal=[ffe0::FAB1]
+Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Route:ler" srlab.sr.ntc.noki: SIP/2.0/UDP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5 (NTA 1.0)
+Via: SIP/2.0/UP  192.2.2.1:5060;rec'eivedOPTIONS sip:user@company.com SIP/2.0
+To: sip:user@company.com
+From: "cal=[ffe0::FAB1]
+Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Route:ler" srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5 (N)TA 1.0)
+Via: SIP/2.0/UDP 192.2.2.1:5060;receivedOPTIONS sip:user@company.com SIP/2.0
+To: sip:user@company.com
+From: "cal=[ffe0::FAB1]
+Route: <sip:garag=[ffe0::FAB1]
+Subscription-State: Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=sr~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~lab.sr.ntc.nokia.com>;foo=bar
+Record-Route:ler" srlab.sr.ntc.nokia.com:5060;maddr=192.ÿB1]
+Route: <sip:garag=[ffe0::FAB1]
+Subscription-State: Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=sr~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~lab.sr.ntc.nokia.com>;foo=bar
+Record-Route:ler" srlab.sr.ntc.nokia.com:5060;maddr=192.ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.13899-reg@172.21.9.155
+CSeq: 2 REGISTER
+Sub02.5 (N)TA 1.0)
+Via: SIP/2.0/UDP 192.2.2.1:5060;receivedOPTIONS sip:user@company.com SIP/2.0
+To: sip:user@company.com
+From: "cal=[ffe0::FAB1]
+Route: <sip:garag=[ffe0::FAB1]
+Subscription-State: Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=sr~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~lab.sr.ntc.nokia.com>;foo=bar
+Record-Route:ler" srlab.sr.ntc.nokia.com:5060;maddr=192.ÿB1]
+Route: <sip:garag=[ffe0::FAB1]
+Subscription-State: Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=sr~~~~~~~~~~~~~~~~~~~~~~~55
+CSeq: 2   <sip:caller@example.com>
+Call-ID: 1234abcd@10.0. <sip:r.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+Hide0.1
+CSeq: 2 OPTIONS
+Via: SIP/2.0/UDP 13=5.: route180.130.1
+Max-Forwards: 15
+From: }ip:digest@garage.sr.nt99-reg@172.21.9.155
+CSe
+Max-Forwards: 15
+From: sip:digest@garage.sr.ntc.nokia.com
+To: sip:digest@gara.com:5060;maddr=192.168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5 (N)TA 1.0)
+Via: SIP/2.0/UDP 192.2.2.1:5060;receivedOPTIONS sip:user@company.com SIP/2.0
+To: sip:user@company.com
+From: "cal=[ffe0::FAB1]
+Route: <sip:garag=[ffe0::FAB1]
+Subscription-State: Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=sr~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~lab.sr.ntc.nokia.com>;foo=bar
+Record-Route:ler" srlab.sr.ntc.nokia.com:5060;maddr=192.ÿB1]
+Route: <sip:garag=[ffe0::FAB1]
+Subscription-State: Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=sr~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~lab.sr.ntc.nokia.com>;foo=bar
+Record-Route:ler" srlab.sr.ntc.nokia.com:5060;maddr=192.ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.13899-reg@172.21.9.155
+CSeq: 2 REGISTER
+Sub02.5 (N)TA 1.0)
+Via: SIP/2.0/UDP 192.2.2.1:5060;receivedOPTIONS sip:user@company.com SIP/2.0
+To: sip:user@company.com
+From: "cal=[ffe0::FAB1]
+Route: <sip:garag=[ffe0::FAB1]
+Subscription-State: Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=sr~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~lab.sr.ntc.nokia.com>;foo=bar
+Record-Route:ler" srlab.sr.ntc.nokia.com:5060;maddr=192.ÿB1]
+Route: <sip:garag=[ffe0::FAB1]
+Subscription-State: Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=sr~~~~~~~~~~~~~~~~~~~~~~~55
+CSeq: 2   <sip:caller@example.com>
+Call-ID: 1234abcd@10.0. <sip:r.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+Hide0.1
+CSeq: 2 OPTIONS
+Via: SIP/2.0/UDP 13=5.: route180.130.1
+Max-Forwards: 15
+From: }ip:digest@garage.sr.nt99-reg@172.21.9.155
+CSe
+Max-Forwards: 15
+From: sip:digest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.com
+Contact: sip:digest@172.21.9.155
+Call-ID: 982773899-reg@172.21.9.155
+CSeq: 2 REGISTER
+Subject: Barfoo
+Pri

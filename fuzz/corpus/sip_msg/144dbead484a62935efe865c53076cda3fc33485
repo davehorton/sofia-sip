@@ -1,0 +1,5 @@
+INFOTE sip:user@company.com SIP/2.0
+To: sip:j_user@company.comFr:om
+0.1
+Accept: text/newform29390 RTP/AVP 0 12
+m=video 3227 RTP/AVP sitpmap:31 LPC

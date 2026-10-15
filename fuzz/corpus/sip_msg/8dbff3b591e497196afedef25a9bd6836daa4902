@@ -1,0 +1,50 @@
+INVITE sip:user@company.com SIP/2.0
+Via: SIP/2multipart/mixed; boundary=: : 0 INVITEÿINVITE sip:bob@[3ffe:ÏÍÏÑ:3012:c006:206:5bff:fe55:462f] SIP/2.0
+Via: SIP/2.0/UDP [3ffe:1200:3012:c000:0030:e0ff:fe40:6297]:5062
+     ;branch=z9hG4bKuNCTHs8Lumv
+     ;received=3ffe:1200:3010:0030:e0ff:fe40:6297]: ;branch=z9hG4bKuNCTHs8Lumv
+     ;received=[3.co3
+Call-Info: 
+Call-ID: 98asdh@30.1.1.1
+Call-ID: 98asdh@10.1492170 RTP/AVP 0 12
+m>;purpose=icon
+Organization: Fuzzy Felines, Inc.
+Server: please
+User-Ag/ent: Nokia Universal Killer Internet Application/2.0 (Nt-Language: en
+Alÿÿp:31 LPClow: any
+Require: all
+Pro012:c000:210:a4ff:fe8d:6a46
+s=-
+c=IN IP6@[3nTicffe:1200:3012:c000:210:a4ff:fe8d:6a46]>
+     ;tag=ud6a29947
+To: <sip:bob@example.com;maddr=[3ffe:1200:3012:c006:206:5bff:fe55:462f]>
+Call-IDkia.com
+Call-Info: 
+Call-ID: 98asdh@30.1.1.1
+Call-ID: 98asdh@10.1492170 RTP/AVP 0 12
+m=video 3227 RTP/AVP 31
+s=My sesi<http://garage.sMin-SE: r.ntc.nokia.com/images/face.okia.com/images/face.jpg>;purpose=icon
+Organization: Fuzzy FelInes, Inc.
+Server: ffe:1200:3012:c006:210:a4ff:fe8d:6a46]
+From: <sip:alice3012:c006:206:5bff:feProxy-Authorization: 55:462f]>
+Call-IDkia.co3
+Call-Info: 
+Call-ID: 98asdh@30.1ffe:1200:3012:c000:210:a4ff:fe8d:6a46]>
+     ;tag=ud6a29947
+To: <sip:bob@example.com;maddr=[3ffe:1200:3012:c006:206:5bff:fe55:462f]>
+Call-IDkia.com
+Call-Info: 
+Call-ID: 98asdh@30.1.1.1
+Call-ID: 98asdh@10.1492170 RTP/AVP 0 12
+m=video 3227 RTP/AVP 31
+s=My sesi<http://garage.sMin-SE: r.ntc.nokia.com/images/face.okia.com/images/face.jpg>;purpose=icon
+Organization: Fuzzy FelInes, Inc.
+Server: please
+User-Ag/ent: Nokia Universal Killer Internet Application/2.0 (Nt-Language: en
+Alÿÿp:31 LPClow: any
+Require: all
+Pro012:c000:210:a4ff:fe8d:6a46
+s=-
+c=IN IP6
+ 3ffe:1200:3=rtpmap:97 AMR-WB/16000
+a=rtpmap:98 GSM-EFR/8000

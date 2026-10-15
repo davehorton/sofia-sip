@@ -1,0 +1,159 @@
+?REGISTER sip:company.com SIP/2.0
+W-Authenticab.sr.ne: Digest realm="garage.sr.ntc.nokia.com", 
+@10.0.0.1
+CSeq: 1 REGISTER
+Via: SIP/2.0/UDP 135.180lication/sdp
+v:  SIP  / 1.0  / TCP     12.3.4.5  
+  ;
+ ttl = 98asjd8
+CaLl-Id
+ : 0ha0isndaksdj@10.1.1.1
+cseq: 8 INVITE
+Via  : SIP   /  1.0/  UDP
+  1315.80.130.133
+Subject :
+NewFangledHeader:   newfangled value
+ more newfang:ed value
+Content-Type: application/sdp
+v:  SIP  / 3.0  / TCP     12.3.4.5   ;
+  §ranch  =   9iest realm="garage.sr.ntc.nokia.com", 
+@10.0.0.1
+CSeq: 1 REGISOPTIONS
+Via: SIP/2.0/UDP 135.180272939 IN IP4 126.5.1.3
+c=IN ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ272939 IN IP4 126.5.1.3
+c=IN ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿIP4 135.180.130.88
+m=audio 492170 RTP/.com SIP/2.0
+To: sip:user@company.com
+From: sip:user@company.com
+Contact: sip:user@host.company.com
+Call-ID: k345asrl3fdbv@10.0.0.1
+CSeq: 1 REGISTER
+V  nonce="MjAwMS0wMS0yMSAxNType: application/sdpEV siIpT:vivekg@chair.dnrc.bell-labs.com SIP/2.0
+  T>
+  ;
+ tag = 98asjd8
+CaLl-Id
+ : 5ha0isndaksd133
+Subject :
+NewFangledHeader:   newfanglcd value
+ more newfangled value
+Content-Type: application/sdp
+v:  SIP  / 1.0  / TCP     12.3.4.5  
+  ;
+ ttl = 98asjd8
+CaLl-Id
+ : 0ha0isndaksdj@10.1.1.1
+cseq: 8 INVITE
+Via  : SIP   /  1.0/  UDP
+  1315.80.130.133
+Subject :
+NewFangledHeader:   newfSUBSCRIBEangled value
+ more newfang:ed value
+Content-Type: application/sdp
+v:  SIP  / 3.0  / TCP     12.3.4.5   ;
+  §ranch  =   9iest realm="garage.sr.ntc.nokia.com", 
+@10.0.0.1
+CSeq: 1 REGISOPTIONS
+Via: SIP/2.0/UDP 135.180272939 IN IP4 126.5.1.3
+c=IN ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿIP4 135.180.130.88
+m=audio 492170 RTP/.com SIP/2.0
+To: sip:user@company.com
+From: sip:user@company.com
+Contact: sipSupported: :us?er
+ more newfang:ed value
+Content-Type: application/sdp
+v:
+CSeq: 1 REGISTER
+V  nonce=80272939 IN IP4 126.5.1.3
+c=IN ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ272939 IN IP4 126.5.1.3
+c=IN ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿIP4 135.180.130.88
+m=audio 492170 RTP/.com SIP/2.0
+To: sip:user@company.com
+From: sip:user@company.com
+Contact: sip:user@host.company.com
+Call-ID: k345asrl3fdbv@10.0.0.1
+CSeq: 1 REGISTER
+V  nonce="MjAwMS0wMS0yMSAxNType: application/sdpEV siIpT:vivekg@chair.dnrc.bell-labs.com SIP/2.0
+  T>
+  ;
+ tag = 98asjd8
+CaLl-Id
+ : 5ha0isndaksd133
+Subject :
+NewFangledHeader:   newfanglcd value
+ more newfangled value
+Content-Type: application/sdp
+v:  SIP  / 1.0  / TCP     12.3.4.5  
+  ;
+ ttl = 98asjd8
+CaLl-Id
+ : 0ha0isndaksdj@10.1.1.1
+cseq: 8 INVITE
+Via  : SIP   /  1.0/  UDP
+  1315.80.130.133
+Subject :
+NewFangledHeader:   newfSUBSCRIBEangled value
+ more newfang:ed value
+Content-Type: application/sdp
+v:  SIP  / 3.0  / TCP     12.3.4.5   ;
+  §ranch  =   9iest realm="garage.sr.ntc.nokia.com", 
+@10.0.0.1
+CSeq: 1 REGISOPTIONS
+Via: SIP/2.0/UDP 135.180272939 IN IP4 126.5.1.3
+c=IN ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿIP4 135.180.130.88
+m=audio 492170 RTP/.com SIP/2.0
+TBBBBo: sip:user@company.com
+From: sip:user@company.com
+Contact: sipSupported: :us?er
+ more newfang:ed value
+Content-Type: application/sdp
+v:
+CSeq: 1 REGISTER
+V  nonce="MjAwMS0wMS0yMSAxNTowODo1OA==", algiorthm=MD5, qop="auth"
+Content-Length: 0
+
+SIP/2.0 401 Unauthorized
+Via: SIP/2.0/UDP srlab.sr.ntc.nokia.com:TER
+WWW-Authenticate: Digest.com:5060;maddr=192.168.1Authorization: Digest IP/2.0/UD"MjAwMS0wMS0yMSAxNTowODo1OA==", algiorthm=MD5, qop="auth"
+Content-Length: 0
+
+SIP/2.0 401 Unauthorized
+Via: SIP/2.0/UDP srlab.sr.ntc.nokia.com:TER
+WWW-Authenticate: Digest.com:5060;maddr=192.168.1Authorization: Digest IP/2.0/UDP 192.2.2.1:5060;received=[ffe0::FAB1]
+Route: <sip:garage.srReason: ia.com:5060;maddr=srlab.sr.ntc.nokiestify@garage.sr.ntc.nokia.com
+Call-Info: <http://garage.sr.ntc.nokia.com/images/face.jpg>;purpose=icon
+Organization: Fuzzy Felines, Inc.
+Server: please
+Urer-Agent: Nokia Universal Killer Internet Application/2.0 (NUUKIA)
+In-Reply-To: 982773898-reg@172.21.9.155
+Accept: text/plainmaddr=192.168.102.5 (NTA 1.0)
+Via: SIP/2.0/UDP 192.2.2.1:5060;received=[ffe0::FAB1]
+Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia>fmc.o;oo=bar
+Record-Route: <sip:gÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ realmsdpEV siIpT:vivekg@chair.dnrc.bell-labs.com SIP/2.0
+  T>
+  ;
+ tag = 98asjd8
+CaLl-Id
+ : 5ha0isndaksd133
+Subject :
+NewFangledHeader:   newfanglcd value
+ more newfangled value
+Content-Type: application/sdp
+v:  SIP  / 1.0  / TCP     12.3.4.5  
+  ;
+ ttl = 98asjd8
+CaLl-Id
+ : 0ha0isndaksdj@10.1.1.1
+cseq: 8 INVITE
+Via  : SIP   /  1.0/  UDP
+  1315.80.130.133
+Subject :
+NewFangledHeader:   newfSUBSCRIBEangled value
+ more newfang:ed value
+Conte="garage.sr.ntc.nokia.com", 
+  nonce="MjAwMS0wMS0yMSAxNTowODo1OA==", al—
+Contact: sip:userorithm=MD5, qte: Digest realm="garage.sr.ntc.nokia.com", 
+@10.0.0.1
+CSeq: 1 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Contact: s=MD5, qop="@exámple.com?au

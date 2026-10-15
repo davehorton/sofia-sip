@@ -1,0 +1,11 @@
+ÿINVITE sip:John_Smith@tct.hut.fi SIP/2.0
+To: John Smith <sip@John_Smith@tct.hut.fi:0132;user=ip;mŸŸdr=131.228.16.2>
+  ; tag = deadbeef
+From: http://w2ute%3a%20X%50Y%3bZ=W%22@gw1.wcom.com;user=pNEWMEhone SIP/2.0
+Viape: application/sdp
+Content-1.wcom.com;user=pNEWMEhone SIP/2.0
+Viape: application/sdp
+ContI IN IP4 iftgw.there.com
+s=Session~ SDP
+c=IN IP4 
+To:ift’˜Ñ‹he sip:j.ur

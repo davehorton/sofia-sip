@@ -1,0 +1,31 @@
+REFERREGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP sarage.sr.tncoi.kan.com:5060;maddrs=rlab.sr.ntc.nokæææææææææææææææææææææææææææææææææææææææææææææææææææææææææææææææææææææææææææææææææææææææææææææææææææææææææææææææææææææia.comÅÎÎÎ1111111111111111111111111111111111111111[::1]111111111111111111111111111111111111111
+From:Min-SE: est@ITE sip:t.watsoj@ieee.org SIP/2.0
+sip:user@host.company.comExpires: Thumpany.com
+From: sip:user@compaREGISTER sip:company.com SIP/2.0
+act: sip:user@host.company.com
+Call-ID: 0hf0isndaksdj@10.0.01CS
+.eq: 8 REGISTER
+Via: SIP/2.0/UDP 1ny.com
+Contact: sip:user@host.company.cAcceuser@cocom
+From: siService-Routey.com
+Contact: sip:user@hos35.180.130.133
+Expires: Thumpptll-ID:@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+Call-ID: 0ha0isndaksdj@10.0.0.1
+CSeq: 8 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Expires: Thumpany.com
+From: sip:user@company.com
+Contact: sip:user@host.company.cAcceuser@cocom
+From: sip:user@company.call-ID: 0ha0isndaksdj@10.0.2.2  
+Contact: *
+CSeq: 9 REGISTER
+ConteINVITE sip:t.watsoj@ieee.org SIP/2.0
+sip:user@host.company.comExpires: Thumpany.com
+From: sip:user@company.com
+Contact: si11111111111111111111[::1]111111111111111111111111111111111111111
+From:Min-SE: est@ITE sip:t.watsoj@ieee.org SIP/2.0
+sip:user@host.company.comExpires: Thumpany.com
+From: sip:user@compaREGISTER sip:company.com SIP/2.0
+act: sip:user@host.company.com
+Call-ID: 0hf0isndaksdj@1p:user@host.company.cAcceuser@coc

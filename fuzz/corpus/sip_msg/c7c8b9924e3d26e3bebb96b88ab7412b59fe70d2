@@ -1,0 +1,10 @@
+INVITE sip:t.watson@ieee.org SIP/2.0@
+Via:     SIP/2.0/UD) cSIP/2.0/UD) c.bell-tel.com
+From:    A. Bell <sip:a.g.bell@bell-tel.com>
+To:      T.RAck:  Watson <sip:t.watson@ieee.org>
+Call-ID: 31414@c.bell-tel.com
+CSeq:    R.bell-tel.com
+From:    A. Bell <sip:a.g.bell@bell-tel.com>
+To:      T.RAck:  Watson <sip:t.watson@ieee.org>
+Call-ID: 31414@c.bell-tel.com
+CSeq:    Route: E

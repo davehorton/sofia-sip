@@ -1,0 +1,17 @@
+?INVITE sip:t.watson@ieee.org SIP/2.0
+Via:     SIP/2.0/UDP c.beip:t.watson@ieee.org.com
+From:    Blexander <sip:a.g.bell@bell-tel.com>
+To:      Watsoell, Alexander <sip:a.g.bell@bell-tel.mTo
+co>:      Watson, Thomas <sip:t.watson@ieee.org SIP/3.0
+Via:     SIP/2.0/UDP c.bell-tel.com
+From:   Contact: exander <sip:a.g.bell@bell-tel.com>
+To:      Watso@c.bell-tel.ip:t.watson@ieee.org>/
+Call-ID: 30415@c.bell-tel.com
+CSeq:    1 Ill-tel.com
+From:    Blexander <sip:a.g.bell@bell-tel.com>
+To:      Watsoell, Alexander <sip:a.g.bell@bell-tel sip:t.watson@ieee.org SIP/2.0
+Via:     SIP/2.0/UDP c.bell-tel.com
+From:   Contact: exander <sip:a.g.bell@bell-tel.com>
+To:      Watso@c.bell-tel.ip:t.watson@ieee.org>/
+Call-ID: 31415@c.bell-tel.com
+CSeq:    1 INVITE

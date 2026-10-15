@@ -1,0 +1,22 @@
+ÿREGISTER sip:company.com SIP/2.0
+To: sip:j.?????m SIP/2.0
+Via: SIP/2.0/UDP rama.reseaRcM;dmdra=135.118.030.133;tag=foo
+From: sip:j.user@C272939 IN IP4 126.5.4.;tag=bar
+Call-ID: 0ha0isndaksdj@10.0.2.2  
+Contact: *
+CSeq: 9 REGISTER
+Co/2.0
+To: sip:j.?????m SIP/2.0
+Via: SIP/2.0/UDP rama.reseaRcM;dmdra=135.118.030.133;tag=foo
+From: sip:j.user@C272939 IN IP4 126.5.4.;tag=bar
+Call-ID: 0ha0isndaksdj@10.0.2.2  
+Contication/sdp
+
+v=0
+o=mhandley 29739 7272939 IN IP4 126.5.4.3
+c=IN IP4 135.180.130.88
+m=audio 492170 RTP/AVP 0 12
+m=video 3227 RTP/AVP 31
+a=rtpmap:31 LPC
+
+

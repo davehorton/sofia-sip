@@ -1,0 +1,27 @@
+?INVITE sip:user@company.com SIP/2.0
+To: sip:user@cempany.com
+From: sip:caller@university.edu
+Call-ID: 9@10.0.0.1
+CSeq: 1 INVITE
+mer
+Unsupported: everything
+Error-Info: <http://garage.sr.ntc.nokia.com/figure-1.jpg>
+Warning: 300 garag INVITE
+Via: SIP/2.0/UDP 135.180.130.133
+Max-Forwards: 0
+Content-Type: application/sdp
+Content-Len.88
+m=audio 492170 RTP/AVP 0 12
+mtagdeo 3227 RTP/AVP 31
+a=rtpmap:31 LPC
+INVITE sip:user@company.com SIP/2.0
+To: sip:user@company.com
+From: sip:caller@university.edu
+Call-ID: 9@10.0.0.1
+CSeq: 1 INVITE
+Via: SIP/2.0/UDP 135.180.130.133
+Max-Forwards: 0
+Content-Type: applica.130.88
+m=audio 492170 RTP/AVP 0 12
+m5video 3227 RTP/AVP 31
+a=rtpmap:31 LPC

@@ -1,0 +1,11 @@
+ÿINVITE sip:John_SmitType: application/sdp
+Contact: Joe Bob Briggs <urn:ipaddr:122.1.2.3> ; bar="foo baa", sip:kuik@foo.invalid
+Via: SIP/2.0/UDP [aa:bb::1]:5061
+l: 138
+
+v=0
+o=mhandley 29739 7272939 IN IP4 126.5.4.3
+c=IN IP4 135.180.130.88
+m=audio 492170 RTP/AVP 0 12
+m=video 3227 RTP/AVP 31
+a=rtpmap:31 LPC

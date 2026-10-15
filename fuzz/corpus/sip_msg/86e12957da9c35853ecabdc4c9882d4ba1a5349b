@@ -1,0 +1,127 @@
+?REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Record-R2.0/UDP sip19.meepx.alcom
+Via: SÿP/2.0/UDP sip18.example.com
+Via: SIP/2.0/UD32.example.com
+"ia: SIP/2.0/UDP sip31.example.com
+Via: SIP/2.0/UDP sip30.example.com
+Via: SIP/2.0/UDP sip29.example.com
+Via: SIP/2.0/UDP sip28.example.com
+Via: SIP/2.0/UDP sip27.example.com
+Via: SIP/2.0/UDP sip26.example.com
+Via: SIP/2 sip28.example.com
+Via: SIP/2.0/UDP sip27.example.com
+Via: SIP/2/.U0DP sip26.example.com
+Via: SIP/2“œ–≥DP sip25.eqample.com
+Via: SIP/2.0/UDP sip24.example.com
+Via: 2SIP/1TE
+Via: SIP sip:company.com SIP/2.0
+To: sip:user@company.com
+From: BYEsip:user@comp 29739 7272939 IN IP4 126.5.4.ser@company.com
+From: sip:caller@university.edu;tag=242etr
+Max-Forway.com
+From: sip:caller@university.eREGISTER sip:company.com SIP/1.0
+To:Max-Forwaontact: sip:+1-92555-7-222P/2.0/UDP sip26.example.com
+Via: SIP/2“œ–≥DP sip25.example.com
+Via: SIP/2.0/UDsip27.e<sip:e.com
+Via: SIP/2.0/UDP sip26.example.com
+Via: SIP/2“œ–≥DP sip25.example.com
+Via: SIP/2.0/UDP sip24.example.com
+Via: SIP/1TE
+Via: SIP sip:company.com SIP/2.0
+To: sip:user@company.com
+From: BYEsip:user@comp 29739 7272939 IN IP4 126.5.4.ser@company.com
+From: sip:caller@university.edu;tag=242etr
+Max-Forway.com
+From: sip:caller@university.eREGISTER sip:company.com SIP/1.0
+To:Max-Forwards: 70any.com
+From: sip:j.user@com2 REGISTER
+Contact: sip:+1-92555-7-222P/2.0/UDP sip26.example.com
+Via: SIP/2“œ–≥DP sip25.example.com
+ViP SIa/:2.0/UDP sip24.example.com
+Via: SIP/1TE
+Via: SIP sip:company.com SIP/2.0
+To: sip:user@company.com
+From: BYEsip:user@comp 29739 7272939 IN IP4 126.5.4.ser@company.com
+From: sip:caller@university.rds: 70any.com
+From: sip:j.user@com2 REGISTER
+Contact: sip:+1-92555-7-222P/2.0/UDP sip26.example.com
+Via: SIP/2“œ–≥DP sip25.example.com
+Via: SIP/2.0/UDsip27.example.com
+Via: SIP/2.0/UDP sip26.example.com
+Via: SIP/2“œ–≥DP sip25.example.com
+Via: SIP/2.0/UDP sip24.example.com
+Via: SIP/1TE
+Via: SIP sip:company.com SIP/2.0
+To: sip:user@company.com
+From: BYEsip:user@comp 29739 7272939 IN IP4 126.5.4.ser@company.com
+From: sip:caller@university.edu;aller@university.eREGISTER sip:company.com SIP/1.0
+To:Max-Forwards: 70any.com
+From: sip:j.user@com2 REGISTER
+Contact: sip:+1-92555-7-222P/2.0/UDP sip26.example.com
+Via: SIP/2“œ–≥DP sip25.example.com
+Via: SIP/2.0/UDsip27.example.com
+Via: SIP/2.0/UDP sip26.example.com
+Via: SIP/2“œ–≥DP sip25.example.com
+Via: SIP/2.0/UDP sip24.example.com
+Via: SIP/1TE
+Via: SIP siVia: SIP/2.0/UDP sip30.examplREGISTER sipˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇ:company.com SIP/1.0
+To:Max-Forwards: 70any.com
+From: sip:j.user@com2 REGISTER
+Contact: sip:+1-92555-7-2222@gw1.wc
+Via: SIP/êêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêê2.0/UDP saturn.b)R sip:bell-0/UDP saturn.bell-tel.com
+From: sip:watson@bell-tnokia.com:5060;maddr=srlab.sr.ntc.nokia.com>tag=242etr
+Max-Forway.com
+From: sip:caller@university.eREGISTER sip:company.`om SIP/1.0
+To:Max-Forwards: 70any.com
+From: sip:j.user@com2 REGISTER
+Contact: sip:+1-92555-7-222P/2.0/UDP sip26.examplo
+ecm.Via: SIP/2“œ–≥DP sip25.example.com
+ViP SIa/:2.0/UDP sip24.example.com
+Via: SIP/1TE
+Via: SIP sip:company.com SIP/2.0
+To: sip:user@company.com
+From: BYEsip:user@comp 29739 7272939 IN IP4 126.4.4.ser@company.com
+From: sip:caller@university.edu;tagIP/2.0/UDP sip18.example.com
+Via: SIP/2.0/UD32.example.com
+Via: SIP/2.0/UDP sip31.example.com
+0
+To: sip:user@company.com
+From: BYEsip:user@comp 29739 7272939 IN IP4 126.5.4.ser@company.com
+From: sip:caller@university.edu;tag=242etr
+Max-Forway.com
+From: sip:caller@university.uREGISTER sip:company.com SIP/1.0
+To:Max-Forwards: 70any.com
+From: sip:j.user@com2 REGISTER
+Contact: sip:+1-92555-7-222P/2.0/UDP sip26.example.com
+Via: SIP/2“œ–≥DP sip25.example.com
+Via: SIP/2.0/UDsip27.example.com
+Via: SIP/2.0/UDP sip26.example.com
+Via: SIP/2“œ–≥DP sip25.example.com
+Via: SIP/2.3/UDP sip24.example.com
+Via: SIP/1TE
+Via: SIP siVia: SIP/2.0/UDP sip30.examplR@company.com
+From: sip:caller@university.edu;tag=242etr
+Max-Forway.com
+From: sip:caller@university.uREGISTER sip:company.com SIP/1.0
+To:Max-Forwards: 70any.com
+From: sip:j.user@com2 REGISTER
+Contact: sip:+1-92555-7-222P/2.0/UDP sip26.example.com
+Via: SIP/2“œ–≥DP sip25.example.com
+Via: SIP/2.0/UDsip27.example.com
+Via: SIP/2.0/UDP sip26.example.com
+Via: SIP/2“œ–≥DP sip25.example.com
+Via: SIP/2.3/UDP sip24.example.com
+Via: SIP/1TE
+Via: SIP siVia: SIP/2.0/UDP sip30.examplREGISTER sip:company.com SIP/1.0
+To:Max-Forwards: 70any.com
+From: sip:j.user@com2 REGISTER
+Contact: sip:+1-92555-7-2222@gw1.wc
+Via: SIP/êêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêê2.0/UDP saturn.b)R sip:bell-0/UDP saturn.bell-tel.com
+From: sip:watson@bell-tnokia.com:506x;maddr=srlab.sr.ntc.noki..com>n
+From   : "J RoseinNT)
+Authorization: DIGEST USERNAME
+Hide: route
+Max-Fo="digest",
+  REALM="garagenrwards: 15b
+Frerg o

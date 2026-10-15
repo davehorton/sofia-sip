@@ -1,0 +1,129 @@
+?REGISTER sip:company.com SIP/2.0
+To: sip:j.user@COMPANY.COM;mVia: SIP/2.01]
+Route: <sip:garage.sr.ntc.nokia.com:tel:;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip:garage.sr.ntc.nokia.co2f] SIP/2.0
+Via: SIP/2.0/UDP [3ffe:1200:3012:c000:0030:e0ff:fe40:6297]:5062€  
+   ;branch=z9hG4bKuNCTHs8Lumv
+     ;received=3ffe:1200:3012:c006:003Max-Forwards: 700P/2.0/UDP [3ffe:1200:3012:c000:0030:e0ff:fe40:6297]:5062€
+     ;branch=z9hG4bKuNCTHs8Lumv
+     ;received=3ffe:1200:3012:c006:003Max-ForwTo: : 700:e0ff:fe40:6297
+Via: SIP/addr=135.180.130.133;tag=foo
+From: s-param-6=6;x-param-7=7;x-param-8=8
+Call-ID: 0ha0isndaksdj@10.0.2.2  
+Contact: *
+CSeq: 9 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Confe:1200:3012:c006:210:a4ff:fe8d:6a46]
+From: <sip:alice@[3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]>
+     ;tag=ud6a29947
+To: <sip:bob@example.com;maddr=[3ffbranch=z9hG4bKuNCTHs8Lumv
+     ;received=[3ffe:1200:3012:c006:210:a4ff:fe8d:6a46]
+From: <sip:alice@[3f;branch=z9hG4bKfe:1200:3012:c000:210:a4ff:fe8d:6a46]>
+     ;tag=ud6a29947
+To: <sip:bob@exact: Barfoo
+Priority: \emergency
+Date: Wed, 04 Apr 2001 17:38:38 GMT
+Retry-After: Wed, 04 Apr 2001 19:00:00 GMT (wake-up) ;duration=1800
+Timestamp: 986395128.13924321 3
+Expires: 180
+Also: sipWWW-Authenticate: sr.ntc.nokia.com
+Call-Info: <http://garage.sr.ntc.nokia.c0/UDP srlab.sr.ntc.nokia.com:5060h=z9hG4bKuNCTHs8Lu`mv
+     ;received=3ffe:1200:3012:c006:003Max-Forwards: 700P/2.0/UDP [3ffe:1200:3012:c000:0030:e0ff:fe40:6297]:5062€
+     ;branch=z9hG4bKuNCTHs8Lumv
+     ;received=3ffe:1200:3012:c006:003Max-ForwTo: : 700:e0ff:fe40:6297
+Via: SIP/2.0/UDP [3ffe:INVITE1200:3012:c000:210:a4ff:fe8d:6a46]:5062
+     ;ived=[3ffe:1200:3012:c006:210:a4ff:fe8d:6a46]
+From: <sip:alice@[3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]>
+     ;tag=ud6a29947
+To: <sip:bob@example.com;maom/images/face.jpg>;purpose=icon
+Organization: Fuzzy Felines, Inc.
+Server: please
+User-Agent: Nokia Universal Killer Internet Application/2.0 (NUUKIA)
+In-Reply-To: 982773898-reg@172.21.9.155
+Accept: text/plain
+Accept-Encoding: identity, deflate (???)
+Accept-Language: en
+  
+   ;branch=z9hG4bKuNCTHs8Lumv
+     ;received=3ffe:1200:3012:c006:003Max-Forwards: 700P/2.0/UDP [3ffe:1200:3012:c000:0030:e0ff:fe40:6297]:5062€
+     ;branch=z9hG4bKuNCTHs8Lumv
+     ;received=3ffe:1200:3012:c006:003Max-ForwTo: : 700:e0ff:fe40:6297
+Via: SIP/2.0/UDP [3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]:5062
+     ;ived=[3ffe:1200:3012:c006:210:a4ff:fe8d:6a46]
+From: <sip:alice@[3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]>
+     ;tag=ud6a29947
+To: <sip:bob@example.com;maom/images/face.jpg>;purpose=icon
+Organization: Fuzzy Felines, Inc.
+Server: please
+User-Agent: Nokia Universal Killer Internet Application/2.0 (NUUKIA)
+In-Reply-To: 928773898-reg@172.21.9.155
+Accept: text/plain
+Accept-Encoding: identity, deflate (???)
+Accept-Language: en
+Allow: any
+2.3.4.5  
+  ;
+ tag = 98asjd8
+CaLl-Id
+ : 0ha0isndaksdj@10.1.1.1
+cseq: 8 INVITE
+Via  : SIP   /  2.0/  UDP
+  135.180.130.133
+Subject :
+NewFangledHeader:  .0/UDP sip4.example.com
+Via: SIP/3.0/UDP sip3.example.com
+Via: SIP/2.0/UDP sip2.example.com
+Subscription-State: Via: SIP/2.0/CANCELp1ontact:m-7=7;x-param-8=8
+Call-ID: 0ha0isndaksdj@10.0.2;.2  
+Contact: *
+CSeq: 9 REGIRequire: all
+Proxy-Require: kinky, things
+Supported: sip-cc, sip-cc-01, timer
+Unsupported: everything
+Error-Info: <http://garage.sr.ntc.nokia.com/figure-1.tent-tag=foo
+From: sip:j.user@COMPANY.COM;x-param-0=0;x-param-1=1;x-param-2=2;x-param-3=3;x-param-4=4;x-param-5=5;x-param-6=6;ip:j.user@COMPANY.COM;x-param-0=0;x-param-1=1;x-param-2=2;x-param-3=3;x-param-4=4;x-param-5=3;x-param-6=6;xer:   newfangled value
+ more newfangled value
+Content-Type: application/sdp
+v:  SIP  / 1.0  / TCP     12.3.4.5  
+  ;
+ tag = 98asjd8
+CaLl-Id
+ : 0ha0isndaksdjjd8
+CaLl-Id
+ : 0ha0isndaksdj@10.1.1.1
+cseq: 8 INVITE
+Via  : SIP   /  2.0/  UDP
+  135.180.130.133
+Subject :
+NewFangledHeader:  .0/UDP sip4.example.com
+Via: SIP/3.0/UDP sip3.example.com
+Via: SIP/2.0/UDP sip2.example.com
+Subscription-State: Via: SIP/2.0/CANCELp1ontact:m-7=7;x-param-8=8
+Call-ID: 0ha0isndaksdj@10.0.2;.2  
+Contact: *
+CSeq: 9 REGIRequire: all
+Proxy-Require: kinky, things
+Supported: sip-cc, sip-cc-01, timer
+Unsupported: everything
+Error-Info: <http://garage.sr.ntc.nokia.com/figure-1.tent-tag=foo
+From: sip:j.user@COMPANY.COM;x-param-0=0;x-param-1=1;x-param-2=2;x-param-3=3;x-param-4=4;x-param-5=5;x-param-6=6;ip:j.user@COMPANY.COM;x-param-0=0;x-param-1=1;x-param-2=2;x-param-3=3;x-param-4=4;x-param-5=3;x-param-6=6;xer:   newfangled value
+ more newfangled value
+Content-Type: application/sdp
+v:  SIP  / 1.0  / TCP     12.3.4.5  
+  ;
+ tag = 98asjd8
+CaLl-Id
+ : 0ha0isndaksdj@10.1.1.1
+cseq: 8 INVITE
+Via  : SIP   /  2.0/  UDP
+  135.180.130.133
+Subject :
+NewFangledHeader:  .0/UDP sip4.example.com
+Via: SIP/3.0/UDP sip3.example.com
+Via: SIP/2.0/UDP sip2.example.com
+Subscription-State: Via: SIP/2.0/CANCELp1ontact:m-7=7;x-param-8=8
+Call-ID: 0ha0isndaksdj@10.0.2;.2  
+Contact: *
+CSeq: 9 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Content-Length: 0

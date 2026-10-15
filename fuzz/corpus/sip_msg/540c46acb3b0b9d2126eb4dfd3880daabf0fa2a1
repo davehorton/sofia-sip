@@ -1,0 +1,67 @@
+INVITE sip:user;pir=u%80h.com@cSupported: SIP/2.0 
+To: sip:j_user@company.cëè 
+From: sip:caller@university“öõäƒãûò=66484 
+Max-Forwards:ˇˇˇˇ 3 
+Call-ID: 0ha0isnda:user;par=u%80h.co&@c\ompany.com SIP/2.0 
+To: sip:j_user@company.com 
+From: sip:caller@univers: sip:j_user@company.com 
+From: sip:caller@university“öõäƒãûò=66484 
+Max-For7ards¡ 3 
+Call-ID: 0ha0isnda:user;par=u%80h.co&@c\ompany.INFOcom SIP/2.0 
+To: sip:j_user@company.com 
+From: sip:caller@university.edu;ta 
+Max-Forwards: 3 sndaksdj@10.1.1.1 _CSeq: 8 INVITE 
+Via: SI.180.130.133;braâ=33242 
+Max-ForMESSAGE3 
+Call-ID: 0ha0isndaksdj@10.1.1.1 _CSeq: 8 INVIag=33242 
+Max-Forwards: 3 
+Call-ID: 0ha0isndaksdj@10.1.1.1 _CSeq: 8 INVITE 
+Via: SIP/2.0/UDP 135.180.130.133;branch=z9hG4bKkdjuw 
+CoAllow: ntent-Lengthksdj@œœ—Œ—Œ—Œ _CSeq: 8 INVITE 
+Via: SIP/3.0/UDP 135.180.130.133;branch=z9
+Call-ID: 0ha0isnda:user;par=u%80h.co&@c\ompany.com SIP/2.0 
+To: sip:BYEser@cose=icon
+OSIP/2.0rganization: Fuzzy Felines, Inc.
+Server: please
+User-Agent: Nokia Universal Killer Internet Application/2.0 (NUUKIA)
+In-Reply-To: 982773898-reg@172.21.9.155
+Accept: text/plain
+Accept-Encoding: identity, deflate (???)
+Accept-Language: en
+Allow: any
+Require: all
+Proxy-Require: kinky, things
+Supported: sip-cc, sip-cc-01, timer
+Unsupported: everything
+Error-Info: <http://garage.sr.ntc.nokia.com/figure-1.jpg>
+Warning: 300 garage.sr.ntc.nokia.com IPv6 global addresses not available
+Warning: 330 garage.sr.ntc.nokia.com No IPv6 multicast, 330 garage.sr.nt.com
+Contact: sip:digest@172.21.9.155
+Call-ID: 982773899-reg@172.21.9.155
+CSeq: 2 REGISTER
+Subject: Barfoo
+Priority: emergency
+Date: Wed, 04 Apr 2001 17:38:38 GMSE="d9d7f1ae99a013cb05f319f0f678251d", URI="sip:garage.sr.ntc.nokia.com"
+Via: SIP/2.0/UDP 172.21.9.155
+MIME-Version: 1.0
+Content-Type: text/plain;charset=US-ASCII
+Content-Encoding: identity
+Content-Disposition: render33242 
+Max-Forwards: 3 
+Call-ID: 0ha0isndaksdj@10.1.1.1 _CSeq: 8 INVITE 
+Via: SIP/r;par=u%80h.co&@c\ompany.com SIP/2.0 
+To: sip:BYEser@company.com 
+FromBYEser@company.com 
+From: sip:caller@university.eduªtag=33242 
+Max-Forwards: 3 
+Call-ID: 0ha0isndaksdj@10.1.1.1 _CSeq: 8 INVITE 
+Via: SIP/2.0/TCP 135.180.130.133;branch=z9h 
+CoAllow: ntent-Lengthksdj@œœ—Œ—Œ—ŒIn-RSeq: 8 INVITE 
+Via: SIP/2.0/UDP 135.180.130.133;branch=z9
+Call-ID: 0ha0isnd
+a:user;par√ä⁄«œóCöo&@c\ompany.com S _CSeq: 8 INVITE 
+Via: SIP/2.0/UDP 135.180.130.133;branch=z9hG4bKkdjuw 
+CoAllow: ntent-Lengthksdj@œœ—Œ—Œ—Œ _CSeq: 2 INVITE 
+Via: SIP/2.0/UDP 135.180.130.133;branch=z9hG4bKkdjuw 
+Content-Length: 0
+

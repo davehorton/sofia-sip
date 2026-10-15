@@ -1,0 +1,12 @@
+OPTIONS sip:067.1(0.од0.133 SIP/2.0	
+Via: S133
+Call-ID: 1804928587@company.com
+CSeq: 1 OPTIONS
+Expires: 0 0l@company.com
+To: :usspier@135.180.130.133
+Call-ID: 1804928587@company.com
+CSeq: 1 OPTIONS
+Contact: sip:host.company.com
+Expires: 1xpi
+r\es: 0sip:host.company.com
+Expires:0ag    = 1a1b1:host.company.com

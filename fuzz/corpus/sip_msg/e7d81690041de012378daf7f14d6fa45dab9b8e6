@@ -1,0 +1,115 @@
+INVITE name:user SIP/2.0
+To: sip:user@company.com
+FrBYEom: sip:caller@university.edu
+CalO-ID: 6@10.0.0.1
+CSeq: 1 INVITE
+Via: SIP/2.0/UDP 135.180.130.133
+Content-Type: application/sdp
+Content-LengthVITE
+My-State: sldkjflzdsfaret0803adgaasd0afds0asdaasd
+Via: SIP/2.0/UDP sip33.exage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+From: sip:digest@garage.sr.ntc.nokia.com
+To: sip:digest@INVITE sip:John_Smith@tct.hut.fi SIP/2.0
+To: John Smith <sip:John_Smith@tct.hut.fi:5066;user=ip;maddr=131.228.16.2>
+  ; tag = deadbeef
+From: http://www.cs.columbia.edu
+Calgarage.sr.ntc.nokia.com
+Call-Id: 982773899-reg@172.21.9.155
+Cseq: 2 REGISTER
+Cnotact: sip:digest@172.21.9.155
+Expires: 180
+l-ID: 0ha0isndaksdj@10.1.2.3
+CSeq : 8 INVITE
+ViContent-Length: 0
+Accept-Langua: SIP/2.0/UDP 135.180.130.133
+Content-Type: application/sdp
+Contact: Joe Bob Briggs <urn:ipaddr:122.1.2.3> ; bar="foo age: en
+Supporbaated: sip-cc, sieadbeef
+From: http://www.cs.columbia.edu
+Calgarage.sr.ntc.nokia.com
+Call-Id: 982773899-reg@086.21.9.155
+Cseq: 2 REGISTER
+Cnotact: sip:digest@172.21.9.155
+Expires: 180
+l-ID: 0ha0isndaksdjRoute: @10.1.2.3
+CSeq : 8 INVITE
+ViContent-Length: 0
+AREGISTER sip:compa?INVITE sip:user@ny.com SIP/2.0co
+To: sip:j.user@c: John Smith <sip:John_Smith@tct.hut.fi:5066;user=ip;maddr=131.228.16.2>
+  ; tag = deadbeef
+From: http://www.cs.columbia.edu
+Calgarage.sr.ntc.nokia.com
+Call-Id: 982773899-reg@172.21.9.155
+Cseq: 2 REGISTER
+Cnotact: sip:digest@172.21.9.155
+Expires: 180
+l-ID: 0ha0isndaksdj@10.1.2.3
+CSeq : 8 INVITE
+ViContent-Length: 0
+Accept-Langua: SIP/2.0/UDP 135.180.130.133
+ContP/2.0/UDP sip33.exage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+From: sip:digest@garage.sr.ntc.nokia.com
+To: sip:digest@INVITE sip:John_Smith@tct.hut.fi SIP/2.0
+To: John Smith <sip:John_Smith@tct.hut.fi:5066;user=ip;maddr=131.228.16.2>
+  ; tag = deadbeef
+From: http://www.cs.columbia.edu
+Calgarage.sr.ntc.nokia.com
+Call-Id: 982773899-reg@172.21.9.155
+Cseq: 2 REGISTER
+Cnotact: sip:digest@172.21.9.155
+Expires: 180
+l-ID: 0ha0isndaksdj@10.1.2.3
+CSeq : 8 INVITE
+ViContent-Length: 0
+Accept-Langua: SIP/2.0/UDP 135.180.130.133
+Content-Type: application/sdp
+Contact: Joe Bob Briggs <urn:ipaddr:122.1.2.3> ; bar="foo age: en
+Supporbaated: sip-cc, sieadbeef
+From: http://www.cs.columbia.edu
+Calgarage.sr.ntc.nokia.com
+Call-Id: 982773899-reg@086.21.9.155
+Cseq: 2 REGISTER
+Cnotact: sip:digest@172.21.9.155
+Expires: 180
+l-ID: 0ha0isndaksdjRoute: @10.1.2.3
+CSeq : 8 INVITE
+ViContent-Length: 0
+AREGISTER sip:compa?INVITE sip:user@ny.com SIP/2.0co
+To: sip:j.user@c: John Smith <sip:John_Smith@tct.hut.fi:5066;user=ip;maddr=131.228.16.2>
+  ; tag = deadbeef
+From: http://www.cs.columbia.edu
+Calgarage.sr.ntc.nokia.com
+Call-Id: 982773899-reg@172.21.9.155
+Cseq: 2 REGISTER
+Cnotact: sip:digest@172.21.9.155
+Expires: 180
+l-ID: 0ha0isndaksdj@10.1.2.3
+CSeq : 8 INVITE
+ViContent-Length: 0
+Accept-Langua: SIP/2.0/UDP 135.180.130.133
+Content-Type: application/sdp
+Contact: Joe Bob Briggs <urn:ipaddr:122.1.2.3> ; bar="foo age: en
+Supporbaated: sip-cc, sieadbeef
+From: http://www.cs.columbia.edu
+Calgarage.sr.ntc.nokia.com
+Call-Id: 982773899-reg@086.21.9.155
+Cseq: 2 REGISTER
+Cnotact: sip:digest@172.21.9.155
+Expires: 180
+l-ID: 0ha0isndaksdjRoute: @10.1.2.3
+CSeq : 8 INVITE
+ViContent-Length: 0
+AREGISTER sip:compa?INVITE sipent-Type: application/sdp
+Contact: Joe Bob Briggs <urn:ipaddr:122.1.2.3> ; bar="foo age: en
+Supporbaated: sip-cc, sieadbeef
+From: http://www.cs.columbia.edu
+Calgarage.sr.ntc.nokia.com
+Call-Id: 982773899-reg@086.21.9.155
+Cseq: 2 REGISTER
+Cnotact: sip:digest@172.21.9.155
+Expires: 180
+l-ID: 0ha0isndaksdjRoute: @10.1.2.3
+CSeq : 8 INVITE
+ViContent-Length: 0
+AREGISTER sip:compa?INVITE sip:user@ny.com Sompany.commpany.com SI1/2.0
+To: "I have a 

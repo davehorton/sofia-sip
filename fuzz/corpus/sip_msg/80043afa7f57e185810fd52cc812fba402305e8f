@@ -1,0 +1,5 @@
+ÿACK sip:company.com SIP/2.0
+To: sip:j.user@company.com
+From: sip:j.user@company.com
+Call-ID: 0.2.2
+Contact: sip:j.user@host.companngth: 0

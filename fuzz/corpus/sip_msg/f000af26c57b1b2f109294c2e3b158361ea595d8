@@ -1,0 +1,44 @@
+?INVITE sip:vivekg@chair.dnrc.bell-labs.com SIP/2.0
+  To :
+  sip:vivekg@chair.dnrc.bell-labs.com ;    tag    = 1a1b1f1H33n
+From  ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿzds09a3bqw0sdfbsk34poouymnae0043nsed09mfkvc74bd0cuwnms05dknw87hjpobd76f
+CSeq: 1 INVt 492170 RTP/AVP 0 12
+a: Sle.com
+Via: SIP/2.0/UDP sip26.example.com
+Via: SIP/2.0/UDP sip25.example.com
+Via: SIP/3.0/UDP sip24.example.com
+Via: SIP/1.0/UDP sip23.example.com
+Via: SIP/2.0/UDP sip22.example.com
+Via: SIP/2.0/UDP sip21.example.com
+Via: SIP/2.0/UDPom
+Via: SIP/2.0/UDP sip27.example.com
+Via: SIP/2.0/Uom
+Via: SIP/2.0/UDP sip19.example.com
+Via: SIP/2.0/UDP sip18.example.com
+Via: SIP/2.0/UD32.example.com
+Via: SIP/2.0/UDP sip31.example.com
+Via: SIP/2.0/UDP sip30.example.com
+Via: SIP/2.0/UDP sip29.example.com
+Via: SIP/2.0/UDP sip28.example.com
+Via: SIP/2.0/UDP sip27.example.com
+Via: SIP/2.0/UDP sip26.example.com
+Via: SIP/2.0/UDP sip25.example.com
+Via: SIP/2.0/UDP sip24.example.com
+Via: SIP/1.0/UDP sip23.example.com
+Via: SIP/2.0/UDP sip22.example.com
+Via: SIP/2.0/UDP sip21.example.com
+Via: SIP/2.0/UDP sip20.example.coDP sip21.example.com
+Via: SIP/2.0/UDP sip20.example.com
+Via: SIP/2.0/UDP sip19.example.com
+Via: SIP/2.0/UDP sip18.example.com
+Via: SIP/2.0/UD32.example.com
+Via: SIP/2.0/UDP sip31.example.com
+Via:$SIP/2.0/UDP sip30.exÿÿÿÿÿÿÿÿl-ID: 98From: 2773899-reg@172.21.9.155
+CSeq: 1 REGISTER
+WWW-Authen.3.4.5   ;ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿSIP  /ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ
+  branch  =   9ikj8  ,
+  SIP  /    2.0   / UDP  2.2.3.4   ; hidden
+m:"Quoted string \"\"" <sip:jdrosen@bell-labs.com> ticate: Digest realm="garage.sr.ntc.noki; newparam = newvalue ;
+  secondparam = sRecord-Route: econdva.com", 
+  n			alue  ; q = 0.3		3				
+  (((nes								

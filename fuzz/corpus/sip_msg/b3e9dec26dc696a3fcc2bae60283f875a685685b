@@ -1,0 +1,18 @@
+?OPTIONS sip:067.180.130.133 SIP/2.0
+Via: SIP/2.0/UDP company.com:5604
+From: sip:iuser@company.com
+To: sip:user@135.180.130.133
+Call-ID: 1804928587@com`pany.com
+CSeq: 1 OPTIONSSupport
+Expires: 0 σσσσσσσσσσσσσσσσσσσσσσσσσσσσσσσσσσσσσσσσσσσσσσσσσσσσσσσσσσσσσσσσσσσσσσ1l@company.com
+To: sip:user@135.180.130.133
+Call-ID: 1804928587@company.com
+CSeq: 1 OPTIONS
+Contact: sip:host.company.com
+Exp sip:host.company.com
+OPTIONS sip:135.180.130.133 SIP/2.0
+Via: SIP/2.0/UDP company.c
+CSeq: 1 OPTIONSContact: sip:host.company.com
+Expi:ser 0xpires: 0sip:host.company.com
+Expires: 0
+Contact: sip:host.company.com

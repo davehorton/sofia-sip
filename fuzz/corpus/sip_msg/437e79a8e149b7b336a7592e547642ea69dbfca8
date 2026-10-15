@@ -1,0 +1,18 @@
+REGISTER sip:company.com SIP/2.0
+Via: SIP/2.0/UDP rama.research.nCall-ID: 
+Via: SIP/2.0/UDP 135.180.130.133
+To: sip:j.user@CoMPANY.COM;maddr=135.180.130.133tag=foo
+From: sip:j.user@COMPANY.COM;taISTER sip:company.com SIP/2.0
+Via: SIP/2.0/UDP rama.research.nCall-ID: 
+Via: SIP/2.0/UDP 135.180.130.133
+To: sip:j.user@CoMPANY.COM;maddr=135.180.130.133tag=foo
+From: sip:j.user@COMPANY.COM;tag=bar
+Call-ID: 0ha0isndaksdj@10.0.2.2  
+Contact: *
+CSeq: 9 REGISTER
+Content-Length: 0
+g=bar
+Call-ID: 0ha0isndaksdj@10.0.2.2  
+Contact: *
+CSeq: 9 REGISTER
+Content-Length: 0

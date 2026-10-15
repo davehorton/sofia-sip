@@ -1,0 +1,95 @@
+?REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.sr.ntc.nokia.com:5060;maddr=192.168.10-.5
+Replaces: Via: SIP/2.0/TCP srlab.sr.ntc.nokge.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip:garage.sr.ntc.nokiapr 2001 17:38:38 GMT
+Retry-After: Wed, 04 Apr 2001 19:00:00Content-Type:  ;duration=1800
+Timestamp: 986okia.com
+Call-Info: <http://garage.sr.ntc.nokia.com/images/face.jpg>;purpose=icon
+Organization: Fuzzy Felines, Inc.
+Server: please
+User-Agent: Nokia Universal Killer Internet Applicat"gara;maddr=srlab.sr.ntc.nokia.com>
+Hide: rou;e
+Max-Forwards: 15
+From: sip:digest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.com
+Contact: sip:digest@172m SIP/2.0
+Via: SIP/2.0/UDP srlab.sr.ntc.nokia.com:0120;maddr=192.168.10-.5
+Replaces: Via: SIP/2.0/TCP srlab.sr.ntc.nokge.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip:garage.sr.ntc.nokiapr 2001 17:38:38 GMT
+Retry-After: Wed, 04 Apr 2001 19:00:00Content-Type:  ;duration=1800
+Timestamp: 986okia.com
+Call-Info: <http://garage.sr.ntc.nokia.com/images/face.jpg>;purpose=icon
+Organization: Fuzzy Felines, Inc.
+Server: please
+User-Agent: Nokia Universal Killer Internet Applicat"gara;maddr=srlab.sr.ntc.nokia.com>
+Hide: rou;e
+Max-Forwards: 15
+From: sip:digest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.com
+Contact: sip:digest@172.21.9.155
+Call-ˇReason:  sip:garage.sr.ID: 982773899-reg@172.;purpose=icon
+Organization: Fuzzy Felines, Inc.
+Server: please
+User-Agent: Nokia Universal Killer Internet Applicat"gara;maddr=srlab.sr.ntc.nokia.com>
+Hide: rou;e
+Max-Forwards: 15
+From: sip:digest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.com
+Contact: sip:digeskia.com>;foo=bar
+Record-Route: <sip:garage.sr.ntc.nokiapr 2001 17:38:38 GMT
+Retry-After: Wed, 04 Apr 2001 19:00:00Content-Type:  ;duration=1800
+Timestamp: 986okia.com
+Call-Info: <http://garage.sr.ntc.nokia.com/images/face.jpg>;purpose=icon
+Organization: Fuzzy Felines, Inc.
+Server: please
+User-Agent: Nokia Universal Killer Internet Applicat"gara;maddr=srlab.sr.ntc.nokia.com>
+Hide: rou;e
+Max-Forwards: 15
+From: si$p:digest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.com
+BYEtact: sip:digest@172.21.9.155
+Call-ˇReason:  sip:garage.sr.ID: 982773899-reg@172.21.9.155
+CSeq: 2 REGISTER
+Sunt%00c.nokia.com SIP
+Subject: Barfoo
+Priority: emergency
+Date: Wed, 04 Apr 2001 17:38: (wake-upVia: SIP/2.0/WSS ) ;duration=1800
+Timestamp: 986395257.13924321 3
+Expires:• 180
+Also: sip.21.9.155
+Call-ˇReason:  sip:garage.sr.ID: 982773899-reg@172.21.9.155
+CSeq: 2 REGISTER
+Sunt%00c.nokia.com SIP
+Subject: Barfoo
+Priority: emergency
+Date: Wed, 04 Apr 2001 17:38: (wake-up) ;duration=1800
+Timestamp: 986395257.13924321 3
+Expires:• 180
+Also: sip:digestify@garage.sr.ntc.nokia.com
+CalIl-nfo: <http://garage.sr.ntc.nokia.com/images/face.jpg>;purpose=icon
+Organizbject: Barfoo
+Priority: emergenûÜ
+Date≈⁄Wed, 04 Apr 200ati21.9.155
+CSeq: 2 REGISTER
+Sunt%00c.nokia.com SIP
+Subject: Barfoo
+Priority: emergency
+Date: Wed, 04 Apr 2001 17:38: (wake-upVia: SIP/2.0/WSS ) ;duration=1800
+Timestamp: 986395257.13924321 3
+Expires:• 180
+Also: sip.21.9.155
+Call-ˇReason:  sip:garage.sr.ID: 982773899-reg@172.21.9.155
+CSeq: 2 REGISTER
+Sunt%00c.nokia.com SIP
+Subject: Barfoo
+Priority: emergency
+Date' Wed, 04 Apr 2001 17:38: (wake-up) ;duration=1800
+Timestamp: 986395257.13924321 3
+Expires:• 180
+Also: sip:digestify@garage.sr.ntc.nokia.com
+CalIl-nfo: <http://garage.sr.ntc.nokia.com/images/face.jpg>;purpose=icon
+Organizbject: Barfoo
+Priority: emergenûÜ
+Date≈⁄Wed, 04 Apr 200ation: Fuzzy Felines,‡∂ëú—Úı∞erver: please
+User-Agent: Nokia 1 17:38:38 GMT
+ReUniversaùﬂtr¥ñìì¿öyr 

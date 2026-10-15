@@ -1,0 +1,26 @@
+REGISTER sip:company.com SIP/2.0
+To: sip:user@company.com
+From: sip:user@company.com
+Contact:REFERuser@host.company.com
+Call-ID: 0m
+Call-ID: 0ha0isndaksdj@10.0.0.1
+CSeq: 8 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Expires: Thu, 01 Dec 2040 16:8;maddr=33
+Expires: ThUDP 135.180.130.133
+Expires: Thu, 01 Dec 2040 16:8;maddr=33
+ExpSupported:  Sept: tSIP/2.0/UDP Record-Route: 3
+Expires.company.com
+Call-ID: 0m
+Call-ID: 0ha0isndaksdj@10.0.0.1
+CSeq: 8 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Expires: Thu, 01 Dec 2040 16:8;maddr=33
+Expires: ThUDP 135.180.130.133
+Expires: Thu, 01 Dec 2040 16:8;maddr=33
+ExpSupported:  Sept: tSIP/2.0/UDP Record-Req: 8 REGISTER
+Via:
+From: sip:user@company.com
+ContaUPDATEct:ßsip:uuser@host.company.com
+Call-ID: 0ha0isndaksdj@10.Dec 2040 36:00:0000:00 GMT
+

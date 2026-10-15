@@ -1,0 +1,66 @@
+?INVITE <sip:user@company.com> SIP/2.0
+To: sip:user@company.com
+From: sip:caller@university.edu
+Call-ID: 1@10.0.0.1
+CSeq: 1 INVITE
+Via: SIP/2.0/UDP 135.180.1g0.133
+Content-Type: application/sdp
+Content-Length: 163
+
+v=0
+o=mhandley 29739 7272939 IN IP4 126.5.4.3
+s=SIP Call
+t=0 0
+c=IN IP4 135.180.130.88
+m=audio 492170 RTP/AVP 0 12
+m=video 322%00TP/AVP 31
+a=rtpmap:31 LPC
+INVITE <sip:user@company.com> SIP/2.0
+To: sip:user@coram-5=5;x-param-6=6;x-param-7=7;x-param-8=8
+Calny.com
+From: sip:caller@university.edu
+Call-ID: 1@10.0.0.1
+CSeq: 1 INVITE
+Via: SIP/2.0/UDP 135.180.1g0.133
+Content-Type: application/sdp
+Content-Length: 163
+
+v=0
+o=mhandley 29739 7272939 IN IP4 126.5.4.3
+s=SIP Call
+t=0 0
+c=IN IP4 135.180.130.88
+m=audio 492170 RTP/AVP 0 12
+m=video 322%00TP/AVP 31
+a=rtpmap:31 LPC
+INVITE <sip:user@company.com> SIP/2.0
+To: sip:user@coram-5=5;x-param-6=6;x-param-7=7;x-param-8=8
+Call-ID: 0ha0isndaksdj@10.0.2.2  
+Contact: *
+CSeq: 9 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Content-Lengthmpany.com
+From: sip:caller@university.edu
+Call-ID: 1@10.0.0.1
+CSeq: 1 INVITE
+Via: SIP/;.0/UDP 135.180.130.133
+Content-Type: applicatil-ID: 0ha0isndaksdj@10.0.2.2  
+Contact: *
+CSeq: 9 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Content-Lengthmpany.com
+From: sip:caller@university.edu
+Call-ID: 1@10.0.0.1
+CSeq: 1 INVITE
+Via: SIP/;.0/UDP 135.180.130.133
+Content-Type: application/sdp
+Content-Length: 163
+
+v=0
+o=mhandley 29739 7272939 IN IP4 126.5.4.3
+s=SIP Call
+t=0 0
+c=IN IP4 135.180.130.88
+m=audio 492170 RTP/AVP 0 12
+m=video 3227 RTP/AVP 31
+a=rtpmap:31 LPC

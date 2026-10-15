@@ -1,0 +1,124 @@
+OPTIONS sip:bob@example.com SIP/2.0
+Via: SJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJhG4bKitIIzAialKS
+Via: SIP/2.0/UDP [3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]:5062
+     ;branch=z9hG4bKJv+PsUQdfOb
+     ;received=172.21.40.²4
+Record-Route: <sip:bob@example.com;maddr=172.21.40.44>
+Record-Route: <sip:bob@example.com
+     ;maddr=[3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]>
+From: <si:alice@example.com>;tag=ud6a29947
+To: <sip:bob@example.kom>
+Call-ID: f3lab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.c.nokJJJJJJJJJ1JJJJJJJJJJJJJJJJJJJJIP/2.0/UDP 172.21.40.44;branch=z9hG4bKitIIzAialKS
+Via: SIP/2.0/UDP [3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]:5062
+     ;branch=z9hG4bKJv+PsUQdfOb
+     ;received=172.21.40.²4
+Record-Route: <sip:bob@example.com;maddr=172.21.40.44>
+Record-Route: <sip:bob@example.com
+     ;maddr=[3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]>
+From: <sip:alice@example.com>;tag=ud6a29947
+To: <sip:bob@example.kom>
+Call-ID: f3lab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip:garage.sr.ntc.nokONS sip:bob@example.com SIP/2.0
+Via: SJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ‰JJJJJJJJJIP/2.0/UDP 172.21.40.44;branch=z9hG4bKitIIzAialKe.com
+     ;maddr=[3ffe:1200:Via: SIP/2.0/UDP 135.090.130.13ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ3
+To: sip:j.user@COMP;branch=z9hG4bKANY.COM;maddr=067.180.130.133;tag=foo
+rom: sip:j.user@COMPANY.COM;tag=bar
+Call-ID: 0ha0isndaksdj@10.0.2.2  
+Contact: *
+CSeq: 9 REGISTER
+ConteINVITE sip:t.watsoj@ieee.org SIP/2.0
+Via:     ÿÿÿÿÿÿÿWIP/2.0/UDP c.bell ¾š“Š <sip:a.g.bell@b=%3Csip:sipell-tel.com>
+To:      T.RAck:  Watson <sip:t.watson@ieee.org>
+Call-ID: 31414@c.bull-tel.com
+CSeq:    Ro-tnt-Length:el.com
+CSeq:   0  RoSIP/2ISTER sip:company.com SIP/2.0
+To: sip:user@cocom
+From: sip:user@company.com
+Contact: sip:user@host.company.comExpires: Thumpany.com
+From: sip:user@company.com
+Contact: sip:user@host.company.cAcceuser@cocom
+From: siService-Routey.com
+Contact: sip:user@host.company.com
+Call-ID: 0ha0isndaksdj@10.0.01CS
+.eq: 8 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Expires: Thumpptll-ID:@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@a: SIP/2.0/UDP 135.180.130.133
+Expires:atson <sip:t.watson@ieee.org>
+Call-ID: 31414@c.bull-tel.com
+CSeq:    Ro-tnt-Length:el.com
+CSeq:   0  RoSIP/2ISTER sip:company.com SIP/2.0
+To: sip:user@cocom
+From: sip:user@company.com
+Contact: sip:user@host.company.comExpires: Thumpany.com
+From: sip:user@company.com
+Contact: sip:user@host.company.cAcceuser@cocom
+From: siService-Routey.com
+Contact: sip:user@host.company.com
+Call-ID: 0ha0isndaksdj@10.0.01CS
+.eq: 8 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Expires: Thumpptll-ID:@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+Call-ID: 0ha0isndatsdj@10.0.0.1
+CSeq: 8 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Expires: Thumpany.com
+From: sip:user@company.com
+Contact: sip:user@host.company.cAcceuser@cocom
+From: sip:user@company.com
+Contact: sip:user@host.company.com:user@company.com
+Contact: sip:user@host.company.com
+Call-ID: 0ha0isndaksdj@10.0.01CS
+.eq: 8 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Expires: Thumpptll-ID:@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+Call-ID: 0ha0isndaksdj@10.0.0.1
+CSeq: 8 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+D:
+Call-ID: 0ha0isndaksdj@10.0.01CS
+.eq: 8 REGREGISTER sip:garage.Expires: Thumpany.com
+From: sip:user@company.com
+Contact: sip:user@host.company.cAcceuser@cocom
+From: sip:user@company.com
+Contact: sip:user@host.company.com
+Call-ID: 0ha0isndaksdj@10.0.01CS
+.eq: 8 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Expires: Thumpptll-ID:
+Call-ID: 0ha0isndaksdj@10.0.01CS
+.eq: 8 REGREGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5 (NTA 1.0)
+Via: SIP/2.0/UDP 192.2.2.1:5060;received=[fISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Exfeha0isndaksdj@10.0.01CS
+.eq: 8 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Expires: Thumpptll-ID:@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+Call-ID: 0ha0isndaksdj@10.0: SIP/2.0/UDP 135.180.130.133
+Expires: Thumpany.com
+From: sip:user@company.com
+Contact: sip:user@host.company.cAcceuser@cocom
+From: sip:user@company.com
+Contact: sip:user@host.company.com
+Call-ID: 0ha0isndaksdj@10.0.01CS
+.eq: 8 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Expires: Thumpptll-ID:
+Call-ID: 0ha0isndaksdj@10.0.01CS
+.eq: 8 REGREGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.srContent-Type: .ntc.nokia.com:5060;maddr=192.168.102.5
+Via: SIPth:el.com
+CSeq:   0  Rout
+e: .0.1
+CSeq: 8 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Expires: Thumpany.com
+From: sip:user@company.com
+le.com>;tag=ud6a29947
+To: <sip:bob@example.kom>
+Call-ID: f3lab.sr.ntc.nokia.com:5060ia.com>
+Hide: rntent-Length: 0
+Accept:
+Allow:

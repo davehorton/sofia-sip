@@ -1,0 +1,104 @@
+ˇSIP/2.0 200 OK
+Via: SIP/2.0/UDP·135.EGISTER;tag=company.com` SIP/2.0
+To: sip:j.user@company.com
+From: sip:j.user@company.com
+Call-ID: 0ha0isndQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQaksdj@10.0.2.2
+Contact: sip:j.user@host.company.com
+CSeq: :3 REGISTúêíÔ
+From: %   A. Bell <sip:a.g.bell@bell-tel.com>
+Replaces:$.∂ Watson <sip:t.n@any.com
+Call-ID: 0ha0isndaksdj@10.0.2.2
+?REGISTER sip:garage.sr.ntc.nokõa.com SIP/2.0
+Via: SIP/2.0/UDP srlasip:j_user@cˇSIP/2.0 200 OK
+Via: SIP/2.0/UDP·135.EGISTER;tag=company.com` SIP/2.0
+To: sip:j.user@company.com
+From: sip:j.user@company.com
+Call-ID: 0ha0isndaksdj@10.0.2.2
+Contact: sip:j.user@host.company.com
+CSeq: 3 REGISTúêíÔ
+From: %   A. Bell <sip:a.g.bell@bell-tel.com>
+Replaces:$.∂ Watson <sip:t.n@any.com
+Call-ID: 0ha0isndaksdj@10.0.2.2
+?Rompany.comceived=[ffe0::FAB1]
+R:ouet <sip:garage.sr.ntc.nokia.com:0120;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-,Route: <sip:garage.sr.ntc.nokia.com:5059;maddr=srlab.sr.ntc.nokia.com>
+H999999999999999999999999999 
+From: wyp:caller@univer1.0
+Via: SIP/2.0/UDP 135.180.130.To: sip:j_user@Contact: sip:j.user@host.company.com
+CSeq: 7 REGISTúêíÔ
+From: %   A. Bell <sip:a.g.bell@bell-tel.com>
+Replaces:$.∂ Watson <sip:t.n@ieeCall-ID: e.org SIP/7.0
+Via:     SIP/2.01/UDP c.cseqbell-åöì—úêíÔ
+From: %   A. Bell <ER
+Via: SIP/2.0/UDP 135.180.130.133
+Content-Length: 0
+
+
+
+INVITp ijúosEe@company.com SIP/4.0
+To: sip:joe@company.com
+From: sip:caller@university.edu
+Call-ID: 0ha0isnda977644900765@10.0.0.1
+CSeq: 8 INVITE
+Via: SIP/2.0/UDP 135.180.130.133
+Cont-reg@172.2company.comceived=[ffe0::FAB1]
+R:ouet <sip:garage.sr.ntc.nokia.com:0120;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-,Route: <sip:garage.sr.ntc.nokia.com:5059;maddr=srlab.sr.ntc1.9.155
+Accept: text/pl·in
+Accept-E.nokia.com>
+H999999999999999999999999999 
+From: wyp:caller@univer2.0
+Via: SIP/2.0/UDP 135.180.130.133
+CSeq: 999999999999999999990 Ii<sip:garage.EGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDPsr»ëãú—ë99ide: rncoding: idRip:j.user@host.company.com
+CSeq: 8 REGISTER
+Via: SIP/2.0/Uoute
+MDP 135.180.130.133
+Content-Length: 0
+
+
+
+INVITp ij:osEe@coa@mpany.com SIP/3.0
+To: sip:êjoe@company srlasip:j_user@company.comceived=[ffe0::FAB1]
+R:ouet <sip:garage.sr.ntc.nokia.com:012–∫maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-,Route: <sip:garage.sr.ntc.nokia.com:5059;maddr=srlab.sr.ntc.nokia.com>
+H999999999999999999999999999 
+From: wyp:caller@univer2.0
+Via: SIP/2.0/UDP 135.180.130.To: sip:j_user@Contact: sip:j.user@host.company.com
+CSeq: 7 REGISTúêíÔ
+From: %   A. Bell <sip:a.g.bell@bell-t.com
+Fel.com>
+Replaces:$.∂ Watson <sip:t.n@ieeCall-ID: e.org SIP/7.0
+Via:     SIP/2.01/UDP c.cseqbell-åöì—úêíÔ
+From: %   A. Bell <ER
+Via: SIP/2.0/UDP 135.180.130.133
+Content-Length: 0
+
+
+
+INVITp ijúosEe@company.com SIP/3.0
+To: sip:joe@company.com
+From: sip:caller@university.edu
+Call-ID: 0ha0isnda977644900765@10.0.0.1
+CSeq: 8 INVITE
+Via: SIP/2.0/UDP 135.180.1r30.133
+Cont-reg@172.2company.comceived=[ffe0::FAB1]
+R:ouet <sip:garage.sr.ntc.nokia.com:0120;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-,Route: <sip:garage.sr.ntc.nokia.com:5059;maddr=srlab.sr.ntc1.9.155
+Accept: text/pl·in
+Accept-E.nok
+ia.com>
+H999999999999999999999999999 
+From: wyp:caller@univer2.0
+Via: SIP/2.0/UDP 135.1om80.130.133
+CSeq: 999999999999999999990 Ii<sip:garage.sr»ëãú—ë99ide: rncoding: idRip:j.user@host.c: ompany.com
+CSeq: 8 REGISTERs
+Via: SIP/2.0/Uoute
+MDP 135.180.130.133
+Content-Length: 0
+
+
+
+INVITp ij:osEe@coa@mpany.com SIP/3.0
+To: sip:êjoe@company.com
+From: s

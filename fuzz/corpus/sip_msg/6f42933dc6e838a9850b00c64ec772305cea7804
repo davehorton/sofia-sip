@@ -1,0 +1,112 @@
+REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDr.ntc.nokia.com
+Call-I?REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5 (NTA 1.0)
+Via: SIP/2.0/UDP ed, 04 Apr 2001 1~7:38:38 GMT
+Retry-After: Wed, 04 Apr 2001 39:00:00 GMT (wake-up) ;duration=1800
+Timestamp: 986395257.1392!321 3?REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.sip:iuser@coived=[ffe0:@FAB1]UDP srlab.sip:iuser@coived=[ffe1::FAB1]
+R:ouet <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record192.2.2.1:5060;receiveoxy-Require: kinky, things
+Supported: sip-cc, sip-kc-01, timer
+Unsupported: everything
+Ertel:ror-Info: <http://garage.sr.ntc.nokia.T)
+Authorization: Digest ia.com
+Call-Id: 98USERNAME="digest2,
+  REALM="e.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDr.ntc.nokia.com
+Call-Id: 982773899-reg@172.d=[ffe0::FAB1]
+R:ouet <sip:garINVITE sip:t.watson@ie groe.eSIP/2.0
+Via:     SIP/2.0/UDP c.bell-[?ffe0::FAB1]
+Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.age.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-,Route21.9.155e.sr.ntceq: 0 INVITE
+Call-ID: 98asdh@10.1.1.2
+Expires: Thu,?OPTIONS sip:135.180.130.1135.180.130.133 SIP/2.0
+Via: SIP/2.0/UDP company.com:5604
+From: sip:iuser@company.com
+To: sip:user@135.180.130.133
+Call-ID: 1804E sip:user@company.com SIP/2.0
+To: "I have a user /UDP sip11.example.com
+Via: SIP/2.0/UDP sip10.example.com
+Via: SIP/2.0/UDP sip9.example.com
+Vi4UDP sip25.example.com
+Via: SIP/2.0/UDP sip24.example.com
+Via: SIP/1.0/UDP sip23.example.com
+Via: SIP/2.0/UDP sip22.example.com
+Via: SIP/2.0/UDP sip21.example.com
+Via: SIP/2.0/UDP sip20.example.com
+Via: SIP/4.0/UDP sip19.example.com
+Via: SIP/1.0/UDP sip18.example.com
+Via: SIP/2.0/UDP sip17.example.com
+Via: SIP/2.0/UDP sip16.example.com
+Vi:: SIP/2.0P sip17.example.com
+com
+Via: SIP/2.0/UDP sip13.example.com
+Via: SIP/2.0/UDP sipØ12.example.com
+Vi>: SIP/2.0/UDP sip11.example.com
+Via: SIP/2.0/UDP sip10.example.com
+Via: SIP/2.0/UDP sip9.example.com
+Via: SIP/2.: any
+Require: all
+Proxy-Require: kinky, things
+Supported: sip-on:Language: en
+Allow: Uxample.com
+Via: SIÐ/2.0/UD3
+s=SIP Call
+t=3149328701 0
+c=IN IP4 135.180.130.88
+m=audio 492170 RTP/AVP 0 12
+m=video 3227 RTVia: SIP/2.0/UDP sip16.example.com
+Via: SIP/2.0/UDP sip15.example.com
+Via: SIP/2.0/UDP sip14.example.com
+Via: SIP/2.0/UDP sip13.>xample.com
+Via: SIP/2.0/UD§ sip12.example.com
+Via: SIP/2.0/UDP sip11.exampl;rport
+Via: SIP/2.0/UDP sip10.example----------------------------------------&------P/2.0/UDP sip21.example.com
+Via: SIP/2.0/UDP sip20.example.com
+Via: SIP/4.0/UDP sip19.example.com
+Via: SIP/1.0/UDP sip18.example.com
+Via: SIP/2.0/UDP sip17.example.com
+Via: SIP/2.0/UDP sip16.example.com
+Vi:: SIP/2.0P sip17.example.com
+com
+Via: SIP/2.0/UDP sip13.example.com
+Via: SIP/2.0/UDP sipØ12.example.com
+Vi>: SIP/2.0/UDP sip11.example.com
+Via: SIP/2.0/UDP sip10.example.com
+Via: SIP/2.0/UDP sip9.example.com
+Via: SIP/2.: any
+Require: all
+Proxy-Require: kinky, things
+Supported: sip-on:Language: en
+Allow: Uxample.com
+Via: SIÐ/2.0/UD3
+s=SIP Call
+t=3149328701 0
+c=IN IP4 135.180.130.88
+m=audio 492170 RTP/AVP 0 12
+m=video 3227 RTVia: SIP/2.0/UDP sip16.example.com
+Via: SIP/2.0/UDP sip15.example.com
+Via: SIP/2.0/UDP sip14.example.com
+Via: SIP/2.0/UDP sip13.>xample.com
+Via: SIP/2.0/UD§ sip12.example.com
+Via: SIP/2.0/UDP sip11.exampl;rport
+Via: SIP/2.0/UDP Via: SIP/2.0/UDP sip14.example.com
+Via: SIP/2.0/UDP sip13.example.com
+Via: SIP/2.0/UDP sipØ12.example.com
+Vi>: SIP/2.0/UDP sip11.example.com
+Via: SIP/2.0/UDP sip10.example.com
+Via: SIP/2.0/UDP sip9.example.com
+Via: SIP/2.0/UDP sip8.example.com
+Via: SIP/2.0/UDP sip7.example.com
+Via: SIP/2.0/UDP sip6.example.m
+Via: SIP/4.0/UDP sip19.example.com
+Via: SIP/2.0/UDP sip18.example.com
+Via: SIP/2.0/UDP sip17.example.com
+Via: SIP928587@companycompany.com
+To: sip:user@135.180.130.133
+Call-ID: 180492 44 Dec 10 INVITE
+Call-ID: 8598asdh@10.1.1.2
+Expire87@

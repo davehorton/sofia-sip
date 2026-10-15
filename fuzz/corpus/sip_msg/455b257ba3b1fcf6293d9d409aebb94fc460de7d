@@ -1,0 +1,20 @@
+REGISTER sip:company.com SIP/2.0
+To: sip:j.user@company.com
+From: sip:j.user@company.com
+Call-.130.133
+Content-Length: 0
+
+
+
+INVITE sip:joe@company.com SIP/3.0
+To: sip:joe@company.com
+From: sip:caller@university.edu
+Call-ID: 0ha0isnda977644900765@10.0.0.1
+CSeq: 8 INVITE
+Via.5.4.3
+c=IN IP4 135.180.130.88
+m=audio 492170 RTP/AVP 0 12
+m=video 3227 RTPÞÞÞÞ/AVP 31
+a=rtpmap:31 LPC
+
+

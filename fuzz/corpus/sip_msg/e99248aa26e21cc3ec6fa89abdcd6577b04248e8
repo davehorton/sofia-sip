@@ -1,0 +1,43 @@
+INVITE sip:user@company.com SIP/2.0
+To: sip:user
+To: sip:user@company.com
+Drom: sip¼œaller@university.eí/du
+Call-ID: 7@10.0.0.1q: 1 INVITE
+Via: SI°ÐÍÑÏÐªÃP 135.180.130.133
+Expires: Fri, 01 Jan 2010 1v:00:0P4 126.5ÿÿÿÿOPTIONS3
+s=SIP Call
+t=0 0
+c=IN Iÿÿ: s35.180.130.133
+Expires: Fri, 01 Jan 2010 1v:00:0P4 126.5ÿÿÿÿÿÿÿ.4.3
+s=SIP Call
+t
+CSeq: 1 INVITE
+Via: SI°ÐÍÑÏÐªÃP 135.180.130.133
+Expires: Fri, 01 Jan 2010 1v:00:0P4 126.5ÿÿÿÿOPTIONS3
+s=SIP Call
+t=0 0
+c=IN Iÿÿ: s35.180.130.133
+Expires: Fri, 01 Jan 2010 1v:00:0P4 126.5ÿÿÿÿÿÿÿ.4.3
+s=SI@company.com
+Drom: sip¼œaller@university.eí/du
+Call-ID: 7@10.0.0.1q: 1 INVITE
+Via: SI°ÐÍÑÏÐªÃP 135.180.130.133
+Expires: Fri, 01 Jan 2010 1v:00:0P4 126.5ÿÿÿÿOPTIONS3
+s=SIP Call
+t=0 0
+c=IN Iÿÿ: s35.180.130.133
+Expires: Fri, 01 Jan 2010 1v:00:0P4 126.5ÿÿÿÿÿÿÿ.4.3
+s=SIP Call
+t
+CSeq: 1 INVITE
+Via: SI°ÐÍÑÏÐªÃP 135.180.130.133
+Expires: Fri, 01 Jan 2010 1v:00:0P4 126.5ÿÿÿÿOPTIONS3
+s=SIP Call
+t=0 0
+c=IN Iÿÿ: s35.180.130.133
+Expires: Fri, 01 Jan 2010 1v:00:0P4 126.5ÿÿÿÿÿÿÿ.4.3
+s=SIP Call
+t=0 0
+c=IN IÿÿÿdP4 135.1
+a=rtÿdP4 135.1
+a=rtm3:a 1ppLPC

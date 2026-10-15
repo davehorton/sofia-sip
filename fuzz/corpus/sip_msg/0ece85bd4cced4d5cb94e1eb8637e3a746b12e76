@@ -1,0 +1,8 @@
+INVITE sip:user@comapny.com SIP/2.0
+To: sip:j.user@company.com
+From: sip:caller@univsreity.eduon/newformat
+Content-Length: 37
+
+<audio>
+ <pcmu port="443"/>
+</audio>

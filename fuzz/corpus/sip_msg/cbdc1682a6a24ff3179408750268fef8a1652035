@@ -1,0 +1,58 @@
+REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDr.ntc.nokia.com
+Call-Id: 982773899-reg@172.21.9.155
+Cseq: 2 REÿÿÿÿÿÿGISTERContact: siest,
+  REASUBSCRIBELM="ga2.0
+To: John Smith <sip:John_Smith@tcv.hut.fi:506ue6;sr=ip;maddr=131.228GISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDr.ntc.nokia.com
+Call-Id: 982773899-reg@172.21.9.155
+Cseq: 2 REÿÿÿÿÿÿGISTERContact: siest,
+  REASUBSCRIBELM="ga2.0
+To: John Smith <sip:John_Smith@tcv.hut.fi:506ue6;sr=ip;maddr=131.228.16.2>
+  ; tag = deadbeef
+From: ph/:tt/w1Route%3a%20X%50Y%3bZ<sip:John_Smith@tct.hut.fi:5066;user=ip;maddr=131.228.16.2>
+  ; tag = detransportadbeef
+From: http://w2Routcom;use=W%22@gw1.wcom.com;user=pNEWMEhone SIP/2.0
+Via: SIP/2.0
+  Z<sip: sip:JoAccept: hn_Smith@tct.hut.fi SIÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿP/2.0
+To: John Smith <sip:John_Smith@tcv.hut.fi:5066;user=ip;m/SCTP131.228.16.2>
+  Contact: ; tag = deadbeef
+From: http://w1Route%3a%20X%50Y%3bZ<sip:John_Smith@tct.hut.fi:50%66;user=ip;maddr=131.228.16.2>
+  : tag = deadbeef
+From: http://w2Route%4a%20X: <sip:user@example.com?Route=%3Csip:MEhone SIP.16.2>
+  ; tag = deadbeef
+From: ph/:tt/w1Route%3a%20X%50Y%3bZ<sip:John_Smith@tct.hut.fi:5066;user=ip;maddr=131.228.16.2>
+  ; tag = detransportadbeef
+From: http://w2Routcom;use=W%22@gw1.wcom.com;user=pNEWMEhone SIP/2.0
+Via: SIP/2.0
+  Z<sip: sip:JoAccept: hn_Smith@tct.hut.fi SIÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿP/2.0
+To: John Smith <sip:John_Smith@tcv.hut.fi:5066;user=ip;m/SCTP131.228.16.2>
+  Contact: ; tag = deadbeef
+From: http://w1Route%3a%20X%50Y%3bZ<sip:John_Smith@tct.hut.fi:50%66;user=ip;maddr=131.228.16.2>
+  : tag = deadbeef
+From: http://w2Route%4a%20X: <sip:user@example.com?Route=%3Csip:MEhone SIP/3.0
+Via: SIP/2.0/UD. iftgw.there-1111@ift.here.ra80.130.133
+Content-Type: appaaaaaaacaaa 982773899-reg@172.21.9.155
+Cseq: 2 REÿÿÿÿÿÿGISTERContact: siest,
+  REASUBSCRIBELM="ga2.0
+To: John Smith <sip:John_Smith@tcv.hut.fi:506ue6;sr=ip;maddr=131.228.16.2>
+  ; tag = deadbeef
+From: ph/:tt/w1Route%3a%20X%50Y%3bZ<sip:John_Smith@tct.hut.fi:5066;user=ip;maddr=131.228.16.2>
+  ; tag = detransportadbeef
+From: http://w2Routcom;use=W%22@gw1.wcom.com;user=pNEWMEhone SIP/2.0
+Via: SIP/2.0
+  Z<sip: sip:JoAccept: hn_Smith@tct.hut.fi SIÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿP/2.0
+To: John Smith <sip:John_Smith@tcv.hut.fi:5066;user=ip;m/SCTP131.228.16.2>
+  Contact: ; tag = deadbeef
+From: http://w1Route%3a%20X%50Y%3bZ<sip:John_Smith@tct.hut.fi:50%66;user=ip;maddr=131.228.16.2>
+  : tag = deadbeef
+From: http://w2Route%4a%20X: <sip:user@example.com?Route=%3Csip:MEhone SIP.16.2>
+  ; tag = deadbeef
+From: ph/:tt/w1Route%3a%20X%50Y%3bZ<sip:John_Smith@tct.hut.fi:5066;user=ip;maddr=131.228.16.2>
+  ; tag = detransportadbeef
+From: http://w2Routcom;use=W%22@gw1.wcom.com;user=pNEWMEhone SIP/2.0
+Via: SIP/2.0
+  Z<sip: sip:JoAccept: hn_Smith@tct.hut.fi SIÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿP/2.0
+To: John Smith <sip:John_Smith@tcv.hut.fi:5066;user=ip;m/SCTP131.228.16.2>
+  Contact: ; tag = deadbeef
+From: http://w1Route%3a%20X%50Y%3bZ<sip:John_Smith@tct.hut.fi:50%6

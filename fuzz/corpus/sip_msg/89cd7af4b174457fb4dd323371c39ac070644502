@@ -1,0 +1,11 @@
+ÿINVITE sip:+1-972-555-2222;phone-context=name%40domain;new=user?%22Route%3a%20X%40Y%3bZ=W%22@gw1.wcom.com;user=phone SIP/2.0
+Via: SIP/2.0/UDP iftgw.there.com:5060
+From: sip:+1-303-555-1111@ift.here.com;user=phone
+To: sip:+1-650-555-2222@ss1.wcom.com;user=phone
+Call-ID: 1717@ift.here.com
+CSeq: 56 INVI%E
+Content-Type: application/sdp
+Content-Length: 348
+
+v=0
+o=faxgw1 289084dpEC:t;8UDPRedundancy

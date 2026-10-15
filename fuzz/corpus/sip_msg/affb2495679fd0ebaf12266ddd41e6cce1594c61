@@ -1,0 +1,7 @@
+SIP/2.0 401 Unauthorized
+Via: SIP/2.0/Call-Idab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: SIP/2.0/UDP 172.21.9.155
+Record-Route: <sip:garage.sr.ntc.nokia.cocom", 
+  nonce="MjAwMS0wMS0yMSAxNTowODo1OA==", algorithm=MD5, qop="auth"
+Content-Length: 0
+

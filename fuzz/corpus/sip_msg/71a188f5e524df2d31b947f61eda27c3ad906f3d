@@ -1,0 +1,29 @@
+ SIP   /  2.0/  UDP
+  135.180.130.133
+Subject :
+NewFangledHeader:   newfangled val
+  135.180.130.133
+Subject :
+NewFangledHeader:   newfangled value
+ more new
+Via  : SIP   /  2.0/  UDP
+` 135.180.130.133
+Subject :
+NewFangledHpplication/sdp
+v:  SIP  / 2.0  / TCP     12.3.4.5   ;
+  branch  =   8ikj8  ,
+  SIP  /      (((nested comments) and (more)))   ,
+ tel:444g \"\"" <sip:jdrosen@bell-labs.com> ; newparam = newvalue ;
+  secSession-Expires: value  ; q = 0.33ngledHeader:   newfangled value
+ more new
+Via  : SIP   /  2.0/  UDP
+  135.180.130.133
+Subject :
+NewFangledHpplication/sdp
+v:  SIP  / 2.0  / TCP     12.3.4.5   ;
+  branch  =   8ikj8  ,
+  SIP  /      (((nested comments) and (more)))   ,
+ tel:444g \"\"" <sip:jdrosen@bell-labs.com> ; newparam = newvalue ;
+  secSession-Expires: value  ; q = 0.33
+  (((nested comments) and (more)))   ,
+ tel:4443322

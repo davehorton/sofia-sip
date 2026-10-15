@@ -1,0 +1,15 @@
+OPTIONS sip:user@company.com SIP/2.0
+To: sip:user@company.com
+From: "caller"    <si¼c;tag=@example.cINVITE sip:user@comapny.com SIP/2.0
+To: sip:j.user@company.com
+From: s777777777777777777777777777777777777777777777777777777ip:caller@university.edu
+Call-ID:om
+From: "caller"    <si¼c;tag=@example.cINVITE sip:user@comapny.com SIP/2.0
+To: sip:j.user@company.com
+From: s7777777777777777777777777
+ <pcmu om>
+Call-ID3: 1234abcd@10.0.0.1
+CSeq: 2 OPTIONS
+Via: SIP/2.0/UDP 135.18port="443"/>
+</audio>
+0.130.133

@@ -1,0 +1,88 @@
+INVITE sip:t.watson@ie groe.eSIP/2.0
+Via:     SLP/2.0/UDP c.bell-tel.com
+From:    Belc.
+Server: please
+User-Agent: Nokia Universal Killer Inta.re: all
+Proxy-Require: kinky, 
+inokia.com:5060;maddr=srlab.sr.ntc.no.ntc.nokia.com:5059;maddr=se: <sip:garage.sr.ntc.nokia.com:5061;Allow: maddr=srlab.sr.ntc.nokia.com>
+Hide: route
+Max-Forwards: 15
+From: sip:digest@[::1]e.sr.ntc.nokia.com
+To: sip:digest@garag: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.no.ntc.nokia.com:5059;maddr=se: <sip:garage.sr.ntc.nokia.com:5061;maddr=srlab.sr.ntc.nokia.com>
+Hide: route
+Max-Forwards: 15
+From: sip:digest@[::1]e.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.com
+Contact: sÿÿrty: emergency
+Date: Wed, 04 Apr 2001 ×È:=bar
+Record-Route: <sip:garage.sr.ntc.nokia.com:5061;maddr=srlab.sr.ntc.nokia.com>
+Hide: route
+Max-Forwards: 15
+From: sip:digest@[??)
+Accrlab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.no.ntc.nokia.com:5059;maddr=se: <sip:garage.sr.ntc.nokia.com:5061;maddr=srlab.sr.ntc.nokia.com>
+Hide: route
+Max-Forwards: 15
+From: sip:digest@[::1]e.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.com
+Contact: sÿÿrty: emergency
+Date: Wed, 04 Apr 2001 ×È:=bar
+Record-Route: <sip:garage.sr.ntc.nokia.com:5061;maddr=srlab.sr.ntc.nokia.com>
+Hide: routecom:5060;maddr=srlab.sr.ntc.no.ntc.nokia.com:5059;maddr=se: <sip:garage.sr.ntc.nokia.com:5061;maddr=srlab.sr.ntc.nokia.com>
+Hide: route
+Max-Forwards: 15
+From: sip:digest@[::1]e.sr.ntc.nokia.com
+To: sip:digest@garag: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.no.ntc.nokia.com:5059;maddr=se: <sip:garage.sr.ntc.nokia.com:5061;maddr=srlab.sr.ntc.nokia.com>
+Hide: route
+Max-Forwards: 15
+From: sip:digest@[::1]e.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.com
+Contact: sÿÿrty: emergency
+Date: Wed, 04 Apr 2001 ×È:=bar
+Record-Route: <sip:garage.sr.ntc.nokia.com:5061;maddr=srlab.sr.ntc.nokia.com>
+Hide: route
+Max-Forwar`s: 15
+From: sip:digest@[??)
+Accrlab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.no.ntc.nokia.com:5059;maddr=se: <sip:garage.sr.ntc.nokia.com:5061;maddr=srlab.sr.ntc.nokia.com>
+Hide: route
+Max-Forwards: 15
+From: sip:dernet Application/2.0 (NUUKIA)
+In-Reply-To: 982SIP/./U773898-reg@172.21.9.155
+Accept: text/plain
+Accept-Encbranch identity, defl!te (???)
+Accept-Language: en
+Allow: any
+Require: all
+Proxy-Require: kinky, 
+inokia.com:5060;maddr=srlab.sr.ntc.no.ntc.nokia.com:5059;maddr=se: <sip:garage.sr.ntc.nokia.com:5061;Allow: maddr=srlab.sr.ntc.nokia.com>
+Hide: route
+Max-Forwards: 15
+From: sip:digest@[::1]e.sr.ntc.nokia.com
+To: sip:digest@garag: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.no.ntc.nokia.com:5059;maddr=se: <sip:garage.sr.ntc.nokia.com:5061;maddr=srlab.sr.ntc.nokia.com>
+Hide: route
+Max-Forwards: 15
+From: sip:digest@[::1]e.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.com
+Contact: sÿÿrty: emergency
+Date: Wed, 04 Apr 2001 ×È:=bar
+Record-Route: <sip:garage.sr.ntc.nokia.com:5061;maddr=srlab.sr.ntc.nokia.com>
+Hide: route
+Max-Forwards: 15
+From: sip:digest@[??)
+Accrlab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.no.ntc.nokia.com:5059;maddr=se: <sip:garage.sr.ntc.nokia.com:5061;maddr=srlab.sr.ntc.nokia.com>
+Hide: route
+Max-Forwards: 15
+From: sip:digest@[::1]e.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.com
+Contact: sÿÿrty: emergency
+Date: Wed, 04 Apr 2001 ×È:=bar
+Record-Route: <sip:garage.sr.ntc.nokia.com:5061;maddr=srlab.sr.ntc.nokia.com>
+Hide: route
+Max-Forwards: 15
+From: sip:digest@[??)
+Accept-Language:om;maddr en=172.

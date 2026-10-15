@@ -1,0 +1,14 @@
+INVITE s²p:vivekg@chair.dnrc.bell-labs.com SIP/2.0
+  To :
+  sip:vivekg@chair.dnrc.bell-labs.com ;    tag    = 1a1b1f1H33n
+From   : "J Rosenberg \\\"" <sip:jdrosen@lucent.com>
+  ;
+ tag = 99asjd8$CaLl-Id
+ : 0ha0isndaksdj@10-1.1.1
+cse$q:(8 INVITE
+Via  : SIP   /  2.0/  UDP
+  135.180.130.133
+Subject :
+NewFangledHeader: ndvalue  ; q = 0.33
+  (((nested comments) and (more)))   ,
+ tel:4443322

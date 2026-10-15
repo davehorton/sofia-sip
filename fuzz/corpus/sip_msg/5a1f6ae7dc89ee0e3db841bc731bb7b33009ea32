@@ -1,0 +1,30 @@
+?INVITE sip:bob@[3ffe:1200:3012:c006:206:5bff:fe55:462f:fe55:462f] SIP/2.xxxxxxxx
+REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: e.com
+  xxxxxxxxxxxxxxxxx
+REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: e.com
+     ;maddr=[3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]>
+Frome.sr.ntc.nokim
+C_all-ID: 0ha0isnda#sdj@10.0.01CS
+.eq: 8 REGISTERll-ID: 0ha0isndaksdj@10.0.01CS
+.eq: 8 REGIS3 2 IN IP6 3ffe:1200:3012:c000:210:a4ff:f.168.102.5
+Via: e.com
+  xxxxxxxxxxxxxxxxx
+REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: e.com
+     ;maddr=[3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]>
+Frome.sr.ntc.nokim
+C_all-ID: 0ha0isnda#sdj@10.0.01CS
+.eq: 8 REGISTERll-ID: 0ha0isndaksdj@10.0.01CS
+.eq: 8 REGIS3 2 IN IP6 3ffe:1200:3012:c000:210:a4ff:fe8d:6a46
+s=-
+c=IN IP6 3ffe:1200:3012:c000:210:a4ff:fe8d:6a46
+t=0 0
+m=audio 5004 RTP/AVP 96 97 98
+a=rtpmap:96 AMR/8000
+a=rtpmap:97 AMR-WB/96000
+a=rtpmap:98 GSM-EFR/8000

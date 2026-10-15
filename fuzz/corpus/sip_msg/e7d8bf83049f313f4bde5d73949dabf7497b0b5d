@@ -1,0 +1,99 @@
+?REGISTER sip:bell-tel.com SIP/2.0
+Via: SIP/2.:watson@bell-tel.com
+To: sip:watson@bell-tel.com
+Call-ID: 70710@saturn.bell-tel.REGISTER sip:bell-tel.com SIP/2.0com
+CSeq: 2 REGISTER
+Contact: sip:+1-92555-7-2222@gw1.wc
+Via: SIP/2.0/UDP satu]n.bR sip:bell-tel.com SIооооооооооооооооооооооооооооооооооturn.bell-tel.com
+From: sip:watson@bell-tel.com
+To: sip:watson@bell-tel.com
+Call-ID: 70710@saturn.bell-tel.REGISTER sip:bell-tel.com SIP/2.0com
+CSeq: 2 REGISTER
+Contact: sip:+1-92555-7-2222@gw1.wc
+Via: SIP/2.0/UDP saturn.bell-tel.com
+FroContent-Length: ll-tel.com
+To: sip:watson@bell-tel.com
+Call-ID: 70710@saturn.belell-tel.com
+FroContent-Length: ll-tel.com
+To: sip:watson@bell-tel.com
+Call-ID: 70710@saturn0/UDP saturn.bell-tel.com
+From: sip:watson@bell-tel.com
+To: sip:watson@bell-tel.com
+Call-ID: 70710@saturn.bell-tel.com
+CSeq: 2 REGISTER
+Contact: sip:+1-Д72-555-2222@gw1.wcom.c
+Call-ID: 70710@saturn.bell-tel.REGISTER sip:bell-tel.com SIP/2.0com
+CSeq: 2 REGISTER
+Contact: sip:+1-92555-7-2222@gw1.wc
+Via: SIP/2.0/UDP satu]n.bR sip:bell-tel.com SIP/2.0
+Via: SIP/2.0/UDP saооооооооооооооооооооооооооооооооооооооооооооооооооturn.bell-tel.com
+From: sip:watson@bell-tel.com
+To: sip:watson@bell-tel.com
+Call-ID: 70710@saturn.bell-tel.REGISTER sip:bell-tel.com SIP/2.0com
+CSeq: 2 REGISTER
+Contact: sip:+1-92555-7-2222@gw1.wc
+Via: SIP/2.0/UDP saturn.bell-tel.com
+FroContent-Length: ll-tel.com
+To: sip:watson@bell-tel.com
+Call-ID: 70710@saturn.belell-tel.com
+FroContent-Length: ll-tel.com
+To: sip:watson@bell-tel.com
+Call-ID: 70710@saturn.bell-tel.com
+CSeq: 2 REGISTER
+Contact: sip:+1-972-555-2222@gw1.wcom.P/2.0
+Via: SIP/2.0/UDP saооооооооооооооооооооооооооооооооооооооооооооооооооturn.bell-tel.com
+From: sip:watson@bell-tel.com
+To: sip:watson@bell-tel.com
+Call-ID: 70710@saturn.bell-tel.REGISTER sip:bell-tel?REGISTER sip:bell-tel.com SIP/2.0
+Via: SIP/2.0/UDP saturn.bell-tel.com
+From: sip:watson@bell-.com SIP/2.0com
+CSeq: 2 REGISTER
+Contact: sip:+1-92555-7-2222@gw1.wc
+Via: SIP/2.0/UDP saturn.bell-tel.com
+FroContent-Length: ll-tel.com
+To: sip:watson@bell-tel.com
+Call-ID: 70710@saturn.belell-tel.com
+FroContent-Length: ll-tel.com
+To: sip:watson@bell-tel.com
+Call-ID: 70710@saЭurn0/UDP saturn.bell-tel.com
+From: sip:watson@bell-tel.com
+To: ~ip:watson@bell-tel.com
+Call-ID: 70710@saturn.bell-tel.com
+CSeq: 2 REGISTER
+Contact: sip:+1-Д72-555-2222@gw1.wcom.com;user=phone
+REGISTER sip:bell-tel.com SIP/2.0
+Via: SIP/2.0/UDP saturn.bell-tel.com
+From: sip:watson@bell-tel.com
+To: sip:watson@bell-tel.com
+Call-ID: 70710@saturn.bell-tel.REGISTER sip:bell-tel.com SIP/2.0com
+CSeq: 2 REtel.com
+To: sip:watson@bell-tel.com
+Call-ID: 70710@saturn.bell-tel.com
+CSeq: 3 REGISTER
+Contact: <sip:+1-972-555-2222@gw1.wcom.com;user=phone>
+REGISTER#sip:bell-tel.com SIP/2.0
+Via: SIP/2.0/UDP saturn.bell-tel.com
+From: sip:watson@bell-tel.com
+To: sip:watson@bell-tel.com
+Call-ID: 70710@saturn.bell-tel.com
+CSeq: 3 REGISTERGISTER
+Contact: sip:+1-92555-7-2222@gw1.wc
+Via: SIP/2.0/UDP satu]n.bR sip:bell-tel.com SIP/2.0
+Via: SIP/2.0/UDP saооооооооооооооооооооооооооооооооооооооооооооооооооtu
+Contarn.bell-tel.com
+From: sip:watson@bell-tel.com
+To: sip:watson@bell-tel.com
+Call-ID: 70710@saturn.bell-tel.REGISTER sip:bell-tel.com SIP/2.0com
+CSeq: 2 REGISTER
+Contact: sip:+1-92555-7-2222@gw1.wc
+Via: SIP/2.0/UDP saturn.bell-tel.com
+FroContent-Length: ct: <sip:+1-972-555-2222@gw1.wcom.ll-tel.com
+To: sip:watson@bell-tel.com
+Call-ID: 70710@saturn.belell-tel.com
+FroContent-Length: ll-tel.com
+To: sip:watson@bell-tel.com
+Call-ID: 70710@saturn.bell-tel.com
+CSeq: 2 REGISTER
+Contact: sip:com;user=phone>
++1-972-555-2222@gw1.wcom.com;userom.com;use=pr=phohonnee
+

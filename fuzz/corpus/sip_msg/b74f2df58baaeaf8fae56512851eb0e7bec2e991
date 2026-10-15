@@ -1,0 +1,38 @@
+?IAVITE sip:t.watson@ieee.or@ieee.org SIP/7.0
+Via: l-Œš“Ñœ’ï
+From: %   A. Bell <ER
+Via: SIP/2.0/UDP 135.180.130.133
+Content-Length: 0
+
+
+
+INVITp ij:o<sip:/2.0any.com SIP/3.0
+To: sip:joRP sip25.example.com
+Via: SIP/2.0/UDP sip24.example.com
+Via: SIP/1.0/UDP sip23.example.com
+Via: SIP/2.0/UDP smp22.egledHeader:   newfangled value
+ more newfangled value
+Content)Type: application/sdp
+v:  SIP  / 2.0  / TCP     1Ş2SIP/2.0 401 Unauthorized
+Via: SIP/2.0/UDP sÿÿÿÿÿÿÿ†ntc.nokiaokia.com
+To: sip::  INVITEö©– : SIP/2.0/UDP 135.180.130.133
+ConÊNOTIFYg SIP/7.0
+Via: l-Œš“Ñœ’ï
+From: %   A. Bell <ER
+Via: SIP/2.0/UDP 135.180.130.133
+Content-Length: 0
+
+
+
+INVITp ij:o<sip:/2.0any.com SIP/3.0
+To: sip:joRP sip25.example.com
+Via: SIP/2.0/UDP sip24.example.com
+Via: SIP/1.0/UDP sip23.example.com
+Via: SIP/2.0/UDP smp22.egledHeader:   newfangled value
+ more newfangled value
+Content)Type: application/sdp
+v:  SIP  / 2.0  / TCP     1Ş2SIP/2.0 401 Unauthorized
+Via: SIP/2.0/UDP sÿÿÿÿÿÿÿ†ntc.nokiaokia.com
+To: sip::  INVITEö©– : SIP/2.0/UDP 135.180.130.133
+ConÊNOTIFYpeINVITE
+Via: SIP/2.0/UDP 135.180.130.133VITE

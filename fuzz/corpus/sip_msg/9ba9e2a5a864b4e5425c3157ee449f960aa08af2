@@ -1,0 +1,18 @@
+?REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srhab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Record-Route: <sip:garage.sr.ntc.nokia.com:506ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ0;maddr=srlab.sr.ntc.nokia.com>
+From: sip:dæigest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.com
+Call-Id: 982773899-reg@172.21.9.155
+Cseq: 2 REGISTER
+Contact: sip:digest@172.21.9.ÿÿÿÿokia.com
+Call-Id: 98;branch=z9hG4bK2773899-reg@172.21.9.155
+Cseq: 2 REGISTER
+Contact: sip:digest@172.21.9.155
+Expires: 180
+Content-Length: 0
+Accept-Language: en
+Supported: sip-cc, sip-cc-01, timer
+User-Agent:c.nokia.com"
+Via: SIP/2.0/UDP 172.21.9.155
+

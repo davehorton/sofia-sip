@@ -1,0 +1,24 @@
+ÿSIP/2.0 200 OK
+Via: SIP/2.0/UDPá135.EGISTER sip:company.com` SIP/2.0
+To: si:j.user@host.company.com
+CSeq: 7p:j.user@host.company.com
+CSeq: 7 REGISTœ’ï
+From: %   A. Bell <sip:a.g.bell@bell-tel.com>
+Replaces:$.¶ Watson <sip:t.n@any.com
+Call-ID: 0ha0isndaksdj@10.0.2.2
+Contact: sip:j.user@host.company.com
+CSeq: 7 REGISTœ’ï
+From: %’ï
+From: j@10.0.2.2
+Contact: sip:j.user@host.company.com
+CSeq: 7 REGISTœ’ï
+From: %   A. Bell <si REGISTœ’ï
+From: %’ï
+From: j@10.0.2.2
+Contact: sip:j.user@host.company.com
+CSeq: 7 REGISTœ’ï
+From: %   A. Bell <sip:a.g.bell@bell-tel.com>
+Replaces:$.57;REGISTœ’ï
+From: %   A. Bell <sip:a.g.bell@bell-tel.com>
+Replaces:$.57;branch=ength:0
+Via: SI 0

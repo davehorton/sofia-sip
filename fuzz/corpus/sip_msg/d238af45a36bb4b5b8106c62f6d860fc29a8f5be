@@ -1,0 +1,27 @@
+REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.sr.ntc.nokia.com:5060;maddr=192.INVITE sip:user;par=u%40h.com@company.com SIP/2.0 
+To: sip:j_user@company.com 
+From: sip:caller@university.edu;tag=3324sips:ax-Fo168.102.5
+rwards: 3 
+Ca Ò-ID: 0ha0isndaksdj@10.1.1.1 
+CSeq: 8 INVITE 
+Via: SIP/2.0/UDP 135.180.130.133;Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5 (NTA 1.0)
+Via: SIP/2.0/UDP 192.2.2.1:5060;received=[ffe0::FAB1]
+Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+RecAccept: text/plain
+Accept-Encoding: identity, deflate (???)
+Accept-Language: en
+Allow: any
+Require: all
+Proxy-Require: kinky,ti hngs
+Supported: sip-cc, sip-cc-01, tiw mer
+Unsupported: everything
+Error-Info: <http://garage.sr.ntc.nokia.com/figure-1.jpg>
+Warning: 300 garage.sr.ntc.nokia.com IPv6 global addresses not available
+Warn
+Content-ing: 330 garage.sr.ntc.nokia.com No IPv6 multicast, 330 garage.sr.ntc.nokia.com Only local IPv4 multicast available
+Authorization: Digest USEAlso: sip:digestify@garage.sr.ntc.nokia.com
+Call-LeInfo: <http://garage.sr.ntc.nokia.com/images/fangth: 0ce.jpg>;pur
+pose=icon
+Organiz
+ation: FuzFy zeline

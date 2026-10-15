@@ -1,0 +1,37 @@
+?INVITE sip:t.watson@ieee.org SIP/7.0
+Via:     SIP/2.01/UDP c.cseqb
+CSeq: 7 REGISTúêíÔ
+From: %   A. Bell <sip:a.g.bell@bell-tel.com>
+Replaces:$.∂ Watson <sip:t.n@ieee.org SIP/7.0
+Via:     SIP/2.01/UDP c.cseqbell-åöì—úêíÔ
+From: %   A. Bell <ER
+Via: SIP/2.0/UDP 135.180.130.133
+Content-Length: 0
+
+
+
+INVITp ij:osEe@company.com SIP/3.0
+To: sip:joe@company.com
+From: sip:caller@university.edu
+Call-ID: 0ha0isnda977644900765@10.0.0.1
+CSeq: 8 INVITE
+Via: SIP/2.0/UDP 135.180.130.133
+ContNOTIFYpe: appliISTER sip:company.cksdj@10.0.2.2
+Contact: sip:j.user@host.company.com
+CSeq: 8 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Content-Length: 0
+
+
+
+INVITp ij:osEe@company.com SIP/3.0
+To: sip:joe@company.com
+From: sip:caller@university.edu
+Call-ID: 0ha0isnda977644900765@10.0.0.1
+CSeq: 8 INVITE
+Via: SIP/2.0/UDP 135.180.130.133
+Content-Type: aSTpIiplER sõâl-åöì—úêíÔ
+From: %   A. Bell[<sip:a.g.bell@bell-tel.com>
+Replaces:$.∂ Watson <sip:t.N@ieee.org SIP/9.0
+Vóû≈ﬂﬂﬂﬂ‹SIP/2.01/UDP c.cseqbell-åöì—úêíÔ
+From: %   A. Bell <sip:a.g.bell—@bellorgˇˇˇ¥  0 INVITE

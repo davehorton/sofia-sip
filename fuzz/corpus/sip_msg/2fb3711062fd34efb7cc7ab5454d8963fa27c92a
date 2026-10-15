@@ -1,0 +1,15 @@
+ÿINVITE sip:+1-972-555-2222;phone-context=name%40domain;new=ser?%22Route.com;user=phone
+Call-ID: 1717@ift.here.com
+CSeq: 56 INVI%E
+Content-Type: application/sdp
+Content-Length: 348
+
+v=0
+o=faxgw1 2890844527 2890844527 IN IP4 iftgrsion:0
+a=T38maxBitRate:14400
+a=T38FaxFillBitRemoval:0
+a=T38FaxTranscodingMMR:0
+a=T38FaxTranscodingJBIG:0
+a=T38FaxRateManagement:transferredTCF
+a=T76FaxMaxBuffer:260
+a=T38FaxUdpEC:t;8UDPRedundancy

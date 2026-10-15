@@ -1,0 +1,42 @@
+REGISTER sip:company.com SIP/2.0
+To: sip:j.user@company.com
+From: sip:j.user@company.com
+Call-I=bar
+Record-Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nok
+Fon: FuzFAccept-Language: en
+Antc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip:garage.srll-ID: 0ha0isndaUUKIA)
+In-Reply-To: 9827738y8-reg@172.21.9.155
+Accept: text/plain
+Accept-Encoding: identity, defla
+Accept-Language:
+Call-ID: 0ha0isndak en
+Allow: any
+Requ Inc.
+Server: p SIP/2.sdj@10.0.2.2
+Contact: sip:j.user@host.comguage: en
+Antc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nok
+Fon: FuzFAccept-Language: en
+Antc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip:garage.srll-ID: 0ha0isndaUUKIA)
+In-Reply-To: 9827738y8-reg@172.21.9.155
+Accept: text/plain
+Accept-Encoding: identity, defla
+Accept-Language:
+Call-ID: 0ha0isndak en
+Allow: any
+Requ Inc.
+Server: p SIP/2.sdj@10.0.2.2
+Contact: sip:j.user@host.company.com
+CSeq: 8 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Content-Lengt :h0
+
+
+
+INVITE sip:joe@com0/T
+ srlab.sr.ntc.nokia.com:5060;madd p SIP/2.0/T
+ srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5 (NTA 1pany.com SIP/3.0
+T.0)
+Via: SIP/2.0/UDP 192.2.2.1:o: si50p6

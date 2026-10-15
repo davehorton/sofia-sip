@@ -1,0 +1,4 @@
+INVITE sip:user@comapny.com SIP/2.0
+To: sip:j.user@c0.0.0sion:0
+a=T38maxBitRate:14400u port="443"/>
+</audio>

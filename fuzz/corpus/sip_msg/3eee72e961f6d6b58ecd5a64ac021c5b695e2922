@@ -1,0 +1,5 @@
+SIP/2.0 401 Unauthorized
+Via: SIP/2.0/Call.cocom", 
+  nonce="MjAwMS0wMS0yMSAxNTowODo1OA==", algorithm=MD5, qop="auth"
+Content-Length: 0
+

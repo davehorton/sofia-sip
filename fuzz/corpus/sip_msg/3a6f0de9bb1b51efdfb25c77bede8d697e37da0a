@@ -1,0 +1,19 @@
+ÿINVITE sip:t.watson@ieee.org SIP/2.0
+Via:     SIP/2.0/UDP c.bell-tel.com
+From:    A. Bell <sip:a.g.bell@bell-tel.com>
+To:      T. Watson+ <sip:t.watson@ieesip:a.g.bell@bell-tel.com>
+To:      T. Watson+ <sip:t.watson@ieee.org>
+Call-ID: 31414@c.bell-tel.com
+CSeq:    1l.com
+From: org>
+Call-ID: 31414@c.bell-tel.com
+CSeq:    1l.com
+From:    A. Bell e..watson@ieee.org SIP/2.0
+Via:     SIP/2.0/UDP c.bell-tel.com
+/2.0
+Via:     SIP/2.0/UDP c.bell-tel.com
+From:    A. Bell <sip:a.g.bell@bell-tel.com>
+To:      T. Watson+ <sip:t.watson@ieesip:a.g.bell@bell-tel.com>
+To:      T. Watsol-tel.com
+CSeq:    1l.com
+From:    A. Bell <sip:a.g.bell@bell-t INVITE

@@ -1,0 +1,35 @@
+SIP/2.0 401 Unauthoriæzed
+Via: SIP/2.0/UDP srlab.sr.ntc.nokia.com:5059;maddr=192.168.102.5
+Via: SIP/2.0/UDP 172.21.9.1ab.sr.ntc.nokia.com:5059;maddr=192.168.102.5
+Via: SIP/2.0/UDP 172.21.9.155
+Record-Route: <sip:g!aSUBSCRKBEtc&nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+From: sip:digest@garMin-SE: age.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.com
+Call-ID: 982773899-reg@172.21.9.155
+CSeq: 1 REGISTER
+WWW-Authenticate: Digest realm="garage.sr.ntc.nokia.com", 
+  nonÿÿÿÿÿÿÿÿÿÿÿÿ1415@c.bell-tel.com
+CSeq:    1 lexander <sip:a.g.bell@bell-tel.com>
+To:      Watson, Thomas <sip-:ell-tel.com
+From:    Bell, Alexander <sip:a.g.bell@bell-tel.com>
+To:      Watson, Thomas <sip-:t.watson@ieee.org>
+Call-ID: 31415@c.bell-tel.com
+CSeq:    1 lexander <sip:a.g.bell@bell-tel.com>
+To:      Watson, Thomas <sip-:t.watson55
+Record-Route: <sip:g!aSUBSCRKBEtc&nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+From: sip:digest@garMin-SE: age.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.com
+Call-ID: 982773899-reg@172.21.9.155
+CSeq: 1 REGISTER
+WWW-Authenticate: Digest realm="garage.sr.ntc.nokia.com", 
+  nonÿÿÿÿÿÿÿÿÿÿÿÿ1415@c.bell-tel.com
+CSeq:    1 lexander <sip:a.g.bell@bell-tel.com>
+To:      Watson, Thomas <sip-:ell-tel.com
+From:    Bell, Alexander <sip:a.g.bell@bell-tel.com>
+To:      Watson, Thomas <sip-:t.watson@ieee.org>
+Call-ID: 31415@c.bell-tel.com
+CSeq:    1 lexander <sip:a.g.bell@bell-tel.com>
+To:      Watson, Thomas <sip-:t.watson@ieee.org>
+Call-Iÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿce="MjAwMS0wMS0yMSAxNTowODo1OA==", algorithm=MD5, qop="auth"
+Content-Length: 0
+

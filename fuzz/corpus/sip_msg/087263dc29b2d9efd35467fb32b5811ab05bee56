@@ -1,0 +1,26 @@
+INVITE sip:user@company.com SIP/2.0
+To: sip:j_user@company.com
+From:0.1
+Accept: text/newform2+9390 RTP/AVP 0 1CANCELideo 3227 RTP/AVP sip:caller@univ]rsity.ed                                 í                               0.1
+Accept: text/newfP/AVP sip:caller@university.edu
+CalŽÒ¶»: 0ha0isneaksdj@10.0.0.1
+Accept: ,company.com SIP/2.0
+Taksdj@10.0.0.1
+Accept: ,ext/newform29390 RTP/AVP =1CT:3455company.com SIP/2.0
+To: sip:j_user@company.com
+From:0.1
+Accept: text/newform2+9390 RTP/AVP 0 1CANCELideo 3d27 RTP/AVP sip:caller@univ]rsity.edu
+Call-ID: 0ha0isndaksdj@10.0.0.1
+Accept: text/newfP/AVP sip:caller@university.edu
+Call-ID: 0ha0isneaksdj@10.0.0.1
+Accept: text/newform2939REGISTERP =1CT:3455
+a=rtpmap:31 LPC
+ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿCall-ID: ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿCall-ID: 060ma;ddr=srlab.sr.ntc.nokia.com>
+Hide: route
+Max-Forwards: 15
+From: sip:digest@garage.sr.ntc.nokia.com
+To: sip:digesÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿCall-ID: ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿCall-ID: ÿÿÿÿÿÿÿÿÿÿÿÿÿÿE sip:user@company.com SIP/2.0
+To: sip:j_user@company.com
+From:0.1
+Accept: text/newform2+9390 RTP/A  0VP12
+m=videoÿÿÿÿÿÿÿÿ

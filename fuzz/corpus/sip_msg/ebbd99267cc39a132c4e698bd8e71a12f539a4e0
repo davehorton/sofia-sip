@@ -1,0 +1,109 @@
+OPTIONS sip:135.180.130.133 SIP/2.0
+Via: SIP/2.0/UDP company.com:5604
+From: sip:iuser@company.com
+To: siNEWMETHOD si135.180.130.133
+Call-Ill-tel.com
+CSeq:    1(INVITED: 1804928587@company.com
+CSeq: 1 OPTIONS
+Expires: 0 0l@company.com
+To: :usspier@135.180.130.133
+Call-ID: 1804928587@company.comp:user@coma‘y.com SIP/2.0
+To: sip:j.user@companIn-Ry.com
+From: sip:caller@universit2y.edu
+Call-ID: *ha0isndaksdj@10.0.0p:user@135.180.130.133
+Call-Ill-tel.com
+CSeq:    1(INVITED: 1804928587@company.com
+CSeq: 1 OPTIONS
+Expires: 0 0l@company.com
+To: :usspier@135.180.130.133
+Call-ID: 1804928587@company.com
+CSeq: 1 OPTIONS
+Contact: sip:Ï1
+CSeq: 8 NEWMETHOD
+Via:(SIP/2.0/UDP 135.180.130.133
+Content-Type: appaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaD: *ha0isndaksdj@10.0.0p:user@135.180.130.133
+Call-Ill-tel.com
+CSeq:    1(INVITED: 1804928587@company.com
+CSeq: 1 OPTIONS
+Expires: 0 0l@company.com
+To: :usspier@135.180.130.133
+Call-ID: 1804928587@company.com
+CSeq: 1 OPTIONS
+Contact: sip:Ï1
+CSeq: 8 NEWMETHOD
+Via:(SIP/2.0/UDP 135.180.130ÿÿÿÿÿÿer@universit2y.edu
+Call-ID: *ha0isndaksdj@10.0.0Ï1
+CSeq: 8 NEWMETHOD
+Via:(SIP/2.0/UDP 135.180.130.133
+Content-Type: appaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaam-1=1;x-param-2=2;x-param-3=3;x-param-4=4;x-param-5=5;x-param-6=6;ip:j.user@COMPANY.COM;x-param-0=0;x-param-1=1;x-param-2=2;x-param-3=3;x-param-4=4;x-param-5=3;x-param-6=6;xer:   newfangled value
+ more newfangled value
+Content-Type: application/sdp
+v:  SIP  / 1.0  / TCP     12.3.4.5  
+  ;
+ tag = 98asjd8
+CaLl-Id
+ : 0ha0isndaksdj@10.1.1.1
+cseq: 8 INVITE
+Via  : SIP   /  2.0/  UDP
+  135.180.130.133
+Subject :
+NewFangledHeader:  .0/UDP sip4.example.com
+Via: SIP/3.0/UDP sip3.example.com
+Via: SIP/2.0/UDP sip2.example.com
+Subscription-State: Via: SIP/2.0/CANCELp1ontact:m-7=7;x-param-8=8
+Call-Iip:bob@example.com;maom/images/face.jpg>;pur
+Unsupported: everything
+Error-Info: <http://garage.sr.ntc.nokia.com/figure-1.tent-tag=foo
+From: sip:j.user@COMPANY.COM;x-pa;x-param-6=6;xer:   newfangled value
+ more newfangled value
+Content-Type: application/sdp
+v:  SIP  / 1.0  / TCP     12.3.4.5  
+  ;
+ tag = 98asjd8
+CaLl-Id
+ : 0ha0isndaksdj@10.1.1.1
+cseq: 8 INVITE
+Via  : SIP   /  2.0/  UDP
+  135.180.13ram-0=0;x-param-1=1;x-param-2=2;x-param-3=3;x-param-4=4;x-param-5=5;x-param-6=6;ip:j.user@COMPANY.COM;x-param-0=0;x-param-1=1;x-param-2=2;x-param-3=3;x-param-4=4;x-param-5=3;x-param-6=6;xer:   newfangled value
+ more newfangled value
+Content-Type: application/sdp
+v:  SIP  / 1.0  / TCP     12.3.4.5  
+  ;
+ tag = 98asjd8
+CaLl-Id
+ : 0ha0isndaksdj@10.1.1.1
+cseq: 8 INVITE
+Via  : SIP   /  2.0/  UDP
+  135.180.130.133
+Subject :
+NewFangledHeader:  .0/UDP sip4.example.com
+Via: SIP/3.0/UDP sip3.example.com
+Via: SIP/2.0/UDP sip2.example.com
+Subscription-State: Via: SIP/2.0/CANCELp1ontact:m-7=7;x-param-8=8
+Call-ID: 0ha0isndaksdj@10.0.2;.2  
+Contact: *
+CSeq: 9 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Content-LengthŠeq: 1 OPTIONS
+Contact:(sip:Ï1
+CSeq: 8 NEWMETHOD
+Via:(SIP/2.0/UDP 135.180.130.133
+Content-Type: appaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaFrom: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.aaaaaaaaaaaaaaaaaa
+ aaaaaa#P/2.0
+To: sip:j.user@company.com
+From: sip:callÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿer@universit2y.edu
+Call-ID: *ha0isndaksdj@10.0.0Ï1
+CSeq: 8 NEWMETHOD
+Via:(SIP/2.0/UDP 135.180.130.133
+Content-Type: appaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+ aaaaaa#aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaahost.coma: SIP/2.0/UDP srlab.s																																																																				r.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5 (NTA 1. sip-cc, sip-cc-01, timer
+Un0 GMT (wake-up) ;duration=1800
+Timestamp: 986395257.13924321 3Expires: 180
+Also: sip:digestify@garage.sr.ntc.nokia.com
+Call-Inia.com Only local IPv4Via: SIP/2.0/TCP  multicast available
+Authorization: Digest USERNAME="digest", REALM="garage.sr.ntc.nokia.com", NONCE="MjAwMS0wMS0yMSAxNTowODo1OA==", RESPONSE="d9d7f1ae99a013cb05f319f0f678251d", URI="sip:garage.sr.naaaaaaaaaaaaaaaaaaaaaaaaaaÿÿÿqaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaas: Ô
+Contact: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.example.locasip:hostl:5060>;. Watson <sip:t.watson@ieee.or.company.comg>
+Call-ID: 31414@c.bell-tel.com
+
+CSeq:    1 INVITE

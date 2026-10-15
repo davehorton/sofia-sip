@@ -1,0 +1,18 @@
+ÿREGISTER sip:gara*e.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlAb.sr.ntc.nRetry-After:77777777777777777cco: s777777ÿ777777777777777777777777777777777777777ewag Wed, 04 Apr 2001 19:00:0S GMT (wake-up) ;duration=1800
+Timestamp: 986395257.13924321 3
+Expires:¥ 180
+Also: sip:digestify@garage.sr.ntc.nokia.com
+Call-Info: <http://garage.sr.ntc.nokiverything
+Error-Info: <http://garage.sr.ntc.nokia.com/figure-1.jpg>
+Warning: 300 garage.sr.nt0.nokia.com IPv6 global addresses not available
+Warning: 330 garage.sr.ntc.nokia.com No IPv6 multicast, 330 garage.sr.ntc.nokia.com Only local IPv4 multicast available
+AutA not availableRAck: Wniar
+ng: 660 garage.sr.ntc.nokia.com No IPv6 multicast, 330 garage.sr.nfo: sition: render;handling=optional
+Content-Length: 31
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+REGISTER sip:garage.sr.ntc.nokia.com SIP/1.0
+Via: S
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxx

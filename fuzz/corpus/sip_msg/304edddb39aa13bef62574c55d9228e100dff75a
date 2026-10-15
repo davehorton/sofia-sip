@@ -1,0 +1,152 @@
+REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.sr.ntc.nokia.co:065m0;maddr=192.168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5 (NTA 1.0×òõ­ia: SIP/2.0/UDP 192.2.2.1:5060 GMT
+Re?REGISTER sip:company.com SIP/2.0
+To: sip:j.u@recsompany.com
+From: sip:j.user@company.com
+Call-ID: 0ha0isndaksdj@10.0.1.1
+CSeq: 8 REGISTER
+Via: SIP/ SI°ÐÍÑÏÐªÃP 135.180.130.133
+Expires: Fri, 01 Jan 2010 1v:00:0P4 126.5ÿÿÿÿOPTIONS3
+s=SIP Call
+t=0 0
+c=IN Iÿÿ: s35.180.130.133
+Expires: Fri, 0.0.1.1
+CSeq: 8 REGISTER
+Via: SIP/ SI°ÐÍÑÏÐªÃP 135.180.130.133
+Expires: Fri, 01 Jan 2010 1v:00:0P4 126.5ÿÿÿÿOPTIONS3
+s=SIP Call
+t=0 0
+c=IN Iÿÿ: s35.180.130.133
+Expires: Fri, 01 Jan 2010 1v:00:0P4 126.5ÿÿÿÿÿÿÿ.4.3
+smages/face.jpg>;purpose=icon
+Organization:SI=F Pu Call
+t
+CSeq: 1 INVITE
+Via: SI°ÐÍÑÏÐªÃP 135.180.130.133
+Expires: Fri, 01 Jan 2010 1v:00:0P4 126.5ÿÿÿÿOPTIONS3
+s=SIsr.nINVITE sip:user@company.com SIP/2.0
+To: sip:user@company.com
+Drom: sip¼œaller@university.eí/du
+Call-ID: 7@10.0.0.1qtc.nokia.com
+Call-Info: <http://garage.sr.ntc.nokia.com/i: 1 INVITE
+Via: SI°ÐÍÑÏÐªÃP 135.180.130.133
+Expires: Fri, 01 Jan 2010 1v:00:0P4 126.5ÿÿÿÿOPTIONS3
+s=SIP Call
+t=0 0
+c=IN Iÿÿ: s35.180.130.133
+Expires: Fri, 01 Jan 2010 1v:00:0P4 126.5ÿÿÿÿÿÿÿ.4.3
+smages/face.jpg>;purpose=icon
+Organization: Fu=SIP Call
+t
+CSeq: 1 INVITE
+Via: SI°ÐÍÑÏÐªÃP 135.180.130.133
+Expires: Fri, 01 Jan 2010 1v:00:0P4 126.5ÿÿÿÿOPTIONS3
+s=SIP Call
+t=0 0
+c=IN Iÿÿ: s35.18zFy zelines, Inc.
+Server: please
+User-Agent: Nokia Universal Killer Internet)))))d0 0.130.Application/2.0 (NUUKIA)
+In-Reply-To: 982773898-reg@172.21.9.155133
+Expires: Fri, 01 Jan 2010
+ 1v:00Accept::P Call
+t=0 0
+c=IN Iÿÿ: s35.18zFy zelines, Inc.
+Server: please
+User-Agent: Nokia Universal Killer Internet)))))d0 0.130.Application/2.0 (NUUKIA)
+In-Reply-To: 982773898-reg@172.21.9.155133
+Expires: Fri, 01 Jan 2010
+ 1v:00Accept::0P4 126.5ÿÿÿÿÿÿá.4.3
+s=SIP Call
+t8=0 0
+c=IN IÿÿÿdP4 135.1
+a=rtÿdP4 135.1
+a=rtm3:a 1pp10 1v:00:0P4 126.5ÿÿÿÿÿÿÿ.4.3
+smages/face.jpg>;purpose=icon
+Organization: Fu=SIP Call
+t
+CSeq: 1 INVITE
+Via: SI°ÐÍÑÏÐªÃP 135.180.130.133
+Expires: Fri, 01 Jan 2010 1v:00:0P4 126.5ÿÿÿÿOPTIONS3
+s=SIP Call
+t=0 0
+c=IN Iÿÿ: s35.18zFy zelines, Inc.
+Server: please
+User-Agent: Nokia Universal Killer Internet)))))d0 0.130.Application/2.0 (NUUKIA)
+In-Reply-To: 982773898-reg@172.21.9.155133
+Expires: Fri, 01 Jan 2010
+ 1v:00Accept::P Call
+t=0 0
+c=IN Iÿÿ: s35.18zFy zelines, Inc.
+Server: please
+User-Agent: Nokia Universal Killer Internet)))))d0 0.130.Application/2.0 (NUUKIA)
+In-Reply-To: 982773898-reg@101 Jan 2010 1v:00:0P4 126.5ÿÿÿÿÿÿÿ.4.3
+smages/face.jpg>;purpose=icon
+Organization:SI=F Pu Call
+t
+CSeq: 1 INVITE
+Via: SI°ÐÍÑÏÐªÃP 135.180.130.133
+Expires: Fri, 01 Jan 2010 1v:00:0P4 126.5ÿÿÿÿOPTIONS3
+s=SIsr.nINVITE sip:user@company.com SIP/2.0
+To: sip:user@company.com
+Drom: sip¼œaller@university.eí/du
+Call-ID: 7@10.0.0.1qtc.nokia.com
+Call-Info: <http://garage.sr.ntc.nokia.com/i: 1 INVITE
+Via: SI°ÐÍÑÏÐªÃP 135.180.130.133
+Expires: Fri, 01 Jan 2010 1v:00:0P4 126.5ÿÿÿÿOPTIONS3
+s=SIP Call
+t=0 0
+c=IN Iÿÿ: s35.180.130.133
+Expires: Fri, 01 Jan 2010 1v:00:0P4 126.5ÿÿÿÿÿÿÿ.4.3
+smages/face.jpg>;purpose=icon
+Organization: Fu=SIP Call
+t
+CSeq: 1 INVITE
+Via: SI°ÐÍÑÏÐªÃP 135.180.130.133
+Expires: Fri, 01 Jan 2010 1v:00:0P4 126.5ÿÿÿÿOPTIONS3
+s=SIP Call
+t=0 0
+c=IN Iÿÿ: s35.18zFy zelines, Inc.
+Server: please
+User-Agent: Nokia Universal Killer Internet)))))d0 0.130.Application/2.0 (NUUKIA)
+In-Reply-To: 982773898-reg@172.21.9.155133
+Expires: Fri, 01 Jan 2010
+ 1v:00Accept::P Call
+t=0 0
+c=IN Iÿÿ: s35.18zFy zelines, Inc.
+Server: please
+User-Agent: Nokia Universal Killer Internet)))))d0 0.130.Application/2.0 (NUUKIA)
+In-Reply-To: 982773898-reg@172.21.9.155133
+Expires: Fri, 01 Jan 2010
+ 1v:00Accept::0P4 126.5ÿÿÿÿÿÿá.4.3
+s=SIP Call
+t8=0 0
+c=IN IÿÿÿdP4 135.1
+a=rtÿdP4 135.1
+a=rtm3:a 1pp10 1v:00:0P4 126.5ÿÿÿÿÿÿÿ.4.3
+smages/face.jpg>;purpose=icon
+Organization: Fu=SIP Call
+t
+CSeq: 1 INVITE
+Via: SI°ÐÍÑÏÐªÃP 135.180.130.133
+Expires: Fri, 01 Jan 2010 1v:00:0P4 126.5ÿÿÿÿOPTIONS3
+s=SIP Call
+t=0 0
+c=IN Iÿÿ: s35.18zFy zelines, Inc.
+Server: please
+User-Agent: Nokia Universal Killer Internet)))))d0 0.130.Application/2.0 (NUUKIA)
+In-Reply-To: 982773898-reg@172.21.9.155133
+Expires: Fri, 01 Jan 2010
+ 1v:00Accept::P Call
+t=0 0
+c=IN Iÿÿ: s35.18zFy zelines, Inc.
+Server: please
+User-Agent: Nokia Universal Killer Internet)))))d0 0.130.Application/2.0 (NUUKIA)
+In-Reply-To: 982773898-reg@172.21.9.155133
+Expires: Fri, 01 Jan 2010
+ 1v:00Accept::0P4 126.5ÿÿÿÿÿÿá.4.3
+s=SIP Call
+t8=0 0
+c=IN IÿÿÿdP4 135.1
+a=rtÿdP4 135.1
+a=rtm3:a 1ppLPC

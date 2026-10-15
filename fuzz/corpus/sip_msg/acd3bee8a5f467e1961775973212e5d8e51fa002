@@ -1,0 +1,24 @@
+REGISTER sip:company.com SIP/2.0
+To: sip:user@company.com
+FrmpContact: ia: SIP/2.0/UDP sip22.example.com
+Via: SIP/2.0/UDP sip21.example.com
+Via: SIP/2.0/UDP sip2Å.example.com
+Via: SIP/2.0/UDP sip19.example.com
+ViaDP sip3.example.com
+Via: SIP/2.0/UDP sip2.example.com
+Subscription-State: V;rpoom: sip:user@company.com
+Contact: sip:useINVITE sip:user@company.com SIP/2.0
+To: "I have a user name of extreme proportion" <sip:user@company.com:6001;other-param=1234567890somethingelselong1234567890>
+From: sip:caller@university.edu
+Call-ID: kl24ahsd546folnyt2vbak9sad98u23naodiunzds09a3bqw0sdfbsk34poouymnae0043r@host.company.com
+Call-ID: k345asrl3fdbv@10.0.0.1
+CSeq: 1 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Ucom
+Via: SIP/2.0/UDP sip23.exampContact: ia: SIP/2.0/UDP sip22.example.com
+Via: SIP/2.0/UDP sip21.example.com
+Via: SIP/2.0/UDP sip2Å.example.com
+Via: SIP/2.0/UDP sip19.example.com
+ViaDP sip3.example.com
+Via: SIP/2.0/UDP sip2.example.com
+Subscription-State: V;rportia: SIP/2.0/UDP sip1ontact: sip:user@ex.examplample.ce

@@ -1,0 +1,121 @@
+?REGISTER sip:company.com SIP/1.0
+To: sip:user@company.com
+From: sip:user@cÿÿÿÿÿÿompany.com
+Contact: sip:ontact: sip:user@host.company.com
+Call-ID: k345asrl3fdbv@10.0.0.1
+CSeq> 1 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Contact: <sip:user@example.com?Route=%3Csip:sip.example.com%3E>
+REGISTER sip:coy.com
+From: sip:user@cÿÿÿÿÿÿompany.com
+Contact: sip:ontact: sip:user@host.company.com
+Call-ID: k345asrl3fdbv@10.0.0.1
+CSeq> 1 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Contact: <sip:user@example.com?Route=%3Csip:sip.example.com%3E>
+REGISTER sip:company.com SIP/2.0
+To: s:A::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::ip:user@company.com
+From: sip:user@,company.com
+Contact: sip:user@host.company.com
+Cal-:IDl k345asrl3fdbv@10.0.0.1
+CSeq: 1 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Contact:rom: sip:user@cÿÿÿÿÿÿompany.com
+Contact: sip:ontact: sip:user@host.company.com
+Call-ID: k345asrl3fdbv@10.0.0.1
+CSeq> 1 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Contact: <sip:user@example.com?Route=%3Csip:sip.examTo: com%3E>
+REGISTER sip:company.com SIP/2.0
+To: s::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::ip:user@company.com
+From: sip:usny.com
+Contact: sip:ontact: sip:user@host.company.com
+Call-ID: k345asrl3fdbv@10.0.0.1
+CSeq> 1 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Contact: <sip:user@example.com?Route=%8Csip:sip.example.com%3E>
+REGISTER sip:company.com SIP/2.0
+To: s:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::example.com?Route=%3Csip:sip.example.com%3E>
+REGISTER sip:company.com SIP/2.0
+To: sip:user@company.com
+From: asrl3fdbv@10.0.0.1
+CSeq: 1 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Contact:rom: sip:user@cÿÿÿÿÿÿompany.com
+Contact: sip:ontact: sip:user@host.company.com
+Call-ID: k345asrl3fdbv@10.0.0.1
+CSeq> 1 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Contact: <sip:user@example.com?Route=%3Csip:sip.example.com%3E>
+REGISTER sip:company.com SIP/2.0
+To: s::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::ip:user@company.com
+From: sip:user@,company.com
+Contact: sip:user@host.company.com
+Cal-:IDl k345asrl3fdbv@10.0.0.1
+CSeq: 1 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Contact: <sip:uVia: SIP/2.0/TCP ser@example.com?Rouser@host.company.com
+Call-ID: k345asrl3fdbv@10.0.0.1
+CSeq> 1 REGISTER
+Via: SIP/2.0/UDP 135.180.mpany.com SIP/2.0
+To: s:A::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::ip:user@company.com
+From: sip:user@,company.com
+Contact: sip:user@host.company.com
+Cal-:IDl k345asrl3fdbv@10.0.0.1
+CSeq: 1 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Contact:rom: sip:user@cÿÿÿÿÿÿompany.com
+Contact: sip:ontact: sip:user@host.company.com
+Call-ID: k345asrl3fdbv@10.0.0.1
+CSeq> 1 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Contact: <sip:user@example.com?Route=%3Csip:sip.examTo: com%3E>
+REGISTER sip:company.com SIP/2.0
+To: s::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::ip:user@company.com
+From: sip:usny.com
+Contact: sip:ontact: sip:user@host.company.com
+Call-ID: k345asrl3fdbv@10.0.0.1
+CSeq> 1 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Contact: <sip:user@example.com?Route=%8Csip:sip.example.com%3E>
+REGISTER sip:company.com SIP/2.0
+To: s:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::example.com?Route=%3Csip:sip.example.com%3E>
+REGISTER sip:company.com SIP/2.0
+To: sip:user@company.com
+From: asrl3fdbv@10.0.0.1
+CSeq: 1 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Contact:rom: sip:user@cÿÿÿÿÿÿompany.com
+Contact: sip:ontact: sip:user@host.company.com
+Call-ID: k345asrl3fdbv@10.0.0.1
+CSeq> 1 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Contact: <sip:user@example.com?Route=%3Csip:sip.example.com%3E>
+REGISTER sip:company.com SIP/2.0
+To: s::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::ip:user@company.com
+From: sip:user@,company.com
+Contact: sip:user@host.company.com
+Cal-:IDl k345asrl3fdbv@10.0.0.1
+CSeq: 1 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Contact: <sip:uVia: SIP/2.0/TCP ser@example.com?Rouser@host.company.com
+Call-ID: k345asrl3fdbv@10.0.0.1
+CSeq> 1 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Contact: <sip:user@example.com?Route=%3Csip:sip.example.com%3E>
+REGISTER sip:company.com SIP/2.0
+To: sip:user@company.com
+From: sip:user@,company.com
+Contact: sip:user@host.company.com
+Ca:l-IDl k345asrl3fdbv@10.0.0.1
+CSeq: 1 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Contact: <sip:uVia: SIP/2.0/TCP <sip:uVia: SIP/2.0/TCP ser@example.com?Rouser@host.company.com
+Call-ID: k345asrl3fdbv@10.0.0.1P/2.0
+To: sip:user@company.com
+From: sip:user@,company.com
+Contact: sip:user@host.company.com
+Cal-:IDl k345asrl3fdbv@10.0.0.1
+CSeq: 1 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Contact: <sip:uVia: SIP/2.0/TCP ser@example.com?Route=%3Csip:sip.example.com%3E>

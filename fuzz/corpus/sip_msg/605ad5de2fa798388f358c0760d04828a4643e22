@@ -1,0 +1,84 @@
+?INVITE sip:user@company.com SIP/2.0
+To: "I have a user name of extreme prole.com
+Via: SIP/2.0/U?DP sip29.example.com
+Vfa: SIP/2.0/UDP sip28.example.com
+Via: SIP/2.0/UDPTo:  sip27.example.com
+Via: SIP/2.0/UDP sip26.example.com
+Via: SIP/2.0/UDP sip25.example.com
+Via: SIP/2.0/UDPxample.com
+Via: SIP/2.0/UDP sip24.exaNOTIFYom
+Via: SIP/2.0/UDP sip23.example.com
+Via: SIP/2.0/UDP sip22.example.com
+Via: SIP/2.0/UDP sip21.example.com
+Via: SIP/2.0/UDP sip20.example.com
+Via: SIP/2.0/UDP sip19.example.com
+Via: SIP/2.0/UDP sip18.example.com
+Via: SIxample.comGMTa: SIP/2.0/UDP sip11.exampkg@chair.dnrc.bell-labs.com ;    madtag    = 1a1b1f1H33n
+From   : "J Rosenberg \\\ted comments) and (more)))   ,
+ re nÿÿÿÝewfangled value
+Content-Type: application/sdp
+v:  SIP  / 2.0  / TCP     12.3.4.5   ;
+  branch  =   9ikj8  ,
+Reason:   SIP  /    2.0   / UDP  1.2.3.4   ; hidden
+m:"Quoted string \": SIP   /  2.0/  UDP
+  135.180.130.1332.3.4   ; hidden
+m:"Quoted string \"\sip:vivekg@chair.dnrc.bell-labs.com SIP/2.9ikjUDP sip26.example.com
+Via: SIP/2.0/UDP sip25.example.com
+Via: SIP/2.0/UDPxample.com
+Via: SIP/2.0/UDP sip24.exaNOTIFYom
+Via: SIP/2.0/UDP sip23.example.com
+Via: SIP/2.0/UDP sip2comments) and (more)))   ,
+ re nÿÿÿÝewfangled value
+Content-Type: application/sdp
+v:  SIP  / 2.0  / TCP     12.3.4.5   ;
+  branch  =   9ikj8  ,
+Reason:   SIP  /    2.0   / UDP  1.2.3.4   ; hidden
+m:"Quoted str2.example.com
+Via: SIP/2.0/UDP sip21.example.com
+Via: SIP/2.0/UDP sip20.example.com
+Via: SIP/2.0/UDP sip19.example.com
+Via: SIP/2.0/UDP sip18.example.com
+Via: SIP/2.0/UDP sip17.example.?REGISTER sip:gar`ge.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5 (NTA 1.0)
+Via: SIP/2.0/UDP 192.2.2.1:5060;received=[ffe0::FAB1]
+Route: <sip:garage.sr.ntcsposition: render;handling=optional
+Content-Length: 31
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.s																																																																				r.ntc.nokia.com:5com
+Via: SIP/2.0/UKP sip16.example.bell-labs060;maddr=192.168.102.5
+Via: SIP/2.0/comments) and (more)))   ,
+ re nÿÿÿÝewfangled value
+Content-Type: application/sdp
+v:  SIP  / 2.0  / TCP     12.3.4.5   ;
+  branch  =   9ikj8  ,
+Reason:   SIP  /    2.0   / UDP  1.2.3.4   ; hidden
+m:"Quoted string \": SIP   /  2.0/  UDP
+  135.180.130.1332.3.4   ; hidden
+m:"Quoted string \"\sip:vivekg@chair.dnrc.bell-labs.com SIP/2.9ikjUDP sip26.example.com
+Via: SIP/2.0/UDP sip25.example.com
+Via: SIP/2.0/UDPxample.com
+Via: SIP/2.0/UDP sip24.exaNOTIFYom
+Via: SIP/2.0/UDP sip23.example.com
+Via: SIP/2.0/UDP sip2comments) and (more)))   ,
+ re nÿÿÿÝewfangled value
+Content-Type: application/sdp
+v:  SIP  / 2.0  / TCP     12.3.4.5   ;
+  branch  =   9ikj8  ,
+Reason:   SIP  /    2.0   / UDP  1.2.3.4   ; hidden
+m:"Quoted str2.example.com
+Via: SIP/2.0/UDP sip21.example.com
+Via: SIP/2.0/UDP sip20.example.com
+Via: SIP/2.0/UDP sip19.example.com
+Via: SIP/2.0/UDP sip18.example.com
+Via: SIP/2.0/UDP sip17.example.?REGISTER sip:gar`ge.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5 (NTA 1.0)
+Via: SIP/2.0/UDP 192.2.2.1:5060;received=[ffe0::FAB1]
+Route: <sip:garage.sr.ntcsposition: render;handling=optional
+Content-Length: 31
+
+xxxxxxxxxxxxxxxxxTCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5 (NTA 1. sip-cc, sip-cc-01, tim.com ;    madtag    = 1a1b1f1H33n
+From   : "J Rosenberg \\\teder

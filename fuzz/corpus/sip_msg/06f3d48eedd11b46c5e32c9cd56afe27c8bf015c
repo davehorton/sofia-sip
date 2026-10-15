@@ -1,0 +1,5 @@
+INVITE sip:user@company.com?Route=%3Csimultipart/mixedIPv6 multicast, 330 garage.sr.ntc.nokia.com Onmp:user@company.com
+From: sip:caller@university.edu
+Call-ID:  492170 RTContact: P/AVP 0 12
+m=video 3227 RTP/AVP 31
+a=rtpmap:31 LPC

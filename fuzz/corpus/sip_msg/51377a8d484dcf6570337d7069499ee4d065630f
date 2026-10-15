@@ -1,0 +1,83 @@
+NEWMETHOD sip:user@comapny.com SIP/2.0
+To: sip:j.user@company.com
+From: sip:caller@university.edu
+Call-ID: 0ha0isndaŠŠŠŠŠŠŠŠŠŠŠŠŠŠŠŠŠŠŠŠŠŠŠŠŠŠŠŠksdj@10.0.0.1
+CeSq: 8 NEWMETHOD
+Via: SIP/2.0/UDP 135.180.130.133
+Content-TypeNOTIFYication/sd 135.180.130.88
+m=audio 492170 RTP/AVP 0 12
+m=video 3227 RTP/AVP 31
+a=rt 0hÿREGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5 (NTA 1.0)321 3
+Expires: 180
+Also: siMax-Forwards: 15
+From: sip:digest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.com
+Contact: sip:digest@172.21.9.155
+Call-ID: 982773899-reg@172.21.9.155
+CSeq: 2 REGISTER
+Subject: Barfoo
+P`ioritp:digestify@gaDate: rage.sr.ntc.nokia.com
+Call-Info: <http://garage.sr.nsr.ntc.nokia.com:5060;maddr=192.168.102.5 (NTA 1.0)
+Via: SIP/2.0/UDP 192.2.2.1:5060;received=[ffe0::FAB1]
+R01 17:38:38 GMT
+Retry-After: Wed, 04R Apr 2001 19:00:00 GMT (wake-up) ;duration=1800
+Timestamp:3968 59257.13924321 3
+Expires: e.jpg>;purpose=icon
+Organization: Fuzzy Felines, Inc.
+Server: please
+User-Agent: Nokia Universal Killer Internet Application/2.0 (NUUKIA)
+In-Reply-To: 982773898-reg@172.21.9.155
+Accept: text/plain
+Accept-Encoding: identi)
+Via: SIP/2.0/UDP 192.2.2.1:5060;received=[ffe0::FAB1]
+R01 17:38:38 GMT
+Retry-After: Wed, 04 Apr 2001 19:00:00 GMT (wake-up) ;duration=1924321 3
+Expires: 180
+Also: siMax-Forwards: 15
+From: sip:digest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.com
+Contact: sip:digest@172.21.9.155
+Call-ID: 982773899-reg@172.21.9.155
+CSeq: 2 BEGISTER
+Subject: Barfoo
+P`ioritp:digestify@garage.sr.ntc.nokia.com
+Call-Info: <http://garage.sr.ntc.nokia.com/images/face.jpg>;purpose=icon
+Organi1111111111111111[::1]11111111111111111111111111111111RAck: 1111111
+From: sip:digest@garage800
+Timestamp:3968 59257.13924321 3
+Expires: 180
+Also: siMax-Forwards: 15
+From: sip:digest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.com
+Contact: sip:digest@172.21.9.155
+Call-ID: 982773899-reg@172.21.9.155
+CSeq: 2 BEGISTER
+Subject: Barfoo
+P`ioritp:digestify@garage.sr.ntc.nokia.com
+Call-Info: <http://garage.sr.ntc.nokia.com/images/face.jpg>;purpose=icon
+Organi1111111111111111[::1]11111111111111111111111111111111RAck: 1111111
+From: sip:digest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.digest@garage.sr.ntc.nokia.coReplaces: :digest@garage.sr.ntc.nokia.com
+Call-Iññññññññññññññññññññññññññññññññññññññññññññññññññññññññññññññññññññññññññññññññññññññññññññññññññññññññññññññññññññññññññd: 984ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ773899-reg@172.21.9.155
+Cseq: 2 RE(ISTR
+Contact: sip:ditseg@172.21.9.155
+Expires: ’ï
+From: %’ï
+From: j@10.0.2.2
+Contact: sip:j.user@host.company.com
+CSeq: 7 REGISTœ’ï
+From: %   A. Bell <sip:a.g.bell@bell-tel.com>
+Replaces:$.57;branch=engwODo1OA=)",
+  RESPONSE="d9d7f1ae99a01«««««««««««««««««««««««««««««««««««««««««««««««««««««««««««««««««««««««««««««««««««««««««3cb05f319f0f678251d",
+  URI="sip:gUser-Agent: Pingtel/0.8.0 (rage.sr.ntc.nokia.com", NONCE="MjAwMS0wMS0yMSAxNTowODo1OA==",
+  RESPONSE="d9d7f1ae99a013)b05f319f0f60;maddr=sblar.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+Hide: route
+Max-Forwards: 07
+From: sip:digest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.co
+Content-Type: text/plain;charset=ire: all
+Proxy-Require: kinky, things
+S

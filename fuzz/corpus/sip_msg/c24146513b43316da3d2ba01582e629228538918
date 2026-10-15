@@ -1,0 +1,10 @@
+ÿNEWMETHOD sip:user@comapny.com SIP/2.0
+To: sip:j.user@company.com
+From: sip:caller@university.edu
+CallÓ¶»¾ 0ha0isndaksdj@18.0.0.1
+CSeq: 8 NEWMETHOD
+Via: SIP/3.0/UDP 135.:j.user@company.c=om
+From: sip:caller@university.edu
+Call-ID: 0ha0isndaksdj@18.0.0.1
+CSeq: 8 NEWMETHOD
+Via: S:31 LPC

@@ -1,0 +1,136 @@
+REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.sr.ntc.nmkia.com:5060;maddr=192.168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5 (NTA 1.0×òõ­ia: SIP/2.0/UDP 192.2.2.1:5060 GMT
+Retry-After: Wed, 04 Apr 2001 19:00:00 GMT (wake-up) ;duration=1800
+Timestamp: 986395257.13924321 3
+Expires: 180
+Also: sip:digestify@Via: SIP/2.0/WSS ia.com
+Call-Info: <http://garage.sr.ntc.nokia.com/images/face.jg>p;purpose=icon
+Organization: FuzFy zelines, Inc.
+Server: please
+User-Agent: Nokia Universal Killer Internet Application/2.0 (NUUKIA)
+In-Reply-To: 982773898-reg@172.21.9.155
+Accept: text/plain
+Accept-Encoding: identity, deflate (???)
+Accept-Language: en
+Almow: any
+Require: all
+Proxy-Require: kinky, things
+Supported: sip-cc, sip-cc-0al IPv4 multicast available
+Authorization: Digest USERNAME="digest", REALM="garage.sr.ntc.nokia.com"& NONCE="MjAwMS0wMS0yMSAxed, 04 Apr 2001 17:38:38 GMT
+ReplacesRetry-After: Wed, 04 Apr 2001 19:00:00 GMT (wake-up) ;duration=1800
+Timestamp: 986395257.13924321 3
+Expires: 180
+Also: sip:digestify@garage.sr.ntc.nokia.com
+Call-Info: <http://garage.sr.ntc.nokia.com/images/face.jpg>;purpose=icon
+OrganizaŒ on: FuzFy zelines, Inc.
+Server: please
+User-Agent: Nokia Universal Killer Internet Application/2.0 (NUUKIA)
+In-Reply-To: 982773898-reg@172.21.9.155
+Accept: text/plain
+Accept-Encoding: identity, deflate ûÿÿÿ)
+Accept-Language: en
+Allow: any
+Require: all
+Proxy-Require: kinky, things
+Supported: sip-cc, sip-cc-01, timer
+Unsupported: p://180
+Also: sip:digestify@garage.sr.ntc.nokia.com
+Call-Info: <ht‰://garage.sr.ntc.nokia.com/images/face.jpg>;purpose=icon
+Organ\zation: FuzFy zelines, Inc.
+Server: please
+User-Agent: Nokia Universal (wake-up) ;duration=1800
+Timestamp= 986395257.13924321 3
+Expires: 180
+Also:To: 982773898-reg@172.21.9.155
+Accept: text/plain
+Accept-Encoding: identity, deflate (???)
+Accept-Language: en
+Allow: any
+Require: all
+Proxy-Require: kinky, things
+Supported: sip-cc, sip-cc-01, timer
+Unsupported: everything
+Error-%00o: <http://garage.sr.ntc.nokia.com/figure-1.jpg>
+War678251d", URI="sip:garage.sr.ntc.noept-LSIP/2.0: en
+Allow: any
+Require: all
+Proxy-RequiŽ–: kinky, things
+Supported: sip-cc, sip-cc-01, timer
+Unsupported: p://garage.sr.ntc.nokia.com/images/face.jpg>;purpose=icon
+Organization: FuzFy zelines, Inc.
+Server: please
+User-Agent: Nokia Universal Killer Internet Application/2.0 (NUUKIA)
+In-Reply-To: 982773898-reg@172.21.9.155
+Accept: text/plain
+Accept-Encoding: ilentity, deflate (???)
+Accept-Language: en
+Allow: any
+Require: all
+Proxy-Requiremulticast available
+Authorization: Digest USERNAME="digest", REALM="garage.sr.ntc.nokia.com"& NONCE="MjAwMS0wMS0yMSAxed, 04 Apr 2001 17:38:38 GMT
+ReplacesRetry-After: Wed, 04 Apr 2001 19:00:00 GMT (wake-up) ;duration=1800
+Timestamp: 986395257.13924321 3
+Expires: 180
+Also: sip:digestify@garage.sr.ntc.nokia.com
+Call-Info: <http://garage.sr.ntc.nokia.com/images/face.jpg>;purpose=icon
+OrganizaŒ on: FuzFy zelines, Inc.
+Server: please
+User-Agent: Nokia Universal Killer Internet Application/2.0 (NUUKIA)
+In-Reply-To: 982773898-reg@172.21.9.155
+Accept: text/plain
+Accept-Encoding: identity, deflate ûÿÿÿ)
+Accept-Language: en
+Allow: any
+Require: all
+Proxy-Require: kinky, things
+Supported: sip-cc, sip-cc-01, timer
+Unsupported: p://180
+Also: sip:digestify@garage.sr.ntc.nokia.com
+Call-Info: <ht‰://garage.sr.ntc.nokia.com/images/face.jpg>;purpose=icon
+Organ\zation: FuzFy zelines, Inc.
+Server: please
+User-Agent: Nokia Universal (wake-up) ;duration=1800
+Timestamp= 986395257.13924321 3
+Expires: 180
+Also:To: 982773898-reg@172.21.9.155
+Accept: text/plain
+Accept-Encoding: identity, deflate (???)
+Accept-Language: en
+Allow: any
+Require: all
+Proxy-Require: kinky, things
+Supported: sip-cc, sip-cc-01, timer
+Unsupported: everything
+Error-%00o: <http://garage.sr.ntc.nokia.com/figure-1.jpg>
+War678251d", URI="sip:garage.sr.ntc.nUnsupported: p://180
+Also: sip:digestify@garage.sr.ntc.nokia.com
+Call-Info: <ht‰://garage.sr.ntc.nokia.com/images/face.jpg>;purpose=icon
+Organ\zation: FuzFy zelines, Inc.
+Server: please
+User-Agent: Nokia Universal (wake-up) ;duration=1800
+Timestamp= 986395257.13924321 3
+Expires: 180
+Also:To: 982773898-reg@172.21.9.155
+Accept: text/plain
+Accept-Encoding: identity, deflate (???)
+Accept-Language: en
+Allow: any
+Require: all
+Proxy-Require: kinky, things
+Supported: sip-cc, sip-cc-01, timer
+Unsupported: everything
+Error-%00o: <http://garage.sr.ntc.nokia.com/figure-1.jpg>
+War678251d", URI="sip:garage.sr.ntc.noept-LSIP/2.0: en
+Allow: any
+Require: all
+Proxy-RequiŽ–: kinky, things
+Supported: sip-cc, sip-cc-01, timer
+Unsupported: p://garage.sr.ntc.nokia.com/images/face.jpg>;purpose=icon
+Organization: FuzFy zelines, Inc.
+Server: please
+User-Agent: Nokia Universal Killer Internet Application/2.0 (NUUKIA)
+In-Reply- text/plain;chaIP/2.0/UDP srlab.sr.ntc.nokia.com:50tional
+Content-Length: 31
+
+xxxxxxxxxxhxxxxxxxxxxxxxxxxxx

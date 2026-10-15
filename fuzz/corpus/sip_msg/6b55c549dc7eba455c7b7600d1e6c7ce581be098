@@ -1,0 +1,73 @@
+REGISTER sip:company.com SIP/2.0
+To: sip:user@company.com
+FrmpContact: ia: SIP/2.0/UDP sip22.example.com
+Via: SIP/3.0/UDP sip21.example.com
+Via: SIP/2.0/UDP sip2Å.example.com
+Via: SIP/2om
+ViaDP sip3.example.com
+Via: SIP/2.0/UDP sip2.example.com
+Subscription-State: V;rpoom: sip:user@company.com
+Contact: sip:useINVITE sip:user@company.com SIP/1.0
+To: "I have UPDATEa user namefdbv@10.0.0.1
+CSeq: 1 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Ucom
+Via: SIP/2.0/UDP sip23.exampContact: ia: SIP/2.0/UDP sip22.example.com
+Via: SIP/2.0/UDP sip21.example.com
+Via: SIP/2.0/UDP sip2Å.example.com
+Via: SIP/2.0/UDP /2.0/UDP sr~~~~~~~~~~~Refer-To: ~~~~~Event: .sr.ntc.nokmiac:5o.060;mŒaddr=192.er: Wed, 04 Apr ia: SIP/294/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.1To: sip:j_us¥r@company.nokmiac:5o.060;mŒaddr=192.er: Wed, 04 Apr ia: SIP/294/TCP sr: sip:useINVITE sip:user@company.com SIP/1.0
+To: "I hmaddr=srlr namefdbv@10.0.0.1
+CSeq: 1 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Ucom
+Via: SIP/2.0/UDP sip23.exampContact: ia: SIP/2.0/UDP s?REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Record-Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+From: sip:digest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.com
+Call-Id: 982773899-reg@172.21.9.155
+Cseq: 2 REGISTER
+Contact: sip:digest@172.21.9.155
+Expires: 180
+Content-Length: 0
+Accept-Language: en
+Supported: sip-cc, sip-cc-01, timer
+User-Agent: Pingtel/0.8.0 (WinNT)+
+Authorization: DIGEST on: DIGEST USERNAME="digest",
+  REALM="garage.sr.ntc.nokia.com", NONCE="MjAwMS0wMS0y1.9.155
+
+REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Record-Route: <sip:ôûçòö—år.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>Content-Encoding
+Fromip22.example.com
+Via: SIP/2.0/UDP sip21.example.com
+Via: SIP/2.0/UDP sip2Å.example.com
+Via: SIP/2.0/UDP /2.lab.sr.ntc.nokia.com:5060;maddr=192.168.1To: sip:j_us¥r@company.com*
+From: ziInfoges/face.jpg>98sip19.example.com
+ViaDP sip3.example.com
+Via: SIP/2.0hiddenb@example.com>
+Call-ID:◊ôÃÃ59hG4bKJv+PsUQdfOb
+     ;received=172.21.40.24
+Record-Route: ,sip:bob@exampleRecord-Route: ,sip:bob@example.com;maddr=172.21.40.44>
+R[cord-R:bob@example.com>
+Call-ID: f3359hG4bKJv+PsUQdfOb
+     ;received=172.21.40.24
+Record-Route: ,s®ip:bob@exampleRecord-Rout.com>
+Call-ID: f3359e42-5109-11d6-998d-0010a47e1c0f
+CSeq: 1 OPTIONS
+Contact: <sip:[3ffe:1NS
+Contact: <sip:[3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]:5UDP 172.21.40.44;branch=z9hG4bKitIIzAialKS
+Via: SIP/2.0/UDP [3ffe:1200:30.0/UDP sip19.example.com
+ViaDP sip3.example.com
+Via: SIP/2.0/UDP sip2.example.com
+Subscription-State: V;rpoom: sip:user@company.com
+Contact: sip:useINVITE sip:user@company.com SIP/2.0
+To: "I have a user namefdbv@10.0.0.1
+CSeq: 1 R: sip:digest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.com
+Call-Id: 982773899-reg@172.21.9.155
+Cseq: 2 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Ucom
+Via: SIP/2.0/UDEGISTER
+Contact: sip:digest@172P. sip23.21.9.

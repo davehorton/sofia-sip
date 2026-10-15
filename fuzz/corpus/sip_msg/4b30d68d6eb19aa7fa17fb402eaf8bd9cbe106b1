@@ -1,0 +1,9 @@
+INVITE sip:user@company.com SIP/2.0
+To: sip:user@company.com
+From: sip:caller@iuvnersity.edu
+Call-ID: 7@1033
+Expires: Fri, 01 Jan 2010 16:00:0P4 126.5ÿÿÿÿÿÿÿ.4.3
+s=SIP Call
+t=0 0
+c=IN IÿÿÿdP4 135.1
+a=rtpmap:31 LPC

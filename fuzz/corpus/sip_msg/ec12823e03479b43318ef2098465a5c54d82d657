@@ -1,0 +1,10 @@
+REGpany.OPTIONS sip:user@company.com SIP/2.0
+To: sip:user@company.com
+From: "caller"    <si¼c;tag=@example.cINVITE sip:user@comapny.com SIP/2.0
+To: sip:j.user@company.com
+From: s777777777777777777777777777777777777777777777777777777ip:caller@university.edu
+Call-ID: 0ha0isndaksdj@10.0.0.1
+CSeq: 8 INVI7777777777777777777777777777777: SIP/2.0/UDTIONS
+Via: SIP/2.0/UDP 135.18port="443"/>
+</audio>
+0.130.133

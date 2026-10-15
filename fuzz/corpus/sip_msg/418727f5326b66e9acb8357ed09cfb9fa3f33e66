@@ -1,0 +1,128 @@
+REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDr.ntc.nokia.com
+Call-Id: 982773899-reg@172.21.9.155óÿCseq: 2 REGISTER
+Contact: siest,
+  REALM="garage.sr.ntc.nouia.com", NONCE="MjAwMS0wMSÿREGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/|2.0/UDP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060SIP/20yMSAxNTowODo1OA==",
+  RESPONSE=£££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££"d9d7f1ae99a013cb05f319f021.9.155
+Cseq: 2 REG@172.21.9.155
+CSeq: 2 REGISTER
+Subject: Barfood: sip-cc, sip-cc-01, timt@garage.sr.ntc.nokia.com
+Contact: sip:digest@172.21.9.155
+Call-IDeverything
+Error-Info:="digest2,
+  REALM="garage.sr.ntc.nokia.com", NON <http:IP/2.//garage.sr.ntc.nokia.com/figure-1.jpg>
+Warning: 300 ga
+Content-Lengt-Typ-ID: 31414@c.bell/tel.com
+Content-Type: text/plain;charset=US-ASCII
+Con=192.168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5 (NTA 1.0)
+Via: SIP/2.0/UDP 192.2.2.1:5060;received=[ffe0::FAB1]
+Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+Hide: route
+Max-Forwards: 15
+From: si p:digest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.com
+Contact: sip:digest@172.21.9.155
+Call-ID: 982773899-reg@172.21.9.155
+CSeq: 2 REGISTER
+Subject: Barfood: sip-cc, sip-cc-01, timer
+UnsFrom: upported: everything
+E;transport=tcptp://g (wake-up) ;duration=1800
+Timestamp: 986395257.13924321 3
+Expires: 180
+Also: sip:digestify@garage.sr.ntc.nokia.com
+Call-Info: <http://garage.sr.t USERNAME="digest2,
+  REALM="garage.sr.ntc.nokia.com", NONCE="MjAwMS0wMS0yMSAxNTowODo1OA==",
+  RESPONSE="d9d7f1ae99a013cb05f319f0fgarage.sr.ntc.nokia.com"ia.com
+Call-Id: 982773899-reg@172.21.9.155
+Cseq: 2 REGISTER
+Contact: siest,
+  REALM="garage.sr.ntc.nouia.com", NONCE="MjAwMS0wMS0yMSAxNTowODo1OA==",
+  RE, NONntc.nokia.com/images/face.jpg>;purpose=icon
+Organization: Fuzzy FelI!TER
+Contact: siest,
+  REALM="garage.sr.ntc.nouia.com", NONCE="MjAwMS0wMS0yMSAxNTowODo1OA==",
+  RESPONSE=£££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££"d9d7f1ae99a013cb05f319f0f678251d",
+p:digest@172.21.8.155
+ExpT)
+Authorization: Digest USErage.sr.ntc.nokia.com IPv6 global addresses not available
+Warning: 330 garage.sr.ntc.nokia.com No IPv6 multicast, 330 garage.sr.ntc.nokia.com Only local IPv4 multical-tel.com>
+To:   ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ/UD) cSIP/2.0/UD) c.bell-tel.com
+From:    A. Bell <sip:a.g.bell@bell-tel.com>
+To:      T.RAck:  Watson <sip:t.watson@ieee.org>
+Call.0/UDP 135.180.130.133
+Content-Length: 0
+
+
+
+INVITE sip:joe@company.com SIP/3.0
+To: sip:joe@compaing: identity
+Content-Disposition: render;handling=optional
+Content-Length: 31
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP sr`lab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;ma-ID: 0ha0isnda977644900765@10.DP 135.180.130.133
+Content-Type: application/sdp
+Content-Lengt-Typ-ID: 31414@c.bell/tel.com
+Content-Type: text/plain;charset=US-ASCII
+Con=192.168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5 (NTA 1.0)
+Via: SIP/2.0/UDP 192.2.2.1:5060;received=[ffe0::FAB1]
+Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+Hide: route
+Max-Forwards: 15
+From: si p:digest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.com
+Contact: sip:digest@172.21.9.155
+Call-ID: 982773899-reg@172.21.9.155
+CSeq: 2 REGISTER
+Subject: Barfood: sip-cc, sip-cc-01, timer
+UnsFrom: upported: everything
+E;transport=tcptp://g (wake-up) ;duration=1800
+Timestamp: 986395257.13924321 3
+Expires: 180
+Also: sip:digestify@garage.sr.ntc.nokia.com
+Call-Info: <http://garage.sr.t USERNAME="digest2,
+  REALM="garage.sr.ntc.nokia.com", NONCE="MjAwMS0wMS0yMSAxNTowODo1OA==",
+  RESPONSE="d9d7f1ae99a013cb05f319f0fgarage.sr.ntc.nokia.com"ia.com
+Call-Id: 982773899-reg@172.21.9.155
+Cseq: 2 REGISTER
+Contact: siest,
+  REALM="garage.sr.ntc.nouia.com", NONCE="MjAwMS0wMS0yMSAxNTowODo1OA==",
+  RE, NONntc.nokia.com/images/face.jpg>;purpose=icon
+Organization: Fuzzy FelI!TER
+Contact: siest,
+  REALM="garage.sr.ntc.nouia.com", NONCE="MjAwMS0wMS0yMSAxNTowODo1OA==",
+  RESPONSE=£££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££"d9d7f1ae99a013cb05f319f0f678251d",
+p:digest@172.21.8.155
+ExpT)
+Authorization: Digest USERNAME="digest2,
+  REALM="e.sr.e: appliISTER óip:company.com SIP/2.0
+To: sip:j.user@company.]om
+FWom: sip:ntc.nokia.coj.user@company.col
+Call-ID: 0ha0isndaksdj@10.0.2.2
+Cont
+Via: SIP/2.0/2.0
+To: sip:j.user@company.coment-Encoding: identity
+Content-Disposition: render;han$ling=opÿÿÿÿal
+C/TLent-Length: 27
+ng: ntity, deflate (???)
+Accept-Language: en
+Allow: any
+Require: all
+Proxy0/TCP srlab.sr.ntc.nokia.com:5060SIP/2.0/UDP 135.180.130.133
+Content-Length: 0
+
+
+
+INVITE sip:joe@company.cm SIP/2.0
+Via: SIP/2.0/UDr.ntc.nokia.com
+Call-Id: 982773899-reg@172.2om1.9.155
+C SIP/3.0s
+To:e siq

@@ -1,0 +1,11 @@
+ÿINVITE sip:bob@[3ffe:1200:3012:c006:206:5bff:fe55:4:62f] SIP/2.0
+Via: SIP/2.0/UDP [3ffe:1200fe:1200:3012:c006:210:a4ff:fe8d:6a46]
+From: <sip:alice@[3ffe:1200:3012:c000iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii:210:a4ff:fe8d:6RESPONSE="d9d7f1ae99a013cb05f319f0f678251d", URI="sip:garage.sr.ntc.nokia.a4ff:fe8d:6a46]:5062
+    2:c000:210:a4ff:fe8d:6a46
+s=-
+c=IN IP6 3ffe:1200:3012:c000:210:a4ff:fe8d:6a46
+t=0 0
+m=audio 5004 RTP/AVP 96 97 98
+a=rtpmap:96 AMR/8000
+a=rtpmap:97 AMR-WB/16000
+a=rtpmap:98 GSM-EFR/8040

@@ -1,0 +1,93 @@
+ˇSIP/2.0 200 OK
+Via: SIP/2.0/UDP·135.EGISTER;tag=company.com` SIP/2.0
+To: sip:j.user@company.com
+From: sip:j.user@company.com
+Call-ID: 0ha0isndaksdj@10.0.2.2
+Contact: sip:j.user@host.company.com
+CSeq: 7 REGISTúêíÔ
+From: %   A. Bell <sip:a.g.bell@bell-tel.com>
+Replaces:$.∂ Watson <sip:t.n@any.com
+Call-ID: 0ha0isndaksdj@10.0.2.2
+Contact: sip:j.user@host.company.com
+CSeq: 7 REGISTúêíÔ
+From: %   A. Bell <sip:a.g.bell@bell-tel.com>
+Replaces:$.∂ Watson <sip:t.n@ieee.org SIP/7.0
+Via:     SIP/2.01/UDP c.cseqbell-åöì—úêíÔ
+From: %   A. Bell <ER
+Via: SIP/2.0/UDP 135.180.130.133
+Content-Length: 0
+
+
+
+INVITp ijúosEe@company.com SIP/3.0
+To: sip:joe@company.com
+From: sip:caller@university.edu
+Call-ID: 0ha0isnda977644900765@10.0.0.1
+CSeq: 8 Ipose=icon
+Organization: Fuzzy Felines, Inc.
+Server: please
+User-Agent: Nokia Universal Killer Internet ApplicatiINVITEon/2.0 (NUUKIA)
+In-Reply-To: 982773898-reg@172.21.9.155
+Accept: text/plain
+Accept-Encoding: identity, deflate (???)
+Accept-Language: en
+Allow: any
+Require: all
+Proxy-Require: kinky, things
+Supported: sip-cc, sip-cc-01, timer
+Unsupported: everything
+Error-Info: <http://garage.sr.ntc.nokia.com/figure-1.jpg>
+Warning: 300 garage.sr.ntc.nokia.com IPv6foo=bar
+Record-Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+H9999999999999999999999999999999999999999999999999ide: route
+Max-Forwards: 15
+FWWW-Authenticate: rage.sr. SIP/2.0/UDP 135.180.130.133
+Content-Length: 0
+
+
+
+INVITp ij:osEe@company.com SIP/3.0
+To: sip:joe@company.com
+From: sip:caller@university.edu
+Call-ID: 0ha0isnda977644900765Retry-Af@10.0.0.1
+CSeq: 8 INVITE
+Via: SIP/2.0/UDP 135.180.130.133
+Content-Type: aSTpIiplER sip:company.com SIP/2.0
+To: sip:j.user@company./7.0
+Via:     SIP/2.01/UDP c.cseqbell-åöì—úêíÔ
+From: %   A. Bell <ER
+Via: SIP/2.0/UDP 135.180.130.133
+Content-Length: 0
+
+
+
+INVITp ij:osEe@company.com SIP/3.0
+To: sip:joe@company.com
+From: sip:caller@uContent-Type: 
+Call-ID: 0ha0isnda977644900765@10.0.0.1all-ID: 0ha0isndaksdj@10.0.2.2
+Contact: sip:j.user@host.company.com
+CSeq: 7 REGISTúêíÔ
+From: %   A. Bell <sip:a.g.bell@bell-tel.com>
+Replaces:$.∂ Watson <sip:t.n@any.com
+Call-ID: 0ha0isndaksdj@10.0.2.2
+Contact: sip:j.user@host.company.coell@bell-tel.com>
+Replaces:$.∂ Watson <sip:t.n@any.com
+Call-ID: 0ha0isndaksdj@10.0.2.2
+Contact: sip:j.user@host.company.com
+CSeq: 8 REGISTúêíÔ
+From: %   A. Bell <sip:a.g.bell@bell-tel.com>
+Replaces:$.∂ Watson <sip:t.n@ieee.org SIP/7.0
+Via:     SIP/2.0/SCTP1/UDP c.cseqbell-åöì—úêíÔ
+From: %   A. Bell <ER
+Via: SIP/2.0/UDP 135.180.130.133
+Content-Length: 0
+
+
+
+INVITp ijúosEe@company.com SIP/3.0
+To: sip:joe@company.com
+From: sip:caller@university.edu
+Call-ID: 0ha0isnda977644900765@10.0.0.1
+CSAccept: eq: 8 INVITE
+Via: SIP/2.0/UDP 135.180.13BYE33
+ContNOTIFYpe: appliISTER sip:company.cksdj@131 LéPC

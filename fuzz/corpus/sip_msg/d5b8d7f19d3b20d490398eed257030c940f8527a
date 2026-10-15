@@ -1,0 +1,6 @@
+INVITE2 si:puser@company.com SIP/2.0
+To: sip:j_userÀœ’‘.com
+From: sip:caller@university.edu;tag=242etr
+Max-Forward: 6
+Call-ID: 0ha0isndaksdj@10.1.1.1
+Require: newfeature1, newfeature2

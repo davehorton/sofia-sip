@@ -1,0 +1,64 @@
+ÿINVITE sip:vivekg@chair.dnrc.bell-labs.com SIP/2.0
+  T>
+  ;
+ tag = 98asjd8
+CaLl-Id
+ : 0ha0isndaksd133
+Subject :
+NewFangledHeadINFO  newfangled value
+ more newfangled value
+D: 6@10.0.0.1
+CSeq: 1 INVITE
+Via: SIP/2.0/o: sip:user@company.com
+From: sip:caller@universConteer@company.com
+From: sip:user@company.com
+Contact: sip:user@host.company.cINVITE sip:vivekg@chair.dnrc.bell-labs.com SIP/2.0
+ .130.133
+Subject mpany.com
+Contact: sip:user@host.company.cINVITE sip:vivekg@chair.dnrc.bell-labs.com SIP/2.0
+ .130.133
+Subject :
+NewFangledHea–šÅ   newfangled value
+ tent-Type: application/sdp
+v:  SIP ip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP To :
+  om
+Call-ID: k345asrl3fdbv@10.0.0.1
+CSeq0ha0isndaksdj@10.1.1.1
+c:
+NewFangledHeader:   newfangled valueý
+ tent-Type: application/sdp
+v:  SIP ip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP To :
+  om
+Call-ID: k345asrl3fdbv@10.0.0.1
+CSeq0hlue
+Conteer@company.com
+From: sip:user@company.com
+Contact: sip:user@host.company.cINVITE sip:vivekg@chair.dnrc.bell-labs.com SIP/2.0
+ .130.133
+Subject :
+NewFangledHea–šÅ   newfangled value
+ tent-Type: application/sdp
+v:  SIP ip:om
+Call-ID: k345asrl3fdbv@10.0.0.1
+CSeq0ha0isndaksdj@10.1.1.1
+c:
+NewFangledHeader:   newfangled valueý
+ tent-Type: application/sdp
+v:  SIP ip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP To :
+  om
+Call-ID: k345asrl3fdbv@10.0.0.1
+CSeq0hlue
+Conteer@company.com
+From: sip:user@company.com
+Contact: sip:user@host.company.cINVITE sip:vivekg@chair.dnrc.bell-labs.com SIP/2.0
+ .130.133
+Subject :
+NewFangledHea–šÅ   newfangled value
+ tent-Type: application/sdp
+v:  SIP ip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP To :
+  om !(more)))   ,
+ tel:444en@bell-l3322abs.com> ; 

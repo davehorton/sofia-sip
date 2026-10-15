@@ -1,0 +1,8 @@
+ÿINVITE sip:user@company.com SIP/2.0
+CSeq: 0 INVITE
+Via: SIP/2.0/UDP 135.180.130.133
+Content-Type: application/sdp
+
+v=0
+o=mhandley 29739 7272939 IN IP4 126.5.4.3
+c=IN IP4 1

@@ -1,0 +1,10 @@
+ÿREGISTER sip:company.co SIP/2.0REGISTER sip:compan??????m SIP/4.0
+Via: SIP/2.a0isndaksdj@10.0.2.2  
+Contact: *
+To: sip:j.user@company.com
+From: sip:j.user@compaak
+CSeq: 9 REGEvent: Content-Length: 0sdj@10.1.1.1
+CSeq: 8 REGISTER
+Via: SIP/2.0/UDP
+ 1355.180.130.133
+Authorization: S/TCPuper-PGP ajsohdaosdh0asyhdaind08yasdknasd09asidhas0d8

@@ -1,0 +1,4 @@
+OPTIONS sip:user@company.com SIP/3.0
+To: sip:user@company.com
+From: IONS
+Via: SIP/r.0/UDP 135.180.130.133

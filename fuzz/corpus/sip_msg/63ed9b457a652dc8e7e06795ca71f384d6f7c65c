@@ -1,0 +1,70 @@
+?REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060//garage.sr.nPrioritytc.nokia.com/images/face.jpg>;purpose=icon
+Organization: Fuzzy Felines, Inc.
+Server: please
+User-Agent: Nokia Universal Killer Internet Application/2.0 (NUUKIA?REGISTER sip:company.com SIP/1.0
+To: sip:user@company.com
+From: sip:user@cÿÿÿÿÿÿompany.com
+Contact: sip:ontact: sip:user@host.company.com
+Call-ID: k345asrl3fdbv@10.0.0.1
+CSeq> 1 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Contact: <sip:user@example.com?Route=%3Csip:sip.example.com%3E>
+REGISTER sip:company.com SIP/2.0
+To: s::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::ip:user@company.com
+From: sip:user@,company.com
+Contact: sip:user@host.company.com
+Cal-:IDl k345asrl3fdbv@10.0.0.1
+CSeq: 1 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Contact:rom: sip:user@cÿÿÿÿÿÿompany.com
+Contact: sip:ontact:;maddr=192.168.102.5 (NTA 1.0)
+Via: SIP/2.0/UDP 192.2.2.1:5060;received=[ffe0::FAB1]
+Route: <sip:garage.sr.ntc.n%00a.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+Hide: route
+Max-Forwards:•15
+From: sip:digest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.com
+Contact: sip:digest@172.21.9.155
+Call-ID: 982773899-reg@172.21.9.155
+CSeq: 2 REGISTER
+Subject: Barfoo
+Priority: emergency
+Date: Wed, 04 Apr 2001 17:38:38 GMT
+Rdtry-After: Wed, 04 Apr 2001 19:00:00 GMT (wake-up) ;duration=1800
+Timestamp: 986395257.13924321 3
+Expires: 180
+Also: sip:digestify@garage.sr.ntc.nokia.com
+Call-Info: <http://garage.sr.nPrioritytc.nokia.com/images/face.jpg>;purpose=icon
+Organization: Fuzzy Felines, Inc.
+Server: please
+User-Agent: Nokia Universal Killer Internet Ap::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::ip:user@company.com
+From: sip:user@,company.com
+Contact: sip:user@host.company.com
+Cal-:IDl k345asrl3fdbv@10.0.0.1
+CSeq: 1 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Contact:rom: sip:user@cÿÿÿÿÿÿompany.com
+Contact: sip:ontact: sip:user@host.company.com
+Call-ID: k345asrl3fdbv@10.0.0.1
+CSeq> 1 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Contact: <sip:user@example.com?Route=%3Csip:sip.example.com%3E>
+REGISTER sip:company.com SIP/2.0
+To: s::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::ip:user@company.com
+Fòom: sip:user@,company.com
+Contact: si)
+In-Reply-To: 982773898-reg@172.21.9.l IPv4 multicast available
+Authorization: Digest USERNAME="digest", REALM="garage.sr.ntc.nokia.com", NONCE="MjAwMS0wMS0yMSAxNTowODo1OA==", RESPONSE="d9d7f1ae99a013cb05f319f0f678251d", URI="sip:garage.sr.ntc.nokia.com"
+Via: SIP/2.0/UDP 172.21.9.155
+MIME-Version: 1.0
+Content-Type: text/plain;charset=US-ASCII
+Content-Encoding: identity
+Content-Disposition: render;handling=o?REGISTER sip:company.com SIP/1.0
+To: sip:user@company.com
+From: sip:user@cÿÿÿÿÿÿompaptional
+Content-Length: 31
+
+xxxxxxxxxxxxxxxxxxxxxxxxxnxy

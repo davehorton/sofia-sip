@@ -1,0 +1,9 @@
+ÿREGISTER sip:company'.com SIP/2.0
+To REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+RAck: Autþÿÿÿhorization: SupREGISTER sip:company.com SIP/2.0
+To: sip:j.user@company.com
+From: sip:j.user@comp1.1
+CSeq: 8 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Authorization: Su€er-PGP ajsohdaosdh0asyhdaind08yasdknasd09asidher-PGP ajsohdaosdh0asyhdaind08yasdknasd09asidhas0d8

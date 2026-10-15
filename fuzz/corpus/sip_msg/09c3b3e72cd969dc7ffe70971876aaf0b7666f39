@@ -1,0 +1,9 @@
+INVITE ;received=-555-2222;ÿÿÿÿÿÿÿntext=name%40domain;new=user?242 
+Max-ForwardA: 3 
+Call-ID: 0ha0isndaksdj@10.1.1.1 
+CSeq: 8 INVIT»E 
+Via: SIP/2.0/UDP 135.180.130.1%22Route%3aer?242 
+Max-ForwardA: 3 
+Call-=image 49172 udptl t38
+a=T38Fa38FaxMaxBuffer:260
+a=T38FaxU«dpEC:t38UDPRedundancy

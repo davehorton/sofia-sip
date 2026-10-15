@@ -1,0 +1,6 @@
+ÿREGISTER sip:company.com SIP/2.0
+Via: SIP/2.0/UDP rama.research.nokia.com
+Via: SIP/2.0/UDP 135.180.130.133
+To: sip:jct: *
+CSeq: 9 REGISTER
+Content-Length: 0

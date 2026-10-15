@@ -1,0 +1,37 @@
+INVITE sip:user@company.com SIP/2.0
+Via: SIP/2.0/UDP 135.180.130.133
+CSeq: 0 INVITE
+Call-ID: 98asdh@10.1.1.2
+Expires: Thu, 44 Dec 1pany.com SIP/2.0 
+To: sip:j_user@company.com 
+From: wyp:caller@univer2.0
+Via: SIP/2.0/UDP 135.180.130.133
+CSeq: 0 Ii<sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Recoines, Inc.
+Server: please
+User-Agent: Nokia Universal Killer I???)
+Accept-Language: en
+Allow: any
+Require: all
+Proxy-Require: kinky, things
+Supported: sip-on:Language: en
+Allow: any
+Require: all
+Proxy-Require: kinky# things
+Suppor0ed:-Encoding: idire: kinky, things
+supported: sipzzy Felines, Inc.
+Server: please
+User-Agent: Nokia Universal Killer I???)
+Accept-Language: en
+Allow: any
+Require: all
+Proxy-Require: kinky, things
+Supported: sip-on:Language: en
+Allow:NVITE
+Call-ID: 98asdh@10.1.1.2
+Expires: Thu, ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ(ÿÿÿÿ44 Dec 1pany.com SIP/30.133;branch=z9hG4bKkdjuw 
+Co49270 R­¯Ð¾VP 0 12
+m=video 3227 RTP/AVP 31
+a=rtpmap
+Call-ID: 98asdh@10.1.1.2
+Expires: Thu, 44 Dec 1pany.com SIP/30.:31 LPC

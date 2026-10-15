@@ -1,0 +1,25 @@
+?REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5 (NTA 1.0)
+Via: SIP/2.0/UDP 192.2.2.1:5060rds: 700P/2.0/UDP [3ffe:1200:3012:c000:0030:e0ff:fe40:6297]:5062€
+     ;branch=z9hG4bKuNCTHs8Lumv
+     ;received=3ffe:1200:3012:c006:003Max-Forwards: 700:e0ff:fe41:6297
+Via: SIP/2.0/UDP [3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]:5062
+     ;iv
+Via: SIP/2.0/UDP 135.180.130.133;branch=z9
+Call-ID: 0ha0isnda:user;par=u%80h.co&@c\60;maddr=srlab.sr.ntc.nokia.com>
+Hide: route
+Max-Forwards: 31ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ
+From: sip:digest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.com
+Contact: sip:digest@172.21.9.155
+Call-ID: 982773899-reg@172.21.9.155
+CSeq: 2 REGISTER
+Subject: Barfoo
+Priority: \emergency
+DatReplaces: p:alice@[3ffe:12@00:3012:c000:210:a4ff:fe8d:6a46]>
+     ;tag=ud6a29947
+To: jpg>;purpose=icon
+Organization: Fuzzy Felines, Inc.
+Server:10.1.1.1 _ pleaseC
+S

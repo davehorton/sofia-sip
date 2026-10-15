@@ -1,0 +1,3 @@
+INVITE sip:+1-972-555-2222;phone-context=name%40domain;new=user?%22Route%1a%20X%50Y%3bZ=W%22@gw1.wcom.com;user=phone SIP/2.0
+Via:Replaces/UDP iftgw.there.com:5060
+From: si‚p:+1-303-555-1111@ift.here.c?INVITE sip

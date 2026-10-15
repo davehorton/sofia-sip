@@ -1,0 +1,13 @@
+ÿSIP/2.0 200 OK
+Via: SIP/2.0/UDP 135.180.130.57;branch=0
+Via: SIP/2.0/UDP 255.255.255.255;branch=0
+Call-ID: 0384840201@10.1.1.1
+CSeq: 0 INVITE
+From: sip:user@company.com
+To: sip:usnt-Length: 139
+
+v=0
+.12/127
+m=audio 492170 RTP/AVP 0 12
+m=video 3227 RTP/AVP 31
+a=rtpmap:31 LŽPC

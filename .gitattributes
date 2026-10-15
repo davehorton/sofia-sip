@@ -6,3 +6,6 @@ libsofia-sip-ua/sip/tests/test30.txt -text
 libsofia-sip-ua/sip/tests/test31.txt -text
 libsofia-sip-ua/sip/tests/test36.txt -text
 libsofia-sip-ua/sip/tests/own5.txt -text
+
+# Fuzz corpora are raw bytes
+fuzz/corpus/** -text

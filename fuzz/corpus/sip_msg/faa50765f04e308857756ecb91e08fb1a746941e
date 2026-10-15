@@ -1,0 +1,10 @@
+INVITE sip:user@company.com SIP/2.0
+To: sip:j_user@company.com
+From:0.1
+Accept: text/newform29390 RTP/AVP 0 12
+m=video 3227 RTP/AVP sip:caller@university.edu
+Call-ID: 0ha0isndaksdj@10.0.0.1
+Accept: text/newform29390 RTP/AVP 0 12
+m=video 3227 RTP/AVP 31
+b=CT:3455
+a=rtpmap:31 LPC

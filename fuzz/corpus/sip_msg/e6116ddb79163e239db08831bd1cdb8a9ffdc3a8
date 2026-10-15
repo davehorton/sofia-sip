@@ -1,0 +1,135 @@
+ÿINVITE sip:t.watson@ieee.org SIP/2.0
+Via:     SIP/1.0/UDP c.bell-tel.com
+From:    A. Bell <sip:a.g.bell@bell-tel.com>
+To:      T. Watson+ <sip:t.watson@ieesip:a.g.bell@bel-etll.com>
+To:      T. Waample.com SIP/2.0
+Via: SIP/2.0/UDp:alice@example.com>;tag=ud6a29947
+To: <sip:bob@example.com>
+Calÿÿÿÿÿÿÿl(ID: f3359e42-5109-1~1d6-998d-0010a47e1c0f
+CSeq: 1 OPTIONS
+Contact: <IONS
+Contact: <sip:[3ffe:120fe:1200:3012:c000:210:a4ff:fe8d:6a46]:5062
+     ;branch=z9hG4bKJv+PsUQdfOb
+     ;received=172.21.40.24
+Record-Route: <sip:bob@exam:digest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.com
+Contact: sip:digest@172.21.9.155
+Call-ID: 982773899-reg@172.21.9.155
+CSeq: 2 
+Contact: <sip:[3ffe:120fe:1200:3012:c000:210:a4ff:fe8d:6a46]:5062
+     ;branch=z9hG4bKJv+PsUQdfOb
+     ;received=172.21.40.24
+Record-Route: <sip:bob@exam:digest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.com
+Contact: sip:digest@172.21.9.155
+Call-ID: 982773899-reg@172.21.9.155
+CSeq: 2 REGISTER
+Subject: Barfoo
+Priority: emergency
+DateÆÞWed, 04 Apr 2001 17:38:38 GMT
+Retry-After: Wmd, 04 Apr 2001 19:00:00 GMT (wake-up) ;duration=1800
+Timestamp:REFER95257.13924321 3
+Expires: 180
+Also: sip:digestify@garage.sr.ntc.nokia.com
+Call-Info: <http:/CSeq: e.sr.ntc.nokia.com/images/face.jpg>;purpose=icon
+Organization: Fuzzy Felines, Inc.
+Server: please
+User-Agent: Nokia Universal Killer Internct Application/1.0 (NUUKIA)
+In-Reply-To: 982773898-rREGISTER
+Subject: Barfoo
+Priority: emergency
+DateÆÞWed, 04 Apr 2001 17:38:38 GMT
+Retry-After: Wmd, 04 Apr 2001 19:00:00 GMT (wake-up) ;duration=1800
+Timestamp:REFER95257.13924321 3
+Expires: 180
+Also: sip:digestify@garage.sr.ntc.nokia.com
+Call-Info: <http:/CSeq: e.sr.ntc.nokia.com/images/face.jpg>;purpose=icon
+Organization: Fuzzy Felines, Inc.
+Server: please
+User-Agent: Nokia Universal Killer Internct Application/1.0 (NUUKIA)
+In-Reply-To: 982773898-reg@172.21.9.155
+Accept: text/plain
+Accept-Encoding: identity, deflate (???)
+Accept-Languagd=172.21.40.24
+Record-Route: <sip:bob@exam:digest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.com
+Contact: sip:digest@172.21.9.155
+Call-ID: 982773899-reg@172.21.9.155
+CSeq: 2 REGISTER
+Subject: Barfoo
+Priority: emergency
+DateÆÞWed, 04 Apr 2001 17:38:38 GMT
+Retry-After: Wmd, 04 Apr 2001 19:00:00 GMT (wake-up) ;duration=1800
+Timestamp:REFER95257.13924321 3
+Expires: 180
+Also: sip:digestify@garage.sr.ntc.nokia.com
+Call-Info: <http:/CSeq: e.sr.ntc.nokia.com/images/face.jpg>;purpose=icon
+Organization: Fuzzy Felines, Inc.
+Server: please
+User-Agent: Nokia Universal Killer Internet Application/1.0 (NUUKIA)
+In-Reply-To: 982773898-reg@172.21.9.155
+Accept: text/plain
+Accept-Encoding: identity, deflate (???)
+Accept-Language: en
+Allow: any
+Require: all
+Proxy-Require: kinky, things
+Supported: sip-cc, sip-cc-00, tim0.44>
+Record-Route: <sip:bob@example.com
+     ;maddr=–3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]>
+From: <sip:alice@examp—le.com>;tag=ud6a29947
+To: <sip:bob@example.coâm>
+Calÿÿÿÿÿÿÿl-ID: f3359e42-5109-11d6-998d-0010a47e1c0f
+CSeq: 1 OPTIONS
+Contact: <sip:[3ffe:1200:3012:c00Î:210:a4ff:fe8d:6a46]:5UDP 172.21.40.44;branch=z9hG4bKitIIzAialKS
+Via: SIP/2.0/UDP [3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]:5062
+     ;branch=z9hG4bKJv+PsUQdfObTER
+Subject: Barfoo
+Priority: emergency
+DateÆÞWed, 04 Apr 2001 17:38:38 GMT
+Retry-After: Wmd, 04 Apr 2001 19:00:00 GMT (wake-up) ;duration=1800
+Timestamp:REFER95257.13924321 3
+Expires: 180
+Also: sip:digestify@garage.sr.ntc.nokia.com
+Call-Info: <http:/CSeq: e.sr.ntc.nokia.com/images/face.jpg>;purpose=icon
+Organization: Fuzzy Felines, Inc.
+Server: please
+User-Agent: Nokia Universal Killer Internct Application/1.0 (NUUKIA)
+In-Reply-To: 982773898-reg@172.21.9.155
+Accept: text/plain
+Accept-Encoding: identity, deflate (???)
+Accept-Languagd=172.21.40.24
+Record-Route: <sip:bob@exam:digest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.com
+Contact: sip:digest@172.21.9.155
+Call-ID: 982773899-reg@172.21.9.155
+CSeq: 2 REGISTER
+Subject: Barfoo
+Priority: emergency
+DateÆÞWed, 04 Apr 2001 17:38:38 GMT
+Retry-After: Wmd, 04 Apr 2001 19:00:00 GMT (wake-up) ;duration=1800
+Timestamp:REFER95257.13924321 3
+Expires: 180
+Also: sip:digestify@garage.sr.ntc.nokia.com
+Call-Info: <http:/CSeq: e.sr.ntc.nokia.com/images/face.jpg>;purpose=icon
+Organization: Fuzzy Felines, Inc.
+Server: please
+User-Agent: Nokia Univ
+     ;received=172.21.40.24
+Record-Route: <sip:bob@example.com;maddr=172.21.40.44>tson+ <sip:t.watson@ieee.org>
+Call-ID: 31414@c.bell-tel.com
+CSeq:    1l.com
+From: org>
+CallID: 31414@c.bell-tel.com
+CSeq:    1l.com
+From:    A. Bell e..watson@ieee.org SIP/2.0
+Via:     SIP/2.0/UDP c.bell-tel.com
+F.g.bell@bell-tel.c1m>
+To:      T. Watson+ <sip:t.com
+C«šŽÅ    1l.com
+From: org>
+Call-ID: 31414@c.bell-tem
+CSeq:    1l.com
+From: org>
+Call-ID: 31414@c.bell-tel.comon+ <sip:t.watso
+From:    A. Bell <sip:a.g.bell@bell-t INVITE

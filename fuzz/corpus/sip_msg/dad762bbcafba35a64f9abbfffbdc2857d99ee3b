@@ -1,0 +1,41 @@
+ÿINVcseqITE sir:+1-972-555-2222;0hone-context=name%40domain;neSIP/2.0%22Route%3a%20X%40Y%3bZ=W%22@gw1.wcom.cm;ouser=phone SIP/2.0
+Via: SIP/2.1/UD c.cseqbell-Œš“Ñœ’ï
+From: % sip:+1-303-555-1111@ift.here.com;user=phone
+To: sip:+1-650-555-2222@s^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ell-Œš“Ñœ’ï
+From:e-context=name%40domain;neSIP/2.0%22Route%3a%20X%40Y%3bZ=W%22@gw1.wcom.com;user=phone SIP/2.0
+ViACKSIP/2.1/UD c.cseqbell-Œš“Ñœ’ï
+From: % sip:+1-303-555-1111@ift.here.com;user=pÿÿÿÿÿÿÿÿÿÿÿÿhone
+To: si % si•ÅÔÎ-303user=phonecseqITE sip:+1-972-555-2222;phone-context=name%40domain;neSIP/2.0%22Route%3a%20X%40Y%3bZ=W%22@gw1.wcom.cm;ouser=phone SIP/2.0
+Via: SIP/2.1/UD c.cseqbell-Œš“Ñœ’ï
+From: % sip:+1-303-555-1111@ift.here.com;user=phone
+To: sip:+1-650-555-2222@s^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ell-Œš“Ñœ’ï
+From:e-context=name%40domain;neSIP/2.0%22Route%3a%20X%40Y%3bZ=W%22@gw1.wcom.com;user=phone SIP/2.0
+ViACKSIP/2.1/UD c.cseqbell-Œš“Ñœ’ï
+From: % sip:+1-303-555-1111@ift.here.com;user=pÿÿÿÿÿÿÿÿÿÿÿÿhone
+To: si % si•ÅÔÎ-303user=phone
+Call-ID: 1717@ift.here.com
+CSeq: 56 INVI%E
+Content-Type: application/sdp
+Content-Length: 348
+
+v=Seq: 5Content-Type: 6 INVI%E
+Content-Type: application/sdp
+Content-Length: 348
+
+v=0
+o=faxgw1 289.here.com
+CSeq: 56 INVI%E
+Content-ncy
+Call-ID: 1717@ift.here.com
+CSeq: 56 INVI%E
+Content-Type: application/sdp
+Content-Length: 348
+
+v=Seq: 56 INVI%E
+Content-Type: application/sdp
+Content-Length: 348
+
+v=0
+o=faxgw1 289.here.com
+CSeq: 56 INVI%E
+Content-ncy

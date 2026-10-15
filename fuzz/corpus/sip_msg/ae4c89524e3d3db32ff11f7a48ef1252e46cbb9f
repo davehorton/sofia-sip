@@ -1,0 +1,133 @@
+?REGISTER sip:company.com SIP/2.0
+To: sip:j.user@COMPANY.COM;mVia: SIP/2.01]
+Route: <sip:garage.sr.ntc.nokia.com:tel:;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip:garage.sr.ntc.nokia.co3f] SIP/2.0
+Via: SIP/2.0/UDP [3ffe:1200:3012:c000:0030:e0ff:fe40:6297]:5062Ä  
+   ;branch=z9hG4bKuNCTHs8Luev
+     ;received=3ffe:1200:3012:c006:003Max-Forwards: 700P/2.0/UDP
+     ;tag=ud6a29947
+To: <sip:bob@exact: Barfoo
+Priority: \emergency
+.COM;mVia: SIP/2.01]
+Route: <sip:garage.sr.ntc.nokia.com:tel:;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip:garage.sr.ntc.nokia.co3f] SIP/2.0
+Via: SIP/2.0/UDP [3ffe:1200:3012:c000:0030:e0ff:fe39:6297]:5062Ä  
+   ;branch=z9hG4bKuNCTHs8Luev
+     ;received=3ffe:1200:3012:c006:003Max-Forwards: 700P/2.0/UDP
+     ;tag=ud6a29947
+To: <sip:bob@exact: Barfoo
+Priority: \emergency
+Date: Wed, 04 Apr 2001 17:38:38 GMT
+Retry-After: Wed, 04 Apr 2001 19:00:00 GMT (wake-up) ;duration=1800
+Timestamp: 986395128.13924321 3
+Expires: 180
+Also: sipWWW-Authenticate: sr.ntc.nokia.com
+Call-Info: <http://garage.ˇSIP/2.0 200 OK
+Via: SIP/2.0/UDP·135.EGISTER sip:company.com` SIP/2.0
+To: sip:j.user@company.comMax-Forwarˇs: 70
+From: sip:j.user@company.com
+Call-ID: 0ha0isndaksdj@10.0.2.2
+Contact: sip:j.user@host.company.com
+CSeq: 7 REGISTúêíÔ
+From: %   A.ndaksdj@10.0.2.2
+Contact: From: sip:j.user@host.company.com
+CSeq: 7 REGISTúêíÔ
+From: %   A. Bell <sip:a.g.bell@bell-tel.com>
+Replaces:$.∂ Watson <sip:t.n@any.com
+Call-ID: 0ha0isndaksdj@10.0.2sr.ntc.nokia.c0/UDP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+VCall-ID: .0/TCP srlab.sr.nt.2
+C Bell <sip:a.g.bell@bell-tel.com>
+Replaces:$.∂ Watson <sip:t.n@any.com
+Call-ID: 0ha0isndaksdj@10.0.2.2
+Contact: sip:j.user@host.company.com
+CSeq: 7 REGISTúêíÔ
+From: %êíÔ
+From: j@10.0.2.2
+Contact: sip:j.user@host.company.com
+CSeúêíÔ
+From: %   A. Bell <sip:a.g.bell@bell-tel.com>
+Replaces:$.∂ Watson <sip:t.n@any.com
+Call-ID: 0ha0isndaksdj@10.0.2sr.ntc.nokia.c0/UDP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+VCall-ID: .0/TCP srlab.sr.nt.2
+C Bell <sip:a.g.bell@bell-tel.com>
+Replaces:$.∂ Watson <sip:t.n@any.com
+Call-ID: 0ha0isndaksdj@10.0.2.2
+Contact: sip:j.user@host.company.com
+CSeq: 7 REGISTúêíÔ
+From: %êíÔ
+From: j@10.0q: 7 REGISTúêíÔ
+From: %   A. Bell <sip:a.g.bell@bell-tel.com 0 SIP/2.0/UDP 192.2.2.1:5060;mpany.comMax-Forwarˇs: 70
+From: sip:j.user@company.com
+Call-ID: 0ha0isndaksdj@10.0.2.2
+Contact: sip:j.user@host.company.com
+CSeq: 7 REGISTúêíÔ
+From: %   A.ndaksdj@10.0.2.2
+Contact: From: sip:j.user@host.company.com
+CSeq: 7 REGISTúêíÔ
+From: %   A. Bell <sip:a.g.bell@bell-tel.com>
+Replaces:$.∂ Watson <sip:t.n@any.com
+Call-ID: 0ha0isndaksdj@10.0.2sr.ntc.nokia.c0/UDP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+VCall-ID: .0/TCP srlab.sr.nt.2
+C Bell <sip:a.g.bell@bell-tel.com>
+Replaces:$.∂ Watson <sip:>
+Replaces:$.56;branch=ength:0c.nokia.com:5060;ma
+Via: Sddr=192.168.102.5 (NTA 1.0)
+Via:I 0Date: Wed, 04 Apr 2001 17:38:38 GMT
+Retry-After: Wed, 04 Apr 2001 19:00:00 GMT (wake-up) ;duration=1800
+Timestamp: 986395128.13924321 3
+Expires: 180
+Also: sipWWW-Authenticate: sr.ntc.nokia.com
+Call-Info: <http://garage.ˇSIP/2.0 200 OK
+Via: SIP/2.0/UDP·135.EGISTER sip:company.com` SIP/2.0
+To: sip:j.user@coompany.com` SIP/2.0
+To: sip:j.user@company.comMax-Forwarˇs: 70
+From: sip:j.user@company.com
+Call-ID: 0ha0isndaksdj@10.0.2.2
+Contact: sip:j.user@host.company.com
+CSeq: 7 REGISTúêíÔ
+From: %   A.ndaksdj@10.0.2.2
+Contact: From: sip:j.user@host.company.com
+CSeq: 7 REGISTúêíÔ
+From: %   A. Bell <sip:a.g.bell@bell-tel.com>
+Replaces:$.∂ Watson <sip:t.n@any.com
+Call-ID: 0ha0isndaksdj@10.0.2sr.ntc.nokia.c0/UDP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+VCall-ID: .0/TCP srlab.sr.nt.2
+C Bell <sip:a.g.bell@bell-tel.com>
+Replaces:$.∂ Watson <sip:t.n@any.com
+Call-ID: 0ha0isndaksdj@10.0.2.2
+Contact: sip:j.user@host.company.com
+CSeq: 7 REGISTúêíÔ
+From: %êíÔ
+From: j@10.0.2.2
+Contact: sip:j.user@host.company.com
+CSeq: 7 REGISTúêíÔ
+From: %   A. Bell <sip:a.g.bell@bell-tel.com>
+Replaces:$.57;branch=ength:0c.nokia.com:5060;ma
+Via: Sddr=192.168.102.5 (NTA 1.0)
+Via:I 0 SIP/2.0/UDP 192.2.2.1:5060;mpany.comMax-Forwarˇs: 70
+From: sip:j.user@company.com
+Call-ID: 0ha0isndaksdj@10.0.2.2
+Contact: sip:j.user@host.company.com
+CSeq: 7 REGISTúêíÔ
+From: %   A.ndaksdj@10.0.2.2
+Contact: From: sip:j.user@host.company.com
+CSeq: 7 REGISTúêíÔ
+From: %   A. Bell <sip:a.g.bell@bell-tel.com>
+Replaces:$.∂ Watson <sip:t.n@any.com
+Call-ID: 0ha0isndaksdj@10.0.2sr.ntc.nokia.c0/UDP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+VCall-ID: .0/TCP srlab.sr.nt.2
+C Bell <sip:a.g.bell@bell-tel.com>
+Replaces:$.∂ Watson <sip:t.n@any.com
+Call-ID: 0ha0isndaksdj@10.0.2.2
+Contact: sip:j.user@host.company.com
+CSeq: 7 REGISTúêíÔ
+From: %êíÔ
+From: j@10.0.2.2
+Contact: sip:j.user@host.company.com
+CSeq: 7 REGISTúêíÔ
+From: %   A. Bell <sip:a.g.bell@bell-tel.com>
+Replaces:$.57;branch=ength:0c.nokia.com:5060;ma
+Via: Sddr=192.168.102.5 (NTA 1.0)
+Via:I 0 SIP/2.0/UDP 192.2.2.1:5060;received=[ffe0::FAB1]
+Route: <sip:garage.sr.ntc.nokia.com:5060:maddr=srlab.ype: application/sdp
+NOTIFYCSeq

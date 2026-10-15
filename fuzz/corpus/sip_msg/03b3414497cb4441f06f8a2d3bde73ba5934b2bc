@@ -1,0 +1,9 @@
+INVITE sip:vivekg@chair.dnrc.bell-labs.com SIP/2.0
+ To :
+  sip:vivekg@chair.dnrc.bell-labs.com ;    tÿÿÿÿÿÿÿ1a1b1f1H33n
+From   : "J Rosenberg \\\"" <sip:jdrosen@lucent.com>
+  ;e: application/sdp
+
+v:  SIP  / 2.0  / TCP     12.3.4.5   ;
+  branch  =   9ikj8  ,(more)))   ,
+ tel:4443322

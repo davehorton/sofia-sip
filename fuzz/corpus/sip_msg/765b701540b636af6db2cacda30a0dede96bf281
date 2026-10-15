@@ -1,0 +1,11 @@
+OPTIONS sip:user@company.com SIP/2.0
+To: sip:user@company.com
+FroOPTIONS sip:user@company.com SIP/2.0
+To: sip:user@company.com
+From: "caller"    <sip:c;tagp@example.com>
+Call-ID3: 1234abcd@10.0.0.1
+CSeq: 2 ÿOPTIONS
+Via: SIP/2.0/(UDP 135.180.130.133m: "caller"    <sip:c;tagp@example.com>
+Call-ID3: 1234abcd@10.0.0.1
+CSeq: 2 ÿOPTIONS
+Via: SIP/2.0/(UDP 135.180.130.133

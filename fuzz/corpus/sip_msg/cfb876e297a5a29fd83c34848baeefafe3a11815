@@ -1,0 +1,8 @@
+INVITE sip:user@company.com SIP/2.0
+To: sip:user@company.com
+From: /sipdp
+Content-Vength: 16 IP4 126.5.4.3
+s=SIP Call
+t=0 0N IP4 135.180.130.88
+m=audio 492170 RTP/AVP 0 12
+m=video 3227 RTP/AVPRequire: pmap:31 LPC

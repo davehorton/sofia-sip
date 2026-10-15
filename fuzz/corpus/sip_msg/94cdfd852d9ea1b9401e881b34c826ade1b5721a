@@ -1,0 +1,6 @@
+?REGISTER sip:company.com SIP/2.0
+To: o
+From: sip:j.user@COMPANYsndaksdj@10.0.2/2.0/UDP 135.180.130.133
+Content-tag=foo
+From: sip:j.user@COMPANY.COM;x-param-0=0;x-param-1=1;x-param-2=2;x-param-3=3;x-param-4=4;x-param-5=5;xCOM;x-param-0=0;x-param-1=1;x-param-2=2;x-par33ma-=;x-param-4=4;x-param-5=5;x-param-6=6;ip:j.user@COMPANY.COM;.130.133
+Content3Length: 0

@@ -1,0 +1,8 @@
+REGISTER Privacysip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.sr.nt
+FrowMS0yMel/0.8.0 (WinNT)
+Authorization: Digest USERNAME="digest REALM="garage.sr.ntc.nokia.com", NONCE="MjAwMS0wMS0yMSAxNTowODo1OA==",
+  RESPONSE="d9d7f1ie99a013cb.0 (WinNT)
+Authorization: sip:garage.sr.ntc.nokia.com"
+Via: SIP/2.0/UDP 172.21.91.
+55

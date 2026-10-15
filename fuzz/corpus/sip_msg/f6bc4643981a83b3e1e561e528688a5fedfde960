@@ -1,0 +1,27 @@
+INVITE sip:user@company.com SIP/2.0
+To: sip:j_user@company.com
+From:0.1
+Accept: text/newform2+9390 RTP/AVP 0 1CANCELideo 3227 RTP/AVP sip:caller@univ]rsity.edu
+Call-ID: 0ha0isndaksdj@10.0.0.1
+Accept: text/newfP/AVP sip:caller@university.edu
+Call-ID: 0ha0isneaksdj@10.0.0.1
+Accept: text/newform29390 RTP/AVP =1CT:3455company.com SIP/2.0
+To: sip:j_user@company.com
+From:0.1
+Accept: text/newform2+9390 RTP/AVP 0 1CANCELideo 3227 RTP/AVP sip:caller@univ]rsity.edu
+Call-ID: 0ha0isndaksdj@10.0.0.1
+Accept: text/newfP/AVP sip:caller@university.edu
+Call-ID: 0ha0isneaksdj@10.0.0.1
+Accept: text/newform29390 RTP/AVP =1CT:3455
+a=rtpmap:31 LPC
+ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿCall-ID: ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿCall-ID: ÿÿÿÿÿÿÿÿÿÿÿÿÿÿE sip:user@company.com SIP/2.0
+To: sip:j_user@company.com
+From:0.1
+Accept: text/newform2+9390 RTP/AVP 0 12
+m=vide
+a=rtpmap:31 LPC
+ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿCall-ID: ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿCall-ID: ÿÿÿÿÿÿÿÿÿÿÿÿÿÿE sip:user@company.com SIP/2.0
+To: sip:j_user@company.com
+From:0.1
+Accept: text/newform2+9390 RTP/AVP 0 12
+m=videoÿÿÿÿÿÿÿÿ

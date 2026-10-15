@@ -1,0 +1,77 @@
+ÿSIP/2.0 200 OK
+Via: SIP/2.0/UDPα135.EGISTER;tag=company.com` SIP/2.0
+To: sip:j.user@company.com
+From: sip:j.user@company.com
+Call-ID: 0ha0isndaksdj@10.0.2.2
+Contact: sip:j.user@host.company.com
+CSeq: 7 REGIST’ο
+From: %   A. Bell <sip:a.g.bell@bell-tel.com>
+Replaces:$.¶ Watson <sip:t.n@any.com
+Call-ID: 0ha0isndaksdj@10.0.2.2
+Contact: sip:j.user@host.company.com
+CSeq: 7 REGIST’ο
+From: %   A. Bell <sip:a.g.bell@bell-tel.com>
+Replaces:$.¶ Watson <sip:t.n@ieee.org SIP/7.0
+Via:     SIP/2.01/UDP c.cseqbell-“Ρ’ο
+From: %   A. Bell <ER
+Via: SIP/2.0/UDP 135.180.130.133
+Content-Length: 0
+
+
+
+INVITp ijosEe@company.com SIP/3.0
+To: sip:joe@company.com
+From: sip:caller@university.edu
+Call-ID: 0ha0isnda977644900765@10.0.0.1
+CSeq: 8 INVITE
+Via: SIP/2.0/UDP 135.180.130.133
+ContNOTIFYpe: appliISTER sip:company.cksdj@10.0.2.2
+Contact: sip:j.user@host.company.com
+CSeq: 8 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Content-Length: 0
+
+
+
+INVITp ij:osEe@company.com SIP/3.0
+To: sip:joe@company.com
+From: sip:caller@university.edu
+Call-ID: 0ha0isnda977644900765Retry-Af@10.0.0.1
+CSeq: 8 INVITE
+Via: SIP/2.0/UDP 135.180.130.133
+Content-Type: aSTpIiplER sip:company.com SIP/2.0
+To: sip:j.user@company.comκκκκκκκκκκκκκκκκκINFOκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκ2κκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκieee.org SIP/7.0
+Via:     SIP/2.01/UDP c.cseqbell-“Ρ’ο
+From: %   A. Bell <ER
+Via: SIP/2.0/UDP 135.180.130.133
+Content-Length: 0
+
+
+
+INVITp ij:osEe@company.com SIP/3.0
+To: sip:joe@company.com
+From: sip:caller@university.edu
+Call-ID: 0ha0isnda977644900765@10.0.0.1all-ID: 0ha0isndaksdj@10.0.2.2
+Contact: sip:j.user@host.company.com
+CSeq: 7 REGIST’ο
+From: %   A. Bell <sip:a.g.bell@bell-tel.com>
+Replaces:$.¶ Watson <sip:t.n@any.com
+Call-ID: 0ha0isndaksdj@10.0.2.2
+Contact: sip:j.user@host.company.com
+CSeq: 7 REGIST’ο
+From: %   A. Bell <sip:a.g.bell@bell-tel.com>
+Replaces:$.¶ Watson <sip:t.n@ieee.org SIP/7.0
+Via:     SIP/2.01/UDP c.cseqbell-“Ρ’ο
+From: %   A. Bell <ER
+Via: SIP/2.0/UDP 135.180.130.133
+Content-Length: 0
+
+
+
+INVITp ijosEe@company.com SIP/3.0
+To: sip:joe@company.com
+From: sip:caller@university.edu
+Call-ID: 0ha0isnda977644900765@10.0.0.1
+CSeq: 8 INVITE
+Via: SIP/2.0/UDP 135.180.130.133
+ContNOTIFYpe: appliISTER sip:company.cksdj@131 LPC

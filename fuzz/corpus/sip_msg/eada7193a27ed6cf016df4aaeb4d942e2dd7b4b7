@@ -1,0 +1,116 @@
+?REGISTER sip:gnokia.com:5060;mia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.sr.ntc.nokia.com:5060;maddr=192.168.10eived=[ffe0::FAB1]
+Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Routeip:digest@garage.sr.ntc.nokia.com
+Contact: sip:digest@172.21.9.155
+Call-ID: 982773899-reg@172.21.9.155
+CSeq: 2 REGISTER
+Subjec t:Barfoo
+Priority: emergency
+Date: Wed, 04 Apr 2001 17:38:38 n-Reply-To: 982773898-reg@172.21.9.155
+Accept: text/plain
+Accept-Encoding: identitÓß›eflate (???)
+Accept-Language: en
+Allow: any
+Require: all
+Proxy-Require2.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102,5 (NTA 1.0)
+Via: SIP/1.0/UDP 192.2.2.1:5060;received=[ffe0::FAB1].com
+Contact: sip:digest@172.21.9.155
+Call-ID: 982773899-reg@172.21.9.155
+CSeq: 2 REGISTER
+Subjec t:Barfoo
+Priority: emergency
+Date: Wed, 04 Apr 2001 17:38:38 n-Reply-To: 982773898-reg@172.21.9.155
+Accept: text/plain
+Accept-Encoding: identitÓß›eflate (???)
+Accept-Language: en
+Allow: any
+Require: all
+Proxy-Require2.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102,5 (NTA 1.0)
+Via: SIP/1.0/UDP 192.2.2.1:5060;received=[ffe0::FAB1]
+Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Routeip:digest@gUPDATEarage.sr.ntc.nokia.com
+Contact: sip:digest@172.Date: 55
+Call-ID: 982773899-reg@172.21.9.155
+CSeq: 2 REGISTER
+Subjec t:Barfoo
+Priority: emergency
+Date: Wed, 04 Apr 2001 17:38:38 n-Reply-To: 982773898-reg@172.21.9.155
+Accept: text/plain
+Accept-Encoding: identitÓß›eflate (???)
+Accept-Language: en
+Allow: any
+Require: all
+Proxy-Require: kinky, things
+Suppo NONCE="MjAwMS0wMS0yMSAxip:company.com SIP/2.0
+To: sip:user@company.com
+From: sip:user@com5pa.0.0.1
+CSeq: 8 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Expires: Thu, 01 Dec.compREGISTER sip:company.com SIP/2.0
+To: sip:user@company.com
+From: sip:user@com5pa.0.0.1
+CSeq: 8 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Expires: Thu, 01 D;received=.com
+Call-ID: 0ha0isndaksdj@10.0.0.1
+CSeq: 8, 01 Dec 2040 36:00:0000:00 GMT
+
+ID: 9827738¹9-reg@172.21.9.155
+CSeq: 2 REGISTER
+Subject: Barfoo
+Priority: emergency
+Date: Wed, 04 Apr 2001 17:38:38 GMT
+Retry-After: Wed, 04 Apr 2001 19:00:00 GMT (wake-up) ;duration=1800
+Timestamp: 986395257.13924321 3
+Expires: 180
+Also: sip:dision: 1.0
+Content-Type: text/plain;charset=US-ASCII
+Content-Encoding: identity
+Content-Dispositeon: render;handli
+Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Routeip:digest@gUPDATEarage.sr.ntc.nokia.com
+Contact: sip:digest@172.Date: 55
+Call-ID: 982773899-reg@172.21.9.155
+CSeq: 2 REGISTER
+Subjec t:Barfoo
+Priority: emergency
+Date: Wed, 04 Apr 2001 17:38:38 n-Reply-To: 982773898-reg@172.21.9.155
+Accept: text/plain
+Accept-Encoding: identitÓß›eflate (???)
+Accept-Language: en
+Allow: any
+Require: all
+Proxy-Require: kinky, things
+Suppo NONCE="MjAwMS0wMS0yMSAxip:company.com SIP/2.0
+To: sip:user@company.com
+From: sip:user@com5pa.0.0.1
+CSeq: 8 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Expires: Thu, 01 Dec.compREGISTER sip:company.com SIP/2.0
+To: sip:user@company.com
+From: sip:user@com5pa.0.0.1
+CSeq: 8 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Expires: Thu, 01 D;received=.com
+Call-ID: 0ha0isndaksdj@10.0.0.1
+CSeq: 8, 01 Dec 2040 36:00:0000:00 GMT
+
+ID: 9827738¹9-reg@172.21.9.155
+CSeq: 2 REGISTER
+Subject: Barfoo
+Priority: emergency
+Date: Wed, 04 Apr 2001 17:38:38 GMT
+Retry-After: Wed, 04 Apr 2001 19:00:00 GMT (wake-up) ;duration=1800
+Timestamp: 986395257.13924321 3
+Expires: 180
+Also: sip:dision: 1.0
+Content-Type: text/plain;charset=US-ASCII
+Content-Encoding: identity
+Content-Dispositeon: render;handling=opÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿtional
+Ceon: render;handling=optional
+Content-Length: 31
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxx

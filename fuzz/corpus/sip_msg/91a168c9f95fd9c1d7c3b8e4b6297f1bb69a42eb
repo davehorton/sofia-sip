@@ -1,0 +1,6 @@
+INVITE sip:+1-972-555-2222;phone-context=name%62domain;new=user?%22Route%3a%20X%50Y%3bZ=W%22@gw1.iftmg.there.com
+t=0 0
+m=image 49anscodingJBIG:0
+a=T38FaxRateÿanagement:transferredTCF
+a=T38FaxMaxBuffe/UDír:260
+a=T38FaxUdpEC:t38UDPRedundancy

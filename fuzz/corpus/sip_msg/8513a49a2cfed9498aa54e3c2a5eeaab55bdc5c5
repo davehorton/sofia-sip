@@ -1,0 +1,8 @@
+INVITE sip:user@company.com SIP/2.0
+To: sip:j.user@company.com
+From: sip:caller@u33
+Content-Type: application/sdp
+Content-Length: -999
+
+v=0
+o=mhandley 29739 7272939 Iллллллллл=rtpmap:31 LPC

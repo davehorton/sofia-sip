@@ -1,0 +1,39 @@
+ACK sip:cïmpany.šm SIP/2.0
+To: sip:j.user@company.5555555555mpany.com
+Call-ID: 0ha0isndaksdj@10.0.2.2
+Contact: %ip:j.user@host.company.com
+CSeq: 4 Np:cïmpany.com SIP/1.0
+To: sip:j.us.companym.co:j.user@company.5555555555mpany.com
+Call-ID: 0ha0isndaksdj@10.0.2.2
+Contact: %ip:j.user@host.company.com
+CSeq: 4 Np:cïmpanp:j.user@host.company.com
+CSeq: 4 Np:cïmpany.com SIP/1.0
+To: sip:j.us.companym.co:j.user@company.5555555555mpany.com
+Call-ID: 0ha0isndaksdj@10.0.2.2
+Contact: %ip:j.user@host.company.com
+CSeq: 4 Np:cïmpany.com SIP/2.0
+To: sip:j.us.company.com
+CSeq: 4 Np:cïmpany.com SIP/2.0
+To: sip:j.user@company.com
+From: sip:j.user@company.com
+Call-ID: 0ha0isndaksdj@10.0.2.2
+Contact: %ip:EW³º«·°»òúVia: SIP/2.0/.DP 135.180.130.133
+Conpent-Leng
+CSeq: 4 Np:cïmpany.com SIP/2.0
+To: sip:j.user@company.com
+From: sip:j.user@company.com
+Call-ID: 0ha0isndaksdj@10.0.2.2
+Contact: %ip:EW³º«·°»òúVia: SIP/2.0/.DP 135.18y.com SIP/2.0
+To: sip:j.us.company.com
+CSeq: 4 Np:cïmpany.com SIP/2.0
+To: sip:j.user@company.com
+From: sip:j.user@company.com
+Call-ID: 0ha0isndaksdj@10.0.2.2
+Contact: %ip:EW³º«·°»òúVia: SIP/2.0/.DP 135.180.130.133
+Conpent-Leng
+CSeq: 4 Np:cïmpany.com SIP/2.0
+To: sip:j.user@company.com
+From: sip:j.user@company.com
+Call-ID: 0ha0isndaksdj@10.0.2.2
+Contact: %ip:EW³º«·°»òúVia: SIP/2.0/.DP 135.180.130.133
+Conpent-Length: 0

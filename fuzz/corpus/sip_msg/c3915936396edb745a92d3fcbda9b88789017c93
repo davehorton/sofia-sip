@@ -1,0 +1,39 @@
+?REGISTER sip:bell-tel.com SIP/2.0
+Via: SIP/2.:watson@bell-tel.com
+To: sip:watson@bell-tel.com
+Call-ID: ia.com:5060;maddr=192.168.102.5 (NTA 1. sip-cc, sip-cc-01, timer
+Unsupported: everything
+Ent-Length: ll-tel.com
+To: sip:watsֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿEGISTER sip:bell-tel.com SIP/2.0
+Via: SIP/2.:watson@bell-tel.com
+To: sip:watson@bell-tel.com
+Call-ID: ia.com:5060;maddr=192.168.102.5 (NTA 1. sip-cc, sip-cc-01, timer
+U: ווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿֿֿֿֿֿֿֿֿֿֿֿֿEGISTER sip:bell-tel.com SIP/2.0
+Via: SIP/2.:watson@bell-tel.com
+To: sip:watson@bell-tel.com
+Call-ID: ia.com:5060;maddr=192.168.102.5 (NTA 1. sip-cc, sip-cc-01, timer
+U: ווווווווווtel.com SIP/2.0com
+CSeq: 2 REGISTER>
+Contact: ip:+1-92555-7-2222@gw1.wc
+Via: SIP/2.0/UDP saturn.bell-tel.com
+FroContent-Length: ll-tel.com
+To: sip:watsֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿEGISTER sip:bell-tel.com SIP/2.0
+Via: SIP/2.:watson@bell-tel.com
+To: sip:watson@bell-tel.com
+Call-ID: ia.com:5060;maddr=192.168.102.5 (NTA 1. sip-cc, sip-cc-01, timer
+U:*ווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿel.com SIP/2.0
+Via: SIP/2.:watson@bell-tel.com
+To: sip:watson@bell-tel.com
+Call-ID: ia.com:5060;maddr=192.168.102.5 (NTA 1. sip-cc, sip-cc-01, timer
+U: ווווווווווtel.com SIP/2.0com
+CSeq: 2 REGISTER>
+Contact: ip:+1-92555-7-2222@gw1.wc
+Via: SIP/2.0/UDP saturn.bell-tel.com
+FroContent-Length: ll-tel.com
+To: sip:watsֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿEGISTER sip:bell-tel.com SIP/2.0
+Via: SIP/2.:watson@bell-tel.com
+To: sip:watson@bell-tel.com
+Call-ID: ia.com:5060;maddr=192.168.102.5 (NTA 1. sip-cc, sip-cc-01, timer
+U:*ווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿוווווווווווווווווווו
+Contact: sip:+2-972-555-2222@gw1.wcom.com;userom.com;use=pr=phohonnee
+

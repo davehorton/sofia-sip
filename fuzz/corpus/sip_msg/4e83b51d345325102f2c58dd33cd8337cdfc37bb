@@ -1,0 +1,70 @@
+INVITE sip:useb;par=u%40h.com@company.com SIP/2.0 
+To: sip:j_user@company.com 
+FÿREGISTER sip:company.com Sÿÿÿÿÿÿÿ=To: sip:j.user@company.com
+From: sip:j.ussieu.;dyttag=3324Expires:s ips:ax-FoMample.com
+Via: SIP/2.0/UDP sip20.example.com
+Via: SIP/2.0/UDP sip19.example.com
+Via: SIP/2.0/UDP sip18.example.comQQQQQQQQQQ
+Via: SIxample.comGMTa: SIP/2.0/UDP sip11.example.com
+Via: SIÿÿÿÿÿÿÿ0/UDP sip28.example.com
+Via: SIP/2.0/UDPTo:  sip27.example.c>m
+Via: SIP/2.0/UDP sÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿip26.example.com
+Via: SIP/2.0/TLS sip25.example.com
+Via: SIP/2.0/UDPxample.com
+Via: SIP/2.0/UDP sip24.exaNOTIFYom
+Via: SIP/2.0/UDP2.0/UDP sip20.example.com
+Via: SIP/2.0/UDP sip19.example.com
+Via: SIP/2.0/UDP sip18.example.comQQQQQQQQQQ
+Via: SIxample.comGMTa: SIP/2.0/UDP sip11.example.com
+Via: SIÿÿÿÿÿÿÿ0/UDP sip28.example.com
+Via: SIP/2.0/UDPTo:  sip27.example.c>m
+Via: SIP/2.0/UDP sÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿip26.example.com
+Via: SIP/2.0/TLS sip25.example.com
+Via: SIP/2.0/UDPxample.com
+Via: SIP/2.0/UDP sip24.exaNOTIFYom
+Via: SIP/2.0/UDP sip23.example.com
+Via: SIP/2.0/UDP sip22.example.com
+Via: SIP/2.0/UDsPiip10.example.com
+Via: SIP/2.0/UDP sip9.example.com
+Via: SIP/2.0/UDP sip8.example.com
+Via: SIP/2.0/UDP sip7.example.coM
+Via: SIP/2.0/UDP sip6.example.com
+Via: SIP/2.0/UDP sip5.example.com
+Via: SIP/2.0/UDP sip4.example.m SI/UDP sip23.example.com
+Via: SIP/2.0/UDP sip22.example.com
+Via: SIP/2.0/UDP sip21.exama: SIP/2.0/UDP sip10.example.com
+Via: SIP/2.0/UDP sip9.example.com
+Via: SIP/2.0/UDP sip8.example.com
+Via: SIP/2.0/UDP sip7.example.com
+Via: 0/UDP sip18.example.comQQQQQQQQQQ
+Via: SIxample.comGMTa: SIP/2.0/UDP sip11.example.com
+Via: SIÿÿÿÿÿÿÿ0/UDP sip28.example.com
+Via: SIP/2.0/UDPTo:  sip27.example.c>m
+Via: SIP/2.0/UDP sÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿip26.example.com
+Via: SIP/2.0/TLS sip25.example.com
+Via: SIP/2.0/UDPxample.com
+Via: SIP/2.0/UDP sip24.exaNOTIFYom
+Via: SIP/2.0/UDP2.0/UDP sip20.example.com
+Via: SIP/2.0/UDP sip19.example.com
+Via: SIP/2.0/UDP sip18.example.comQQQQQQQQQQ
+Via: SIxample.comGMTa: SIP/2.0/UDP sip11.example.com
+Via: SIÿÿÿÿÿÿÿ0/UDP sip28.example.com
+Via: SIP/2.0/UDPTo:  sip27.example.c>m
+Via: SIP/2.0/UDP sÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿip26.example.com
+Via: SIP/2.0/TLS sip25.example.com
+Via: SIP/2.0/UDPxample.com
+Via: SIP/2.0/UDP sip24.exaNOTIFYom
+Via: SIP/2.0/UDP sip23.example.com
+Via: SIP/2.0/UDP sip22.example.com
+Via: SIP/2.0/UDsPiip10.example.com
+Via: SIP/2.0/UDP sip9.example.com
+Via: SIP/2.0/UDP sip8.example.com
+Via: SIP/2.0/UDP sip7.example.coM
+Via: SIP/2.0.0/UDP sip2P/2.0/UDP sip10.example.com
+Via: SIP/1.0/UDP sip9.example.com
+Via: SIP/2.0/UDP sip8.example.com
+Via: SIP/2.0/UDP Max-Forwards: 70 
+From: 
+sip:caller@university.edu;tag=3324Expires: siSupported: ps:ax-Forwards: 3 
+Call-ID:h: 0
+

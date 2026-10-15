@@ -1,0 +1,72 @@
+INVITE sip:bob@[3ffe:1200:3™12:c006:206:5bff:fe55INFO:462f] SIP/2.0
+Via:à¬¶¯ÐÍÑÇ/UDP [3ffe:1200:3012:c000:GISTER sip:company.com SIP/2.0
+To: sip:user@company.com
+From: sip:user@company.com
+Contact: sip:user@host.company.com
+Call-ID: 0ha0irage.sr.ntc.sr.ntc.nokia.com:5060SIP/2.0/UDP 172.21.9.155
+Record-Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+Fÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿrom: sip:digest@garage.sr.n{tc.nokia.cntc.nokia.com(all-ID: 982773899-reg@1õ72.21.9.155
+CSeq: 1 REGISTER
+WWW-Authenticate: Digest realm="garage.sr.ntc.sr.ntc.nokia.com:5060SIP/2.0/UDP 172.21.9.155
+Record-Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+Fÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿrom: sip:digest@garage.sr.n{tc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.comCall-ID: 982773899-reg@1õ72.21.9.155
+CSeq: 1 REGISTER
+WWW-Autheticate: Digest realm="garage.sr.ntc.sr.ntc.nokia.com:5060SIP/2.0/UDP 172.21.9.155
+Record-Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+Fÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿrom: sip:digest@garage.sr.n{tc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.comCall-ID: 982773899-reg@1õ72.21.9.155
+CSeq: 1 REGISTER
+WWW-Authenticate: Digest realm="ga0/UDP srlab.{r.ntc.nokia.com:Via: SIP/2.0/TCP \\\"" <sip:jdrosen@lucent.com>
+  ;	 tag = 98aINVITE sip:vivekg@cha
+Record-Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+From: sip:digest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.comCall-ID: 982773899-reg@1õ72.21.9.155
+CSeq: 1 REGISTER
+WWW-Authenticate: Digest realm="ga0/UDP srlab.{om
+To: sip:digest@garage.sr.ntc.nokia.comCall-ID: 982773899-reg@1õ72.21.9.155
+CSeq: 1 REGISTER
+WWW-Authenticate: Digest realm="ga0/UDP srlab.{r.ntc.nokia.com:Via: SIP/2.0/TCP \\\"" <sip:jdrosen@lucent.com>
+  ;	 tag = 98aINVITE sip:vivekg@cha
+Record-Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+From: sip:digest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.comCall-ID: 982773899-reg@1õ72.21.9.155
+CSeq: 1 REGISTER
+WWW-Authenticate: Digest realm="ga0/UDP srlab.{r.ntc.nokia.com:Via: SIP/2.0/TCP \\\"" <sip:jdrosen@lucent.com>
+  ;	 tag = 98aINVITE sip:vivekg@sndaksdj@10.0.0.1
+CSeq: 8 REGISTER
+Via: 0030:e0ff:fe40:6297]:5062
+     ;branch=z9hG4bKuNCTHs8Lumv
+     ;received=3ffe:1200:3012:c006:0030:e0ff:fe40:6297
+Via: SIP/2.0/UDP [3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]:5062
+     ;branch=z9hG4bKuNCTHs8Lumv
+     ;received=[3ffe:1200:3012:c006:210:;lra4ff:fe8d:6a46]
+From: <sip:alice@[<<<<<<<<<<<<<<<<<<<<<<<<om;maddr=[3ffe:nticate: Digest realm="ga0/UDP srlab.{r.ntc.nokia.com:Via: SIP/2.0/TCP \\\"" <sip:jdrosen@lucent.com>
+  ;	 tag = 98aINVITE sip:vivekg@cha
+Record-Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+From: sip:digest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.comCall-ID: 982773899-reg@1õ72.21.9.155
+CSeq: 1 REGISTER
+WWW-Authenticate: Digest realm="ga0/UDP srlab.{om
+To: sip:digest@garage.sr.ntc.nokia.comCall-ID: 982773899-reg@1õ72.21.9.155
+CSeq: 1 REGISTER
+WWW-Authenticate: Digest realm="ga0/UDP srlab.{r.ntc.nokia.com:Via: SIP/2.0/TCP \\\"" <sip:jdrosen@lucent.com>
+  ;	 tag = 98aINVITE sip:vivekg@cha
+Record-Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+From: sip:digest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.comCall-ID: 982773899-reg@1õ72.21.9.155
+CSeq: 1 REGISTER
+WWW-Authenticate: Digest realm="ga0/UDP srlab.{r.ntc.nokia.com:Via: SIP/2.0/TCP \\\"" <sip:jdrosen@lucent.com>
+  ;	 tag = 98aINVITE sip:vivekg@sndaksdj@10.0.0.1
+CSeq: 8 REGISTER
+Via: 0030:e0ff:fe40:6297]:5062
+     ;branch=z9hG4bKuNCTHs8Lumv
+     ;received=3ffe:1200:3012:c006:0030:e0ff:fe40:6297
+Via: SIP/2.0/UDP [3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]:5062
+     ;branch=z9hG4bKuNCTHs8Lumv
+     ;received=[3ffe:1200:3012:c006:210:;lra4ff:fe8d:6a46]
+From: <sip:alice@[<<<<<<<<<<<<<<<<<<<<<<<<om;maddr=[3ffe:1200:012:c000:210:a4ff:fe8d:6a46]/aliceÌÉòùtmultipart/mixed; boundary==0 0
+m=audio 5004 RTP/AVP 96 97 98
+a=rtpmap:96 AMR/8000
+a=rtpmap:97 AMR-WB/16000
+a=rtpmap:98 GSM-EFR/8000

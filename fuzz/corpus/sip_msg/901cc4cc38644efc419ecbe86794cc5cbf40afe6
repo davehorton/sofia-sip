@@ -1,0 +1,6 @@
+INVIT__________________________________________________________________________________________________________________________E sip:user@company.com SIP/1.0
+To: sip:j_user@company.com*
+From:e4
+CSeq: 8 INVITE
+Via:2/.PS 0I/UDP 135.180.1\30.133;branch=z9hG4bKkdjuw
+

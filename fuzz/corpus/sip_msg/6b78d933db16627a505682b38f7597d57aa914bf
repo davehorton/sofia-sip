@@ -1,0 +1,19 @@
+INVITE sip:useu@company.com SIP/2.0
+To: <sip:j.user@company.com> ;tag523444
+From: sip:caller@university.edu
+Call-ID: 0ha0i3ndaksdj@10.0.0.1
+;ÿÿÿÿÿÿÿntext=name%40@ift.here.com;use=W%22@gw1.wcom.com;usar=pNEWMEhone SIP/V2i.0
+a: SIP/2.0
+  ; tag = deadbeef
+Fr:useu@company.com SIP/2.0
+To: <sip:j.user@company.com> ;tag523444
+From: sip:caller@university.edu
+Call-ID: 0ha0i3ndaksdj@10.0.0.1
+;ÿÿÿÿÿÿÿntext=name%40@ift.here.com;use=W%22@gw1.wcom.com;usar=pNEWMEhone SIP/V2i.0
+a: SIP/2.0
+  ; tag = deadbeef
+From: http://w1Route%3a%20X%50Y%3bZ<sip:JohnSIP/2.0_Smiôh@tct.hut.fi:50Content-Length: any.com SIP/2.0
+To: <sip:j.user@company.com> ;tag523444
+From: sip:caller@university.;user=ip;maddr=131.228.16.2>
+  ; tag/2.0/UDP 135.180.130.133;;,;
+CReason: ontact: "EEEEEEE" <> ;,"Joe" LPC

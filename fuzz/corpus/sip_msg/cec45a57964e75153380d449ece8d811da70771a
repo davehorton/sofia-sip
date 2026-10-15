@@ -1,0 +1,12 @@
+INVITE siy:+1-972-555-2222;phone-context=name%62domain;new=user?%21Route%6a%20X%50Y%3bZ=W%22@gw1.iftmg.there.com
+t=0 0
+m=image 40
+m=image 49172 udptl t38
+a=T38FaxVersion:0
+a=T38maxBitRate:14400
+(=T*8FixFillBitRemoval:0
+a=T38FaxSOPTIO0Tnagement:transferredTCF
+a=T38FaxMaxBuffer:2JBIG:0
+a=T38FaxRateÿanagement:transferredTCF
+a=T38FaxMaxBuffer:260
+a=T38UDPRedundancy

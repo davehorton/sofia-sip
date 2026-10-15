@@ -1,0 +1,11 @@
+INVITE siy:+1-972-555-2222;phone-context=name%62domain;new=user?%22Route%3aTE siy:+1-972-555-2222;phone-context=here.com
+t=0 0
+m=image 49172 udptl t38
+a=T38FaxVersion:0
+a=T38maxBitRate:14400
+a=T3TranscodingJBIG:0
+a=T38FaxRateÿanagement:transferredTCF
+a=T38FaxMaxBuffer:26Rateÿanagement:transferredTCF
+a=T38FaxMaxBuffer:260
+a=T38FaxUdpEC:t38UDPRedundancy
+[

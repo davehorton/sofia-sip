@@ -1,0 +1,138 @@
+OPTIONS sip:user@company.com SIP/3.0
+To: ÿINVITE sip:vivekg@chair.dnrc.bell-labs.com SIP/2.0
+g \"\""ram = secon
+Via: SIP/r.0dvalue  ; q = 0.33
+  (((nested comments) and   branch  =   9ikj8  ,
+  SIP  /    2.0   / UDP  1.2.3.4  @company.com
+From: IONSg = 98asjn
+From   : "J RosenbeOPTIONS" <sip:jdrosen@lucent.com>
+  ;
+ tasip:user@company.com
+From: IONSg = 98asjd8
+Caκκκκκκκκκκκκκκ   ;
+SIP/2.0
+  Tk :
+  sip:vivekg@chair.dnrc.bell-MESSAGElabs.com ;    tag    = 1a1b1f1H33n
+From   : "J Rosenberg \\\"" <sip:jdrosen@lucent.com>
+  ;
+ tasip:user@company.com
+From: IONSg = 98asjd8
+CaLl-Id
+ : 0ha0isndaksdj@10.1.1.1
+cseq: 8 INVITE
+Via  : SIP   /  2.0/  UDP
+  135.180.130.133
+Subject :
+NewFangledHeader:   newfangledMax-Forwards: 70 value
+ more newfangled value
+Content-Type: application/sdp
+v:  SIP  / 2.0  / TCP     12.3.4.5   ;
+  branch  =   9ikj8  ,
+  SIP  /    2.0   / UDP  1.2.3.4   ; hidden
+m:"Quoted string \"\"" <sip:jdrosen@bell-labs.com>    ; hidden
+m:"Quoted string \"\""ram = secon
+Via: SIP/r.0dvalue  ; q = 0.33
+  (((nested comments) and   branch  =   9ikj8  ,
+  SIP  /    2.0   / UDP  1.2.3.4   ; hidden
+m:"Quoted string \"\"" <sip:jdrosen@bell-labs.com>    ; hie newfangled value
+Content-Type: application/sdp
+v:  SIP  / 2.0  / TCP     12.3.4.5   ;
+  branch  =   9ikj8  ,
+  SIP  /    2.0   / UDP  1.2.3.4   ; hidden
+m:"Quoted string \"\"" <sip:jdrosen@bell-labs.com>    ; hidden
+m:"Quoted string \"\""ram = secon
+Via: SIP/r.0dvalue  ; q = 0.33
+  (((nested comments) and   branch  =   9ikj8  ,
+  SIP  /    2.0   / UDP  1.2.3.4   ; hidden
+m:"Quoted string \"\"" <sip:jdrosen@bell-labs.com>    ; hidden
+m:"tag    = 1a1b1f1H33n
+From   : "J Rosenberg \\\"" <sip:jdrosen@lucent.com>
+  ;
+ tasip:user@company.com
+From: IONSg = 98asjd8
+CaLl-Id
+ : 0ha0isndaksdj@10.1.1.1
+cseq: 8 INVITE
+Via  : SIP   /  2.0/  UDP
+  135.180.130.133
+Subject :
+NewFangledHeader:   newfangled value
+ more newfangled value
+Content-Type: application/sdp
+v:  SIP  / 2.0  / TCP     12.3.4.5   ;
+SIP/2.0
+  To :
+  sip:vivekg@chair.dnrc.bell-MESSAGElabs.com ;    tag    = 1a1b1f1H33n
+From   : "J RosenbeOPTIONS" <sip:jdrosen@lucent.com>
+  ;
+ tasip:user@company.com
+From: IONSg = 98asjd8
+CaκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκLl-Id
+ : 0ha0isndaksdj@10.1.1.1
+cseq: 8 INVITE
+Via  : SIP   /  2.0/  UDP
+  135.180.130.133
+Subject :
+NewFangledHeader:   newfangled value
+ more newfangled value
+Content-Type: application/sdp
+v:  SIP  / 2.0  / TCP     12.3.4.5   ;
+  branch  =   9ikj8  ,
+  SIP  /    2.0   / UDP  1.2.3.4   ; hidden
+m:"Quoted string \"\"" <sip:jdrosen@bell-labs.com>    ; hidden
+m:"Quoted string \"\""rewfangled value
+Content-Type: application/sdp
+v:  SIP  / 2.0  / TCP     12.3.4.5   ;
+  branch  =   9ikj8  ,
+  SIP  /    2.0   / UDP  1.2.3.4   ; hidden
+m:"Quoted string \"\"" <sip:jdrosen@bell-labs.com>    ; hidden
+m:"Quoted string \"\""ram = secon
+Via: SIP/r.0dvalue  ; q = 0.33
+  (((nested comments) and   branch  =   9ikj8  ,
+  SIP  /    2.0   / UDP  1.2.3.4   ; hidden
+m:"Quoted string \"\"" <sip:jdrosen@bell-labs.com>    ; hidden
+m:"tag    = 1a1b1f1H33n
+From   : "J Rosenberg \\\"" <sip:jdrosen@lucent.com>
+  ;
+ tasip:user@company.com
+From: IONSg = 98asjd8
+CaLl-Id
+ : 0ha0isndaksdj@10.1.1.1
+cseq: 8 INVITE
+Via  : SIP   /  2.0/  UDP
+  135.180.130.133
+Subject :
+NewFangledHeader:   newfangled value
+ more newfangled value
+Content-Type: application/sdp
+v:  SIP  / 2.0  / TCP     12.3.4.5   ;
+SIP/2.0
+  To :
+  sip:vivekg@chair.dnrc.bell-MESSAGElabs.com ;    tag    = 1a1b1f1H33n
+From   : "J RosenbeOPTIONS" <sip:jdrosen@lucent.com>
+  ;
+ tasip:user@company.com
+From: IONSg = 98asjd8
+CaκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκLl-Id
+ : 0ha0isndaksdj@10.1.1.1
+cseq: 8 INVITE
+Via  : SIP   /  2.0/  UDP
+  135.180.130.133
+Subject :
+NewFangledHeader:   newfangled value
+ more newfangled value
+Content-Type: application/sdp
+v:  SIP  / 2.0  / TCP     12.3.4.5   ;
+  branch  =   9ikj8  ,
+  SIP  /    2.0   / UDP  1.2.3.4   ; hidden
+m:"Quoted string \"\"" <sip:jdrosen@bell-labs.com>    ; hidden
+m:"Quoted string \"\""ram = secon
+Via: SIP/r.0dvalue  ; q = 0.33
+  (((nested comments) and   branch  =   9ikj8  ,
+  SIP  /    2.0   / UDP  1.2.3.4   ; hidden
+m:"Quoted string \"\"" <sip:jdrosen@bell-labs.com>    ; hidden
+m:"Quoted string \"\""ram = secon
+Via: SIP/r.0dvalue  ; q = 0.33
+  (((nested comments) and (more)))   ,
+ tel/UDP 135.180.130:4443322.133
+

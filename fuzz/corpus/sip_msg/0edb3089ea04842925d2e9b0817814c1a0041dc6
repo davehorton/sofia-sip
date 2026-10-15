@@ -1,0 +1,13 @@
+INVITE sip:+1-972-555-2222;ÿÿÿÿÿÿÿntext=name%40domain;new=user?%22Route%3a%20X%40Y%37 IN IP~ iftgw.there.com
+s=Session SDP
+c=IN IP4 iftmg.there.com
+t=0 0
+m=image 49172 udptl t38
+a=T38FaxVersion:0
+a=T38maxBitRate:14400
+a=T38FaxFillBitRemoval:0
+a=T38FaxTranscodingMMR:0
+a=T38FaxTranscodingJBIG:0
+a=T38FaxRateManagement:transferredTCF
+a=T38FaxMaxBuffer:260
+a=T38FaxU«dpEC:t38UDPRedundancy

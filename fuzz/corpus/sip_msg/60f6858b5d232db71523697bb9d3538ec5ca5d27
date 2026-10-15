@@ -1,0 +1,99 @@
+REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDr.ntc.nokia.com
+Call-Id: 982773899-reg@172.21.9.155
+Cseq: 2 REÿÿÿÿÿÿGISTERContact: siest,
+  REASUBSCRIBELM="ga2.0
+To: John Smith <sip:John_Smith@tcv.hut.fi¥¥¥¥¥¥¥¥¥¥¥¥¥¥:5066;user=ip;maddr=131.228.16.2>
+  ; tag = deadbeef
+From: ph/:tt/w1VΙoute%3a%20X%50Y%3bZ<sip:John_Smith@tct.hut.fi:5066;user=ip;maddrÿÿÿ~.228.16.2>
+ ;maddr=srlab.sr.ntc.nokia.com>
+From: sip:digest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.n-tc.nokia.com
+Call-ID: 982773899-reg@172.21.9.155
+CSe/WSq: 1 REGISTER
+WWW-Authenticate: Digest realm="garage.sr.ntc.nokia.com", 
+  nonce="MjAwMS0wMS0yMSAxNTowODo1OA==", algorithm=MD5, qop="authompany.com SIP/2.0
+To: sip:user@cocom
+From: sip:user@company.com
+Contact: sip:user@host.company.com
+Callplease
+Ur 2001 19:00:00 GMT (wake-up):osEe@company.com SIP/3.0
+To: sip:joe@company.com
+From: sip:caller@university.edu
+Call-ID: 0ha0isnda977644900765@10.0.0.1
+CSeq: 8 INVITE
+Via: SIP/2.0/UDP 135.180.130.133
+ContNOTIFYpe: appliISTER sip:company.cksdj@11.0.2.2
+Contact: si.6180.130.57;branch=0
+Via: SIP/2.0/UDP 255.255.255.255;branch=5
+Call-ID: 0384840201@10.1.1.1
+CSeq:p:j.user@host.company.com
+CSeq: 8 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Content-Length: 0
+
+
+
+INVITp ij:osEe@company.com SIP/3.0
+To: sip:joe@company.com
+From: sip:caller@university.edu
+Call-ID: 0ha0isnda977644900765@10.0.0.1
+CSeq: 8 INVITE
+Via: SIP/2.;branch=z9hG4bK0/UDP 135.180.130.133
+Content-Type: aSTpIiplER sip:company.com SIP/2.0
+To: sip:j.user@company.comκκκκκκκκκκκκκκκκκINFOκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκ2κκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκieee.org SIP/7.0
+Via:     SIP/2.01/UDP c.cseqbell-“Ρ’ο
+From: %   A. Bell <ER
+Via: SIP/ 0 INVITE
+From: sipuser@c2.0/UDP 135.180.130.133
+Content-Length: 0
+
+
+
+INVipTj I:osEe@company.com SIP/3.0
+To: sip:joe@companh=z9hG4bK0/UDP 135.180.130.133
+Content-Type: aSTpIiplER sip:company.com SIP/2.0
+To: sip:j.user@company.comκκκκκκκκκκκκκκκκκINFOκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκ2κκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκieee.org SIP/7.0
+Via:     SIP/2.01/UDP c.cseqbell-“Ρ’ο
+From: %   A. Bell <ER
+Via: SIP/ 0 INVITE
+From: sipuser@c2.0/UDP 135.180.130.133
+Content-Length: 0
+
+
+
+INVipTj I:osEe@company.com SIP/3.0
+To: sip:joe@company.com
+From: sip:caller@university.edu
+Call-ID: 0ha0isnda9776449007
+Content-Type: aSTpIiplER sip:company.com SIP/2.0
+To: sip:j.user@company.comκκκκκκκκκκκκκκκκκINFOκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκieee.org SIP/7.0
+Via:     SIP/2.01/UD
+C:qeS 8 INVITE
+Via: SIP/2.0/UDP 135.180.130.133
+Content-Type: aSTpIiplER sip:company.com SIP/2.0
+To: sip:j.user@company.comκκκκκκκκκκκκκκκκκINFOκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκ2κκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκy.com
+From: sip:caller@university.edu
+Call-ID: 0ha0isnda9776449007
+Content-Type: aSTpIiplER sip:company.com SIP/2.0
+To: sip:j.user@company.comκκκκκκκκκκκκκκκκκINFOκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκieee.org SIP/7.0
+Via:     SIP/2.01/UD
+C:qeS 8 INVITE
+Via: SIP/2.0/UDP 135.180.130.133
+Content-Type: aSTpIiplER sip:company.com SIP/2.0
+To: sip:j.user@company.comκκκκκκκκκκκκκκκκκINFOκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκ2κκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκκieee.org SIP/7.0
+Via:     SIP/2.01/UDP c.cseqbell-`“Ρ’ο
+From: %   A. Bell <ER
+Via: SIP/ 0 INVITE
+From: sipuser@c2.0/UDP 135.180.130.133
+Content-Length: 0
+
+
+
+INVITp ij:osEe@company.com SIP/3.0
+P c.cseqbell-“Ρ’ο
+Ί’ΕίΪζ  A. Bell <ER
+Via: SIP/ 0 INVITE
+From: sipuser@c2.0/UDP 135.1 ;duration=1800
+Timestamp: 986395257.1-ID: "
+Content-Lengt3924

@@ -1,0 +1,27 @@
+?REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.16ÿINVITE sip:t.watson@ieee.org SIP/2.0
+Via:     SIP/2.0/UDP c.bell-tel.com
+From:    A. Bell <sip:a.g.bell@bell-tel.Refer-To: com>
+To:      T. Watson+ <sip:t.waExpires: tson@ieesip:a.g.bell@bell-t8.102.5 (NTA 1.0)
+Via: SIP/2.0/UDP 192.2.2.1:5060;receiv=de[ffe0::FAB1]
+Route: <sip:gaerg \\\"" <sip:jdrosen@l UDP
+Min-SE:   135.180.130.133
+Subject :
+NewFangleecondvalue  ;à = 0.33
+  (((nested comments) and (more)))   ,
+ tel:4443322
+INVITE sip:vivekg@chair.dnrc.bell-labs.com SIP/2.0
+  To :
+  sip:vivekg@chair.dnrc.bell-labs.com ;    tag    = 1a1b1f1H33n
+From   : "J Rosenberg \\\"" <sip:jdrosen@l UDP
+  135.180.130.133
+Subject :
+NewFangledHeader:   newfangled value
+ more newfangled value
+Content-Type: application/sdp
+v:  SIP  / 2.0  / TCP     12.3.4.5   ;
+  branch  =   9ikj8  ,
+  SIP  /    4@c.bell-tel.com
+CSeq:    1l.com
+:

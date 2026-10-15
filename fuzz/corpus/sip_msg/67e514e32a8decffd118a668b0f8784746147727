@@ -1,0 +1,26 @@
+?REGISTER sip:company.com SIP/2.0
+To: sip:j.u@recsompany.com
+From: sip:j.user@company.com
+Call-ID: 0ha0isndaksdj@10.0.1.1
+CSeq: 8 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Authorization: Super-PGP ajsohdaosdh0asyhdaind08yasdknasd09asidhas0d8
+REGISTER sip:company.com SIP/2.0
+To: sip:j.user@company.com
+From: sicompany.com SIP/2.0
+To: sip:j.u@recsompany.com
+From: sip:j.user@company.com
+Call-ID: 0ha0isndaksdj@10.0.1.1
+CSeq: 8 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Authorization: Super-PGaPod hsjaosdh0asyhdaind08yasdknasd09asilhas0d8
+R.user@company.com
+From: sip:j.user@company.com
+Call-ID: 0ha0isndaksdj@10.0.1.1
+CSeq: 8 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Authorization: Super-PGP ajsohdaosdh0asyhdaind08yasdknasd09asidhas0d8p:j.user@company.com
+Call-ID: 0ha0isndaksdj@10.0.1.1
+CSeq: 8 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Authorization: Super-PGP ajsohdaosdh0asyhdaind08yasdknasd09asidhas0d8

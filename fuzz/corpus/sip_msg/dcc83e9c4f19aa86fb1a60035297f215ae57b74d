@@ -1,0 +1,8 @@
+REGISTER sip:company.com SIP/2.0
+V
+Call-ID: 0ha0isndaksdj@10.0apny.comÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿMax-Forwards: 70ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ SIP/2.0
+To: sip:j.user@c587;@company.com
+CSeq: 1 OPTŠŠŠŠŠŠŠŠŠŠŠŠŠŠŠŠŠŠŠŠŠŠŠŠŠŠŠŠŠŠŠ180.13Accept
+Call-0
+Conompany.com
+From:h: 0

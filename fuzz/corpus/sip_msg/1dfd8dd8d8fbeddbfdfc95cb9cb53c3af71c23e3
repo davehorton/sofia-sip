@@ -1,0 +1,5 @@
+INVITE sip:user@company.com SIP/2.0
+To: sip:j.user@company.com
+From: sip:casip:Seq: 8 INVITE
+Via: SIP/2.0/μμμμμμμμμμμμμμμμμμμμ/μμμμμμμμμμμμμμμμRTP/AVP 31
+a=rtpmap:31 LPC

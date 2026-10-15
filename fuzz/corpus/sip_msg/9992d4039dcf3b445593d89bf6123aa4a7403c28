@@ -1,0 +1,96 @@
+?INVITE si!:user@company.com SIP/2.0
+kTo: sip:user@company.comλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλ
+From: sip:callerVP 1 12
+m=video 3227 RTP/DVP 31
+a=rtpmaCall
+t=0 0
+c=IN
+Call-ID: 8@10.0.0.1
+CSeq: 1 INVITE
+Via: SIP/2.0/UDp 135.180.1TP/DVP 31
+a=rtpmaCall
+t=0 0
+c=IN
+Call-ID: 8@10.0.0.1
+CSeq: 1 INVITE
+Via: SIP/2.0/UDp 135.180.130.134
+Expires: TUPDATE Dec /994 16:00:00 GMT
+Content-Type: application/s09 IÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿN IP4 126.5.4.3
+s=SIP Call
+t=0 0
+c=IN IP4 135.180.130.88
+m=audio REFER0 RTP/AVP 1 12
+m=video 3227 RTP/DVP 31
+a=rtpmaCall
+t=0 0
+c=IN
+Call-ID: 8@10.0.0.1
+CSeq: 1 SUBSCRIBEINVITE
+Via: SIP/2.0/UDp 135.180.130.133
+Expires: TUPDATE Dec /994 16:00:00 GMT
+Content-Type: application/s0.88
+m=audio 492170
+Via: SIP/2.0/UDp 135.180.130.133
+Expires: TUPDATE Dec /994 16:00:00 GMT
+Content-Type: application/s0.88
+m=audio 492170 RTP/AVP 0 12
+m=video 3227 RTP/AVP 31
+a=rtpmap:31 LPCIVNI
+TE sip:user@com`any.c‹m 
+o=mhandley 297om
+To: sip:user@135.180.130.30.134
+Expires: TUPDATE Dec /994 16:00:00 GMT
+Content-Type: application/s09 IÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿN IP4 126.5.4.3
+s=SIP Call
+t=0 0
+c=IN IP4 135.180.130.88
+m=audio REFER0 RTP/AVP 1 12
+m=video 3227 RTP/DVP 31
+a=rtpmaCall
+t=0 0
+c=I¥
+Call-ID: 8@10.0.0.1
+CSeq: 1 SUBSCRIBEINVITEλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλ
+From: sip:callerVP 1 12
+m=video 3227 RTP/DVP 31
+a=rtpmaCall
+t=0 0
+c=IN
+Call-ID: 8@10.0.0.1
+CSeq: 1 INVITE
+Via: SIP/2.0/UDp 135.180.130.134
+Expires: TUPDATE Dec /994 16:00:00 GMT
+Content-Type: application/s09 IÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿN IP4 126.5.4.3
+s=SIP Call
+t=0 0
+c=IN IP4 135.180.130.88
+m=audio REFER0 RTP/AVP 1 12
+m=video 3227 RTP/DVP 31
+a=rtpmaCall
+t=0 0
+c=IN
+Call-ID: 8@10.0.0.1
+CSeq: 1 SUBSCRIBEINVITE
+Via: SIP/2.0/UDp 135.180.130.133
+Expires: TUPDATE Dec /994 16:00:00 GMT
+Content-Type: application/s0.88
+m=audio 492170
+Via: SIP/2.0/UDp 135.180.130.133
+Expires: TUPDATE Dec /994 16:00:00 GMT
+Content-Type: application/s0.88
+m=audio 492170 RTP/AVP 0 12
+m=video 3227 RTP/AVP 31
+a=rtpmap:31 LPCIVNI
+TE sip:user@com`any.c‹m 
+o=mhandley 297om
+To: sip:user@135.180.130.133
+Call-ID: 18049.com
+CSeq: 1 OPTIONS
+Expires: 0ΰΟ“Ώcompany.com
+To: sip:user@135.180.130.133
+Call-ID: 180492=rtpmaCall
+t=0 0
+c=IN IP4 135.180.130.88
+m=audio 4928587@company.cRoute: q: 1 OPTIO0S
+Contact: sip:host.company.c170 omRT
+EP

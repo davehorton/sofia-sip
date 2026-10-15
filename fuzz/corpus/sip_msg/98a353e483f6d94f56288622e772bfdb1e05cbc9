@@ -1,0 +1,4 @@
+REGISTER sip:company.com SIP/2.0
+To: sip:user@REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Contact: sip:user@example.com?Route=%3Csip:sip.example.com%6E

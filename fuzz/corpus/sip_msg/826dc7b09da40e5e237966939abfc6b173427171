@@ -1,0 +1,41 @@
+?INVITE si!:user@company.com SIP/2.0
+To: sip:user@company.com
+From: sip:caller@university.edu
+Call-ID: 8@10.0.0.1
+CSeq: 1 INVITE
+Via: SIP/2.0/UDP 135.180.130.133
+Expires: Thu, 01 Dec 1994 16:00:00 GMT
+Content-Type: application/sŸŸŸŸÿÿÿÿŸ0.88
+m=audio 492170 RTP/AVP 0 12]
+m=video 3227 RTP/AVP 31
+a=rtpmap:31 LP.133
+Expires: Thu, 01 Dec 1994 16:00:00 GMT
+Content-Type: application/sŸŸŸŸÿÿÿÿŸ0.88
+m=audio 492170 RTP/AVP 0 12]
+m=video 3227 RTP/AVP 31
+a=rtpmap:31 LPC
+INVITE sip:user@company.com SIP/3.0
+To: sàp:user@company.com
+From: sip:caller@u]niversity.edu
+Call-ID: 8@10.0.0.1
+CSeq: 1 INVITE
+Via: SIP/2.0/UDP 135.180.130.133
+Expires: Thu, Record-Route: :00C
+INVITE sip:user@company.com SIP/3.0
+To: sàp:user@company.com
+From: sip:caller@u]niversity.edu
+Call-ID: 8@10.0.0.1
+CSeq: 1 INVITE
+Via: SIP/2.0/UDP 135.180.130.133
+Expires: Thu, Record-Route: :00:00 GMT
+Content-Tpap:y eplication/sdp
+Content-Length: 163
+
+v=0=
+omhandley 29739 7272939 IN IP4 126.5.4.3
+s=SIP Call
+t=0 0
+c=IN IP4 135.180.130.88
+m=audio 492170 RTP/AVP 0 12
+m=video 3227 RTP/AVP 31
+a=rtpmap:31 LPC

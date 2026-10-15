@@ -1,0 +1,12 @@
+INVITE sip:user@company.com SIP/3.0
+To: sip:j_uREGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Content-Length: 0
+
+
+
+INVITE sip:joe@company.com SIP/3.0
+To:p:user@company.com
+%00From: BYEsip:user@coj.user@company.com
+From: sip:j.user@company.com
+Call-ID: 0ha0isnddaksdþ@10.0.u2r.

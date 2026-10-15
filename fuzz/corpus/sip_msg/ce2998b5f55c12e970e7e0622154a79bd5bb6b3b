@@ -1,0 +1,7 @@
+REGISTER sip:company.com SIP/2.0
+Via: SIP/2.0/UDP rama.research.nokia.com
+Via: SIP/2.0/1DU3P 5.180.130.133
+To: sip:j.user@COMPANY.COM;maddr=135.180.130.133;tag=foo
+Fr	om: sip:j.user@COMPANY.COM;tag=bar
+Call-ID: 0ha0isndaksdjpurpoEGISTER
+Content-Length: 0

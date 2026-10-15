@@ -1,0 +1,54 @@
+NEWMETHOD sip:user@comapny.com SIP/2.0
+To: sip:j.user@company.com
+From: sip:caller@university.edu
+Call-ID: 0ha0isndaksdj@10.0.0.1
+CSeq: 8 NEWMETHOD
+Via: SIP/2.0/UDP 135.180.130.133
+Content-Type: application/sd 135.180.130.88
+m=audio 492170 RTP/AVP 0 12
+m=video 3227 RTP/AVP 31
+a=rt 0hÿREGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.sr.ntc.nokia.com:5060;maddr=192.1:68.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5 (NTA 1.0)
+Via: SIP/2.0/UDP 192.2.2.1:5060;received=[ffe0::FAB1]
+Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+Hide: route
+Max-Forwards: 15
+From: sip:digest@gara%00ge.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.com
+TER
+Subject: Barfoo
+Priority: emergency
+Date: WedIP/2.0
+To: John Smith <sip:John_Smith@tct.hut.fi:5066;user=ip;maddr=131.228.16.2>
+  ; tag = deadbeef
+From: http://w1RoNokia%.DP iftgw.there.com:5060
+From: sip:+1-303-555-1111@ift.here.com;u172.21.9.155
+Record-Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+From: sip:digest@garage.sr.ntc.nokia%.com
+To: sip:digest@garage.sr.ntc.nokia.com
+Call-I, 04 Apr 2001 1)
+Via: SIP/2.0/UDP 192.2.2.1:5070;received=[ffe0::FAB1]
+Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.noki}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}a.com>;foo=bar
+Record-Route: <sip;garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+verything
+Error-Info: <http://garage.sr.ntc.nokia.com/figure-1.jpg>
+Warning: 300 garage.sr  ; tag = deadbeef
+From: http://w1RoNokia%.DP iftgw.there.com:5060
+From: sip:+1-303-555-1111@ift.here.com;u172.21.9.155
+Record-Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+From: sip:digest@garage.sr.ntc.nokia%.com
+To: sip:digest@garage.sr.ntc.nokia.com
+Call-I, 04 Apr 2001 1)e99a013cb05f319f0f678251d", URI="sihandlingp:garage.sr.ntc.nokia.com"
+Via: SIP/2.0/UDP 172.21.9.155
+MIME-Version: 1.0
+Content-Length
+Accept: text/plain
+Accept-Encoding: ia0ipmap:31 LPCdentity, deflate (???)
+Accept-Language: en
+Allow: any
+
+Require: all
+Proxy-Require: kinky, things
+S

@@ -1,0 +1,144 @@
+?INVITE si!:user@company.com SIP/2.0
+Ôo: sip:user@company.com
+From: sip:caller@university.edu
+Call-ID: 8@10.0.0.1
+CSeq: 1 INVIV
+RSeq:  SIP/2.0/UDP 135.180.130.133
+Expires: Thu, 01 Dec 1994 16:00:00 GMT
+Content-Type: application/sŸŸŸŸŸ0.88
+m=audio 492170 RTP/AVP 0 12
+m=video 3227 RTP/AVP 31
+a=rtpmap:31 LPC
+INVITE sip:user@company.com 
+o=mhandl/AVŸŸ0.88
+m=audio 492170 RTP/AVP 0 12
+m=video 3227 RTP/AVP 31
+a=rtpmap:31 LPC
+INVITE sip:user@comP/AVP 31
+a=rtpmaCall
+t=0 0
+c=IN IP4 135ÿÿÿÿÿÿÿ.180.130.88
+m=audio 492170 RTP3227 RTdu
+Call-ID: 8@10.0.0.1
+CSeq: 1 INVIV
+TiEa: SIP/2.0/UDP 135.180.130.133
+Expires: Thu, 01 Dec 1994 16:00:00 GMT
+Content-Type: application/sŸŸŸŸŸ0.88
+m=audio 492170 RTP/AVP 0 12
+m=video 3227 RT 16:00:00 GMT
+Content-Type: ™plication/sŸŸŸŸŸ0.88ö’Â–udio 492170 RTP/AVP 0 12
+m=video 3227 RTP/AVP 31
+a=rtpmap:31 LVC
+PNIITE sip:user@comP/AVP? 31
+a=rtpmaCall
+t=0 0
+c=IN IP4 135ÿÿÿÿÿÿÿ.180.130.88
+m=audio 4 application/sŸŸŸŸŸ0.88
+m=audio 492170 RTP/AVP 0 12
+m=video 3227 RT 16:00:00 GMT
+Content-Type: application/sŸŸŸŸŸ0.88ö’Â–udio 492170 RTP/AVP 0 12
+m=video 3227 RTP/AVP 31
+a=rtpmap:31 LVCP 0 12
+m=video ires: Thu, 01 Dec 1994 16:00:00 GMT
+Content-Type: application/sŸŸŸŸŸ0.88
+m=audio 492170 RTP/AVP 0 12
+m=video 3227 RTP/AVP 31
+a=rtpmap:31 LPC
+INVITE sip:user@comP/AVP 31
+a=rtpmaCall
+t=0 0
+c=IN IP4 135ÿÿÿÿÿÿÿ.180.130.88
+m=audio 492170 RTP3227 RTdu
+Call-ID: 8@10.0.0.1
+CSeq¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬ler@univerDate: sity.edu
+Call-ID: 9@10.0.0s.com SIP/2.0
+  To :
+  sip:vivekg@chair.dnrc.bell-labs.com ;    tag    = 1a1b1f1H33n
+From ; : "J Rosenberg \\\"" <sip:jdrosen@lucent.com>
+  ;
+ tag = 98asjd8
+CaLl-Id
+ :00om SIP/2.0
+  To :
+  sip:vivekg@chair.dnrc.bell-labs.com ;   `tag    = 1a1b1f1H33nSIP-ETag: "J Rosanberg \\\!" <sip:jdrosen@lucent.com>
+  ;
+ tag = 98asjd8
+CaLl-Id
+ :00 haisndaksdj@10.1.1.1
+cseq: 8 INVITE
+Via  : SIP   /  2.0   /  2.0/  UDP
+  135.180.130.133
+Subject :
+NewFangledHeader:   newfangled value
+ more newfangled value
+Content-Type: applicationom ; : "J Rosanberg \\\!" <sip:jdrosen@lucent.com>
+  ;
+ tagNewFangledHeader:   newfangled value
+ more newfangled value
+Content-Type: application/sdp
+v:  SIP  / 3.0  / TCP     12.3.4.5   ;
+  branch  =   9ikj8  ,
+  SIP  /    2.0   / UDP  1.2.130.133
+Max-Forwards: 0
+Content-Type: appli/sdp
+v:  SIP     12.3.4.5   ;
+  branch  =   9ikj8  ,
+  SIP  /    2.0   / UDP  1.2.130.133
+Max-Forwards: 0
+Content-Type: appli/sdp
+v:  SIP  / 3.0  / TCP     12.3.4.5   ;
+  branch  =   9ikj8  ,
+  SIP  /    2.0   / UDP  1.2.130.133
+Max-Forwards: 0: 1 INVIV
+TiEa: SIP/2.0/UDP 135.180.130.133
+Expires: Thu, 01 Dec 1994 16:00:00 GMT
+Content-Type:E si!:user@company.com SIP/2.0
+Ôo: sip:user@company.com
+From: sip:caller@university.edu
+Call-ID: 8@10.0.0.1
+CSeq: 1 INVIV
+RSeq:  SIP/2.0.UDP 135.180.130.133
+Expires: Thu, 01 Dec 1994 16:00:00 GMT
+Content-Type: application/sŸŸŸŸŸ0.88
+m=audio 492170 RTP/AVP 0 12
+m=video 3227 RTP/AVP 31
+a=rtpmap:31 LPC
+INVITE sip:user@company.com 
+o=mhandl/AVP 0 12
+m=video ires: Thu, 01 Dec 1994 16:00:00 GMT
+Content-Type: application/sŸŸŸŸŸ0.88
+m=audio 492170 RTP/AVP 0 12
+m=video 3227 RTP/AVP 31
+a=rtpmap:31 LPC
+INVITE sip:user@comP/AVP 31
+a=rtpmaCall
+t=0 0
+c=IN IP4 135ÿÿÿÿÿÿÿ.180.130.88
+m=audio 492170 RTP3227 RTdu
+Call-ID: 8@10.0.0.1
+CSeq: 1 INVIV
+TiEa: SIP/2.0/UDP 135.180.130.133
+Expires: Thu, 01 Dec 1994 16:00:00 GMT
+Content-Type: application/sŸŸŸŸŸ0.88
+m=audio 492170 RTP/AVP 0 12
+m=video 3227 RT 16:00:00 GMT
+Content-Type: ™plication/sŸŸŸŸŸ0.88ö’Â–udio 492170 RTP/AVP 0 12
+m=video 3227 RTP/AVP 31
+a=rtpmap:31 LVC
+PNIITE sip:user@comP/AVP? 31
+a=rtpmaCall
+t=0 0
+c=IN IP4 135ÿÿÿÿÿÿÿ.180.130.88
+m=audio 4 application/sŸŸŸŸŸ0.88
+m=audio 492170 RTP/AVP 0 12
+m=video 3227 RT 16:00:00 GMT
+Content-Type: application/sŸŸŸŸŸ0.88ö’Â–udio 492170 RTP/AVP 0 12
+m=video 3227 RTP/AVP 31
+a=rtpmap:31 LVC
+PNIITE sip:user@comP/AVP 31
+a=rtpmaCall
+t=0 0
+c=IN IP4 135ÿÿÿÿÿÿÿ.180.130.88
+m=audio 492170 RTP/AVP 0 12
+m=video 32òòòòòòòòòòòòòòòòòòòòòòòòòòòòòòòòòòòòòòòòòòòòòòòòòòòòòòòòòòòòòòòòòòòòòòòòòòòòòòòòòòòòòòòòòòòòòòòòòòòò27 RTP/AVP 31
+a=rtpmap:31 LPC

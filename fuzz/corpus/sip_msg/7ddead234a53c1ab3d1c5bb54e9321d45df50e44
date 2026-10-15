@@ -1,0 +1,10 @@
+IN iVTEIsp:John_Smith@tct.hut.fi SIP/2.0
+To: isbn:2983792873
+From: http:REFER.cs.columbia.edu
+Call-ID: 0ha0isnda INVITV
+aE:?INVITE sip:t.watson@ieeei SIP/2.0/UDP 135.180.130.133
+Content-Type: appWWW-Authenticate: act: Joe BobSubscription-State: 122.1.2.3>
+Content-Length: 138.org SIP/7.0
+Max-
+
+Fvo
