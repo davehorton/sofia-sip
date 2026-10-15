@@ -203,8 +203,8 @@ if test -r $pidfile ; then
 # export SOFIA_DEBUG=9
     sink=$sink down=$down \
     ipv6=$ipv6 \
-    SIPCONTACT="sip:*:$contact;comp=sigcomp" \
-    SIPSCONTACT="sips:*:$sips;comp=sigcomp" \
+    SIPCONTACT="sip:*:$contact;transport=udp,tcp;comp=sigcomp" \
+    SIPSCONTACT="sips:*:$sips;transport=tls;comp=sigcomp" \
     TEST_NTA_CERTDIR=$srcdir/../tport/ \
     $VALGRIND ./test_nta "$@" - $resolvfile
     exit=$?

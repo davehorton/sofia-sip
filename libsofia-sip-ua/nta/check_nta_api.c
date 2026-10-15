@@ -68,8 +68,9 @@ START_TEST(api_1_0_0)
   nta_agent_t *nta;
   su_home_t home[1];
   su_nanotime_t nano;
-  nta_agent_magic_t *amagic = (void *)(home + 1);
-  nta_outgoing_magic_t *omagic = (void *)(home + 2);
+  static char amagic_obj, omagic_obj;	/* distinct dummy pointers */
+  nta_agent_magic_t *amagic = (void *)&amagic_obj;
+  nta_outgoing_magic_t *omagic = (void *)&omagic_obj;
   msg_t *msg;
 
   memset(home, 0, sizeof home); home->suh_size = (sizeof home);

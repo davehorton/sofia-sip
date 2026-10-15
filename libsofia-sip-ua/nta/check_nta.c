@@ -217,7 +217,7 @@ s2_nta_vwait_for(enum wait_for wait_for0,
 	    goto next;
 	  break;
 	case wait_for_method:
-	  if ((sip_method_t)value != e->method)
+	  if ((sip_method_t)(intptr_t)value != e->method)
 	    goto next;
 	  break;
 	case wait_for_method_name:

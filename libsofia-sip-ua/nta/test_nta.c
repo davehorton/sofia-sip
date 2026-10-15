@@ -559,7 +559,10 @@ int client_run_until_canceled(client_t *c, int expected)
 
 int test_init(agent_t *ag, char const *resolv_conf)
 {
-  char const *contact = "sip:*:*;comp=sigcomp";
+  /* Name the transports: a bare sip:*:* also binds WS on the TCP port,
+   * and with SO_REUSEPORT the kernel then hands some TCP connections to
+   * the WS listener, which rejects them (flaky 408s). */
+  char const *contact = "sip:*:*;transport=udp,tcp;comp=sigcomp";
   su_sockaddr_t su;
   socklen_t sulen, sulen0;
   su_socket_t s;
@@ -634,8 +637,14 @@ int test_init(agent_t *ag, char const *resolv_conf)
 
   contact = getenv("SIPSCONTACT");
   if (contact) {
+    char const *certdir = getenv("TEST_NTA_CERTDIR");
+    char agent[1024];
+
+    /* agent.pem holds both the key and the certificate */
+    snprintf(agent, sizeof agent, "%s/agent.pem", certdir ? certdir : ".");
     if (nta_agent_add_tport(ag->ag_agent, URL_STRING_MAKE(contact),
-			    TPTAG_CERTIFICATE(getenv("TEST_NTA_CERTDIR")),
+			    TPTAG_TLS_CERTIFICATE_KEY_FILE(agent),
+			    TPTAG_TLS_CERTIFICATE_FILE(agent),
 			    TPTAG_TLS_VERIFY_POLICY(TPTLS_VERIFY_NONE),
 			    TAG_END()) == 0)
       test_nta_sips = 1;
@@ -1305,7 +1314,8 @@ int test_tports(agent_t *ag)
 			   NTATAG_TPORT(tcp_tport),
 			   TAG_END());
     su_free(ag->ag_home, pl);
-    TEST_1(!client_run(ctx, 503));
+    /* EPIPE on a stream transport is answered 410, not 503 (95c7a51c) */
+    TEST_1(!client_run(ctx, 410));
 
     TEST_P(ag->ag_latest_leg, ag->ag_server_leg);
 
