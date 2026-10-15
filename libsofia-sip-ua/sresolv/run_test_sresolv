@@ -160,7 +160,7 @@ zone "0.0.0.c.2.1.0.3.0.0.2.1.e.f.f.3.ip6.arpa" in {
 
 EOF
 
-named -f -d 999 -c $t/named.conf > $t/named.log 2>&1 &
+named -g -d 1 -c $t/named.conf > $t/named.log 2>&1 &
 
 echo $0: started named pid $!
 for i in 1 2 3 4 5 6 7 8 9 10; do
