@@ -578,16 +578,16 @@ int test_init(agent_t *ag, char const *resolv_conf)
 
 #if SU_HAVE_IN6
   if (su_strmatch(getenv("ipv6"), "true")) {
-    contact = "sip:[::]:*;comp=sigcomp";
+    contact = "sip:[::]:*;transport=udp,tcp;comp=sigcomp";
     af = AF_INET6, sulen0 = sizeof (struct sockaddr_in6);
   }
   else {
     af = AF_INET, sulen0 = sizeof (struct sockaddr_in);
-    contact = "sip:0.0.0.0:*;comp=sigcomp";
+    contact = "sip:0.0.0.0:*;transport=udp,tcp;comp=sigcomp";
   }
 #else
   af = AF_INET, sulen0 = sizeof (struct sockaddr_in);
-  contact = "sip:0.0.0.0:*;comp=sigcomp";
+  contact = "sip:0.0.0.0:*;transport=udp,tcp;comp=sigcomp";
 #endif
 
   if (ag->ag_m)
