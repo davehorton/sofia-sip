@@ -89,7 +89,7 @@ typedef struct {
 typedef struct {
   size_t N;
   uint32_t bsize;
-  double buckets[32768];
+  double buckets[];		/* allocated for N + 1 buckets */
 } histogram_t;
 
 static

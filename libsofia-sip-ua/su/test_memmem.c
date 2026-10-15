@@ -87,9 +87,12 @@ static int test_notfound(void)
 #endif
   {
     TEST_P(memmem(haystack, 12, "", 0), haystack);
-    TEST_P(memmem(haystack, 12, null, 0), haystack);
     TEST_P(memmem(haystack, 0, "", 0), haystack);
+#if !HAVE_MEMMEM
+    /* Only for our own memmem(): glibc declares the needle nonnull */
+    TEST_P(memmem(haystack, 12, null, 0), haystack);
     TEST_P(memmem(haystack, 0, null, 0), haystack);
+#endif
   }
 
   TEST_P(memmem(haystack + 2, 3, needle, 3), haystack + 2);

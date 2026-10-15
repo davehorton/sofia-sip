@@ -98,9 +98,16 @@ HTABLE2_PROTOS2(htable2_t, htable2, ht2_, entry_t, size_t);
 #define HENTRY_IS_EQUAL(a, b) ((a).e_n == (b).e_n)
 #define HALLOC(home, old, newsize) (su_realloc(home, old, (isize_t)newsize))
 
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunused-function"
+#endif
 HTABLE2_BODIES2(htable2_t, htable2, ht2_, entry_t, size_t,
 	       HENTRY_HASH, HENTRY_IS_USED, HENTRY_REMOVE, HENTRY_IS_EQUAL,
 	       HALLOC);
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
 
 typedef struct context_s
 {
