@@ -1,0 +1,23 @@
+name: Tests
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    name: ${{ matrix.mode }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        mode: [gcc, clang, asan]
+    steps:
+      - uses: actions/checkout@v4
+      # Same image as scripts/docker-test.sh, so CI and local runs match
+      - name: Build test image
+        run: docker build -t sofia-sip-ci -f ci/Dockerfile ci
+      - name: Build and test (${{ matrix.mode }})
+        run: docker run --rm -v "$PWD:/src:ro" sofia-sip-ci /src/scripts/test.sh ${{ matrix.mode }}
