@@ -400,7 +400,7 @@ msg_t *tp_test_msg(tp_test_t *tt, int flags,
 {
   msg_t *msg = msg_create(tt->tt_mclass, flags);
 
-  msg_maxsize(msg, 2 * 1024 * 1024);
+  msg_maxsize(msg, 128 * 1024 * 1024);	/* tcp_test sends 64 MB */
 
   return msg;
 }
@@ -521,10 +521,21 @@ static int init_test(tp_test_t *tt)
 		       IF_SIGCOMP_TPTAG_COMPARTMENT(tt->master_cc)
 		       TAG_END()));
 
-  /* Bind client transports */
-  TEST(tport_tbind(tt->tt_tports, myname, transports,
-		   TPTAG_SERVER(0), TAG_END()),
-       0);
+  /* Bind client transports. UDP is bound as a server-type primary on an
+   * ephemeral port, as nta does: since 75141272 a client-only UDP primary
+   * has no socket of its own (and is no longer connection-oriented), so it
+   * cannot send. TCP stays client-only. */
+  {
+    char const * udp[] = { "udp", NULL };
+    char const * tcp[] = { "tcp", NULL };
+
+    TEST(tport_tbind(tt->tt_tports, myname, udp,
+		     TPTAG_SERVER(1), TAG_END()),
+	 0);
+    TEST(tport_tbind(tt->tt_tports, myname, tcp,
+		     TPTAG_SERVER(0), TAG_END()),
+	 0);
+  }
 
   if (getenv("TPORT_TEST_HOST"))
     myname->tpn_host = getenv("TPORT_TEST_HOST");
@@ -632,9 +643,14 @@ static int init_test(tp_test_t *tt)
     char const * transports[] = { "tls", NULL };
 
     char const *srcdir = getenv("srcdir");
+    char agent[1024], cafile[1024];
 
     if (srcdir == NULL)
       srcdir = ".";
+
+    /* agent.pem holds both the key and the certificate */
+    snprintf(agent, sizeof agent, "%s/agent.pem", srcdir);
+    snprintf(cafile, sizeof cafile, "%s/cafile.pem", srcdir);
 
     tlsname->tpn_host = myname->tpn_host;
     tlsname->tpn_ident = "server";
@@ -642,14 +658,18 @@ static int init_test(tp_test_t *tt)
     /* Bind client transports */
     TEST(tport_tbind(tt->tt_tports, tlsname, transports,
 		     TPTAG_SERVER(0),
-		     TPTAG_CERTIFICATE(srcdir),
+		     TPTAG_TLS_CERTIFICATE_KEY_FILE(agent),
+		     TPTAG_TLS_CERTIFICATE_FILE(agent),
+		     TPTAG_TLS_CERTIFICATE_CHAIN_FILE(cafile),
 		     TAG_END()),
 	 0);
 
     /* Bind tls server transport */
     TEST(tport_tbind(tt->tt_srv_tports, tlsname, transports,
 		     TPTAG_SERVER(1),
-		     TPTAG_CERTIFICATE(srcdir),
+		     TPTAG_TLS_CERTIFICATE_KEY_FILE(agent),
+		     TPTAG_TLS_CERTIFICATE_FILE(agent),
+		     TPTAG_TLS_CERTIFICATE_CHAIN_FILE(cafile),
 		     TAG_END()),
 	 0);
   }
@@ -671,7 +691,11 @@ static int init_test(tp_test_t *tt)
     if (strcmp(tpn->tpn_ident, "server"))
       continue;
 
+    /* The server may bind both IPv4 and IPv6 primaries, while the client is
+     * bound to 127.0.0.1 only: target the first primary of each type. */
     if (strcmp(tpn->tpn_proto, "udp") == 0) {
+      if (tt->tt_udp_name->tpn_proto)
+	continue;
       *tt->tt_udp_name = *tpn;
       tt->tt_udp_name->tpn_comp = NULL;
       tt->tt_udp_name->tpn_ident = NULL;
@@ -679,6 +703,8 @@ static int init_test(tp_test_t *tt)
       tt->tt_udp_comp->tpn_ident = NULL;
     }
     else if (strcmp(tpn->tpn_proto, "tcp") == 0) {
+      if (tt->tt_tcp_name->tpn_proto)
+	continue;
       *tt->tt_tcp_name = *tpn;
       tt->tt_tcp_name->tpn_comp = NULL;
       tt->tt_tcp_name->tpn_ident = NULL;
@@ -695,6 +721,8 @@ static int init_test(tp_test_t *tt)
       tt->tt_sctp_name->tpn_ident = NULL;
     }
     else if (strcmp(tpn->tpn_proto, "tls") == 0) {
+      if (tt->tt_tls_name->tpn_proto)
+	continue;
       *tt->tt_tls_name = *tpn;
       tt->tt_tls_name->tpn_ident = NULL;
     }
@@ -868,8 +896,11 @@ static int tcp_test(tp_test_t *tt)
 
 #ifndef WIN32			/* Windows seems to be buffering too much */
 
-  /* Create a large message, just to force queueing in sending end */
-  TEST(new_test_msg(tt, &msg, "tcp-0", 1, 16 * 64 * 1024), 0);
+  /* Create a large message, just to force queueing in sending end. It must
+   * exceed what the kernel buffers on loopback (send plus receive buffers,
+   * several MB with autotuning), or nothing is queued and the overflow
+   * test below fails. */
+  TEST(new_test_msg(tt, &msg, "tcp-0", 1, 64 * 1024 * 1024), 0);
   test_create_md5(tt, msg);
   TEST_1(tp = tport_tsend(tt->tt_tports, msg, tt->tt_tcp_name, TAG_END()));
   N++;
@@ -1284,6 +1315,11 @@ static int tls_test(tp_test_t *tt)
   TEST_1(called->pending = tport_pend(tp, msg, tls_error_callback, (tp_client_t *)called));
 
   i = tport_test_run(tt, 5);
+  /* tport_pend() does not take a reference: release the pending entry
+   * before the message goes away, or a later tport_close() reports the
+   * error into freed memory. */
+  if (!called->n)
+    tport_release(tp, called->pending, msg, NULL, (tp_client_t *)called, 0);
   msg_destroy(msg);
 
   if (i < 0) {
