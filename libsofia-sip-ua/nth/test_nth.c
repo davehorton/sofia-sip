@@ -215,7 +215,7 @@ static int deinit_test(tester_t *t)
 
   su_home_deinit(t->t_home);
 
-  memset(t, 0, sizeof t);
+  memset(t, 0, sizeof *t);
 
   END();
 }
@@ -418,7 +418,6 @@ static int site_check_all(site_t *s,
 			  char const *path)
 {
   msg_t *msg;
-  auth_status_t *as;
 
   TEST_1(s); TEST_1(ns); TEST_1(req); TEST_1(http); TEST_1(path);
 
@@ -431,7 +430,7 @@ static int site_check_all(site_t *s,
 
   msg_destroy(msg);
 
-  as = nth_request_auth(req);
+  nth_request_auth(req);
 
   TEST_1(nth_request_treply(req, s->s_status, s->s_phrase,
 			    TAG_NEXT(s->s_tags)) != -1);

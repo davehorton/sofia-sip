@@ -358,9 +358,8 @@ int forwarder_accept(proxy_t *pr, su_wait_t *w, forwarder_t *f0)
   forwarder_t *f;
   su_sockaddr_t *su;
   socklen_t  sulen;
-  int events;
 
-  events = su_wait_events(w, f0->f_socket);
+  su_wait_events(w, f0->f_socket);
 
   f = forwarder_create(pr);
 
@@ -458,10 +457,10 @@ int forwarder_stream_peer(proxy_t *pr, forwarder_t *f_peer)
 /** Connection is complete. */
 int forwarder_connected(proxy_t *pr, su_wait_t *w, forwarder_t *f)
 {
-  int events, error;
+  int error;
   forwarder_t *f_peer;
 
-  events = su_wait_events(w, f->f_socket);
+  su_wait_events(w, f->f_socket);
 
   error = su_soerror(f->f_socket);
 
@@ -486,9 +485,9 @@ int forwarder_connected(proxy_t *pr, su_wait_t *w, forwarder_t *f)
 int forwarder_recv(proxy_t *pr, su_wait_t *w, forwarder_t *f)
 {
   buffer_t b[1];
-  int n, events;
+  int n;
 
-  events = su_wait_events(w, f->f_socket);
+  su_wait_events(w, f->f_socket);
 
   n = recv(f->f_socket, b->b_data, sizeof(b->b_data), 0);
 
@@ -581,9 +580,9 @@ int forwarder_append(forwarder_t *f, buffer_t *b0)
 int forwarder_empty(proxy_t *pr, su_wait_t *w, forwarder_t *f)
 {
   buffer_t *b;
-  int n, events;
+  int n;
 
-  events = su_wait_events(w, f->f_socket);
+  su_wait_events(w, f->f_socket);
 
   while ((b = f->f_buf)) {
     n = forwarder_send(f->f_pr, f, b);
@@ -654,13 +653,13 @@ int forwarder_shutdown(forwarder_t *f)
 void forwarder_close(forwarder_t *f)
 {
   su_sockaddr_t *su1, *su2;
-  char const *d1, *d2;
+  
   char buf1[SU_ADDRSIZE], buf2[SU_ADDRSIZE];
 
   if (f->f_upstream)
-    su1 = f->f_dest, su2 = f->f_peer->f_dest, d1 = "up", d2 = "down";
+    su1 = f->f_dest, su2 = f->f_peer->f_dest;
   else
-    su2 = f->f_dest, su1 = f->f_peer->f_dest, d2 = "up", d1 = "down";
+    su2 = f->f_dest, su1 = f->f_peer->f_dest;
 
   SU_DEBUG_3(("forwarder_close: connection from %s:%u to %s:%d\n",
 	      su_inet_ntop(su1->su_family, SU_ADDR(su1), buf1, sizeof(buf1)),

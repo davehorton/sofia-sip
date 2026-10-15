@@ -144,7 +144,7 @@ HTABLE2_SCOPE int prefix##_remove(type *, entrytype const)
 /** Reallocate new hash table */ \
 HTABLE2_SCOPE \
 int prefix##_resize(void *realloc_arg, \
-                    type pr[1], \
+                    type *pr, \
 		    sizetype new_size) \
 { \
   entrytype *new_hash; \

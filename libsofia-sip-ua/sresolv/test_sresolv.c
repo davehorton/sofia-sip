@@ -1872,8 +1872,8 @@ int test_deinit(sres_context_t *ctx)
   sres_resolver_unref(ctx->resolver); ctx->resolver = NULL;
 
   offset = 0;
-  memset(ctx, 0, sizeof ctx);
-  ctx->home->suh_size = sizeof ctx;
+  memset(ctx, 0, sizeof *ctx);
+  ctx->home->suh_size = sizeof *ctx;
 
   return 0;
 }
@@ -1917,10 +1917,12 @@ port $port
 void
 fill_stack(void)
 {
-  int i,array[32768];
+  int i;
+  volatile int array[32768];
 
   for (i = 0; i < 32768; i++)
     array[i] = i ^ 0xdeadbeef;
+  (void)array[0];
 }
 
 #if HAVE_ALARM

@@ -458,9 +458,8 @@ int test_header_parsing(void)
   {
     su_home_t home[1] = { SU_HOME_INIT(home) };
 
-    msg_content_type_t *c;
 
-    c = msg_content_type_format(home, "%s/%s;%s;%s;%s;%s;%s;%s",
+    msg_content_type_format(home, "%s/%s;%s;%s;%s;%s;%s;%s",
 				"text", "plain",
 				"charset=iso-8859-15",
 				"format=flowed",

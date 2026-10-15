@@ -94,7 +94,6 @@ int main(int argc, char *argv[])
   su_home_t *home;
   context_t *c, context[1] = {{{SU_HOME_INIT(context)}}};
   char *o_url = NULL, *o_body = NULL;
-  int o_extra = 0;
   int o_timeout = 300;
   char *s;
 
@@ -120,7 +119,7 @@ int main(int argc, char *argv[])
     else if (MATCH2(s, "-content-type")) { c->c_content_type = s;   continue; }
     else if (MATCH2(s, "-server"))       { c->c_server = s;         continue; }
     else if (MATCH(s, "-help"))          { usage(0);                continue; }
-    else if (MATCH(s, "x")||MATCH(s, "-extra")) { o_extra = 1;      continue; }
+    else if (MATCH(s, "x")||MATCH(s, "-extra")) { continue; }	/* ignored */
     else
       usage(2);
   }
