@@ -2081,6 +2081,73 @@ static int test_bad_packet(void)
   END();
 }
 
+/* Parse a request that arrives after CRLF keepalives in the same buffer */
+static int extract_leading_lws(int flags, char const *lws)
+{
+  static char const request_line[] =
+    "OPTIONS sip:foo@bar SIP/2.0\r\n";
+  static char const rest[] =
+    "To: <sip:foo@bar>\r\n"
+    "From: <sip:bar@foo>;tag=foobar\r\n"
+    "Call-ID: 0ha0isndaksdj@10.1.2.3\r\n"
+    "CSeq: 8 OPTIONS\r\n"
+    "Via: SIP/2.0/TCP 135.180.130.133;branch=z9hG4bK.deadbeef\r\n"
+    "Max-Forwards: 70\r\n"
+    "Content-Length: 0\r\n"
+    "\r\n";
+  char buffer[512];
+  msg_t *msg;
+  sip_t *sip;
+  msg_iovec_t iovec[2];
+  size_t n;
+
+  BEGIN();
+
+  n = strlen(lws) + strlen(request_line) + strlen(rest);
+  TEST_1(n < sizeof buffer);
+  strcpy(buffer, lws); strcat(buffer, request_line); strcat(buffer, rest);
+
+  TEST_1(msg = msg_create(test_mclass, flags));
+  TEST_1(msg_recv_iovec(msg, iovec, 2, n, 1) >= 0);
+  memcpy(iovec->mv_base, buffer, n);
+  msg_recv_commit(msg, n, 1);
+
+  TEST_1(msg_extract(msg) > 0);
+  TEST(msg_get_flags(msg, MSG_FLG_ERROR), 0);
+  TEST_1(sip = sip_object(msg));
+  TEST_1(sip->sip_request);
+  TEST(sip->sip_request->rq_method, sip_method_options);
+  TEST_S(sip->sip_request->rq_method_name, "OPTIONS");
+  TEST_S(sip->sip_request->rq_version, "SIP/2.0");
+  TEST_1(sip->sip_call_id);
+
+  if (MSG_IS_EXTRACT_COPY(flags)) {
+    /* The request line excludes the leading whitespace */
+    TEST_1(sip->sip_request->rq_common->h_data);
+    TEST_M(sip->sip_request->rq_common->h_data,
+	   request_line, strlen(request_line));
+    TEST(sip->sip_request->rq_common->h_len, strlen(request_line));
+  }
+
+  msg_destroy(msg);
+
+  END();
+}
+
+static int test_leading_lws(void)
+{
+  int retval = 0;
+
+  retval |= extract_leading_lws(0, "");
+  retval |= extract_leading_lws(0, "\r\n");
+  retval |= extract_leading_lws(0, "\r\n\r\n");
+  retval |= extract_leading_lws(MSG_DO_EXTRACT_COPY, "");
+  retval |= extract_leading_lws(MSG_DO_EXTRACT_COPY, "\r\n");
+  retval |= extract_leading_lws(MSG_DO_EXTRACT_COPY, "\r\n\r\n");
+
+  return retval;
+}
+
 static int test_sip_list_header(void)
 {
   msg_t *msg;
@@ -3641,6 +3708,7 @@ int main(int argc, char *argv[])
 
   retval |= sip_header_test(); fflush(stdout);
   retval |= test_bad_packet(); fflush(stdout);
+  retval |= test_leading_lws(); fflush(stdout);
   retval |= test_sip_list_header(); fflush(stdout);
   retval |= test_prack(); fflush(stdout);
   retval |= test_accept(); fflush(stdout);

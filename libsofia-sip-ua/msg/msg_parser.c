@@ -967,8 +967,8 @@ issize_t extract_first(msg_t *msg, msg_pub_t *mo, char b[], isize_t bsiz, int eo
     return -1;
 
   if (xtra) {
-    char *bb = memcpy(MSG_HEADER_DATA(h), b, xtra - 1);
-    h->sh_data = b, h->sh_len = n + crlf;
+    char *bb = memcpy(MSG_HEADER_DATA(h), b + k, xtra - 1);
+    h->sh_data = b + k, h->sh_len = n - k + crlf;
     b = bb; n = xtra - 1;
   }
   else {
