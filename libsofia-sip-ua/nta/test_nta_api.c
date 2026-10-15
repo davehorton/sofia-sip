@@ -813,6 +813,38 @@ int api_test_tport(agent_t *ag)
   TEST_1(!m->m_url->url_params);
   TEST_VOID(nta_agent_destroy(agent));
 
+#if HAVE_TLS
+  {
+    char const *srcdir = getenv("srcdir");
+    char agent_pem[1024], cafile[1024];
+
+    if (srcdir == NULL)
+      srcdir = ".";
+
+    /* The tport test certificate; agent.pem holds both key and certificate */
+    snprintf(agent_pem, sizeof agent_pem, "%s/../tport/agent.pem", srcdir);
+    snprintf(cafile, sizeof cafile, "%s/../tport/cafile.pem", srcdir);
+
+    /* nta_agent_add_tport() offers tls only with a sips URI (tports_sips);
+       messages over TLS may still use sip URIs */
+    url->url_type = url_sips;
+    url->url_scheme = "sips";
+    url->url_params = "transport=tls";
+
+    TEST_1(agent = nta_agent_create(ag->ag_root, NONE, NULL, NULL, TAG_END()));
+    TEST_1(nta_agent_add_tport(agent, (url_string_t *)url,
+			       TPTAG_TLS_CERTIFICATE_FILE(agent_pem),
+			       TPTAG_TLS_CERTIFICATE_KEY_FILE(agent_pem),
+			       TPTAG_TLS_CERTIFICATE_CHAIN_FILE(cafile),
+			       TAG_END()) == 0);
+    TEST_1(v = nta_agent_via(agent));
+    TEST(!su_casematch(v->v_protocol, sip_transport_tls), 0);
+
+    /* Every TLS transport reloads its files */
+    TEST_1(nta_agent_reload_tls_files(agent) > 0);
+    TEST_VOID(nta_agent_destroy(agent));
+  }
+#endif
 
   END();
 }
@@ -1127,6 +1159,9 @@ static int api_test_errors(agent_t *ag)
   TEST_P(nta_agent_magic(NULL), NULL);
   TEST_P(nta_agent_magic(nta), (void *)ag);
   TEST(nta_agent_add_tport(NULL, NULL, TAG_END()), -1);
+  TEST(nta_agent_reload_tls_files(NULL), -1);
+  /* No TLS transports, nothing to reload */
+  TEST(nta_agent_reload_tls_files(nta), 0);
   TEST_P(nta_agent_newtag(home, "tag=%s", NULL), NULL);
   TEST_1(nta_agent_newtag(home, "tag=%s", nta));
 

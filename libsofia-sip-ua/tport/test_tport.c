@@ -71,6 +71,16 @@ typedef struct tp_test_s tp_test_t;
 
 #include "sofia-sip/tport.h"
 
+#if HAVE_TLS
+#include <unistd.h>
+#include <dirent.h>
+#include <openssl/evp.h>
+#include <openssl/pem.h>
+#include <openssl/ssl.h>
+#include <openssl/x509.h>
+#include <openssl/x509v3.h>
+#endif
+
 struct tp_test_s {
   su_home_t  tt_home[1];
   int        tt_flags;
@@ -92,6 +102,8 @@ struct tp_test_s {
 
   tp_name_t tt_tls_name[1];
   tp_name_t tt_tls_comp[1];
+
+  char      *tt_tls_dir;	/* Generated certificates and keys */
 
 #if HAVE_SIGCOMP
   struct sigcomp_state_handler *state_handler;
@@ -460,6 +472,166 @@ tp_stack_class_t const tp_test_class[1] =
       /* tpac_error */ tp_test_error,
       /* tpac_alloc */ tp_test_msg,
   }};
+
+#if HAVE_TLS
+static EVP_PKEY *tls_test_key(void)
+{
+  EVP_PKEY *pkey = NULL;
+  EVP_PKEY_CTX *ctx = EVP_PKEY_CTX_new_id(EVP_PKEY_EC, NULL);
+
+  if (ctx &&
+      EVP_PKEY_keygen_init(ctx) > 0 &&
+      EVP_PKEY_CTX_set_ec_paramgen_curve_nid(ctx, NID_X9_62_prime256v1) > 0)
+    EVP_PKEY_keygen(ctx, &pkey);
+
+  EVP_PKEY_CTX_free(ctx);
+
+  return pkey;
+}
+
+/** Make a certificate for @a pkey, issued by @a issuer or else self-signed. */
+static X509 *tls_test_cert(EVP_PKEY *pkey, char const *cn, int ca,
+			   X509 *issuer, EVP_PKEY *issuer_key)
+{
+  X509 *x509 = X509_new();
+  X509_NAME *subject;
+  X509_EXTENSION *ext = NULL;
+
+  if (!x509)
+    return NULL;
+
+  X509_set_version(x509, 2);
+  ASN1_INTEGER_set(X509_get_serialNumber(x509), 1);
+  X509_gmtime_adj(X509_getm_notBefore(x509), -60);
+  X509_gmtime_adj(X509_getm_notAfter(x509), 3600);
+  subject = X509_get_subject_name(x509);
+  X509_NAME_add_entry_by_txt(subject, "CN", MBSTRING_ASC,
+			     (unsigned char const *)cn, -1, -1, 0);
+  X509_set_issuer_name(x509, issuer ? X509_get_subject_name(issuer) : subject);
+  X509_set_pubkey(x509, pkey);
+
+  if (ca &&
+      (!(ext = X509V3_EXT_conf_nid(NULL, NULL, NID_basic_constraints,
+				   "critical,CA:TRUE")) ||
+       !X509_add_ext(x509, ext, -1))) {
+    X509_EXTENSION_free(ext);
+    X509_free(x509);
+    return NULL;
+  }
+  X509_EXTENSION_free(ext);
+
+  if (!X509_sign(x509, issuer ? issuer_key : pkey, EVP_sha256())) {
+    X509_free(x509);
+    return NULL;
+  }
+
+  return x509;
+}
+
+/** Write @a x509, or else @a pkey, as PEM over @a file. */
+static int tls_test_write(char const *file, X509 *x509, EVP_PKEY *pkey)
+{
+  FILE *f = fopen(file, "w");
+  int ok;
+
+  if (!f)
+    return -1;
+
+  if (x509)
+    ok = PEM_write_X509(f, x509);
+  else
+    ok = PEM_write_PrivateKey(f, pkey, NULL, NULL, 0, NULL, NULL);
+
+  return (fclose(f) == 0 && ok) ? 0 : -1;
+}
+
+/** Write a certificate for @a cn and its key over @a certfile and @a keyfile.
+ *
+ * It is issued by @a issuer, or self-signed if NULL. With @a mismatch, the
+ * key written is not the certificate's.
+ */
+static int tls_test_write_pair(char const *certfile, char const *keyfile,
+			       char const *cn, int mismatch,
+			       X509 *issuer, EVP_PKEY *issuer_key)
+{
+  EVP_PKEY *pkey = tls_test_key();
+  EVP_PKEY *other = mismatch ? tls_test_key() : NULL;
+  X509 *x509 = pkey ? tls_test_cert(pkey, cn, 0, issuer, issuer_key) : NULL;
+  int retval = -1;
+
+  if (x509 && (!mismatch || other) &&
+      tls_test_write(certfile, x509, NULL) == 0 &&
+      tls_test_write(keyfile, NULL, other ? other : pkey) == 0)
+    retval = 0;
+
+  X509_free(x509);
+  EVP_PKEY_free(pkey);
+  EVP_PKEY_free(other);
+
+  return retval;
+}
+
+/** Write a self-signed certificate for @a cn, and its key encrypted with
+ * @a passphrase, over @a certfile and @a keyfile. */
+static int tls_test_write_encrypted(char const *certfile, char const *keyfile,
+				    char const *cn, char const *passphrase)
+{
+  EVP_PKEY *pkey = tls_test_key();
+  X509 *x509 = pkey ? tls_test_cert(pkey, cn, 0, NULL, NULL) : NULL;
+  FILE *f = NULL;
+  int ok = 0;
+
+  if (x509 && tls_test_write(certfile, x509, NULL) == 0 &&
+      (f = fopen(keyfile, "w"))) {
+    ok = PEM_write_PrivateKey(f, pkey, EVP_aes_256_cbc(),
+			      (unsigned char *)passphrase,
+			      (int)strlen(passphrase), NULL, NULL);
+    ok = fclose(f) == 0 && ok;
+  }
+
+  X509_free(x509);
+  EVP_PKEY_free(pkey);
+
+  return ok ? 0 : -1;
+}
+
+/** Path of a file in the test's certificate directory, created on first use */
+static char *tls_test_file(tp_test_t *tt, char const *name)
+{
+  if (!tt->tt_tls_dir) {
+    char const *tmpdir = getenv("TMPDIR");
+    char *dir;
+
+    if (!tmpdir || !*tmpdir)
+      tmpdir = "/tmp";
+
+    dir = su_sprintf(tt->tt_home, "%s/test_tport.XXXXXX", tmpdir);
+    if (!dir || !mkdtemp(dir))
+      return NULL;
+    tt->tt_tls_dir = dir;
+  }
+
+  return su_sprintf(tt->tt_home, "%s/%s", tt->tt_tls_dir, name);
+}
+
+static void tls_test_remove_files(tp_test_t *tt)
+{
+  DIR *dir;
+  struct dirent *d;
+
+  if (!tt->tt_tls_dir)
+    return;
+
+  if ((dir = opendir(tt->tt_tls_dir))) {
+    while ((d = readdir(dir)))
+      if (strcmp(d->d_name, ".") && strcmp(d->d_name, ".."))
+	unlink(tls_test_file(tt, d->d_name));
+    closedir(dir);
+  }
+  rmdir(tt->tt_tls_dir);
+  tt->tt_tls_dir = NULL;
+}
+#endif
 
 static int init_test(tp_test_t *tt)
 {
@@ -1402,6 +1574,591 @@ static int tls_test(tp_test_t *tt)
   END();
 }
 
+#if HAVE_TLS
+/** Connect to @a port on 127.0.0.1 and let the listener accept it. */
+static int ssl_test_socket(tp_test_t *tt, char const *port)
+{
+  su_sockaddr_t su[1];
+  int s, i;
+
+  memset(su, 0, sizeof su);
+  su->su_family = AF_INET;
+  su->su_port = htons((unsigned short)atoi(port));
+  su->su_sin.sin_addr.s_addr = htonl(INADDR_LOOPBACK);
+
+  if ((s = su_socket(AF_INET, SOCK_STREAM, 0)) == -1)
+    return -1;
+
+  su_setblocking(s, 0);
+
+  if (connect(s, &su->su_sa, sizeof su->su_sin) == -1 &&
+      !su_is_blocking(su_errno())) {
+    su_close(s);
+    return -1;
+  }
+
+  for (i = 0; i < 10; i++)
+    su_root_step(tt->tt_root, 10);
+
+  return s;
+}
+
+/** Make a TLS client handshake over @a s, running the root meanwhile. */
+static SSL *ssl_test_handshake(tp_test_t *tt, SSL_CTX *ctx, int s)
+{
+  SSL *ssl = SSL_new(ctx);
+  int i, r;
+
+  if (!ssl)
+    return NULL;
+
+  SSL_set_fd(ssl, s);
+
+  for (i = 0; i < 500; i++) {
+    r = SSL_connect(ssl);
+    if (r == 1)
+      return ssl;
+    r = SSL_get_error(ssl, r);
+    if (r != SSL_ERROR_WANT_READ && r != SSL_ERROR_WANT_WRITE)
+      break;
+    su_root_step(tt->tt_root, 10);
+  }
+
+  SSL_free(ssl);
+  return NULL;
+}
+
+static SSL *ssl_test_connect(tp_test_t *tt, SSL_CTX *ctx, char const *port)
+{
+  int s = ssl_test_socket(tt, port);
+  SSL *ssl = s != -1 ? ssl_test_handshake(tt, ctx, s) : NULL;
+
+  if (!ssl && s != -1)
+    su_close(s);
+
+  return ssl;
+}
+
+static void ssl_test_close(SSL *ssl)
+{
+  int s = SSL_get_fd(ssl);
+
+  SSL_free(ssl);
+  su_close(s);
+}
+
+/** A TLS 1.2 client context, presenting @a cert if not NULL.
+ *
+ * With TLS 1.2 a server that refuses the client certificate fails the
+ * handshake itself, so ssl_test_connect() returns NULL.
+ */
+static SSL_CTX *ssl_test_ctx(char const *cert, char const *key)
+{
+  SSL_CTX *ctx = SSL_CTX_new(TLS_client_method());
+
+  if (ctx &&
+      (!SSL_CTX_set_max_proto_version(ctx, TLS1_2_VERSION) ||
+       (cert &&
+	(SSL_CTX_use_certificate_file(ctx, cert, SSL_FILETYPE_PEM) != 1 ||
+	 SSL_CTX_use_PrivateKey_file(ctx, key, SSL_FILETYPE_PEM) != 1)))) {
+    SSL_CTX_free(ctx);
+    return NULL;
+  }
+
+  return ctx;
+}
+
+/** Send a message to @a dst over @a tp, or over a new connection from
+ * @a tports if NULL.
+ */
+static int tls_reload_send(tp_test_t *tt, tport_t *tports,
+			   tp_name_t const *dst, tport_t *tp,
+			   char const *ident, tport_t **return_tp)
+{
+  msg_t *msg = NULL;
+
+  BEGIN();
+
+  TEST_1(!new_test_msg(tt, &msg, ident, 1, 1024));
+  if (tp)
+    TEST_1(tp = tport_tsend(tp, msg, dst, TAG_END()));
+  else
+    TEST_1(tp = tport_tsend(tports, msg, dst, TPTAG_REUSE(0), TAG_END()));
+  msg_destroy(msg);
+
+  TEST(tport_test_run(tt, 5), 1);
+  TEST_1(!check_msg(tt, tt->tt_rmsg, ident));
+  msg_destroy(tt->tt_rmsg), tt->tt_rmsg = NULL;
+
+  *return_tp = tport_ref(tp);
+
+  END();
+}
+
+/** Test that a new connection to @a dst gets the certificate of @a cn. */
+static int tls_reload_presents(tp_test_t *tt, tport_t *tports,
+			       tp_name_t const *dst, char const *ident,
+			       char const *cn)
+{
+  tport_t *tp = NULL;
+
+  BEGIN();
+
+  TEST(tls_reload_send(tt, tports, dst, NULL, ident, &tp), 0);
+  TEST_1(tport_subject_search(cn, tp->tp_subjects));
+  tport_unref(tp);
+
+  END();
+}
+#endif
+
+static int tls_reload_test(tp_test_t *tt)
+{
+  BEGIN();
+
+#if HAVE_TLS
+  tp_name_t bindname[1] = {{ "tls", "*", "127.0.0.1", "*", NULL }};
+  tp_name_t dst[1];
+  char const *transports[] = { "tls", NULL };
+  char *cert = tls_test_file(tt, "reload-cert.pem");
+  char *key = tls_test_file(tt, "reload-key.pem");
+  char *cert2 = tls_test_file(tt, "reload2-cert.pem");
+  char *key2 = tls_test_file(tt, "reload2-key.pem");
+  tport_t *srv, *cl, *before = NULL, *after = NULL, *tp;
+
+  TEST(tport_reload_tls_files(NULL), -1);
+
+  TEST_1(cert && key && cert2 && key2);
+  TEST(tls_test_write_pair(cert, key, "tport-test-1", 0, NULL, NULL), 0);
+
+  TEST_1(srv = tport_tcreate(tt, tp_test_class, tt->tt_root, TAG_END()));
+  bindname->tpn_ident = "server";
+  TEST(tport_tbind(srv, bindname, transports,
+		   TPTAG_SERVER(1),
+		   TPTAG_TLS_CERTIFICATE_FILE(cert),
+		   TPTAG_TLS_CERTIFICATE_KEY_FILE(key),
+		   TPTAG_TLS_CERTIFICATE_CHAIN_FILE(cert),
+		   TAG_END()),
+       0);
+  *dst = *tport_name(tport_primaries(srv));
+  dst->tpn_ident = NULL;
+
+  TEST_1(cl = tport_tcreate(tt, tp_test_class, tt->tt_root, TAG_END()));
+  bindname->tpn_ident = "client";
+  TEST(tport_tbind(cl, bindname, transports,
+		   TPTAG_SERVER(0),
+		   TPTAG_TLS_CERTIFICATE_FILE(cert),
+		   TPTAG_TLS_CERTIFICATE_KEY_FILE(key),
+		   TPTAG_TLS_CERTIFICATE_CHAIN_FILE(cert),
+		   TAG_END()),
+       0);
+
+  TEST(tls_reload_send(tt, cl, dst, NULL, "reload-before", &before), 0);
+  TEST_1(tport_subject_search("tport-test-1", before->tp_subjects));
+
+  /* Renew the certificate in place, as certbot would */
+  TEST(tls_test_write_pair(cert, key, "tport-test-2", 0, NULL, NULL), 0);
+  TEST(tport_reload_tls_files(srv), 1);
+
+  /* A connection set up before the reload keeps working */
+  TEST(tls_reload_send(tt, cl, dst, before, "reload-kept", &tp), 0);
+  TEST_P(tp, before);
+  tport_unref(tp);
+
+  /* A new connection gets the new certificate */
+  TEST(tls_reload_send(tt, cl, dst, NULL, "reload-after", &after), 0);
+  TEST_1(after != before);
+  TEST_1(tport_subject_search("tport-test-2", after->tp_subjects));
+  TEST_1(!tport_subject_search("tport-test-1", after->tp_subjects));
+
+  /* Outbound-only primaries reload too; their client context is the same */
+  TEST(tport_reload_tls_files(cl), 1);
+
+  /* A key that does not match the certificate is refused, and new
+     connections still get the certificate loaded before */
+  TEST(tls_test_write_pair(cert, key, "tport-test-3", 1, NULL, NULL), 0);
+  TEST(tport_reload_tls_files(srv), -1);
+  TEST(tls_reload_presents(tt, cl, dst, "reload-mismatch", "tport-test-2"), 0);
+
+  /* So is a missing file */
+  TEST(unlink(cert), 0);
+  TEST(tport_reload_tls_files(srv), -1);
+  TEST(tls_reload_presents(tt, cl, dst, "reload-missing", "tport-test-2"), 0);
+
+  /* A reload is all or nothing: while a second primary cannot load its
+     files, the first one keeps its old certificate too */
+  TEST(tls_test_write_pair(cert2, key2, "tport-test-other-1", 0, NULL, NULL), 0);
+  bindname->tpn_ident = "server";
+  TEST(tport_tbind(srv, bindname, transports,
+		   TPTAG_SERVER(1),
+		   TPTAG_TLS_CERTIFICATE_FILE(cert2),
+		   TPTAG_TLS_CERTIFICATE_KEY_FILE(key2),
+		   TPTAG_TLS_CERTIFICATE_CHAIN_FILE(cert2),
+		   TAG_END()),
+       0);
+
+  TEST(tls_test_write_pair(cert, key, "tport-test-4", 0, NULL, NULL), 0);
+  TEST(tls_test_write_pair(cert2, key2, "tport-test-other-2", 1, NULL, NULL), 0);
+  TEST(tport_reload_tls_files(srv), -1);
+  TEST(tls_reload_presents(tt, cl, dst, "reload-partial", "tport-test-2"), 0);
+
+  /* Once both load, both are swapped in */
+  TEST(tls_test_write_pair(cert2, key2, "tport-test-other-2", 0, NULL, NULL), 0);
+  TEST(tport_reload_tls_files(srv), 2);
+  TEST(tls_reload_presents(tt, cl, dst, "reload-both", "tport-test-4"), 0);
+
+  tport_unref(before);
+  tport_unref(after);
+  tport_destroy(cl);
+  tport_destroy(srv);
+#endif
+
+  END();
+}
+
+static int tls_passphrase_reload_test(tp_test_t *tt)
+{
+  BEGIN();
+
+#if HAVE_TLS
+  tp_name_t bindname[1] = {{ "tls", "*", "127.0.0.1", "*", NULL }};
+  tp_name_t dst[1];
+  char const *transports[] = { "tls", NULL };
+  char *cert = tls_test_file(tt, "pass-cert.pem");
+  char *key = tls_test_file(tt, "pass-key.pem");
+  char *cl_cert = tls_test_file(tt, "pass-client-cert.pem");
+  char *cl_key = tls_test_file(tt, "pass-client-key.pem");
+  tport_t *srv, *cl;
+
+  TEST_1(cert && key && cl_cert && cl_key);
+  TEST(tls_test_write_encrypted(cert, key, "tport-pass-1", "secret-1"), 0);
+  TEST(tls_test_write_pair(cl_cert, cl_key, "tport-pass-client", 0,
+			   NULL, NULL), 0);
+
+  TEST_1(srv = tport_tcreate(tt, tp_test_class, tt->tt_root, TAG_END()));
+  bindname->tpn_ident = "server";
+  TEST(tport_tbind(srv, bindname, transports,
+		   TPTAG_SERVER(1),
+		   TPTAG_TLS_CERTIFICATE_FILE(cert),
+		   TPTAG_TLS_CERTIFICATE_KEY_FILE(key),
+		   TPTAG_TLS_CERTIFICATE_CHAIN_FILE(cert),
+		   TPTAG_TLS_PASSPHRASE("secret-1"),
+		   TAG_END()),
+       0);
+  *dst = *tport_name(tport_primaries(srv));
+  dst->tpn_ident = NULL;
+
+  TEST_1(cl = tport_tcreate(tt, tp_test_class, tt->tt_root, TAG_END()));
+  bindname->tpn_ident = "client";
+  TEST(tport_tbind(cl, bindname, transports,
+		   TPTAG_SERVER(0),
+		   TPTAG_TLS_CERTIFICATE_FILE(cl_cert),
+		   TPTAG_TLS_CERTIFICATE_KEY_FILE(cl_key),
+		   TPTAG_TLS_CERTIFICATE_CHAIN_FILE(cl_cert),
+		   TAG_END()),
+       0);
+
+  TEST(tls_reload_presents(tt, cl, dst, "pass-before", "tport-pass-1"), 0);
+
+  /* The key is decrypted with the passphrase given at bind time: a renewal
+     encrypted with another one does not load, and nothing changes */
+  TEST(tls_test_write_encrypted(cert, key, "tport-pass-2", "secret-2"), 0);
+  TEST(tport_reload_tls_files(srv), -1);
+  TEST(tls_reload_presents(tt, cl, dst, "pass-other", "tport-pass-1"), 0);
+
+  TEST(tls_test_write_encrypted(cert, key, "tport-pass-3", "secret-1"), 0);
+  TEST(tport_reload_tls_files(srv), 1);
+  TEST(tls_reload_presents(tt, cl, dst, "pass-same", "tport-pass-3"), 0);
+
+  tport_destroy(cl);
+  tport_destroy(srv);
+#endif
+
+  END();
+}
+
+static int tls_client_reload_test(tp_test_t *tt)
+{
+  BEGIN();
+
+#if HAVE_TLS
+  tp_name_t bindname[1] = {{ "tls", "*", "127.0.0.1", "*", NULL }};
+  tp_name_t dst[1];
+  char const *transports[] = { "tls", NULL };
+  char *ca_file = tls_test_file(tt, "ca.pem");
+  char *srv_cert = tls_test_file(tt, "server-cert.pem");
+  char *srv_key = tls_test_file(tt, "server-key.pem");
+  char *srv_cl_cert = tls_test_file(tt, "server-client-cert.pem");
+  char *srv_cl_key = tls_test_file(tt, "server-client-key.pem");
+  char *cl_cert = tls_test_file(tt, "client-cert.pem");
+  char *cl_key = tls_test_file(tt, "client-key.pem");
+  EVP_PKEY *ca_key, *ca2_key;
+  X509 *ca, *ca2;
+  SSL_CTX *anon, *stranger, *rotated;
+  SSL *ssl;
+  tport_t *srv, *cl, *before, *tp;
+
+  TEST_1(ca_file && srv_cert && srv_key && srv_cl_cert && srv_cl_key &&
+	 cl_cert && cl_key);
+
+  /* The server trusts client certificates issued by a test CA */
+  TEST_1(ca_key = tls_test_key());
+  TEST_1(ca = tls_test_cert(ca_key, "tport-test-ca", 1, NULL, NULL));
+  TEST(tls_test_write(ca_file, ca, NULL), 0);
+  TEST(tls_test_write_pair(srv_cert, srv_key, "tport-server-1", 0,
+			   NULL, NULL), 0);
+  TEST(tls_test_write_pair(srv_cl_cert, srv_cl_key, "tport-server-client-1", 0,
+			   NULL, NULL), 0);
+  TEST(tls_test_write_pair(cl_cert, cl_key, "tport-client-1", 0,
+			   ca, ca_key), 0);
+
+  /* The server has an outbound identity of its own, reloaded with it */
+  TEST_1(srv = tport_tcreate(tt, tp_test_class, tt->tt_root, TAG_END()));
+  bindname->tpn_ident = "server";
+  TEST(tport_tbind(srv, bindname, transports,
+		   TPTAG_SERVER(1),
+		   TPTAG_TLS_CERTIFICATE_FILE(srv_cert),
+		   TPTAG_TLS_CERTIFICATE_KEY_FILE(srv_key),
+		   TPTAG_TLS_CERTIFICATE_CHAIN_FILE(ca_file),
+		   TPTAG_TLS_CLIENT_CERTIFICATE_FILE(srv_cl_cert),
+		   TPTAG_TLS_CLIENT_CERTIFICATE_KEY_FILE(srv_cl_key),
+		   TPTAG_TLS_VERIFY_POLICY(TPTLS_VERIFY_IN),
+		   /* TLS 1.2 too, for ssl_test_ctx() clients */
+		   TPTAG_TLS_VERSION(TPTLS_VERSION_TLSv1_2),
+		   TAG_END()),
+       0);
+  *dst = *tport_name(tport_primaries(srv));
+  dst->tpn_ident = NULL;
+
+  /* Outbound connections present a certificate of their own */
+  TEST_1(cl = tport_tcreate(tt, tp_test_class, tt->tt_root, TAG_END()));
+  bindname->tpn_ident = "client";
+  TEST(tport_tbind(cl, bindname, transports,
+		   TPTAG_SERVER(0),
+		   TPTAG_TLS_CERTIFICATE_FILE(srv_cert),
+		   TPTAG_TLS_CERTIFICATE_KEY_FILE(srv_key),
+		   TPTAG_TLS_CERTIFICATE_CHAIN_FILE(ca_file),
+		   TPTAG_TLS_CLIENT_CERTIFICATE_FILE(cl_cert),
+		   TPTAG_TLS_CLIENT_CERTIFICATE_KEY_FILE(cl_key),
+		   TAG_END()),
+       0);
+
+  TEST(tls_reload_send(tt, cl, dst, NULL, "client-before", &before), 0);
+  TEST_1(tt->tt_rtport && tport_is_verified(tt->tt_rtport));
+  TEST_1(tport_subject_search("tport-client-1", tt->tt_rtport->tp_subjects));
+
+  /* Renew the client certificate; the listener's files stay the same */
+  TEST(tls_test_write_pair(cl_cert, cl_key, "tport-client-2", 0,
+			   ca, ca_key), 0);
+  TEST(tport_reload_tls_files(cl), 1);
+
+  /* A connection set up before the reload keeps working, as who it was */
+  TEST(tls_reload_send(tt, cl, dst, before, "client-kept", &tp), 0);
+  TEST_P(tp, before);
+  tport_unref(tp);
+  TEST_1(tt->tt_rtport);
+  TEST_1(tport_subject_search("tport-client-1", tt->tt_rtport->tp_subjects));
+
+  TEST(tls_reload_send(tt, cl, dst, NULL, "client-after", &tp), 0);
+  TEST_1(tt->tt_rtport && tport_is_verified(tt->tt_rtport));
+  TEST_1(tport_subject_search("tport-client-2", tt->tt_rtport->tp_subjects));
+  TEST_1(!tport_subject_search("tport-client-1", tt->tt_rtport->tp_subjects));
+  tport_unref(tp);
+
+  /* A client key that does not match is refused; the identity stays */
+  TEST(tls_test_write_pair(cl_cert, cl_key, "tport-client-3", 1,
+			   ca, ca_key), 0);
+  TEST(tport_reload_tls_files(cl), -1);
+
+  TEST(tls_reload_send(tt, cl, dst, NULL, "client-refused", &tp), 0);
+  TEST_1(tt->tt_rtport);
+  TEST_1(tport_subject_search("tport-client-2", tt->tt_rtport->tp_subjects));
+  tport_unref(tp);
+
+  /* The server refuses clients without a certificate, or with one the CA
+     did not issue */
+  TEST_1(anon = ssl_test_ctx(NULL, NULL));
+  TEST_1(stranger = ssl_test_ctx(srv_cl_cert, srv_cl_key));
+  TEST_P(ssl_test_connect(tt, anon, dst->tpn_port), NULL);
+  TEST_P(ssl_test_connect(tt, stranger, dst->tpn_port), NULL);
+
+  /* A renewed server certificate is not swapped in while the server's
+     outbound identity cannot be loaded: a reload is all or nothing */
+  TEST(tls_test_write_pair(srv_cert, srv_key, "tport-server-2", 0,
+			   NULL, NULL), 0);
+  TEST(tls_test_write_pair(srv_cl_cert, srv_cl_key, "tport-server-client-2", 1,
+			   NULL, NULL), 0);
+  TEST(tport_reload_tls_files(srv), -1);
+  TEST(tls_reload_presents(tt, cl, dst, "server-partial", "tport-server-1"), 0);
+
+  /* Once both load, the server presents the new certificate, and still
+     verifies clients the way it was configured to */
+  TEST(tls_test_write_pair(srv_cl_cert, srv_cl_key, "tport-server-client-2", 0,
+			   NULL, NULL), 0);
+  TEST(tport_reload_tls_files(srv), 1);
+  TEST(tls_reload_send(tt, cl, dst, NULL, "server-reloaded", &tp), 0);
+  TEST_1(tport_subject_search("tport-server-2", tp->tp_subjects));
+  TEST_1(tt->tt_rtport && tport_is_verified(tt->tt_rtport));
+  TEST_1(tport_subject_search("tport-client-2", tt->tt_rtport->tp_subjects));
+  tport_unref(tp);
+  TEST_P(ssl_test_connect(tt, anon, dst->tpn_port), NULL);
+  TEST_P(ssl_test_connect(tt, stranger, dst->tpn_port), NULL);
+
+  /* The CA file is read again too: a client issued by a new CA is refused
+     until the server reloads a CA file with it */
+  TEST_1(ca2_key = tls_test_key());
+  TEST_1(ca2 = tls_test_cert(ca2_key, "tport-test-ca-2", 1, NULL, NULL));
+  TEST(tls_test_write_pair(cl_cert, cl_key, "tport-client-4", 0,
+			   ca2, ca2_key), 0);
+  TEST_1(rotated = ssl_test_ctx(cl_cert, cl_key));
+  TEST_P(ssl_test_connect(tt, rotated, dst->tpn_port), NULL);
+
+  TEST(tls_test_write(ca_file, ca2, NULL), 0);
+  TEST(tport_reload_tls_files(srv), 1);
+  TEST_1(ssl = ssl_test_connect(tt, rotated, dst->tpn_port));
+  ssl_test_close(ssl);
+  TEST_P(ssl_test_connect(tt, stranger, dst->tpn_port), NULL);
+
+  SSL_CTX_free(anon);
+  SSL_CTX_free(stranger);
+  SSL_CTX_free(rotated);
+  tport_unref(before);
+  tport_destroy(cl);
+  tport_destroy(srv);
+  X509_free(ca);
+  EVP_PKEY_free(ca_key);
+  X509_free(ca2);
+  EVP_PKEY_free(ca2_key);
+#endif
+
+  END();
+}
+
+#if HAVE_TLS && HAVE_SOFIA_NTH
+/** Test if the server presented a certificate for @a cn over @a ssl. */
+static int ssl_test_peer(SSL *ssl, char const *cn)
+{
+  X509 *cert = SSL_get_peer_certificate(ssl);
+  char name[256];
+  int ok;
+
+  ok = cert &&
+    X509_NAME_get_text_by_NID(X509_get_subject_name(cert), NID_commonName,
+			      name, sizeof name) > 0 &&
+    strcmp(name, cn) == 0;
+
+  X509_free(cert);
+
+  return ok;
+}
+
+/** Upgrade the connection to WebSocket, running the root meanwhile. */
+static int wss_test_upgrade(tp_test_t *tt, SSL *ssl)
+{
+  static char const request[] =
+    "GET / HTTP/1.1\r\n"
+    "Host: 127.0.0.1\r\n"
+    "Upgrade: websocket\r\n"
+    "Connection: Upgrade\r\n"
+    "Sec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==\r\n"
+    "Sec-WebSocket-Version: 13\r\n"
+    "\r\n";
+  char response[512];
+  size_t len = 0;
+  int i, r, sent = 0;
+
+  response[0] = '\0';
+
+  for (i = 0; i < 500; i++) {
+    if (!sent)
+      r = SSL_write(ssl, request, (int)(sizeof request - 1)), sent = r > 0;
+    else if ((r = SSL_read(ssl, response + len,
+			   (int)(sizeof response - 1 - len))) > 0) {
+      response[len += r] = '\0';
+      if (strstr(response, "\r\n\r\n") || len == sizeof response - 1)
+	break;
+    }
+
+    if (r <= 0) {
+      r = SSL_get_error(ssl, r);
+      if (r != SSL_ERROR_WANT_READ && r != SSL_ERROR_WANT_WRITE)
+	return -1;
+    }
+    su_root_step(tt->tt_root, 10);
+  }
+
+  return strncmp(response, "HTTP/1.1 101 ", 13) == 0 ? 0 : -1;
+}
+#endif
+
+static int wss_reload_test(tp_test_t *tt)
+{
+  BEGIN();
+
+#if HAVE_TLS && HAVE_SOFIA_NTH
+  tp_name_t bindname[1] = {{ "wss", "*", "127.0.0.1", "*", NULL, "server" }};
+  char const *transports[] = { "wss", NULL };
+  char *cert = tls_test_file(tt, "wss-cert.pem");
+  char *key = tls_test_file(tt, "wss-key.pem");
+  char const *port;
+  SSL_CTX *ctx;
+  SSL *before, *pending, *after, *refused;
+  int s;
+  tport_t *srv;
+
+  TEST(tls_test_write_pair(cert, key, "tport-wss-1", 0, NULL, NULL), 0);
+
+  TEST_1(srv = tport_tcreate(tt, tp_test_class, tt->tt_root, TAG_END()));
+  TEST(tport_tbind(srv, bindname, transports,
+		   TPTAG_SERVER(1),
+		   TPTAG_TLS_CERTIFICATE_FILE(cert),
+		   TPTAG_TLS_CERTIFICATE_KEY_FILE(key),
+		   TAG_END()),
+       0);
+  TEST_1(port = tport_name(tport_primaries(srv))->tpn_port);
+
+  TEST_1(ctx = SSL_CTX_new(TLS_client_method()));
+
+  TEST_1(before = ssl_test_connect(tt, ctx, port));
+  TEST_1(ssl_test_peer(before, "tport-wss-1"));
+
+  /* Accepted now, but its TLS handshake comes after the reload */
+  TEST_1((s = ssl_test_socket(tt, port)) != -1);
+
+  /* Renew the certificate in place, as certbot would */
+  TEST(tls_test_write_pair(cert, key, "tport-wss-2", 0, NULL, NULL), 0);
+  TEST(tport_reload_tls_files(srv), 1);
+
+  /* Connections accepted before the reload keep working with the old one */
+  TEST(wss_test_upgrade(tt, before), 0);
+  TEST_1(pending = ssl_test_handshake(tt, ctx, s));
+  TEST_1(ssl_test_peer(pending, "tport-wss-1"));
+  TEST(wss_test_upgrade(tt, pending), 0);
+
+  /* A new connection gets the new certificate */
+  TEST_1(after = ssl_test_connect(tt, ctx, port));
+  TEST_1(ssl_test_peer(after, "tport-wss-2"));
+  TEST(wss_test_upgrade(tt, after), 0);
+
+  /* A key that does not match the certificate is refused... */
+  TEST(tls_test_write_pair(cert, key, "tport-wss-3", 1, NULL, NULL), 0);
+  TEST(tport_reload_tls_files(srv), -1);
+
+  /* ...and new connections still get the certificate loaded before */
+  TEST_1(refused = ssl_test_connect(tt, ctx, port));
+  TEST_1(ssl_test_peer(refused, "tport-wss-2"));
+
+  ssl_test_close(before);
+  ssl_test_close(pending);
+  ssl_test_close(after);
+  ssl_test_close(refused);
+  tport_destroy(srv);
+  SSL_CTX_free(ctx);
+#endif
+
+  END();
+}
+
 static int sigcomp_test(tp_test_t *tt)
 {
   BEGIN();
@@ -1616,6 +2373,10 @@ static int deinit_test(tp_test_t *tt)
   /* Destroy server transports */
   tport_destroy(tt->tt_srv_tports), tt->tt_srv_tports = NULL;
 
+#if HAVE_TLS
+  tls_test_remove_files(tt);
+#endif
+
 #if HAVE_SIGCOMP
   sigcomp_state_handler_free(tt->state_handler); tt->state_handler = NULL;
 #endif
@@ -1725,6 +2486,10 @@ int main(int argc, char *argv[])
     retval |= test_incomplete(tt); fflush(stdout);
     retval |= reuse_test(tt); fflush(stdout);
     retval |= tls_test(tt); fflush(stdout);
+    retval |= tls_reload_test(tt); fflush(stdout);
+    retval |= tls_passphrase_reload_test(tt); fflush(stdout);
+    retval |= tls_client_reload_test(tt); fflush(stdout);
+    retval |= wss_reload_test(tt); fflush(stdout);
     if (0) {			/* Not yet working... */
       retval |= stun_test(tt); fflush(stdout);
     }
