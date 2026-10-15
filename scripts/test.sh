@@ -42,7 +42,8 @@ case $mode in
     #   inventory notes before re-enabling.
     san="-fsanitize=address,undefined -fno-sanitize=function,alignment,pointer-overflow,null"
     export CC=clang
-    export CFLAGS="-g -O1 -fno-omit-frame-pointer $san -fno-sanitize-recover=all"
+    # -fsigned-char: x86 behaviour on ARM hosts too (sign-related UB)
+    export CFLAGS="-g -O1 -fno-omit-frame-pointer -fsigned-char $san -fno-sanitize-recover=all"
     export LDFLAGS="$san"
     export ASAN_OPTIONS=${ASAN_OPTIONS:-detect_leaks=0:abort_on_error=1}
     export UBSAN_OPTIONS=${UBSAN_OPTIONS:-print_stacktrace=1:halt_on_error=1}

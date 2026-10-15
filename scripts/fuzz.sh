@@ -27,7 +27,9 @@ jobs=${JOBS:-$(nproc 2>/dev/null || echo 4)}
 
 san="-fsanitize=address,undefined -fno-sanitize=function,alignment,pointer-overflow,null"
 export CC=clang
-export CFLAGS="-g -O1 -fno-omit-frame-pointer $san -fsanitize=fuzzer-no-link -fno-sanitize-recover=all"
+# -fsigned-char: char is signed on x86 but unsigned on ARM; fuzz with the
+# signed behaviour everywhere, so ARM hosts also find sign-related UB
+export CFLAGS="-g -O1 -fno-omit-frame-pointer -fsigned-char $san -fsanitize=fuzzer-no-link -fno-sanitize-recover=all"
 export LDFLAGS="$san"
 export ASAN_OPTIONS=${ASAN_OPTIONS:-detect_leaks=0:abort_on_error=1}
 export UBSAN_OPTIONS=${UBSAN_OPTIONS:-print_stacktrace=1:halt_on_error=1}
@@ -56,7 +58,8 @@ for t in $targets; do
     sres) extra="-I$L/sresolv" ;;   # includes sres.c
     *)    extra="" ;;
   esac
-  clang -g -O1 -fno-omit-frame-pointer $san -fsanitize=fuzzer $inc $extra \
+  clang -g -O1 -fno-omit-frame-pointer -fsigned-char $san -fsanitize=fuzzer \
+    $inc $extra \
     "$src/fuzz/fuzz_$t.c" $lib -o "bin/fuzz_$t"
 done
 

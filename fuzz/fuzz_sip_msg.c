@@ -39,7 +39,7 @@ static void exercise(msg_t *msg)
 
   (void)sip_sanity_check(sip);
 
-  if (sip->sip_request && sip->sip_request->rq_url) {
+  if (sip->sip_request) {
     char *u = url_as_string(home, sip->sip_request->rq_url);
     if (u) {
       url_t *u2 = url_hdup(home, url_make(home, u));
@@ -62,7 +62,7 @@ static void exercise(msg_t *msg)
       }
     }
   }
-  if (sip->sip_request && sip->sip_request->rq_url) {
+  if (sip->sip_request) {
     url_t *a = url_hdup(home, sip->sip_request->rq_url);
     if (a) (void)url_cmp(a, sip->sip_request->rq_url);
   }
