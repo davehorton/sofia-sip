@@ -77,6 +77,13 @@ else
   done
 fi
 
+# Skipped suites are a coverage gap, so say why they skipped
+for f in $(grep -lE "^:test-result: SKIP" $(find libsofia-sip-ua -name '*.trs') 2>/dev/null); do
+  log=${f%.trs}.log
+  echo "== skipped: $log"
+  tail -20 "$log"
+done
+
 if [ $rc -ne 0 ]; then
   echo "== failing test logs:"
   for f in $(grep -lE "^:test-result: (FAIL|ERROR)" $(find libsofia-sip-ua -name '*.trs') 2>/dev/null); do
