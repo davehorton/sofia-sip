@@ -4331,6 +4331,10 @@ m_get_domain(char *d,
 {
   uint8_t cnt;
   unsigned i = 0;
+  unsigned n_pointers = 0;
+  /* Each compression pointer is two bytes, so a valid name follows at most
+     half the message size in distinct pointers; more means a cycle. */
+  unsigned max_pointers = m->m_size / 2;
   uint8_t *p = m->m_data;
   uint16_t new_offset;
   int save_offset;
@@ -4358,7 +4362,10 @@ m_get_domain(char *d,
       if (save_offset)
         m->m_offset = offset;
 
-      if (new_offset <= 0 || new_offset >= m->m_size) {
+      /* Reject out-of-range jumps, and cap the number of pointer follows so a
+         cyclic chain terminates (see max_pointers above). */
+      if (new_offset <= 0 || new_offset >= m->m_size ||
+          ++n_pointers > max_pointers) {
         m->m_error = "invalid domain compression";
         return 0;
       }

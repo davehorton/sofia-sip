@@ -30,8 +30,14 @@
 #define WS_WRITE_SANITY 200
 
 #define SHA1_HASH_SIZE 20
+
+/* Caps a whole message, not one frame. A backstop on how much a peer can
+ * make this layer allocate; the message size policy belongs to the SIP
+ * layer, so keep this above NTA's 2 MiB sa_maxsize default. */
+#define WS_PAYLOAD_SIZE_MAX_DEFAULT (4 * 1024 * 1024)
+
 static struct ws_globals_s ws_globals;
-ssize_t ws_global_payload_size_max = 0;
+ssize_t ws_global_payload_size_max = WS_PAYLOAD_SIZE_MAX_DEFAULT;
 
 #ifndef WSS_STANDALONE
 
@@ -709,9 +715,14 @@ int establish_logical_layer(wsh_t *wsh)
 	return 0;
 }
 
+/* The cap is what bounds a peer-driven allocation, so it cannot be turned
+ * off: a non-positive limit falls back to the default. Applies to handles
+ * created after this call. A consumer that raises NTA's sa_maxsize above the
+ * cap has to raise the cap too, otherwise a message sized between the two is
+ * dropped here instead of reaching the SIP layer. */
 void ws_set_global_payload_size_max(ssize_t bytes)
 {
-	ws_global_payload_size_max = bytes;
+	ws_global_payload_size_max = bytes > 0 ? bytes : WS_PAYLOAD_SIZE_MAX_DEFAULT;
 }
 
 int ws_init(wsh_t *wsh, ws_socket_t sock, SSL_CTX *ssl_ctx, int close_sock, int block, int stay_open)
@@ -736,8 +747,9 @@ int ws_init(wsh_t *wsh, ws_socket_t sock, SSL_CTX *ssl_ctx, int close_sock, int 
 	wsh->buflen = 1024 * 64;
 	wsh->bbuflen = wsh->buflen;
 
-	wsh->buffer = malloc(wsh->buflen);
-	wsh->bbuffer = malloc(wsh->bbuflen);
+	/* +1 NUL slot — see wsh_t in ws.h. */
+	wsh->buffer = malloc(wsh->buflen + 1);
+	wsh->bbuffer = malloc(wsh->bbuflen + 1);
 	//printf("init %p %ld\n", (void *) wsh->bbuffer, wsh->bbuflen);
 	//memset(wsh->buffer, 0, wsh->buflen);
 	//memset(wsh->bbuffer, 0, wsh->bbuflen);
@@ -906,7 +918,7 @@ ssize_t ws_read_frame(wsh_t *wsh, ws_opcode_t *oc, uint8_t **data)
 	char *maskp;
 	int ll = 0;
 	int frag = 0;
-	int blen;
+	ssize_t blen;
 
 	wsh->body = wsh->bbuffer;
 	wsh->packetlen = 0;
@@ -989,7 +1001,7 @@ ssize_t ws_read_frame(wsh_t *wsh, ws_opcode_t *oc, uint8_t **data)
 			wsh->payload = &wsh->buffer[2];
 
 			if (wsh->plen == 127) {
-				uint64_t *u64;
+				uint64_t len;
 
 				need += 8;
 
@@ -1002,9 +1014,19 @@ ssize_t ws_read_frame(wsh_t *wsh, ws_opcode_t *oc, uint8_t **data)
 					}
 				}
 
-				u64 = (uint64_t *) wsh->payload;
+				len = ntoh64(*(uint64_t *) wsh->payload);
 				wsh->payload += 8;
-				wsh->plen = ntoh64(*u64);
+
+				/* Bound it while still unsigned: the cap is an ssize_t, so
+				 * passing this makes the assignment below exact even where
+				 * ssize_t is 32 bits. Subsumes RFC 6455 5.2's top-bit rule. */
+				if (len > (uint64_t)wsh->payload_size_max) {
+					/* size limit */
+					*oc = WSOC_CLOSE;
+					return ws_close(wsh, WS_NONE);
+				}
+
+				wsh->plen = (ssize_t)len;
 			} else if (wsh->plen == 126) {
 				uint16_t *u16;
 
@@ -1029,6 +1051,16 @@ ssize_t ws_read_frame(wsh_t *wsh, ws_opcode_t *oc, uint8_t **data)
 				wsh->payload += 4;
 			}
 
+			blen = wsh->body - wsh->bbuffer;
+
+			/* Subtract rather than test blen + plen, the sum that must not
+			 * overflow; bounding it here keeps the sizing below overflow-free. */
+			if (wsh->plen > wsh->payload_size_max - blen) {
+				/* size limit */
+				*oc = WSOC_CLOSE;
+				return ws_close(wsh, WS_NONE);
+			}
+
 			need = (wsh->plen - (wsh->datalen - need));
 
 			if (need < 0) {
@@ -1037,20 +1069,15 @@ ssize_t ws_read_frame(wsh_t *wsh, ws_opcode_t *oc, uint8_t **data)
 				return ws_close(wsh, WS_NONE);
 			}
 
-			blen = wsh->body - wsh->bbuffer;
-
-			if (need + blen > (ssize_t)wsh->bbuflen) {
+			/* Body must hold blen accumulated bytes plus this frame's
+			 * full payload; the cap check above bounds that sum. */
+			if (blen + wsh->plen > (ssize_t)wsh->bbuflen) {
 				void *tmp;
 
-				wsh->bbuflen = need + blen + wsh->rplen;
+				wsh->bbuflen = blen + wsh->plen;
 
-				if (wsh->payload_size_max && wsh->bbuflen > wsh->payload_size_max) {
-					/* size limit */
-					*oc = WSOC_CLOSE;
-					return ws_close(wsh, WS_NONE);
-				}
-
-				if ((tmp = realloc(wsh->bbuffer, wsh->bbuflen))) {
+				/* +1 NUL slot — see wsh_t in ws.h. */
+				if ((tmp = realloc(wsh->bbuffer, wsh->bbuflen + 1))) {
 					wsh->bbuffer = tmp;
 				} else {
 					abort();
@@ -1082,7 +1109,9 @@ ssize_t ws_read_frame(wsh_t *wsh, ws_opcode_t *oc, uint8_t **data)
 			if (mask && maskp) {
 				ssize_t i;
 
-				for (i = 0; i < wsh->datalen; i++) {
+				/* Unmask payload only. wsh->datalen tracks bytes in wsh->buffer
+				 * (header + frame), but wsh->body holds just the rplen payload bytes.*/
+				for (i = 0; i < wsh->rplen; i++) {
 					wsh->body[i] ^= maskp[i % 4];
 				}
 			}
