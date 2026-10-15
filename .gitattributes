@@ -1,0 +1,8 @@
+# RFC 4475 vectors whose Content-Length counts CRLF line endings
+libsofia-sip-ua/sip/tests/test23.txt -text
+libsofia-sip-ua/sip/tests/test24.txt -text
+libsofia-sip-ua/sip/tests/test25.txt -text
+libsofia-sip-ua/sip/tests/test30.txt -text
+libsofia-sip-ua/sip/tests/test31.txt -text
+libsofia-sip-ua/sip/tests/test36.txt -text
+libsofia-sip-ua/sip/tests/own5.txt -text
