@@ -55,7 +55,10 @@ esac
 
 echo "== sofia-sip tests: mode=$mode src=$src build=$build"
 mkdir -p "$build"
-rsync -a --delete --exclude .git "$src/" "$build/"
+# --no-owner/--no-group: the build copy must belong to the container user
+# (named, started by the DNS tests, cannot write to a copy owned by the
+# host uid, as on CI runners)
+rsync -a --no-owner --no-group --delete --exclude .git "$src/" "$build/"
 cd "$build"
 
 ./bootstrap.sh > bootstrap.log 2>&1 || { cat bootstrap.log; exit 1; }
