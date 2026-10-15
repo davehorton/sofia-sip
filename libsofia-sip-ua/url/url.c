@@ -339,7 +339,8 @@ char *url_canonize(char *d, char const *s, size_t n,
 }
 
 #define SYN33(c) (1U << (c - 33))
-#define IS_SYN33(syn33, c) ((syn33 & (1U << (c - 33))) != 0)
+#define IS_SYN33(syn33, c) \
+  ((unsigned)((c) - 33) < 32 && (syn33 & (1U << ((c) - 33))) != 0)
 
 /** Canonize a URL component (with precomputed mask) */
 static
@@ -1326,8 +1327,9 @@ isize_t url_param(char const *params,
 	  value[0] = '\0';
 	return 1;
       }
-      if (p[tlen] != '=')
-	continue;
+      if (p[tlen] != '=') {
+	if (p[n]) continue; else break;
+      }
       flen = n - tlen - 1;
       if (flen >= (size_t)vlen)
 	return flen + 1;
@@ -1652,6 +1654,8 @@ int url_tel_cmp_numbers(char const *A, char const *B)
       if (a == '%' && IS_HEX(A[0]) && IS_HEX(A[1]))
 	a = (UNHEX(A[0]) << 4) | UNHEX(A[1]), A +=2;
     } while (a == ' ' || a == '-' || a == '.' || a == '(' || a == ')');
+    if (!a)
+      A--;			/* stay on the terminating NUL */
 
     if (isupper(a))
       a = tolower(a);
@@ -1661,6 +1665,8 @@ int url_tel_cmp_numbers(char const *A, char const *B)
       if (b == '%' && IS_HEX(B[0]) && IS_HEX(B[1]))
 	b = (UNHEX(B[0]) << 4) | UNHEX(B[1]), B +=2;
     } while (b == ' ' || b == '-' || b == '.' || b == '(' || b == ')');
+    if (!b)
+      B--;			/* stay on the terminating NUL */
 
     if (isupper(b))
       b = tolower(b);

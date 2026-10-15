@@ -562,6 +562,62 @@ int test_tel(void)
   END();
 }
 
+/* Exactly-sized heap copy, so ASan catches any read past the NUL */
+static char *xdup(char const *s)
+{
+  size_t n = strlen(s) + 1;
+  char *d = malloc(n);
+  if (d)
+    memcpy(d, s, n);
+  return d;
+}
+
+/* Regressions for over-reads found by fuzzing */
+int test_overreads(void)
+{
+  char *s;
+  char value[32];
+
+  BEGIN();
+
+  /* url_param(): last parameter has the tag as a prefix but no '=' */
+  TEST_1(s = xdup("lrx"));
+  TEST(url_param(s, "lr", value, sizeof value), 0);
+  free(s);
+  TEST_1(s = xdup("transport=tcp;maddrx"));
+  TEST(url_param(s, "maddr", value, sizeof value), 0);
+  free(s);
+  TEST_1(s = xdup("maddrx;maddr=10.0.0.1"));
+  TEST(url_param(s, "maddr", value, sizeof value), 9);
+  TEST_S(value, "10.0.0.1");
+  free(s);
+
+  /* url_tel_cmp_numbers() via url_cmp(): number ending in a visual
+   * separator. url_d() parses in place, so the numbers end exactly at the
+   * end of the heap copy. */
+  {
+    url_t a[1], b[1];
+    char *s2;
+
+    TEST_1(s = xdup("tel:1-")); TEST_1(s2 = xdup("tel:1-"));
+    TEST(url_d(a, s), 0); TEST(url_d(b, s2), 0);
+    TEST(url_cmp(a, b), 0);
+    free(s2);
+    TEST_1(s2 = xdup("tel:1"));
+    TEST(url_d(b, s2), 0);
+    TEST_1(url_cmp(a, b) != 0);		/* unchanged behaviour */
+    TEST_1(url_cmp(b, a) != 0);
+    free(s2); free(s);
+
+    TEST_1(s = xdup("tel:+1-212-555-")); TEST_1(s2 = xdup("tel:+1 212 555 "));
+    TEST(url_d(a, s), 0); TEST(url_d(b, s2), 0);
+    TEST(url_cmp(a, b), 0);
+    free(s2); free(s);
+  }
+
+  END();
+}
+
 int test_fax(void)
 {
   /* fax urls */
@@ -1093,6 +1149,7 @@ int main(int argc, char *argv[])
   retval |= test_sip(); fflush(stdout);
   retval |= test_wv(); fflush(stdout);
   retval |= test_tel(); fflush(stdout);
+  retval |= test_overreads(); fflush(stdout);
   retval |= test_fax(); fflush(stdout);
   retval |= test_modem(); fflush(stdout);
   retval |= test_file(); fflush(stdout);
