@@ -102,7 +102,11 @@ int month_d(char const *s)
   if (!s[0] || !s[1] || !s[2])
     return -1;
 
-  #define MONTH_V(s) (uc | (((s[0]) << 16) + ((s[1]) << 8) + ((s[2]))))
+  /* unsigned char: with a signed char a byte >= 0x80 is negative, and
+   * shifting it is undefined (msg_date_d() sees peer-supplied dates) */
+  #define MONTH_V(s) (uc | (((unsigned char)(s[0]) << 16) + \
+                            ((unsigned char)(s[1]) << 8) + \
+                            ((unsigned char)(s[2]))))
   m = MONTH_V(s);
 
   #define MONTH_D(n) \

@@ -110,6 +110,8 @@ static int msg_time_test(void)
     char noerror7[] = "Mon, 29 Feb 1896 23:59:59 GMT";
     char error8[] = "Mon, 32 Jan 1900 24:00:00 GMT";
     char error9[] = "Mon, 27 Fev 1900 24:00:00 GMT";
+    /* high byte in the month: was a shift of a negative value (signed char) */
+    char error10[] = "Fri, 01 J\xbd" "an 2010 16:00:00 GMT";
 
     s = error1; TEST_1(msg_date_d(&s, &date) < 0);
     s = error2; TEST_1(msg_date_d(&s, &date) < 0);
@@ -120,6 +122,7 @@ static int msg_time_test(void)
     s = noerror7; TEST_1(msg_date_d(&s, &date) == 0); TEST(date, 0);
     s = error8; TEST_1(msg_date_d(&s, &date) < 0);
     s = error9; TEST_1(msg_date_d(&s, &date) < 0);
+    s = error10; TEST_1(msg_date_d(&s, &date) < 0);
   }
 
   {
