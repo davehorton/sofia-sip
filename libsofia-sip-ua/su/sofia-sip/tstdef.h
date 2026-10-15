@@ -308,11 +308,12 @@ enum {
       (_value != NULL && _expect != NULL && strcmp(_value, _expect) == 0)) \
   { if (flags & tst_verbatim) { \
   printf("%s: %s%sok: %s == %s \n", TSTNAME, #suite, #expect); } break; }\
-  fprintf(stderr, "%s:%u: %s %s%sFAILED: %s != %s or %s%s%s != \"%s\"\n", \
+  fprintf(stderr, "%s:%u: %s %s%sFAILED: %s != %s or %s%s%s != %s%s%s\n", \
 	 __FILE__, __LINE__, TSTNAME, \
 	  #suite, #expect, \
 	  _value ? "\"" : "", _value ? _value : "NULL", _value ? "\"" : "", \
-	  _expect); fflush(stderr);					\
+	  _expect ? "\"" : "", _expect ? _expect : "NULL", _expect ? "\"" : ""); \
+  fflush(stderr);							\
   TEST_FAILED(flags);							\
   } while(0)
 

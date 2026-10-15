@@ -75,9 +75,16 @@ char const *name = "torture_rbtree";
 
 RBTREE_PROTOS(su_inline, redblack, Node);
 
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunused-function"
+#endif
 RBTREE_BODIES(su_inline, redblack, Node, LEFT, RIGHT, PARENT,
 	      IS_RED, SET_RED, IS_BLACK, SET_BLACK, COPY_COLOR,
 	      CMP, INSERT, REMOVE);
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
 
 #include <sofia-sip/su_alloc.h>
 

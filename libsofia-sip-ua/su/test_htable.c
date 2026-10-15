@@ -93,7 +93,14 @@ struct hentry_s
 
 #define HENTRY_HASH(e) ((e)->e_value)
 
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunused-function"
+#endif
 HTABLE_BODIES(htable, ht, entry_t, HENTRY_HASH);
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
 
 typedef struct context_s
 {

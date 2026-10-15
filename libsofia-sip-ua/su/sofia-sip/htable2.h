@@ -189,6 +189,7 @@ int prefix##_resize(void *realloc_arg, \
     used++; \
   } \
   while (again++ == 1); \
+  (void)collisions; \
 \
   pr->pr##table = new_hash, pr->pr##size = new_size; \
 \
@@ -254,7 +255,7 @@ entrytype *prefix##_insert(type *pr, entrytype e) \
   for (ee = prefix##_hash(pr, hfun(e));  \
        is_used((*ee)); \
        ee = prefix##_next(pr, ee)) \
-    *ee = e, e = e0; \
+    e0 = *ee, *ee = e, e = e0; /* carry the displaced entry forward */ \
   *ee = e; \
 \
   return ee; \

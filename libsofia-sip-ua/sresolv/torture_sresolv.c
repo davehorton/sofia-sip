@@ -244,7 +244,8 @@ int test_cache(void)
   cache = sres_cache_new(N1);
   TEST_1(cache);
 
-  all = calloc(N3, sizeof *all); if (!all) perror("calloc"), exit(2);
+  /* +1: sres_cache_copy_answers() expects a NULL-terminated array */
+  all = calloc(N3 + 1, sizeof *all); if (!all) perror("calloc"), exit(2);
 
   memset(a0, 0, sizeof a0);
 

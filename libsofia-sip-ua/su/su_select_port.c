@@ -70,6 +70,15 @@
 #undef FDSETSIZE
 /* Size of fd set in bytes */
 #define FDSETSIZE(n) (((n) + __NFDBITS - 1) / __NFDBITS * (__NFDBITS / 8))
+
+/* The fd sets here are allocated to fit the largest registered fd, which
+ * may exceed FD_SETSIZE. FD_SET() and friends are undefined for such fds
+ * (glibc's _FORTIFY_SOURCE aborts on them), so use our own bit ops. */
+#define SU_FD_WORD(fd, set) (((unsigned long *)(set))[(fd) / __NFDBITS])
+#define SU_FD_BIT(fd)       (1UL << ((fd) % __NFDBITS))
+#define SU_FD_SET(fd, set)   (SU_FD_WORD(fd, set) |= SU_FD_BIT(fd))
+#define SU_FD_CLR(fd, set)   (SU_FD_WORD(fd, set) &= ~SU_FD_BIT(fd))
+#define SU_FD_ISSET(fd, set) ((SU_FD_WORD(fd, set) & SU_FD_BIT(fd)) != 0)
 #endif
 
 /** Port based on select(). */
@@ -303,9 +312,9 @@ int su_select_port_register(su_port_t *self,
   ser->ser_root = root;
 
   if (wait->events & SU_WAIT_IN)
-    FD_SET(wait->fd, readfds);
+    SU_FD_SET(wait->fd, readfds);
   if (wait->events & SU_WAIT_OUT)
-    FD_SET(wait->fd, writefds);
+    SU_FD_SET(wait->fd, writefds);
 
   if (wait->fd >= self->sup_maxfd)
     self->sup_maxfd = wait->fd + 1;
@@ -344,8 +353,8 @@ static int su_select_port_deregister0(su_port_t *self, int i, int destroy_wait)
 
   assert(ser->ser_id == i);
 
-  FD_CLR(ser->ser_wait->fd, self->sup_readfds);
-  FD_CLR(ser->ser_wait->fd, self->sup_writefds);
+  SU_FD_CLR(ser->ser_wait->fd, self->sup_readfds);
+  SU_FD_CLR(ser->ser_wait->fd, self->sup_writefds);
 
   if (ser->ser_wait->fd + 1 >= self->sup_maxfd)
     self->sup_maxfd = 0;
@@ -504,14 +513,14 @@ int su_select_port_eventmask(su_port_t *self,
   assert(socket < self->sup_maxfd);
 
   if (events & SU_WAIT_IN)
-    FD_SET(socket, self->sup_readfds);
+    SU_FD_SET(socket, self->sup_readfds);
   else
-    FD_CLR(socket, self->sup_readfds);
+    SU_FD_CLR(socket, self->sup_readfds);
 
   if (events & SU_WAIT_OUT)
-    FD_SET(socket, self->sup_writefds);
+    SU_FD_SET(socket, self->sup_writefds);
   else
-    FD_CLR(socket, self->sup_writefds);
+    SU_FD_CLR(socket, self->sup_writefds);
 
   return 0;
 }
@@ -595,9 +604,9 @@ int su_select_port_wait_events(su_port_t *self, su_duration_t tout)
     ser->ser_wait->revents = 0;
 
     if (ser->ser_wait->events & SU_WAIT_IN)
-      if (FD_ISSET(fd, rset)) ser->ser_wait->revents |= SU_WAIT_IN, n--;
+      if (SU_FD_ISSET(fd, rset)) ser->ser_wait->revents |= SU_WAIT_IN, n--;
     if (ser->ser_wait->events & SU_WAIT_OUT)
-      if (FD_ISSET(fd, wset)) ser->ser_wait->revents |= SU_WAIT_OUT, n--;
+      if (SU_FD_ISSET(fd, wset)) ser->ser_wait->revents |= SU_WAIT_OUT, n--;
 
     if (ser->ser_wait->revents) {
       magic = ser->ser_root ? su_root_magic(ser->ser_root) : NULL;

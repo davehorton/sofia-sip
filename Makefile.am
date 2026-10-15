@@ -7,7 +7,7 @@
 
 AUTOMAKE_OPTIONS = foreign 1.7
 
-SUBDIRS =  libsofia-sip-ua $(GLIB_SUBDIRS) packages # tests s2check utils
+SUBDIRS =  libsofia-sip-ua $(S2CHECK_SUBDIRS) $(GLIB_SUBDIRS) packages # tests utils
 DIST_SUBDIRS = s2check libsofia-sip-ua libsofia-sip-ua-glib utils packages \
 	tests win32 open_c
 
@@ -15,6 +15,11 @@ DIST_SUBDIRS = s2check libsofia-sip-ua libsofia-sip-ua-glib utils packages \
 #       enter the libsofia-sip-ua-glib subdir at all
 if HAVE_GLIB
 GLIB_SUBDIRS = libsofia-sip-ua-glib
+endif
+
+# s2check (the libcheck test helpers) needs the check library
+if HAVE_CHECK
+S2CHECK_SUBDIRS = s2check
 endif
 
 PACKAGE = @PACKAGE@

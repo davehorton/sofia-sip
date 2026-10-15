@@ -453,16 +453,25 @@ msg_multipart_t *msg_multipart_parse(su_home_t *home,
       assert(mp);
       if (!mp)
 		  break;			/* error */
+      /* The close-delimiter keeps the whole delimiter, transport-padding
+       * and epilogue. Copy them before the delimiter's first byte is
+       * overwritten below to terminate the last body-part; pointing into
+       * the buffer past that byte lost the delimiter and made the payload
+       * run past the end of the buffer. */
+      size_t clen = end - next;
+      char *cdata;
+
       mp->mp_close_delim = (msg_payload_t *)
-		  msg_header_alloc(msg_home(msg), msg_payload_class, 0);
+		  msg_header_alloc(msg_home(msg), msg_payload_class, clen + 1);
       if (!mp->mp_close_delim)
 		  break;			/* error */
-      /* Include also transport-padding and epilogue in the close-delimiter */
+      cdata = MSG_HEADER_DATA((msg_header_t *)mp->mp_close_delim);
+      memcpy(cdata, next, clen);
+      cdata[clen] = '\0';
+      mp->mp_close_delim->pl_data = cdata;
+      mp->mp_close_delim->pl_len = clen;
 	  *next = '\0';
-      mp->mp_close_delim->pl_len = p + len - next;
-	  next += strlen(boundary) - 2;
-      mp->mp_close_delim->pl_data = next;
-	  
+
       break;
     }
 

@@ -336,7 +336,7 @@ static int register_test(root_test_t *rt)
 {
   int i;
   int s;
-  char *msg = "foo";
+  char const msg[] = "foo";
 
   BEGIN();
 

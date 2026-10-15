@@ -38,6 +38,11 @@ _tag.c_tag_ref.c:
  ../tport/libtport.la ../url/liburl.la:
 	cd $(@D) && $(MAKE) $(@F)
 
+# The libcheck-based tests link s2check/libs2.a, which is built after
+# libsofia-sip-ua; build it on demand so a clean 'make check' works.
+$(top_builddir)/s2check/libs2.a:
+	cd $(@D) && $(MAKE) $(@F)
+
 checklib: $(noinst_LTLIBRARIES) $(check_LTLIBRARIES)
 
 INTERNAL_INCLUDES = \
