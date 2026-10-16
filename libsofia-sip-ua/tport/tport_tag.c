@@ -87,6 +87,13 @@ tag_typedef_t tptag_fresh = BOOLTAG_TYPEDEF(fresh);
  * Bind server sockets (true by default, disable with TPTAG_SERVER(0)).
  *
  * Use with tport_tbind().
+ *
+ * @note Do not use TPTAG_SERVER(0) for UDP. A client-only UDP primary has
+ * no socket of its own, and since UDP is not connection-oriented it cannot
+ * open one per destination either, so it cannot send. To send UDP from an
+ * arbitrary port, bind a server primary on an ephemeral port ("*") instead,
+ * as nta does. TPTAG_SERVER(0) works for TCP, TLS and the other stream
+ * transports, which open a connection for each destination.
  */
 tag_typedef_t tptag_server = BOOLTAG_TYPEDEF(server);
 
