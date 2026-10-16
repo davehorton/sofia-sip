@@ -111,6 +111,9 @@ int main(int argc, char *argv[])
   suite_add_tcase(suite, check_nta_client_2_0());
   suite_add_tcase(suite, check_nta_client_2_1());
   suite_add_tcase(suite, check_nta_client_2_2());
+  suite_add_tcase(suite, check_nta_drachtio_3_0());
+  suite_add_tcase(suite, check_nta_drachtio_3_1());
+  suite_add_tcase(suite, check_nta_drachtio_3_2());
 
   runner = srunner_create(suite);
 

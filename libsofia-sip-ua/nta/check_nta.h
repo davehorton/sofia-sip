@@ -129,5 +129,8 @@ TCase *check_nta_api_1_0(void);
 TCase *check_nta_client_2_0(void);
 TCase *check_nta_client_2_1(void);
 TCase *check_nta_client_2_2(void);
+TCase *check_nta_drachtio_3_0(void);
+TCase *check_nta_drachtio_3_1(void);
+TCase *check_nta_drachtio_3_2(void);
 
 #endif

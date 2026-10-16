@@ -2662,7 +2662,9 @@ int outgoing_update_contact(nta_outgoing_t *orq, tport_t* tp) {
   sip_t* sip = sip_object( msg ) ;
 
   // don't do this if we are proxying a request (i.e multiple vias) or if it is IP6
-  if (sip->sip_contact && sip->sip_via && !sip->sip_via->v_next && '[' != sip->sip_contact->m_url->url_host[0] && 
+  // (Contact: * and non-SIP URIs have no host)
+  if (sip->sip_contact && sip->sip_contact->m_url->url_host &&
+    sip->sip_via && !sip->sip_via->v_next && '[' != sip->sip_contact->m_url->url_host[0] && 
     sip->sip_request &&  sip->sip_request->rq_method != sip_method_register) {
     const tp_name_t* tpn = tport_name( tport_parent(tp) ) ;
 
@@ -2697,24 +2699,31 @@ int outgoing_update_contact(nta_outgoing_t *orq, tport_t* tp) {
           url_param_add(home, sip->sip_contact->m_url, transport);
         }
 
-        char s[256] ;
+        sip_contact_t *m = sip->sip_contact ;
+        const char* host = m->m_url->url_host ;
+        const char* port = m->m_url->url_port ;
+        char *s ;
+        msg_header_t *h = NULL ;
 
-        const char* host = sip->sip_contact->m_url->url_host ;
-        const char* port = sip->sip_contact->m_url->url_port ;
+        m->m_url->url_host = tpn->tpn_canon ? tpn->tpn_canon : tpn->tpn_host ;
+        m->m_url->url_port = tpn->tpn_port ;
 
-        sip->sip_contact->m_url->url_host = tpn->tpn_canon ? tpn->tpn_canon : tpn->tpn_host ;
-        sip->sip_contact->m_url->url_port = tpn->tpn_port ;
+        /* Encode at full length: a Contact can be longer than 255 bytes */
+        s = sip_header_as_string(home, (sip_header_t *)m) ;
 
-        sip_contact_e(s, 255, (msg_header_t *)sip->sip_contact, 0) ;
+        m->m_url->url_host = host ;
+        m->m_url->url_port = port ;
 
-        sip->sip_contact->m_url->url_host = host ;
-        sip->sip_contact->m_url->url_port = port ;
+        if (s)
+          h = msg_header_make(home, sip_contact_class, s) ;
 
-        void *p = sip->sip_contact ;
+        /* Keep the original Contact if the new one cannot be made */
+        if (h && msg_header_replace(msg, (msg_pub_t*) sip, (msg_header_t *) m, h) == 0)
+          su_free( home, m) ;
+        else
+          SU_DEBUG_3(("%s: cannot update Contact\n", __func__)) ;
 
-        msg_header_remove(msg, (msg_pub_t*) sip, (msg_header_t *) sip->sip_contact) ;
-        msg_header_add_make(msg, (msg_pub_t*) sip, sip_contact_class, s) ;
-        su_free( home, p) ;
+        su_free( home, s) ;
       }
     }
     rc = 0 ;
