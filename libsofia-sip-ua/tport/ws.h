@@ -123,6 +123,15 @@ typedef struct wsh_s {
 	size_t write_buffer_len;
 
 	ssize_t payload_size_max;
+
+	/* The frame being received: ws_read_frame() resumes where it stopped */
+	ssize_t hlen;		/* bytes of the frame header in buffer */
+	int in_payload;		/* header done, rplen of plen payload bytes read */
+	int fin;
+	int masked;
+	ws_opcode_t opcode;
+	ws_opcode_t msg_opcode;	/* opcode of a fragmented message's first frame */
+	char mask[4];
 } wsh_t;
 
 ssize_t ws_send_buf(wsh_t *wsh, ws_opcode_t oc);

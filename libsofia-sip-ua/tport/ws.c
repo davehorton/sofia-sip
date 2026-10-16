@@ -22,7 +22,6 @@
 #pragma warning(disable: 4706)
 #endif
 
-#define WS_BLOCK 10000	/* ms, blocks read operation for 10 seconds */
 #define WS_SOFT_BLOCK 1000 /* ms, blocks read operation for 1 second */
 #define WS_NOBLOCK 0
 
@@ -489,19 +488,6 @@ int wss_error(wsh_t *wsh, int ssl_err, char const *who)
 /*
  * Blocking read until bytes have been received, failure, or too many retries.
  */
-static ssize_t ws_raw_read_blocking(wsh_t *wsh, char *data, size_t max_bytes, int max_retries)
-{
-	ssize_t total_bytes_read = 0;
-	while (total_bytes_read < max_bytes && max_retries-- > 0) {
-		ssize_t bytes_read = ws_raw_read(wsh, data + total_bytes_read, max_bytes - total_bytes_read, WS_BLOCK);
-		if (bytes_read < 0) {
-			break;
-		}
-		total_bytes_read += bytes_read;
-	}
-	return total_bytes_read;
-}
-
 ssize_t ws_raw_write(wsh_t *wsh, void *data, size_t bytes)
 {
 	ssize_t r;
@@ -911,21 +897,43 @@ uint64_t ntoh64(uint64_t val)
 }
 
 
+/* Size of the frame header in buffer, as far as its first two bytes say */
+static ssize_t ws_header_size(wsh_t const *wsh)
+{
+	ssize_t size = 2;
+	uint8_t plen = wsh->buffer[1] & 0x7f;
+
+	if (plen == 126) {
+		size += 2;
+	} else if (plen == 127) {
+		size += 8;
+	}
+
+	if (wsh->buffer[1] & 0x80) {
+		size += 4;		/* masking key */
+	}
+
+	return size;
+}
+
+/** Read a WebSocket message.
+ *
+ * Never blocks: when a frame header or payload has only partly arrived,
+ * what has arrived is kept, -2 is returned, and the next call carries on
+ * from there. A message in several frames is returned when its last frame
+ * is complete.
+ *
+ * @retval > 0 length of the message, *data points to it
+ * @retval -2 incomplete, call again when there is more to read
+ * @retval 0 or -1000 connection closed
+ * @retval other < 0 error
+ */
 ssize_t ws_read_frame(wsh_t *wsh, ws_opcode_t *oc, uint8_t **data)
 {
-
-	ssize_t need = 2;
-	char *maskp;
-	int ll = 0;
-	int frag = 0;
-	ssize_t blen;
-
-	wsh->body = wsh->bbuffer;
-	wsh->packetlen = 0;
+	ssize_t r, n;
+	int ll;
 
  again:
-	need = 2;
-	maskp = NULL;
 	*data = NULL;
 
 	ll = establish_logical_layer(wsh);
@@ -942,210 +950,163 @@ ssize_t ws_read_frame(wsh_t *wsh, ws_opcode_t *oc, uint8_t **data)
 		return ws_close(wsh, WS_NONE);
 	}
 
-	if ((wsh->datalen = ws_raw_read(wsh, wsh->buffer, 9, wsh->block)) < 0) {
-		if (wsh->datalen == -2) {
-			return -2;
+	if (!wsh->in_payload) {
+		ssize_t need = wsh->hlen < 2 ? 2 : ws_header_size(wsh);
+		uint8_t *h = (uint8_t *)wsh->buffer;
+
+		while (wsh->hlen < need) {
+			r = ws_raw_read(wsh, wsh->buffer + wsh->hlen, need - wsh->hlen, WS_NOBLOCK);
+
+			if (r == -2) {
+				return -2;
+			}
+			if (r <= 0) {
+				return ws_close(wsh, WS_NONE);
+			}
+
+			wsh->hlen += r;
+
+			if (wsh->hlen >= 2) {
+				need = ws_header_size(wsh);
+			}
 		}
-		return ws_close(wsh, WS_NONE);
-	}
 
-	if (wsh->datalen < need) {
-		ssize_t bytes = ws_raw_read(wsh, wsh->buffer + wsh->datalen, 9 - wsh->datalen, WS_BLOCK);
-		
-		if (bytes < 0 || (wsh->datalen += bytes) < need) {
-			/* too small - protocol err */
-			return ws_close(wsh, WS_NONE);
-		}
-	}
+		wsh->hlen = 0;	/* the next read starts a new header */
 
-	*oc = *wsh->buffer & 0xf;
+		wsh->fin = (h[0] >> 7) & 1;
+		wsh->opcode = h[0] & 0xf;
+		wsh->masked = (h[1] >> 7) & 1;
 
-	switch(*oc) {
-	case WSOC_CLOSE:
-		{
-			wsh->plen = wsh->buffer[1] & 0x7f;
+		switch (wsh->opcode) {
+		case WSOC_CLOSE:
+			*oc = WSOC_CLOSE;
+			wsh->plen = h[1] & 0x7f;
 			*data = (uint8_t *) &wsh->buffer[2];
 			return ws_close(wsh, 1000);
+		case WSOC_CONTINUATION:
+		case WSOC_TEXT:
+		case WSOC_BINARY:
+		case WSOC_PING:
+		case WSOC_PONG:
+			break;
+		default:
+			/* invalid op code - protocol err .. */
+			*oc = WSOC_CLOSE;
+			return ws_close(wsh, WS_PROTO_ERR);
 		}
-		break;
-	case WSOC_CONTINUATION:
-	case WSOC_TEXT:
-	case WSOC_BINARY:
-	case WSOC_PING:
-	case WSOC_PONG:
-		{
-			int fin = (wsh->buffer[0] >> 7) & 1;
-			int mask = (wsh->buffer[1] >> 7) & 1;
 
+		wsh->plen = h[1] & 0x7f;
+		n = 2;
 
-			if (!fin && *oc != WSOC_CONTINUATION) {
-				frag = 1;
-			} else if (fin && *oc == WSOC_CONTINUATION) {
-				frag = 0;
-			}
+		if (wsh->plen == 127) {
+			uint64_t len;
 
-			if (mask) {
-				need += 4;
+			memcpy(&len, h + 2, 8);
+			len = ntoh64(len);
+			n += 8;
 
-				if (need > wsh->datalen) {
-					ssize_t bytes = ws_raw_read_blocking(wsh, wsh->buffer + wsh->datalen, need - wsh->datalen, 10);
-					if (bytes < 0 || (wsh->datalen += bytes) < need) {
-						/* too small - protocol err */
-						*oc = WSOC_CLOSE;
-						return ws_close(wsh, WS_NONE);
-					}
-				}
-			}
-
-			wsh->plen = wsh->buffer[1] & 0x7f;
-			wsh->payload = &wsh->buffer[2];
-
-			if (wsh->plen == 127) {
-				uint64_t len;
-
-				need += 8;
-
-				if (need > wsh->datalen) {
-					ssize_t bytes = ws_raw_read_blocking(wsh, wsh->buffer + wsh->datalen, need - wsh->datalen, 10);
-					if (bytes < 0 || (wsh->datalen += bytes) < need) {
-						/* too small - protocol err */
-						*oc = WSOC_CLOSE;
-						return ws_close(wsh, WS_NONE);
-					}
-				}
-
-				len = ntoh64(*(uint64_t *) wsh->payload);
-				wsh->payload += 8;
-
-				/* Bound it while still unsigned: the cap is an ssize_t, so
-				 * passing this makes the assignment below exact even where
-				 * ssize_t is 32 bits. Subsumes RFC 6455 5.2's top-bit rule. */
-				if (len > (uint64_t)wsh->payload_size_max) {
-					/* size limit */
-					*oc = WSOC_CLOSE;
-					return ws_close(wsh, WS_NONE);
-				}
-
-				wsh->plen = (ssize_t)len;
-			} else if (wsh->plen == 126) {
-				uint16_t *u16;
-
-				need += 2;
-
-				if (need > wsh->datalen) {
-					ssize_t bytes = ws_raw_read_blocking(wsh, wsh->buffer + wsh->datalen, need - wsh->datalen, 10);
-					if (bytes < 0 || (wsh->datalen += bytes) < need) {
-						/* too small - protocol err */
-						*oc = WSOC_CLOSE;
-						return ws_close(wsh, WS_NONE);
-					}
-				}
-
-				u16 = (uint16_t *) wsh->payload;
-				wsh->payload += 2;
-				wsh->plen = ntohs(*u16);
-			}
-
-			if (mask) {
-				maskp = (char *)wsh->payload;
-				wsh->payload += 4;
-			}
-
-			blen = wsh->body - wsh->bbuffer;
-
-			/* Subtract rather than test blen + plen, the sum that must not
-			 * overflow; bounding it here keeps the sizing below overflow-free. */
-			if (wsh->plen > wsh->payload_size_max - blen) {
+			/* Bound it while still unsigned: the cap is an ssize_t, so
+			 * passing this makes the assignment below exact even where
+			 * ssize_t is 32 bits. Subsumes RFC 6455 5.2's top-bit rule. */
+			if (len > (uint64_t)wsh->payload_size_max) {
 				/* size limit */
 				*oc = WSOC_CLOSE;
 				return ws_close(wsh, WS_NONE);
 			}
 
-			need = (wsh->plen - (wsh->datalen - need));
-
-			if (need < 0) {
-				/* invalid read - protocol err .. */
-				*oc = WSOC_CLOSE;
-				return ws_close(wsh, WS_NONE);
-			}
-
-			/* Body must hold blen accumulated bytes plus this frame's
-			 * full payload; the cap check above bounds that sum. */
-			if (blen + wsh->plen > (ssize_t)wsh->bbuflen) {
-				void *tmp;
-
-				wsh->bbuflen = blen + wsh->plen;
-
-				/* +1 NUL slot — see wsh_t in ws.h. */
-				if ((tmp = realloc(wsh->bbuffer, wsh->bbuflen + 1))) {
-					wsh->bbuffer = tmp;
-				} else {
-					abort();
-				}
-
-				wsh->body = wsh->bbuffer + blen;
-			}
-
-			wsh->rplen = wsh->plen - need;
-
-			if (wsh->rplen) {
-				memcpy(wsh->body, wsh->payload, wsh->rplen);
-			}
-
-			while(need) {
-				ssize_t r = ws_raw_read(wsh, wsh->body + wsh->rplen, need, WS_BLOCK);
-
-				if (r < 1) {
-					/* invalid read - protocol err .. */
-					*oc = WSOC_CLOSE;
-					return ws_close(wsh, WS_NONE);
-				}
-
-				wsh->datalen += r;
-				wsh->rplen += r;
-				need -= r;
-			}
-
-			if (mask && maskp) {
-				ssize_t i;
-
-				/* Unmask payload only. wsh->datalen tracks bytes in wsh->buffer
-				 * (header + frame), but wsh->body holds just the rplen payload bytes.*/
-				for (i = 0; i < wsh->rplen; i++) {
-					wsh->body[i] ^= maskp[i % 4];
-				}
-			}
-
-
-			if (*oc == WSOC_PING) {
-				ws_write_frame(wsh, WSOC_PONG, wsh->body, wsh->rplen);
-				goto again;
-			}
-
-			*(wsh->body+wsh->rplen) = '\0';
-			wsh->packetlen += wsh->rplen;
-			wsh->body += wsh->rplen;
-
-			if (frag) {
-				goto again;
-			}
-
-			*data = (uint8_t *)wsh->bbuffer;
-
-			//printf("READ[%ld][%d]-----------------------------:\n[%s]\n-------------------------------\n", wsh->packetlen, *oc, (char *)*data);
-
-
-			return wsh->packetlen;
+			wsh->plen = (ssize_t)len;
+		} else if (wsh->plen == 126) {
+			wsh->plen = (h[2] << 8) | h[3];
+			n += 2;
 		}
-		break;
-	default:
-		{
-			/* invalid op code - protocol err .. */
+
+		if (wsh->masked) {
+			memcpy(wsh->mask, h + n, 4);
+		}
+
+		/* Subtract rather than test packetlen + plen, the sum that must
+		 * not overflow; bounding it here keeps the sizing below
+		 * overflow-free. */
+		if (wsh->plen > wsh->payload_size_max - wsh->packetlen) {
+			/* size limit */
 			*oc = WSOC_CLOSE;
-			return ws_close(wsh, WS_PROTO_ERR);
+			return ws_close(wsh, WS_NONE);
 		}
-		break;
+
+		/* Body must hold the packetlen bytes of earlier fragments plus
+		 * this frame's full payload; the cap check above bounds that sum. */
+		if (wsh->packetlen + wsh->plen > (ssize_t)wsh->bbuflen) {
+			void *tmp;
+
+			wsh->bbuflen = wsh->packetlen + wsh->plen;
+
+			/* +1 NUL slot — see wsh_t in ws.h. */
+			if ((tmp = realloc(wsh->bbuffer, wsh->bbuflen + 1))) {
+				wsh->bbuffer = tmp;
+			} else {
+				abort();
+			}
+		}
+
+		wsh->rplen = 0;
+		wsh->in_payload = 1;
 	}
+
+	/* The payload goes after the earlier fragments of the message */
+	wsh->body = wsh->bbuffer + wsh->packetlen;
+
+	while (wsh->rplen < wsh->plen) {
+		r = ws_raw_read(wsh, wsh->body + wsh->rplen, wsh->plen - wsh->rplen, WS_NOBLOCK);
+
+		if (r == -2) {
+			return -2;
+		}
+		if (r <= 0) {
+			/* invalid read - protocol err .. */
+			*oc = WSOC_CLOSE;
+			return ws_close(wsh, WS_NONE);
+		}
+
+		wsh->rplen += r;
+	}
+
+	wsh->in_payload = 0;
+
+	if (wsh->masked) {
+		ssize_t i;
+
+		for (i = 0; i < wsh->rplen; i++) {
+			wsh->body[i] ^= wsh->mask[i % 4];
+		}
+	}
+
+	if (wsh->opcode == WSOC_PING) {
+		ws_write_frame(wsh, WSOC_PONG, wsh->body, wsh->rplen);
+		goto again;
+	}
+
+	if (wsh->opcode == WSOC_PONG) {
+		goto again;	/* not a message */
+	}
+
+	if (wsh->opcode != WSOC_CONTINUATION) {
+		wsh->msg_opcode = wsh->opcode;
+	}
+
+	wsh->packetlen += wsh->rplen;
+	*(wsh->bbuffer + wsh->packetlen) = '\0';
+
+	if (!wsh->fin) {
+		goto again;	/* more fragments to come */
+	}
+
+	*oc = wsh->msg_opcode;
+	*data = (uint8_t *)wsh->bbuffer;
+
+	n = wsh->packetlen;
+	wsh->packetlen = 0;
+
+	return n;
 }
 
 ssize_t ws_write_frame(wsh_t *wsh, ws_opcode_t oc, void *data, size_t bytes)

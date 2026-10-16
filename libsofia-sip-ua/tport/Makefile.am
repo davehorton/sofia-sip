@@ -16,7 +16,8 @@ AM_CPPFLAGS = 		-I$(srcdir)/../bnf -I../bnf \
 			-I$(srcdir)/../url -I../url \
 			-I$(srcdir)/../sip -I../sip \
 			-I$(srcdir)/../su -I../su \
-			-I$(srcdir)/include 
+			-I$(srcdir)/include \
+			-I$(top_srcdir)/s2check
 
 # ----------------------------------------------------------------------
 # Build targets
@@ -28,6 +29,11 @@ bin_PROGRAMS =
 check_PROGRAMS =	test_tport
 
 TESTS =			test_tport
+
+if HAVE_CHECK
+check_PROGRAMS +=	check_tport
+TESTS +=		check_tport
+endif
 
 # ----------------------------------------------------------------------
 # Rules for building the targets
@@ -79,11 +85,16 @@ LDADD = 		libtport.la \
 
 test_tport_LDFLAGS = 	-static
 
+check_tport_SOURCES =	check_tport.c
+check_tport_LDADD =	${top_builddir}/s2check/libs2.a \
+			../sip/libsip.la ${LDADD} @CHECK_LIBS@
+
 # ----------------------------------------------------------------------
 # Install and distribution rules
 
 EXTRA_DIST =		tport.docs \
-			certificates.html agent.pem cafile.pem
+			certificates.html agent.pem cafile.pem \
+			tls/make-certs.sh tls/ca.pem tls/server.pem tls/client.pem
 
 # ----------------------------------------------------------------------
 # Sofia specific rules
