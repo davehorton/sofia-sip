@@ -31,6 +31,20 @@ never modifies the checkout.
 The gating suites are the modules drachtio-server uses: `su bnf ipt url msg sip sresolv tport nta`.
 `nua`, `soa`, `nea`, `nth`, `http`, `iptsec`, `sdp` and `stun` still build, and `all-gcc` runs their tests, but they don't gate.
 
+## nta scenarios (drachtio usage)
+
+`libsofia-sip-ua/nta/check_nta_drachtio.c` (part of `check_nta`) plays SIP exchanges against a scripted peer (`s2check/s2sip`) with the agent set up and driven the way drachtio-server does it: not a UA, a stateless callback that sees every new request, server transactions created later with `nta_incoming_create()`, app-driven 2xx retransmission (`incoming_retransmit_reply()`), app-built ACKs re-sent with `outgoing_retransmit()`, and stateless proxying with `nta_msg_tsend()`. Timers run on virtual time (`s2_fast_forward()`), and DNS answers come from `s2check/s2dns`.
+
+| Case | Scenario |
+|------|----------|
+| 3.0.x | UAS: late server transaction (UDP, TCP), UAS leg created afterwards, CANCEL before and after the transaction exists, CANCEL after 200, unACKed error response (timer H), 100rel/PRACK, connection closed before the answer |
+| 3.1.x | UAC: app-built ACK re-sent on 2xx retransmission, held CANCEL (before any provisional), CANCEL crossing 200, timeout (internal 408), INVITE transaction destroyed before the 2xx, `Contact: *`, Contact rewriting, SRV failover on 503 |
+| 3.2.x | Stateless proxy: request forwarded, response back through the stateless callback |
+
+To run one case in an existing build: `libsofia-sip-ua/nta/check_nta drachtio_3_1_0` (shell patterns work, e.g. `'drachtio_3_*'`).
+
+When a drachtio-server bug turns out to be in sofia-sip, add the exchange that triggers it here.
+
 ## Fuzzing
 
 `fuzz/` holds libFuzzer targets for the code that parses input from the network:
