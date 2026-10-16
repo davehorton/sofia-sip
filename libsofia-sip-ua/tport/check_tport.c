@@ -1125,6 +1125,64 @@ START_TEST(tport_2_3)
 }
 END_TEST
 
+START_TEST(tport_2_4)
+{
+  int server_closes = _i;
+  struct peer a[1], *b = calloc(1, sizeof *b);
+  struct rx *r;
+  int fd;
+
+  S2_CASE("tport-2.4", "WSS connection freed after its fd is reused",
+	  "The client closes cleanly (close_notify), or the stack shuts "
+	  "the connection down, while the stack still holds the transport; "
+	  "a new client gets the same fd; releasing the old transport must "
+	  "not touch the new connection");
+
+  fail_if(peer_connect(a, WSS));
+  fail_if(peer_send(a, request(WSS, "2.4-a", 0), strlen(request(WSS, "2.4-a", 0)), 0));
+  r = wait_rx(3000);
+  fail_unless(r && callid_is(r, "2.4-a"));
+  fd = r->tport->tp_socket;
+
+  if (server_closes) {
+    tport_shutdown(r->tport, 2);	/* as drachtio does */
+    pump(200);
+    peer_close(a);
+  }
+  else {
+    SSL_shutdown(a->ssl);		/* as browsers do */
+    peer_close(a);
+    pump(200);
+  }
+  ck_assert_msg(tport_is_closed(r->tport), "old connection not closed");
+
+  fail_if(peer_connect(b, WSS));
+  fail_if(peer_send(b, request(WSS, "2.4-b", 0), strlen(request(WSS, "2.4-b", 0)), 0));
+  {
+    struct rx *rb = wait_rx(3000);
+    fail_unless(rb && callid_is(rb, "2.4-b"));
+    if (rb->tport->tp_socket != fd)
+      fprintf(stderr, "tport-2.4: fd not reused (%d, %d)\n",
+	      fd, rb->tport->tp_socket);
+
+    /* The stack lets go of the old connection */
+    free_rx(r);
+    pump(100);
+
+    fail_if(reply(rb, "2.4-reply"));
+    ck_assert_msg(peer_wait(b, "Call-ID: 2.4-reply", 3000),
+		  "new connection broken by the old one's teardown%s",
+		  b->eof ? " (closed)" : "");
+    free_rx(rb);
+  }
+
+  peer_close(b);
+  free(b);
+  fail_if(wait_no_secondaries(master, 3000));
+  NO_STALL();
+}
+END_TEST
+
 TCase *check_tport_2(void)
 {
   TCase *tc = tcase_create("2 - Connection teardown");
@@ -1136,6 +1194,7 @@ TCase *check_tport_2(void)
   tcase_add_loop_test(tc, tport_2_1, 0, NPROTOS);
   tcase_add_loop_test(tc, tport_2_2, 0, NPROTOS);
   tcase_add_loop_test(tc, tport_2_3, 0, NPROTOS);
+  tcase_add_loop_test(tc, tport_2_4, 0, 2);
 
   return tc;
 }
@@ -1263,6 +1322,87 @@ START_TEST(tport_3_3)
 }
 END_TEST
 
+START_TEST(tport_3_4)
+{
+  int p = ws_protos[_i];
+  struct peer pe[1], pending[1];
+  struct rx *r;
+
+  S2_CASE("tport-3.4", "Nothing unframed on an open WebSocket",
+	  "A client that never finishes its handshake gets no raw "
+	  "keepalive before it is dropped after 5 s; an established "
+	  "connection gets nothing either and stays usable");
+
+  fail_if(peer_connect(pe, p));
+  fail_if(peer_open(pending, p, ports[p], is_secure(p) ? client_ctx(0) : NULL));
+
+  pump(7000);
+
+  /* The client that never finished its handshake gets nothing but the
+     close: a raw keepalive is not valid before (or after) the upgrade */
+  pending->proto = TCP;		/* read raw */
+  peer_wait(pending, NULL, 1000);
+  ck_assert_msg(pending->len == 0,
+		"client in handshake got %zu raw bytes", pending->len);
+
+  peer_read(pe);
+  ck_assert_msg(!pe->eof && pe->rawlen == 0 && pe->len == 0,
+		"established %s connection got %zu raw bytes, %zu data bytes%s",
+		protos[p], pe->rawlen, pe->len, pe->eof ? ", closed" : "");
+
+  fail_if(peer_send(pe, request(p, "3.4", 0), strlen(request(p, "3.4", 0)), 0));
+  r = wait_rx(3000);
+  fail_unless(r && callid_is(r, "3.4"));
+  fail_if(reply(r, "3.4-reply"));
+  fail_unless(peer_wait(pe, "Call-ID: 3.4-reply", 3000));
+  free_rx(r);
+
+  peer_close(pe);
+  peer_close(pending);
+  fail_if(wait_no_secondaries(master, 7000));
+  NO_STALL();
+}
+END_TEST
+
+START_TEST(tport_3_5)
+{
+  int p = ws_protos[_i], i;
+  struct peer pe[1];
+  struct rx *r;
+  int small = 8192;
+  long long t0, slowest = 0;
+
+  S2_CASE("tport-3.5", "WebSocket peer that stops reading",
+	  "Responses to a client that does not read fill the connection; "
+	  "sending them does not hold the thread");
+
+  fail_if(peer_connect(pe, p));
+  setsockopt(pe->fd, SOL_SOCKET, SO_RCVBUF, &small, sizeof small);
+  fail_if(peer_send(pe, request(p, "3.5", 0), strlen(request(p, "3.5", 0)), 0));
+  r = wait_rx(3000);
+  fail_unless(r != NULL);
+  setsockopt(r->tport->tp_socket, SOL_SOCKET, SO_SNDBUF, &small, sizeof small);
+
+  for (i = 0; i < 200; i++) {
+    long long dt;
+    t0 = now_ms();
+    reply(r, "3.5-reply");
+    dt = now_ms() - t0;
+    if (dt > slowest)
+      slowest = dt;
+    step();
+  }
+  free_rx(r);
+
+  ck_assert_msg(slowest <= STALL_MS, "a send to a full %s connection took %lld ms",
+		protos[p], slowest);
+
+  peer_close(pe);
+  fail_if(wait_no_secondaries(master, 7000));
+  NO_STALL();
+}
+END_TEST
+
 TCase *check_tport_3(void)
 {
   TCase *tc = tcase_create("3 - Hostile and broken peers");
@@ -1274,6 +1414,8 @@ TCase *check_tport_3(void)
   tcase_add_loop_test(tc, tport_3_1, 0, 2);
   tcase_add_loop_test(tc, tport_3_2, 0, 2);
   tcase_add_loop_test(tc, tport_3_3, 0, 2);
+  tcase_add_loop_test(tc, tport_3_4, 0, 2);
+  tcase_add_loop_test(tc, tport_3_5, 0, 2);
 
   return tc;
 }

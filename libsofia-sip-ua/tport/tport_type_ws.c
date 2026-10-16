@@ -80,6 +80,8 @@ static int tport_ws_init_primary_secure(tport_primary_t *pri,
 
 static int tport_ws_setsndbuf(int socket, int atleast);
 static void tport_ws_deinit_primary(tport_primary_t *pri);
+static void tport_ws_deinit_secondary(tport_t *self);
+static void tport_ws_shutdown(tport_t *self, int how);
 
 tport_vtable_t const tport_ws_vtable =
 {
@@ -93,7 +95,7 @@ tport_vtable_t const tport_ws_vtable =
   /* vtp_secondary_size      */ sizeof (tport_ws_t),
   /* vtp_init_secondary      */ tport_ws_init_secondary,
   /* tp_deinit_secondary    */ tport_ws_deinit_secondary,
-  /* vtp_shutdown            */ NULL,
+  /* vtp_shutdown            */ tport_ws_shutdown,
   /* vtp_set_events          */ NULL,
   /* vtp_wakeup              */ NULL,
   /* vtp_recv                */ tport_recv_stream_ws,
@@ -143,7 +145,7 @@ tport_vtable_t const tport_wss_vtable =
   /* vtp_secondary_size      */ sizeof (tport_ws_t),
   /* vtp_init_secondary      */ tport_ws_init_secondary,
   /* vtp_deinit_secondary    */ tport_ws_deinit_secondary,
-  /* vtp_shutdown            */ NULL,
+  /* vtp_shutdown            */ tport_ws_shutdown,
   /* vtp_set_events          */ NULL,
   /* vtp_wakeup              */ NULL,
   /* vtp_recv                */ tport_recv_stream_ws,
@@ -701,6 +703,20 @@ static void tport_ws_deinit_secondary(tport_t *self)
   }
 }
 
+/* tport_close() calls this before it closes the socket. Tear down the
+ * WebSocket and TLS layers now, while the socket is still this
+ * connection's: done later, from tport_ws_deinit_secondary() when the last
+ * reference goes, the TLS close_notify would be written to an fd that may
+ * belong to another connection by then. */
+static void tport_ws_shutdown(tport_t *self, int how)
+{
+  if (how >= 2)
+    tport_ws_deinit_secondary(self);
+
+  if (self->tp_socket != INVALID_SOCKET)
+    shutdown(self->tp_socket, how);
+}
+
 static int tport_ws_setsndbuf(int socket, int atleast)
 {
 #if SU_HAVE_WINSOCK2
@@ -802,11 +818,34 @@ int tport_ws_send_crlf_text_frame(tport_t *self)
     return n;
 }
 
-/** Calculate next timer for WS. */
+/** Calculate when to retry the handshake (upstream d5ef6736) */
+static int tport_next_logical_layer_establish(tport_t *self,
+					      su_time_t *return_target,
+					      char const **return_why,
+					      unsigned timeout)
+{
+  if (timeout != 0 && timeout != UINT_MAX) {
+    if (!tport_has_queued(self)) {
+      su_time_t ntime = su_time_add(self->tp_ltime, timeout);
+      if (su_time_cmp(ntime, *return_target) < 0)
+	*return_target = ntime, *return_why = "logicallayer";
+    }
+  }
+
+  return 0;
+}
+
+/** Calculate next timer for WS.
+ *
+ * Until the TLS and WebSocket handshakes are done, wake up to retry them
+ * and drop the connection after 5 seconds. There is no TCP keepalive: a
+ * raw CRLF ping is not valid on a WebSocket. */
 int tport_ws_next_timer(tport_t *self,
 			 su_time_t *return_target,
 			 char const **return_why)
 {
+	/* The primary's shared parameter; read only, it is not per connection */
+	unsigned timeout = self->tp_params->tpp_keepalive;
 	tport_ws_t *wstp = (tport_ws_t *)self;
 	int ll = establish_logical_layer(&wstp->ws);
 	int punt = 0;
@@ -818,8 +857,9 @@ int tport_ws_next_timer(tport_t *self,
 		if (now - wstp->connected > 5) {
 			punt = 2;
 		}
+		self->tp_ltime = su_now();
 	} else {
-		self->tp_params->tpp_keepalive = 0;
+		timeout = 0;
 	}
 
 	if (punt) {
@@ -835,7 +875,7 @@ int tport_ws_next_timer(tport_t *self,
 
   return
     tport_next_recv_timeout(self, return_target, return_why) |
-    tport_next_keepalive(self, return_target, return_why);
+    tport_next_logical_layer_establish(self, return_target, return_why, timeout);
 }
 
 /** WS timer. */
@@ -847,7 +887,6 @@ void tport_ws_timer(tport_t *self, su_time_t now)
     tport_close(self);
   } else {
     tport_recv_timeout_timer(self, now);
-    tport_keepalive_timer(self, now);
   }
   tport_base_timer(self, now);
 }

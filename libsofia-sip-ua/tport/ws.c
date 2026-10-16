@@ -22,7 +22,6 @@
 #pragma warning(disable: 4706)
 #endif
 
-#define WS_SOFT_BLOCK 1000 /* ms, blocks read operation for 1 second */
 #define WS_NOBLOCK 0
 
 #define WS_INIT_SANITY 5000
@@ -809,62 +808,16 @@ ssize_t ws_close(wsh_t *wsh, int16_t reason)
 	}
 
 	if (wsh->ssl) {
-		int code = 0, rcode = 0;
-		int ssl_error = 0;
-		int n = 0, block_n = WS_SOFT_BLOCK / 10;
-
-		/* SSL layer was never established or underlying IO error occured */
-		if (!wsh->secure_established || wsh->ssl_io_error) {
-			goto ssl_finish_it;
-		}
-
-		/* connection has been already closed */
-		if (SSL_get_shutdown(wsh->ssl) & SSL_SENT_SHUTDOWN) {
-				goto ssl_finish_it;
-		}
-
-		/* peer closes the connection */
-		if (SSL_get_shutdown(wsh->ssl) & SSL_RECEIVED_SHUTDOWN) {
+		/* Send close_notify if the session is up, but do not wait for
+		 * the peer's: the connection is going away, and waiting would
+		 * hold the caller's thread (up to a second per connection).
+		 * OpenSSL allows this one-way shutdown when the connection is
+		 * not reused. */
+		if (wsh->secure_established && !wsh->ssl_io_error &&
+			!(SSL_get_shutdown(wsh->ssl) & SSL_SENT_SHUTDOWN)) {
 			SSL_shutdown(wsh->ssl);
-			goto ssl_finish_it;
 		}
 
-		/* us closes the connection. We do bidirection shutdown handshake */
-		for(;;) {
-			code = SSL_shutdown(wsh->ssl);
-			ssl_error = SSL_get_error(wsh->ssl, code);
-			if (code <= 0 && ssl_error == SSL_ERROR_WANT_READ) {
-				/* need to make sure there are no more data to read */
-				for(;;) {
-					if ((rcode = SSL_read(wsh->ssl, wsh->buffer, 9)) <= 0) {
-						ssl_error = SSL_get_error(wsh->ssl, rcode);
-						if (ssl_error == SSL_ERROR_ZERO_RETURN) {
-							break;
-						} else if (SSL_IO_ERROR(ssl_error)) {
-							goto ssl_finish_it;
-						} else if (ssl_error == SSL_ERROR_WANT_READ) {
-							if (++n == block_n) {
-								goto ssl_finish_it;
-							}
-
-							ms_sleep(10);
-						} else {
-							goto ssl_finish_it;
-						}
-					}
-				}
-			} else if (code == 0 || (code < 0 && ssl_error == SSL_ERROR_WANT_WRITE)) {
-				if (++n == block_n) {
-					goto ssl_finish_it;
-				}
-
-				ms_sleep(10);
-			} else { /* code != 0 */
-				goto ssl_finish_it;
-			}
-		}
-
-ssl_finish_it:
 		SSL_free(wsh->ssl);
 		wsh->ssl = NULL;
 	}
