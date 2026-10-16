@@ -848,19 +848,41 @@ START_TEST(tport_1_4)
 {
   int p = _i;
   struct peer pe[1];
-
-  if (p == TLS)
-    return;
+  struct rx *r;
+  char const *text;
 
   S2_CASE("tport-1.4", "CRLF keepalive",
 	  "A double-CRLF ping gets a CRLF pong (TPTAG_PONG2PING), "
-	  "in a text frame over WebSocket. Not over TLS: tport_tls_recv() "
-	  "has no keepalive handling");
+	  "in a text frame over WebSocket; requests and responses "
+	  "carry on normally after it");
 
   fail_if(peer_connect(pe, p));
   fail_if(peer_send(pe, "\r\n\r\n", 4, 0));
   ck_assert_msg(peer_wait(pe, "\r\n", 3000), "no pong over %s", protos[p]);
   fail_if(received != NULL);
+
+  /* Ping split in two, then a request right behind a ping */
+  pe->len = 0, pe->buf[0] = '\0';
+  fail_if(peer_send(pe, "\r\n", 2, 0));
+  pump(20);
+  fail_if(peer_send(pe, "\r\n", 2, 0));
+  if (!is_ws(p))		/* over WebSocket a ping is its own frame */
+    ck_assert_msg(peer_wait(pe, "\r\n", 3000), "no pong to a split ping");
+
+  text = request(p, "1.4", 0);
+  if (!is_ws(p)) {
+    static char both[4096];
+    snprintf(both, sizeof both, "\r\n\r\n%s", text);
+    fail_if(peer_write(pe, both, strlen(both)));
+  }
+  else
+    fail_if(peer_send(pe, text, strlen(text), 0));
+
+  r = wait_rx(3000);
+  fail_unless(r && callid_is(r, "1.4"));
+  fail_if(reply(r, "1.4-reply"));
+  fail_unless(peer_wait(pe, "Call-ID: 1.4-reply", 3000));
+  free_rx(r);
 
   peer_close(pe);
   fail_if(wait_no_secondaries(master, 3000));
@@ -911,6 +933,53 @@ START_TEST(tport_1_5)
 }
 END_TEST
 
+START_TEST(tport_1_6)
+{
+  struct peer pe[1];
+  struct rx *r;
+  int i, small = 8192;	/* smaller starves the TCP window (persist probes) */
+
+  S2_CASE("tport-1.6", "Pongs to a peer that is not reading (TLS)",
+	  "Pings keep coming while the connection is full, so a pong "
+	  "cannot be written at once; it is finished before the next "
+	  "message and the stream stays intact");
+
+  fail_if(peer_open(pe, TLS, ports[TLS], client_ctx(0)));
+  setsockopt(pe->fd, SOL_SOCKET, SO_RCVBUF, &small, sizeof small);
+  fail_if(peer_write(pe, request(TLS, "1.6-a", 0),
+		     strlen(request(TLS, "1.6-a", 0))));
+  r = wait_rx(3000);
+  fail_unless(r && callid_is(r, "1.6-a"));
+  setsockopt(r->tport->tp_socket, SOL_SOCKET, SO_SNDBUF, &small, sizeof small);
+
+  for (i = 0; i < 3000; i++) {
+    if (peer_write(pe, "\r\n\r\n", 4) < 0)
+      break;
+    step();
+  }
+
+  /* The response goes out behind whatever pong is pending */
+  reply(r, "1.6-reply");
+  free_rx(r);
+  ck_assert_msg(peer_wait(pe, "Call-ID: 1.6-reply", 5000),
+		"response lost behind pongs");
+
+  /* And the connection still works */
+  pe->len = 0, pe->buf[0] = '\0';
+  fail_if(peer_write(pe, request(TLS, "1.6-b", 0),
+		     strlen(request(TLS, "1.6-b", 0))));
+  r = wait_rx(3000);
+  fail_unless(r && callid_is(r, "1.6-b"));
+  fail_if(reply(r, "1.6-reply-b"));
+  fail_unless(peer_wait(pe, "Call-ID: 1.6-reply-b", 3000));
+  free_rx(r);
+
+  peer_close(pe);
+  fail_if(wait_no_secondaries(master, 3000));
+  NO_STALL();
+}
+END_TEST
+
 TCase *check_tport_1(void)
 {
   TCase *tc = tcase_create("1 - Stream transports");
@@ -922,8 +991,9 @@ TCase *check_tport_1(void)
   tcase_add_loop_test(tc, tport_1_1, 0, NPROTOS);
   tcase_add_loop_test(tc, tport_1_2, 0, NPROTOS);
   tcase_add_loop_test(tc, tport_1_3, 0, NPROTOS);
-  tcase_add_loop_test(tc, tport_1_4, 0, NPROTOS);	/* TLS skipped */
+  tcase_add_loop_test(tc, tport_1_4, 0, NPROTOS);
   tcase_add_loop_test(tc, tport_1_5, 0, NPROTOS);
+  tcase_add_test(tc, tport_1_6);
 
   return tc;
 }

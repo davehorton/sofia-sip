@@ -103,6 +103,7 @@ int tls_pending(tls_t const *tls);
 
 int tls_connect(su_root_magic_t *magic, su_wait_t *w, tport_t *self);
 ssize_t tls_write(tls_t *tls, void *buf, size_t size);
+int tls_pong(tls_t *tls);
 int tls_want_write(tls_t *tls, int events);
 
 int tls_events(tls_t const *tls, int flags);
