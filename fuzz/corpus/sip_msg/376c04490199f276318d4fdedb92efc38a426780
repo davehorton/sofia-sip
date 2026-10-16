@@ -1,0 +1,10 @@
+INVITE sip:user@company.com SIP/2.0+To: sip:user@company.com
+From: sip:cSller@university.edu
+Call-ID: 9@10.0.0.1
+Event: CSeq: 1 INVITE
+Via: SIP/2.0/UDP 135.180.1m=video 3227 RTP/AVP 31
+a=rtpmap:31 LPC130.88
+m=audio 492170 RTP/AVP 0 12
+m=video 3227 RTP/A
+VP 31
+a=rtpmap:31 LPC

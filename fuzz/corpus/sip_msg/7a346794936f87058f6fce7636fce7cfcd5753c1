@@ -1,0 +1,8 @@
+?INVITE sip:user@company.com?Route=%3Csip:sipCSeq: 1 INVITE
+Via: SIP/2.0/UDP 135.180.130.133
+Content-Type: application/sdp
+Content-Length: 163
+ö‹=0?REGISTER sip:company.com SIP/2.0
+To: sip:j.user@COMPANY.COM;maddr=135.180.130.133;tag=foo
+From: s-param-6=6;x-param-7=7;x-para
+o=mhandley m-

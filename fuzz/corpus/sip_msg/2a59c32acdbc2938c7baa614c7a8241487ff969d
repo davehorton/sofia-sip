@@ -1,0 +1,138 @@
+REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5 (NTA 1.0)
+Via: SIP/2.0/sDP/UDP 192.2.2.1:5060;received=[ffe0::FAB1]
+Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip:garaRecord-Route: a.com:5060;maddr=srlab.sr.ntc.nokia.com>
+Hide: route
+Max-Forwards: 15
+From: sip:digest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.com
+Contact: sip:digest@085.21.9.155
+Call-ID: 982773899-reg@172.21.9.155
+CSeq: 2 REGISTER
+Subject: BarfooC
+Priority: emergency
+Date: Wed, 04 Apr 2001 17:38:38 GMT
+Retry-After: Wed, 04 Aprage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+Hide: route
+Max-Forwards: 15
+From: sip:digest@garage.sr.ntc.nokia/com
+To: sip:digest@garage.sr.ntc.nokia.com
+Contact: sip:digest@172.21.9.155
+Call-ID: 
+To: sip:digeJst@garage.sr.ntc.nokia.com
+Contact: sip:digest@172.21.9.155
+Call-ID: 982773899-reg@172.21.9.155
+CSeq: 2 REGISTER
+Subject: Barfoo
+Priority: emergency
+Date: Wed, 04 Apr /001 17:38:r 2001 19:00:00 GMT (wake-up) ;duration=1800
+Timestamp: 986395257.13924321 3
+Expires: 180
+Also: sip:digestify@garage.sr.ntc.nokia.com
+Call-Info: <http://garage.sr.ntc.nokia.com/images/face.jpg>;purpose=icon
+Organization: FuzFy zelines,UUKIA)
+In-Reply-To: 982773898-reg@172.21.9.155
+Accept: text/plain
+Accept-Encoding: identity, defla
+Accept-Language: en
+Allow: any
+Requ Inc.
+Server: please
+User-Agent: Nokia Universal Killer Internet Application/2.0 (NUUKIA)
+In-Reply-To: 982773898-reg@172.21.9.155
+Accept: text/plain
+Accept-Encoding: identity, deflat?REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.16ÿINVITE sip:t.watson@ieee.org SIP/2.0
+Via:     SIP/2.0/UDP c.bell-tel.com
+From:    A. Bell <sip:a.g.bell@bell-tel.Refer-To: com>
+To:      T. Watson+ <sip:t.waExpires: tson@ieesip:a.g.bell@bell-t8.102.5 (NTA 1.0)
+Via: SIP/2.0/UDP 192.2.2.1:5060;receiv=de[ffe0::FAB1]
+Route: <sip:gaerg \\\"" <sip:jdrosen@l UDP
+Min-SE:   135.180.130.133
+Subject :
+NewFangleecondvalue  ;à = 0.33
+  (((nested comments) and (me (???)
+Accept-Language: en
+Allow: any
+Require: all
+Proxy-Require: kinky, th+ings
+Supported: sip-cc, sip-cc-01, timer
+Unsupported: everything
+Error+++++++++++++++++++++++++++++++++++++++++++Î+++++-Info: <http://garage.sr.ntc.nokia.com/figuŽšÒÎÑ•—>
+Warning: 300 garage.sr.ntc.nokia.com IPv6 global addresses not available
+Warning: 330 garage.sr.ntc.nokia.com No IPv6 multicast, 330 garage.sr.ntc.no 04 Aprage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+Hide: route
+Max-Forwards: 15
+From: sip:digest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.com
+Contact: sip:digest@172.21.9.155
+Call-ID: 
+To: sip:digeJst@garage.sr.ntc.nokia.com
+Contact: sip:digest@172.21.9.155
+Call-ID: 982773899-reg@172.21.9.15S
+5Ceq: 2 REGISTER
+Subject: Barfoo
+Priority: emergency
+Date: Wed, 04  Inc.
+Server: please
+User-Agenta:     SIP/2.0/UDP c.bell-tel.com
+From:    A. Bell <sip:a.aExpires: tson@ieesip:a.g.bell@bell-t8.102.5 (NTA 1.0)
+Via: SIP/2.0/UDP 192.2.2.1:5060;receiv=de[ffe0::FAB1]
+Route: <sip:gaerg \\\"" <sip:jdrosen@l UDP
+Min-SE:   135.180.130.133
+Subject :
+NewFangleecondvalue  ;à = 0.33
+  (((nested comments) and (me (???)
+Accept-Language: en
+Allow: any
+Require: all
+Proxy-Require: kinky, th+ings
+Supported: sip-cc, sip-cc-01, timer
+Unsupported: everything
+Error+++++++++++++++++++++++++++++++++++++++++++Î+++++-Info: <http://garage.sr.ntc.nokia.com/figuŽšÒÎÑ•—>
+Warning: 300 garage.sr.ntc.nokia.com IPv6 global addresses not available
+Warning: 330 garage.sr.ntc.nokia.com No IPv6 multicast, 330 garage.sr.ntc.no 04 Aprage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+Hide: route
+Max-Forwards: 15
+From: sip:digest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.com
+Contact: sip:digest@172.21.9.155
+Call-ID: 
+To: sip:digeJst@garage.sr.ntc.nokia.com
+Contact: sip:digest@172.21.9.155
+Call-ID: 982773899-reg@172.21.9.15S
+5Ceq: 2 REGISTER
+Subject: Barfoo
+Priority: emergency
+Date: Wed, 04  Inc.
+Server: please
+User-Agenta:     SIP/2.0/UDP c.bell-tel.com
+From:    A. Bell <sip:a.g.bell@bell-tel.Refer-To: com>
+To:      T. Watson+ <sip:t.waExpires: tson@ieesip:a.g.bell@bell-t8.102.5 (NTA 1.0)
+Via: SIP/2.0/UDP 192.2.2.1:5060;receiv=de[ffe0::FAB1]
+Route: <sip:gaerg \\\"" <sip:jdrosen@l UDP
+Min-SE:   135.180.130.133
+Subject :
+NewFangleecondvalue  ;à = 0.33
+  (((nested comments) and (more)))   ,
+ tel:4443322
+INVITE sip:vivekg@chair.dnrc.bell-labs.com SIP/2.0
+  To :
+  sip:vivekg@chair.dnrc.bell-labs.com ;    tag    = 1a1b1f1H33n
+From   : "J Rosenberg \\\"" <sip:jdrosen@l UDP
+  135.180.130.133
+Subject :
+NewFangledHeader:   newfoute: <sip:gaerg \\\"" <sip:jdrosen@l UDP
+Min-SE:   135.180.130.133
+Subject :
+NewFangleecondvalue  ;à = 0.33
+  (((nested comments) and (more)))   ,
+ tel:4443322
+IN-Route: 3
+Expires: Thu, '1 Dec 2040 16:80.130.133
+Expires: ThuTo: sip:user@company.com
+From: sip:user@company.comges/face.ewfjpg>;purpose=icon
+Oanglemrganization:

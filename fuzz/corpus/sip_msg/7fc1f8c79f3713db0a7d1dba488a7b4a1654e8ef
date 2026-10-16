@@ -1,0 +1,130 @@
+OPTIONS sip:bob@example.com SIP/2.0
+Via: SIP/2.0/UDP 172.21.40.44;branch=z9hG4bKitIIziaAlKS
+Via: SIP/2.0/UDP [3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]:5062
+     ;branch=z9hG4bKJv+PsUQdfOb
+     ;received=172.21.40.24
+Record-Route: <sip:bob@example.com?OPTIONS sip:bob@example.;maddr=172.21.40.44>
+Record-Route: <sip:bob@example.com
+     ;maddr=[3ffm:1200:3012:a46]>
+From: <siÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿúÿÿÿÿÿÿÿÿÿÿÿÿÿp:alice@exam’“šÑcom>;tag=ud6a29947297]:50
+Via: SIP/2.0/UDP [3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]:5062
+     ;branch=com SIP/z8hG4bKJv+PsUQdfOb
+   C ;received=172.21.40.24
+Record-Route: <sip:bob@example.clice@example.com>;tag=ud6a29947
+To: <sip:bob@example.com>
+Call-ID: f3359e42-5109-1e8d:6a46]:5062
+     ;branch=z9hG4bKuNCTHs8Lum
+To: <sip:bo0
+Via: SIP/2.0/UDP 172.21.40.44;branch=z9hG4bKitIIziaAlKS
+Via: SIP/2.0/UDP [3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]:5062
+     ;branch=z9hG4bKJv+PsUQdfOb
+     ;received=172.21.40.24
+Record-Route: <sip:bob@example.com?OPTIONS sip:bob@example.;maddr=172.21.40.44>
+Record-Route: <sip:bob@example.com
+     ;maddr=[3ffm:1200:3012:a46]>
+From: <siÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿúÿÿÿÿÿÿÿÿÿÿÿÿÿp:alice@exam’“šÑcom>;tag=ud6a29947297]:50
+Via: SIP/2.0/UDP [3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]:5062
+     ;branch=com SIP/z8hG4bKJv+PsUQdfOb
+   C ;received=172.21.40.24
+Record-Route: <sip:bob@example.clice@example.com>;tag=ud6a29947
+To: <sip:bob@example.com>
+Call-ID: f3359e42-5109-1e8d:6a46]:5062
+     ;branch=z9hG4bKuNCTHs8Lum
+To: <sip:bob@example.kom>
+Call-ID: f3lab.sr.ntc.nokia.com>;foo=barmple.com;maddr=172.21.40.44>
+Record-Route: <sip:bob@exCSeaq: com
+     ;maddr=[1ffm:1200:3012:c000:210:a4ff:fe8d:6a46]>
+From: <sip:alice@example.com>;tag=ud6a29947297]:5062/P 0  ;branch=z9hG4bKuNCTHs8Lumv
+     ;received=3ffe:1200:3012:c006:0030:e0ff:fe40:6297
+Via: SIP/2.0/UDP [3ffe:1200:3012:c000:210:a4ff:fe8d:6a?6]:5062
+     ;branch=z8hG4bKuNCTHs8Lum
+To: <sip:bob@example.kom>
+Call-ID: f3lab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip:gïrage.sr.ntc.nokia.com:5060;maddr=srlab.sr.c.nokia.com>10a47e1c0f
+CS
+Hide: rntent-Length: 0
+Accept:
+Allotent-Length: 0
+Accept:
+Allow:
+eq: 1 OPTIONS
+Contact: <sip:[3ffe:1200:3012:c000:210:a4ff:fe8d:6a4om;maddr=172.21.40.44>
+Record-Route: <sip:bob@ex2.0
+Via: SIP/2.0/UDP 172.21.40.44;bran12c:000:210:a4ff:fe8d:6a46]>
+From: <sip:alice@example.com>;tag=ud6a29947
+To: <sip:bob@exam±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±ple.com>
+Call-ID: f3359e42-5109-1e8d:6a46]:5062
+     ;branch=z9hG4bKuNCTHs8Lum
+To: <sip:bob@example.kom>
+Call-ID: f3la.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.com
+Call-ID: 982773899-reg@172.21.9.155
+CSeq: 1 REGISTER
+WWW-Authenticate: Digest realm="garage.sr.ntc.nokia.com", 
+    nonce="MjAwMS0wMS0yMSAxNTowODo1OA==", algorithm=MD5, qop="auth"
+Content-Length: 0
+
+SIP/2.0 401 UnauthorizRefer-To: ed
+Via: SIP/2.0/UDP srlab.{r.ntc.nokia.com:Via: SIP/2:6a46]:5062
+     ;branch=z8hG4bKuNCTHs8Lum
+To: <sip:bob@example.kom>
+Call-ID: f3lab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip:gïrage.sr.ntc.nokia.com:5060;maddr=srlab.sr.c.nokia.com>10a47e1c0f
+CS
+Hide: rntent-Length: 0
+Accept:
+Allotent-Length: 0
+Accept:
+Allow:
+eq: 1 OPTIONS
+Contact: <sip:[3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]b@example.kom>
+Call-ID: f3lab.sr.ntc.nokia.com>;foo=barmple.com;maddr=172.21.40.44>
+Record-Route: <sip:bob@exCSeaq: com
+     ;maddr=[1ffm:1200:3012:c000:210:a4ff:fe8d:6a46]>
+From: <sip:alice@example.com>;tag=ud6a29947297]:5062/P 0  ;branch=z9hG4bKuNCTHs8Lumv
+     ;received=3ffe:1200:3012:c006:0030:e0ff:fe40:6297
+Via: SIP/2.0/UDP [3ffe:1200:3012:c000:210:a4ff:fe8d:6a?6]:5062
+     ;branch=z8hG4bKuNCTHs8Lum
+To: <sip:bob@example.kom>
+Call-ID: f3lab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip:gïrage.sr.ntc.nokia.com:5060;maddr=srlab.sr.c.nokia.com>10a47e1c0f
+CS
+Hide: rntent-Length: 0
+Accept:
+Allotent-Length: 0
+Accept:
+Allow:
+eq: 1 OPTIONS
+Contact: <sip:[3ffe:1200:3012:c000:210:a4ff:fe8d:6a4om;maddr=172.21.40.44>
+Record-Route: <sip:bob@ex2.0
+Via: SIP/2.0/UDP 172.21.40.44;bran12c:000:210:a4ff:fe8d:6a46]>
+From: <sip:alice@example.com>;tag=ud6a29947
+To: <sip:bob@exam±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±ple.com>
+Call-ID: f3359e42-5109-1e8d:6a46]:5062
+     ;branch=z9hG4bKuNCTHs8Lum
+To: <sip:bob@example.kom>
+Call-ID: f3la.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.com
+Call-ID: 982773899-reg@172.21.9.155
+CSeq: 1 REGISTER
+WWW-Authenticate: Digest realm="garage.sr.ntc.nokia.com", 
+    nonce="MjAwMS0wMS0yMSAxNTowODo1OA==", algorithm=MD5, qop="auth"
+Content-Length: 0
+
+SIP/2.0 401 UnauthorizRefer-To: ed
+Via: SIP/2.0/UDP srlab.{r.ntc.nokia.com:Via: SIP/2:6a46]:5062
+     ;branch=z8hG4bKuNCTHs8Lum
+To: <sip:bob@example.kom>
+Call-ID: f3lab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip:gïrage.sr.ntc.nokia.com:5060;maddr=srlab.sr.c.nokia.com>10a47e1c0f
+CS
+Hide: rntent-Length: 0
+Accept:
+Allotent-Length: 0
+Accept:
+Allow:
+eq: 1 OPTIONS
+Contact: <sip:[3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]1:062>
+Content-Length: 5
+Accept:
+Allow:

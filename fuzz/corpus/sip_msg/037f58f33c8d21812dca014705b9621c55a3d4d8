@@ -1,0 +1,79 @@
+?REGISTER sip:garage.sr.ntc.nokia,com SIP/2.0
+Via: SIP/2.0/UDR srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.103.5 (NTA 1.0)	Via: SIP/2.0/UDP rted: sip-cccc-01, timer
+Unsupported: everything
+Error-Info: <htt://pgarage.sr.ntc.nokia.com/figure-1.jpg>
+Warning: 300 garage.sr.ntc.nokia.com IPv6 global addresses not avail?REGISTER sip:company.com SIP/2.0
+ToY.COM;x-param-0=0;x-x-p-6=6;x-param-7=7;x-param-8=8
+Call-ID: 0ha0isndaksdj@10.0.2.2  
+Contact: *
+CSeq: 9 MEGISTER
+Via: SIP/2.0/UDP 135.180.1666666666666666666666666666630.133
+Content-tag=foo
+From: sip:j.user@COMPANY.COM;x-param-0=0;x-param-1=1;x-param-2=2;x-param-3=3;x-param-4=4;x-param-5=5;x-param-6=6;x-param: o
+From: sip:j.user@COMPANY.COM;x-param-8=8
+Call-ID: 0ha0isndaksdj@10.0.2/2.0/UDP 135.180.130.133
+Content-tag=foo
+From: sip:j.user@COMPANY.COM;x-param-0=0;x-x-p-6=6;x-param-7=7;x-param-8=8
+Call-ID: 0ha0isndaksdj@10.0.2.2  
+Contact: *
+CSeq: 9 MEGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Content-tag=foo
+From: sip:j.user@COMPANY.COM;x-param-0=0;x-param-1=1;x-pa´am-2=2;x-param-3=3;x-param-4=4;x-param-5=5;x-param-6=6;x-param-7=7;x-paramID: 0ha0isndaksdj@10.0.2/2.0/UDP 135.180.130.133
+Content-tag=foo
+From: sip:j.ãåöçøº∞≤PANY.COM;x-param-0=0;x-x-p-6=6;x-param-7=7;x-param-8=8
+Call-ID: 0ha0isndaksdj@10.0.2.2  
+Contact: *
+CSeq: 9 ME
+Via: SIP/2.0/UDMISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDR srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: SIP/2.0ser@COMPANY.COM;x-param-0=0;x-param-1=1;x-param-2=2;x-param-3=3;x-param-4=4;x-param-5=5;x-param-6=6;x-param-7=7;x-param-8=8
+Call--0=0m-0=0;x-param-1=1;
+From: sip:j.user@COMPANY.COM;x-param-0=0;x-param-1=1;x-param-2=2;x-param-3=3;x-param-4=4;x-param-5=5;x-param-6=6;x-param-7=7;x-param-8=8
+Call--0=0;x-x-p-6=6;x-param-7=7;x-param-8=8
+Call-ID: 0ha0isndaksdj@10.0.2.2  
+Contact: *
+CSeq: 9 MEGISTER
+Via: SIP/2.0/UDP 135.180.1666666666666666666666666666630.133
+Content-tag=foo
+From: sip:j.user@COMPANY.COM;x-param-0=0;x-param-1=1;x-param-2=2;x-param-3=3;x-param-4=4;x-param-5=5;x-param-6=6;x-param: o
+From: sip:j.user@COMPANY.COM;x-param-0=0;x-param-1ˇˇˇˇˇˇˇˇm: sip:j.user@COMPANY.COM;x-param-0=0;x-param-1=1;x-param-2=2;x-param-3=3;x-param-4=4;x-param-5=5;x-param-6=6;x-param-7=7;x-param-8=8
+Call-ID: 0ha0isndaksdj@10.0.2/2.0/UDP 135.180.130.133
+Content-tag=foo
+From: sip:j.user@COMPANY.COM;x-param-0=0;x-x-p-6=6;x-param-7=7;x-param-8=8
+Call-ID: 0ha0isndaksdj@10.0.2.2  
+Contact: *
+CSeq: 9 MEGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Content-tag=foo
+From: sip:j.user@COMPANY.COM;x-param-0=0;x-param-1=1;x-pa´am-2=2;x-param-3=3;x-param-4=4;x-param-5=5;x-param-6=6;x-param-7=7;x-paramID: 0ha0isndaksdj@10.0.2/2.0/UDP 135.180.130.133
+Content-tag=foo
+From: sip:j.ãåöçøº∞≤PANY.COM;x-param-0=0;x-x-p-6=6;x-param-7=7;x-param-8=8
+Call-ID: 0ha0isndaksdj@10.0.2.2  
+Contact: *
+CSeq: 9 ME
+Via: SIP/2.0/UDMISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDR srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: SIP/2.0ser@COMPANY.COM;x-param-0=0;x-param-1=1;x-param-2=2;x-param-3=3;x-param-4=4;x-param-5=5;x-param-6=6;x-param-7=7;x-param-8=8
+Call--0=0;x-x-p-6=6;x-param-7=7;x-param-8=8
+Call-ID: 0ha0isndaksdj@10.0.2.2  
+Contact: *
+CSeq: 9 MEGISTER
+Via: SIP/2.0/UDP 135.180.1666666666666666666666666666630.133
+Content-tag=foo
+From: sip:j.user@COMPANY.COM;x-param-0=0;x-param-1=1;x-param-2=2;x-param-3=3;x-param-4=4;x-param-5=5;x-param-6=6;x-param: o
+From: sip:j.user@COMPANY.COM;x-param-0=0;x-param-1ˇˇˇˇˇˇˇˇm: sip:j.user@COMPANY.COM;x-param-0=0;x-param-1=1;x-param-2=2;x-param-3=3;x-param-4=4;x-param-5=5;x-param-6=6;x-param-7=7;x-param-8=8
+Call-ID: 0ha0isndaksdj@10.0.2/2.0/UDP 135.180.130.133
+Content-tag=foo
+From: sip:j.user@COMPANY.COM;x-param-0=0;x-x-p-6=6;x-param-7=7;x-param-8=8
+/TCP srlab.sr.ntc.nokia.com:5060;madent-Disposition: render;handling=optional
+Content-Length: 31
+
+xxxxxxxxxxxxxxxxxxxxxxxxxin-SE21.9.1/TLSMIME-Version: 1.0
+Content-Type: text/plain;charset=US-ASCII
+Content-Encoding: identity
+Content-Disposition: render;handling=optional
+Content-Length: 31
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxx

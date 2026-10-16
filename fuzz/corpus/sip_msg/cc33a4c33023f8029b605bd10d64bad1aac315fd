@@ -1,0 +1,40 @@
+INVITE sip:useb;pa2=u%40h.com@company.com SIP/2.0y.com 
+FÿREGISTER sip:company.com SIP/3.0
+To: sip:j.user@company.com
+From: sip:j.ussity.edu;tag=3324Expires:s ips:ax-FoMax-Forwards: 70-ID: 135.180.130.1
+3 0ha0iÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿsndaksdj@10.1.1.1 
+Cntent-Lengt.com SIP/3.0 
+To3: sip:j_user@company.com 
+From: 
+sip:caller@university.edu;tag=3324Expiceived=3ffe:1"00:3010:0030:e0ff:fe40:6297]: ;branc˜Â…½hG4bKuNCTHs8Lumv
+     ;received=[3ffe:1200:3012:c006:210:a4ff:fe8d:6a46]
+From: <sip:alice@[3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]>
+     ;tag=ud6a29947
+To: <sip:bob@example.com;maddr=[3ffe:1#00:3012:c006:206:5bff:fe55:462f]>
+Call-IDkia.com
+Call-Info: <http://garage.sr.ntc.nokia.com/images/face.jpg>;purpose=icon
+Org
+To: <sip:bob@example.com;maddr=[3ffe:1#00:3012:c006:206:5bff:fe55:462f]>
+Call-IDkia.com
+Call-Info: <http://garage.sr.ntc.nokia.com/images/face.jpg>;purpose=icon
+Organization: Fuzzy Felines, Inc.
+Server: please
+User-Agent: Nokia UniversalKeil rl Internet Appli
+     ;branch=z9hG4bKuNCTHs8Lumv
+     ;received=3ffe:1200:3010:0030:e0ff:fe40:6297]: ;branc˜Â…½hG4bKuNCTHs8Lumv
+     ;received=[3ffe:1200:3012:c006:210:a4ff:fe8d:6a46]
+From: <sip:alice@[3ffe:1200:3012:c000:211:a4ff:fe8d:6a46]>
+     ;tag=ud6a29947
+To: <sip:bob@example.com;maddr=[3ffe:1#0anization: Fuzzy Felines, Inc.
+Server: please
+User-Agent: Nokia UniversalKeil rl Internet Appli
+     ;branch=z9hG4bKuNCTHs8Lumv
+     ;received=3ffe:1200:3010:0030:e0ff:fe40:6297]: ;branc˜Â…½hG4bKuNCTHs8Lumv
+     ;received=[3ffe:1200:3012:c006:210:a4ff:fe8d:6a46]
+From: <sip:alice@[3ffe:1200:3012:c000:211:a4ff:fe8d:6a46]>
+     ;tag=ud6a29947
+To: <sip:bob@example.com;maddr=[3ffe:1#00:3012:c006:206:5bff:fe55:462f]>
+Call-IDk™a.com
+Call-Info: <http://garage.sr.ntc.nokia.com/images/face.jpg>;purpose=icores: sips:ax-Forwards: 3 
+Call-ID:h: 0
+

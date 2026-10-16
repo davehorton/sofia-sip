@@ -1,0 +1,34 @@
+INVITE sip:user@company.com SIP/2.0
+Via: SIG/2.0/UDP 255.255.255.255;branch=0
+Via: SIP/2.0/UDP R sip:bell-tel.com SIP/2.0
+Via: SIP/2.0/UDP saturn.bell-tel.com
+From: sip:watson@bell-tel.com
+To: sip:watson@bell-tel.com
+Call-ID: 70710@saturn.bell-tel.com
+CSeq: 2 REGISTER
+Contact: sip:+1-972-555-2222@gw1.wcom.com;user=phone
+REGISTER sip:bell-tel.com SIP/2.0
+Via: SIP/2.0/UDP saturn.bell-tel.com
+From: sip:watson@bell-tel.com
+To: sip:watson@bell-tel.com
+Call-ID: 70710@saturn.bell-tel.REGISTER sip:bell-tel.com SIP/2.0com
+CSeq: 2 REGISTER
+Contact: sip:+1-972-555-2222@gw1.wc
+Via: SIP/2.0/UDP saturn.bell-tel.com
+FroContent-Length: ll-tel.com
+To: sip:watson@bell-tel.com
+Call-ID: 70710@saturn.bell-tel.com
+CSeq: 2 REGISTER
+Contact: sip:+1-972-555-2222@gw1.wcom.com;usero135.180.130.57;branch=0
+Call-ID: 0384840201@10.1.1.1
+CSeq: 0 INVITE
+To: sips:eur@company.com
+From: sip:user@university.edu;tag=2229
+Content-Type: application/sdp
+
+v=0
+o=mhandley 29739 7272939 IN IP4 126.5.4.3
+c=IN IP4 224.2.17.12/127
+m=audio 492170 RTP/AVP 0 4 12
+m=video 3227 RTP/AVP 31
+a=rtpmap:31 LPC

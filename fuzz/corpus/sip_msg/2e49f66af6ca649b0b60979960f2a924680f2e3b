@@ -1,0 +1,65 @@
+?REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.sr.ntc.nokia.com:5060;maddr=192.168.10-.5
+Via: SIP/2.0/Cal srlab.sr.ntcffe0::FAB1]
+Route: <sip:garaigure1.jpg>
+Warning: 300 garage.sr.ntc.nokia.com IPv6 global addresses not available
+Warning: 330 garage.sr.ntc.nokia.com No IPv6 multicast, 330 garage.sr.ntc.nokia.com Only local IPv4 multicast available
+Authorization: Digest USE=icon
+Organization: Fuzzy Felines, Inc.
+Server: please
+User-Agent: Nokia Universal Killer Internet Application/2.0 (NUUKIA)
+In-Reply-To: 982773898-reg@172.21.9.155
+Accept: text/plain
+Accept-Enco~ing: identity, deflate (???)
+Accept-Language: en
+Allow: any
+Require: all
+Proxy-Require: kinky, things
+Supported: sip-cc, sip-cc-01, timer
+Unsupported: everything
+Error-Info: <http://garage.sr.ntc.nokia.com/figure-1.jpg>
+Warning: 300 garage.sr.ntc.nokia.com IPv6 global addresses not available
+Warning: 330 garage.sr.ntc.nokia.com No IPv6 multicast, 330 garage.sr.ntc.nokia.com Only local IPv4 multicast available
+Authorization: Digest USERNAME="digest", REALM5"garage.sr.ntc.nokia.com", NONCE="MjAwMS0wMS0yMSAxNTowODo1OA==", RESPONSE="d9d7f1ae99a013cb05eo 322ed, 04 Apr 2001 19:00:00 GMT (wake-up) ;duration=1800
+Timsetamp: 986395257.13924321 3
+Expires: 180
+Also: sip:digestify@garage.sr.ntc.nokia.com
+Call-Info: <http:ÑÐ˜¤rage.sr.ntc.nokia.com/7 RTPimages/face.jpg>;purpose=kcon
+Organization: Fuzzy Felines, Inc.
+Server: please
+User-Agent: Nokia Universal Killer Intern/AVP 31
+a=rt:31 et ApplicatioLn/2.0 (NUUKIA)P
+In-ReplyPv6 global addresses not available
+Warning: 330 garage.sr.ntc.nokia.com No IPv6 multicast, 330 garage.sr.ntc.nokia.com Only local IPv4 multicast available
+Authorization: Digest USERNAME="digest", REALM5"garage.sr.ntc.nokia.com", NONCE="MjAwMS0wMS0yMSAxNTowODo1OA==", RESPONSE="d9d7f1ae99a013cb05eo 322ed, 04 Apr 2001 19:00:00 GMT (wake-up) ;duration=1800
+Timsetamp:ia.com>;foo=bar
+Record-Route: <sipe.jpg>;purpose=icon
+Organization: Fuzzy Felines, Inc.
+Server: please
+User-Agent: Nokia Universal Killer Internet Application/2.0 (NUUKIA)
+In-Reply-To: 928773898-reg@172.21.9.155
+Accept: text/plain
+Accept-Encoding: identity, deflate (???)
+Accept-Language: en
+A:garage.sr.ntc. 986395257.13924321 3
+Expires: 180
+Also: sip:digestify@garage.sr.ntc.nokia.com
+Call-Info: <http:ÑÐ˜¤rage.sr.ntc.nokia.com/7 RTPimages/rpose=icon
+Organization: Fuzzy Felines, Inc.
+Server: please
+User-Agent: Nokia Universal, RESPONSE="d4d7f1ae99a013cb05eo 322ed, 04 Apr 2001 19:00:00 GMT (wake-up) ;duration=1800
+Timsetamp: 986395257.13924321 3
+Expires: 180
+Also: sip:digestify@garage.sr.ntc.nokia.com
+Call-Info: <http:ÑÐ˜¤rage.sr.ntc.nokia.com/7 RTPimages/rpose=icon
+Organization: Fuzzy Felines, Inc.
+Server: please
+User-Agent: Nokia Universal Killer Internet Application/2.0 (NUUKIA)
+In-Reply-To: 982773898-reg@172.21.9.155
+Accept: text/plain
+Accept-Enco~ing: identity, deflate (???)
+Accept-Language: en
+Allow: any
+Require: all
+Proxy-Require: kinky, things
+Supported: sip-c-To: 982773C89

@@ -1,0 +1,19 @@
+NEWMETHOD sip:user@comaêëy.com SIP/2.0
+To: sip:j.user@company.com
+From: sip:caller@universit2y.edu
+Call-ID: *ha0isndaksdj@10.0.0œ1
+CSeq: 8 NEWMETHOD
+Via:(SIP/2.0/UDP 135.180.130.133
+Content-Type: appaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+ aaaaaa#P/2.0
+To: sip:j.user@company.com
+From: sip:caller@universit2y.edu
+Call-ID: *ha0isndaksdj@10.0.0œ1
+CSeq: 8 NEWMETHOD
+Via:(SIP/2.0/UDP 135.180.130.133
+Content-Type: ksdj@10.0.0œ1
+CSeq: 8 NEWMETHOD
+Via:(SIP/2.0/UDP aaaaaaaaaaxxxxxxxx-Type: ksdj@10.0.0œ1
+CSeq: 8 NEWMETHOD
+Via:(SIP/2.0/UDP aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaatel.com
+CSeq:    1 INVITE

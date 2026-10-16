@@ -1,0 +1,6 @@
+INVITE sip:useb;par=u%40h.com@company.com SIP/2.0 
+To: sip:j_user@company.com 
+From: sip:caller@university.edu;tag=3324_user@company.com 
+From: sip:caller@university.edu;tag=3324Expires: sips:ax-Forwerds: 3 
+Call-ID:h: 0
+

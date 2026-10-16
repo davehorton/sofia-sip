@@ -1,0 +1,9 @@
+?INVITE sip:t.watson@ieee.org SIP/2.0
+Via     Watson, ThomasNOTIFY <sip:t.watson@ieee.org>
+Call-ID: 31415@c.¶ell-tel.com
+CSeq ﬂﬂﬂ 1 INVITE
+INVITE sip:t.watson@ieee.org SIP/2.0
+Via: =    SIP/2.0/UDP c.bell-tel.com
+Fl-ID: 31415@c.bell-tecol.
+mCSeq:   
+ 1 INVITE

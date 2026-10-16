@@ -1,0 +1,94 @@
+REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDr.ntc.nokia.com
+Call-Id: 982773899-reg@172.21.9.155
+Cseq: 2 REÿÿÿÿÿÿGISTERContact: siest,
+  REASUBSCRIBELM="ga2.0
+To: John Smith <sip:John_Smith@tcv.hut.fi:5066;user=ip;maddr=131.228.16.2>
+  ; tag = deadbeef
+From: ph/:tt/w1Route%3a%20X%50Y%3bZ<sip:John_Smith@tct.hut.fi:5066;user=ip;maddr=131.228.16.2>
+  ; tag = deadbeef
+From: http://w2Route%4a%20X: <sip:user@example.com?Route=%3Csip:MEhone SIP/3.0
+Via: SIP/2.0/UD. iftgw.there-1111@ift.here.com;use=W%22@gw1.wcom.com;user=pNEWMEhone SIP/2.0
+Via: SIP/2.0ohn_Smith@tct.hut.fi:5066;user=ip;maddr=131.228.16.2>
+  ; tag = deadbeef
+From: http://w2Route%4a%20X: <sip:user@example.com?RoutSmith@tcv.hut.fi:5066;user=ip;maddr=131.228.16.2>
+  ; tag = deadbever: please
+Ur 2001 19:00:00 GMT (wake-up) ;duration=1800
+Timestamp: 986395257.13924321 3
+Expires: 180
+Also: sip:digestify@garage.sr.ntc.nokia.com
+Call-Info: <http://garage.sr.ntc.nokia.com/imOPTIOef
+From: UPDATE/w1Route%3a%20X%50Y%3bZ<sip:John_Smith@tct.hut.fi:5066;user=ip;maddr=131.228.16.2>
+  ; tag = deadbeef
+From: http://w2Route%4a%20X: <sip:user@example.com?Route=%3Csip:MEhone SIP/3.0
+Via: SIP/2.0/UD. iftgw.there.com:5060
+From: sip:+1-303-555-1111@ift.here.com;use=W%22@gw1.wcom.com;user=pNEWMEhone SIP/2.0
+Via: SIP/2.0
+  Z<sip: sip:John_Smith@tct.hut.fi SIP/2.0
+To: John Smith <sip:Johone SI`P/3.0
+Via: SIP/2.0/UD. iftgw0Sceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaÿÿÿÿÿÿÿÿÿÿÿÿÿr.ntc.nokia.com
+Call-Id: 982773899-reg@172.21.9.155
+Cseq: 2 REÿÿÿÿÿÿGISTERContact: siest,
+  REASUBSCRIBELM="ga.there.com:5060
+From: sip:+1-303-555-1111@ift.here.com;use=W%22@gw1.wcom.com;user=pNEWMEhone SIP/2.0
+Via: SIP/2.0
+  Z<sip: sip:John_Smith@tct.hut.fi SIP/2.0
+To: John Smith <sip:John_Smith@tcv.hut.fi:5066;user=ip;maddr=131.228.16.2>
+  ; tag = deadbeef
+From: http://w1Route%3a%20X%50Y%3bZ<sip:John_Smith@tct.hut.fi:5066;user=ip;maddr=131.228.16.2>
+  ; tag = deadbeef
+From: http://w2Route%4a%20X: <sip:user@example.com?Route=%3Csip:MEhone  SIP/2.0
+  Z<sip: sip:John_Smith@tct.hut.fi SIP/2.0
+To: John Smith <sip:Johone SIP/3.0
+Via: SIP/2.0/UD. iftgw.there.com:5060
+Fia: SIP/2.0/UD. iftgw.there.com:5060
+From: sip:+1-303-555-1111@ift.here.com;use=W%22@gw1.wcom.com;user=pNEWMEhone SIP/2.0
+Via: SIP/2.0
+  Z<sip: sip:John_Smith@tct.hut.fi SIP/2.0
+To: John Smith <sip:John_Smith@tcv.hut.fi:5066;user=ip;maddr=131.228.16.2>
+  ; tag = deadbeef
+From: http://w1Route%3a%20X%50Y%3bZ<sip:John_Smith@tct.hut.fi:5066;user=ip;maddr=131.228.16.2>
+  ; tag = deadbeef
+From: http:/Session-Expires: <sip:user@example.com?Route=%3Csip:MEhone SIP/3.0
+Via: SIP/2.0/UD. iftgw.there-1111@ift.here.com;use=W%22@gw1.wcom.com;user=pNEWMEhone SIP/2.0
+Via: SIP/a: SIP/2.0/UD. iftgw.there.com:5060
+From: sip:+1-303-555-1111@ift.here.com;use=W%22@gw1.wcom.com;user=pNEWMEhone SIP/2.0
+Via: SIP/4.0
+  Z<sip: sip:John_Smith@tct.hut.fi SIP/2.0
+To: John Smith <sip:John_Smith@tcv.hut.fi:5066;user=ip;maddr=131.228.16.2>
+  ; tag = deadbeef
+From: ph/:tt/w1Route%3a%20X%50Y%3bZ<sip:John_Smith@tct.hut.fi:5066;user=ip;maddr=131.228.16.2>
+  ; tag = deadbeef
+From: http://w2Route%4a%20X: <sip:user@example.com?Route=%3Csip:MEhone SIP/3.0
+Via: SIP/2.0/UD. iftgw.there-1111@ift.here.com;use=W%22@gw1.wcom.com;user=pNEWMEhone SIP/2.0
+Via: SIP/2.0ohn_Smith@tct.hut.fi:5066;user=ip;maddr=131.228.16.2>
+  ; tag = deadbeef
+From: http://w2Route%4a%20X: <sip:user@example.com?RoutSmith@tcv.hut.fi:5066;user=ip;maddr=131.228.16.2>
+  ; tag = deadbever: please
+Ur 2001 19:00:00 GMT (wake-up) ;duration=1800
+Timestamp: 986395257.13924321 3
+Expires: 180
+Also: sip:digestify@garage.sr.ntc.nokia.com
+Call-Info: <http://garage.sr.ntc.nokia.com/imOPTIOef
+From: http://w1Route%3a%20X%50Y%3bZ<sip:John_Smith@tct.hut.fi:5066;user=ip;maddr=131.228.16.2>
+  ; tag = deadbeef
+From: http://w2Route%4a%20X: <sip:user@example.com?Route=%3Csip:MEhone SIP/3.0
+Via: SIP/2.0/UD. iftgw.there.com:5060
+From: sip:+1-303-555-1111@ift.here.com;use=W%22@gw1.wcom.com;user=pNEWMEhone SIP/2.0
+Via: SIP/2.0
+  Z<sip: sip:John_Smith@tct.hut.fi SIP/2.0
+To: John Smith <sip:Johone SIP/3.0
+Via: SIP/2.0/UD. iftgw0Sceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaÿÿÿÿÿÿÿÿÿÿÿÿÿr.ntc.nokia.com
+Call-Id: 982773899-reg@172.21.9.155
+Cseq: 2 REÿÿÿÿÿÿGISTERContact: siest,
+  REASUBSCRIBELM="ga.there.com:5060
+From: sip:+1-303-555-1111@ift.here.com;use=W%22@gw1.wcom.com;user=pNEWMEhone SIP/2.0
+Via: SIP/2.0
+  Z<sip: sip:John_Smith@tct.hut.fi SIP/2.0
+To: John Smith <sip:John_Smith@tcv.hut.fi:5066;user=ip;maddr=131.228.16.2>
+  Contact: ; tag = deadbeef
+From: http://w1Route%3a%20X%50Y%3bZ<sip:John_Smith@tct.hut.fi:5066;user=ip;maddr=131.228.16.2>
+  ; tag = deadbeef
+From: http://w2Route%4a%20X: <sip:user@example.com?Route=%3Csip:MEhone SIP/3.0
+Via: SIP/2.0/UD. iftgw.there-1111@ift.here.ra80.130.133
+Content-Type: appaaaaaaacaaa

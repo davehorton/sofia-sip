@@ -1,0 +1,21 @@
+INVITE sip:user@compa´ny.com SIP/2.0
+To: sip:user@company.com
+From: sip:ucent.com>
+  ;
+ tag = 98asjd8
+CaLl-Id
+ : 0ha0isndaksdj@10.1.1.1
+cseq: 8 INVIoTE
+Via  : SIP   /  2.0/  UDP
+  135.180,130.133
+Subject :
+NewFangledHeader:   newfangled value
+ m—šß‘šˆ™angled value
+Content-Type: application/s     12.3.4.5   ;
+Event: h  =   9ikj8  ,
+  SIP  /    2.0ip:jdrosen@bell-labs.com> ; newparam = newvalue ;
+  secondparam = secondvaluio 4921707 RTP/AVP 31
+a=rR tTP/AVP 0 12
+m=video 3227 RTP/AVPGMT 31
+a=rtpmap:31 pLPCm
+ap:31 LPC

@@ -1,0 +1,102 @@
+?REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.sip:iuser@company.com
+To: sip:user@135.180.130.133
+Call-ID: 1804928587@company.com
+CSeq: 1 OPTIONS
+Expires: 0 0l@cosr.ntc.nokia.com:5060;maddr=192861..13ffe:1200:3012:c000:0Session-Expires: 030:e0ff:fe40:6297]:5062
+     ;branch=z9hG4bKuNCTHs8Lumv
+     ;received=3ffe:02.5
+Via: SIP/2.0/TCP srlab.‡sr.ntc.nokia.com:5060;maddr=192.168.102.5 (NTA 1.0)
+Via: SIP/2.0/UDp 192.2.2.1:5060	received=[ffe0::FAB1]
+Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokiat@172.21.9.155
+Call-ID: 982773899-reg@172.21.9.155
+CSeq: 2 REGISTER
+Subject: Barfoo
+Priority: emergency
+Date: Wed, 04 Apr 20\1 17:38:38 GMT
+Retry-After: Wed, 04 Apr 2001 19:00:00 GMT (wake-up) ;duration=1800
+Timestamp: 986395257nsupported: everything
+Error-Info: <httel:tp://garage.sr.ntc.nokia.com/figure-1.jpg>
+Warning: 300 garage.sr.ntc.nokia.com IPv6 global addresses not available
+Warning: 330 garage.sr.ntc.noki: 300 g;maddr=arage.sr.ntc.nokia.com IPv6 global addresses not available
+Warning: 330 garage.sr.ntc.nokia.com No IPv6 multicast, 330 garage.sr.ntc.nokia.mages/face.jpg>;purpose=icon
+Organization: Fuzzy Felines, Inc.
+Server99a013cb05f319f0fŒ»«Õ51d", URI="sip:garage.sr.ntc.nokia.com"
+Via: SIP/2.0/UDP 172.21.9.155
+MIME-Version: 1.0
+Content-Type: text/plFrom: ain;charset=US-ASCII
+Content-Encoding: identity
+Content-D(NTA 1.0)
+Via: SIP/2.0/UDp 192.2.2.1:5060	received=[ffe0::FAB1]
+Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <Üñè≈òûçûge.sr.ntc.nokia.com:5060;maddr=srlaˇ¨sr.ntc.nokia.com>
+H9999999999999999999999999999999999999999999999999ide: route
+Max “-Forwards:=192.168.102.5 (NTA 1.0)
+Via: SIP/2.0/UDp 192.2.2.1:5060	received=[ffe0::FAB1]
+Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokiat@172.21.9.155
+Call-ID: 982773899-reg@172.21.9.155
+CSeq: 2 REGISTER
+Subject: Barfoo
+Priority: emergency
+Date: Wed, 04 Apr 20\1 17:38:38 GMT
+Retry-After: Wed, 04 Apr 2001 19:00:00 GMT (wake-up) ;duration=1800
+Timestamp: 986395257nsupported: everything
+Error-Info: <httel:tp://garage.sr.ntc.nokia.com/figure-1.jpg>
+Warning: 300 garage.sr.ntc.nokia.com IPv6 global addresses not available
+Warning: 330 garage.sr.ntc.noki: 300 g;maddr=arage.sr.ntc.nokia.com IPv6 global addresses not available
+Warning: 330 garage.sr.ntc.nokia.com No IPv6 multicast, 330 garage.sr.ntc.nokia.mages/face.jpg>;purpose=icon
+Organization: Fuzzy Felines, Inc.
+Server99a013cb05f319f0fŒ»«Õ51d", URI="sip:garage.sr.ntc.nokia.com"
+Via: SIP/2.0/UDP 172.21.9.155
+MIME-Version: 1.0
+Content-Type: text/plFrom: ain;charset=US-ASCII
+Content-Encoding: identity
+Content-D(NTA 1.0)
+Via: SIP/2.0/UDp 192.2.2.1:5060	received=[ffe0::FAB1]
+Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <Üñè≈òûçûge.sr.ntc.nokia.com:5060;maddr=srlaˇ¨sr.ntc.nokia.com>
+H9999999999999999999999999999999999999999999999999ide: route
+Max “-Forwards: 15
+From: sip:digest@g:::::::::::::::::arage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.com
+Contact: s/TLSip:digest@172.21.9.155
+Call-ID: 98277389«Ÿreg@172.21.9.155
+CSeq: 2 REGISTER†
+Subject: Barfoo
+Priority: emergency
+Date: Wed, 04 Apr 20\1 17:38:38 GMT
+Retry-After: Wed, 04 Apr 2001 19arage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.sip:iuser@company.com
+To: sip:user@135.180.130.133
+Call-ID: 1804928587@company.com
+CSeq: 1 OPTIONS
+Expires: 0 0l@cosr.ntc.nokia.com:5060;maddr=192861..13ffe:1200:3012:c000:0Session-Expires: 030:e0ff:fe40:6297]:5062
+     ;branch=z9hG4bKuNCTHs8Lumv
+     ;received=3ffe:02.5
+Via: SIP/2.0/TCP srlab.‡sr.ntc.nokia.com:5060;maddr=192.168.102.5 (NTA 1.0)
+Via: SIP/2.0/UDp 192.2.2.1:5060	received=[ffe0::FAB1]
+Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokiat@172.21.9.155
+Call-ID: 982773899-reg@172.21.9.155
+CSeq: 2 REGISTER
+Subject: Barfoo
+Priority: emergency
+Date: Wed, 04 Apr 20\1 17:38:38 GMT
+Retry-After: Wed, 04 Apr 2001 19:00:00 GMT (wake-up) ;duration=1800
+Timestamp: 986395257nsupported: everything
+Error-Info: <httel:tp://garage.sr.ntc.nokia.com/figure-1.jpg>
+Warning: 300 garage.sr.ntc.nokia.com IPv6 global addresses not available
+Warning: 330 garage.sr.ntc.noki: 300 g;maddr=arage.sr.ntc.nokia.com IPv6 global addresses not available
+Warning: 330 garage.sr.ntc.nokia.com IPv6 global addresses not available
+Warning: 330 garage.sr.ntc.nokia.com No IPv6 multicast, 330 garage“åç—ëãú—nokia.com Only local IPv4 mulDigest USERNAME="digest", REAdigestify@garage.sr.ntc.nokia.com
+Call-Info: <http://garage.sr.ntc.nokia.com/images/face.jpg>;purpose=icon
+Organization: Fuzzy Felines, Inc.
+Server99a013cb05f319f0fŒ»«Õ51d", URI="sip:garage.sr.ntc.nokia.com"
+Via: SIP/2.0/UDP 172.21.9.155
+MIME-Version: 1.0
+Content-Type: text/plFrom: ain;c2isposition: render;handling=optional
+Content-Length: 31
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxx

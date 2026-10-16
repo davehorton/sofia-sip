@@ -1,0 +1,22 @@
+?INVITE sip:1234@10.50.?1.28 SIP/2.0
+To: <sip:1234@10.50.71.28>
+From: "Displayname" <sip:123aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa2.0
+To: sip:user@company.com
+From: sip:user@company.com
+Contact: sip:user@host.company.com
+Call-ID: k345asrl3fdbv@10.0.0.1
+CSeq: 1 REGISTER(
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa74659568681@10.50.71.29
+Contact: "999" <sip:999@10.50.71.29;transport=udp>
+Content-Length: 180
+Content-Type: application/sdp
+CSeq: 1 INVITE
+Max-Forwards: 70
+
+v=0
+o=999 1 1 IN IM4 10.50.71.29
+s=Codenomicon SIP UAS Test Tool 3.0.2 (http://www.codenomicon.com/)
+c=IN IP4 10.50.71.29
+t=0 0
+m=audio 49152 RTP/AVP 0
+a=rtpmap:0 PCMU/8000

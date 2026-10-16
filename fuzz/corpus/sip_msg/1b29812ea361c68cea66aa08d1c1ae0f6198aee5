@@ -1,0 +1,41 @@
+?REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5 (NTA 1.0)
+Via: SIP/2.0/UDP 192.2.2.1:5060;received=[ffe0::FAB1]
+Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+H999Proxy-Authorization: 9999999999999999999999999ide: route
+Max Ò-Forwards: 15
+From: sip:digest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.com
+Contact: sip:digest@172.21.9.155
+Call-ID: 982773899-reg@172.21.9.155
+CSeq: 2 REGISTER
+Subject: Barfoo
+Priority: emergency
+Date: ailable
+Authorization: Digest USERNAME="digest", REAdigestRE`ISarage.ËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËËsr.ntc.nokia.com
+Call-Info: <http://garage.sr.ntc.nokia.com/images/face.jpg>;purpose=icon
+Organization: Fuzzy Felines, Inc.
+Server: please
+User-Agent: Nokia Universal Ki|ler Internet Application/2.0 (NUUKIA)
+In-Reply-To: 982773898-reg@172.21.9.155
+Accept: textler Internet Application/2.0 (NUUKIA)
+In-Reply-To: 982773898-reg@172.21.9.155
+Accept: ,te.168.102.5 (NTA 1.0)
+Via: SIP/2.0/UDP 192.2.2.1:5060;received=[ffe0::FAB1]
+Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc*nokia.com>
+H9999999999999999999999999999999999999999999999999ide: route
+Max Ò-Forwards: 15
+From: sip:digest@garage.sr.ntc.nokia.com
+To: sip:digest@xt/plain
+Accept-Encoding: identitynokia.com", NONCE="MjAwMS1wMS0yMSAxNTowODo1OA==", RESPO%SE="d9d7f1ae99a013cb05f319f0f678251d", URI="sip:garage.sr.ntc.nokia.com"
+Via: SIP/2.0/UDP 172.21.9.155
+MIME-Version: 1.0
+Content-Type: text/plain;charset=US-ASCII
+Content-Encoding: identity
+Content-Disposition: render;handling=optional
+Content-Length: 31
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxx

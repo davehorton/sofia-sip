@@ -1,0 +1,76 @@
+INVITE sip:vivekg@chair.dnrc.bell-labs.com SIP/2.0
+  To :
+ aue
+Content-Type: application/
+  branch  =   9ikj8  ,
+  SIP  /    2.0   / UDP  1.2.3.4   ;ÿÿÿÿÿÿþ
+m:"Quoted string \"\"" <sip:jdrosen@be   2.0   / UDP  1.2.3.4   ;ÿÿÿÿÿÿþ
+m:"Quoted string \"\"" <sip:j99999999999999999999999999999ide: route
+Ma@x Ò-Forwards: 15niversal Killer Internet Application/2.0 (¬ªª´¶¾Öò
+In-Reply-To: 982773898-reg@172.21.9.155laue
+Content-Type: application/
+  branch  =   9ikj8  ,
+  SIP  /    2.0   / UDP  1.2.3.4   ;ÿÿÿÿÿÿþ
+m:"Quoted string \"\"" <sip:jdrosen@bell-labs.com> ; newparam = newvalue ;
+  secondparam = secondvalue  ; q = 0.33
+  (((nesder:   newfangled value
+ more newfangled value
+Content-Type: application/
+  branch  =   9ikj8  ,
+  SIP  /    2.0   / UDledHeader:   newfangl133
+Subje sip:vivekg@chair.dnrc.b
+  sip:vivekg@chair.dnrc.bell-labs.com ;    tag    = 1a1b1f1H33n
+From   : "J Rosenberg \\\"" <sip:jdrosen@lucent.com>
+  ;
+ tag sip:vivekg@chair.dnrc.bell-labs.com ;    tag    = 1a1b1f1H33n
+From   : "J Rosenberg \\\"" <sip:jdrosen@lucent.com>
+  ;
+ tag = 98asjd8
+CaLl-Id
+ : 0ha0isndaksdj@10.1.1.1
+cseq: 8 INVITE
+Via  : SIP   /  2.0/  UDP
+  135.180.130.133
+Subject :
+NewFangledHeader:   newfangl133
+Subject :
+NewFangledHeader:   newfangled value
+ more newfangled value
+Content-Type: application/
+  branch  =   9ikj8  ,
+  SIP  /    2.0   / UDP  1.2.3.4   ;ÿÿÿÿÿÿþ
+m:"Quoted string \"\"" <sip:j99999999999999999999999999999ide: route
+Ma@x Ò-Forwards: 15niversal Killer Internet Application/2.0 (¬ªª´¶¾Öò
+In-Reply-To: 982773898-reg@172.21.9.155laue
+Content-Type: application/
+  branch  =   9ikj8  ,
+  SIP  /    2.0   / UDP  1.2.3.4   ;ÿÿÿÿÿÿþ
+m:"Quoted string \"\"" <sip:jdrosen@be   2.0   / UDP  1.2.3.4   ;ÿÿÿÿÿÿþ
+m:"Quoted string \"\"" <sip:j99999999999999999999999999999ide: route
+Ma@x Ò-Forwards: 15niversal Killer Internet Application/2.0 (¬ªª´¶¾Öò
+In-Reply-To: 982773898-reg@172.21.9.155laue
+Content-Type: application/
+  branch  =   9ikj8  ,
+  SIP  /    2.0   / UDP  1.2.3.4   ;ÿÿÿÿÿÿþ
+m:"Quoted string \"\"" <sip:jdrosen@bell-labs.com> ; newparam = newvalue ;
+  secondparam = secondvalue  ; q = 0.33
+  (((nesder:   newfangled value
+ more newfangled value
+Content-Type: application/
+  branch  =   9ikj8  ,
+  SIP  /    2.0   / UDledHeader:   newfangl133
+Subject :
+NewFangledHeanewvalue ;
+  secondparam = secondvalue  ; q = 0.33
+  (((nll-labs.com> ; newparam = newvalue ;
+  secondparam = secondvalue  ; q = 0.33
+  (((nesder:   newfangled value
+ more newfangled value
+Content-Type: application/
+  branch  =   9ikj8  ,
+  SIP  /    2.0   / UDledHeader:   newfangl133
+Subject :
+NewFangledHeanewvalue ;
+  secondparam = secondvalue  ; q = 0.33
+  (((nested comments) and (more)))   ,
+ tel:4443322

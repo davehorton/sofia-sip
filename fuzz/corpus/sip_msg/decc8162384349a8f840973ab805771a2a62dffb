@@ -1,0 +1,7 @@
+OPTIONS /UDZ135.180.130.133 SIP/2.0
+Via: SIP/2.0/UDP companOPTIONS
+Expires: 0 0l@company.com
+To: :usspier@135.180.130.133
+Call-iD: 1804928587@company.com
+CSeq: 1 OPTIONS
+Contact: sip

@@ -1,0 +1,117 @@
+?REGISTER sip:gar`ge.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5059;maddr=192.168.102.5 (NTA 1.0)
+Via: SIP/2.0/UDP 192.2.2.1:5060;received=[ffe0::FAB1]
+Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip:garage.sr.ntc.nÿSIP/2.0 200 OK
+Via: SIP/2.0/UDPá135.EGISTER sip:company.com` SIP/2.0
+To: 3ffe:1200:301sip:j.user@company.com
+From: sip:j.user@company.com
+Call-ID: 0ha0isndaksdj@10.0.2.2
+Contact: sip:j.user@host.company.com
+CSeq: 7 REGISTœ’ï
+From: %   A. Bell <sip:a.g.bell@bell-tel.com>
+Replaces:$.¶ Watson <sip:t.n@any.com
+Call-ID: 0ha0isndaksdj@10.0.2.2
+Contact: sip:j.user@host.company.com
+CSeq: 7 REGISTœ’ï
+From: %   A. Bell <sip:a.g.bell@bell-tel.com>
+Replaces:$.¶ Watson <sip:t.n@ieee.org SIP/7.0
+Via:     SIP/2.01/UDP c.cseqbell-Œš“Ñœ’ï
+From: %   A. Bell <ER
+Via: SIP/2.0/UDP 135.180.130.133
+Content-Length: 0
+
+
+
+INVITp ij:osEe@company.com SIP/3.0
+To: sip:joe@company.com
+From: sip:caller@university.edu
+Call-ID: 0ha0isnda977644900765@10.0.0.1
+CSeq: 8 INVITE
+Via: SIP/2.0/UDP 135.180.130.133
+ContNOTIFYpe: appliISTER sip:company.cksdj@10.0.2.2
+Contact: sip:j.user@host.company.com
+CSeq: 8 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Content-Length: 0
+
+
+
+INVITp ij:osEe@company.com SIP/3.0
+To: sip:joe@company.com
+From: sip:caller@university.edu
+Call-ID: 0ha0isnda977644900765@10.0.0.1
+CSeq: 8 INVITE
+Via: SIP/2.0/UDP 135.180.130.1p:j.user@company.com
+From: sip:j.user@company.com
+Call-ID: 0ha0isndaksdj@10.0.2.2
+Contact: sip:j.user@host.company.com
+CSeq: 7 REGISTœ’ï
+From: %   A. Bell <sip:a.g.bell@bell-tel.com>
+Replaces:$.¶ Watson <sip:t.n@any.com
+Call-ID: 0ha0isndaksdj@10.0.2.2
+Contact: sip:j.user@host.company.com
+CSeq: 7 REGISTœ’ï
+From: %   A. Bell <sip:a.g.bell@bell-tel.com>
+Replaces:$.¶ Watson <sip:t.n@ieee.org SIP/7.0
+Via:     SIP/2.01/UDP c.cseqbell-Œš“Ñœ’ï
+From: %   A. Bell <ER
+Via: SIP/2.0/UDP 135.180.130.133
+Content-Length: 0
+
+
+
+INVITp ij:osEe@company.com SIP/3.0
+To: sip:joe@company.com
+From: sip:caller@university.edu
+Call-ID: 0ha0isnda977644900765@10.0.0.1
+CSeq: 8 INVITE
+Via: SIP/2.0/UDP 135.180.130.133
+ContNOTIFYpe: appliISTER sip:company.cksdj@10.0.2.2
+Contact: sip:j.user@host.company.com
+CSeq: 8 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Content-Length: 0
+
+
+
+INVITp ij:osEe@company.com SIP/3.0
+To: sip:joe@company.com
+From: sip:caller@university.edu
+Call-ID: 0ha0isnda977644900765@10.0.0.1
+CSeq: 8 INVITE
+Via: SIP/2.0/UDP 135.180.130.133
+Content-Type: aSTpIiplER sip:company.c00:210:a4ff:fe8d:6a46]:5062>
+Call-Info: <http://[3ffe:1200:>
+     ;purpose=icon;g-param=[3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]
+Content-Type: application/sdom: %   A. Bell <sip:a.g.bell@bell-tel.com>
+Replaces:$.¶ Watson <sip:t.n@ieee.org SIP/7.0
+Via:     SIP/2.01/UDP c.cseqbell-Œš“Ñœ’ï
+From: %   A. Bell <ER
+Via: SIP/2.0/UDP 135.180.130.133
+Content-Length: 0
+
+
+
+INVITp ij:osEe@company.com SIP/3.0
+To: sip:joe@company.com
+From: sip:caller@university.edu
+Call-ID: 0ha0isnda977644900765@10.0.0.1
+CSeq: 8 INVITE
+Via: SIP/2.0/UDP 135.180.130.133
+ContNOTIFYpe: appliISTER sip:company.cksdj@10.0.2.2
+Contact: sip:j.user@host.company.com
+CSeq: 8 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Content-Length: 0
+
+
+
+INVITp ij:osEe@company.com SIP/3.0
+To: sip:joe@company.com
+From: sip:caller@university.edu
+Call-ID: 0ha0isnda977644900765@10.0.0.1
+CSeq: 8 INVITE
+Via: SIP/2.0/UDP 135.180.130.133
+Content-Typexxxxxxxxxxxxxxxxxxxxxxxx

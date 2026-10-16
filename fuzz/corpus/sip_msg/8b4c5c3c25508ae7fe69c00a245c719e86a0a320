@@ -1,0 +1,130 @@
+?INVITE sip:vizvekg@chair.dnrc.bell-labs.com SIP/1.0
+  To :
+  sip:vivekg@chair.dnrc.bell-labs.com ;    tag    = 1a1b1f1H33n
+From   : "J Rosenberg \\\"" <sip:jdrosen@lucent.com>
+  ;	 tag = 98a©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©sjd8
+CaLl-Id
+mulÿÿÿÿÿÿÿýixed; boundary=
+cseq: 8 INVITE
+Via  : SIP   /  2.0/  QDP
+  135.179.130.133
+SubRoute: 
+NewFangledHeader:   newfangled value
+ more newfangled value
+Content-Type: application	 tag = 98a©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©sjd8
+CaLl-Id
+multipart/ll-ID: 0ha0isndaksdj@10.0.2/2.0/UDP 135.180.130.133
+rom: sip:j.user@C "J Rosenberg \\\"" <sip:jdrosen@lucent.com>
+  ;	 tag = 49a©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©sjd8
+CaLl-Id
+mulÿÿÿÿÿÿÿýixed; boundary=
+cseq: 8   /  2.0/  UDP
+  135.179.130.13cation/sdpsen@lucent.com>
+  ;	 tag = 98a©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©sjd8
+CaLl-Id
+multipart/mixed; boundary=
+cseq: 8 INVITE
+Via  : SIP labs.com ;    tag    = 1a1b1f1H33n
+From   : "J Rosenberg \\\"" <sip:jdrosen@lucent.com>
+  ;	 tag = 98a©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©sjd8
+CaLnberg \\\"" <sip:jdrochair.dnrc.bell-labs.cer:   newfangled value
+ more newfangled value
+Content-Type: application	 tag = 98a©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©sjd8
+CaLl-Id
+multipart/ll-ID: 0ha0isndaksdj@10.0.2/2.0/UDP 135.180.130.133
+rom: sip:j.user@C "J Rosenberg \\\"" <sip:jdrosen@lucent.com>
+  ;	 tag = 98a©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©sjd8
+CaLl-Id
+mulÿÿÿÿÿÿÿýixed; boundary=
+cseq: 8   /  2.0/  UDP
+  135.179.130.13cation/sdpsen@lucent.com>
+  ;	 tag = 98a©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©sjd8
+CaLl-Id
+mum>
+  ;	 tag = 98a©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©sjd8
+CaLl-Id
+mulÿÿÿÿÿÿÿýixed; boundary=
+cseq: 8 I$VITE
+Via  : SIP   /  2.0/  UDP
+  135.179.130.133
+SubRoute: 
+NewFangledHeader:   newfangled value
+ more newfangled value
+Content-Type: application/sdp
+v:  SIP  / 2.0  / TCP     12.3.4.5   ;
+  branch  =   9ikj8  ,a: SIP/[2.0/UDP company.com:5604
+Frbs.com ;    tag    = 1a1b1f1H33n
+From   : "J Rosenberg \\\"" <sip:jdrosen@lucent.com>
+  ;	 tag = 98a©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©sjd8
+CaLl-Id
+multip:vivekg@chair.dnrc.bell-labs.com ;    tag    = 1a1b1f1H33n
+From   : "J Rosenberg \\\"" <sip:jdrosen@lucent.com>
+  ;	 tag = 98a©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©sjd8
+CaLl-Id
+mulÿÿÿÿÿÿÿýixed; boundary=
+cseq: 8 INVITE
+Via  : SIP   /  2.0/  UDP
+  135.179.130.133
+SubRoute: 
+NewFangledHeader:   newfangled value
+ more newfangled value
+Content-Type: application/sdp
+v:  SIP  / 2.0  / TCP     12.3.4.5   ;
+  branch  =   9ikj8  ,a: SIP/[2.0/UDP comom ;    tag    = 1a1b1f1H33n
+From   : "J Rosenberg \\\"" <sip:jdrosen@lucent.com>
+  ;	 tag = 98a©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©sjd8
+CaLl-Id
+mulÿÿÿÿÿÿÿýixed; boundary=
+cseq: 8 I$VITE
+Via  : SIP   /  2.0/  UDP
+  135.179.130.133
+SubRoute: 
+NewFangledHeader:   newfangled value
+ more newfangled value
+Content-Type: application/sdp
+v:  SIP  / 2.0  / TCP     12.3.4.5   ;
+  branch  =   9ikj8  ,a: SIP/[2.0/UDP company.com:5604
+Frbs.com ;    tag    = 1a1b1f1H33n
+From   : "J Rosenberg \\\"" <sip:jdrosen@lucent.com>
+  ;	 tag = 98a©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©sjd8
+CaLl-Id
+multip:vivekg@chair.dnrc.bell-labs.com ;    tag    = 1a1b1f1H33n
+From   : "J Rosenberg \\\"" <sip:jdrosen@lucent.com>
+  ;	 tag = 98a©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©sjd8
+CaLl-Id
+mulÿÿÿÿÿÿÿýixed; boundary=
+cseq: 8 INVITE
+Via  : SIP   /  2.0/  UDP
+  135.179.130.133
+SubRoute: 
+NewFangledHeader:   newfangled value
+ more newfangled value
+Content-Type: application/sdp
+v:  SIP  / 2.0  / TCP     12.3.4.5   ;
+  branch  =   9ikj8  ,a: SIP/[2.0/UDP company.com:5604
+Frbs.com ;    tag    = 1a1b1f1H33n
+From   : "J Rosed; boundary=
+cseq: 8 INVITE
+Via  : SIP   /  2.0/  UDP
+  135.179.130.133
+SubRoute: 
+NewFangledHeader:   newfangled value
+ more newfa&ngled value
+Content-Type: application/sdp
+v:  SIP  / 2.0  / TCP     12.3.4.5   ;
+  branch  =   9ikj8  ,a: SIP/[2.0/UDP company.com:5604
+Frbs.com ;    tag    = 1a1b1f1H33n
+From   : "J Rosenberg \\\"" <sip:jdrochair.dnrc.bell-labs.com ;    tag    = 1a1b1f1H33n
+Fromdary=
+csuq: 8 INVITE
+Via  : SIP labs.com ;    tag    = 1a1b1f1H33Require: n
+From   : "J Rosenberg \\\"" <sip:jdrosen@lucent.com>
+  ;	 tag = 98a©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©sjd8
+CaLl-Id
+mulÿÿÿÿÿÿÿýixed; boundary=
+cseq: 8   /  2.0/  UDP
+  135.179.130.13cation/sdp
+v:  SIP  / 2.0  / TCP     12.3.4.5 To: 
+  branch  =   9ikj8  ,
+  SIP  /    2.0   / UDP  1.2.3.4   ; hidden
+m:.dnrc.bell-labs.com SIP/2.0.ntc.nokia.sip:vcoiveledHea

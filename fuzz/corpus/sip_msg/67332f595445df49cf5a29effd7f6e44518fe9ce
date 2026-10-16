@@ -1,0 +1,7 @@
+?OPTIONS sip:bob@example.com SIP/4.0
+Via: Replaces: P 172.21.4021.40.44>
+Record-Route: <sip:bb@exampcm.elf
+     ;m?addr=[3f%fe:1200:32c0:0100:210:a4ff:fe8d:6a46]>
+From: <sip:alMin-SE: ice@example.com>;tag=ud6a29947
+To: <sip:32c0:0100
+Allow:

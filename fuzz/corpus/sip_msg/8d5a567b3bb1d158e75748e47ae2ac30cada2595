@@ -1,0 +1,11 @@
+REGISTER sip:company.com SIP/2.0
+To: sip:user@company.com
+From: sip:user@company.com
+Contact: sip:useINVITE sip:user@company.com SIP/2.0
+To: "I have a user name of extreme proportion" <sip:user@company.com:6001;other-param=1234567890somethingela: SIP/2.0/UDP sip23.eDP sip22.example.com
+Via: SIP/2.0/UDP sip21.example.com
+Via: SIP/2&0/UDP sip2.example.com
+Via: SIP/2.0/UDP sip19.example.com
+ViaDP sip3.example.com
+Via: SIP/2.0/UDP sip2.exapmle.com
+Subscription-State: V;rportia: SIP/2.0/UDP sip1ontact: sip:user@ex.examplample.ce

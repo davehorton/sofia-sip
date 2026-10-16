@@ -1,0 +1,3 @@
+ÿOPTIONS sip:user@company.com SIP/2.0
+To: sip:user@company.com
+From: "caller"    <sip:caller@exampl: SIP/2.0/UDP 135.180.130.133

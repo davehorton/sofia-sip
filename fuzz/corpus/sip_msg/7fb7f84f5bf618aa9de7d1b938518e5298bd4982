@@ -1,0 +1,23 @@
+?OPTIONS sip:bob@example.com SIP/2.0
+Via: SIP/2.0/UDP 172.21.40.44;branch=z9hG172.21.40.44;branch=z9hG4bKitIIzAialKS
+Via: SIP/2.0/UDP [3ffe:1210Ša4ff:multipart/mixed; boundary=:210:
+   sip:  ;receive <s%ip:bob@example.com;maddr=172.21.40.44>
+Record-Route: <Hip:bob@example.com
+     ;maddr=[3f%fe:1200:3012:c000:210:aËff:fe8d:6a46b@example.com>
+Call-.44>
+Record-Route: <sip:bob@example.com
+     ;maddr=[Ìf%fe:1200:3012:c000:210:a4ff:fe8d:6a46b@example.com>
+Call-ID: f34bKitIIzAialKS
+Via: SIP/2.0/UDP [3ffe:1210Ša4ff:multipart/mixed; boundary=:210:
+   sip:  ;receive <s%ip:bob@example.com;maddr=172.21.40.44>
+Record-Route: <Hip:bob@example.com
+     ;maddr=[3f%fe:1200:3012:c000:210:aËff:fe8d:6a46b@example.com>
+Call-.44>
+Record-Route: <sip:bob@example.com
+     ;maddr=[Ìf%fe:1200:3012:c000:210:a4ff:fe8d:6a46b@example.com>
+Call-ID: f3359e42-5109-11d6-998d-0010a47e1c0f
+CSeq: 1 OPTIONS
+Conta(t: <sip:[3ffe:1200:6024:c00d=172.21.40..com;maddr=172.21.40.44>
+Record-Route: <sip:bob@exampl:c000:210:a4ff:fe8d:6a46]5ngth: 0
+Accept:
+Allow:

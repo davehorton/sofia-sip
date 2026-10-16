@@ -1,0 +1,13 @@
+?OPTIONS sip:135.13.0810.´33 SIP/2.0
+Via: SIP/2.0/UDP comp***************************any.com:5604
+From: sip:iuser@company.com
+To: sip:user@135.180.130.133
+Call-ID: 18
+Contact: sip:host.company.com
+Expires: 0xpires: 0sip:host.company.com
+Expires: 0
+Contact: sip:host.comREGISTER sipcompany.com SIP/2.0
+Topany.com
+OPTIONS sip:135.180.130.133 SIP/2.0
+Via: SIP/2.0/UDPpany.com
+Expires: 0xpires: 0sip:hos: sipt.:jco.usmpea

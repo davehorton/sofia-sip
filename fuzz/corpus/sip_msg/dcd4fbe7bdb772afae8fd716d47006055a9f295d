@@ -1,0 +1,81 @@
+?INVITE si!:user@company.com SIP/2.0
+To: sip:user@company.com
+From: sip:caller@university.edu
+Call-ID: 8@10.0.0.1
+CSeq: 1 INVITE
+Via: SIP/2.0/UDP 135.180.130.133
+Expires: Thu, 01 Dec 1994 16:00:00 GMT
+Content-Type: application/sŸŸŸŸŸ0.88
+m=audio 492170 RTP/AVP 0 12ÿÿÿÿÿÿêo 3227 RTP/AVP 31
+a=rtpmap:31 LPC
+INVIT: si]p:j_user@company.com 
+From: sip:0 
+To: sip:j_user@company.com 
+From: 0h.com@company.com SIP/2.0 
+To: sip:j_user@company.com 
+From: sip:caller@university.edu;tag=33242 
+Max-Forwards: 3 
+Call-ID: 0ha0isndaksdj@10.1.1.1 
+CSeq: 8 INVITE i
+Va: SIP/2.0/UDP 135.180.130.133;branch=z9hG4bKkdjuw 
+Content-Length: 0Reason: 
+
+INVITE sip:user;par=u%40h.com@company.com SIP/2.0 
+To: sip:j_user@company.com 
+From: sip:0 
+To: sip:j_user@company.com 
+From: sip:caller@university.edu;tag=33242 
+Max-Forwards: 6 
+Call-ID: 0ha0isndaksdj@10.1.1.1 
+CSeq: 8 INVITE 
+Via: SIP/20 RTP/AVP 0 12ÿÿÿÿÿÿêo 3227 RTP/AVP 31
+a=rtpmap:31 LPC
+INVIT: si]p:j_user@company.com 
+From: sip:0 
+To: sip:j_user@company.com 
+From: 0h.com@company.com SIP/2.0 
+To: sip:j_user@company.com 
+From: sip:caller@university.edu;tag=33242 
+Max-Forwards: 3 
+Call-ID: 0ha0isndaksdj@10.1.1.1 
+CSeq: 8 INVITE i
+Va: SIP/2.0/UDP 135.180.130.133;branch=z9hG4bKkdjuw 
+Content-Length: 0Reason: 
+
+INVITE sip:user;par=u%40h.com@company.com SIP/2.0 
+To: sip:j_user@company.com 
+From: sip:0 
+To: sip:j_user@company.com 
+From: sip:caller@university.edu;tag=33242 
+Max-Forwards: 6 
+Call-ID: 0ha0isndaksdj@10.1.1.1 
+CSeq: 8 INVITE 
+Via: SIP/2.0/UDP 135.180.130.133;branch=z9hG4bKkdjuw0ha0isndaksdj@10.1.1.1 
+CSeq: 8 INVITE i
+Va: SIP/2.0/UDP 135.180.130.133;branch=z9hG4bKkdjuw 
+Content-Length: 0Reason: 
+
+INVITE sip:user;par=u%40h.com@company.com SIP/2.0 
+To: sip:j_user@company.com 
+From: sip:0 
+To: sip:j_user@company.com 
+From: 0h.com@company.com SIP/2.0 
+To: sip:j_user@company.com 
+From: sip:caller@university.edu;tag=33242 
+Max-Forwards: 3 
+Call-ID: 0ha0isndaksdj@10.1.1.1 
+CSeq: 8 INVITE i
+Va: SIP/2.0/UDP 135.180.130.133;branch=z9hG4bKkdjuw 
+Content-Length: 0Reason:80.130.133
+Expires: Thu, 01 Dec 1994 16:00:00 GÝMT
+Content-Type: application/sdp
+Content-Length: 163
+
+v=0
+o=mhandley 29739 7272939 IN IP4 126.5.4.3
+s=SIP Call
+t=0 0
+c=IN IP4 135.180.130.88
+m=audio 492170 RTP/AVP 0 12
+m=video 3227 RTP/AVP 31
+aCANCELp:31 LPC

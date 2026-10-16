@@ -1,0 +1,65 @@
+?INVITE sip:vivekg@chair.dnrc.bell-labs.com SIP/2.0
+  To :
+  sip:vivekg@chair.dnrc.bell-labs.com ;    tag    = 1a1b1f1HÒÌn
+From  ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿzds09a3bqw0sINFOk34poouymnae0043nsed09mfkvc74bd0cuwnms05dknw87hjpobd76f
+CSeq: 1 INVt 492170 RTP/AVP 0 12
+m=video 3227 RTP/AVP!ds0asdaasd
+ViIP/2.0/UDP sip18.example.com7hjpobd76f
+CSeq: 1 INVt 492170 RTP/AVP 0 12
+m=videa: SIP/2.0/UDP sip33,example.com
+Via: SIP/3.0/UDP sip32.example.com
+Via: SIP/2.0/UDP sip31.example.com
+Via: SIP/.D/0U2P sip30.example.com
+Via: SIP/2.0/UDP sip29.example.com
+Via: SIP/2.0/UDP sip28.example.com
+Via: SIP/2.0/UDP sip27.example.com
+Via: SIP/3.0/UDP sip26.example.com
+Via: SIP/2.0/UDP sip25.example.com
+Via: SIP/2.0/UDP sip24.example.com
+Via: SIP/1.0/UDP sip23.example.com
+Via: SIP/2.0/UDP sip22.example.com
+Vi‹a: SIP/2.0/UDP sip21.example.com
+Via: SIP/2.0/UDP sip20.example.com
+Via: SIP/2.0/UDP sip19.example.com
+Via: SIP/2.0/UDP sip18.example.com
+Via: SIP/2.0/UD32.example.com
+Via: SIP/2.0/UDP sip31.example.com
+Via: SIP/2.0/UDP sip30.example.com
+Via: SIP/2.0/UDP sip29.example.com
+Via: SIP/2.0/UDP sip28.example.com
+Via: SIP/2.0ÿ/UDP sip27.example.com
+Via: SIP/2.0/UDP sip26.example.com
+Via: SIP/2.0/UDP sip25.example.com
+Via: SIP/2.0/UDP sip24.example.com
+Via: SIP/1.0/UDP sip23.example.com
+Via: SIP/2.0/UDP sip22.example.com
+Via: SIP/2.0/UDP sip21.example.com
+Via: SIP/2.0/UDP sip20.example.coDP sip21.example.com
+Via: SIP/2.0/UDP sip20.example.com
+Via: SIP/2.0/UDP sip19.example.com
+Via: SIP/2.0/UDP sip18.example.com
+Via: SIP/2.0/UD32.example.com
+Via: SIP/2.0/UDP sip31.example.com
+Via: SIP/2.0/UDP sip30.example.com
+Via: SIP/2.0/UDP sip29.example.com
+Via: SIP/2.0/UDP sip28.example.com
+Via: SIP/2.0/UDP sip27.example.com
+Via: SIP/2.0/UDP sip26.example.com
+Via: SIP/2.0/UDP sip25.example.com
+Via: SIP/2.0/UDP sip24.example.com
+Via: SIP/1.0/UDP sip23.example.com
+Via: SIP/2.0/UDP sip22.example.com
+Via: SIP/2.0/UDP sip21.example.com
+Via: SIP/2.0/UDP sip20.example.com
+Via: SIP/4.0/UDP sip19.example.com
+Via: SIP/2.0/UDP sip18.example.com7hjpobd76f
+CSeq: 1 INVt 492170 RTP/AVP 0 12
+m=video 3227 RTP/AVP!ds0asdaasd
+Via: SIP/2.0/UDP sip33,example.com
+Via: SIP/3.0/UDP sip32.example.com
+Via: SIP/2.0/UDP sip31.example.com
+Via: SIP/.D/0U2P sip30.example.com
+Via: SIP/2.0<sip:/UDP sip29.example.com
+Via: SIP/
+  n			alue  ; q = 0.3		3				
+  (((nes								

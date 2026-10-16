@@ -1,0 +1,79 @@
+ÿREGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srla-reg@172.21.9.155
+CSeMin-SE: IST2.21.9.155
+Accept: text/plain
+Accept-Encoding: idRetry-After: Wed, 04 Apr 2001 19:00:00 GMT (wake-Éup) ;duration=1800
+?INVITE sip:vivekg@chr.dnrc.bell-labs.com SIP/2.0
+  TTimestamp: 986395257.;3924322 3
+Expires:¥ 180
+Also: sip:digestify@garage.ration=1800
+Timestamp: 986395257.13924321 3
+Expires:¥ 180
+Also: sip:digestify@garage.sr.ntc.nokia.com
+Call-Info: <http:/×˜žage.sr.ntc.nokia.com/images/face.jpg>;purpose=icon
+Organization: Fuzzy Felines, .13924321 3
+Expires:¥ 180o :nt: Nokia Universal KilLer Internet Application/2.0 (NUUKIA)
+In-Reply-To: 982773899-reg@172.21.9.155
+Accept: text/plain
+Accept-Encoding: idRetry-After: Wed, 04 Apr 2001 19:00:00 GMT (wake-up) ;duration=1800
+Timestamp: 986395257.13924321 3
+Expires:¥ 180o :
+  sip:vivekg@chair.dnrc.bell-labs.com ;    tag    = 1a1b1f1H33n
+From   : "J Rosenberg \\\"" <sip:jdrosen@lucent.com>
+  ;
+ tag = 98asjd8
+CaLl-Id
+ : 0ha0isndaksdj@10.1.1.1
+csted comments)eq: 8 INVITE
+Via  : ShiddenIP   /  2.0/  UDP
+  135.180.130.133
+Subject :
+NewFangledHeader:   newfangled value
+ more newfangled value
+Content-Type: apÿÿication/sdçççççççççççççççççççççççp
+v:  SIP  / 2.0  / TCP     12.3.4.5   ;
+  branch  =   9ikj8  ,
+  SIP  /    multipart/mixed; boundary=idden
+m:"Quoted  comments)eTTTTTTTTTTTTTTTTTTT TTimestamp: 986395257.;3924322 3
+Expires:¥ 180
+Also: sip:digestify@garage.ration=1800
+Timestamp: 986395257.13924321 3
+Expires:¥ 180
+Also: sip:digestify@garage.sr.ntc.nokia.com
+Call-Info: <http:/×˜žage.sr.ntc.nokia.com/images/face.jpg>;purpose=icon
+Organization: Fuzzy Felines, .13924321 3
+Expires:¥ 180o :nt: Nokia Universal KilLer Internet Application/2.0 (NUUKIA)
+In-Reply-To: 982773899-reg@172.21.9.155
+Accept: text/plain
+Accept-Encoding: idRetry-After: Wed, 04 Apr 2001 19:00:00 GMT (wake-up) ;duration=1800
+Timestamp: 986395257.13924321 3
+Expires:¥ 180o :
+  sip:vivekg@chair.dnrc.bell-labs.com ;    tag    = 1a1b1f1H33n
+From   : "J Rosenberg \\\"" <sip:jdrosen@lucent.com>
+  ;
+ tag = 98asjd8
+CaLl-Id
+ : 0ha0isndaksdj@10.1.1.1
+csted comments)eq: 8 INVITE
+Via  : ShiddenIP   /  2.0/  UDP
+  135.180.130.133
+Subject :
+NewFangledHeader:   newfangled value
+ more newfangled value
+Content-Type: apÿÿication/sdçççççççççççççççççççççççp
+v:  SIP  / 2TTTTTTTTTTTTTTTTTTTTTTTTTTTTTq: 8 INVITE
+Via  : SIP   /  2.0/  UDP
+  135.180.130.133
+Subject :
+NewFangledHeader:   newfangled value
+ more newfangled value
+Content-Type: apÿÿication/sdçççççççççççççççççççççççp
+v:  SIP  / 2.0  / TCP     12.3.4.5   ;
+  branch  =   9ikj8  ,
+  SIP  /
+Also: sip:digestify@garage.sr.ntc.nokia.com
+Call-Info: <http://gÿÿÿpe.sr.ntc.nokia.com/images/face.jpg>;purpose=icon
+Organization: Fuzzy Felines, Inc.
+Server: please
+User-Agent: Nokia Universal Killer Internet Application/2.0 (NUUKIA)
+In-Reply-T    2.0   / UDP  1.2.o: 982773898-reg@173.4   ; 2.hidden21

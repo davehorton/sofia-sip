@@ -1,0 +1,92 @@
+?REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.sip:iuser@coived=[ffe0::FAB1]
+R:ouet <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record192.2.2.1:5060;received=[ffe0::FAB1]
+R:ouet <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-,Route: <sip:garage.sr.ntc.nokia.com:5059;maddr=srlab.sr.ntc.nokia.com>
+H9999999999999999999999999999999999999999999999999ide: route
+Ma@x Ò-Forwards: 15niversal Killer Internet Application/2.0 (¬ªª´¶¾Öò
+In-Reply-To: 982773898-reg@172.21.9.155
+Accept: textplain
+Accept-Encodip:digest@172.21.9.155
+Call-ID: 982773(on/1.0 (NUUKIA)
+In-Reply-To: 982773898-reg@Max-Forwards: 7005f319f0f678251d"?)
+Accept-Language: en
+Allow: any
+Require: all
+Proxy-Require: kinky, thinzs
+Supported: sip-cc, sip-cceceived=[ffe0::FAB1]
+R:ouet <sip:garage.sr.ntc.nokia.com:5060;ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿmaddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-,Route: <sip:garage.sr.ntc.nokia.com:5059;maddr=srlab.sr.ntc.nokia.com>
+H9999999999999999999999999999999999999999999999999ide: route
+Ma@x Ò-Forwards: 15niversa”ß´–““š‘ Internet Application/2.0 (¬ªª´¶¾Öò
+In-Reply-To: 982773898-reg@172.21.9.155
+Accept: textplain
+Accept-Encodip:digest@172.21.9.155
+Call-ID: 9827738on/1.0 (NUUKIA)
+In-Reply-To: 982773898-reg@172.21;maddrSupported: ext/plain
+Accept-Encoding: identitynokia.comtel:ONCE="MjAwMS1wM:iuser@coived=[ffe0::FAB1]
+R:ouet <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record192.2.2.1:5060;received=[ffe0::FAB1]
+R:ouet <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-,Route: <sip:garage.sr.ntc.nokia.com:5059;maddr=srlab.sr.ntc.nokia.com>
+H9999999999999999999999999999999999999999999999999ide: route
+Ma@x Ò-Forwards: 15niversal Killer Internet Application/2.0 (¬ªª´¶¾Öò
+In-Reply-To: 982773898-reg@172.21.9.155
+Accept: textplain
+Accept-Encodip:digest@172.21.9.155
+Call-ID: 982773(on/1.0 (NUUKIA)
+In-Reply-To: 982773898-reg@19d7f1ae99a013cb05f319f0f678251d"?)
+Accept-Language: en
+Allow: any
+Require: all
+Proxy-Require: kinky, thinzs
+Supported: sip-cc, sip-cceceived=[ffe0::orwards: 15niversal Killer Internet Application/2.0 (¬ªª´¶¾Öò
+In-Reply-To: 982773898-reg@172.21.9.155
+Accept: textplain
+Accept-Encodip:digest@172.21.9.155
+Call-ID: 982773(on/1.0 (NUUKIA)
+In-Reply-To: 982773898-reg@19d7f1ae99a013cb05f319f0f678251d"?)
+Accept-Language: en
+Allow: any
+Require: all
+Proxy-Require: kinky, thinzs
+Supported: sip-cc, sip-cceceived=[ffe0::FAB1]
+R:ouet <sip:garage.sr.ntc.nokia.com:5060;ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿmaddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-,Route: <sip:garage.sr.ntc.nokia.com:5059;madÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿdr=srlab.sr.ntc.nokia.com>
+H9999999999999999999999999999999999999999999999999ide: route
+Ma@x Ò&Forwards: 15niversa”ß´–““š‘ Internet Application/2.0 (¬ªª´¶¾Öò
+In-Reply-To: 982773898-reg@172.21.9.155
+Accept: tex: 15niversa”ß´–““š‘ Internet Application/2.0 (¬ªª´¶¾Öò
+In-Reply-To: 982773898-reg@172.21.9.155
+Accept: textplain
+Accept-Encodip:digest@172.21.9.155
+Call-ID: 9827738on/1.0 (NUUKIA)
+In-Reply-To: 982773898-reg@172.21;maddrSupported: ext/plain
+Accept-Encoding: identitynokia.comtel:ONCE="MjAwMS1wMS0yMSAxNTowODo1OA==", RESPONSE="d9d7f1ae99a013cb05f319f0f678251d", URI="sip:garageS0yMSAxNTowODoFAB1]
+R:ouet <sip:garage.sr.ntc.nokia.com:5060;ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿmaddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-,Route: <sip:garage.sr.ntc.nokia.com:5059;maddr=srlab.sr.ntc.nokia.com>
+H9999999999999999999999999999999999999999999999999ide: route
+Ma@x Ò-Forwards: 1tplain
+Accept-Encodip:digest@172.21.9.155
+Call-ID: 9827738on/1.0 (NUUKIA)
+In-Reply-To: 982773898-reg@172.21;maddrSupported: ext/plain
+Accept-Encoding: identitynokia.comtel:ONCE="MjAwMS1wMS0yMSAxNTowODo1OA==", RESPONSE="d9d7f1ae99a013cb05f319f0f678251d", URI="sip:garageS0yMSAxNTowODoFAB1]
+R:ouet <sip:garage.sr.ntc.nokia.com:5060;ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿmaddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-,Route: <sip:garage.sr.ntc.nokia.com:5059;maddr=srlab.sr.ntc.nokia.com>
+H9999999999999999999999999999999999999999999999999ide: route
+Ma@x Ò-Forwards: 15niversa”ß´–““š‘ Internet Application/2.0 (¬ªª´¶¾Öò
+In-Reply-To: 982773898-reg@172.21.9.155
+Accept: textplain
+Accept-Encodip:digest@172.21.9.155
+Call-ID: 9827738on/1.0 (NUUKIA)
+In-Reply-To: 982773898-reg@172.21;maddrSupported: ext/plain
+Accept-Encoding: identitynokia.comtel:ONCE="MjAwMS1wMS0yMSAxNTowODo1OA==", RESPONSE="d9d7f1ae99a013cb05f319f0f678251d", URI="sip:garageS0yMSAxNTowODo1OA==", RESPONSE="d9d7f1ae99a013cb05f319f0f678251d", URI="sip:garage.sr.ntc.nokia.com"
+Via: SIP/2.0/UDP 172.21.9.155
+MIME-Version: 1.0
+Content-Type: text/plain;charset=US-ASCII
+Content-Encoding: identity
+Content-Disposition: render;handling=optional
+Content-Length: 31
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxx

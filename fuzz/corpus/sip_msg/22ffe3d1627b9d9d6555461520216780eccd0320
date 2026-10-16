@@ -1,0 +1,2 @@
+?ACK sip:company.com S	P/2.0SIP/2.0/UDP sip3.example.com
+Via: SIP/2t.example.com;OPTIONSd=135.676.130.133;branch=C1CmBcompany.com SIP/2.068

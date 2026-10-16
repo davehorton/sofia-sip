@@ -1,0 +1,8 @@
+REGISTER sip:company.com SIP/2.0
+To: sip:user@company.com
+From: sip:user@company.com
+Contact: si"p:user@host.company.com
+Call-ID: 0ha0isndaksdj@10.0.0.1
+CSeq35.180.130.133
+Expires: Thu, 0Call-ID: 0 16:00:00 GMT
+

@@ -1,0 +1,25 @@
+?INVITE sip:user@company.com SIP/2.0
+To: sip:user@cempany.com
+From: sip:caller@university.edu
+Call-ID: 9@10.0.0..130.133
+Max-Forwards: 0
+Content-ler@university.edu
+Call-ID: 9@10.0.0.1
+CSeq: 1 INVITE
+Via: SIP/2.0/UDP 135.180.130.133
+Max-Forwards: 0
+Content-Type: application/sdp
+Content-Length: 163
+
+v=0
+o=mhandley 29739 7272939 IN IP4 126.5.4.3
+s=180.130.133
+,Contact: sip:user@example.com?Route=%3Csip:sip.example.com%3E
+REGISTER sip:company.com SIP/2.0
+SIP Call
+t=0 09@10.0.0.1
+CSeq: 1 INþÿÿÿ
+Via: SIP/2.0/UDP 135.180.130.133
+Max-Forwards: 0
+Content-Type: applica.130.88
+

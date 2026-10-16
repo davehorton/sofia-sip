@@ -1,0 +1,85 @@
+INVITE sip:user@company.com SIP/2.0
+To: sip:user@companyþÿÿÿÿÿÿÿom: sip:ucent.com>
+  ;
+ tag = 9dp
+v:  SIP  / 2.0  / TC;received=P     12.3.4.5   ;
+  branch  =   9ikj8  ,
+  SIP  /    2.0   / UDP  1.2.3.4   ; hidden
+m:"Quoted string \"\"" <som IPv6 global addresses not available
+Warning: 330 garage.sr.ntc.nokia.com No IPv6 multicast, 330 garage.sr.ntc.nokia.com Only local IPv4 multicast available
+Authorization: Digest USERNAME="digest", REALM="garage.sr.ntc.nokia.com", NONCE="MjAwMS0wMS0yMSAxNTowODo1OA==", RESPONSE="d9d7f1ae99a013cb05f319f0f678251d", URI="sip:garage.sr.ntc.nokia.com"
+Via: SIP/2.0/UDP 172.21.9.155
+MIME-Version: 1.0
+Content-Type: text/plain;charset=US-ASCII
+Content-Encoding: identity
+Content-Disposition: render;handling=optional
+Content-Length: 31
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+REGISTER    /  2.0/  UDP
+  135.180.130.133
+Subject :
+NewFangledHeader:   newfan0s.com SIP/2.0
+  To :
+  sip:vivekg@chair.dnrc.bell-labs.com ;    tag    = 1a1b1f1H33n
+From   : "J Rosenberg \\\"" <sip:jdrosen@luec5;branch=5
+Call-ID: 03833
+Subject :
+NewFangledHeader: 1  newfangled value
+ more newfangled value
+Content-Type: application/sdp
+v:  SIP  / 2.0  / TCP     12.3.4.5   ;
+  branch  =   9iin;charset=US-ASCII
+Content-Encoding: identity
+Content-Disposition: render;handling=optional
+Content-Length: 31
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+REGISTER    /  2.0/  UDP
+  135.180.130.133
+Subject :
+NewFangledHeader:   newfan0s.com SIP/2.0
+  To :
+  sip:vivekg@chair.dnrc.bell-labs.com ;    tag    = 1a1b1f1H33n
+From   : "J Rosenberg \\\"" <sip:jdrosen@luec5;branch=5
+Call-ID: 03833
+Subject :
+NewFangledHeader: 1  newfangled value
+ more newfangled value
+Content-Type: application/sdp
+v:  SIP  / 2.0  / TCP     12.3.4.5   ;
+  branch  =   9ikj7  ,
+  SIP  /    2.0   / UDP  1.2.3.4   ; hidden
+m:"Quoted string \"\"" <sip:jdrosen@bell-labs.com> ; newparam = newvalue ;
+  secondparam = secondvalue  ; q = 0.1
+CSeq: 1 INVITE
+Via: SICSeq: P/2.0/UDP 135.180.130.133
+MaSubscription-State: x-Forwards: 0
+Content-Type: application/sdp
+Content-Length: 163
+
+v=0
+o=mhandley 29739 7272939 IN IP4 126.5.4.3
+s=SIP Call
+t=0 0
+c=IN IP4 135.180.130.88
+m=audio 492170 RTP/AVP 0 12
+m=video 3227 RTP/AVP 31
+a=rtpmap:31 L———————————————————————————————————————————————kj7  ,
+  SIP  /    2.0   / UDP  1.2.3.4   ; hidden
+m:"Quoted string \"\"" <sip:jdrosen@bell-labs.com> ; newparam = newvalue ;
+  secondparam = secondvalue  ; q = 0.1
+CSeq: 1 INVITE
+Via: SICSeq: P/2.0/UDP 135.180.130.133
+MaSubscription-State: x-Forwards: 0
+Content-Type: application/sdp
+Content-Length: 163
+
+v=0
+o=mhandley 29739 7272939 IN IP4 126.5.4.3
+s=SIP Call
+t=0 0
+c=IN IP4 135.180.130.88
+m=audio 492170 RTP/AVP 0 12
+m=video 3227 RTP/AVP 31
+a=rtpmap:31 L————————————————————————————————————————————————————————————————————————————————————————————————————————PC

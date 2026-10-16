@@ -1,0 +1,172 @@
+INFOSTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.sr.ntc.nokia.co:065m0;maddr=192.168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5 (NTA 1.0×òõ­ia: SIP/2.0/UDP 192.2.2.1:5060 GMT
+Re?REGISTER sip:company.com SIP/2.0
+To: sip:j.u@recsompany.com
+From: sip:j.user@company.com
+Call-ID: 0ha0isndaksdj@10.0.1.1
+CSeq: 8 REGISTER
+Via: SIP/ SI°ªÍÑkia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.sr.ntc.nokia.co:065m0;maddr=192.168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5 (NTA 1.0×òõ­ia: SIP/2.0/UDP 192.2.2.1:5060 GMT
+Re?REGISTER sip:company.com SIP/2.0
+To: sip:j.u@recsompany.com
+From: sip:j.user@company.com
+Call-ID: 0ha0isndaksdj@10.0.1.1
+CSeq: 8 REGISTER
+Via: SIP/ SI°ªÍÑÐÏÐÃP 135.180.130.133
+Expires: Fri, 01 Jan 2010 1v:00:0P4 126.5ÿÿÿÿOPTIONS3
+s=SIP Call
+t=0 0
+c=IN Iÿÿ: s35.180.130.133
+Expires: Fri, 0.0.1.1
+CSeq: 8 REGISTER
+Via: SIP/ SI°ÐÍÑÏÐªÃP 135.180.130.133
+Expires: Fri, 01 Jan 2010 1v:00:0P4 126.5ÿÿÿÿOPTIONS3
+s=SIP Call
+t=0 0
+c=IN Iÿÿ: s35.180.ÑÌÏÑÎÌÌò
+Expires: Fri, 01 Jan 2010 1v:00:0P4 126.5ÿÿÿÿÿÿÿ.4.3
+smages/face.jpg>;purpose=icon
+Organization:SI=F Pu Call
+t
+CSeq: 1 INVITE
+Via: SI°ÐÍÑÏÐªÃP 135.180.130.133
+Expires: Fri, 01 Jan 2010 1v:00:0P4 126.5ÿÿÿ
+s=SIP Call
+t=0 0
+c=IN Iÿÿ: s35.180.130.133
+Expires: Fri, 0.0.1.1
+CSeq: 8 REGISTER
+Via: SIP/ SI°ÐÍÑÏÐªÃP 135.180.130.133
+Expires: Fri, 01 Jan 2010 1v:00:0P4 126.5ÿÿÿÿOPTIONS3
+s=SIP Call
+t=0 0
+c=INú Iÿÿ: s35.180.130.133
+Expires: Fri, 01 Jan 2010 1v:00:0P4 126.5ÿÿÿÿÿÿÿ.4.3
+smages/face.jpg>;purpose=icon
+Organization:SI=F Pu Call
+t
+CSeq: 1 INVITE
+Via: SI°ÐÍÑÏÐªÃP 135.180.130.133
+Expires: Fri, 01 Jan 2010Expires:ÐÏÐÃP 135.180.130.133
+Expires: Fri, 01 Jan 2010 1v:00:0P4 126.5ÿÿÿÿOPTIONS3
+s=SIP Call
+t=0 0
+c=IN Iÿÿ: s35.180.130.133
+Expires: Fri, 0.0.1.1
+CSeq: 8 REGISTER
+Via: SIP/ SI°ÐÍÑÏÐªÃP 135.180.130.133
+Expires: Fri, 01 Jan 2010 1v:00:0P4 126.5ÿÿÿÿOPTIONS3
+s=SIP Call
+t=0 0
+c=IN Iÿÿ: s35.180.130.133
+Expires: Fri, 01 Jan 2010 1v:00:0P4 126.5ÿÿÿÿÿÿÿ.4.3
+smages/face.jpg>;purpose=icon
+Organization:SI=F Pu Call
+t
+CSeq: 1 INVITE
+Via: SI°ÐÍÑÏÐªÃP 135.180.130.133
+Expires: Fri, 01 Jan 2010 1v:00:0P4 126.5ÿÿÿ
+s=SIP Call
+t=0 0
+c=IN Iÿÿ: s35.180.130.133
+Expires: Fri, 0.0.1.1
+CSeq: 8 REGISTER
+Via: SIP/ SI°ÐÍÑÏÐªÃP 135.180.130.133
+Expires: Fri, 01 Jan 2010 1v:00:0P4 126.5ÿÿÿÿOPTIONS3
+s=SIP Call
+t=0 0
+c=IN Iÿÿ: s35.180.130.133
+Expires: Fri, 01 Jan 2010 1v:00:0P4 126.5ÿÿÿÿÿÿÿ.4.3
+smages/face.jpg>;purpose=icon
+Organization:SI=F Pu Call
+t
+CSeq: 1 INVITE
+Via: SI°ÐÍÑÏÐªÃP 135.180.130.133
+Expires: Fri, 01 Jan 2010Expires: Fri, 01 Jan 2010 1v:00:0P4 126.5ÿÿÿÿOPTIONS3
+s=SIP Call
+t=0 0
+c=IN Iÿÿ: s35.180.130.133
+Expires: Fri, 01 Jan 2010 1v:00:0P4 126.5ÿÿÿÿÿÿÿ.4.3
+smages/face.jpg>;purpose=icon
+Organization:SI=F Pu Call
+t
+CSeq: 1 INVITE
+Via: SI°ÐÍÑÏÐªÃP 135.180.130.133
+Expires: Fri, 01 Jan 2010 1v:00:0P4 126.5ÿÿÿ
+s=SIP Call
+t=0 0
+c=IN Iÿÿ: s35.180.130.133
+Expires: Fri, 0.0.1.1
+CSeq: 8 REGISTER
+Via: SIP/ SI°ÐÍÑÏÐªÃP 135.180.130.133
+Expires: Fri, 01 Jan 2010 1v:00:0P4 126.5ÿÿnokia.com:5060;maddr=192.168.102.5 (NTA 1.0×òõ­ia: SIP/2.0/UDP 192.2.2.1:5060 GMT
+Re?REGISTER sip:company.com SIP/2.0
+To: sip:j.u@recsompany.com
+From: sip:j.user@company.com
+Call-ID: 0ha0isndaksdj@10.0.1.1
+CSeq: 8 REGISTER
+Via: SIP/ SI°ªÍÑÐÏÐÃP 135.180.130.133
+Expires: Fri, 01 Jan 2010 1v:00:0P4 126.5ÿÿÿÿOPTIONS3
+s=SIP Call
+t=0 0
+c=IN Iÿÿ: s35.180.130.133
+Expires: Fri, 0.0.1.1
+CSeq: 8 REGISTER
+Via: SIP/ SI°ÐÍÑÏÐªÃP 135.180.130.133
+Expires: Fri, 01 Jan 2010 1v:00:0P4 126.5ÿÿÿÿOPTIONS3
+s=SIP Call
+t=0 0
+c=IN Iÿÿ: s35.180.ÑÌÏÑÎÌÌò
+Expires: Fri, 01 Jan 2010 1v:00:0P4 126.5ÿÿÿÿÿÿÿ.4.3
+smages/face.jpg>;purpose=icon
+Organization:SI=F Pu Call
+t
+CSeq: 1 INVITE
+Via: SI°ÐÍÑÏÐªÃP 135.180.130.133
+Expires: Fri, 01 Jan 2010 1v:00:0P4 126.5ÿÿÿ
+s=SIP Call
+t=0 0
+c=IN Iÿÿ: s35.180.130.133
+Expires: Fri, 0.0.1.1
+CSeq: 8 REGISTER
+Via: SIP/ SI°ÐÍÑÏÐªÃP 135.180.130.133
+Expires: Fri, 01 Jan 2010 1v:00:0P4 126.5ÿÿÿÿOPTIONS3
+s=SIP Call
+t=0 0
+c=INú Iÿÿ: s35.180.130.133
+Expires: Fri, 01 Jan 2010 1v:00:0P4 126.5ÿÿÿÿÿÿÿ.4.3
+smages/face.jpg>;purpose=icon
+Organization:SI=F Pu Call
+t
+CSeq: 1 INVITE
+Via: SI°ÐÍÑÏÐªÃP 135.180.130.133
+Expires: Fri, 01 Jan 2010Expires:ÐÏÐÃP 135.180.130.133
+Expires: Fri, 01 Jan 2010 1v:00:0P4 126.5ÿÿÿÿOPTIONS3
+s=SIP Call
+t=0 0
+c=IN Iÿÿ: s35.180.130.133
+Expires: Fri, 0.0.1.1
+CSeq: 8 REGISTER
+Via: SIP/ SI°ÐÍÑÏÐªÃP 135.180.130.133
+Expires: Fri, 01 Jan 2010 1v:00:0P4 126.5ÿÿÿÿOPTIONS3
+s=SIP Call
+t=0 0
+c=IN Iÿÿ: s35.180.130.133
+Expires: Fri, 01 Jan 2010 1v:00:0P4 126.5ÿÿÿÿÿÿÿ.4.3
+smages/face.jpg>;purpose=icon
+Organization:SI=F Pu Call
+t
+CSeq: 1 INVITE
+Via: SI°ÐÍÑÏÐªÃP 135.180.130.133
+Expires: Fri, 01 Jan 2010 1v:00:0P4 126.5ÿÿÿ
+s=SIP Call
+t=0 0
+c=IN Iÿÿ: s35.180.130.133
+Expires: Fri, 0.0.1.1
+CSeq: 8 REGISTER
+Via: SIP/ SI°ÐÍÑÏANCEL.dl
+t
+CSeq: 1 INVITnrc.E
+Vibea:

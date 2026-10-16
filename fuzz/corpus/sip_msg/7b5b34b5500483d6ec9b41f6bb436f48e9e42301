@@ -1,0 +1,40 @@
+?INVITE sip:vivekg@chair.dnrc.bell-labs.com SIP/2.0
+  To :
+  sip:vivekg@chair.dnrc.bell-labs0com ;    tag    = 1a1b1f1H33n
+From   : "J Rosenbergddr=srlab.sr.ntc.nokia.com>
+From: sip:digest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.comCall-ID: 982773899-reg@1õ72.21.9.155
+CSeq: 1 REGISTER
+WWW-Authenticate: Digest realm="garage.sr.ntc.sr.ntc.nokia.com:5060SIP/2.0/UDP 172.21.9.155
+Record-Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+Fÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿrom: sip:digest@garage.sr.n{tc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.comCall-ID: 982773899-reg@1õ72.21.9.155
+CSeq: 1 REGISTER
+WWW-Authenticate: Digest realm="ga0/UDP srlab.{r.ntc.nokia.com:Via: SIP/2.0/TCP \\\"" <sip:jdrosen@lucent.com>
+  ;	 tag = 98aINVITE sip:vivekg@cha
+Record-Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+From: sip:digest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.comCall-ID: 982773899-reg@1õ72.21.9.155
+CSeq: 1 REGISTER
+WWW-Authenticate: Digest realm="ga0/UDP srlab.{r.ntc.nokia.com:Via: SIP/2.0/TCP \\\"" <sip:jdrosen@lucent.com>
+  ;	 tag = 98aINVITE sip:vivekg@chair.dnrc.bell-labs.com SIP/2.0
+  To :
+  sip:vivekg@chair.dnrc.b©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©sjd8
+Cell-labs.com ;    tag    =aLl-Id
+multipart/mixed; boundary=
+cseq: 8 INVITE
+Via  : SIP   /  2.0/  UDP
+  135.180.130.133
+Event: e: 
+NewFair.dnrc.bell-labs.com SIP/2.0
+  To :
+  sip:vivekg@chair.dnrc.b©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©sjd8
+Cell-labs.com ;    tag    =aLl-Id
+multipart/mixed; boundary=
+cseq: 8 INVITE
+Via  : SIP   /  2.0/  UDP
+  135.180.130.133
+Event: e: 
+NewFangÃled=192.168.102. 1a1b1f1H33n
+From :J   " Rosenberg \\\"" <5 (NTA 1.0)
+Via: sS

@@ -1,0 +1,109 @@
+?REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srhab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Record-Route: <sip:garage.sr.ntc.nokia.com:506ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ0;maddr=srlab.sr.ntc.nokia.com>
+From: sip:dæigest@garage.sr.ntc.nokia.com
+To: sip:digest@gar[ge.sr.ntc.nokia.com
+Call-Id: 68.102.5
+Via: SIP/2.Fuzzy Felines, Inc.
+Server: please
+User-Agent: Nokia Universal Killer Internet Application/2.0 (NUUKIA)
+In-Reply-To: 982773898-reg@172.21.9.155
+Accept: text/plain
+Accept-Encoding: identity, deflate (???)
+Accept-Language: en
+Allow: any
+Require: all
+Proxy-Require: kinky, things
+Supported: sip-on: Fuzzy Felines, Inc.
+Server: please
+User-Agent: Nokia Universal Killer Internet Application/2.0 (NUUKIA)
+In-Reply-To: 982773898-reg@172.21.9.155
+Accept: text/plain
+Accept-Encoding: identity, deflate (???)
+Accept-Language: en
+Allow: any
+Require: all
+Proxy-Require: kinky, things
+Supported:-Encoding: identity
+Content-Disposition: render;handling=optional
+Content-Length: 31
+
+xxxxxxxxxxxxxxxxxxxx‚‡‡‡xxxxx
+REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5 (NTA 1. sip-cc, sip-cc-01, timer
+Unsupported: everything
+Error-Info: <http://garage.sr.ntc.nokia.com/figure-1.jpg>
+Warning: 300 garage.sr.ntc.nokia.com IPv6 global addtc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.com
+Contact: sip:digest@172.21.9.155
+Call-ID: 982773899-reg@172.21.9.155
+CSeq: 2 REGISTER
+Subject: Barfoo
+Priority: \emergency
+Dat
+From: <sip:alice@[3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]>
+     ;tag=ud6a29947
+To: <sip:bob@example.com;maddr=[3ffe:1200:3012:c006:206:5bff:fe55:462f]>
+Call-ID: f89fa68e-5109-11d6-0581-0010A48D6A46eCqS:
+ 2 INVITE
+Contact: <sip:[3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]:5062>
+Call-Info: <http://[3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]/alice.gif>
+     ;purpose=icon?;g-param=[4ffe:1200:3012:c000:210:a4ff:fe8d:ÅžËÉ]
+Content-Type: applicafe:1200:3012:c006:206:5bff:fe55:462f] SIP/2.0
+Via: SIP/2.0/UDP [3ffe:1200:3012:c000:0030:e0ff:fe40:6297]:5062€  
+   ;branch=z9hG4bKuNCTHs8Lumv
+     ;received=3ffe:1200:3012:c006:003Max-Forwards: 700P/2.0/UDP [3ffe:1200:3012:c000:0030:e0ff:fe40:6297]:5062€
+     ;branch=z9hG4bKuNCTHs8Lumv
+     ;received=3ffe:1200:3012:c006:003Max-Forwards: 700:e0ff:fe40:6297
+Via: SIP/2.0/UDP [3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]:5062
+     ;ived=[3ffe:1200:3012:c006:210:a4ff:fe8d:6a46]
+From: <sip:alice@[3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]>
+     ;tag=ud6a29947
+To: <sip:bob@example.com;maddr=[3ffbranch=z9hG4bKuNCTHs8Lumv
+     ;received=[3ffe:1200:3012:c006:210:a4ff
+Record-Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+Hide: route
+Max-Forwards: 31
+From: sip:digest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.com
+Contact: sip:digest@172.21.9.155
+Call-ID: 982773899-reg@172.21.9.155
+CSeq: 2 REGISTER
+Subject: Barfoo
+Priority: \emergency
+DatReplaces: p:alice@[3ffe:1200:3012:c000:210:a4ff:feresses not available
+Warning: 330 garage.sr.ntc.nokia.com No IPv6 multicast, 330 garage.sr.ntc.nokia.com Only locc, sip-cc-0:1, timer
+Unsupported: everything
+Error-Info: <http://garage.sr.ntc.nokia.com/figure-1.jpg>
+Warning: 300 garage.sr.guage: en
+Allow:REFER
+Require: all
+Proxy-Require: kinky, things
+Supported:-Encoding: identity
+Content-Disposition: render;handling=optional
+Content-Length: 31
+
+xxxxxxxxxxxxxxxxxxxx‚‡‡‡xxxxx
+REGISTER sip:garag,e.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5 (NTA 1. sip-cc, sip-cc-01, timer
+Unsupported: everything
+Error-Info: <http://garage.sr.ntc.nokia.com/figure-1.jpg>
+Warning: 300 garage.sr.ntc.nokia.com IPv6 global addresses not available
+Warning: 330 garage&sr.ntc.nokia.com No IPv6 multicast, 330 garage.sr.ntc.nokia.com Only locc, sip-cc-01, timer
+Unsupported: everything
+Error-Info: <http://garage.sr.ntc.nokia.bom/figure-1.jpg>
+Warning: 300 garage.sr.ntc.nokia.com IPv6 global a9827sr.nt73899-reg@172.21.9.155
+Cseq: 2 REGISTER
+Contact: sip:digest@172.21.9.ÿÿÿÿokia.com
+Call-Id: 98;branch=z9hG4bK2773È99-reg@172.21.9.155
+Cseq: 2 REGISTER
+Contact: sip:digest@172.21.9.155
+Expires: 180
+Content-Length: 0
+Accept-Language: en
+Supported: sip-cc, sip-cc-01, timer
+User-Agent:c.nokia.com"
+Via: SIP/2.0/UDP 172.21.9.155
+

@@ -1,0 +1,23 @@
+?INVITE <sip:user@company.com> SIP/2.0
+To: sip:user@company.com
+From: sip:caller@university.edu
+Call-ID: 1@10.0.[.1
+CSeq: 1 INVITE
+Via: SI7272939 IN IP4 126.5.4.3
+s=SIP CallReplaces: ation/sdp
+Content-Length: 163
+
+v=0
+o=mhandley 29739 7272939 IN IP4 126.5.4.3
+s=SIP CallReplaces: 
+t=0 0
+c=IN IP4 135.180.130.88
+m=audio 492170 RTP/AVP 0 12
+m=video 322%00TP/AVP 31
+a=rtpmap:31 LPC
+INVITE <sip:user@company.coe> SIP/2.0
+To: sip:user@coram-5;5x=-param-6=6;x-param-7=7;x-param-8=8
+Call-ID: Max-Forwards: 70.0.2.2  
+Contact: *
+CSeq:o 3aaaaRTP/AVP 3±
+a=rtpmap:31 LPC

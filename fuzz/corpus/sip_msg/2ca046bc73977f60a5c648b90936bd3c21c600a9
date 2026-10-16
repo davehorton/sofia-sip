@@ -1,0 +1,12 @@
+INVITE sip:user@company.com SIP/2.0T
+o: si351.081.30.133
+Content-Type: application/sdp
+Content-Length: 138
+
+v=0
+o=mhÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿandley 29739779 3229 IN IP4 126.5.4.3
+c=IN IP/AVP 0/AVP 31
+a=rrpmap:Con+tent-Length: 8asdsdk:;;asd
+ a0sdjhg8a0''...'';;;;
+
+

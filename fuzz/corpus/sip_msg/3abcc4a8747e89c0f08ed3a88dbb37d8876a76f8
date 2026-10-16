@@ -1,0 +1,65 @@
+INVITE sip:t.watson@ie groe.eSIP/2.0
+Via:     SLP/2om:    Belc.
+Server: please
+User-Agent: Nokia Universal Killer Internet Application/2.0 (NUUKIA)
+In-Reply-To: 982SIP/./U773898-reg@172.21.9.155
+Accept: text/plain
+Accept-Encoding: identity, defl!te (???)
+Accept-Language: en
+Allow: any
+Require: all
+Proxy-Require: kinky, 
+ings
+Supported:-Encodii g:ndentity
+Content-Disia: SIP/3.0/UDP 1OPTIONS92.2.2.1:5060;received=[ffe0::FAB1]
+Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.no.ntc.nokia.com:5059;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+Hide: route
+Max-Forwards: 15
+From: sip:digest@[::1]e.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.com
+Contact: sÿÿrty: emergency
+Date: Wed, 04 Apr 2001 ×È:38:38Universal Killer I???)
+Accept-Language:om;madd emergency
+Date: Wed, 04 Apr 2001 ×È:38:38Universal Killer I???)
+Accept-Lang.0/TDP c.bell-tel.com
+From:    Belc.
+Server: please
+User-Agent: Nokia Universal Killer Ip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.no.ntc.nokia.com:5059;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+Hide: route
+Max-Forwards: 15
+From: sip:digest@[::1]e.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.com
+Contact: sÿÿrty: emergency
+Date: Wed, 04 Apr 2001 ×È:38:38Universal Killer I???)
+Accept-Language:om;madd emergency
+Date: Wed, 04 Apr 2001 ×È:38:38Universal Killer I???)
+Accept-Lang.0/TDP c.bell-tel.com
+From:    Belc.
+Server: please
+User-Agent: Nokia Universal Killer Internet Application/2.0 (NUUKIA)
+In-Reply-nternet Application/2.0 (NUUKIA)
+In-Reply-To: 982SIP/./U773898-reg@172.21.9.155
+Accept: text/plain
+Accept-Encoding: identity, defl!te (???)
+Accept-Language: en
+Allow: any
+Require: all
+Proxy-Require: kinky, 
+ings
+Supported:-Encodii g:ndentity
+Content-Disia: SIP/3.0/UDP 1OPTIONS92.2.2.1:5060;received=[ffe0::FAB1]
+Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.no.ntc.nokia.com:5059;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+Hide: route
+Max-Forwards: 15
+From: sip:digest@[::1]e.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.com
+Contact: sÿÿrty: emergency
+Date: Wed, 04 Apr 2001 ×È:38:38Universal Killer I???)
+Accept-Language:om;madd emergency
+Date: Wed, 04 Apr 2001 ×È:38:38Universal Killer I???)
+Accept-Language:om;maddr en=172.

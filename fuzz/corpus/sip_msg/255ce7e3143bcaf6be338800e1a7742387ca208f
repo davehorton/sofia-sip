@@ -1,0 +1,13 @@
+NEWMETHOD sip:user@company.com SIP/2.0
+To: sip:j.user@company.com
+From: sip:caller@university.edu;tag=34525
+Max-Forwards: 6
+Call1.1
+CSeq: 8 NEWMETHOD
+Via: SIP/2.0/UDP 135.180.130.133;branch=z9hG4bKkdjuw
+Content-Type: application/sdp
+
+v=0
+o=mhand0 RTP/AVP 0 12
+m=video 3227 RTP/AVP 31
+a=rtpmap:31 LPC

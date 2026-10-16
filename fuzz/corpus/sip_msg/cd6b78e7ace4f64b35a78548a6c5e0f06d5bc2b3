@@ -1,0 +1,117 @@
+REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDr.ntc.nokia.com
+Call-I?REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5 (NTA 1.0)
+Via: SIP/2.0/UDP ed, 04 Apr 2001 1~7:38:38 GMT
+Retry-After: Wed, 04 Apr 2001 39:00:00 GMT (wake-up) ;duration=1800
+Timestamp: 986395257.1392!321 3?REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.sip:iuser@coived=[ffe0:@FAB1]UDP srlab.sip:iuser@coived=[ffe0::FAB1]
+R:ouet <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record192.2.2.1:5060;receiveoxy-Require: kinky, things
+Supported: sip-cc, sip-kc-01, timer
+Unsupported: everything
+Ertel:ror-Info: <http://garage.sr.ntc.nokia.T)
+Authorization: Digest ia.com
+Call-Id: 98USERNAME="digest2,
+  REALM="e.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDr.ntc.nokia.com
+Call-Id: 982773899-reg@172.d=[ffe0::FAB1]
+R:ouet <sip:garINVITE sip:t.watson@ie groe.eSIP/2.0
+Via:     SIP/2.0/UDP c.bell-[?ffe0::FAB1]
+Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.age.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-,Route21.9.155e.sr.ntceq: 0 INVITE
+Call-ID: 98asdh@10.1.1.2
+Expires: Thu, 44 Dec 10 INVITE
+Call-ID: 98asdh@10.1.1.2
+Expires: Thu, 44 Dec 1pany.com SIP/2.0 
+To: sip:j_user@company.comceived=[ffe0::FAB1]
+R:ouet <sip:garage.sr.ntc.nokia.com:5060;madpany.com SIP/2.0 
+To: sip:j_99999999990 Ii<sip:garage.sr»ëãú—ë99ide: route
+M.nokation: Fuzzy Felines, j@10.0.2.2
+Contact: sip:j.user@host.company.com
+CSeq: 7 REGISTúêíÔ
+Frcation/2.0 (NUUKIA)
+In-Reply-To: 982773898-reg@172.21.9.155
+Accept: text/plain
+Accept-Encoding: identity, deflate (???)
+Accept-Language: en	Allow: any
+Require: all
+Proxy-Require: $kinky, things
+Supported: sip-cc, sip-kc-01, timer
+Unsupported: every.21.9.155
+Cseq: 2 REGISTER
+Contact: siest,
+  REALM="ˇˇˇˇˇˇˇˇr.ntc.nouia.com", NONCE="MjAwMS0wMS0yMSAxNTowODia.com IPv6 globo1OA==",
+  RESPONSE="d9d7f1ae99a013cb05f319f0f678251d",
+p:digest@172.21.8.155
+ExpT)
+Authorization: Digest USERNAME="digest2,
+  REALM="e.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDr.ntc.nokia.com
+Call-Id: 982773899-reg@172.21.9.155e.sr.ntc.nokation: Fuzzy Felines, Inc.
+Server: please
+User-Agent: Nokia Universal Killer Internet Application/2.0 (NUUKIA)
+In-Reply-To: 982773898-reg@172.21.9.155
+Accept: text/plain
+Accept-Encoding: identity, deflate (???)
+Accept-Language: en	Allow: any
+Require: all
+Proxy-Require: kinky, th: identity, deflate (???)
+Accept-Language: en	Allow: any
+Require: all
+Proxy-Require: kinky, things
+Supported: sip-cc, siarage.sr.ntc.nokia.coompany.com SIP/1.0
+Via: SIP/2.0/UDP 135.180.130.133
+CSeq: 0 INVITE
+Call-ID: 98asdh@10.1.1.2
+Expires: Thu, 44 Dec 10 INVITE
+Call-ID: 98asdh@10.1.1.2
+Expires: Thu, 44 Dec 1pany.com SIP/2.0 
+To: sip:j_user@company.comceived=[ffe0::FAB1]
+R:p-kc-01, timer
+Unsupported: every.21.9.155
+Cseq: 2 REGISTER
+Contact: siest,
+  REALM="ˇˇˇˇˇˇˇˇr.ntc.nouia.com", NONCE="MjAwMS0wMS0yMSAxNTowODia.com IPv6 globo1OA==",
+  RESPONSE="d9d7f1ae99a013cb05f319f0f67: <sip:garage.sr.ntc.nokia.com:58251d",
+p:digest@172.21.8.155
+ExpT)
+Authorization: Digest USERNAME="digest2,
+  REALM="e.wr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDr.ntc.nokia.com
+Call-Id: 982773899-reg@172.21.9.155e.sr.ntc.nokatiaon: Fuzzy Felines, Inc.
+Server: please
+User-Agent: Nokia Universal Killer Internet Application/2.0 (NUUKIA)
+In-Reply-To: 982773898-reg@172.2, siarage.sr.ntc.nokia.coompany.com SIP/1.0
+Via: SIP/2.0/UDP 135.180.130.133
+CSeq: 0 INVITE
+Call-ID: 98asdh@10.1.1.2
+Expires: Thu, 44 Dec 10 INVITE
+Call-ID: 98asdh@10.1.1.2
+Expires: Thu, 44 Dec 1pany.com SIP/2.0 
+To: sip:j_user@company.comceived=[ffe0::FAB1]
+R:p-kc-01, timer
+Unsupported: every.21.9.155
+Cseq: 2 REGISTER
+Contact: siest,
+  REALM="ˇˇˇˇˇˇˇˇr.ntc.nouia.com", NONCE="MjAwMS0wMS0yMSAxNTowODia.com IPv6 globo1OA==",
+  RESPONSE="d9d7f1ae99a013cb05f319f0f67: <sip:garage.sr.ntc.nokia.com:58251d",
+p:digest@172.21.8.155
+ExpT)
+Authorization: Digest USERNAME="digest2,
+  REALM="e.wr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDr.ntc.nokia.com
+Call-Id: 982773899-reg@172.21.9.155e.sr.ntc.nokatiaon: Fuzzy Felines, Inc.
+Server: please
+User-Agent: Nokia Universal Killer Internet Application/2.0 (NUUKIA)
+In-Reply-To: 982773898-reg@172.21.9.155
+Accept: text/plain
+Accept-Encoding: identity, deflate (???)
+Accept-Language: eigest@172.21.8.1059;maddr=srlab.sr.ntc.nokia.com>
+H9999999999999999999999999999999999999999999999999ide: route55
+ExpT)
+Authorization: @êDigest USERNA
+Ma@x “-Forwards: 15niversal Killer InME="digest2,
+  REALM="garage.sr.ntc

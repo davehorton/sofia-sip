@@ -1,0 +1,70 @@
+ÿREGISTER sip:garA*e.sr.ntc.nokia.com SIP/2.0
+Via: SIP52.0/UDP srlAb.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5 (NTA 1.0)
+Via: SIP/2.0/UDP 192.2.2.1:5060;received=[ffe0::FAnokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=ba60;received=[ffe0::FAB1]
+Routp:ies:< garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip††††|†††††††††††††††††††††††††††:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+Hide: route
+Max-Forwards: 15
+From: sip:digest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.com
+Contact: sip:digest@172.21.9.155
+Call-ID: 982773899-reg@172.21.9.155
+CSeq: 2 REGISTER
+Subject: Barfoo
+Priority: emergency
+Date: Wed, 04 Apr 2001 17:38:38 GMT
+Retry-After:77777777777777777cco: s777777777777777777777777777777777777777777777ewag Wed, 04 Apr 2001 19:00:00 GMT (wake-up) ;duration=1800
+Timestamp: 986395257.13924321 3
+Expires:¥ 180
+Also: sip:digestify@garage.sr.ntc.nokia.com
+Call-Info: <http://garage.sr.ntc.nokiveApr 2001 17:38:38 GMT
+Retry-After:77777777777777777cco: s777777777777777777777777777777777777777777777ewag Wed, 04 Apr 2001 19:00:00 GMT (wake-up) ;duration=1800
+Timestamp: 986395257.13924321 3
+Expires:¥ 180
+Also: sip:digestify@garage.sr.ntc.nokia.com
+Call-Info: <http://garage.sr.ntc.nokiverything
+Error-Info: <http://garage.sr.ntc.nokia.com/figure-1.jpg>
+Warning: 300 garage.sr.nt0.nokia.com IPv6 global addre-reg@172.21.9.155
+CSeq: 2 REGISTER
+Subject: Barfoo
+Priority: emergency
+Date: Wed, 04 Apr 2001 17:38:38 GMT
+Retry-After:77777777777777777cco: s777777777777777777777777777777777777777777777ewag Wed, 04 Apr 2001 19:00:00 GMT (wake-up) ;duration=1¸00
+Timestamp: 986395257.13924321 3
+Expires:¥ 180
+Also: sip:digestify@garage.sr.ntc.nokia.com
+Call-Info: <http://garage.sr.ntc.nokiverything
+Error-Info: <http://garage.sr.ntc.nokia.com/figure-1.jpg>
+Warning: 300lr garage.sr.nt0.nokia.com IPv6 global addresses not available
+Warning: 165 garage.sr.ntc.nokia.com No IPv6 multicastÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ, 330 .sr.ntc.nokia.com Only local IPv4 multicast available
+Authorization: Digest USERNAME="digest", , sip-cc-01, timer
+Unsupported: everything
+Error-Info: <http://garage.sr.ntc.nokia.com/figure-ot available
+Warning: 330 garage.sr.ntc.nokia.com No IPv6 multicastÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ, 330 garage.sr.ntc.nokia.com Only local IPv4 multicast available
+AutA not available
+Warning: 330 garage.sr.ntc.nokia.com No IPv6 murything
+Error-Info: <http://garage.sr.ntc.nokia.com/figure-1.jpg>
+Warning: 300 garage.sr.nt0.nokia.com IPv6 global addre-reg@172.21.9.155
+CSeq: 2 REGISTER
+Subject: Barfoo
+Priority: emergency
+Date: Wed, 04 Apr 2001 17:38:38 GMT
+Retry-After:77777777777777777cco: s777777777777777777777777777777777777777777777ewag Wed, 04 Apr 2001 19:00:00 GMT (wake-up) ;duration=1¸00
+Timestamp: 986395257.13924321 3
+Expires:¥ 180
+Also: sip:digestify@garage.sr.ntc.nokia.com
+Call-Info: <http://garage.sr.ntc.nokiverything
+Error-Info: <http://garage.sr.ntc.nokia.com/figure-1.jpg>
+Warning: 300lr garage.sr.nt0.nokia.com IPv6 global addresses not available
+Warning: 165 garage.sr.ntc.nokia.com No IPv6 multicastÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ, 330 .sr.ntc.nokia.com Only local IPv4 multicast available
+Authorization: Digest USERNAME="digest", , sip-cc-01, timer
+Unsupported: everything
+Error-Info: <http://garage.sr.ntc.nokia.com/figure-ot available
+Warning: 330 garage.sr.ntc.nokia.com No IPv6 multicastÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ, 330 garage.sr.ntc.nokia.com Only local IPv4 multicast available
+AutA not available
+Warning: 330 garage.sr.ntc.nokia.com No IPv6 multicast, 330 garage.sr.ntc.nokia.com Only local IPv4 multicast available
+AutA==", RESPONSE=dling=optional
+ContentSupported: -Length: 30
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxx

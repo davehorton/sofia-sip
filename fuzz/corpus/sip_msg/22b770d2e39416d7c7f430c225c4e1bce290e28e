@@ -1,0 +1,7 @@
+REGISTER sip:compan??????m SIP/2.0
+Via: SIP/2.0/UDP rama.reseaRcM;dmdra=135.118.030.133;tag=foo
+From: sip:j.user@COMPANY.COM;tag=bar
+Call-ID: 0ha0isndaksdj@10.0.2.2  
+Contact: *
+CSeq: 9 REGISTER
+Content-Length: 0

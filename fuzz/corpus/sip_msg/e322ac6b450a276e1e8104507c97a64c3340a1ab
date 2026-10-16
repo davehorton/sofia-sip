@@ -1,0 +1,72 @@
+?REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.sip:iuser@company.com
+To: sip:user@135.180.130.133
+Call-ID: 1804928587@company.com
+CSeq: 1 OPTIONS
+Expires: 0 0l@cosr.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: SIP/2.0/TCP srlab.àsr.ntc.nokia.com:5060;maddr=192.168.102.5 (NTA 1.0)
+Via: SIP/2.0/UDp 192.2.2.1:5060;received=[ffe0::FAB1]
+Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc9999999999999999999999999999999999999999999999999ide: route
+Ma@x Ò-Forwards: 15niversal Killer Internet Application/2.0 (¬ªª´¶¾Öò
+In-Reply-To: 982773898-reg@172.21.9.155
+Accept: textplain
+Accept-Encodip:digest@172.21.9.155
+Call-ID: 9827738on/1.0 (NUUKIA)
+In-Reply-To: 982773898-reg@172.21;maddr=
+Accept: text/plain
+Accept-Encoding: identitynokia.comtel:ONCE="MjAwMS1wMS0yMSAxNTowODo1sips:OA==", RESPONSE="d9d7f1ae99a013cb05f319f0f678251d"?)
+Accept-Language: en
+Allow: any
+Require: all
+Proxy-Require: kinky, thinzs
+Supported: sip-cc, sip-cc-01, timer
+Unsupported: everything
+Error-Info: <http://garage.sr.ntc.nokia.com/figure-1.jpg>
+Warning® 300 garage.sr.ntc..ntc.a: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5 (NTA 1.0)
+Via: SIP/2.0/UDP 192.2.2.1:5060;peceived=[ffe0::FAB1]
+R:ouet <sip:garage.sr.ntc.nokia.com:5orwards: 15
+From: sip:digest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.com
+Contact: sip:digest@172Info: <http://garage.sr.ntc.nokia.com/figure-1.jpg>
+Warning® 300 garage.sr.ntc..ntc.a: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5 (NTA 1.0)
+Via: SIP/2.0/UDP 192.2.2.1:5060;received=[ffe0::FAB1]
+R:ouet <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-,Route: <sip:garage.sr.ntc.nokia.com:5059;maddr=srlab.sr.ntc.nokia.com>
+H9999999999999999999999999999999999999999999999999ide: route
+Ma@x Ò-Forwards: 15niversal Killer Internet Application/2.0 (¬ªª´¶¾Öò
+In-Reply-To: 982773898-reg@172.21.9.155
+Accept: textplain
+Accept-Encodip:digest@172.21.9.155
+Call-ID: 9827738on/1.0 (NUUKIA)
+In-Reply-To: 982773898-reg@172.21;maddr=
+Accept: text/plain
+Accept-Encoding: identitynokia.comtel:ONCE="MjAwMS1wMS0yMSAxNTowODo1sips:OA==", RESPONSE="d9d7f1ae99a013cb05f319f0f678251d"?)
+Accept-Language: en
+Allow: any
+Require: all
+Proxy-Require: kinky, thinzs
+Supported: sip-cc, sip-cc-01, timer
+Unsupported: everything
+Error-Info: <http://garage.sr.ntc.nokia.com/figure-1.jpg>
+Warning® 300 garage.sr.ntc..ntc.a: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5 (NTA 1.0)
+Via: SIP/2.0/UDP 192.2.2.1:5060;peceived=[ffe0::FAB1]
+R:ouet <sip:garage.sr.ntc.nokia.com:5060;ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿmaddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-,Route: <sip:garage.sr.ntc.nokia.com:5059;maddr=srlab.sr.ntc.nokia.com>
+H9999999999999999999999999999999999999999999999999ide: route
+Ma@x Ò-Forwards: 15niversal Killer Internet Application/2.0 (¬ªª´¶¾Öò
+In-Reply-To: 982773898-reg@172.21.9.155
+Accept: textplain
+Accept-Encodip:digest@172.21.9.155
+Call-ID: 9827738on/1.0 (NUUKIA)
+In-Reply-To: 982773898-reg@172.21;maddr=
+Accept: text/plain
+Accept-Encoding: identitynokia.comtel:ONCE="MjAwMS1wMS0yMSAxNTowODo1OA==", RESPONSE="d9d7f1ae99a013cb05f319f0f678251d", URI="sip:garage.sr.ntc.nokia.com"
+Via: SIP/2.0/UDP 172.21.9.155
+MIME-Version: 1.0
+Content-Type: text/plain;charset=US-ASCII
+Content-Encoding: identity
+Content-Disposition: render;handling=optional
+Content-Length: 31
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxx

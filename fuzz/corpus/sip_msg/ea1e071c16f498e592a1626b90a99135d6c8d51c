@@ -1,0 +1,12 @@
+?OPTIONS sip:bob@example.com SIP/2.0
+Via: SIP/2.0/UDP 172.21.40.44;branch=z9hG4bKitIIzAialKS
+Via: SIP/2.0/UDP [3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]:5062
+     ;branch=z.40.44;branch=z9hG4bKitIIzAialKS
+Via: SIP/2.0/UDP [3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]:5062
+     ;branch=z9hG4bKJv+PsUQdfOb
+     ;received=172.21.40.24
+Record-Route: <sip:bob@example.com;m
+Contact: <sip:[3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]:5062>
+Content-Length: 0
+Accept:
+Allow:

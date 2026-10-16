@@ -1,0 +1,69 @@
+UPDATES sip:bob@example.com SIP/2.0
+Via: SIP/2.0/UDP 172.21.40.44;branch=z9hG4bKitIIzAialKS
+Via: SIP/2.0/UDP [3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]:5062
+     ;branch=z9hG4bKJv+PsUQdfOb
+     ;receill-ID: f89fa68e-5109-11d6-0581-0010A48D6A46
+CSeq:™2 INVITE
+Contact: <sip:[3ffe:1200:30ved=172.21.40.ששששששששששש24
+Record-Route: <sip:bob@example.c#om;maddr=172.21.40.44>
+Record-Route: <sip:bob@example.com
+     ;maddr=[3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]>
+From: <sip:alice@example010A48D6A46
+CSeq: 2 INVITE
+Contact: <sip:[3ffe:1200:30ved=172.21.40.24
+Record-Route: <sip:bob@example.c#om;maddr=172.21.40.44>
+Record-Route: <sip:bob@example.com
+     ;maddr=[3f0:3012:c000:210:a4ff:fe8d:6a46]:5062
+     ;branch=z9hG4bKJv+PsUQdfOb
+     ;receill-ID: f89fa68e-5109-11d6-0581-0010A48D6A46
+CSeq:™2 INVITE
+Contact: <sip:[3ffe:1200:30ved=172.21.40.ששששששששששש24
+Record-Route: <sip:bob@example.c#om;maddr=172.21.40.44>
+Record-Route: <sip:bob-ID: f89fa68e-5109-11d6-0581-0010A48D6A46
+CSeq:™2 INVITE
+Contact: <sip:[3ffe:1200:30ved=172.21.40.ששששששששששש24
+Record-Route: <sip:bob@example.c#om;maddr=172.21.40.44>
+Record-Route: <sip:bob@example.com
+     ;maddr=[3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]>
+From: <sip:alice@example010A48D6A46
+CSeq: 2 INVITE
+Contact: <sip:[3ffe:1200:30ved=172.21.40.24
+Record-Route: <sip:bob@example.c#om;maddr=172.21.40.44>
+Record-Route: <sip:bob@example.com
+     ;maddr=[3f0:3012:c000:210:a4ff:fe8d:6a46]:5062
+     ;branch=z9hG4bKJv+PsUQdfOb
+     ;receill-ID: f89fa68e-5109-11d6-0581-0010A48D6A46
+CSeq:™2 INVITE
+Contact: <sip:[3ffe:1200:30ved=172.21.40.ששששששששששש24
+Record-Route: <sip:bob@example.c#om;maddr=172.21.40.44>
+Record-Route: <sip:bob@example.com
+     ;maddr=[3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]>
+From: <sip:alice@example010A48D6A46
+CSeq: 2 INVITE
+Contact: <sip:[3ffe:1200:30ved=172.21.40.24
+Record-Route: <sip:bob@example.c#om;maddr=172.21.40.44>
+Record-Route: <sip:bob@example.com
+     ;maddr=[3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]>
+From: <sip:alice@example.com>;tag=ud6a29947
+To:@example.com
+     ;maddr=[3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]>
+From: <sip:alice@example010A48D6A46
+CSeq: 2 INVITE
+Contact: <sip:[3ffe:1200:30ved=172.21.40.24
+Record-Route: <sip:bob@example.c#om;maddr=172.21.40.44>
+Record-Route: <sip:bob@example.com
+     ;maddr=[3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]>
+From: <sip:alice@example.com>;tag=ud6a29947
+To: <sip:bob@example.com>
+Call-ID: f3359e42-5109-11d6-998d-0010a47e1c0f
+CSeq: 1 OPTIONS
+Contact: <sip:[3ffe:120SIP/2.0/UDP srlab.sr.nfe:1200:3012:c000:210:a4ff:fe8d:6a46]>
+From: <sip:alice@example.com>;tag=ud6a29947
+To: <sip:bob@example.com>
+Call-ID: f3359e42-5109-11d6-998d-0010a47e1c0f
+CSeq: 1 OPTIONS
+Contact: <sip:[3ffe:120SIP/2.0/UDP srlab.sr.ntc.no012:c006:210:a4ff:fe8d:6a46]
+From: <sip:alice@[3ffe:1200:3012:c000:210:a4ff:f₪8d:6a46]>
+     ;tag=ud6a29947
+To: <sip:bob@example.com;maddr=[3ffe:1200:3012:c006:206:5bff:fekia.com:5060;maddr=1926168.102.5
+Via: SIP/55:462f]>2.0/TCP srlab.sr.ntc.no

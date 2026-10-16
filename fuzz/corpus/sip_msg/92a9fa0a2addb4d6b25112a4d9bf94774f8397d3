@@ -1,0 +1,131 @@
+?OPTIONS sip:135.180.130.1135.180.130.133 SIP/2.0
+Via: SIP/2.0/UDP company.com:5604
+From: sip:iuser@company.com
+To: sip:user@135.180.130.133
+Call-ID: 18To: 982SIP/./U773898-reg@172.21.9.155
+Accept: text/plain
+Accept-Encbranch identity, defl!te (???)
+Accept-Language: en
+Aost.company.com
+Expires: 0xpires: 0sip:host.company.com
+Expires: 0
+Contact: sip:host.company.com
+OPTIONS sip:135.180.130.133 SIP/4.0
+Via: SIP/2.0/UAccept: DP compa5mn:o.yc604
+From: sip:iuser@company.com
+To: sip:user@135.180.130.133
+Call-ID: 18049.com
+CSeq: 1 OPTIONS
+Expires: 0 0l@compaID: 1804928587@company.com
+CSeq: 1 OPTIO0S
+Contact: sip:host.company.com
+Expires: 0xpires: 0sip:host.company.com
+Expires: 0
+Contact: sip:host.company.com
+OPTIONS sip:135.180.130.133 SIP/2.0
+Via: SIP/2.0/UAccept: DP compa5mn:o.yc604
+From: sip:iuser@company.com
+To: sip:user@135.180.130.133
+Call-ID: 18049.com
+CSeq: 1 OPTIONS
+Expires: 0 0l@company.com
+To: sip:user@135.180.130.133
+Call-ID: 1804928587@company.com
+CSeq: 1 OPTIO0S
+Contact: sip:host.company.com
+ExpirFrom: sip:iuser@company.com
+To: sip:user@135.180.?REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5 (NTA 1.0)
+Via: SIP/2.0/UDP 192.2.2.1:5060;received=[ffe0::FAB1]
+Route: <sip:garage.sr.ntc.nBokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip:gÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿarage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+Hide: route
+Max-Forwards: 15
+From: sip:digest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.com
+Contact: sip:digest@172.21.9.155
+Call-ID: 982773899-reg@172.21.9.155
+CSeq: 2 REGISTERSu
+bject: Barfoo
+Priority: emergency
+Date: Wed, 04 Apr 2001 17:38:38 GMT
+Retry-After: Wed, 04 Apr 2001 19:00:00 GMT (wake-up) ;duration=1800
+Timestamp:963108 3.133
+Call-ID: 18049.com
+CSeq: 1 OPTIONS
+Expires: 0 0l@company.com
+To:!sip:user@135.180.130.133
+Call-ID: 1804928587@company.com
+CSeq: 1 OPTIO0S
+Contact: sip:host.company.com
+Expires: 0xpires: 0sip:host.company.com
+Expires: 0
+Contact: sip:host.company.com
+OPTIONS'sip:135.180.130.133 SIP/2.0
+Via: SIP/2.0/UDP compa5mn:o.yc604
+From: sip:iuser@company.com
+To: sip:user@135.180.130.133
+C3
+Call-ID: 1804928587@company.com
+CSeq: 1 OPTIO0S
+Contact: sip:host.company.com
+Expires: 0xpires: 0sip:host.company.com
+Expires: 0
+Contact: sip:host.company.com
+OPTIONS sip:135.180.130.133 SIP/4.0
+Via: SIP/2.0/UAccept: DP compa5mn:o.yc604
+From: sip:iusom
+CSeq: 1 OPTIONS
+Expires: 0 0l@compaID: 1804928587@company.com
+CSeq: 1 OPTIO0S
+Contact: sip:host.company.com
+Expires: 0xpires: 0sip:host.company.com
+Expires: 0
+Contact: sip:host.company.com
+OPTIONS sip:135.180.130.133 SIP/2.0
+Via: SIP/2.0/UAccept: DP compa5mn:o.yc604
+Ftel: sip:iuser@company.13924321 3
+Expires: 180
+Also: sip:digestify@garage.sr.ntc.nokia.com
+Call-Info: <http://garage.sr.ntc.nokia.com/images/face.jpg>;purpose=icon
+Organization: Fuzzy Felines, Inc.
+Server: please
+User-Agent: Nokia Universal Killer Internet Application/2.0 (NUUKIA)
+In-Reply-To: 982773898-reg@172.21.9.155
+Accept: text/plainmaddr=eply-To: 982773898-reg@172.21.9.155
+Accept: text/plainmaddr=192.168.102.5 (NTA 1.0)
+Via: SIP/2.0/UDP 192.2.2.1:5060;received=[ffe0::FAB1]
+Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=barcom
+To: sip:user@135.180.130.133
+Call-ID: 18049.com
+CSeq: 1 OPTIONS
+Expires: 0 0l@company.com
+To: sip:user@135.180.130.133
+Call-ID: 1804928587@company.com
+CSeq: 1 OPTIO0S
+Contact: sip:host.company.com
+ExpirFrom: sip:iuser@company.com
+To: sip:user@135.180.130.133
+Call-ID: 18049.com
+ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿCSeq: 1 OPTIONS
+Expires: 0 0l@company.com
+To: sip:user@135.180.130.133
+Call-ID: 1804928587@company.com95257.13924321 3
+Expires: 180
+Also: sip:digestify@garage.sr.ntc.nokia.com
+Call-Info: <http://garage.sr.ntc.nokia.com/images/face.jpg>((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((;purpose=icon
+Organization: Fuzzy Felines, Inc.
+Server: please
+User-Agent: Nokia Universal Killer Internet Application/1.0 (NUUKIA)
+In-Reply-To: 982773898-reg@172.21.9.155
+Accept: text/plainmaddr=192.168.102.5 (NTA 1.0)
+Via: SIP/2.0/UDP 192.2.2.1:5060;received=[ffe0::FAB1]
+Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip:gÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿarage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+H.ntc.nokia.com IPv6 global addresses not available
+Warning: 330 garage.sr.ntc.nokia.com No IPv6 
+CSeq: 1 OPTIO0S
+Contact: sip:host.compmulticast, 330 garage.sr.ntc.nokia.com Only local IPv4 multicast available
+Authorization: Digest USERNAME="digest", REALM="garage.sr.ntc.nokiip:135.180.130.133 SIP/2.0
+Via:a 0

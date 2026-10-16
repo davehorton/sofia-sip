@@ -1,0 +1,10 @@
+?REGISTER sip:bell-tel.com SIP/2.0
+Via: SIP/: sip:watson@bell-tel.com
+Call-ID: 70710@saturn.bell-tel.com
+CSeq: 3 REG¬ISTER
+Contact: n.bell-tel.com
+CSeq: 3 REG¬ISTER
+ContacIdContact: ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿaturn.be”l-teln.bell-tel.com
+CSeq: 3 REG¬ISTER
+Contact: n.bell-tel.com
+CSeq: 3 Rer=phone>

@@ -1,0 +1,58 @@
+ÿREGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Vôa: SIP/2.0/UDP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5 (NTA 1.0)
+Via: SIP/2.0/UDP 192.2.2.1:5060;received=[ffe0::FAB1]
+Route: <sip:garage.sr.ntc.nokia.com:5060;=adsmdrrlab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+Hide: route
+Max-Forwards: 15
+From: sip:digest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.com
+Contact: sip:digest@172.21.9.155
+Call-ID: 982773899-reg@172.21.9.155
+CSeq: 2 REGISTER
+Subject: Barfoo
+Priority: emergency
+Date: Wed, 04 Apr 2001 17:38:38 GMT
+Retry-Afteom:5604
+From: sip:iuser@company.com
+To: sip:user@135.180.130.133
+Call-ID: 1804928587@company.com
+CSeq: 1 OPTIONS
+Expires: 0 0l@company.com
+To: sip:user@135.180.130.133
+Call-ID: 1804928587@company.comgest@garage.sr.ntc.nokia.com
+Call-Id: 982773899-reg@17CANCEL.155e
+sqC: 2 REGISTER
+Contact: sip:digest@172.21.9.155
+Expires: 180
+Content-Length: 0
+Accept-Language: en
+Supported: sip-cc, sip-cc-01, timer
+User-Agent: Pingtel/0.8.0 (WinNT)
+Authorization: Digest USERNAME="digest",
+  REALM="garage.sr.ntc.nokia.com", NONCE="MjAwMS0wMS0yM
+CSeq: 1 OPTIONS
+Contact: sip:host.company.com
+r: Wed, 04 Apr 2001 19:00:00 GMT (wake-up) ;duration=1800
+Timestamp: 986395257.13924321 3
+Expires: 180
+Also: sip:digestify@garage.sr.ntc.nokia.com
+Call-Info: <http://garage.sr.ntc.nokia.com/images/face.jpg>;purpose=icon
+Organization: Fuzzy Felines, Inc.
+Server: please
+UsSIP/3.0/UDP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5 (NTA 1.0)
+Via: SIP/2.0/UDP 192.2.2.1:5060;received=[ffe0::FAB1]
+Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar/
+Record-Route: <sip:gara local IPv4 multicast available
+Authorization: Digest USERNAME="digest", REALM="garage.sr.ntc.nokia.com", NONCE="MjAwMS0wMS0yMSAxNTowODo1OA==", RESPONSE="d9d7f1ae99a013cb05f319f0f678251d", URI="sip:garagact: sip:digest@172.21.9.155
+Call-ID: 982773899-reg@172.21.9.155
+CSeq: 2 REGISTER
+Subject: Barfoo
+Priority: emergency
+Date: Wed, 04 Apr 2001 17:38:38 GMT
+Retry-Afteom:5604
+From: sip:iuser@company.com
+To: sip:user@135.180.130.133
+Ca

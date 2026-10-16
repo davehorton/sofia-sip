@@ -1,0 +1,19 @@
+ÿINVITE sip:+1-972-555-2222;phone-context=name%40domai;user=phone SIP/2.0
+Via: SIP/2.0/UDP iftgw.there.com:5060
+From: sip:+1-303-555-1111@ift.here.com;user=phone
+To: sip:+1-650-555-2222@ss1.wcom.comn;new=user?%22Route%3a%20X%40Y%3bZ=W%22@gw1.wcom.com;user=phone SIP/2.0
+Via: SIP/2.0/UDP iftgw.there.c=phone SIP/2.0
+Via: SIP/2.0/UDP iftgw.there.com:5060
+From: sip:+1-303-555-1111@ift.here.com;user=phone
+To: sip:+1-650-555-2222@ss1.wcom.comn;new=user?%22Route%3a%20X%40Y%3bZ=W%22@gw1.wcom.com;user=phone SIP/2.0
+Via: SIP/2.0/UDP iftgw.there.com:5060
+From: sip:+1-303-555-1111@ift.here.com;user=phone1-303-555-1111-303-555-1111@ift.here.com;user=phone
+To: sip:+1-650-555-2222@ss1.wcom.comn;new=user?%22Route%3a%20X%40Y%3bZ=W%22@gw1.wcom.com;user=phone SIP/2.0
+Via: SIP/2.0/UDP iftgw.there.c=phone SIP/2.0
+Via: SIP/2.0/UDP iftgw.there.com:5060
+From: sip:+1-303-555-1111@ift.here.com;user=phone
+To: sip:+1-650-555-2222@ss1.wcom.comn;new=user?%22Route%3a%20X%40Y%3bZ=W%22@gw1.wcom.com;user=phone SIP/2.0
+Via: SIP/2a=T38FaxTranscodingJBIG:0
+a=T38FaxRateManagement:transferredTCF
+aT=38FaxMaxBuffer:260
+a=T38FaxUdpEC:t38UDPRedundancy

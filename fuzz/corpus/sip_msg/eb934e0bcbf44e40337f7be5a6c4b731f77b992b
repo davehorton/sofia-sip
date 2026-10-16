@@ -1,0 +1,12 @@
+INVITE sip:useb;par=u%40h.com@company.com SIP/2.0 
+To: sip:j_user@company.com 
+FÿREGISTER sip:company.com SIP/3.0
+To: sip:j.user@company.com
+From: sip:j.ussity.edu;tag=3324Expires:s ips:ax-FoMax-Forwards: 70-ID: 135.180.130.1
+3 0ha0isndaksdj@10.1.1.1 
+Cntent-Lengt.com SIP/3.0 
+To3: sip:j_user@company.com 
+From: 
+sip:caller@university.edu;tag=3324Expires: sips:ax-Forwards: 3 
+Call-ID:h: 0
+

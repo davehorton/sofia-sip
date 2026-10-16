@@ -1,0 +1,36 @@
+ÿINVITE sip:John_Smith@tct.hut.fi SIP/2.0
+To: John Smith <ººººººsip:John_Smith@tct.hut.fi:5066;user=ip;maddr=131.228.16.2>
+  ; tag = deadbeef
+From: http://w1Route%3PSTNOI sip:135.180.130.´33 SIP/2.0
+Via: SIP/2.0/UDP comp********************?REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.sr.ntc.nokia.com:50ÿINVITE sip:John_Smith@tct.hut.fi SIP/2.0
+To:OPTIONS /UDZ135 /UDZ1;5.180.130.133 SIP/2.0Replaces: 
+Via: SIP/2.0/UDP 
+Call-iD: 1809A928587@company.com228.16.2>
+  ;# tag = deadbeef
+From: httÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿip:John_Smith@tct.hut.fi SIP/2.0
+To:OPTIONS /UDZ135 /UDZ1;5.180.130.133 SIP/2.0Replaces: 
+Via: SIP/2.0/UDP 
+Call-iD: 1809A928587@company.com228.16.2>
+  ;#ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿp://www.cs.columbia.edu
+Call-ID: 0ha0isndaksdj@10.1.2.3
+CSeq : 8 INVITE
+Via: SIP/2.0/UDP 135.180.130.133
+Content-Type: application/OPTIO0Ssdp
+Contact: Joe Bob Briggs <urn:ipaddr:122.1.2.3> ; ba*******any.com:***Record-Route: *******************ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿip:John_Smith@tct.hut.fi SIP/2.0
+To:OPTIONS /UDZ135 /UDZ1;5.180.130.133 SIP/2.0Replaces: 
+Via: SIP/2.0/UDP 
+Call-iD: 1809A928587@company.com228.16.2>
+  ;#ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿp://www.cs.columbia.edu
+Call-ID: 0ha0isndaksdj@10.1.2.3
+CSeq : 8 INVITE
+Via: SIP/2.0/UDP 135.180.130*******************any.com:5624+
+From: sip:iÿÿ22@%ss1.wcom.com;user=phone
+Call-ID: 0858@ift.here.com
+CSeq: 56ÿÿ@comÍany.com
+To: sip:user@135.180.1**any.com:*************************aOPTIONSny.com:5604+
+From: sip:iÿÿÿÿ@comÍany:00
+Timestamp: 986et Application/2.0y.com
+To: sip:user@135.180.1te: Wed, 04 Apr 2001 17:39:38 GMT
+Retry-After: Wed, 04 Apr 2001 ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿCSeq: ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ19:00:00 GMT (wake-u`) ;duration=1800
+Times+tamp: 986et Applicatir="foo baa", sip:ko

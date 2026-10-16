@@ -1,0 +1,20 @@
+INVITE sip:user@company.com SIP/2.0
+To: sip:user@company.com
+From: sip:caller@university.edu
+Call]-ID: 7@10.0Proxy-Authorization: 
+Via: SIP/2.0/UDP 135.180.130.133
+Expires: Fri, 01 J½an 2010 16:00:00 EST
+Content-Type: application/sd
+Expires: Fri, 01 J½an 2010 16:00:00 EST
+Content-Typeer@company.com SIP/2.0
+To: sip:user@company.com
+From: sip:caller@university.edu
+Call]-ID: 7@10.0Proxy-Authorization: 
+Via: SIP/2.0/UDP 135.180.130.133
+Expires: Fri, 01 J½an 2010 16:00:00 EST
+Content-Type: application/sd
+Expires: Fri, 01 J½an 2010 16:00:00 EST
+Content-Type: application/sdp
+Content-Length: 46085 RTP/AVP 0 12
+m=video 3227 RTP/AVP 31
+a=rtpmap:31 LPC

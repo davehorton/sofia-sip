@@ -1,0 +1,3 @@
+ÿAWWW-Authenticate: CK +ip:company.com SIP/2.0
+To: sip:j.user@cCall-ID: 0ha0isndaksdj@10.0.2.2Contact: sip:j.user@host.company.com
+CSeq: 8h: 0

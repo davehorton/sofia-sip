@@ -1,0 +1,14 @@
+ÿINVITE sip:John_Smith@tct.hut.fi SIP/2.0
+To: John Smith <sip:John_Smith@tct.hut.fi:5066;user=ip;maddr=131.228.16.2>
+  ; tag = deadbeef
+From: http://w1RoNokia%.DP iftgw.there.com:5060
+From: sip:+1-303-555-1111@ift.here.com;u172.21.9.155
+Record-Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+From: sip:digest@garage.sr.ntc.nokia%.com
+To: sip:digest@garage.sr.ntc.nokia.com
+Call-ID: 982773899-reg@172.21.9.155
+CSí/eq: 1 REGISTER
+WWW-Autftgw.there.com
+s=Session SDP
+c=IN IP4 
+To:iftmg.thse. :pijur

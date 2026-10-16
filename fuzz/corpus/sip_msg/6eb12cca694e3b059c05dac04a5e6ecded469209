@@ -1,0 +1,30 @@
+?OPTIONS sip:user@company.com SIP/1.0
+To: sip:user@company.com
+From: "caller"<sip:caller@example.com>
+Call-ID: 1234abcd@10.0.0.1
+CSeq: 1 OPTIONS
+Via: SIP/2.0/UDP 135.180.130.133
+OPTIONS sip:user@company.com SIP/2.0
+To: sip:user@comp?INVITE sip:user;par=u%40h.com@company.com SIP/2.0
+Max-Forwards: 3DP 135any.com
+From: "caller"<sip:calle.180.130.1³3;branch=†Æ—¹4bKkdjuw 
+Content-Length: 0Reason: 
+
+INVITE sip:user;par=u%40h.com@company.com SIP/2 
+Call-ID: 0ha0isndaksdj@10.1.1.1 
+CSeq: 8 INVITE 
+Via: SIP/2.0/UDP 135.180.130.1³3;branch=†Æ—¹4bKkdjuw 
+Content-Length: 0Reason: 
+
+INVITE sip:user;par=u%40h.com@company.com SIP/2.0 
+To: sip:j_user@company.r@example.com>
+Call-ID: 1234abcd@10.0.0.1
+Ccom 
+Fr/UDip:user;par=u%40h.com@co 135.180.130.1³3;branch=†Æ—¹4bKkdjuw 
+Content-Length: 0Reason: 
+
+INVITE sip:user;par=u%40h.com@company.com SIP/2 Seq: 1 OPTIONS
+Via: SIP/2.0/UDP 135.180.1
+Call-I30.1D: 033ha0
+
+

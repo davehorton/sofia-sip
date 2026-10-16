@@ -1,0 +1,112 @@
+INVITE sip:vivekg@chair.dnrc.bell-labs.com SIP/2.0
+  To :
+  sip:vivekg@chair.dnrc.bell-labs.com ;    t tag    = 1a1b1f1H33nrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrTvivekg@chair.dnrc.bell-labs.com ;    tag    = 1a1b1f1H33nrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrTIONS sip:135.180.130.133 SIP/2.0
+Via: SIP/2.0/UDP company.com:5604
+From: sip:iuser@company.comm: "caller"<sip:caller@example.com>
+Call-ID: 1234abcJUNK * SIdP/1.0@10.0°0
+To: sip:user@135.180.130.133
+Call-ID: 1804928587@cSIP/2,0
+To: sip:user@company.com
+FOPTIONS sip:userVia: SIP/2.0/WSS @company.com SIP/2.0rom: "caller"<sip:caller@example.com>
+Call-ID: 1234abcJUNK *ompany.com
+CSeq: 1 OPTIONS
+Expires: 0 0l@company.com sip:vivekg@chair.dnrc.bell-labs.com SIP/2.0
+  To :
+  sip:vivekg@chair.dnrc.bell-labs.com ;    t tag    = 1a1b1f1H33nrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrTvivekg@chair.dnrc.bell-labs.com ;    tag    = 1a1b1f1H33nrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrTIONS sip:135.180.130.133 SIP/2.0
+Via: SIP/2.0/UDP company.com:5604
+From: sip:iuser@company.comm: "caller"<sip:caller@example.com>
+Call-ID: 1234abcJUNK * SIdP/1.0@10.0°0
+To: sip:user@135.180.130.133
+Call-ID: 1804928587@cSIP/2,0
+To: sip:user@company.com
+FOPTIONS sip:userVia: SIP/2.0/WSS @company.com SIP/2.0rom: "caller"<sip:caller@example.com>
+Call-ID: 1234abcJUNK *ompany.com
+CSeq: 1 OPTIONS
+Expires: 0 0l@company.com
+To: sip:user@135.180.130.133
+Call-ID: 1804928587@company.com
+CSe
+To: sip:user@company.com
+From: "caller"<sip:caller@example.com>
+Call-ID: 1234abcJUNK * SIdP/1.0@1G0.0°0.1
+q: 1 OPTIONS
+Contact: sip:host.cCS;rporteq: 1 OPTIONS
+Via: SIP/2.0/UDP 135.180.130
+ .133
+ompany.com
+Expires: 0xpires: 0sip:h ost.companymultipart/mixed; boundary=.com
+Expires: 0
+Contact: sip:host.companyrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
+From   : "J Rosenberg \\\"" <sip:jdrosen@lanch  =   9ikj8  ,
+  SIP  /    2.0   / UDP  0.2.3.4   ; hid \"\"" <sip:IONS sip:135.180.130.133 SIP/2.0
+Via: SIP/2.0/UDP company.com:5604
+From: sip:iuser@company.comm: "caller"<sip:caller@example.com>
+Call-ID: 1234abcJUNK * SIdP/1.0@10.0°0
+To: sip:user@135.180.130.133
+Call-ID: 1804928587@cSIP/2,0
+To: sip:user@company.com
+FOPTIONS sip:userVia: SIP/2.0/WSS @company.com SIP/2.0rom: "caller"<sip:caller@example.com>
+Call-ID: 1234abcJUNK *ompany.com
+CSeq: 1 OPTIONS
+Expires: 0 0l@company.com
+To: sip:user@135.180.130.133
+Call-ID: 1804928587@company.com
+CSe
+To: sip:user@company.com
+From: "caller"<sip:caller@example.com>
+Call-ID: 1234abcJUNK * SIdP/1.0@1G0.0°0.1
+q: 1 OPTIONS
+Contact: sip:host.cCSeq: 1 OPTIONS
+Via: SIP/2.0/UDP 135.180.130
+ .133
+ompany.com
+Expires: 0xpires: 0sip:h ost.companymultipart/mixed; boundary=.com
+Expires: 0
+Contact: sip:host.companyrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
+From   : "J Rosenberg \\\"" <sip:jdrosen@lanch  =   9ikj8  ,
+  SIP  /    2.0   / UDP  0.2.3.4   ; hid \"\"" <sip:jdrosen@beltel:bs.com> ; newparam = newvk
+To: sip:user@135.180.130.133
+Call-ID: 1804928587@company.com
+CSe
+To: sip:user@company.com
+From: "caller"<sip:caller@example.com>
+Call-ID: 1234abcJUNK * SIdP/1.0@1G0.0°0.1
+q: 1 OPTIONS
+Contact: sip:host.cCS;rporteq: 1 OPTIONS
+Via: SIP/2.0/UDP 135.180.130
+ .133
+ompany.com
+Expires: 0xpires: 0sip:h ost.companymultipart/mixed; boundary=.com
+Expires: 0
+Contact: sip:host.companyrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
+From   : "J Rosenberg \\\"" <sip:jdrosen@lanch  =   9ikj8  ,
+  SIP  /    2.0   / UDP  0.2.3.4   ; hid \"\"" <sip:IONS sip:135.180.130.133 SIP/2.0
+Via: SIP/2.0/UDP company.com:5604
+From: sip:iuser@company.comm: "caller"<sip:caller@example.com>
+Call-ID: 1234abcJUNK * SIdP/1.0@10.0°0
+To: sip:user@135.180.130.133
+Call-ID: 1804928587@cSIP/2,0
+To: sip:user@company.com
+FOPTIONS sip:userVia: SIP/2.0/WSS @company.com SIP/2.0rom: "caller"<sip:caller@example.com>
+Call-ID: 1234abcJUNK *ompany.com
+CSeq: 1 OPTIONS
+Expires: 0 0l@company.com
+To: sip:user@135.180.130.133
+Call-ID: 1804928587@company.com
+CSe
+To: sip:user@company.com
+From: "caller"<sip:caller@example.com>
+Call-ID: 1234abcJUNK * SIdP/1.0@1G0.0°0.1
+q: 1 OPTIONS
+Contact: sip:host.cCSeq: 1 OPTIONS
+Via: SIP/2.0/UDP 135.180.130
+ .133
+ompany.com
+Expires: 0xpires: 0sip:h ost.companymultipart/mixed; boundary=.com
+Expires: 0
+Contact: sip:host.companyrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
+From   : "J Rosenberg \\\"" <sip:jdrosen@lanch  =   9ikj8  ,
+  SIP  /    2.0   / UDP  0.2.3.4   ; hid \"\"" <sip:jdrosen@beltel:bs.com> ; newparam = newvklue ;
+  secondparam = secondvalue  ; 0  q=.33
+Ë(((nested comments) and (more)))   ,
+ tel:4443322

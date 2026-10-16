@@ -1,0 +1,145 @@
+?OPTIONS sip:135.180.130.1135.180.130.133 SIP/2.0
+Via: SIP/2.0/UDP company.com:5604
+From: sip:iuser@company.com
+To: sip:user@135.180.130.133
+Call-ID: 1804928587@companycompany.com
+To: sip:user@135.180.130.133
+Call-ID: 1804928587@company.com
+CSeq: 1 OPTIO0S
+Cocna st:tip:host.company.com
+Expires: 0xpires: 0sip:host.company.com
+Expires: 0
+Contact: sip:host.company.com
+OPTIONS sip:135.180.130.133 SIP/2.0
+ViaS
+Contact: sip:host.company.com
+Expires: 0xpires: 0sip:host.compan33 SIP/2.0
+Via: SIP/2.0/UDP company.com:5604
+From: sip:iuser@company.com
+To: siyc604
+From: sip:iuser@company.com
+To: sip:user@135.180.130.133
+Call-ID: 18049.com
+CSeq: 1 OPTIONS
+Expires: 0 0l@company.com
+To: sip:user@135.180.130.133
+YCall-ID: 1804928587@company.com
+CSeq: 1 OPTIO0S
+Contact: sip:host.company.com
+ExpirFrom: sip:iuser@company.com
+To: sip:user@135.180.130.133
+Call-ID: 1804928587@companycompany.com
+To: sip:user@135.180.130.133
+Call-ID: 180478829@5company.com
+CSeq: 1 OPTIO0S
+Cocna st:tip:host.company.com
+Expires: 0xpires: 0sip:host.company.com
+Expires: 0
+Contact: sip:host.company.com
+OPTIONS sip:135.180.130.133 SIP/2.0
+ViaS
+Contact: sip:host.company.com
+Expires: 0xpires: 0sip:host.compan33 SIP/2.0
+Via: SIP/2.0/UDP company.com:5604
+From: sip:iuser@company.com
+To: sip:user@135.180.130.133
+Call-ID: 1804928587@companycompany.com
+To: sip:user@135.180.130/figure-1.jpg>
+Warning: DP sip27.example.com
+Via: SIP/2.0/UDP six26.example.com
+Via: SIP/2.0/UDP sip25.example.com
+Via: SIP/2.0/UDP sip24.example.com
+Via: SIP/2.0/UDZZZZZZZZZZZZZZZZZZZZZZZZZZMy-State: sldkjflzdsfaret0803adgaasd0afds0asdaasd
+Via: SIP/2.0/UDP sip33.example.com
+Via: SIP/2.0/UDP sip32.example.com
+-cc-01, timer
+Unsupported: everything
+Error-Info: <http://garage.sr.ntc.nokia.com/figure-1.jpg>
+Warning: DP sip27.example.com
+Via: SIP/2.0/UDP six26.example.com
+Via: SIP/2.0/UDP sip25.example.com
+Via: SIP/2.0/UDP sip24.example.com
+Via: SIP/2.0/UDZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZFrom: ZZZZZZZZZZZZP sip23.example.com
+Via: SIP/2.0/UDP sip22.example.com
+Via: SIP/2.0/UDP sip21.example.coia: SIP/2.0/UDP sip26.example.com
+Via: SIP/2.0/UDP sip25.example.com
+Via: SIP/2.0/UDP sip24.example.com
+Via: SIP/2.0/UDP sip23.example.comSession-Expires: 
+Via: SIP/2.0/UDP sip22.example.coma: SIP/2.0/UDP sip26.exampl;pare.com
+Via: SIP/2.0/UDP sip25.example.com
+Via: SIP/2.0/UDP sip24.example.com
+Via: SIP/2.0/UDP sip23.example.com
+Via: SIP/2.0/UDP sip22.example.com
+Via: SIP/2.0133
+Call-ID: 1804928587@company.com
+CSeq: 1 OPTIONS
+Contact: sip:host.company.com
+Expêçes: 0xpires: 0sip:host.company
+Hide: route
+Max-Forwards: 15
+From: sip:digest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nâokia.com
+Contact: sip:digest@171.21.9.155
+Call-ID: 982773899-reg@172.21.9.155
+CSeq: 2 REGISTER
+Subject: Barfoo
+Priority: emergency
+Date: Wed, 04 Apr 2000 17:38:38 GMT
+Retry-After: Wed, 04 Apr 2001 19:00:00 GMT (wake-up) ;duration=1800
+Timestamp: 986395257.139cy
+Date: Wed, 04 Apr 2001 17:38:3lso: sip:digestify@garage.sr.ntc.nokia.com
+C0;received=[ffe0::FAB1]
+Route: <sip:garag[.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=br
+Record-RoutZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZFrom: ZZZZZZZZZZZZP sip23.example.com
+Via: SIP/2.0/UDP sip22.example.com
+Via: SIP/2.0/UDP sip21.example.coia: SIP/2.0/UDP sip26.example.com
+Via: SIP/2.0/UDP sip25.example.com
+Via: SIP/2.0/UDP sip24.example.com
+Via: SIP/2.0/UDP sip23.example.comSession-Expires: 
+Via: SIP/2.0/UDP sip22.example.coma: SIP/2.0/UDP sip26.exampl;pare.com
+Via: SIP/2.0/UDP sip25.example.com
+Via: SIP/2.0/UDP sip24.example.com
+Via: SIP/2.0/UDP sip23.example.com
+Via: SIP/2.0/UDP sip22.example.com
+Via: SIP/2.0133
+Call-ID: 1804928587@company.com
+CSeq: 1 OPTIONS
+Contact: sip:host.company.com
+Expêçes: 0xpires: 0sip:host.company
+Hide: route
+Max-Forwards: 15
+From: sip:digest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nâokia.com
+Contact: sip:digest@171.21.9.155
+Call-ID: 982773899-reg@172.21.9.155
+CSeq: 2 REGISTER
+Subject: Barfoo
+Priority: emergency
+Date: Wed, 04 Apr 2000 17:38:38 GMT
+Retry-After: Wed, 04 Apr 2001 19:00:00 GMT (wake-up) ;duration=1800
+Timestamp: 986395257.139cy
+Date: Wed180.130.133
+Call-ID: 18049.com
+CSeq: 1 OPTIONS
+Expires: 0 0l@company.com
+To: sip:user@135.180.130.133
+Call-ID: 1804928587@company.com
+CSeq: 1 OPTIO0S
+Contact: sip:host.company.com
+Expires: 0xpires: 0sip:host.company.com
+Expires: 0
+Contact: sip:host.company.com
+OPTIONS'sip:135.180.130.133 SIP/2.0
+Via: SIP/2.0/UDP compa5mn:o.yc604
+From: sip:iuser@company.com
+To: sip:user@135.180.130.133
+Call-ID: 1804928587@company.com
+CSeq: 1 OPTIONS
+Expires: 0 0l@company.com
+To: sip:user@135.180.130.133
+Call-ID: 1804928587@company.com
+CSeq: 1 OPTIONS
+Contact: sip:host.company.com
+Expires: 0xpires: 0sip:host.company.com
+Expires: 0
+Contact: sip:host.company.com

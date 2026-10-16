@@ -1,0 +1,28 @@
+?REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokiaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaSIP   /aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaype: a¡pplication/sdp
+NOTIFYCSeq: 1 INVITE
+Max-Forwards: .sr.ntc.nokia.com:5060;maRoute: ddr=1š92.168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5 (NTA 1.0)
+Via: SIP/2.0/UDP 192.2.2.1:ip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip:garage.sr.ntc>nokia.com:5060;maœ›r=srlab.sr.ntc.nokia.com>
+Refer-To: Hide: route
+M>ax-Forwards: 15
+From: sip:digest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntcaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaype: application/sdp
+NOTIFYCSeq: 1 INVITE
+Max-Forwards: .sr.ntc.nokia.com:5060;maRoute: ddr=19‹2.168.102.5
+Via: SIP/2.0/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaype: application/sdp
+NOTIFYCSeq: 1 INVITE
+Max-Forwards: .sr.ntc.nokia.com:5060;maRoute: ddr=192.168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maContent-Dispositionº render;handling=optional
+Content-Length: 31
+OA==", RESPONSE="d9d7f1ae99a013cb05f319f0f678Accept: 251d", URI=;lr"sip:garage.sr.ntc.nokia.com"
+Via: SIP/2.0/UDP 172.21.9.155
+MIME-Version: 1.0
+Content-Type: text/plain;charset=US-ASCII
+Content-Encoding: identity
+Content-Disposition: render;handling=optional
+Content-Length: 32
+
+xxxxxxxxxxpxxxxxxxxxxxxxxxxxx

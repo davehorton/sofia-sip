@@ -1,0 +1,7 @@
+SIP/3.0 401 Unauthorized
+Via: SIP/2.0/UDPÿÿÿÿ srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: SIP/2.0/UDP 1rom: sip:digest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.com
+Call-ID: 9827738ÿÿÿÿyMSAxNTowODo1OA==", algorithm=MD5, qor="auth"
+Content-Length: 0
+

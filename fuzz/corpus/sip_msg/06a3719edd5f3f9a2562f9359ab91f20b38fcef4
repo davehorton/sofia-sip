@@ -1,0 +1,19 @@
+ÿINVITE sip:John_Smith@tct.hut.fi SIP/2.0
+To: John Smith <sip:John_Smith@tct.hut.fi:5066;user=ip;maddr=131.228.16.2>
+  ; tag = deadbeef
+From: http://w2Route%3a%20X%50Y%3bZ<sip:John_Smith@tct.hut.fi:5066;user=ip;maddr=131.228.16.2>
+  ; tag = deadbeef
+From: http://w2Route%3a%20X%50Y%3bZ=W%22@gw1.wcom.com;user=pNE55-1111@ift.here.com;use=W%22@gw1.wcom.com;user=pNEWMEhone SIP/2.0
+Via: SIP/2.0/UDP iftgw.there.com:5060
+From: sip:+1-303-555-1111@ift.here.com;user=phone
+To: sip:+1-650-555-2222@ss1.wcom.com;user=phone
+Call-ID: 1717@ift.here.com
+CSeq: 56 INVITE
+Content-Type: application/sdp
+Content-LengtTHOD sip:user@comapny.com SIP/2.0h: 348
+
+v=0
+o=faxgw1 2890844527 2890844527 IN IP4 iftgw.there.com
+s=Session SDP
+c=IN IP4 
+To:iftmg.the sip:j.ur

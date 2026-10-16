@@ -1,0 +1,15 @@
+REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDr.ntc.nokia.com
+Call-Id: 982773899-reg@172.21.9.155
+Cseq: 2 REGISTER
+Contact: siest,
+  REALM="garage.sr.ntc.nokia.com", NONCE="MjAwMS0wMS0yMSAxNTowODo1OA==",
+  RESPONSE="d9d7f1ae99a013cb05f319f0f678251d",
+p:digest@172.21.8.155
+ExpT)
+Authorization: Digest USERNAME="digest2,
+  REALM="garage.sr.ntc.nokia.com", NONCE="MjAwMS0wMS0yMSAxNTowODo1OA==",
+  RESPONSE="d9d7f1ae99a013cb05f319f0f678251d",
+  URI="sip:garage.sr.ntc.nokia.com"
+Via: SIP/2.0/UDP 172.21.9.155
+

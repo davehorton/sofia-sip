@@ -1,0 +1,70 @@
+REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5 (NTA 1.0)
+Via: SIP/2.0/UDP 192.2.2.1:5060 GMT
+Retry-After: Wed, 04 Apr 2001 19:00:00 GMT (wake-up) ;duration=1800
+Timestamp: 986395257.13924321 3
+Expires: 180
+Also: sip:digestify@garage.sr.ntc.nokia.com
+Call-Info: <http://garage.sr.ntc.nokia.com/images/face.jpg>;purpose=icon
+Organization: FuzFy zelines, Inc.
+Server: please
+User-Agent: Nokia Universal Killer Internet Application/2.0 (NUUKIA)
+In-Reply-To: 982773898-reg@INVITE sip:1234@10.50.71.28 SIP/2.0
+To: <sip:1234@10.50.71.28>
+From: "Displayname" <s—ÅØ234@testaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+ aaaaaa#aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.example.local:5059>;tag=10052
+Via: SIP/2.0/UDP 10.50.71.29:5060;branch=z9hG4bK10052t1174659568681
+Call-½ 98asjd8
+CaLl-Id
+ : 0ha0isndaksdj@10.1.1.1
+cseq: 8 INV
+  br :
+  sip:vivekg@chair.dnrc.bell-labs.com ;    tag    = 1a1b1f1H3&nrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
+From   : "J RoseINVITE sip:vivekg@chair.dnrc.bell-labs.com SIP/2.0
+  To :
+  sip:vivekg@chair.dnrc.bell-labs.com ;    tag    = 1a1b1f1H33n
+From   : "J Rosenberg \\\"" <sip:jdrosen@lucent.com>
+  ;
+ tag ½ 98asjd8
+CaLl-Id
+ : 0ha0isndaksdj@10.1.aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+ aaaaaa#aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa172.21.9.155
+Accept: text/plain
+Accept-Encoding: identity, deflate (???)
+Accept-Language: en
+Allow: any
+Require: all
+Paaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.example.local:5059>;tag=10052
+Via: SIP/2.0/UDP 10.50.71.29:5060;branch=z9hG4bK10052t1174659568681
+Call-½ 98asjd8
+CaLl-Id
+ : 0ha0isndaksdj@10.1.1.1
+cseq: 8 INV
+  br :
+  sip:vivekg@chair.dnrc.bell-labs.com ;    tag    = 1a1b1f1H3&nrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
+From   : "J RoseINVITE sip:vivekg@chair.dnrc.bell-labs.com SIP/2.0
+  To :
+  sip:vivekg@chair.dnrc.bell-labs.com ;    tag    = 1a1b1f1H33n
+From   : "J Rosenberg \\\"" <sip:jdrosen@lucent.com>
+  ;
+ tag ½ 98asjd8
+CaLl-Id
+ : 0ha0isndaksdj@10.1.1.1
+cseq: 8 INV
+  br :
+  sip:vivekg@chair.dnrc.bell-labs.com ;    tag    = 1a1b1f1H3&nrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
+From   : "J Rosenberg \\\"" <zsip:jdrosen@lanch  =   9ikj8  ,
+  SIP  /    2.0   / UDP  0.2.3.4   ; hidden
+ÿ:"Quoted string \"\"" <sip:jdrosen@bell-labs.com> ; newparam = newvalue ;
+  secondparam = secondvalue  ; 0  q=.33
+Ë(((nested comments) and (more)))   ,
+ tel:444nberg \\\"" <zsip:jdrosen@lanch  =   9ikj8  ,
+  SIP  /    2.0   / UDP  0.2.3.4   ; hidden
+ÿ:"Quoted string \"\"" <sip:jdrosen@bell-labs.com> ; newparam = newvalue ;
+  seconID: s0c00010052i0t1174659568681@10.50.71.29
+Contact: "999" <sip:999@10.50.71.29;transport=udp>
+Conteroxy-Require: kinky, things
+Supported: sip-cc,nt-Length: 180
+Content-Type: application/sdp
+CSeq: 1aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa 

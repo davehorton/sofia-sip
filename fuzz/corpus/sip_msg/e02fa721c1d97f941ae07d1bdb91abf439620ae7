@@ -1,0 +1,39 @@
+?INVITE sip:user@c+ompany.com SIP/2.0
+To: sip:user@company.com
+From: sip:caller@univers%00ity.edu
+Call-ID: 9@10.0.0.1
+CSeq: 1 INmultipart/mixed; boundary=.090.130.133
+Max-Forwar0 ds:
+Content-Type: application/sdp
+Content-Length: 163
+
+v=0
+o=mhandley 29739 7272939 IN IP4 126.5.4.3
+s=SIP Call
+t=0 0
+c=IN IP4 135.180.130.88
+m=audio 492170 RTP/AVP 0 12
+m 492170 RTP/AVP 0 12
+m=video 3227 RTP/AVP 31
+a=rtpmap:31 LPC
+INVITE sip:user@company.com SIP/2.0
+To: sip:user@company.com
+From: =viip:user@company.com SIP/2.0
+To: sip:usey.com SIP/2.0
+To: sip:user@company.com
+From: sip:caller@university.edu
+Call-ID: 9@10.0.0.1
+CSeq: 1 INVITE
+Via: SIP/2.0/UDP 135.180.130.133
+Max-Forwards: 0
+Content-Type: applicationÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ/sdp
+Content-Length: 163
+
+v=0
+o=mhandley@ 29739 7272939 IN IP4 126.5.4.3
+s=SIP Call
+t=0 0
+c=IN IP4 135.180.130.88
+m=audio 492170 RTP/AVP 0 1+
+m=video 3227 RTP/AVP 31
+a=rtpmap:31 LPC

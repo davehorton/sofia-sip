@@ -1,0 +1,12 @@
+INVITE sip:+1-972-555-2222;phone-context=name%40domain;new=user?%22Route%3a%20X%40YA%3bZ=W%22@gw1.wcom.com;user=phone SIP/2.0
+Via: SIP/26 INVITE
+Content-Type: application/sdp
+Content-Lptl t38
+a=T38FaxVersion:0
+a=T38maxBitRate:14400
+a=T38FaxFillBitRemoval:0
+a=T38FaxTranscodingMMR:0
+a=T38FaxTranscodingJBIG:0
+a=T38FaxRateManagement:transferredTCF
+a=T38FaxMaxBuffer:260
+a=T38FaxUdpEC:t38UDPRedundancy

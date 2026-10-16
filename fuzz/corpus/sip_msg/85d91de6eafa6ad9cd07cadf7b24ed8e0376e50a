@@ -1,0 +1,18 @@
+INVITE sip:vivekg@chair.dnrc.bell-labs.com SIP/2.0
+  To :
+  sip:vivekg@chair.dnrc.bell-labs.com ;    tag    = 1a1b1f1H33n
+From   : "J Rosenberg \\\"" <sip:jdrosen@lucent.com>
+  ;
+ tag ½ 98asjd8
+CaLl-Id
+ : 0ha0isndaksdj@10.1.1.1
+cseq: 8 INVITE
+Via  : SIP   /  2.0/  UDP
+  135.180.1REGISTERSubject :
+NewFangledHeader:   newfangled value
+ more newfangled value
+Content-Type: application/sdp
+v:  SIP  / 2.0  / TCP     12.3.4.5   ;
+  br :
+  sip:vivekg@chair.dnrc.bell-?REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SlaIP/2.0/UDP srlab.sr.ntc.nokibs.com ;   a tag  .

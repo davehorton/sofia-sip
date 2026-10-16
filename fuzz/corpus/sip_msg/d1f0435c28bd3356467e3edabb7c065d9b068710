@@ -1,0 +1,142 @@
+?OPTIONS sip:135.180.130.1135.180.130.133 SIP/2.0
+Via: SIP/2.0/UDP company.com:5604
+From: sip:iuser@company.com
+To: sip:user@135.180.130.133
+Call-ID: 1804928587@cer@company.com
+To: sip:user@135.180.130.133
+Call-ID: 18049.com
+CSeq: 1 OPTIONS
+Expires: 0 0l@company.com
+To: CaLl-Idr/@135.180.130.133
+Call-ID: 1804928587@company.com
+CSeq: 1 OPTIO0S
+Contact: sip:host.company.com
+Expires: 0xpires: 0sip:host.company.com
+Expires: 0
+Contact: sip:host.company.com
+OPTIONS'sip:135.180.130.133 SIP/2.0
+Via: SIP/2.0/UDP compa0mn:o.yc604
+From: sip:iuser@company.com
+To: sip:user@135.180.130.133
+Call-ID: 180492858ires: 0xpires: 0sip:host.company.com
+Expires: 0
+Contact: sip:host.company.com
+OPTIONS'sip:135.180.130.133 SIP/2.0
+Via: SIP/2.0/UDP compa5mn:o.yc604
+From: sip:iuser@company.com
+To: sip:user@135.180.130.133
+Call-ID: 1804928587@company.com
+CSeq: 1 OPTIONS
+Expires: 0 0l@company.com
+To: sip:user@135.180.130.1Ø33
+Call-ID: 1804928587@company.com
+CSeq: 1 OPTIONS
+Contact: sip:host.company.com
+Expires: 0xpires: 0sip:host.compan33 SIP/2.0
+Via: SIP/2.0/UDP company.com:5604
+From: sip:iuser@company.com
+To: sip:user@135.180.130.133
+Call-ID: 1804928587@companycompaîy.com
+To: sip:user@135.180.130.133
+Call-ID: 1804928587@company.comires: 0sip:host.company.com
+Expires: 0
+Contact: sip:host.company.coM
+OPTIONS'sip:135.180.130.133 SIP/2.0
+Via: SIP/2.0/UDP compa5mn:o.yc604
+From: sip:iuser@company.
+CSeq: 1 OPTIO0S
+Contact: sip:host.company.com
+Expires: 0xpires: 0sip:host.company.com
+Expires: 0
+Contact: 7@company.com
+CSeq: 1 OPTIO-S
+Expires: 0 0l@company.com
+To: sip:user@135.180.130.133
+Call-ID: 1804928587@company.com
+CSeq: 1 OPTIONS
+Contact: sip:host.company.comall-ID: 180492858ires: 0xpires: 0sip:host.company.com
+Expires: 0
+Contact: sip:host.company.y.com
+Expires: 0
+Contact: sip:host.company.com
+OPTIONS'sip:135.180.130.133 SIP/2.0
+Via: SIP/2.0/UDP compa5mn:o.yc604
+From: sip:iuser@company.com
+To: sip:user@135.180.130.133
+Call-ID: 180492858ires: 0xpires: 0sip:host.company.com
+Expires: 0
+Contact: sip:host.company.com
+OPTIONS'sip:135.180.130.133 SIP/2.0
+Via: SIP/2.0/UDP comompany.com
+Expires: 0
+Contact: 7@company.com
+CSeq: 1 OPTIONS
+Expires: Seq: 1 OPTIO0S
+Contact: sip:host.company.com
+Expires: 0xpires: 0sip:host.company.com
+Expires: 0
+Contact: sip:host.company.com
+OPTIONS'sip:135.180.130.133 SIP/2.0
+Via: SIP/2.0/UDP compa0mn:o.yc604
+From: sip:iuser@company.com
+To: sip:user@135.180.130.133
+Call-ID: 180492858ires: 0xpires: 0sip:host.company.com
+Expires: 0
+Contact: sip:host.company.com
+OPTIONS'sip:135.180.130.133 SIP/2.0
+Via: SIP/2.0/UDP compa5mn:o.yc604
+From: sip:iuser@company.com
+To: sip:user@135.180.130.133
+Call-ID: 1804928587@company.com
+CSeq: 1 OPTIONS
+Expires: 0 0l@company.com
+To: sip:user@135.180.130.1Ø33
+Call-ID: 1804928587@company.com
+CSeq: 1 OPTIONS
+Contact: sip:host.company.com
+Expires: 0xpires: 0sip:host.compan33 SIP/2.0
+Via: SIP/2.0/UDP company.com:5604
+From: sip:iuser@company.com
+To: sip:user@135.180.130.133
+Call-ID: 1804928587@companycompaîy.com
+To: sip:user@135.180.130.133
+Call-ID: 1804928587@company.comires: 0sip:host.company.com
+Expires: 0
+Contact: sip:host.company.coM
+OPTIONS'sip:135.180.130.133 SIP/2.0
+Via: SIP/2.0/UDP compa5mn:o.yc604
+From: sip:iuser@company.
+CSeq: 1 OPTIO0S
+Contact: sip:host.company.com
+Expires: 0xpires: 0sip:host.company.com
+Expires: 0
+Contact: 7@company.com
+CSeq: 1 OPTIO-S
+Expires: 0 0l@company.com
+To: sip:user@135.180.130.133
+Call-ID: 1804928587@company.com
+CSeq: 1 OPTIONS
+Contact: sip:host.company.comall-ID: 180492858ires: 0xpires: 0sip:host.company.com
+Expires: 0
+Contact: sip:host.company.y.com
+Expires: 0
+Contact: sip:host.company.com
+OPTIONS'sip:135.180.130.133 SIP/2.0
+Via: SIP/2.0/UDP compa5mn:o.yc604
+From: sip:iuser@company.com
+To: sip:user@135.180.130.133
+Call-ID: 180492858ires: 0xpires: 0sip:host.company.com
+Expires: 0
+Contact: sip:host.company.com
+OPTIONS'sip:135.180.130.133 SIP/2.0
+Via: SIP/2.0/UDP comompany.com
+Expires: 0
+Contact: 7@company.com
+CS0 0l@company.com
+To: sip:user@135.180.130.133
+Call-ID: 1804928587@company.com
+CSeq: 1 OPTIONS
+Contact: sip:host.company.com
+Expires: 0xpires: 0sip:host#.company.com
+Expires: 0
+Contact: sip:host.company.com

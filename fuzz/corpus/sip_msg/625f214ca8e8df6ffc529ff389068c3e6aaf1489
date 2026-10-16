@@ -1,0 +1,117 @@
+?INVITE si!:user@company.com SIP/2.0
+kTo: sip:user@company.com
+From: sip:ccžllerVP 1 12
+m=video 3227 RTP/DVP 31
+a=rtpmaCall
+t=0 0
+c=IN
+Call-ID: 8@10.0.0.1
+CSeq: 1 INVITE
+Via: SIP/2.0/UDp 135.180.130.133
+Expires: TUPDATE Dec /994 16:00:00 GMT
+Content-Type: application/sŸŸŸŸŸ09;maddr=ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿN IP4 126.5.4.3
+s=SIP Call
+t=0 0
+c=IN IP4 135.180.130.88
+m=audio 9G170 RTP/AVP 1 12
+m=video 3227 RTP/DVP 31
+a=rtpmaCall?INVITE sip:vivekg@chair.dnrc.bell-labs.com SIP/2.0
+  To :
+  sip:vivekg@chair.dnrc.bell-labs.com ;    tag    = 1a1b1f1H33n
+From   : "J Rosenberg \\\"" <sip:jdrosen@lucent.com>
+  ;
+ tag = 98asjd8
+CaLl-Id
+ : 0ha0isndaksdj@10.1.1.1
+csted comments)eq: 8 INVITE
+Via  : SIP   /  2.0/  UDP
+  135.180.130.133
+Subject :
+NewFangledHeader:   newfangled value
+ more newfangled value
+Content-Type: apÿÿication/sdp
+?INVITE sip:vivekg@chair.dnrc.bell-labs.com SIP/2.0
+  To :
+  sip:vivekgm: sip:callerVP 1 12
+m=video 3227 RTP/DVP 3v:  SIP  / 2.0  / TCP     12.3.4.5   ;
+  branch  =   9ikj8  ,
+  SIP  /    2.0   / UDP  1.2.3.4   ; hidden
+m:"Quoted str newvalue ;
+  secondparam = secondvalue  ; q = 0.33
+  ((( 04 ASession-Expires: pr 2001 17:38:38 GMT
+Retry-Af898-reg@172.21.9.155
+Accept: text/pla12.3.4.5   ;
+  branch  =   9ikj8  ,
+  SIP  /    2.0   / UDP  1.2.3.4   ; hidden
+m:"Quoted string \"\"" <sip:jdrosen@bell-labs.com> ; newp  2.0/  UDP
+  135.180.130.133.bell-labs.com ;    tag    = 0a1b1f1H33n
+From   : "J Rosenberg \\=0 0
+c=IN
+Call-ID: 8@10.0.0.1
+CSeq: 1 INVITE
+Via: SIP/2.0/UDp 135.180.130.133
+Expires: TUPDATE Dec /994 16:00:00 GMT
+Content-Type: application/sŸŸŸŸŸ09 IÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿN IP4 126.5.4.3
+s=SIP Call
+t=0 0
+c=IN IP4 135.180.130.88
+m=audio 9G170 RTP/AVP 1 12
+m=video 3227 RTP/DVP 31
+a=rtpmaCall
+t=0 0
+c=IN
+Call-ID: 8@10.0.0.1
+CSeq: 1 INVITE
+Via: SIP/2.0/UDp 135.180.130.133
+Expires: TUPDATE Dec /994 16:00:00 GMT
+Content-Type: application/sŸŸŸŸŸ0.88
+m=audio 492170 RTP/AVP 0 12
+m=video 3227 RTP/AVP 31
+a=rtpmap:31 LPC
+INVITE sip:user@com`any.c‹m 
+o=mhandley 297om
+To: sip:user@135.180.130.133
+Call-ID: 18049.com
+CSeq: 1 OPTIONS
+Expires: 0àÏ“¿company.com
+To: sip:user@135.180.130.133
+Call-ID: 180492=rtpmaCall
+t=0 0
+c=IN IP4 135.180.130.88
+m=audio 4928587@company.com
+CSeq: 1 OPTIO0S
+Contact: sip: hidden
+m:"Quoted string \"\"" <sip:jdrosen@bell-labs.com> ; newparam = newvalue ;
+  secondparam4   ; hidden
+m:"Quoted string \"\"" <sip:jdros     12.3.4.5   ;
+  branch  =   9ikj8  ,
+  SIP  /    2.0   / UDP  1.2.3.4   ; hidden
+m:"Quoted string \"\"" <sip*jdrosen@bell-labs.com> ; newparam = newvalue ;
+  secondparam = secondvalue  ; q = 0.33
+  ((( 04 ASession-Expires: pr 2001 17:38:38 GMT
+Retry-Af898-reg@172.21.9.155
+Accept: text/pla12.3.4.5   ;
+  branch  =   9ikj8  ,
+  SIP  /    2.0   / UDP  1.2.3.4   ; hidden
+m:"Quoted string \"\"" <sip:jdrosen@bell-labs.com> ; newp  2.0/  UDP
+  135.180.130.133.bell-labs.com ;    tag    = 0a1b1f1H33n
+From   : "J Rosenberg \\\"" <sip:jdrosen@lucent.com>
+  ;
+ tag =pr com:5060;maddr=192.168.102.5
+Record-Route: <sip.130.133
+Expires: Thu, 0Call-ID:  98asjd
+ tag = 98asjd8
+CaLl-Id
+ : 0ha0isndaksdj@10.1.1.1
+cseq: 8 INVITE
+Via  : SIP   /  3.0/  UDP
+  135.180.130.133
+Subject :
+NewFangledHeader:   newfangled value
+ more newfangled value
+Content-Type: application/sdp
+v:SIP/2.0
+Viaaram = n:     SIP/2.0/UDP c.bell-tel.com
+From:    Belc.
+Server: pleewvaluease
+Us ;

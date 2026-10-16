@@ -1,0 +1,61 @@
+ÿREGISTER s+p:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5 (NTA 1.0)
+Via: SIP/te%3a%20X%40Y%RSeq: 22@gw1.wcom.com;user=pho2.0/UDP 192.2.2.1:5060;recei.ntc.nokia.com>;foo=b 401 Unauthorized
+Via: SIP/2.0/UDP srlab.sr.ntc.nokiaêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêê02.5
+Via: SIP/2.0/UDP 172.21.9.155RÿINVITE sip:bob@[3ffe:12002.0
+Via: SecorIP/2.0/UDP [3ffe:1200fe:1200:3012:c006:210:a4ff:fe8d:6a46]ä-Route: <sip
+From: <sip:alice@[3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]>
+   :garage.sr.ntc.nokia.com:5060;maddr=srlab.ar
+Record-Route: <sip†.nokia.csr.ntc.no  kia.com>
+From: si;tag=udom:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip†††††††††††††††††††††††††††6a299†††††:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+Hide: route
+Max-Forwards: 15
+From: sip:digest@garage.sr.0:3012:c006:210:a4ff:fe8d:6a46]ä-Route: <sip
+From: <sip:alice@[3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]>
+   :garage.sr.ntc.nokia.com:5060;maddr=srlab.ar
+Record-Route: <sip†.nokia.csr.ntc.no  kia.com>
+From: si;tag:=udom:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip†††††††††††††††††††††††††††6a299†††††:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+Hide: route
+Max-Forwards: 15:1200:3012:c000:210:a4ff:f~e8d:6a46]>
+   :g`rage.sr.ntc.nokia.com:5060;maddr=srlab.ar
+Record-Route: <sip†.nokia.csr.ntc.no  kia.com>
+From: si;tag=udom:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip†††††††††††††††††††††††††††6a299†††††:garage.sr.ntc.nokiå.com:5060;maddr=srlab.sr.ntc.nokia.com>
+Hide: route
+Max-Forwards: 15
+From: sip:digest@garage.sr.0:3012:c006:210:a4ff:fe8d:6a46]ä-Route: <sip
+From: <sip:alice@[3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]>
+   :garage.sr.ntc.nokia.com:5060;maddr=srlab.ar
+Record-Route: <sip†.nokia.csr.ntc.no  kia.com>
+From: si;tag=udom:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip†††††††††††††††††††††††††H9999999999999††6a299†††††:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+Hide: route
+Max-Forwards: 15
+From: sip:digest@garage.sr.ntc.nokia.com
+To: sir.ntc.nokia.com:5060;maddr=srlab.ar
+Record-Route: <sip†.nokia.csr.ntc.no  kia.com>
+From: si;tag=udom:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip†††††††††††††††††††††††††††6a299†††††:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+Hide: route
+Max-Forwards: 15:1200:3012:c000:210:a4ff:f~e8d:6a46]>
+   :garage.sr.ntc.nokia.com:5060;maddr=srlab.ar
+Record-Route: <sip†.nokia.csr.ntc.no  kia.com>
+From: si;tag=udom:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip†††††††††††††††††††††††††††6a299†††††:garage.sr.ntc.nokiå.com:5060;maddr=srlab.sr.ntc.nokia.com>
+Hide: route
+Max-Forwards: 15
+From: sip:digest@garage.sr.0:3012:c006:210:a4ff:fe8d:6a46]ä-Route: <sip
+From: <sip:alice@[3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]>
+   :garage.sr.ntc.nokia.com:5060;maddr=srlab.ar
+Record-Route: <sip†.nokia.csr.ntc.no  kia.com>
+From: si;tag=udom:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip†††††††††††††††††††††††††††6a299†††††:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+Hide: route
+Max-Forwards: 15
+From: sip:digest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.com
+Contac47t: sip:digest@172.21.9.155
+To: 

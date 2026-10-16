@@ -1,0 +1,120 @@
+ÿREGISTER sip:garage.sr.ntc.nokia.com SIP/2.0M
+Via: SIP5
+Cseq: 2 REGISTER
+ContactNp:cïm: sip:digest@172.21.9.155
+Expires: 180
+Content-Length: 0
+Accept-Language: en
+Supported: sip-cc, sip-cc-01, timer
+User-AgExpires: ent: Pingteÿÿl/0.8.°   SIP/2.0/UDP c.bell-tel.com
+From:    A. Bell <sip:a.g.bell@bell-tel.Refer-To: com>
+To:      T. Watson+ <sip:efer-To: com>
+To:      T. Watson+ <sip:t.watson@ieesip:a.g.bell@bell-tel.com>
+To:      T. Wa	son+ <sip:t.watson@ieee.org>
+Call-ID: 3?1414@c.bell-tel.com
+CS.INVITE sip:user@company.com SIP/2.0
+To: sip:user@company.comntc.nokia.com:5060;maddr=srlab.sr.ntt: Nokia Universal Killer Internet Application/2.0 (NUUKIA)
+In-Reply-To: 982<73898-reg@172.21.9.155
+Accept: text/plain
+Acclue p SIP/2.0
+To: sip:user@company.comntc.nokia.com:5060;maddr=srlab.sr.ntt: Nokia Universal Killer Internet Application/2.0 (NUUKIA)
+In-Reply-To: 982<73898-reg@172.21.9.155
+Accept: text/plain
+Acclue p:jdrosen@luc•‘‹Ñœ’Á
+  ;
+ tag = 98asjd8
+CaLl-Id
+ : 0ha0isndaksdj@10.1.1.1
+cseq: 8 INVITErg \\\"" <sip:jdrosen@luc•‘‹Ñœ’Á
+  ;
+ tag oram-5=5;x-param-6=6;x-param-7=7;x-param-8=8
+Calny.com
+From: sip:caller@university.edu
+Call-ID: 1@10.0.0.1
+CSeq: 1 INVIparam-6=6;x-param-7=7;x-param-8=8
+Call-ID: 0ha0isndaksdj@10.0.2.2  
+Contact: *
+CSeq: 9 REGISTER    = 1a1b1f1H33n
+Fro                     : SIP   /  2.0/  UDP
+  135.180.15060;maddr=192.1683.102.5
+Via: .SIP4v=0
+o=mhandley 29739= 98asjd8
+CaLl-Id
+ : 0ha0isndaksdj@10.1.1.1
+cseq: 8 INVITE
+Via  : SIP   /  2.0/  UDP
+  135.180.130.1DP 135.6180.130.57;branch=0
+Via: SIP/2.0/
+  sip:vivekg@ch.watson@ieesip:a.g.bell@bell-tel.com>
+To:      T. Wa	son+ <sip:t.watson@ieee.org>
+Call-ID: 3?1414@c.bell-tel.com
+CS.INVITE sip:user@company.com SIP/2.0
+To: sip:user@company.comntc.nokia.com:5060;maddr=srlab.sr.ntt: Nokia Universal Killer Internet Application/2.0 (NUUKIA)
+In-Reply-To: 982<73898-reg@172.21.9.155
+Accept: text/plain
+Acclue p:jdrosen@luc•‘‹Ñœ’Á
+  ;
+ tag = 98asjd8
+CaLl-Id
+ : 0ha0isndaksdj@10.1.1.1
+cseq: 8 :jdrosen@luc•‘‹Ñœ’Á
+  ;
+ tag = 98asjd8
+CaLl-Id
+ : 0ha0isndaksdj@10.1.1.1
+cseq: 8 INVITErg \\\"" <sip:jdrosen@luc•‘‹Ñœ’Á
+  ;
+ tag oram-5=5;x-param-6=6;x-param-7=7;x-param-8=8
+Calny.com
+From: sip:caller@university.edu
+Call-ID: 1@10.0.0.1
+CSeq: 1 INVIparam-6=6;x-param-7=7;x-param-8=8
+Call-ID: 0ha0isndaksdj@10.0.2.2  
+Contact: *
+CSeq: 9 REGISTER    = 1a1b1f1H33n
+Fro                     : SIP   /  2.0/  UDP
+  135.180.15060;maddr=192.1683.102.5
+Via: .SIP4v=0
+o=mhandley 29739= 98asjd8
+CaLl-Id
+ : 0ha0isndaksdj@10.1.1.1
+cseq: 8 INVITE
+Via  : SIP   /  2.0/  UDP
+  135.180.130.1DP 135.6180.130.57;branch=0
+Via: SIP/2.0/
+  sip:vivekg@ch.watson@ieesip:a.g.bell@bell-tel.com>
+To:      T. Wa	son+ <sip:t.watson@ieee.org>
+Call-ID: 3?1414@c.bell-tel.com
+CS.INVITE sip:user@company.com SIP/2.0
+To: sip:user@company.comntc.nokia.com:5060;maddr=srlab.sr.ntt: Nokia Universal Killer Internet Application/2.0 (NUUKIA)
+In-Reply-To: 982<73898-reg@172.21.9.155
+Accept: text/plain
+Acclue p:jdrosen@luc•‘‹Ñœ’Á
+  ;
+ tag = 98asjd8
+CaLl-Id
+ : 0ha0isndaksdj@10.1.1.1
+cseq: 8 INVITErg \\\"" <sip:jdrosen@luc•‘‹Ñœ’Á
+  ;
+ tag oram-5=5;x-param-6=6;x-param-7=7;x-param-8=8
+Calny.com
+From: sip:caller@university.edu
+Call-ID: 1@10.0.0.1
+CSeq: 1 INVIparam-6=6;x-param-7=7;x-param-8=8
+Call-ID: 0ha0isndaksdj@10.0.2.2  
+Contact: *
+CSeq: 9 REGISTER    = 1a1b1f1H33n
+Fro                     : SIP   /  2.0/  UDP
+  135.180.15060;maddr=192.1683.102.5
+Via: .SIP4v=0
+o=mhandley 29739= 98asjd8
+CaLl-Id
+ : 0ha0isndaksdj@10.1.1.1
+cseq: 8 INVITE
+Via  : SIP   /  2.0/  UDP
+  135.180.130.1DP 135.6180.130.57;branch=0
+Via: SIP/2.0/
+  sip:vivekg@chair.dnrr;handling=air.dnrr;handling=optional
+Content-Length: 31
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxc.bell-labs.com ;xx   x

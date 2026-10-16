@@ -1,0 +1,31 @@
+ÿINVITE sip:John_Smith@tct.hut.fi SIP/2.0
+To: John Smith _Smith@tct.hut.fi SIP/2.0
+To: John Smith <sip:John_Smith@tct.hut.fi:5066REGISTER sip:garage.sr.ntc&nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlabUPDATE.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Recor.com
+To: sip:digest@garage.sr.ntc.digest@garage.sr.ntc.nokia.co;user=ip;maddr=131.228.16.2>
+  ; tag = deadbeef
+From: http://w1Route%3a%20X%5REGTISER sip:company.com SIP/2.0
+Via: SIP/2.0/UDP rama.research.nCall-ID: 
+Via: SIP/2.0/UDP 135.180.130.133
+To: sd-Route: <sip:garage.sr.ntc.nokia.com:addr=srlab.sr.ntc.nokia.com>
+FAuthorization: Digest rom: sip:digest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.digest@garage.sr.ntc.nokia.co;user=ip;maddr=131.228.16.2>
+  ; tag = deadbeef
+From: http://w1Route%3a%20X%5REGTISER sip:company.com SIP/2.0
+Via: SIP/2.0/UDP rama.research.nCall-ID: 
+Via: SIP/2.0/UDP 135.180.13<sip:John_Smith@tct.hut.fi:5066REGISTER sip:garage.sr.ntc&nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlabUPDATE.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Record-Route: <sip:garage.sr.ntc.nokia.com:addr=srlab.sr.ntc.nokia.com>
+From: sip:digest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.digest@garage.sr.ntc.nokia.co;user=ip;maddr=131.228.16.2>
+  ; tag = deadbeef
+From: http://w1Route%3a%20X%5REGTISER sip:company.com SIP/2.0
+Via: SIP/2.0/UDP rama.research.nCall-ID: 
+Via: SIP/2.0/UDP 135.180.130.133
+To: sip:j.user@CoMPANY.COM;maddr=135.180.130.133tag=foo
+F2om: sip:j.user@COMPAN.YCOM;taISTER sip:company.com SIP/2.0
+Via: SIP/2.0/UDP rama.research.nCall-ID: 
+Via: SIP/2.0/UDP 135.180.130.133
+To: sm
+To: sið:dige

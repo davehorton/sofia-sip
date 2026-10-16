@@ -1,0 +1,35 @@
+INVITE sip:vivekg@chair.dnrc.bell-labs.com SIP/2.0
+  To :
+  sip:vivekg@chair.dnrc.bell-labs.com ;    tag    = 1a1b1f1H33n
+From   : "J Rosenberg \\\""`<sipÿÿÿÿÿÿÿ@lucent.cdom>
+  ;
+ tag ½ 98asjd8
+CaLl-Id
+ : 0ha0isndaksdj@10.1.1.1
+cseq: 8 INVITE
+Via  : SIP   /  2.0/  UDP
+  135.180.1REGISTE/TCPRSubject :
+NewFangledHeader:   newfangled value
+ more newfangled value
+Content-Type: application/ SIP/3.0
+  To :value
+ more newfangled value
+Content-Type: application/ SIP/3.0
+  To :
+  s/ TCP     12vivekg@chair.dnrc.bell-labs.com ;    tag    = 1a1b1f1H33n
+From   : "J Rosenberg \\\""`<sipÿÿÿÿÿÿÿ@lucent.cdom>
+  ;
+ tag ½ 98asjd8
+CaLl-Id
+ : 0ha0isndaksdj@10.1.1.1
+cseq: 8 INVITE
+Via  : SIP   /  2.0/  UDP
+  135.180.1REGISTE/TCPRSubject :
+NewFangledHeader:   newfangled value
+ more newfangled value
+Content-Type: application/ SIP/3.0
+  To :value
+ more newfangled value
+Content-Type: application/ .3.4.5   ;
+  brP/2.0
+Via: SlaIP/2.0/UDP srlab.sr.ntc.nokibs.om ;   a tag  .

@@ -1,0 +1,31 @@
+INVITE sip:vivekg@chair.dnrc.bell-labs.com SIP/2.0
+  To :
+  sip:vivekg@chair.dnrc.bell-labs.com ;    tag    = 1a1b1f1H33n
+From   : "J Rosenberg \\\"" <sip:jdrosen@lucent.com>
+  ;
+ tag = 99asjd8$CaLl-Id
+ : 0ha0isb/sr.ntc.nokia.com:5060;maddr=19z.168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5 (NTA 1.0)
+Via: SIP/2.0/UDP 192.2.2.1:5060;òemeived=[v:  SIP  / 3.0  / TCñ     12.3.4.5   ;
+  branch  =   9ikj8  ,
+  SIP  //SCTP.0   / UDP nberg \\\"" <sip:jdrosen@lucent.com>
+  ;
+ tag = 99asjd8$CaLl-Id
+ : 0ha0isndaksdj@10-1.1.1
+cse$q: 8 INVITE
+Via  : SIP   /  2.0/  UDP
+  135.180.130.133
+Subject :
+NewFangledHeader:   newfangled value
+ more newfangled value
+Content-Type: application/sdp
+REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlab/sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: SIPOPTIONS sip/2.0/TCP  1.2.3.4   ; hidden
+m:"Quoted string \"\"" <sip:jdrosen@bellffe0::FAB1]
+Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip:gabage.sr.ntc.nokia.com:5060ma;ddr=srlab.sr.ntc.nokia.com>
+Hide: route
+Max-Forwards: 15
+Fro:bob@example.com SIP/2.0
+Via: SIP/2.0/UDP 172.21.40.44;branch=z9hG4bKitIIzim: a

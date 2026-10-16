@@ -1,0 +1,51 @@
+name: Fuzz
+
+on:
+  workflow_dispatch:
+    inputs:
+      seconds:
+        description: Seconds to fuzz each target
+        default: "600"
+  pull_request:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "17 3 * * *"	# nightly, longer runs
+
+jobs:
+  fuzz:
+    name: ${{ matrix.target }}
+    runs-on: ubuntu-latest
+    # build ~5 min + fuzzing (up to 30 min nightly)
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        target: [sip_msg, url, ws, sres, stun]
+    env:
+      # 60 s per target on PRs and pushes, 30 min nightly
+      SECONDS_PER_TARGET: ${{ github.event_name == 'schedule' && '1800' || github.event.inputs.seconds || '60' }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build fuzz image
+        run: docker build -t sofia-sip-ci -f ci/Dockerfile ci
+      - name: Fuzz ${{ matrix.target }}
+        run: |
+          mkdir -p fuzz-out
+          docker run --rm -v "$PWD:/src:ro" -v "$PWD/fuzz-out:/out" \
+            -e BUILD_DIR=/out/build sofia-sip-ci \
+            /src/scripts/fuzz.sh "$SECONDS_PER_TARGET" ${{ matrix.target }}
+      - name: Upload crashes
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: crashes-${{ matrix.target }}
+          path: |
+            fuzz-out/build/crashes/${{ matrix.target }}
+            fuzz-out/build/fuzz_${{ matrix.target }}.log
+      - name: Upload grown corpus
+        if: github.event_name == 'schedule'
+        uses: actions/upload-artifact@v4
+        with:
+          name: corpus-${{ matrix.target }}
+          path: fuzz-out/build/corpus/${{ matrix.target }}

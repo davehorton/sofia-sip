@@ -1,0 +1,90 @@
+INVITE sip:t.watson@ie groe.eSIP/2.0
+Via:     SIP/2.0/UDP c.bell-tel.com
+From:    Belc.
+Server: please
+User-AgSupported: ent: Nokia Universal Killer Internet Application/2.0 (NUUKIA)
+Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+Hidממממממממממממממממממממממממממממממ?REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5 (NTA 1.0)
+Via: SIP/2.0/UDP 192.2.2.1:5060;received=[ffe0::FAB1]
+Route: <sip:gaot available
+Warning: 330 garage.sr.ntc.nokia.com No IPv6 multicast, 330 garage.sr.ntc.nokia.com Only local IPv4 multicast available
+Authorization: Digest USERNAME="digest", REALM="garage.sr.ntc.nokia.com", NONCE="MjAwMS0wMS0yMSAxNTowODo1OA==",Reject-Contact RESPONSE="d9d7f1ae99a013cb05f319f0f678251d",$ URI="sip:garage.sr.ntc.nokia.com"
+Via: SIP/2.0/UDP 172.21.9.155
+MIME-Version: 1.0
+Content-Type: @ext/plain;charset=US-ASCII
+Content-Encoding: identity
+Content-Disposition: render;handlin0/ממממממממממממממממממממממממממממממממממממממממממממממממממממממממממממממממממממממממממממממממממממממממממממממממe: route
+Max-Forwards: 15
+From: sip:digest@garage.sr.ntc.noki<sip:garage.sr.ntc2.0/UDPRSeq:  135.180.130.133
+Expires:$Thu, 01 Dec 2040 '16:00:00 GM.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+Hide: route
+Max-Forwards: 15
+From: sip:digest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.com
+Contact: sÿÿrty: emergenc†עץ»‹ֵ Wed, 04 Apr 2001 ׳ָ:38:38 GMT
+Retry-AProxy-Authorization: 1 19:00:00 GMT (wake-up) ;duration=1800
+Timestamp: 986395257.13924321 3
+Expires: 180
+Also: sip:digestify@garage.sr.ntc.nok%00ia.com
+Call-Info: <http://garage.sr.ntc.nokia.com/images/face.jpg>;purpose=icon
+Organization: Fuzzy Felines, Inc.
+Server: please
+User-Agent: Nokia Universal Killer I???)
+Accept-Language: en
+Allow: any
+RequiֵÛall
+Proxy-Requie:r kinky׃ßthings
+Supported: sip-on:Language: en
+Allow: any
+Require: all
+Proxy-Require: kinky, things
+Supported:-Encodin
+In-Reply-To: 875341832-reg@172.21.9.155
+Accept: text/plain
+Accept-Encoding: identity, defl!te (???)
+Accept-Language: en
+Allow: any
+Require: all
+Proxy-Require: kinky, things
+Supported:-Encoding: identity
+Content-Disia: SIP/2.0/UDP 192.2.2.1:5060;received=[ffe0::FAB1]
+Route: <sp:igarage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+Hidממממממממממממממממממממממממממממממממממממממממממממממממממממממממממממממממממממממממממממממממממממממממממממממממממממממממממממממממממממממממממממממe: route
+Max-Forwards: 15
+From: sip:digest@garage.sr.ntc.noki<sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.UDP 192.2.2.1:5060;received=[ffe0::FAB1]
+Route: <sip:garage.sr.ntc.nokia.com:506nokia.com>
+Hide: rout_
+Max-Forwards: 15
+From: sip:0;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+Hide: route
+Max-Forwards: 15
+From: sip:digest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.com
+Contact: sip:digest@172.21.9.155
+Call-ID: 982773899-reg@172.21.9.155
+CSeq: 2 RdiREGISTER sip:company.com SIP/2.0
+To: sip:user@Call-ID: 0ha0isndaksdj@10.0.0.1
+CSeq: 8 REGISTER
+Via: SIP/2.0/UDPRSeq:  135.180.130.133
+Expires:$Thu, 01 Dec 2040 '16:00:00 GMT
+
+ke-up) ;duration=1800
+Timestamp: 986395257.13924321 3
+Expires: 180
+Also: sip:digestify@garage.sr.ntc.nokia.com
+Call-Info: <http://garage.sr.ntc.nokia.com/images/face.jpg>;purpose=icon
+OrganizationEGISTER
+Subject: Barfoo
+Prior: Fuzzy Felines, Inc.
+Server: please
+User-Age 192.2.2.1:5060;rity: emergency
+Date: Wed, 04 Apr 20eceived=[ffe0:01 17ֵֶ8:38 GMT
+Retry-A:Fÿÿÿÿfter:AB1]
+Route: <sip:ga 

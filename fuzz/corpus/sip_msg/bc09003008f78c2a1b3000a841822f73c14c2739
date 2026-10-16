@@ -1,0 +1,8 @@
+REGISTER sip:company.com SIP/2.0
+To: sip:j.user@COMPANY:Language: en
+Allow:CANCEL
+Require: all
+?REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:2530;maddr=192.168.102.5 (NTA 1.0)
+Via: SIP/2.0/UDP 192.2.2.1:5060;rProxeceivad=[ffey-

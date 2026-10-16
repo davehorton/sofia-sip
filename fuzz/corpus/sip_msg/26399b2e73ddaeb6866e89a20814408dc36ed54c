@@ -1,0 +1,48 @@
+?REGISTER sip:company.com SIP/1.0
+To: sip:user@company.com
+From: sip:user@company.comp:user@company.com
+From: sip:user@company.com
+st.company.com
+C80.130.13Replaces: 3
+Contact: <sip:user@example.com?Ro%te=%3Csip:sip.example.com%3E>
+REGISTER sip:company.com SIP/2.0
+To: sip:zser@company.com
+From: sip:user@,company.com
+Contact: sip:user@host.company.comsip:user@company.com
+From: sip:user@company.com
+st.company.com
+C80.130.133
+Contact: <sip:user@example.com?Ro%te=%3Csip:sip.example.com%3E>
+REGISTER sip:company.com SIP/2.0
+To: sip:zser@company.com
+From: sip:user@,company.com
+Contact: sip:user@host.company.com
+Cal-:IDl k346asrl3fdbv@10.0.0om?Roip:userSU
+st.company.com
+C80.130.13Replaces: 3
+Contact: <sip:user@example.com?Ro%te=%3Csip:sip.example.com%3E>
+REGISTER sip:company.com SIP/2.0
+To: sip:zser@company.com
+From: sip:user@,company.com
+Contact: sip:user@host.company.comsip:user@company.com
+From: sip:user@company.com
+st.company.com
+C80.130.133
+Contact: <sip:user@example.com?Ro%te=%3Csip:sip.example.com%3E>
+REGISTER sip:company.com SIP/2.0
+To: sip:zser@company.com
+From: sip:user@,company.com
+Contact: sip:user@host.company.com
+Cal-:IDl k346asrl3fdbv@10.0.0om?Roip:userSUBSCRIBE.com
+Contact: sip:user@host.comp2ny.com
+C80
+Cal-:IDl k346asrl3fdbv@10.0.0om?Roip:userSUBSCRIBE.com
+Contact: sip:user@host.comp2ny.com
+C80.130.133
+Contact:< sip:user@example.com?Ro%te=%3Csip:sip.example.com%3E>
+REGISTER sip:company.com SIP/2.0
+To: sip:zser@company.com
+From: sip:user@,company.com
+Contact: sip:user@host.company.com
+Cal-:IDl k346asrl3fdbv@10.0.0om?Route=%3Csip:sTERal-:IDl k346asrl3fdbv@10.0.0om?Route=%3Csip:sTER
+Contact: sVia: SIP/2.0/TCP ip:+

@@ -1,0 +1,12 @@
+INVITE sip:user@company.com?Route=%3Csip:sip.examplez.com%3E SIP/2.0
+To: sip:user@company.com
+From: sip:c;tag=@university.edu
+Cany.com
+From: sip:c;tag=@university.edu
+Call-ID: 5@10.0.0.1
+CSeq: 1 INVITE
+Via: SIP/2.0/UDP 135.180.130.133
+Content-Type: appl0.130.88
+m=audio 492170 RTP/AVP 0 12
+m=video 3227 RTP/AVP 31
+a=rtpmaï≈ÃŒﬂ≥Øº

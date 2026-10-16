@@ -1,0 +1,63 @@
+REGISTER sip:company.com SIP/2.0
+Via: SIP/2.0/UDP rama.research.nokiReason: ia: SIP/2.0/UDP 135.090.130.13ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ3
+To: sip:j.userOM;maddr=135.180.130.133;tag=foo
+rom: sip:j.suer@COMPANYeee.org>
+Call-ID: 31414@c.o: <http://garage.sr.ntc.nokia.com/figure-1.jpg>
+Warning: 300 garage.sr.ntc.nokia.com IPv6 global addresses not availab?REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Record-R2.0/UDP sip19.meepx.alcom
+Via: SIP/2.0/UDP sip18.example.com
+Via: SIP/2.0/UD32.example.com
+"ia: SIP/2.0/UDP sip31.example.com
+Via: SIP/1.0/UDP sip30.?REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Record-R2.0/UDP sip19.meepx.alcom
+Via: SIP/2.0/UDP sip18 SIP/2.0/UDP sip31.example.com
+Via: SIP/2.0/UDP sip30.example.com
+Via: SIP/2.0/UDP sip29.example.com
+Via: SIP/2.0/UDP sip28.example.com
+Via: SIP/20/UDP sip27.example.com
+Via: SIg \\\"" <sip:jdrosen@lucent.com>
+  ;
+ tag = 98asjd
+ tag = 98asjd8
+CaLl-Id
+ : 0ha0isndaksdj@10.1.1.1
+cseq: 8 INVITE
+Via  : SIP   /ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ  2.0/  UDP
+  135.180.130.133Refer-Sub:
+NewFangledHeader:   newfangled value
+ more newfangled value
+Content-Type: application/sdp
+v:  Sexample.com
+Via: SIP/2.0/UDP sip29.example.com
+Via: SIP/2.0/UDP sip28.example.com
+Via: SIP/2.0/UDP sip27.example.com
+Via: SIg \\\"" <sip:jdrosen@lucent.com>
+  ;
+ tag = 98asjd
+ tag = 98asjd8
+CaLl-Id
+ : 0ha0isndaksdj@10.1.1.1
+cseq: 8 INVITE
+Via  : SIP   /  2.0/  UDP
+  135.180.130.133Refer-Sub:
+NewFangledHeader:   newfangled value
+ more newfangled value
+Content-Type: application/s.0/  UDP
+  135.180.130.133Refer-Sub:
+NewFangledHeader:   newfangled value
+ more newfangled value
+Content-Type: application/sdp
+v:  Sexample.com
+Via: SIP/2.0/UDP sip29.example.com
+Via: SIP/2.0/UDP sip28.example.com
+Via: SIP/2.0/UDP sip27.example.com
+Via: SIg \le
+Warning: 330 garage.sr.ntc.nokia.com No IPv6 multicast, 330 garage.sr.ntc.nokia.com Only lg: identity
+Content-Disposition: render;handling=optional
+Content-Length: \\"" 31
+
+xxxxxxxxxxxxxxxxx<sip:jdrosen@lucent.com>
+  ;
+ xtxxag

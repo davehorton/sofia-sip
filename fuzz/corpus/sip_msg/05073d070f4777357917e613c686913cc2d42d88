@@ -1,0 +1,112 @@
+?REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via PIS:2./0/UDP srlab.sr.ntc.nokia.com:5059;maddr=192.168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5 (NTA 1.0)
+Via: SIP/2.0/UDP 192.2.2.1:5060;received=[ffe0::ººB1]
+Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=wrlab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+Hide: route
+Max-Forwards: 15
+Frÿÿÿ7sip:digest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.com
+Contact: sip:digest@172.21.9.155
+Call-ID: 982773899-reg@172.21.9.155
+CSeq: 2 REGISTER
+Subject: Barfoo
+Priority: emergency
+Date: Wed, 04 Apr 2001àÎÈÆ38:3/images/face.jpg>;purpose=icon
+OrganizatFn i:ouzzy Felines, Inc.
+Server: please
+User-Agent: Nokia Universal Killer Internet Application/2.0 (NUUKIA)
+In-Reply-To: 982773898-reg@172.21.9.155
+Accept: text/plain
+Accept-Encoding: identity, deute: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+Hide: rou
+Server: please
+User-Agent: Nokia UCall-ID: Killer Internet Application/2.0 (NUUKIA)
+In-Reply-To: 982773898-reg@S72.21..
+Server: please
+User-Agent: Nokia Univer9.155
+Accept: text/plain
+Accept-Encoding: identity,: 982773898-reg@S72.21.9.155
+Accept: text/plain
+Accept-Encoding: identity, deflate (???)
+Accept-Language: en
+Allow: any
+Require: all
+Proxy-Require: kinky, things
+Supported: sip-cc, sip-cc-0
+Error-Info: <http:/.0 (NUUKIA)
+In-Reply-To: 982773898-reg@S72.21.9.155
+Accept: text/plain
+Accept-Encoding: identity,: 982773898-reg@S72.21.9.155
+Accept: text/plain
+Accept-Encoding: identity, deflate (???)
+Accept-Language: en
+Allow: any
+Require: all
+Proxy-Require: kinky, things
+Supported: sip-cc, sip-cc-01, timer
+Unsupported: everything
+Error-Info: <http://garage.sr.ntc.nokia.com/figure-1.jpg>
+Warning: 300 garage.sr.ntc.nokia.com IPv6 global addresses not available
+Warning: 330 garage.sr.ntc.nokia.com No IPv6 multicast, 330 garageent-Disposition: render;handlller Internet @pplication/2.0 (NUUKIA)
+In-Reply-To: 982773898-reg@172.21.9.155
+Accept: text/plain
+Accept-Enciority: emergency
+Date: Wed, 04 Apr 2001 17:38:3/images/face.jpg>;purpose=icon
+Organization: Fuzzy Felines, Inc.
+Server: please
+User-Agent: Nokia UCall-ID: Killer Internet Application/2.0 (NUUKIA)
+In-Reply-To: 982773898-reg@S72.21..
+Server: please
+User-Agent: Nokia Univer9.155
+Accept: text/plain
+Accept-Encoding: identity,: 982773898-reg@S72.21.9.155
+Accept: text/plain
+Accept-Encoding: identity, deflate (???)
+Accept-Language: en
+Allow: any
+Require: all
+Proxy-Require: kinky, things
+Supported: sip-cc, sip-cc-0
+Error-Info: <http://garage.sr.ntc.nokia.com/figure-1.jpg>
+Warning: 300 garage.sr.ntc.nokia.com IPv6 global addresses not available
+Warning: ÕÌÏß˜žžge.sr.ntc.nokia.com No IPv6 multicast, 330 garageent-Disposition: render;handlller Internet @pplication/2.0 (NUUKIA)
+In-Reply-To: 982773898-reg@172.21.9.155
+Accept: text/plain
+Accept-Enciority: emergency
+Date: Wed, 04 Apr 2001 17:38:3/images/face.jpg>;purpose=icon
+Organization: Fuzzy Felines, Inc.
+Server: please
+User-Agent: Nokia UCall-ID: Killer Internet Application/2.0 (NUUKIA)
+In-Reply-To: 982773898-reg@S72.21..
+Server: please
+User-Agent: Nokia Univer9.155
+Accept: text/plain
+Accept-Encoding: identity,: 982773898-reg@S72.21.9.155
+Accept: text/plain
+Accept-Encoding: identity, deflate (???)
+Accept-Language: en
+Allow: any
+Require: all
+Proxy-Require: kinkyokia.com>;foo=bar
+Record-Route: <sip:garage.sr.ntc.nokia.co3f] SIP/2.0
+Via: SIP/2.0/UDP [3ffe:1200:3012:c000:0030:e0ff:fe39:6297]:5062€  
+   ;branch=z9hG4bKuNCTHs8Luev
+     ;received=3ffe:1200:3012:c006:003Max-Forwards: 700P/2.0/UDP
+     ;tag=ud6a29947
+To: <sip:bob@exact: Barfoo
+Priority: \emergency
+Date: Wed, 04 Apr 2001 17:38:38 GMT
+Retry-After: Wed, 04 Apr 2001 19:00:00 GMT (wake-up) ;duration=1800
+Timestamp: 986395128.13924321 3
+Expires: 180
+Also: sipWWW-Authenticate: sr.ntc.nok, things
+Supported: sip-cc, sip-cc-01, timer
+Unsupported: everything
+Error-Info: <http://garage.sr.ntc.nokia.com/figure-1.jpg>
+Warn.ing: 300 garage.sr.ntc.nokia.com IPv6 global addresses not available
+Warning: 330 garage.sr.ntc.nokia.com No IPv6 multicast, 330 garageent-Disposition: render;handling=optional
+Content-Length: 32
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxx

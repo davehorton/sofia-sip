@@ -1,0 +1,170 @@
+?INVITE si!:user@company.com SIP/2.0
+Ôo: sip:user@company.com
+From: sip:caller@university.edu
+Call-ID: 8@10.0.0.1
+CSeq: 1 INVIV
+RSeq:  SIP/2.0/UDP 135.180.130.133
+Expires: Thu, 01 Dec 3330 16:00:00 GMT
+Content-Type: application/sŸŸŸŸŸ0.88
+m=audio 492170 RTP/AVP 0 12
+m=video 3227 RTP/AVP 31
+a=rtpmap:31 LPC
+INVITE sip:user@company.com 
+o=mhandl/AVŸŸ0.88
+m=audio 492170 RTP/AVP 0 12
+m=video 3227 RTP/AVP 31
+a=rtpmap:31 LPC
+INVITE sip:user@comP/AVP 31
+a=rtpmaCall
+t=0 0
+c=IN IP4 135ÿÿÿÿÿÿÿ.180.130.88
+m=audio 492170 RTP3227 RTdu
+Call-ID: 8@10.0.0.1
+CSeq: 1 INVIV
+TiEa: SIP/2.0/UDP 135.180.130.133
+Expires: Thu, 01 Dec 1994 16:00:00 GMT
+Content-Type: application/sŸŸŸŸŸ0.88
+m=audio 492170 RTP/AVP 0 12
+m=video 3227 RT 16:00:00 GMT
+Content-Type: ™plication/sŸŸŸŸŸ0.88ö’Â–udio 492170 RTP/AVP 0 12
+m=video 3227 RTP/AVP 31
+a=rtpmap:31 LVC
+PNIITE sip:user@comP/AVP? 31
+a=rtpmaCall
+t=0 0
+c=IN IP4 135ÿÿÿÿÿÿÿ.180.130.88
+m=audio 4 application/sŸŸ:user@company.com 
+o=mhandl/AVŸŸ0.88
+m=audio 492170 RTP/AVP 0 12
+m=video 3227 RTP/AVP 31
+a=rtpmap:31 LPC
+INVITE sip:user@comP/AVP 31
+a=rtpmaCall
+t=0 0
+c=IN IP4 135ÿÿÿÿÿÿÿ.180.130.88
+m=audio 492170 RTP3227 RTdu
+Call-ID: 8@10.0.0.1
+CSeq: 1 INVIV
+TiEa: SIP/2.0/UDP 135.180.130.133
+Expires: Thu, 01 Dec 1994 16:00:00 GMT
+Content-Type: application/sŸŸŸŸŸ0.88
+m=audio 492170 RTP/AVP 0 12
+m=video 3227 RT 16:00:00 GMT
+Content-Type: ™plication/sŸŸŸŸŸ0.88ö’Â–udio 492170 RTP/AVP 0 12
+m=video 3227 RTP/AVP 31
+a=rtpmap:31 LVC
+PNIITE sip:user@comP/AVP? 31
+a=rtpmaCall
+t=0 0
+c=IN IP4 135ÿÿÿÿÿÿÿ.180.130.88
+m=audio 4 application/sŸŸŸŸŸ0.88
+m=audio 492170 RTP/AVP 0 12
+m=video 3227 RT 16:00:00 GMT
+Content-Type: application/sŸŸŸŸŸ0.88ö’Â–udio 492170 RTP/AVP 0 12
+m=video 3227 RTP/AVP 31
+a=rtpmap:31 LVCP 0 12
+m=video ires: Thu, 01 Dec 1994 16:00:00 GMT
+Content-Type: application/sŸŸŸŸŸ0.88
+m=audio 492170 RTP/AVP 0 12
+m=video 3227 RTP/AVP 31
+a=rtpmap:31 LPC
+INVITE sip:user@comP/AVP 31
+a=rtpmaCall
+t=0 0
+c=IN IP4 135ÿÿÿÿÿÿÿ.180.130.88
+m=audio 492170 RTP3227 RTdu
+Call-ID: 8@10.0.0.1
+CSeq: 1 INVIV
+TiEa: SIP/2.0/UDP 135.180.130.133
+Expires: Thu, 01 Dec 1994 16:00:00 GMT
+Content-Type:E si!:user@company.com SIP/2.0
+Ôo: sip:user@company.com
+From: sip:caller@university.edu
+Call-ID: 8@10.0.0.1
+CSeq: 1 INVIV
+RSeq:  SIP/2.0/UDP 135.180.130.133
+Expires: Thu, 01 Dec 1994 16:00:00 GMT
+Content-Type: application/sŸŸŸŸŸ0.88
+m=audio 492170 RTP/AVP 0 12
+m=video 3227 RTP/AVP 31
+a=rtpmap:31 LPC
+INVITE sip:user@company.com 
+o=mhandl/AVP 0 12
+m=video ires: Thu, 01 Dec 1994 16:00:00 GMT
+Content-Type: application/sŸŸŸŸŸ0.88
+m=audio 492170 RTP/AVP 0 12
+m=video 3227 RTP/AVP 31
+a=rtpmap:31 LPC
+INVITE sip:user@comP/AVP 31
+a=rtpmaCall
+t=0 0
+c=IN IP4 135ÿÿÿŸŸŸ0.88
+m=audio 492170 RTP/AVP 0 12
+m=video 3227 RT 16:00:00 GMT
+Content-Type: application/sŸŸŸŸŸ0.88ö’Â–udio 492170 RTP/AVP 0 12
+m=video 3227 RTP/AVP 31
+a=rtpmap:31 LVCP 0 12
+m=video ires: Thu, 01 Dec 1994 16:00:00 GMT
+Content-Type: application/sŸŸŸŸŸ0.88
+m=audio 492170 RTP/AVP 0 12
+m=video 3227 RTP/AVP 31
+a=rtpmap:31 LPC
+INVITE sip:user@comP/AVP 31
+a=rtpmaCall
+t=0 0
+c=IN IP4 135ÿÿÿÿÿÿÿ.180.130.88
+m=audio 492170 RTP3227 RTdu
+Call-ID: 8@10.0.0.1
+CSeq: 1 INVIV
+TiEa: SIP/2.0/UDP 135.180.130.133
+Expires: Thu, 01 Dec 1994 16:00:00 GMT
+Content-Type:E si!:user@company.com SIP/2.0
+Ôo: sip:user@company.com
+From: sip:caller@university.edu
+Call-ID: 8@10.0.0.1
+CSeq: 1 INVIV
+RSeq:  SIP/2.0/UDP 135.180.130.133
+Expires: Thu, 01 Dec 1994 16:00:00 GMT
+Content-Type: application/sŸŸŸŸŸ0.88
+m=audio 492170 RTP/AVP 0 12
+m=video 3227 RTP/AVP 31
+a=rtpmap:31 LPC
+INVITE sip:user@company.com 
+o=mhandl/AVP 0 12
+m=video ires: Thu, 01 Dec 1994 16:00:00 GMT
+Content-Type: application/sŸŸŸŸŸ0.88
+m=audio 492170 RTP/AVP 0 12
+m=video 3227 RTP/AVP 31
+a=rtpmap:31 LPC
+INVITE sip:user@comP/AVP 31
+a=rtpmaCall
+t=0 0
+c=IN IP4 135ÿÿÿÿÿÿÿ.180.130.88
+m=audio 492170 RTP3227 RTdu
+Call-ID: 8@10.0.0.1
+CSeq: 1 INVIV
+TiEa: SIP/2.0/UDP 135.180.130.133
+Expires: Thu, 01 Dec 1994 16:00:00 GMT
+Content-Type: application/sŸŸŸŸŸ0.88
+m=audio 492170 RTP/AVP 0 12
+m=video 3227 RT 16:00:00 GMT
+Content-Type: ™plication/sŸŸŸŸŸ0.88ö’Â–udio 492170 RTP/AVP 0 12
+m=video 3227 RTP/AVP 31
+a=rtpmap:31 LVC
+PNIITE sip:user@comP/AVP? 31
+a=rtpmaCall
+t=0 0
+c=IN IP4 135ÿÿÿÿÿÿÿ.180.130.88
+m=audio 4 application/sŸŸŸŸŸ0.88
+m=audio 492170 RTP/AVP 0 12
+m=video 3227 RT 16:00:00 GMT
+Content-Type: application/sŸŸŸŸŸ0.88ö’Â–udio 492170 RTP/AVP 0 12
+m=video 3227 RTP/AVP 31
+a=rtpmap:31 LVC
+PNIITE sip:user@comP/AVP 31
+a=rtpmaCall
+t=0 0
+c=IN IP4 135ÿÿÿÿÿÿÿ.180.130.88
+m=audio 492170 RTP/AVP 0 12
+m=video 3227 RTP/AVP 31
+a=rtpmap:31 LPC

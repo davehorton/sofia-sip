@@ -31,9 +31,33 @@ never modifies the checkout.
 The gating suites are the modules drachtio-server uses: `su bnf ipt url msg sip sresolv tport nta`.
 `nua`, `soa`, `nea`, `nth`, `http`, `iptsec`, `sdp` and `stun` still build, and `all-gcc` runs their tests, but they don't gate.
 
+## Fuzzing
+
+`fuzz/` holds libFuzzer targets for the code that parses input from the network:
+
+| Target | What it fuzzes |
+|--------|----------------|
+| `sip_msg` | SIP message parsing as tport does it, UDP (one datagram) and TCP/TLS/WS (stream reassembly, pipelining), then what nta and drachtio do with the result (sanity check, encode, dup, URI and Route handling) |
+| `url` | URI parsing, printing, comparison (including `tel:`) and parameter lookup |
+| `ws` | WebSocket upgrade handshake and frame parsing (`ws.c`) |
+| `sres` | DNS response decoding (all record types, name compression) |
+| `stun` | the STUN server tport enables by default on UDP ports |
+
+```
+scripts/docker-fuzz.sh              # every target for 60 s, in the CI image
+scripts/docker-fuzz.sh 600 ws sres  # chosen targets, 10 minutes each
+scripts/fuzz.sh 60                  # directly on Linux with clang
+```
+
+Each target starts from its seed corpus in `fuzz/corpus/<target>`. New inputs it finds, and crash reproducers, go to the build directory (`fuzz-out/build` with `docker-fuzz.sh`), never into the checkout. A crash fails the run. To replay a reproducer, run the target binary with the crash file as its argument.
+
+When a fuzzer finds a bug, fix it, and add the reproducer to a regression test (or to the target's corpus) so it stays fixed.
+
 ## CI
 
-`.github/workflows/tests.yml` runs `gcc`, `clang` and `asan` on every pull request and on pushes to `main`. It builds the image from `ci/Dockerfile` and calls `scripts/test.sh`, exactly like `scripts/docker-test.sh`. `.github/workflows/clang-analyzer.yml` runs `scan-build` separately.
+- `.github/workflows/tests.yml` runs `gcc`, `clang` and `asan` on every pull request and on pushes to `main`. It builds the image from `ci/Dockerfile` and calls `scripts/test.sh`, exactly like `scripts/docker-test.sh`.
+- `.github/workflows/fuzz.yml` fuzzes each target for 60 s on every pull request and push to `main`, and for 30 minutes nightly. It uploads crash reproducers, and the nightly grown corpus, as artifacts.
+- `.github/workflows/clang-analyzer.yml` runs `scan-build`.
 
 ## Notes
 

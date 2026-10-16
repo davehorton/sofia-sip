@@ -1,0 +1,77 @@
+ÿREGISTER sip:gara*e.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlAb.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5 (NTA 1.0)
+Via: SIP/2.0/UDP 192.2.2.1:5060;received=[ffe0::FAnokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=ba60;received=[ffe0::FAB1]
+Routp:ies:< garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip††††††††††††††††††††††††††††††††:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.noki
+Date: Wed, 04 Apr 2001 17:38:38 GMT
+Retry-Af898-reg@172.21.9.155
+Accept: text/plain
+Accept-Encoding: identity, deflate (???)
+Accept-Language Sip:digest@††††††††††††††††††:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.noki
+Date: Wed, 04 Apr 2001 17:38:38 GMT
+Retry-Af898-reg@172.21.9.155
+Accept: text/plain
+Accept-Encoding: identity, deflate (???)
+Accept-Language sip:digest@garage.sr.ntc.nokia.com
+Contact: sip:digest@172.21.9.155
+Call-ID: 982773899-reg@172.21.9.155
+CSeq: 2 REGISTER
+Subject: Barfoo
+Prioþÿÿÿrity: emergency
+Date: Wed, 04 Apr 1000 17:38:38 GMT
+Replacester: Wed, 04 Apr 2001uire: all
+Proxy-Require: kinky, things
+SupportedÿINVITE sip:vivekg@chair®dnrc.bell-labs.com SIP/2.0
+  To :
+  sip:vivek(@chair.dnrc.bell-labs.com ;    tagcccccccccccccccccccccccccccccccccccccccccccccccccccccccccc.    =ir.dnrc.bell?INVITE sip:vi/UDP sip27.example.com
+-labs.com ;    tag    = 1a1b1f1H33n
+Fro        :             : SIP   / 2 .0/  UDP
+ÿINVITE sip:vivekg@chair®dnrc.bell-labs.com SIP/4.0
+  To :
+  sip:vivek(@chair.dnrc.bell-labs.com ;    tagcccccccccccccccccccccccccccccccccccccccccccccccccccccccccc    =ir.dnrc.bell?INVITE sip:vi/UDP sip27.example.com
+-labs.com ;    tag    = 1a1b1f1H33n
+Fro        :             : SIP   / 2 .0/  UDP
+  135.180.15060;lrddr=192.1683.102.5
+ViVSeq: 2 REGISTER
+Subject: Barfoo
+Prioþÿÿÿrity: emergency
+Date:l.com>
+To:      Watson, Thomas <sip:t.watson@ieee.org>
+Call-ID: 31415@c.bell-tel.com
+CS
+Content-Disposilab.sr.ntc.nokia.com>;foo=ba60;received=[ffe0::FAB1]
+Routp:ies:< garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip††††††††††††††††††††††††††††††††:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.noki
+Date: Wed, 04 Apr 2001 17:38:38 GMT
+Retry-Af898-reg@172.21.9.155
+Accept: text/plain
+Accept-Encoding: identity, deflate (???)
+Accept-Language Sip:digest@††††††††††††††††††:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.noki
+Date: Wed, 04 Apr 2001 17:38:38 GMT
+Retry-Af898-reg@172.21.9.155
+Accept: text/plain
+Accept-Encoding: identity, deflate (???)
+Accept-Language sip:digest@garage.sr.ntc.nokia.com
+Contact: sip:digest@172.21.9.155
+Call-ID: 982773899-reg@172.21.9.155
+CSeq: 2 REGISTER
+Subject: Barfoo
+Prioþÿÿÿrity: emergency
+Date: Wed, 04 Apr 1000 17:38:38 GMT
+Replacester: Wed, 04 Apr 2001uire: all
+Proxy-Require: kinky, things
+SupportedÿINVITE sip:vivekg@chair®dnrc.bell-labs.com SIP/2.0
+  To :
+  sip:vivek(@chair.dnrc.bell-labs.com ;    tagcccccccccccccccccccccccccccccccccccccccccccccccccccccccccc.    =ir.dnrc.bell?INVITE sip:vi/UDP sip27.example.com
+-labs.com ;    tag    = 1a1b1f1H33n
+Fro        :             : SIP   / 2 .0/  UDP
+ÿINVITE sip:vivekg@chair®dnrc.bell-labs.com SIP/4.0
+  To :
+  sip:vivek(@chair.dnrc.bell-labs.com ;    tagcccccccccccccccccccccccccccccccccccccccccccccccccccccccccc    =ir.dnrc.bell?INVITE sip:vi/UDP sip27.example.com
+-labs.com ;    tag    = 1a1b1f1H33n
+Fro        :             : SIP   / 2 .0/  UDP
+  135.180.tion: render;handling=optional
+Content-Length: 30
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxx

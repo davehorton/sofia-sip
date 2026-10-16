@@ -1,0 +1,143 @@
+?INVITE <sip:user@company.com> SIP/2.0
+To: sip:user@company.com
+From: sip:caller@university.edu
+Call-ID: 2@ Watson+ <sip:t.watson@ieee.org>2.0Ü
+Via: SIP/2.0/UDP [3ffe:1200:3012:c000:0030:e0ff:fe40:6297]:5062   
+  ;branch=z9hG4bKuNCTHs8Lumv
+ Session-Expires: e:12;rport00:3012:c0048D æÀÕ
+CSeq: 2
+Via: SIP/2.0/UDP sip3.example.com
+Via:€€€€€€€€€€€€€€€€€€€€€€€€€€€ SIP/2.0/UDP sip2.example.com
+ch=z9hG4bKuNCTHs8Lumv
+ Session-Expires: e:12;rport00:3012:c0048D æÀÕ
+CSeq: 2
+Via: SIP/2.0/UDP sip3.example.com
+Via:€€€€€€€€€€€€€€€€€€€€€€€€€€€ SI="sip:garage.sr.ntc.nok“a.com"
+Via: SIP/2.0/UDP 172.21.9.10.0.[.1
+CSe: 1@10.0.[.1
+CSeqip:user@company.com
+From: si!p:caller@university.edu
+Call-ID: 1@10.0.[.1
+CSeq: 1 INVITE
+Viam
+From: sip:caller@university.ed <wip:jdrosen@bell-labs.com> ; newparam = newvalue©©©©©©´©©©©©©©©©©©©©©©©©©©©sjd8
+CaLl-Id
+mulˇˇˇˇˇˇˇ˝ixed; boundary=
+cseq: 8   /  2.0/  UDP
+  135.179.130.13cation/tdp
+v:  SIP  / 0.0=   9ikj8s  ,
+  SIP  /    2.0   / UDP  1.2.3.4   ; org>sted c
+Call-ID: 31414@c.bell-tel.com
+CSeq:    tel.rage.sr.ntc.nokiaNoc"m ,.ONC
+E="MjA  T. Watson+ <sip:t.watson@ieee.org>2.0Ü
+Via: SIP/2.0/UDP [3ffe:1200:3012:c000:0030:e0ff:fe40:6297]:5062   
+  ;branch=z9hG4bKuNCTHs8Lumv
+ Session-Expires: e:12;rport00:3012:c0048D æÀÕ
+CSeq: 2
+Via: SIP/2.0/ˇˇˇˇSI7272939 IN IP4 126.5.4.3
+5.4.3
+s=SIP CallReplaces: 
+t=0 0
+c}IN IP4 135.180.130.88
+m=audio 492170 RTP/AVP 0 12
+m=vler@university.edu
+Call-ID: 2@ Watson+ <sip:t.watson@ieee.org>2.0Ü
+Via: SIP/2.0/UDP [3ffe:1200:3012:c000:0030:e0ff:fe40:6297]:5062   
+  ;branch=z9hG4bKuNCTHs8Lumv
+ Session-Expires: e:12;rport00:3012:c0048D æÀÕ
+CSeq: 2
+Via: SIP/2.0/UDP sip3.example.com
+Via:€€€€€€€€€€€€€€€€€€€€€€€€€€€ SIP/2.0/UDP sip2.example.com
+ch=z9hG4bKuNCTHs8Lumv
+ Session-Expires: e:12;rport00:3012:c0048D æÀÕ
+CSeq: 2
+Via: SIP/2.0/UDP sip3.example.com
+Via:€€€€€€€€€€€€€€€€€€€€€€€€€€€ SI="sip:garage.sr.ntc.nok“a.com"
+Via: SIP/2.0/UDP 172.21.9.10.0.[.1
+CSe: 1@10.0.[.1
+CSeqip:user@company.com
+From: si!p:caller@university.edu
+Call-ID: 1@10.0.[.1
+CSeq: 1 INVITE
+Viam
+From: sip:caller@university.ed <wip:jdrosen@bell-labs.com> ; newparam = newvalue©©©©©©´©©©©©©©©©©©©©©©©©©©©sjd8
+CaLl-Id
+mulˇˇˇˇˇˇˇ˝ixed; boundary=
+cseq: 8   /  2.0/  UDP
+  135.179.130.13cation/tdp
+v:  SIP  / 0.0=   9ikj8s  ,
+  SIP  /    2.0   / UDP  1.2.3.4   ; org>sted c
+Call-ID: 31414@c.bell-tel.com
+CSeq:    tel.rage.sr.ntc.nokiaNoc"m ,.ONC
+E="MjA  T. Watson+ <sip:t.watson@ieee.org>2.0Ü
+Via: SIP/2.0/UDP [3ffe:1200:3012:c000:0030:e0ff:fe40:6297]:5062   
+  ;branch=z9hG4bKuNCTHs8Lumv
+ Session-Expires: e:12;rport00:3012:c0048D æÀÕ
+CSeq: 2
+Via: SIP/2.0/ˇˇˇˇSI7272939 IN IP4 126.5.4.3
+5.4.3
+s=SIP CallReplaces: 
+t=0 0
+c}IN IP4 135.180.130.88
+m=audio 492170 RTP/AVP 0 12
+m=video 3ääääääääääääääääääääääääääääääääää22%00TP/AVP 31
+a=rtpmap:31 LPC
+INVITE <sip:user@co4.3
+5.4.3
+s=SIP CallReplaces: 
+t=0 0
+c}IN IP4 135.180.130.88
+m=audio 492170 RTP/AVP 0 12
+m=video 3ääääääääääääääääääääääääääääääääää22%00TP/AVP 31
+a=rtpmap:31 LPC
+INVITE <sip:user@company.coe> SIP/2.0
+To: sip:user;branch=z9hG4bKram-6=6;
+Contact.ntc.ng>
+Warning: 300 garage.sr.ntisposition: render;handling=optional
+Content-Length: 31
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+REGISTER sip:garage.sr.ntc.nokiampany.coe> SIP/2.0
+To: sip:user;branch=z9hG4bKram-6=6;
+Contact.ntc.ng>
+Warning: 300 garage.sr.ntisposition: render;handling=optional
+Content-Length: 31
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.sr.ntcânokia.com:5060;maddr=192.168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5 (nTA 1.0)
+Via: ideo 3ääääääääääääääääääääääääääää:user@company.com> SIP/2.0
+To: sip:user@company.com
+From: sip:caller@university.edu
+Call-ID: 2@ Watson+ <sip:t.watson@ieee.org>2.0Ü
+Via: SIP/2.0/UDP [3ffe:1200:3012:c000:0030:e0ff:fe40:6297]:5062   
+  ;branch=z9hG4bKuNCTHs8Lumv
+ Session-Expires: e:12;rport00:3012:c0048D æÀÕ
+CSeq: 2
+Via: SIP/2.0/UDP sip3.example.com
+Via:€€€€€€€€€€€€€€€€€€€€€€€€€€€ SIP/2.0/UDP sip2.example.com
+ch=z9hG4bKuNCTHs8Lumv
+ Session-Expires: e:12;rport00:3012:c0048D æÀÕ
+CSeq: 2
+Via: SIP/2.0/UDP sip3.example.com
+Vääääää22%00QP/AVP 31
+a=rtpmap:31 LPC
+INVITE <sip:user@company.coe> SIP/2.0
+To: sip:user;branch=z9hG4bKram-6=6;
+Contact.ntc.ng>
+Warning: 300 garage.sr.ntisposition: render;handling=optional
+Content-Length: 31
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.sr.ntcânokia.com:5060;maddr=192.168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5 (nTA 1.0)
+Via: SIP/2.0/UDP 192.2.2.1:5060;received=[ffe0::FAB1]
+Route: <sip:garage.sr.ntc.nokia.com:W060;madfe0::FAB1]
+Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sipzgˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇarage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+H.ntc.ng>
+Warning: 300 garage.sr.ntiRefer: *
+CSeq:o 3aaaaRTP/AVP 3±
+a=rtpmap:31 LPC

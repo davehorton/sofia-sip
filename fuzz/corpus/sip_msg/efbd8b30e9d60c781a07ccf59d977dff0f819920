@@ -1,0 +1,121 @@
+?INVITE sip:user@company.com SIP/2.0
+To: "I have a user name of extreme prole.com
+Via: SIP/2.0/U?DP sip29.example.com
+Vfa: SIP/2.ÿÿÿÿÿÿÿÿ0/UDP sip28.example.com
+Via: SIP/2.0/UDPTo:  sip27.example.com
+Via: SIP/2.0/UDP sip26.example.com
+Via: SIP/2.0/UDP sip25.example.com
+Via: SIP/2.0/UDPxample.com
+Via: SIP/2.0/UDP sip24.exaNOTIFYom
+Via: SIP/2.0/UDP sip23.example.com
+Via: SIP/2.0/UDP sip22.example.com
+Via: SIP/2.0/UDP sip21.example.com
+Via: SIP/2.0/UDP sip20.example.com
+Via: SIP/2.0/UDP sip19.example.com
+Via: SIP/2.0/UDP sip18.example.com
+Via: SIxample.comGMTa: SIP/2.0/UDP sip11.example.com
+Via: SIÿÿÿÿÿÿÿ0/UDP sip28.example.com
+Via: SIP/2.0/UDPTo:  sip27.example.com
+Via: SIP/2.0/UDP sip26.example.com
+Via: SIP/2.0/UDP sip25.example.com
+Via: SIP/2.0/UDPxample.com
+Via: SIP/2.0/UDP sip24.exaNOTIFYom
+Via: SIP/2.0/UDP sip23.example.com
+Via: SIP/2.0/UDP sip22.example.com
+Via: SIP/2.0/UDP sip21.example.com
+Via: SIP/2.0/UDP sip20.example.com
+Via: SIP/2.0/UDP sip19.example.com
+Via: SIP/2.0/UDP sip18.example.com
+Via: SIxample.comGMTa: SIP/2.0/UDP sip11.example.com
+Via: SIP/2.0/UDP sip10.example.com
+Via: SIP/2.0/UDP sip9.example.com
+Via: SIP/2.0/UDP sip8.example.com
+Via: SIP/2.0/UDP sip7.example.com
+Via: SIP/2.0/UDP sip6.example.com
+Via: SIP/2.0/UDP sip5.example.com
+Via: SIP/2.0/UDP sip4.example.m SI/UDP sip23.example.com
+Via: SIP/2.0/UDP sip22.example.com
+Via: SIP/2.0/UDP sip21.example.com
+Via: SIP/2.0/UDP sip20.example.com
+Via: SIP/2.0/UDP sip19.example.com
+Via: SIP/2.0/UDP sip18.example.com
+Via: SIxample.comGMTa: SIP/2.0/UDP sip11.example.com
+Via: SIÿÿÿÿÿÿÿ0/UDP sip28.example.com
+Via: SIP/2.0/UDPTo:  sip27.example.com
+Via: SIP/2.0/UDP sip26.example.com
+Via: SIP/2.0/UDP sip25.example.com
+Via: SIP/2.0/UDPxample.com
+Via: SIP/2.0/UDP sip24.exaNOTIFYom
+Via: SIP/2.0/UDP sip23.example.com
+Via: SIP/2.0/UDP sip22.example.com
+Via: SIP/2.0/UDP sip21.example.com
+Via: SIP/2.0/UDP sip20.example.com
+Via: SIP/2.0/UDP sip19.example.com
+Via: SIP/2.0/UDP sip18.example.com
+Via: SIxample.comGMTa: SIP/2.0/UDP sip11.example.com
+Via: SIP/2.0/UDP sip10.example.com
+Via: SIP/2.0/UDP sip9.example.com
+Via: SIP/2.0/UDP sip8.example.com
+Via: SIP/2.0/UDP sip7.example.com
+Via: SIP/2.0/UDP sip6.example.com
+Via: SIP/2.0/UDP sip5.example.com
+Via: SIP/2.0/UDP sip4.example.m SIP/2.0
+To: "I have a user name of extreme prole.com
+Via: SIP/2.0/U?DP sip29.example.com
+Vfa: SIP/2.0/UDP sip28.example.com
+Via: SIP/2.0/UDPTo:  sip27.example.com
+Via: SIP/3.0/UDP sip26.example.com
+Via: SIP/2.0/UDP sip25.example.c9.155
+CSeq: 2 REGom
+Via: SIP/2.0/UDPxample.com
+Via: SIP/2.0/UDP sip24.exaNOTIFYom
+Via: SIP/2.0/UDP sip23.example.com
+Via: SIP/2.0/UDP sip2P/2.0/UDP sip10.example.com
+Via: SIP/2.0/UDP sip9.example.com
+Via: SIP/2.0/UDP sip8.example.com
+Via: SIP/2.0/UDP sip7.example.com
+Via: SIP/2.0/UDP sip6.example.com
+Via: SIP/2.0/UDP sip5.example.com
+Via: SIP/2.0/UDP sip4.example.m SIP/2.0
+To: "I have a user name of extreme prole.com
+Via: SIP/2.0/U?DP sip29.example.com
+Vfa: SIP/2.0/UDP sip28.example.com
+Via: SIP/2.0/UDPTo:  sip27.example.com
+Via: SIP/2.0/UDP sip26.example.com
+Via: SIP/2.0/UDP sip25.example.c9.155
+CSeq: 2 REGom
+Via: SIP/2.0/UDPxampP/2.0
+To: "I have a user name of extreme prole.com
+Via: SIP/2.0/U?DP sip29.example.com
+Vfa: SIP/2.0/UDP sip28.example.com
+Via: SIP/2.0/UDPTo:  sip27.example.com
+Via: SIP/3.0/UDP sip26.example.com
+Via: SIP/2.0/UDP sip25.example.c9.155
+CSeq: 2 REGom
+Via: SIP/2.0/UDPxample.com
+Via: SIP/2.0/UDP sip24.exaNOTIFYom
+Via: SIP/2.0/UDP sip23.example.com
+Via: SIP/2.0/UDP sip2P/2.0/UDP sip10.example.com
+Via: SIP/2.0/UDP sip9.example.com
+Via: SIP/2.0/UDP sip8.example.com
+Via: SIP/2.0/UDP sip7.example.com
+Via: SIP/2.0/UDP sip6.example.com
+Via: SIP/2.0/UDP sip5.example.com
+Via: SIP/2.0/UDP sip4.example.m SIP/2.0
+To: "I have a user name of extreme prole.com
+Via: SIP/2.0/U?DP sip29.example.com
+Vfa: SIP/2.0/UDP sip28.example.com
+Via: SIP/2.0/UDPTo:  sip27.example.com
+Via: SIP/2.0/UDP sip26.example.com
+Via: SIP/2.0/UDP sip25.example.c9.155
+CSeq: 2 REGom
+Via: SIP/2.0/UDPxample.com
+Via: SIP/2.0/UDP sip24.exaNOTIFYom
+Via: SIP/2.0/UDP sip23.example.com
+Via: SIP/2.0/UDP sip22.example.com
+Via: SIP/2.0/UDP sip21.example.com
+Via: SIP/2.0/UDP sip20.example.com
+Via: SIP/2.0/UDP sip19.example.com
+Via: SIP/2.0/UDP sip18.example.cCall-ID: SIP/2.0/UDP sip17.examtp://www.cs.columbia.edu
+Call-ID: 0h
+Viaa

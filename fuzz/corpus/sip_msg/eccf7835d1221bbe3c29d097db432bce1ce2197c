@@ -1,0 +1,107 @@
+?REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: /SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5 (NTA 1.0)
+Via: SIP/2.0/UDP 192INVITE
+ct: Barfoo
+Priority: emergency
+Date: Wed, 04 Apr 2001 17:38:38 GMT
+Retry-After: Wed, 04 Apr 2001 19:00:00 GMT (wake-up) ;duraÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿtion=1800
+on@ieee.org SIP/2.0
+Via     Watson, ThomasNOTIFY <sip:t.watson@ieee.org>
+Call-ID: 31415@c.¦ell-tel.com´
+CSeqÊßßß 1 INVITE
+INVITE sip:t.watson@ieee.org SIP/2.0
+Via: =    SIP/2.0/UDP c.bell-tel.com
+>
+Call-ID: 31415@c.¦ell-tel.com´
+CSeqÊßßß 1 INVITE
+INVITE sip:t.watson@ieee.org SIP/2.0
+Via: ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ=    SIP/2.0/UDP c.bell-tel.com
+Fl-ID: 31415@c.bell-tecol.
+mCSeq:   
+ 1 INVITE
+ct: Barfoo
+Priority: emergency
+Date: Wed, 04 Apr 2001 17:38:38 GMT
+Retry-After: Wed, 04 Apr 2001 19:00:00 GMT (wake-up) ;duration=1800
+Timestamp: 986395257.13924321 3
+Expires: 180
+Aloding: identity, deflate (???)
+Accept-Language: en
+Allow: any
+Require: all
+Prûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûoxy-Require: kiieee.org SIP/0.0
+Via     Watson, ThomasNOTIFY <sip:t.watson@ieee.org>
+Call-ID: 31415@c.¦ell-tel.com´
+CSeqÊßßß 1 INVITE
+INVITE sip:t.watson@ieee.org SIP/2.0******************
+Via: =    SIP/2.0/UDP c.bell-tel.com
+Fl-ID: 31415@c.bell-tecol.
+mCSeq:   
+ 1 INVITE
+ct: Barfoo
+Priority: emergency
+Date: Wed, 04 Apr 2001 17:38:38 GMT
+Retry-After: Wed, 04 Apr 2001 19:00:00 GMT (wake-up) ;duraÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿtion=1800
+Timestamp: 986395257.13924321 3
+Expires: 180
+Also: s/UDP 172.21.9.ÿÿÿÿÿÿÿÿÿÿÿÿtion=1800
+Timestamp: 986395257.13924321 3
+Expires: 180
+Also: s/UDP 172.21.9.155
+MIME-Version: pr 2001 17:38:3Íß¸²«òõ­etry-After: Wed, 04 Apr 2001 19:00:00 GMT (wake-up) ;duration=1800
+Timestamp: 986395257.13924321 3
+Expires: 180
+Aloding: identity, deflate (???)
+Accept-Language: en
+Allow: any
+Require: all
+PrûûûûûûûûûûûûûûSension-Expires: ûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûoxy-Require: kiieee.org SIP/0.0
+Via     Watson, ThomasNOTIFY <sip:t.watson@ieee.org>
+Call-ID: 31415@c.¦ell-tel.com´
+CSeqÊßßß 1 ÿÿÿÿINVITE
+INVITE sip:t.watson@ieee.org SIP/2.0
+Via: =    SIP/2.0/UDP c.bell-tel.com
+Fl-ID: 31415@c.bell-tecol.
+mCSeq:   
+ 1 INVITE
+ct: Barfoo
+Priority: emergency
+Date: Wed, 04 Apr 2001 17:38:38 GMT
+Retry-After: Wed, 04 Apr 2001 19:00:00 GMT (wake-up) ;duration=1800
+Timestamp: 9863T
+Retry-After:3
+Expires: 180
+Also: s/UDP 172.21.9.155
+MIME-Versi155
+MIME-Version: pr 2001 17:38:3Íß¸²«òõ­etry-After: Wed, 04 Apr 2001 19:00:00 GMT (wake-up) ;duration=1800
+Timestamp: 986395257.13924321 3
+Expires: 180
+Aloding: identity, deflate (???)
+Accept-Language: en
+Allow: any
+Require: all
+PrûûûûûûûûûûûûûûSension-Expires: ûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûûoxy-Require: kiieee.org SIP/0.0
+Via     Watson, ThomasNOTIFY <sip:t.watson@ieee.org>
+Call-ID: 31415@c.¦ell-tel.com´
+CSeqÊßßß 1 ÿÿÿÿINVITE
+INVITE sip:t.watson@ieee.org SIP/2.0
+Via: =    SIP/2.0/UDP c.bell-tel.com
+Fl-ID: 31415@c.bell-tecol.
+mCSeq:   
+ 1 INVITE
+ct: Barfoo
+Priority: emergency
+Date: Wed, 04 Apr 2001 17:38:38 GMT
+Retry-After: Wed, 04 Apr 2001 19:00:00 GMT (wake-up) ;duration=1800
+Timestamp: 9863T
+Retry-After:3
+Expires: 180
+Also: s/UDP 172.21.9.155
+MIME-Version: 1.0
+ContenSUBSCRIBEext/plain;charset=US-ASCII
+ContentSUBSCRIBE: identity
+Content-Disposition: render;handling=optional
+Content-Length: 15
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxx

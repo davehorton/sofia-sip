@@ -1,0 +1,91 @@
+?INVITE sip:user@company.com SIP/2.0
+To: "I have a user name of extreme prole.com
+Via: SIP/2.0/U?DP sip29.example.com
+Vfa: SIP/2.0/UDP sip28.example.cmo
+Via: SIP/2.0/UDPTo:  sip27.example.com
+Via: SIP/2.0/UDP sip26.example.com
+Via: SIP/2.0/UDP sip25.exSIP/2.0
+To: sips:ser@companyx.com
+From: "cal=[ffe0::FAB1]
+Route: <sip:garag=[ffe0::FAB1]
+Subscription-State: Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=sr~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~lab.sr.ntc.nokia.com>;foo=bar
+Record-Route:ler" srlab.sr.ntc.nokia.com:5060;maddr=192.ÿB1]
+Route: <sip:garag=[ffe0::FAB1]
+Subscription-State: Roarage.sr.ntc.nokia.com
+Tos.com SIP/2.9ikjUDP sip26.example.com
+Via: SIP/2.0/UDP sip25.example.com
+Via: SIP/2.0/UDPxample.com
+Via: : "I have a user name of extreme prole.com
+Via: SIP/2.0/U?DP sip29.example.com
+Vfa: SIP/2.0/UDP sip28.example.cmo
+Via: SIP/2.0/UDPTo:  sip27.example.com
+Via: SIP/2.0/UDP sip26.example.com
+Via: SIP/2.0/UDP sip25.exSIP/2.0
+To: sips:ser@company.com
+From: "cal=[ffe0::FAB1]
+Route: <sip:garag=[ffe0::FAB1]
+Subscription-State: Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=sr~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Subscription-State: .nokia.com>;foo=bar
+Record-Route:ler" srlab.sr.ntc.nokia.com:5060;maddr=192.ÿB1]
+Route: <sip:garag=[ffe0::FAB1]
+Subscription-State: Roarage.sr.ntc.nokia.com
+Tos.com SIP/2.9SIP/2.0/UDP sip24.exaNOTIFYom
+Via: SIP/2.0/UDP sip23.example.com
+Via: SIP/2.0/UDP sip2comments) and (more)))   ,
+ re nÿÿÿÝewfangled val:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::ue
+Content-Type: applicatikn/sdp
+v:  SIP  ) and (more)))   ,
+ re nÿÿÿÝewfangled value
+Content-Type: applicatikn/sdp
+v: ~v~~~~~~~~~~lab.sr.ntc.nokia.com>;foo=bar
+Record-Route:ler" sVia: xtreme prole.com
+Via: SIP/2.0/U?DP sip29.example.com
+Vfa: SIP/2.0/UDP sip28.example.cmo
+Via: SIP/2.0/UDPTo:  sip27.example.com
+Via: SIP/2.0/UDP sip26.example.com
+Via: SIP/2.0/UDP sip25.exSIP/2.0
+To: sips:ser@companyx.com
+From: "cal=[ffe0::FAB1]
+Route: <sip:garag=[ffe0::FAB1]
+Subscription-State: Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=sr~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~lab.sr.ntc.nokia.com>;foo=bar
+Record-Route:ler" srlab.sr.ntc.nokia.com:5060;maddr=192.ÿB1]
+Route: <sip:garag=[ffe0::FAB1]
+Subscription-State: Roarage.sr.ntc.nokia.com
+Tos.com SIP/2.9ikjUDP sip26.example.com
+Via: SIP/2.0/UDP sip25.example.com
+Via: SIP/2.0/UDPxample.com
+Via: : "I have a user name of extreme prole.com
+Via: SIP/2.0/U?DP sip29.example.com
+Vfa: SIP/2.0/UDP sip28.example.cmo
+Via: SIP/2.0/UDPTo:  sip27.example.com
+Via: SIP/2.0/UDP sip26.example.com
+Via: SIP/2.0/UDP sip25.exSIP/2.0
+To: sips:ser@company.com
+From: "cal=[ffe0::FAB1]
+Route: <sip:garag=[ffe0::FAB1]
+Subscription-State: Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=sr~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Subscription-State: .nokia.com>;foo=bar
+Record-Route:ler" srlab.sr.ntc.nokia.com:5060;maddr=192.ÿB1]
+Route: <sip:garag=[ffe0::FAB1]
+Subscription-State: Roarage.sr.ntc.nokia.com
+Tos.com SIP/2.9SIP/2.0/UDP sip24.exaNOTIFYom
+Via: SIP/2.0/UDP sip23.example.com
+Via: SIP/2.0/UDP sip2comments) and (more)))   ,
+ re nÿÿÿÝewfangled val:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::ue
+Content-Type: applicatikn/sdp
+v:  SIP  ) and (more)))   ,
+ re nÿÿÿÝewfangled value
+Content-Type: applicatikn/sdp
+v: ~v~~~~~~~~~~lab.sr.ntc.nokia.com>;foo=bar
+Record-Route:ler" sVia: SIP/2.0/WSS .com:5060;maddr=192.ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.13899-reg@172.21.9.155
+CSeq: 2 REa: SIP/2.0/UDP sipØ12.example.com
+Vi>: SIP/2.0/UDP sip11.example.com
+Via: SIP/2.0/UDP sip10.example.In-Rcom
+Via: SIP/2.0/UDP sip9.example.com
+Via: SIP/2.0/UDP sip6.example.comSIP/2.0/WSS .com:5060;maddr=192.ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.13899-reg@172.21.9.155
+CSeq: 2 REa: SIP/2.0/UDP sipØ12.example.com
+Vi>: SIP/2.0/UDP sip11.example.com
+Via: SIP/2.0/UDP sip10.example.In-Rcom
+Via: SIP/2.0/UDP sip9.example.com
+Via: SIP/2.0/UDP sip6.example.com
+Via: SIP/2.0/UDP siprom: si srla: SIP/2.0/UDP 192.2.b.2.1:50sr.6

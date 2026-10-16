@@ -1,0 +1,6 @@
+REGISTER sip:companyÿÿÿÿÿÿ;transport=tcpÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ.com SIP/2.0
+Via: SIP/2.0/UDP 135.18f0.130.133
+To: sip:j.user¶¼°²PANY.COM;maddr=13;tag=0.130.133;tag=foo
+From: sip:jÿÿÿÿ.us29;transpo.COM;tag=bar
+Call-ID: 0ha0isndaksdj@10.0.2.2  
+Contact: *9739 72729EGISTERContent-LVia: SIP/2.0/UDP ength: 0

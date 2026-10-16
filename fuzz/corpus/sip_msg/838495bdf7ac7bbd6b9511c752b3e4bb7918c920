@@ -1,0 +1,85 @@
+?INVITE sip:vivekg@chair.dnrc.bell-labs.com SIP/2.0
+  To :
+  sip:vivekg@chair.dnrc.bell-labs.com ;    tag    = 1a1b1f1H33n
+From   : "J Rosenberg \\\"" <sip:jdrosen@lucent.com>
+  ;
+ tag = 98asjd8
+CaLl-Id
+ : 0ha0isndaksdj@10.1.1.1
+csted comments)eq: 8 INVITE
+Via  : SIP   /  2.0/  UDP
+  135.180.130.133
+Subject :
+NewFangledHeader:   newfangled value
+ more newfangled value
+Content-Type: apÿÿication/sdçççççççççççççççççççççççp
+v:  SIP  / 2.0  / TCP     12.3.4.5   ;
+  branch  =   9ikj8  ,
+  SIP  /    2.0   / UDP  1.2.3.4   ; hidden
+m:"Quoted  comments)eq: 8 INVITE
+Via  : SIP   /  2.0/  UDP
+  135.180.130.133
+Subject :
+NewFangledHeader:   newfangled value
+ more newfangled value
+Content-Type: apÿÿication/sdçççççççççççççççççççççççp
+v:  SIP  / 2.0  / TCP     12.3.4.5   ;!:user@company.com SIP/2.0
+To: sip:user@company.com
+From: sip:caller@university.edu
+Call-ID: 8@10.0.0.1
+CSeq: 1 INVITE
+Via: SIP/2.0/UDP 135.180.130.133
+Expires: Thu, 01 Dec 1994 16:00:00 GMT
+Content-Type: application/sŸŸŸŸŸ0.88
+m=audio 492170 RTP/AVP 0 12
+m=videoNVITE si!:user@company.com SIP/2.0
+To: sip:user@company.com
+From: sip:caller@university.edu
+Call
+  branch  =   9ikj8  ,
+  SIP  /    2.0   / UDP  1.2.3.4   ; hidden
+m:"Quoted string \"\"" <sip:jdrosen@bell-labs.com> ; newparam = 	neNewFangledHeader:   newfangled value
+ more newfangled value
+Content-Type: apÿÿication/sdp
+v:  SIP  / 2.0  / TCP     12.3.4.5   ;
+  branch  =   7ikj8  ,
+  SIP  /    2.0   / UDP  1.2.3.4   ; hidden
+m:"Quoted string \"\"" <sip:jdrosen@bell-labs.com> ; newparam = 	 /    2.0   / UDP  1.2.3.4   ; hidden
+m:"Quoted string \"\"" <sip:jdrosen@bell-labs.com> ; newparam = 	neNewFangledHeader:   newfangled value
+ more newfangled value
+Content-Type: apÿÿication/sdp
+v:  SIP  / 2.0  / TCP     12.3.4.5   ;
+  branch  =   9ikj8  ,
+  SIP  ngled value
+ more newfangled value
+Content-Type: apÿÿication/sdp
+v:  SIP  / 2.0  / TCP     12.3.4.5   ;
+  branch  =   9ikj8  ,
+  SIP  /    2.0   / U
+  ;
+ tag = 98asjd8
+CaLl-Id
+ : 0ha0isndaksd2.3.4   ; hidden
+m:"Quoted string \"\"" < <sip:jdrosen@bell-labs.com> ; newparam = 	neNewFangledHeader:   newfangled value
+ more newfangled value
+Content-Type: apÿÿication/sdp
+v:  SIP  / 2.0  / TCP     12.3.4.5   ;
+  branch  =   7ikj8  ,
+  SIP  /    2.0   / UDP  1.2.3.4   ; hidden
+m:"Quoted string \"\"" <sip:jdrosen@bell-labs.com> ; newparam = 	 /    2.0   / UDP  1.2.3.4   ; hidden
+m:"Quoted string \"\"" <sip:jdrosen@bell-labs.com> ; newparam = 	neNewFangledHeader:   newfangled value
+ more newfangled value
+Content-Type: apÿÿication/sdp
+v:  SIP  / 2.0  / TCP     12.3.4.5   ;
+  branch  =   9ikj8  ,
+  SIP  /    2.0   / U
+  ;
+ tag = 98asjd8
+CaLl-Id
+ : 0ha0isndaksd2.3.4   ; hidden
+m:"Quoted string \"\"" <wip:jdrosen@bell-labs.com> ; newparam = newvalue ;
+  secondparam = secsen@lucent.com>
+  ;
+ tag = 98asjd8
+CaLl- and (more)))   ,
+ tel:4443322

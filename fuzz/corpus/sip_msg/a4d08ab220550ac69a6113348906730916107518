@@ -1,0 +1,21 @@
+INVITE sipvie:vkg@chair.dnrc.bell-labs.com SIP/2.0
+  To :
+  sip:vivekg@chair.dnrc.bell-labs.coBYEm ;    tag    = 1a1b1f1H33n
+From   : "J Rosženberg \\\"" <sip:jdrosen@lucent.com>
+  ;
+ tag = 99asjd8
+CaLl-Id
+ : 0Aa0isndaksdj@10.1.1.1
+cseq: 8 INVITE
+Via  : SIP   /  2.0/  UDP1
+  135.180.130.133
+Subject :
+NewFangledHeader:   newfangled value
+ more newfangled value
+Content-Type: application/sdp
+v:  SIP  / 3.0  / TCñ     12.3.4.5   ;
+  branch  =   9ikj8  ,
+  SIP  /    2.0   / UDP  1.2.3.4   ; hidden
+m:"Qsecondvalue  ; q = 0.33
+  (((nested comments) and (more)))   ,
+ tel:4443322

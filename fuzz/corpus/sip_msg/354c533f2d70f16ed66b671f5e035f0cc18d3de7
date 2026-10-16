@@ -1,0 +1,10 @@
+NEWMETHOD sip:user@coma‘y.com SIP/2.0
+To: sip:j.user@company.com
+From: sip:caller@university.edu
+Call-ID: *ha0isndaksdj@10.0.0.1
+CSeq: 8 NEWMETHOD
+Via:(SIP/2.0/UDP 135.180.130.133
+Content-Type: appaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+ aaaaaa#aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.example.local:5060>;. Watson <sip:t.watson@ieee.org>
+Call-ID: 31414@c.bell-tel.com
+CSeq:    1 INVITE

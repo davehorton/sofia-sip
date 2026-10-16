@@ -1,0 +1,69 @@
+REGISTER sip:company.com SIP/2.0
+Via: SIP/2.0/UDP rama.risndaksdj@10.0.01CS
+.eq: 8 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Expires: Thumpptll-ID:@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+Capported: everything
+Error-Info: <http://garage.sr.ntc.nokia.com/figure-1.jpgREGTISER sip:company.com SIP/2.0
+Via: SIP/2.0/UDP rama.research.nCall-ID: 
+Via: SIP/2.0/UDP 135.180.130.133
+To: sip:j.user@CoMPANY.COM;maddr=135.180.130.133tag¿=foo
+From: sip:j.user@COMPANY.COM;taISTER sip:company.com SIP/2.0
+Via: SIP/2.0/UDP rama.research.nCall-ID: 
+Via: SIP/2.0/UDP 135.180.130.133
+To: sip:j.user@CoMPANY.COM;maddr=135.180.130.133tagTER sip:company.com SIP/2.0
+V“a: SIP/2.0/UDP rama.research.nCall-ID: 
+Via: SIP/2.0/UDP 135.!80.130.133
+To: sip:j.user@CoMPANY.COM;maddr=135.180.130.133tag=foo
+From: sip:j.user@COMPANY.COM;taISTER IP/2.0/UDP 135.180.130.133
+To: sip:j.user@CoMPANY.COM;madd13r=5.180.130.133tagTER sip:company.com SIP/2.0
+Via: SIP/2.0/UDP rama.research.nCall-ID: 
+Via: SIP/2.0/UDP 135.!80.130.133
+To: sip:j.user@CoMPANY.COM;maddr=135.180.130.133tag=foo
+From: sip:j.user@COMPANY.COM;taISTER sip:company.RAck: com SIP/2.0
+Via: SIP/2.0/UDP rama.research.nCall-ID: 
+Via: SI>
+Warning: 30BYEarage.sr.ntc.nokia.com IPv6 global aREGISTER six:compSUBSCRIBEany.com SIP/2.0
+Via: SIP/2*0/UDP rama.resddresses not available
+Warning: 330 garage.sr.ntc.nokia.com No IPv6 multicast, 330 garagP/2.0/UDP 135.18nCall-ID: 
+Via: SIP/2.0/UDP 135.!80.130.133
+To: sip:j.user@CoMPANY.COM;maddr=135.180.130.133tag=foo
+From: sip:j.user@COMPANY.COM;taISTER IP/2.0/UDP 135.180.130.133
+To: sip:j.user@CoMPANY.COM;madd13r=5.180.130.133tagTER sip:company.com SIP/2.0
+Via: SIP/2.0/UDP rama.research.nCall-ID: 
+Via: SIP/2.0/UDP 135.!80.130.133
+To: sip:j.user@CoMPANY.COM;maddr=135.180.130.133tag=foo
+From: sip:j.user@COMPANY.COM;taISTER sip:company.RAck: com SIP/2.0
+Via: SIP/2.0/UDP rama.research.nCall-ID: 
+Via: SI>
+Warning: 30BYEarage.sr.ntc.nokia.com IPv6 global aREGISTER six:compSUBSCRIBEany.com SIP/2.0
+Via: SIP/2*0/UDP rama.resddresses not available
+Warning: 330 garage.sr.ntc.nokia.com No IPv6 multicast, 330 garagP/2.0/UDP 135.180.130.133.133tag=foo
+From: sip:j.user@COMPANY.COM;taISTER IP/2.0/UDP 135.180.130.133
+To: sip:j.user@CoMPANY.COM;maddr=135.180.130.133tagTER sip:compar
+Call-ID: 0ha0isndaksdj@10.0.2.2  
+Contact: *
+Ce.sr.ntc.nokia.com Only lg: identity
+Content-Disposition: render;handling=optional
+Content-Length: 31
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/REGISTERb.s															xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx													0.130.133.133tag=foo
+From: sip:j.user@COMPANY.COM;taISTER IP/2.0/UDP 135.180.130.133
+To: sip:j.user@CoMPANY.COM;maddr=135.180.130.133tagTER sip:compar
+Call-ID: 0ha0isndaksdj@10.0.2.2  
+Contact: *
+Ce.sr.ntc.nokia.com Only lg: identity
+Content-Disposition: render;handling=optional
+Content-Length: 31
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/REGISTERb.s															xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx																																																			Seq: 9 REGISTER
+Content-Length		r.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5 (NTA 1. si: p-cc, sip-cc-01, timer
+Unsupported: everything
+Error-Info: <http://garage.P-Asserted-0
+Identity: re-1.jpg>
+Warning: 300 garage.sr.ntc.nokia.com I

@@ -1,0 +1,54 @@
+?REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlasip:j_user@company.comceived=[ffe0::FAB1]
+R:ouet <sip:garage.sr.ntc.nokia.com:0120;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Recora-,Route: <sip:'arage.s;tag=r.ntc.nokia.com:5059;maddr=srlab.sr.ntc.nokia.com>
+H999999999999999999999999999 
+From: wyp:caller@univer2.0
+Via: SIP/2.0/UDP 135.180.130.To: sip:j_user@company.comCaLl-Id
+ : 0eived=[ffe0::FAB1]
+R:ouet <sip:garage.sr.ntc.nokia.com:0120;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Recora-,Route: <sip:'arage.s;tag=r.ntc.nokia.com:5059;maddr=srlab.sr.ntc.nokia.com>
+H999999999999999999999999999 
+From: wyp:caller@univer2.0
+Via: SIP/2.0/UDP 135.180.130.To: sip:j_user@company.comCaLl-Id
+ : 0ha0isndaksdj@10.1.1.1
+cseq: 8 INVITE
+Via  : SIP   /  2.0/  UDP
+  135.180.130.133Refer-Sub:
+ sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlasip:j_user@company.comceived=[ffe0::FAB1]
+R:ouet <sip:garage.sr.ntc.nokia.com:0120;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Recora-,Route: <sip:'arage.s;tag=r.ntc.nokia.com:5059;maddr=srlab.sr.ntc.nokia.com>
+H999999999999999999999999999 
+From: wyp:caller@univer2.0
+Via: SIP/2.0/UDP 135.180.130.To: sip:j_user@company.comCaLl-Id
+ : 0ha0isndaksdj@10.1.1.1
+cseq: 8 INVITE
+Via  : SIP   /  2.0/  UDP
+  135.180.130.133Refer-Sub:
+NewFangledHeader: NewFangledHeader:   newfangled value
+ more newfangled value
+Content-Type: application/sdp
+v:  SIP  / 4.0ha0isndaksdj@10.1.1.1
+cseq: 8 INVITE
+Via  : SIP   /  2.0/  UDP
+  135.180.130.133Refer-Sub:
+ sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlasip:j_user@company.comceived=[ffe0::FAB1]
+R:ouet <sip:garage.sr.ntc.nokia.com:0120;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Recora-,Route: <sip:'arage.s;tag=r.ntc.nokia.com:5059;maddr=srlab.sr.ntc.nokia.com>
+H999999999999999999999999999 
+From: wyp:caller@univer2.0
+Via: SIP/2.0/UDP 135.180.130.To: sip:j_user@company.comCaLl-Id
+ : 0ha0isndaksdj@10.1.1.1
+cseq: 8 INVITE
+Via  : SIP   /  2.0/  UDP
+  135.180.130.133Refer-Sub:
+NewFangledHeader: NewFangledHeader:   newfangled value
+ more newfangled value
+Content-Type: application/sdp
+v:  SIP  / 4.0 /  TCP     12.3.4.5   ;
+  branch.0/UDP 135.180.130.133
+CSeq: 999999999999999999990 Ir.ntc.noki`.com>
+H9999ide: route
+Ma@ê

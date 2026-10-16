@@ -1,0 +1,30 @@
+?OPTIONS sip:bob@example.com SIP/2.0
+Via: SIP/2.0/UDP 172.21.40.44;branch=z9hG4bKitIIzAialKS
+Via:REGISTER sip:company.com SIP/2.0
+To: sip:user@company.com
+From: sip:user@company.com
+Contact: sip:user@host.company.com
+Call-ID: 0ha0isndaksdj@10.0.0.1
+CSeq: 8 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Expires: Thu, 01 Dec 2040 16:pany.com SIP/2.0
+To: sip:user@co SIP/2.0/UDP [3ffe:1200:3012:ca46]:5062
+     ;branch=z9hG4bKJv+To8 PsUQdfOb>
+Record-Route: <sip:bob@example.com
+     ;maddr=[3ffe:1200:3012:c000:210:a4ff:fe8d:6ampany.com
+From: sip:user@company.com
+Contact: sip:usersnd~aksdj@10.0.0.1
+CSeq: 8 REGISTER
+Via: SI46]>
+From: <sip:alice@example.com>;tag=ud6a29947
+To: <sip:bb
+     ;received=172.21.40.24
+Record-Route: <sip:bob@example.com;maddr=172.21.40.44>
+Record-Rout.com
+     ;maddr=[3f%fe:1200:32c0:*100:210mple.com SIP/2.0P/2.0/UDP 135.180.130.133
+Expires: Thu, 01 D
+Via: SIP/2.0/U>
+Recec 2040 16:00:0ord-Route: <sip:bob@example.com
+ Allo000:00 GMTw:
+
+

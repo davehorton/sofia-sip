@@ -1,0 +1,35 @@
+ÿREGISTER sip:garage.sr.ntc.nokia.com SIP/2.0M
+Via: SIP/2.0/UDP 3rlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Record-Route: <sip:gar>3?1414@c.bell-tel.co
+Min-SE: Via/UDP c.bell-tel.INVITE sip:user;pir=u%80h.com@company.copany.com
+CSeq: ? REGISTœ’ï
+From: %   A. Bell <sip:a.g.bell@bell-tel.com>
+Replaces:$.¶ Watson <sip:t.n@anyoc.m
+Call-I;: 0haser@ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ. Bÿÿÿÿÿÿÿ~:a.g.bell@bell-tel.com>
+Replaces:$.5.57;ÿÿÿÿÿÿÿÿÿÿÿÿbranch=ength:0
+Vm SIP/2.0 
+To: sip:j_user@company.com 
+From: sip:caller@universityÒš›ŠÄ‹˜=66484 
+Max-Forwards:com
+/2.0
+Min-SE: ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿVia:     SIP/2. 3 
+Call-ID: 0ha0isnda:user;par=u%80h.co&@c\ompany.com SIP/2.0 
+To: sip:j_user@company.com 0/UDP
+company.c…m
+Call-ID: 0ha0isndaksdj@10.0.2.2
+Contact: sip:j.user@host.company.Event: com
+CSeq: 7 REGISTœ’ï
+From: %   A. Bell <sip:a.g.bell@bell-tel.com>
+Replaces:$.¶ Watson <sip:t.n@anyoc.m
+Call-ID: 0ha0isndaksdjVia: SIP/2.0/UDP rama.research.nokia.com
+Via: SIP/2.0/UDP 135.090.130.13ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ. Bÿÿÿÿÿÿÿ~:a.g.bell@bell-tel.com>
+Replaces:$.5.57;ÿÿÿÿÿÿÿÿÿÿÿÿbranch=ength:0
+Vm SIP/2.0 
+To: sip:j_user@company.com 
+From: sip:caller@universityÒš›ŠÄ‹˜=66484 
+Max-Forwards:com
+/2.0
+Min-SE: ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿVia:     SIP/2. 3 
+Call-ID: 0ha0isnda:user;par=u%80h.co&@c\ompany.com SIP/2.0 
+To: sip:j_user@company.com 0/UDP
+ 

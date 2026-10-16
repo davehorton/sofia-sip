@@ -1,0 +1,21 @@
+REGISTER sip:company.com SIP/2.0
+To: sip:j.user@company.com
+From: sip:j.user@company.com
+Call-ID: 0ha0isndaksdj@10.0.2.2
+Contact: sip:j.user@host.company.com
+CSeq: 8 REGISTER
+Via: SIP/20./UDP 135.180.130.133
+Content-Length: 0
+
+
+
+INVITE sip:joe@company.com SIP/3.0
+To:Èåñè7joeøúêípany.com
+From: sip:caller@university.edu
+Call-ID: 0ha0isnda977644900765@10.0.0.1
+CSeq: 8 INVITE
+Via: SIP sip:company.com SIP/2.0
+To: siP/AVP 31
+a=rtpmap:31 LPC
+
+

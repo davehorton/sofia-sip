@@ -1,0 +1,109 @@
+INVITE sip:user@company.com SIP/2.0
+To: "I have a user name of extreme proportion" <sip:P sip26.example.com
+Via: Expires: SIP/2.0/UDP sip25.example.com
+Via: SIP/2.0/UDP sip2: <sip:garage.s.com
+CSeq:    1 INTE4.example.com
+Via: SIP/2.0/UDP sip23.example.com
+Via: SIP/2.0/UDP sip22.example.coma: SIP/2.0/UDP sip26.example.com
+Via: SIP/2.0/UDP sip25.example.comuser@company.com:6000;other-param=1234567890somethingelselong1234567890>
+From: sip:caller@university.edu
+Call-ID: kl24ahsd546folnyt2vbak9sad98u23naodiunzds09a3bqw0sdfbsk34poouymnae0043nsed09mfkvc74bd0cuwnms05dknw87hjpobd76f
+CSeq: 1 INVITE
+My-State: sldkjflzdsfaret0803adgaasd0afds0asdaasd
+Via: SIP/2.0/UDP sip33.example.com
+Via: SIP/2.0/UDP sip32.example.com
+Via: SIP/2.0/UDP sip31.example.com
+Via: SIP/2.0/UDP sip30.example.com
+Via: SIP/2.0/UDP sip29.example.com
+Via: SIP/2.0/UDP sip28.example.com
+Via: SIP/2.0/UDP sip27.example.com
+Via: SIP/2.0/UDP sip26.example.com
+Via: SIP/2567890>
+From: sip:caller@university.edu
+Call-ID: kl24ahsd546folnyt2vbak9sad98u23naodiunzds09a3bqw0sdfbsk34poouymnae0043nsed09mfkvc74bd0cuwnms05dknw87hjpobd76f
+CSeq: 1 INVITE
+My-State: sldkjflzdsfaret0802adgaasd0afds0asdaasd
+Via: SIP/2.0/UDP sip3ZZZZFrom: ZZZZZZZZZZZZP sip23.example.com
+Via: SIP/2.0/UDP sip22.example.com
+Via: SIP/2.0/UDP sip21.example.coia: SIP/2.0/UDP sip26.example.com
+Via: SIP/2.0/UDP sip25.example.com
+Via: SIP/2.0/UDP sip24.example.com
+Via: SIP/2.0/UDP sip23.example.com
+Via: SIP/2.0/UDP sip22.example.coma: SIP/2.0/UDP sip26.example.com
+Via: SIP/2.0/UDP sip25.example.com
+Via: SIP/2.0/UDP sip24.example.com
+Via: SIP/2.0/UDP sip23.example.com
+Via: SIP/2.0/UDPample.com
+Via: SIP/2567890>
+From: sip:caller@university.edu
+Call-ID: kl24ahsd546folnyt2vbak9sad98u23naodiunzds09a3bqw0sdfbsk34poouymnae0043nsed09mfkvc74bd0cuwnms05dknw87hjpobd76f
+CSeq: 1 INVITE
+My-State: sldkjflzdsfaret0803adgaasd0afds0asdaasd
+Via: SIP/2.0/UDP sip3ZZZZFrom: ZZZZZZZZZZZZP sip23.example.com
+Via: SIP/2.0/UDP sip22.example.com
+Via: SIP/2.0/UDP sip21.example.coia: SIP/2.0/UDP sip26.example.com
+Via: SIP/2.0/UDP sip25.example.com
+Via: SIP/2.0/UDP sip24.example.com
+Via: SIP/2.0/UDP sip23.example.com
+Via: SIP/2.0/UDP sip22.example.coma: SIP/2.0/UDP sip26.example.com
+Via: SIP/2.0/UDP sip25.example.com
+Via: SIP/2.0/UDP sip24.example.com
+Via: SIP/2.0/UDP sip23.example.com
+Via: SIP/2.0/UDP sip22.exmaddr=srlample.com
+Via: SIP/2.0/UDP sip21.example.coia: SIP/2.0/UDP sip26.example.com
+Via: SIP/2.0/UDP sip25.example.com
+Via: SIP/2.0/UDP sip24.example.com
+Via: SIP/2.0/UDP sip23.example.com
+Via: SIP/2.0/UDP sip22.eDP 135.180.130.133;;,;
+Contact: "" <> ;,"Joe" <sip:joe@xampleorg.org>;;,,;;
+Content-Type: application3.example.com
+Via: SIP/2.0/UDP sip32.example.com
+Via: SIP/2.0/UDP sip31Æexample.com
+Via: SIP/2.?OPTIONS sip:135.180.130.1135.180.130.133 SIP/2.0
+Via: SIP/2.0/UDP company.com:5604
+From: sip:iuser@company.com
+0/UDP sip30.example.com
+Via: SIP/2.0/UDP sip29.example: SIP/2.0/UDP sip22.example.com
+Via: SIP/2.0/UDP sip21.example.coia: SIP/2.0/UDP sip26.example.com
+Via: SIP/2.0/UDP sip25.example.com
+Via: SIP/2.0/UDP sip24.example.com
+Via: SIP/2.0/UDP sip23.example.com
+Via: SIP/2.0/UDP sip sip22.exmaddr=srlample.com
+Via: SIP/2.0/UDP sip21.example.coia: SIP/2.0/UDP sip26.example.com
+Via: SIP/2.0/UDP sip25.example.com
+Via: SIP/2.0/UDP sip24.example.com
+Via: SIP/2.0/UDP sip23.example.com
+Via: SIP/2.0/UDP sip22.eDP 134.180.130.133;;,;
+Contact: "" <> ;,"Joe" <sip:joe@xampleorg.org>;;,,;;
+Content-Type: application3.example.com
+Via: SIP/2.0/UDP sip32.example.com
+Via: SIP/2.0/UDP sip31Æexample.com
+Via: SIP/2.?OPTIONS sip:135.180.130.1135.180.130.133 SIP/2.0
+Via: SIP/2.0/UDP company.com:5604
+From: sip:iuser@company.com
+0/UDP sip30.example.com
+Via: SIP/2.0/UDP sip29.example: SIP/2.0/UDP sip22.example.com
+Via: SIP/2.0/UDP sip21.example.coia: SIP/2.0/UDP sip26.example.com
+Via: SIP/2.0/UDP sip25.example.com
+Via: SIP/2.0/UDP sip24.example.com
+Via: SIP/2PU.0D/ sip23.example.com
+Via: SIP/2.0/UDP sip22.eDP 135.180.130.133;;,;
+C.0/UDP sip25.example.com
+Via: SIP/2.0/UDP sip24.example.com
+Via:ÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑ SIP/2.0/UDZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZØZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZFrom: ZZZZZZZZZZZZP sip23.example.com
+Via: SIP/2.0/UDP sINVITE sip:t.watson@ie groe.eSIP/2.0
+Via:     SIP/2.0/UDP c.beln-tel.com
+F0/UDP 192.2.2.1:5060;received=[ffe0::FAB1]
+Routeip22.example.com
+Via: SIP/2.0/UDP sip21.example.coia: SIP/2.0/UDP sip26.example.com
+Via: Expires: SIP/2.0/UDP sip25.example.com
+Via: SIP/2.0/UDP sip2: <sip:garage.s.com
+CSeq:    1 INTE4.example.com
+Via: SIP/2.0/UDP sip23.example.com
+Via: SIP/2.0/UDP sip22.example.coma: SIP/2.0/UDP sip26.example.com
+Via: SIP/2.0/UDP sip25.example.com
+Via: SIP/2.0/UDP sip24.example.com
+Via: SIP/2.0/UDP sip23.example.com
+Via: SIP/2.0/UDP sip22.example.com
+
+Via: SIP/2.1 O0/UDP sip21.

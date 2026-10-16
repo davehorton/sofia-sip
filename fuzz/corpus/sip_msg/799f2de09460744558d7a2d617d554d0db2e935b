@@ -1,0 +1,18 @@
+ÿSIP/2.0 052 OK
+Via: SIP/2.0/UDP 135.180.130.57;branch=0
+Via+ SIP/2.0/UDP 255.252=@university.edu
+Call-ID: 5@10.0.0.1
+CSeq: 1 INVITE
+Via: S 3227 .255.255;branch=0
+Call-ID: 0384840201@10.1.1.1
+CSeq: 0 I27
+m=audio 4921NVITE sip:vivekg@chair.dnrc.bell-labs.com SIP/2.0
+  To :
+ 1.1.1
+CSeq: 0 I27
+m=audio 4921NVITE sip:vivekg@chair.dnrc.bell-labs.com SIP/2.0
+  To :
+  sip:viv
+tpmap:31 LŽPCNVITE
+oFmr: sip:useoÿÿÿÿÿÿþP/AVP 13ra=
+tpmap:31 LŽPC

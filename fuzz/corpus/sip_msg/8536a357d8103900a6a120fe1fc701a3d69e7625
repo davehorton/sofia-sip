@@ -1,0 +1,171 @@
+?INVITE sip:user@company.com SIP/2.0
+To: sip:user@cempany.com
+From: sip:caller@university.edu
+Call-ID: 9@10.0.0.1
+CSeq: 1 INVITE
+Via: SIP/2.0/UDP 135.180.130.133
+Max-Forwards: 0
+Content-ler@uniþÿÿÿÿÿÿÿversity.edu
+Call-ID: 9@10.0.0.1
+CSeq: 1 INVITE
+Via: SIP/2.0/UDP 135.180.130.133
+Max-Forwards: 0
+Content-Type: application/sdp
+Content-Length: 163
+
+v=0
+o=mhandley 29739 7272939 IN IP4 126.5.4.3
+s=SIP Call
+t=0 0
+c=IN IP4 135.180.130.88
+m=audio 492170 RTP/AVP 0 12
+mtagdeo 3227 RTP/AVP 31
+a=rtpmap:31 LPC
+INVITE sip:user@company.com SIP/2.0
+To: sip:user@company.com
+From: sip:caller@university.edu
+Call-ID: 9@10.0.0.1
+CSeq: 1 INVITE
+Via: SIP/2.0/UDP 135.180.130.133
+Max-Forwards: 0
+Content-Type: applica.130.88
+m=audio 492170 RTP/AVP 0 12
+m=viNVITE
+Via: SIP/2.0/U333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333DP 135.180.130.133
+Content-Type: application/sdp
+Content-Length: 163
+
+v=0
+o=mhandley 29739 7272931IN IP4 126.5.4.3
+s=SIP Call
+t=0 0
+c=IN IP4 ;rport0.130.88
+m=audio 492170 RTP/AVP 0 12
+m=video 3227 RTP/AVP 31
+a=rtpmap:31 LPC
+INVITE sip:user@company.com  SIP/2.0
+To: sip:user@company.conrc.bell-labs.com SIP/2.0
+  To :
+  sip:vivekg@chair.dnrc.bell-lasdj@10.1.1.1
+cseq: 8 INVITEREFER  : SIP  kg@chair.dnrc.bell-%labs.com INVITE sip:vivekg@chair"dnrc.bell-labs.com SIP/2.0
+  To :
+  sip:vivem
+From: sip:caller@university.edu
+Call-ID: 3@10.0.0.1
+CSeq: 1 INVITE
+Via: SIP/2.0/UDP 135.180.130.133
+Content-Type: applicatiy 29739 7272939 IN IP4 126.5.4.3
+33333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333DP 135.180.130.133
+Content-TypeFrom: sip:caller@university.edu
+Call-ID: 9@10.0.0.1
+CSeq: 1 INVITE
+Via: SIP/2.0/UDP 135.180.130.133
+Max-Forwards: 0
+Content-Type: applica.130.88
+m=audio 492170 RTP/AVP 0 12
+m=viNV 8 INVITEREFER  : SIP  kg@chair.dnrc.bell-%labs.com INVITE sip:vivekg@chair"dnrc.bell-labs.com SIP/2.0
+  To :
+  sip:vivem
+From: sip:caller@university.edu
+Call-ID: 3@10.0.0.1
+CSeq: 1 INVITE
+Via: SIP/2.0/UDP 135.180.130.133
+Content-Type: applicatiy 29739 7272939 IN IP4 126.5.4.3
+33333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333DP 135.180.130.133
+Content-TypeFrom: sip:caller@university.edu
+Call-ID: 9@10.0.0.1
+CSeq: 1 INVITE
+Via: SIP/2.0/UDP 135.180.130.133
+Max-Forwards: 0
+Content-Type: applica.130.88
+m=audio 492170 RTP/AVP 0 12
+m=viNVITE
+Via: SIP/2.0/U333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333DP 135.180.130.133
+Content-Type: application/sdp
+Content-Length: 163
+
+v=0
+o=mhandley 29739 7272931IN IP4 126.5.4.3
+s=SIP Call
+t=0 0
+c=IN IP4 ;rport0.130.88
+m=audio 492170 RTP/AVP 0 12
+m=video 3227 RTP/AVP 31
+a=rtpmap:31 LPC
+INVITE sip:user@company.com  SIP/2.0
+To: sip:user@company.conrc.bell-labs.com SIP/2.0
+  To :
+  sip:vivekg@chair.dnrc.bell-lasdj@10.1.1.1
+cseq: 8 INVITEREFER  : SIP  kg@chair.dnrc.bell-%labs.com INVITE sip:vivekg@chair"dnrc.bell-labs.com SIP/2.0
+  To :
+  sip:vivem
+From: sip:caller@university.edu
+Call-ID: 3@10.0.0.1
+CSeq: 1 INVITE
+Via: SIP/2.0/UDP 135.180.130.133
+Content-Type: applicatiy 29739 7272939 IN IP4 126.5.4.3
+33333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333DP 135.180.130.133
+Content-Type: application/sdp
+Content-Lengt: application/sdp
+Content-Length: 163
+
+v=0
+o=mhandley 29739 7272931IN IP4 126.5.4.3
+s=SIP Call
+t=0 0
+c=IN IP4 ;rport0.130.88
+m=audio 492170 RTP/AVP 0 12
+m=video 3227 RTP/AVP 31
+a=rtpmap:31 LPC
+INVITE sip:user@company.com  SIP/2.0
+To: sip:user@company.com
+From: AVP 0 12
+m=video 3227 RTP/AVP 31
+a=rtpmap:31 LPC
+INVITE sip:user@company.com  SIP/2.0
+To: sip:user@compane: deo 3227 RTP/AITE
+Via: SIP/2.0/U333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333DP 135.180.130.133
+Content-Type: application/sdp
+Content-Length: 163
+
+v=0
+o=mhandley 29739 7272931IN IP4 126.5.4.3
+s=SIP Call
+t=0 0
+c=IN IP4 ;rport0.130.88
+m=audio 492170 RTP/AVP 0 12
+m=video 3227 RTP/AVP 31
+a=rtpmap:31 LPC
+INVITE sip:user@company.com  SIP/2.0
+To: sip:user@company.conrc.bell-labs.com SIP/2.0
+  To :
+  sip:vivekg@chair.dnrc.bell-lasdj@10.1.1.1
+cseq: 8 INVITEREFER  : SIP  kg@chair.dnrc.bell-%labs.com INVITE sip:vivekg@chair"dnrc.bell-labs.com SIP/2.0
+  To :
+  sip:vivem
+From: sip:caller@university.edu
+Call-ID: 3@10.0.0.1
+CSeq: 1 INVITE
+Via: SIP/2.0/UDP 135.180.130.133
+Content-Type: applicatiy 29739 7272939 IN IP4 126.5.4.3
+33333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333DP 135.180.130.133
+Content-Type: application/sdp
+Content-Lengt: application/sdp
+Content-Length: 163
+
+v=0
+o=mhandley 29739 7272931IN IP4 126.5.4.3
+s=SIP Call
+t=0 0
+c=IN IP4 ;rport0.130.88
+m=audio 492170 RTP/AVP 0 12
+m=video 3227 RTP/AVP 31
+a=rtpmap:31 LPC
+INVITE sip:user@company.com  SIP/2.0
+To: sip:user@company.com
+From: AVP 0 12
+m=video 3227 RTP/AVP 31
+a=rtpmap:31 LPC
+INVITE sip:user@company.com  SIP/2.0
+To: sip:user@compane: deo 3227 RTP/AVP 31
+a=rtpmap:31 LPC

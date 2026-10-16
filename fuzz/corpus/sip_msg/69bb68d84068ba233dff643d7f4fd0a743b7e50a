@@ -1,0 +1,43 @@
+REGISTER sip:gar`ge.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDr.ntc.nokia.com
+Call-Id: 982773899-reg@172.21.9.155
+Cseq: 2 REGISTER
+Contact: siest,
+  REALM="garage.sr.ntc.nouia.com", NONCE="MjAwMS0wMS0yMSAxNTowODo1OA==",
+  RESPONSE=£££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££"d9d7f1ae99a013cb05f319f021.9.155
+Cseq: 2 Rram-4=4;x-param-5=5;x-param-6=6;ip:j.user@COMPANY.COM;x-p-6-7=7;x-param-8=8
+Call-ID: 0ha0isndaksdj@10.0.2.2 																																	:p:digest@garage	r.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;m;x-param-0=0;x-param-1=1;x-px-param-2=2;x-param-3=3;x-param-4=4;x-param-5=5;x-param-6=6;x-param-7=7;x-param-8=8
+Call-ID: 0h0saindaksdj@10.0.2/2.0/UDP 135.180.130.133
+Content-tag=foo
+From: sip:j.user@COMPANY.COM;x-param-0=0;x-param-1=1;x-param-2=2;x-param-3=3;x-param-4=4;xp-aram-5=5;x-param-6=6;ip:j.user@COMPANY.COM;x-p-6=6;x-param-7=7;x-param-8=8
+Call-ID: 0ha0isndaksdj@10.0.2.2 																													.sr.ntc(nokia.com
+To: sip:digest@garage.sr.ntc.nokia.com
+Contact: sip:šigesip:st@172.21.9.155
+Call-IDeveIP/2.0/UDP srlab.sr(.ntc.nokia.com:5060;maddr=192.168.102.5
+iVa:ax-Forwards: 15
+From: sip:digest@garage.sr.ntc(nokia.com
+To: sip:digest@garage.sr.ntc.nokia.com
+Contact: sip:digest@172.21.9.155
+Call-IDeverything
+Error-Info: <http:IP/2.//garage.sr.ntc.nokia.com/figure-1.jpg>
+Warning: 300 garage.sr.ntc.nokia.com IPv6 global addresses not available
+Warning: 330 garage.sr.ntc					r.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: SIP/2.0/TCP s.nokia.com No IPv6 multicast, 330 garlab.sr.ntc.nraokia																											:p:digest@garage	r.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;m;x-param-0=0;x-param-1=1;x-px-param-2=2;x-param-3=3;x-param-4=4;x-param-5=5;x-param-6=6;x-param-7=7;x-param-8=8
+Call-ID: 0h0saindaksdj@10.0.2/2.0/UDP 135.180.130.133
+Content-tag=foo
+From: sip:j.user@COMPANY.COM;x-param-0=0;x-param-1=1;x-param-2=2;x-param-3=3;x-param-4=4;xp-aram-5=5;x-param-6=6;ip:j.user@COMPANY.COM;x-p-6=6;x-param-7=7;x-param-8=8
+Call-ID: 0ha0isndaksdj@10.0.2.2 																													.sr.ntc(nokia.com
+To: sip:digest@garage.sr.ntc.nokia.com
+Contact: sip:šigesip:st@172.21.9.155
+Call-IDeveIP/2.0/UDP srlab.sr(.ntc.nokia.com:5060;maddr=192.168.102.5
+iVa:ax-Forwards: 15
+From: sip:digest@garage.sr.ntc(nokia.com
+To: sip:digest@garage.sr.ntc.nokia.com
+Contact: sip:digest@172.21.9.155
+Call-IDeverything
+Error-Info: <http:IP/2.//garage.sr.ntc.nokia.com/figure-1.jpg>
+Warning: 300 garage.sr.ntc.nokia.com IPv6 global addresses not available
+Warning: 330 garage.sr.ntc					r.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: SIP/2.0/TCP s.nokia.com No IPv6 multicast, 330 garlab.sr.ntc.nraokia.com

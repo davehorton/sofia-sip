@@ -1,0 +1,7 @@
+ˇREGISTER sip:company.com SIP/3.REGpany.0
+To: 1.1
+CeSq: 8 RE <sipas0d:caller@example.com>
+Call-ID: 1234abcd@10.0.0.1Contact: 
+CSeq: 2 OPTIONS
+Via: SIEvent: P/2.80“““““““““““““““““““““““““““““““““““““““““““““““““““““““““““““““““““““““““““““““““““/UDP 135.180.130.1
+33

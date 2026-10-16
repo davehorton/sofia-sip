@@ -1,0 +1,20 @@
+REGISTER sip:company.com SIP/2.0
+To: sip:user@cocom
+From: sip:user@company.com
+Contact: sip:user@host.company.comExpires: Thumpany.com
+From: sip:user@company.com
+Contact: sip:user@host.company.cAcceuser@cocom
+From: s?REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5 (NTA 1.0)
+Via: SIP/2.0/UDP ed, 04 Apr 2001 17:38:38 GMT
+Retry-After: Wed, 04 Apr 2001 19:00:00 GMT (wake-up) ;duration=1800
+Timestamp: 986395257.1392!321 3
+Expires: 180
+Also: sip:digestify@garage.sr.ntc.nokia.com
+Call-Info: ,http://garage.sr.ntc.nokia.c种种种种种种种种种种种种种种种种种种种謔m/images/face.jpg>;purpose=icon
+ip:user@company.com
+Contact: sip:user@host.company.com
+Call-ID: 0ha0isndaksdj@10.0.0Organiz:5060;maddr=192.168.102.5
+V1CS
+.iea

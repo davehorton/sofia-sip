@@ -1,0 +1,6 @@
+INVITE sip:user@compan/:cam SIP/2.0
+To: sip:user@company.comЪЪЪЪЪЪЪЪЪЪЪЪЪЪЪЪЪЪЪЪЪЪЪЪЪЪЪЪЪЪЪЪЪЪЪЪЪЪЪЪЪЪЪЪЪЪЪЪЪЪЪЪЪЪЪЪЪЪЪЪЪЪЪЪЪЪЪЪЪЪЪЪЪЪЪЪЪЪЪнннннннннннннннннннннннннннннннннннЪЪЪЪЪЪЪЪЪЪЪЪ
+From: sip:caller@university.eduСУ╪·⌠⌠р╩D: 8@10.0.0.1
+CSeq: 1 INVITE
+Via: SIP/2.0/UDP 135.1/AVP 31
+a=rtpmap:31 LPC

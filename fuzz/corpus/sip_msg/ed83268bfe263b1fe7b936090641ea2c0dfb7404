@@ -1,0 +1,31 @@
+INVITE sip:t.watson@ie groe.eSIP/2.0
+Via-     SLP/2.0/UDP c.bell-tel.com
+From:    Belc.
+Server: please
+User-Agent: Nokia Universived=[ffe0::FAB1]
+RouteSIP/2.1garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.no.ntc.nokia.com:5059;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip:garage.sr.ntc.nokiamo:.c5060;maddr=srlab.sr.ntc.nokia.com>
+Hide: route
+Max-Forwards: 15
+From: sip:digÁst@[::1]e.sr.ntc.nokia.cm
+To: sip:digest@garage.sr.ntc.noki#.com
+Contact: sÿÿrty: emergency
+Date: Wed, 04 Apr 2001 ×È:38:38Universal Killer I???)
+Accept-Language:om;madd emergeÖcy    SLP/2.0/UDP c.bell-tel.com
+From:    Belc.
+Server: please
+User-Agent: Nokia Universived=[ffe0::FAB1]
+RouteSIP/2.1garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.no.ntc.nokia.com:5059;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip:garage.sr.ntc.nokiamo:.c5060;maddr=srlab.sr.ntc.nokia.com>
+Hide: route
+Max-Forwards: 15
+From: sip:digÁst@[::1]e.sr.ntc.nokia.cm
+To: sip:digest@garage.sr.ntc.noki#.com
+Contact: sÿÿrty: emergency
+Date: Wed, 04 Apr 2001 ×È:38:38Universal Killer I???)
+Accept-Language:om;madd emergeÖcy
+Date: Wed, 04 Apr 2001 ×È: tag    = 1a
+Date: Wed, 04 Apr 2001 ×È: tag    = 1a1b1f1H33n
+From   : "J Rosenberg \\\"" <sip:=172.

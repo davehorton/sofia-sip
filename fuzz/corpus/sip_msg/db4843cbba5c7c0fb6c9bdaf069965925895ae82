@@ -1,0 +1,14 @@
+ÿINVITE sip:bob@[3ffe:1200:3012:c006:206:5bff:fe55:462f] SIP/2.0†
+Via: SIP/2.0/UDP [3ffe:1200:3012:c000:0030:e0ff:fe40:6297]:5062   
+  ;branch=z9hG4bKuNCTHs8Lumv
+ Session-Expires: e:1200:3012:c0048D6A46
+CSeq: 2 INVITE
+Contact: <sip:[3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]:5062>
+Call-Info: <htt 3ffe:1200:3012:c000:210:a4ff:fe8d:6a46
+s=-
+c=IN IP6 3ffe:1200:3012:c000:210:a4ff:fe8d:6a46
+t=0 0
+m=audio 5004 RTP/AVP 96 97 98
+a=rtpmap:96 AMR/8000
+a=rtpmap:97 AMR-WB/16000
+a=rtpmap:98 GSM-EFR/8000

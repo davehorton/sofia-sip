@@ -1,0 +1,49 @@
+?REGISTER sip:garage.sr.ntc.nokia.co2 P/mSI.0
+Via: SIP/2.0/UDP srlab.sr.ntc.1800
+Timestamp: 986395257.13924ute: <ÿÿÿgarage[.sr.ntc.nokia.com:Ä5060;maddr=srlab.sr.ntc.nokia.com>
+Hide: route
+Max-Forwards: 15
+From: sip:digest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.uage: en
+Supported: ,ip-cc, sip-cc-01, timer
+User-AgExpires: ent: Pingteÿÿl/0.8.0   SIP/2.0/UDP c.bell-tel.com
+From:    A. Bell <sip:a.g.bell@bell-tel.Refer-To: com>
+To:      T. Watson+ <sip:efer-To: com>
+To:      T. Watson+ <sip:t.watson@ieesip:a.g.bell@bell-tel.com>
+To:      T. Wa	son+ <sip:t.watson@ieee.org>
+Call-ID: 3?1414@c.bell-tel.com
+CS.INVITE sip:user@company.com SIP/4.0
+To: sip:user@company.comntc.nokia.com:5ô60;maddrversal Killer Internet Application/2.0 (NUUKIA)
+In-Reply-To: 982<73898-reg@172.21.9.155
+Accept: text/plain
+Acclue p:jdrosen@luc•‘‹Ñœ’Á
+  ;
+ tag = 98asjd8
+CaLl-Id
+ : 0ha0isndaksdj@10.1.1.1
+cseq: 8 INVITErg \\\"" <sip:jdrosen@luc•‘‹Ñœ’Á
+  ;
+ tag oram-5=5;x-param-6=6;x-param-7=7;x-param-8=8
+Calny.com
+From: sip:-A.ntc.nokia.com
+To: sip:digest@garage.sr.uage: en
+Supported: ,ip-cc, sip-cc-01, timer
+User-AgExpires: ent: Pingteÿÿl/0.8.0   SIP/2.0/UDP c.bell-tel.com
+From:    A. Bell <sip:a.g.bell@bell-tel.Refer-To: com>
+To:      T. Watson+ <sip:efer-To: com>
+To:      T. Watson+ <sip:t.watson@ieesip:a.g.bell@bell-tel.com>
+To:      T. Wa	son+ <sip:t.watson@ieee.org>
+Call-ID: 3?1414@c.bell-tel.com
+CS.INVITE sip:user@company.com SIP/4.0
+To: sip:user@company.comntc.nokia.com:5ô60;maddrversal Killer Internet Application/2.0 (NUUKIA)
+In-Reply-To: 982<73898-reg@172.21.9.155
+Accept: text/plain
+Acclue p:jdrosen@luc•‘‹Ñœ’Á
+  ;
+ tag = 98asjd8
+CaLl-Id
+ :gExpires: ent: Pingteÿÿl/0.8.0   SIP/2.0/UDP c.bell-tel.com
+From:    A. Bell <sip:a.g.bell@bell-tel.Refer-To: com>
+To:      T. Watson+ <sip:efer-To: com>
+To:      T. Watson+ <sip:t.watson@ieesip:a.g.bell@bell-tel.com>
+To:    xxxxxxxx

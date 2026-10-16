@@ -1,0 +1,6 @@
+INVITE sip:user@company.cTCP     12.3.4.5  >;
+  branch  =   9ikj8  ,
+  SIP  /    2.0   / UDP  1.2.3.4   ; hidden
+m:"Quoted string \"\"" <sip:jdro2.0
+To: sip:user@company.com
+FVia: SIP/2.0/UDP 13=5.180pmap:31 LPC

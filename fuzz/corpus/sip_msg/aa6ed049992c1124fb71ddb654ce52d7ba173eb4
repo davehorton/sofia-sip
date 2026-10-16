@@ -1,0 +1,97 @@
+INVITE sip:user@company.com SIP/2.0
+To: sip:user@company.com
+From: sip:cal¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬ler@univerDate: sity.edu
+Call-ID: 9@10.0.0s.com SIPINVITE sip:user;pir=u%80h.com@company.com SIP/2.0 
+To: sip:j_uProxy-Authorization: ser@company.com 
+From: sip:caller@Via: SIP/2.0/UDP ˜=66484 
+Max-Forwards:ÿÿÿÿ 3 
+Call-ID: 0ha0isnda:user;par=u%80h.co&@c\ompany.com SIP/2.0 
+To: sip:j_user@company.com 
+From: sip:caller@univers: sip:j_user@company.com 
+From: sip:caller@universityÒš›ŠÄ‹ž˜=66484 
+Max-Forwards: 3 
+Call-ID: 0ha0isnda:user;par=u%80h.co&@c\ompany.com SIP/2.0 
+To: sip:j_user@company.com 
+From: sip:caller@university.edu;ta 
+Max-Forwards: 3 sndaksdj@10.1.1.1 _CSeq: 8 INVITE 
+Via: SI.180.130.133;bra‰=33242 
+Max-Forwards: 3 
+Call-ID: 0ha0isndaksdj@10.1.1.1 _CSeq: 8 INVITE 
+Via: SIP/2.0/UDP 135.180.130.133;branch=z9hG4bKkdjuw 
+CoAllow: ntent-Lengthksdj@ÏÏÑÎÑÎÑÎIn-RSeq: 8 INVITE 
+Via:/2.0
+  To :
+  sip:vivekg@chair.dnrc.bell-labs.com ;    tag    = 1a1b1f1H33n
+From ; : "J Rosenberg \\\"" <sip:jdrosen@lucent.com>
+  ;
+ tag = 98asjd8
+CaLl-Id
+ :00om SIP/2.0
+  To :
+  sip:vivekg@chair.dnrc.bell-lniversityÒš›ŠÄ‹ž˜=66484 
+Max-Forwards: 3 
+Call-ID: 0ha0isnda:user;par=u%80h.co&@c\ompany.com SIP/2.0 
+To: sip:j_user@company.com 
+From: sip:caller@university.edu;ta 
+Max-Forwards: 3 sndaksdj@10.1.1.1 _CSeq: 8 INVITE 
+Via: SI.180.130.133;bra‰=33242 
+Max-Forwards: 3 
+Call-ID: 0ha0isndaksdj@10.1.1.1 _CSeq: 8 INVITE 
+Via: SIP/2.0/UDP 135.180.130.133;branch=z9hG4bKkdjuw 
+CoAllow: ntent-Lengthksdj@ÏÏÑÎÑÎÑÎIn-RSeq: 8 INVITE 
+Via:/2.0
+  To :
+  sip:vivekg@chair.dnrc.bell-labs.com ;    tag    = 1a1b1f1H33n
+From ; : "J Rosenberg \\\"" <sip:jdrosen@lucent.com>
+  ;
+ tag = 98asjd8
+CaLl-Id
+ :00om SIP/2.0
+  To :
+  sip:vivekg@chair.dnrc.bell-labs.com ;    tag    = 1a1b1f1H33n
+From ; : "J Rosanberg \\\!" <sip:jdrosen@lucen SIP/2.0/UDP 135.180.130.133;branch=z9
+Call-ID: 0ha0isnd
+a:uspe=au;rr%80h¼co&@c\ompany.com SIP/2.0 
+To: sip:2.0 
+To: sip:j_user@company.com 
+From: sip:caller@universityÒš›ŠÄ‹ž˜=66484 
+Max-Forwards: 3 
+Call-ID: 0ha0isnda:user;par=u%80h.co&@c\ompany. 3 sndaksdj@10.1.1.1 _CSeq: 8 INVITE 
+Via: SIP/2.0/UDP 135.180.130.133;branch=zz9hG4bKkdjuw 
+Content-Lengthksdj@ÏÏÑÎÑÎÑÎ _CSeq: 8 INVITE 
+Via: SIP/2.0/UDP 135.180.130.133;brag=33242 
+Max-Forwards: 3 
+Call-ID: 0ha0isndaksdj@10.1.1.1 _CSeq: 8 INVITE 
+V>a: SIP/2.0/UDP 135.180.130.133;branch=z9hG4bKkdjuw 
+CoAllow: ntent-Lengthksdj@ÏÏÑÎÑÎÑÎ _CSeq: 8 INVITE 
+Via: SIP/3.0/UDP 135.180.130.133;branch=z9
+Call-ID: 0ha0isnda:user;par=u%80h.co&@c\ompany.com SIP/2.0 
+To: sip:BYEser@company.com 
+FromBYEser@company.com 
+From: sip:caller@university.edu»tag=33242 
+Max-Forwards: 3 
+Call-ID: 0ha0isndaksdj@10.1.1.1 _CSeq: 8 INVITE 
+Via: SIP/2.0/TCP 135.180.130.133;branch=z9hG4bKkdjuw 
+Content-Lengthksdj@ÏÏÑÎÑÎÑÎ _CSeq: 8 INVt.com>
+  ;
+ tag = 98asjd8
+CaLl-Id
+ :00 haisndaksdj@10.1.1.1
+cseq: 8 INVITE
+Via  : SIP   /  2.0   /  2.0/  UDP
+  135.180.129.133
+Subject :
+NewFangledHeader:   newfangled value
+ more newfangled value
+Content-Type: applicationom ; : "J Rosanberg \\\!" <sip:jdrosen@lucent.com>
+  ;
+ tag = 98asjd8
+CaLl-Id
+ :00 haiKkdjuw 
+CoAllow: ntent-Lengthksdj@ÏÏÑÎÑÎÑÎ _CSeq: 2 INVITE 
+VContent-Length: 163
+
+v=0
+o=mha_ndley 29739 7272939 IN IP4 126.5.4.3
+s=SIP Call
+t=0 ia0

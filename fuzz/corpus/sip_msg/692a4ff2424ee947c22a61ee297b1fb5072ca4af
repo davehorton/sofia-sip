@@ -1,0 +1,47 @@
+?REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Record-Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+From: sip:digest@garage.sr.ntc.nokia.com?ACK sip:company.com SIP/2.0
+To: mpany.com
+To: .180.130.133
+Call-ID: 1804892587@company.co}
+CSeq: 1 OPTIONS
+Contact: sip:hostsip:user@135.180.130.133
+Call-ID: 18049.com
+CSeq: 1 .company.com
+Expires: 0xpires: 0sip:host.company.com
+OPTIONS
+Expires: 0 0l@company.com
+To: sip:user@13Via: SIP/2.0/UDP sip1.erom: sip:iuser@company.com
+To: .180.130.133
+Call-ID: 1804928587@company.co}
+CSeq: 1 OPTIONS
+Contact: sip:hostsip:user@135.180.130.133
+Call-ID: 18049.com
+CSeq: 1 .company.com
+ExpCall-ID: 18049.com
+CSeq: 1 .company.com
+Expires: 0xpires: 0sip:host.company.com
+OPTIONS
+Expires: 0 0l@company.com
+To: sip:user@13Via: SIP/2.0/UDP sip1.erom: sip:iuser@company.com
+To: .180.130.133
+Call-ID: 1804928587@company.co}
+CSeq: 1 OPTIONS
+Contact: sip:hostsip:user@135.180.130.133
+Call-ID: 18049.com
+CSeq: 1 .company.com
+Expires: 0xpires: 0sip:host.company.com
+OPTIONS
+Expires: 0 0l@company.com
+To: sip:user@13Vixample.com
+Via: SIP/2.0/UDP host.example.com;received=135.180.130.133;branch=C1C3344E2710000000E299E568ntent-Length: 0
+Accept-Language: en
+Supported: sip-cc, sip-cc-01, timer
+User-Agent: Pingtel/0.8.0 (WinNT)
+Authorization: DIGEST USERNAME="digest",
+  REALM="garage.sr.ntc.nokia.com", NONCE="MjAwMS0wMS0yMSAxNTowODo1OA=," R=
+ ESPONSE="d9d7f1ae99a013cb05f319f0f678251d",
+  URI="sip:garage.sr.ntc.nokia.com"
+Via: SIP/2.0/UDP 172.21.9.155
+

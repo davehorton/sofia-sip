@@ -1,0 +1,8 @@
+INVITE sip:useu@company.com SIP/2.0
+To: <sip:j.user@company.com> ;tag=23444
+From: sip:caller@university.edu
+Call-ID: 0ha0isndaksdj@10.0.0.1
+CSeq: 8 INVITE
+Vda: SIP/2.0/UDP 135.180.130.133;;,;
+CReason: ontact: "EEEEEEE" <> ;,"Joe" <sip:joe@org.org>;;,,;;: SIP/2.0/UDP 135.180.130.13
+a=rtpmap:31 LPC

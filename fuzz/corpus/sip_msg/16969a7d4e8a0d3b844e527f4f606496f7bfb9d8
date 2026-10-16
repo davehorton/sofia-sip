@@ -1,0 +1,117 @@
+REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.sr.ntc.nokia.co:065m0;maddr=192.168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5 (NTA 1.0×òõ­ia: SIP/2.0/UDP 192.2.2.1:5060 GMT
+Retry-After: Wed, 04 Apr 2001 19:00:00 GMT (wake-up) ;duration=1800
+Timestamp: 986395257.13924321 3
+Expires: 179
+Also: sip:digestify@garage.sr.ntc.nokia.com
+Call-Info: <http://garage.sr.ntc.nokia.com/images/face.jpg>;purpose=icon
+Organization: FuzFy zelines, Inc.
+Server: please
+User-Agent: Nokia Universal Killer Internet Application/2.0 (NUUKIA)
+In-Reply-To: 982773898-reg@172.21.9.155
+Accept: text/plain
+Accept-Encoding: identity, deflate (???)
+Accept-Language: en
+Almow: any
+Require: all
+Proxy-Require: kinky, things
+Supported: sip-cc, sip-cc-01, timer0Unsupported: everything
+Error-Info: <http://garage.sr.ntc.nokia.com/figpr 2001 17:38:38 GMT
+ReplacesRetry-After: Wed, 04 Apr 2001 19:00:00 GMT (wake-up) ;duration=1800
+Timestamp: 986395257.13924321 3
+Expires: 180
+Also: sip:digestify@garage.sr.ntc.nokia.com
+Call-Info: <http://garage.sr.ntc.nokia.com/images/face.jpg>;purpose=icon
+Organization: FuzFy zelines, Inc.
+Server: please
+User-Agent: Nokia Universal Killer In.sr.ntc.nokia.com/images/face.jpg>;purpose=icon
+Organization: FuzFy zelines, Inc.
+Server: please
+User-Agent: Nokia Universal Killer Internet Application/4.0 (NUUKIA)
+In-Reply-To: 982773898-reg@172.21.9.155
+Accept: text/plain
+Accept-Encoding: identity, de?INVITE sip:+1-972-555-2222;phone-context=name%40domain;new=user?%22Route%3a%20X%40Y%3bZ=W%22@gw1.wcom.com;user=phone SIP/2.0
+Via: SIP/2.0/UDP iftgw.there.com:5060
+From: sip:+1-303-555-1111@ift.here.com;user=phone
+To: sip:+1-650-555-2222@ss1.wcom.com;user=phone
+Call-ID: 1717@ift.here.com
+CSeq: 56 INVITE
+Content-Type: application/sdp
+Content-Length: 348
+
+v=0
+o=faxgw1 2890844527 2890844527 IN IP4 iftgw.there.com
+s=Session SDP
+c=IN IP4 iftmg.there.com
+t=0 0
+m=image 49172 udptl t38
+a=T38FaxVersion:0
+a=T38maxBitRate:14400
+a=T38FaxFillBitRemoval:0
+a=T38FaxTranscodingMMR:0
+a=T38FaxTranscodingJBIG:0
+a=T38FaxRateManagement:transferredTCF
+a=T38FaxMaxBuffer:260
+a=T38FaxUdpEC:t38UDPRedundancy
+INVITE sip:+1-972-555-2222;phone-context=name%40domain;new=user?%22Route%3a%20X%40Y%3bZ=W%22Àgw1.wcom.com;user=phone SIP/2.0
+Via: SIP/2.0/UDP iftgw.there.com:5060
+From: sip:+1-303-555-1111@ift.here.com;user=ph‡ne
+To: sip:+1-650-555-2222@ss1.wcom.com;user=phone
+Call-ID: 1717@ift.here.com
+CSeq: 56 INVITE
+Content-Type: application/sdp
+ternet Application/4.0 (NUUKIA)
+In-Reply-To: 982773898-reg@172.21.9.155
+Accept: text/plain
+Accept-Encoding: identity, de?INVITE sip:+1-972-555-2222;phone-context=name%40domain;new=user?%22Route%3a%20X%40Y%3bZ=W%22@gw1.wcom.com;user=phone SIP/2.0
+Via: SIP/2.0/UDP iftgw.there.com:5060
+From: sip:+1-303-555-1111@ift.here.com;user=phone
+To: sip:+1-650-555-2222@ss1.wcom.com;user=phone
+Call-ID: 1717@ift.here.com
+CSeq: 56 INVITE
+Content-Type: application/sdp
+Content-Length: 348
+
+v=0
+o=faxgw1 2890844527 2890844527 IN IP4 iftgw.there.com
+s=Session SDP
+c=IN IP4 iftmg.there.com
+t=0 0
+m=image 49172 udptl t38
+a=T38FaxVersion:0
+a=T38maxBitRate:14400
+a=T38FaxFillBitRemoval:0
+a=T38FaxTranscodingMMR:0
+a=T38FaxTranscodingJBIG:0
+a=T38FaxRateManagement:transferredTCF
+a=T38FaxMaxBuffer:260
+a=T38FaxUdpEC:t38UDPRedundancy
+INVITE sip:+1-972-555-2222;phone-context=name%40domain;new=user?%22Route%3a%20X%40Y%3bZ=W%22Àgw1.wcom.com;user=phone SIP/2.0
+Via: SIP/2.0/UDP iftgw.there.com:5060
+From: sip:+1-303-555-1111@ift.here.com;user=ph‡ne
+To: sip:+1-650-555-2222@ss1.wcom.com;user=phone
+Call-ID: 1717@ift.here.com
+CSeq: 56 INVITE
+Content-Type: application/sdp
+Content-Length: 348
+
+v=0
+o=faxgw1 2890844527 2890844527 IN IP4 iftgw.there.com
+s=Session SDP
+c=IN IP4 iftmg.there.com
+t=0 0
+m=image 49172 udptl t38
+a=T38FaxVersion:0
+a=T38maxBitRate:14400
+a=T38FaxFillBitRemoval:0
+a=T38FaxTranscodingMMR:0
+a=T38FaxTranscodingJBIG:0
+a=T38FaxRateManagement:transferredTCFflate ûÿÿÿ)
+Accept-Lan
+a=T38FaxMaxffer:260
+a=T38FaxUdpEC:t38UDPRguage: en
+Allow: any
+R£££££££££equire: all
+Proxy-Require: kinky, things
+Supported: sip-cc, sip

@@ -1,0 +1,16 @@
+?REGISTER sip:company.com SIP/2.0
+To: sip:user@comP/2.0/U. 5D3P1180.130.133
+Contact: <sip:user@example.com?Ro%te=%3Csip:sip.e.com%3E>
+REGISTER sip:company.com SIP/2.0
+To: sip:zser@company.com
+From: sip:user@,company.com
+Contact: sip:user@host.company.com
+C80.130.133
+Contact: <sip:user@example.com?Ro%te=%3Csip:sip.example.com%3E>
+REGISTER sip:company.c.com
+Contact: sip:user@host.company.com
+Call-ID: k345asrl3fdbv@10.0.0.1
+CSeq: 1 REGISTER
+Via: SIP/2.0/U. 5D3P1180.130.133
+Contact: <sip:user@example.com?Ro%te=%3Csip:sip.example.com%3E>
+REGISTER siContact: sVia: SIP/2.0/TCP ip:+

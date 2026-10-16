@@ -1,0 +1,5 @@
+ACK sip:company.com SIP/2.0
+To: sip:j.user@company.com
+From: sip:jll-ID: 0ha0isndaksdj@10.0.2.2
+Contact: %ip:j.3
+Content-Length: 0

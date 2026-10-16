@@ -1,0 +1,23 @@
+?IAVITE sip:t.watson@ieee.org SIP/7.0
+Via: l-Œš“Ñœ’ï
+From: %   A. Bell <ER
+Via: SIP/2.0/UDP 135.180.130.133
+Content-Length: 0
+
+
+
+INVITp ij:osEe@!company.com SIP/3.0
+To: sip:joReplaces: e@company.com
+From: sip:caller@university.edu
+Call-ID: 0ha0isnd/UDP 135.180.130.133
+Content-Length: 0
+
+
+
+INVITp ij:osEe@!company.com SIP/3.0
+To: sip:joReplaces: e@company.com
+From: sip:caller@university.edu
+Call-ID: 0ha0isnda377644900765@10.0.0.1
+CSeq: 8 INVITEö©– : SIP/2.0/UDP 135.180.130.133
+ContNOTIFYpeINVITE
+Via: SIP/2.0/UDP 135.180.130.133VITE

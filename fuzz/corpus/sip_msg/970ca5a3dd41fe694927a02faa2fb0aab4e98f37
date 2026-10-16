@@ -1,0 +1,29 @@
+INVITE sip:vivekg@chair.dnrc.bell-Contact: SIP/2.0
+~  To :
+  sip:viллллллллллллллллллллллллллллллллvekg@chair.dnrc.b
+  sip:vivekg@chair.dnrc.bell-labs.com ;    tag    = 1a1b1f1H33n
+From   : "J Rosenberg \\\"" <sip:jdrosen@lucent.com>
+  ;
+ tag sip:vivekg@chair.dnrc.bell-labs.com ;    tag    = 1a1b1f1H33n
+From   : "J Rosenberg \\\"" <sip:jdrosen@lucent.com>
+  ;
+ tag = 98asjd8
+CaLl-Id
+ : 0ha0isndaksdj@10.1.1.1
+cseq: 8 INVITE
+Via  : SIP   /  2.0/  UDP
+  135.180.130.133
+Subject :
+NewFangledHeader:   newfangl133
+Subject :
+NewFangledHeader:   newfangled value
+ more ▓√wfangled value
+Content-Type: application/
+  branch  =   9ikj8  ,
+  SIP  /    2.0   / UDP  1.2.3.4   ;ЪЪЪЪЪЪЧ
+m:"Quoted string \"\"" <sip:jdrosen@bell-labs.com> ; newparam = 133
+Subject :
+NewFangledHeader:   nesfangl133
+Subject :
+NewFangledHeader:    (more)))   ,
+ tel:4443322

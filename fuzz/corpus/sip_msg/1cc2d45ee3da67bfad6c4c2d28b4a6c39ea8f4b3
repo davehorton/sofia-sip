@@ -1,0 +1,68 @@
+?REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5 (NTA 1.0)
+Via: SIP/2.0/UDP 192.2.2.1:5060;receiv=de[ffe0::FAB1]
+Route: <sip:garage.sr.ntc.nokia.com:5060;;lrmaddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+Hide: routeMax-Forwards: 15
+From: sip:diaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa!aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa?INVITE <sip:user@company.com> SIP/2.0
+To: sip:user@company.com
+From: sip:ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿcaller@universiaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaype: application/sdp
+NOTIFYCSeq: 1 INVITE
+Max-Forwards: .sr.ntc.nokia.com:5060;maRoute: ddr=192.168.10ty.edu
+½›ll-ID: 1@10.0.0.1
+CSeq: 1 INVITE
+Via: SIP/2.0/.com:5060;maddr=192.168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5 (NTA 1.0)Via: SIP/2.0/UDP 
+Via: SIP/2.0/UDP 192.2.2.1:5060;receiv=de[ffe0::FAB1]
+Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+Hide: routeMax-Forwards: 15
+From: sip:diaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa!aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa2
+m=video 322Accept: P 31
+a=rtpmap:31 LPC
+INVITE <sip:user@company.com> SIP/2.0
+To: sip:user@coram-5=5;x-param-6=6ooooooooooooooo;x-param-7=7;x-param-8=8
+Call-ID: 0ha0isndaks2.5
+Via: SIP/2.0/TCP srlab.sr.ntc6nokia.com:5060;maddr=192.168.102.5 (NTA 1UDP 135.180.1g0.133
+Content-Type:êapplication/sdp
+Content-Length: 163
+
+v=0
+o=mhandley 29739 7272939 IN IP4 126.5.4.3
+s=SIP Call
+t=0 0
+c=IN IP4 135.180.130.88
+m=audio 4921Refer-To:  0 12
+m=video 322Accept: P 31
+a=rtpmap:31 LPC
+INVITE <sip:user@company.com> SIP/2.0
+To: s
+
+ser@coram-5=5;x-param-6=6;x-param-7=7;x-param-8=8
+Cal|-ID: 0ha0isndaks2.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5 (NTA 1.0)
+Via: SIP/2.0/UDP 192.2.2.1:50dj@10.0.2.2  
+Contact: *
+CSeq: 9 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Content-Lengthmpany.com
+From: sip:BYEler@university.edu
+Call-ID: 1@10.0.0.1
+CSeq: 1 INVITE
+Via: SIP/2.0/UDP 135.180.130.133
+Content-Type: application/sdp
+Content-Length: 163
+
+v=0
+o=mhandley 29739 7272939 IN IP4 126.5.4.3
+s=SIP Call
+t=60v;received=[ffe0::FAB1]
+Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+RecorHd-Route: <sip:garage.sr.ntc>nokia.˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜com:5060;maddr=srlab.sr.ntc.nokia.com>
+Hide: route
+M>ax-Forwards: 15
+From: sip:digest@gara0 0
+c=IN IP4 135.180.130.88
+m=audio 492170ge.sr.ntc.nokia.com
+To: sip:digest@ga RTP/Arage.VP 0 sr.ntcaaaaa

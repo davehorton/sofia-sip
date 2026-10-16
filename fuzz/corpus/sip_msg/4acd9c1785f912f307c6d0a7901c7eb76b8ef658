@@ -1,0 +1,98 @@
+?REGISTER sip:garage.sr.ntc.nokia,com SIP/2.0
+Via: SIP/2.0/UDR srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.103.5 (NTA 1.0)	Via: SIP/2.0/UDP rted: sip-cccc-01, timer
+Unsupported: everything
+Error-Info: <htt://pgarage.sr.ntc.nokia.com/figure-1.jpg>
+Warning: 300 garage.sr.ntc.nokia.com IPv6 global addresses not available
+Warning: 330 garage.sr.ntc.nokia.com No IPv6 multicast, 330 garage.sr.ntc.nokia.com Only local IPv4 multicast available
+Authorization: Digest USERNAME="digest", REALM="garage.sr.ntc.nokia.com", NONCE="IjAwMS0wMS0yMSAxNTowODo1OA=="Ýß­ºSPONSE="d9d7f1ae99a013cb05f319f0f678251d", URI="sip:garage.sr.ntc.nokia.com"
+Via: SIP/2.0/UDMISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDR srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.103.5 (NTA 1.0)	Via: SIP/2.0/UDP rted: sip-cccc-01, timer
+Unsupported: everything
+Error-Info: <htt://pREGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDr.ntc.nokia.com
+Call-I?REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5 (NTA 1.0)
+Via: SIP/2.0/UDP ed, 04 Apr 2001 17:38:38 GMT
+Retry-After: Wed, 04 Apr 2001 39:00:00 GMT (wake-up) ;duration=1800
+Timestamp: 986395257.1392!321 3
+Expires: 180
+Also: sip:digestify@garage.sr.ntc.nokia.com
+Call-Info: <http://garage.sr.ntc.nokia.cÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖom/images/face.jpg>;purpose=icon
+Organiz:5060;maddr=192.168.102.5
+Via:"SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5 (NTA 1.0)
+Via: SIP/2.0/UDP 192.2.2.1e: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+Hide: route
+Max-Forwards: 15
+From: sip:digest@garage.sr.ntc.n?INVITE si!:user@company.com SIP/2.0
+Ôo: sip:user@company.com
+From: sip:callere
+Warning: 330 garage.sr.ntc.nokia.com No IPv6 multicast, 330 garage.sr.ntc.nokia.com Only local IPv4 multicast available
+Authorization: Digest USERNAME="digest", REALM="garage.sr.ntc.nokia.com", NONCE="IjAwMS0wMS0yMSAxNTowODo1OA=="Ýß­ºSPONSE="d9d7f1ae99a013cb05f319f0f678251d", URI="sip:garage.sr.ntc.nokia.com"
+Via: SIP/2.0/UDMISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDR srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.103.5 (NTA 1.0)	Via: SIP/2.0/UDP rted: sip-cccc-01, timer
+Unsupported: everything
+Error-Info: <htt://pREGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDr.ntc.nokia.com
+Call-I?REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5 (NTA 1.0)
+Via: SIP/2.0/UDP ed, 04 Apr 2001 17:38:38 GMT
+Retry-After: Wed, 04 Apr 2001 39:00:00 GMT (wake-up) ;duration=1800
+Timestamp: 986395257.1392!321 3
+Expires: 180
+Also: sip:digestify@garage.sr.ntc.nokia.com
+Call-Info: <http://garage.sr.ntc.nokia.cÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖom/images/face.jpg>;purpose=icon
+Organiz:5060;maddr=192.168.102.5
+Via:"SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5 (NTA 1.0)
+Via: SIP/2.0/UDP 192.2.2.1e: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+Hide: route
+Max-Forwards: 15
+From: sip:digest@garage.sr.ntc.n?INVITE si!:user@company.com SIP/2.0
+Ôo: sip:user@company.com
+From: sip:caller@university.edu
+Call-ID: 8@10.okia.com
+To: sip:digest@garage.sr.ntc.nokation: Fuzzy Felines, Inc.
+Server: please
+User-Agent: Nokia Universal Killer Internet Application/2.0 (NUUKIA)
+In-Reply-To: 982773898-reg@172.21.9.155
+Accept: text/plain
+Accept-Encoding: identity, deflate (???)
+Accept-Language: en	Allow: any
+Require: all
+Proxy-Require::5060;received=[ffe0::FAB1]
+Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+Hide: route
+Max-Forwards: 15
+From: sip:digest@garage.sr.ntc.0.0.1
+CSeq: 2 INVIV
+RSeq:  SIP/2.0/UDP 135.180.130.133
+Expires: Thu, 01 Dec 1994 16:00:00 GMT
+Content-Type: application/sŸŸŸŸŸ: T@university.edu
+Call-ID: 8@10.okia.com
+To: sip:digest@garage.sr.ntc.nokation: Fuzzy Felines, Inc.
+Server: please
+User-Agent: Nokia Universal Killer Internet Application/2.0 (NUUKIA)
+In-Reply-To: 982773898-reg@172.21.9.155
+Accept: text/plain
+Accept-Encoding: identity, deflate (???)
+Accept-Language: en	Allow: any
+Require: all
+Proxy-Require::5060;received=[ffe0::FAB1]
+Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+Hide: route
+Max-Forwards: 15
+From: sip:digest@garage.sr.ntc.0.0.1
+CSeq: 2 INVIV
+RSeq:  SIP/2.0/UDP 135.180.130.133
+Expires: Thu, 01 Dec 1994 16:00:00 GMT
+Content-Type: application/sŸŸŸŸŸ: Thu, 01 Dec 1994 16:00:00 GMT
+Content-Type:E si!:user@company.com SIP/2.0no
+kia.cÔoo

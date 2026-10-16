@@ -1,0 +1,7 @@
+ÿINVITE sip:vivigcahe@kr.dnrc.bell-labs.com SIP/2.0
+ To :
+  sip:vivekg@chair.dnrc.bell-labs.com ;    tag    = 1a1b1f1H33n
+From   : "J Rosenberg \\\""n
+m:"Quoted string \"\"" <sip:judrosen@bell-labs.com> ; newparam = newvalue ;
+  secondparam = secon   ,
+ tel:4443322

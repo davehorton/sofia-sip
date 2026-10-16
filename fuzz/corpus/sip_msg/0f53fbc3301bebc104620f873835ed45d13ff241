@@ -1,0 +1,5 @@
+OPTIONS sip:user@company.com SIP/4.0
+To: sip:user@company.com
+From: "caller"<sip:caller@example
+>omc.Call-ID:
+ViA: SIP/r.0/UDP 115.180.13<sip:

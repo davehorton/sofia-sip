@@ -1,0 +1,13 @@
+ÿINVITE sip:vivekg@chair®dnrc.bell-labs.com SIP/2.0
+  To :
+  sip:vivekg@chair.dnrc.bell-labs.com ;    tag    = 1a1b1f1H33n
+From   : "J Rosenberg \\\"" <sip:jdrosen@lucent.com>
+  ;
+ tag = 98asjd8
+CaLl-Id
+ : 0ha0isndaksdj@10.1.1.1
+cseq: 8 INVITE
+Via                                                hair.dnrc.bell-labs.com ;    tag    = 1a1b1f1H33n
+Fro                     : SIP   /  2.0/  UDP
+  135.180.15060;maddr=192.1683.102.5
+Via: .SIP4

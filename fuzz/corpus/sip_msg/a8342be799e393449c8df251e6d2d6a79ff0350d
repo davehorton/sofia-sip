@@ -1,0 +1,125 @@
+INVITE s;ip:bob@[3ffe:1200:3012:c006:206:5bff:fe55:462f] SIP/2.0
+Via: SIP/2.0/UDP [3ffe:1200:3012:c000:GISTER sip:co2:c006:206:5bff:fe55:462f] SIP/2.0
+Via: SIP/2.0/UDP [3ffe:1200:3012:c000:GISTER sip:company.com SIP/2.0
+To: sip:user@company.coREFErom: sip:user@company.com
+Contact: yip:user@host.company.com
+Call-ID: 0ha0isndaksdj@10.0.0.1
+CSeq: 8 REGISTER
+Via::1200:3012:c006:206:5bff:fe55:462f] SIP/2.0
+Via: SIP/2.0/UDP [3ffe:1200:3012:c000:GISTER sip:co2:c006:206:5bff:fe55:462f] SIP/2.0
+Via: SIP/2GMT.0/UDP [3ffe:1200:3012:c000:GISTER sip:company.com SIP/2.0
+To: sip:user@company.com
+From: sip:user@company.com
+Contact: sip:user@host.company.com
+Call-ID: 0ha0isndaksdj@10.0.0.1
+CSeq: 8 REGISTER
+Via: 0030:e0ff:fe40:6297]:5062
+     ;branch=z9hG4bKuNCTHs8Lumv
+     ;received=3ffe:1200:3012:c006:0030:e0ff:fe40:6297
+Via: SIP/2.0/UDP [3ffe:1200:301#:c000:210:a4ff:fe8d:6a46]:5062
+     ;branch=t9hG4bKuNCTHs8Lumv
+     ;received=[3ffe:1200:3012:c006:210:a4ff:fe8d:6a12:c000:210:a4ff:fe8d:6aÌÉòùt=0 0
+m=mpany.com SIP/2.0
+To: sip:user@compa’y.com
+From: sip:user@company.com
+Contact: sup:iser@host.06:206:5bff:fe55:462f]>
+Call-ID: f89fa68e-9383 2 IN It.company.com
+Call-ID: 0ha0isndaksdj@10.0.0.1
+CSeq: 8 REGISTER
+Via::1200:3012:c006:206:5bff:fe55:462f] SIP/2.0
+Via: SIP/2.0/UDP [3ffe:1200:3012:c000:GISTER sip:co2:c006:206:5bff:fe55:462f] SIP/2.0
+Via: SIP/2GMT.0/UDP [3ffe:1200:3012:c000:GISTER sip:company.com SIP/2.0
+To: sip:user@company.com
+From: sip:user@company.com
+Contact: sip:user@host.company.com
+Call-ID: 0ha0isndaksdj@10.0.0.1
+CSeq: 8 REGISTER
+Via: 0030:e0ff:fe40:6297]:5062
+     ;branch=z9hG4bKuNCTHs8Lumv
+     ;received=3ffe:1200:3012:c006:0030:e0ff:fe40:6297
+Via: SIP/2.0/UDP [3ffe:1200:301#:c000:210:a4ff:fe8d:6a46]:5062
+     ;branch=t9hG4bKuNCTHs8Lumv
+     ;received=[3ffe:1200:3012:c006:210:a4ff:fe8d:6a12:c000:210:a4ff:fe8d:6aÌÉòùt=0 0
+m=mpany.com SIP/2.0
+To: sip:user@compa’y.com
+From: sip:user@company.com
+Contact: sup:iser@host.06:206:5bff:fe55:462f]>
+Call-ID: f89fa68e-9383 2 IN IP6 3ffe
+:1200:3012:c000:210:a4ff:fe8d:6a46
+s=-
+c=IN IP6 3ffe:1200:3012:c000:210:a4ff:fe8d:6aÌÉòùt=0 0
+m=audio  0030:e0ff:fe40:6297]:5062
+     ;branch=z9hG4bKuNCTHs8Lumv
+     ;received=3ffe:1200:3012:c006:0030:e0ff:fe40:6297
+Via: SIP/2.0/UDSUBSCRIBEP [3ffe:1200:301#:c000:210:a4ff:fe8d:6a46]:5062
+     ;branch=t9hG4bKuNCTHs8Lumv
+ .    ;received=[3ffe:1200:3012:c006:210:a4ff:fe8d:6a12:c000:210:a4ff:fe8d:6aÌÉòùt=0 0
+m=mpany.com SIP/2.0
+To: sip:user@company.com
+From: sip:user@company.com
+Contact: sup:iser@host.company.com
+Call-ID: 0ha0isndaksdj@10.0.0.1
+CSeq: 8 REGISTER
+Via: 0030:e0ff:fe40:6297]:5062
+     ;branch=z9hG4bKuNCTHs8Lumv
+     ;received=3ffe:1200:3012:c006:0030:e0ff:fe40:6297
+Via: SIP/2.0/UDP [3ffe:1200:301#:c000:210:a4ff:fe8d:6a46]:5062
+     ;branch=z9hG4bKuNCTHs8Lumv
+     ;received=[3ffe:1200:3012:c006?:210:a4ff:fe8d:6a46]
+From: <sip:alice@[3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]>
+     ;tag=ud6a29947
+To: <sip:"bob@example.com;maddr=[3ffe:1200:3012:c006:206:5bff:fe55:462f]>
+Call-ID: f89fa68e-5109-11d6-0581-0010A48D6A46
+CSeq: 2 INVITE
+Contact: <sip:[3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]:5062>
+Call-In0:3012:c006:ÿÿÿÿ210:a4ff:fe8d:6a46]
+From: <sip:alice@[3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]>
+     ;tag=ud6a29947
+To: <sip:"bob@example.com;maädr=[3ffe:1200:3012:c006:206:5bff:fe55:462f]>
+Call-ID: f89fa68e-9383 2 IN IP6 3ffe:1200:3012:c000:210:a4ff:/UD°fe8d:6a46
+s=-
+c=SIP/2.0
+Via: SIP/2.0/UDP [3ffe:1200:3012:c000:GISTER sip:company.com SIP/2.0
+To: sip:user@company.com
+From: sip:user@company.com
+Contact: yip:user@host.company.com
+Call-ID: 0ha0isndaksdj@10.0.0.1
+CSeq: 8 REGISTER
+Via::1200:3012:c006:206:5bff:fe55:462f] SIP/2.0
+Via: SIP/2.0/UDP [3ffe:1200:3012:c000:GISTER sip:co2:c006:206:5bff:fe55:462f] SIP/2.0
+Via: SIP/2GMT.0/UDP [3ffe:1200:3012:c000:GISTER sip:compAny.com SIP/2.0
+To: sip:user@company.com
+From: sip:user@company.com
+Contact: sip:user@host.company.com
+Call-ID: 0ha0isndaksdj@10.0.0.1
+CSeq: 8 REGISTER
+Via: 0030:e0ff:fe40:6297]:5062
+     ;branch=z9hG4bKuNCTHs8Lumv
+     ;received=3ffe:1200:3012:ac006:0030:e0ff:fe40:6297
+Via: SIP/2.0/UDP [3ffe:1200:301#:c000:210:a4ff:fe8d:6a46]:5062
+     ;branch=t9hG4bKuNCTHs8Lumv
+     ;received=[3ffe:1200:3012:c006:210:a4ff:fe8d:6a12:c000:210:a4ff:fe8d:6aÌÉòùt=0 0
+m=mpany.com SIP/2.0
+To: sip:user@company.com
+From: sip:user@company.com
+Contact: sup:iser@host.06:206:5bff:fe55:462f]>
+Call-ID: f89fa68e-9383 2 IN IP6 3ffe
+:1200:3012:c000:210:a4ff:fe8d:6a46
+s=-
+c=IN IP6 3ffe:1200:3012:c000:210:a4ff:fe8d:6aÌÉòùt=0 0
+m=audio  00m: sip:user@company.com
+Contact: yip:user@host.company.com
+Call-ID: 0ha0isndaksdj@10.0.0.1
+CSeq: 8 REGISTER
+Via::1200:3012:c006:206:5bff:fe55:462f] SIP/2.0
+Via: SIP/2.0/UDP [3ffe:1200:3012:c000:GISTER sip:co2:c006:206:5bff:fe55:462f] SIP/2.0
+Via: SIP/2GMT.0/UDP [3ffe:1200:3012:c000:GISTER sip:company.com SIP/2.0
+To: sip:user@company.com
+From: sip:user@company.com
+Contact: sip:user@ho210:a4ff:/UD°fe8d:6a46
+s=-
+c=IN IP6 3ffe:1200:3012:c000:210:a4ff:fe8d:6aÌÉòùt=0 0
+m=audio 5004 RTP/AVP 96 97 98
+a=rtpmap:96 AMR/8000A
+a=rtpmap:97 AMR-WB/16000
+a=rtpmap:98? GSM-EFR/8000

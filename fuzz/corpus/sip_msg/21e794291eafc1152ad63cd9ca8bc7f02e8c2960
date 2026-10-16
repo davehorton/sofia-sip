@@ -1,0 +1,6 @@
+ÿACK sûp:company.com SIP/2.0
+To: sip:j.useha0isndaksdj@10.0.2.2
+Contact: sip:j.user@host.compasy.com
+CSeq: 8 NEWMETHODV
+ia: SIP/2.0/UDP 135.180.130.133
+Content-Length: 0

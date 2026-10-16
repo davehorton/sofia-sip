@@ -1,0 +1,23 @@
+ÿINVITE sip:bob@[3ffe:1200:3012:c006:206:5bff:fe55:462f] SIP/2.0
+Via: SIP/2.0/UDP [3ffe:1200:3012:c000:0030:e0ff:fe40:6297]:5062
+     ;branch=z9hG4bKuNCTHs8Lumv
+     ;received=3ffe:1200:3010:0030:e0ff:fe40:6297]: ;branch=z9hG4bKuNCTHs8Lumv
+     ;received=[3ffe:1200:3012:c006:210:a4ff:fe8d:6a46]
+From: <sip:alice@[3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]>
+     ;tag=ud6a29947
+To: <sip:bob@example.com;maddr=[3ffe:1200:3012:c006:206:5bff:fe55:462f]>
+Call-IDkia.com
+Call-Info: <http://garage.sr.ntc.nokia.com/images/face.jpg>;purpose=icon
+Organization: Fuzzy Felines, Inc.
+Server: please
+User-Agent: Nokia Universal Killer Internet Application/2.0 (NUUKIA)
+In-Reply-To: 982773898-reg@172.21.9.155
+Accept: text/plain
+Accept-Encoding: identity, deflate (???)
+Accept-Language: en
+Allow: any
+Require: all
+Pro012:c000:210:a4ff:fe8d:6a46
+s=-
+c=IN IP6 3ffe:1200:3=rtpmap:97 AMR-WB/16000
+a=rtpmap:98 GSM-EFR/8000

@@ -1,0 +1,126 @@
+?REGISTER sip:company.com SIP/2.0
+To: sip:j.u@recsompany.com
+From: sip:j.user@company.com
+Call-ID: 0ha0isndaksdj@10.0.1.1
+CSeq: 8 REGISTER
+Via: SIP/3.0/UDP 135.180.130.133
+AuthorizatioREGI\TERn: Super-PGP ajsohdaosdh0asyhdain)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))¿)))dmpany.com
+From: sip:j.user@company.com
+Call-ID: 0ha0isndaksdj@10.0.1.1
+CSeq: 8 REGISTER
+Via: SIP/3.0/UDP 135.180.130.133
+Authorization: Super-PGP ajsohdaosdh0asyhdain)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))d08yasdknasd09asidhas0d8
+REGISTER sip:company.com SIP/2.0
+To: sip:j.user@company.com
+From: sicompany.com SIP/2.0
+To: sip:j.u@recsompany.com
+From: sip:j.user@company.com
+Call-ID: 0ha0isndaksdj@10.0.1.1
+CSeq: 8 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Authorization: Super-PGP ajsohdaosdh0asyhdaind08yasdknasd09asidhas0d8
+REGISTER sip:company.com SIP/2.0
+To: sip:j.user@company.com
+From: sip:j.user@company.com
+Call-ID: 0ha0isndaksdj@10.0.1.1
+CSeq: 8 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Authorization: Super-PGP ajsohdaosdh0asyhdaind08yasdknasd09asidhas0d8p:j.user@company.com
+Call-ID: 0ha0isndaksdj@10.0.1.1
+CSeq: 8 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Authorization: Super-PGP ajsohdaosdh0asyhdaind08ya))))))))))))))))))))))))))))))))))))))))))))))))))d08yasdknasd09asidhas0d8
+REGISTER sip:company.com SIP/2.0
+To: sip:j.user@company.com
+From: sicompany.com SIP/2.0
+To: sip:j.u@recsompany.com
+From: sip:j.user@company.com
+Call-ID: 0ha0isndaksdj@10.0.1.1
+CSeq: 8 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Authorization: Super-PGP ajsohdaosdh0asyhdaind08yasdknasd09asidhas0d8
+REGISTER sip:company.com SIP/2.0
+To: sip:j.user@company.com
+From: sip:j.user@company.com
+Call-ID: 0ha0isndaksdj@10.0.1.1
+CSeq: 8 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Authorization: Super-PGP ajsohdaosdh0asyhdaind08yasdknasd09asidhas0d8p:j.user@company.com
+Call-ID: 0ha0isndaksdj@10.0.1.1
+CSeq: 8 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Authorization: Super-PGP ajsohdaosdh0asyhdaind08yasdknasd08yasdknasd09asidhas0d8
+REGISTER sip:company.com SIP/2.0
+To: sip:j.user@company.com
+From: sicompany.com SIP/2.0
+To: sip:j.u%00csompany.com
+From9999999999999999999999999999ide: route
+Max Ò-Forwards: 15
+From: sip:digest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.com
+Contact: sip:digest@172.21.9.155
+Call-ID: 982773899-reg@172.21.9.155
+CSeq: 2 REGISTER
+Subject: Barfoo
+Priority: emergency
+Date: Wed, 04 Apr 2001 17:38:38 GMT
+Retry-After: Wed, 04 Apr 2001 19:00:00 GMT (wake-up) ;duration=1800
+Timestamp: 986395257.Require: 3
+Expires: 180
+Also: sip:digestify@garage.sr.ntc.nokia.com
+Call-Info: <http://gy-To: 982773898-reg@172.21.9.155
+Accept: text/plain
+Accept-Encoding: identity, deflate (???)
+Accept-Language: en
+Allow: an
+Require: all
+Proxy-Require: kinky, thinzs
+Supported: sip-cc, sip-cc-01, timer
+Unsupported: everything
+Error-Info: <http://garage.sr.ntc.nokia.com/figure-1.jpg>
+Warning: 300 garage.sr.ntc..ntc.a: SIP/2.0arage.sr.ntc.nokia.com/images/face.jpg>;purpose=icon
+Organization: Fuzzy Felines, Inc.
+Server: please
+User-Agent: Nokia Universal Killer Internet Applicatiall
+Proxy-Require: kinky, things
+Supported: sip-cc, sip-cc-01, timer
+Unsupported: everything
+Error-Info: <http://garage.sr.ntc.nokia.com/figure-1.jpg>
+Warning: 300 garage.sr.ntc.nokia.com IPv6 global addresses not available
+Warning: 330 garage.sr.ntc.nokia.com No IPv6 multicast, 330 garage.sr.ntc.nokia.com Only local IPv4 m}lticast available
+Authorization: Digest USERNAME="digest"ct: sip:digest@172.21.9.155
+Call-ID: 982773899-reg@172.21.9.155
+CSeq: 2 REGISTER
+Subject: Barfoo
+Priority: emergency
+Date: Wed,  0A4pr 2001 17:38:38 GMT
+Retry-After: Wed, 04 Apr 2001 19:00:00 GMT (wake-up) ;duration=1800
+Timestamp: 986395257.13924321 3
+Expires: 180
+Also: sip:digestify@garage.sr.ntc.nokia.com
+Calse
+User-Agent: Nokia Universal Ki|ler Internet Application/2.0 (NUUKIA)
+In-Reply-To: 982773898-reg@172.21.9.155
+Accept: text/plain
+Accept-Encoding: identity, deflate (???)
+Accuper-PGsdknasd08yasdknasd09asidhas0d8
+REGISTER sip:company.com SIP/2.0
+To: sip:j.user@company.com
+From: sicompany.com SIP/2.0
+To: sip:j.u@recsompany.com
+From: sip:j.user@company.com
+Call-ID: 0ha0isndaksdj@10.0.1.1
+CSeq: 8 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Authorization: Super-PGP ajsohdaosdh0asyhdaind08yasdknasd09asidhas0d8
+REGISTER sip:company.com SIP/2.0
+To: sip:j.user@company.com
+From: sip:j.user@company.com
+Call-ID: 0ha0isndaksdj@10.0.1.1
+CSeq: 8 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Authorization: Super-PGP ajsohdaosdh0asyhdaind08yasdknasd09asidhas0d8p:j.user@company.com
+Call-ID: 0ha0isndaksdj@10.0.1.1
+CSeq: 8 REGISTER
+Via: SIP/2.0/UDP 135.P si180.130.133
+Authorization: Super-PGP ajsohdaosdh0asyhdaind08yasdknasd09asidhas0d8

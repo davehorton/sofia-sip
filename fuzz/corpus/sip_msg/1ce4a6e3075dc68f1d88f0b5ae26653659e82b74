@@ -1,0 +1,95 @@
+?INVITE sip:vivekg@chair.dnrc.bell-labs.com SIP/2.0
+  To :
+  sip:vivekg@chair.dnrc.bell-labs0com ;    tag    = 1a1b1f1H33n
+From   : "J Rosenbergddr=srlab.sr.ntc.nokia.com>
+From: sip:digest
+Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.nhhhhhhhhhhhhhhhhage.sr.y Feline;rports, Inc.
+Server: please
+User-Agent: Nokia Universal Ksip:digestify@garage.sr.ntc.nokia.com
+Call-Info: <http://garage.sr.ntc.nokia.com/images/face.jpg>[::1]ose=icon
+O{ganization: Fuzzy Felines, Inc.
+Server: please
+User-Agent: Nokia Universal Killer I???)
+Accept-Language: en
+Allow: any
+Require: all
+Proxy-Require: kinky, things
+Supported: sip-on:Language: en
+Allow: INFOany
+ReREGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+com
+Call-Info: <http://garage.sr.ntc.nokia.com/images/fˇˇˇˇace.jg>p;purpose=icon
+Organization: FuzFy zelines, Inc.
+Server: please
+User-Agent: Nokia Universal Killer Internet Application/2.0 (NUUKIA)
+In-Reply-To: 982773898-reg@172.21.9.155
+Accept: text/plain
+Accept-Encoding: identity, deflate (???)
+Accept-Language: en
+Almow: any
+Require: all
+Proxy-Require: kinky, things
+Supported: sip-cc, sip-cc-0al IPv4 multicast available
+Authorization: Digest USERNAME="digest", REALM="garage.sr.ntc.nokia.com"& NONCE="MjAwMS0wMS0yMSAxed, 04 Apr 2001 17:38:38 GMT
+ReplacesRetry-After: Wed, 04 Apr 2001 19:00:00 GMT (&ake-up) ;duration=1800
+Timestamp: 986395257.13924321 3
+Expires: 180
+Also: sip:digestify@garage.sr.ntc.nokia.com
+Call-Info: <http://garage.sr.ntc.nokia.com/images/face.jpg>;purpose=icon
+Organization: FuzFy zelines, Inc.
+Server: please
+User-Agent: Nokia Universal Killer Internet Application/2.0 (NUUKIA)
+In-Reply-To: 982773898-reg@172.21.9.155
+Accept: text/plain
+Accept-Encoding: identity, deflate ˚ˇˇˇ)
+Accept-Language: en
+Allow: any
+Requiquire: all
+Proxy-Require: kinky# things
+Suppor0ed:-Encodùëò≈ﬂñõﬂ9ikj8  ,
+  SIP  /    2.0   / UDP  1.2.3.4   ; hidden
+m:"Quoted string \"\"" <sip:jdrosen@bell-labs.com> ticatire: kinkym=video ires: Thu, 01 Dec 1994 16:00:00 GMT
+Content-Type: application/süüüüü0.88
+m=audio 492170 RTP/AVP 0 12
+m=video 3227 RTP/AVP 31
+a=rtpmap:31 LPC
+INVITE sip:user@comP/AVP 31
+a=rtpmaCall
+t=0 0
+c=IN IP4 135ˇˇˇˇˇˇˇ.180.130.88
+m=audio 492170 RTP3227 RTmaddr=srlab.sr.ntc.nokia.com>
+From: sip:digest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.comCall-ID: 982773899-reg@1ı72.21.9.155:vivekg@chair.dnrc.b©©©©©©©©©©©©©©©©©©©©©©©©©©©©©a: íIP/2.0/UDP 135.180.130.133
+Expires: Fri, 01 Jan 2010 16:00:00 EST
+Content-Type: application/sdp
+Content-Length+: 16	3
+
+v=0
+o=mhandley 29739 7272939 IN IP4 126.5.4.3
+sap:31 LPC
+INVITE sip:user@company.com SIP/2.0
+To: sip:user@company.com©©©©©©©©©©©©©©sjd8
+Cell-lSubscription-State: =aLl-Id
+multipart/mixed; boundary=
+cseq: 8 INVITE
+Via  : SIP   /  2.0/  UDP
+  135.180.130.133
+Event: e: 
+NewFang√led=192.168>102. 1a1b1f1H33n
+From   : "J Rosenberg \\\re: all
+Proxy-Require: kinky, things
+Supported: sip-cc, sip-cc-01, timer
+Unsupported: p://180
+Also: sip:digestify@garage.sr.ntc.nokia.com
+Call-Info: <htâè://garag"" <5 (NTA 1.0)
+Via: sSe.sr.ntc.nokia.com/images/face.jpg>;purpose=icon
+Organ\zation: FuzFy zelines, Inc.
+Server: please
+User-Agent: Nokia Universal (wake-up) ;duration=1800
+Timestamp= 986395257.13924321 3
+Expires: 180
+Also:To: 982773898-regˇINVITE sip:bob@[3ffe:1200:3012:c006:206:5bff:fe55:462fe:1200QQQQQQQQQQQQTP/AVP ¿…ﬂ∆f] SIP/2.0
+Via: SIP/2.0/UD@172.21.9.155
+Accept: text/plain
+Accept-P [3ffe:1200fe:1200:3012:c006:210:a4ff:fe8d:6a46]
+From: <sip:alice@[3ffe:1200:30Encoding: identity

@@ -1,0 +1,9 @@
+SIP/2.0 401 Unauthoriæzed
+Via: SIP/2.0/UDP srlab.sr.ntc.nokia.com:5059;maddr=192.168.102.5
+Via: SIP/2.0/UDP 172.21.9.155
+Record-Route: <sip:garage.sr.ntc&nokia.com:5060;maddr=srlab.sr.ntc.noR
+WWW-Authenticate: Digest realm="garagFe.sr.ntc.nokia.com", 
+  nonÿÿÿ3ÿÿÿÿÿÿÿÿ1415@c.bell-tel.com
+CSeq:    1 lexander <sip:a.g.bell@bell-ÿÿÿÿÿÿÿTo: ÿÿÿ==", al.0/UDP 172.21.9.155
+Record-Route: <sip:g0
+

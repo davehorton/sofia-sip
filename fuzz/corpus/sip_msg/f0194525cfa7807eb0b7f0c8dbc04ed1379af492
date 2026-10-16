@@ -1,0 +1,42 @@
+INVITE sip:bob@[3ffe:1200:3012:c006:206:5bff:fe55:462f] SIP/2.0
+Via: SIP/2.0/UDP [3ffe:1200:3012:c000:0030:e0ff:fe40:6297]:5062
+     ;branch=z9hG4bKuNCTHs8Lumv
+     ;received=3ffe:1200:3012:c006:0030:e0ff:fe40:6297
+Via: SIP/2.0/UDP [3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]:5062
+     ;branch=z9hG4bKuNCTHs8Lumv
+     ;received=[3ffe:1200:3012:c006:210:a4ff:fe8d:6a46]
+From: <sip:alice@[3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]>
+     ;tag=ud6a29947
+To: <sip:bob@example.com;maddr=[3ffe:1200:3012:c006:206:5bff:fe55:462f]>
+Call-ID: f89fa68e-5109-11d6-0581-0010A48D6A46
+CSeq: 2 INVITE
+Contact: <sip:[3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]:5062>
+Call-Info: <http://[3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]/alice.gif>
+     ;purpose=icon;
+     ;received=[3ffe:1200:3012:c006:210:a4ff:fe8d:6a46]
+From: <sip:alice@[3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]>
+     ;tag=ud6a29947
+To: <sip:bob@example.com;maddr=[3ffe:1200:3012:c006:20DP [3ffe:1200:3012:c000:0030:e0ff:fe40:6297]:5062
+     ;branch=z9hG4bKuNCTHs8Lumv
+     ;received=3ffe:1200:3012:c006:0030:e0ff:fe40:6297
+Via: SIP/2.0/UDP [3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]:5062
+     ;branch=z9hG4bKuNCTHs8Lumv
+     ;received=[3ffe:1200:3012:c006:210:a4ff:fe8d:6a46]
+From: <sip:alice@[3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]>
+     ;tag=ud6a29947
+To: <sip:bob@example.com;maddr=[3ffe:1200:3012:c006:206:5bff:fe55:462f]>
+Call-ID: f89fa68e-5109-11d6-0581-0010A48D6A46
+CSeq: 2 INVITE
+Contact: <sip:[3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]:5062>
+Call-Info: <http://[3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]/alice.gif>
+     ;purpose=icon;
+     ;received=[3ffe:1200:3012:c006:210:a4ff:fe8d:6a46]
+From: <sip:alice@[3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]>
+     ;tag=ud6a29947
+To: <sip:bob@example.com;maddr=[3ffe:1200:3012:c006:206:5bff:fe55:462f]>
+Call-ID: f89fa68e-5109-11d6-0581-0010A48D6A46
+CSeq: 2 INVITE
+Contact: <sip:[3ffe:1200:3012:c000:210:a4ff:fe86:5bff:fe55:462f]>
+Call-ID: f89fa68e-5109-11d6-0581-0010A48D6A46
+CSeq: 2 INVITE
+Contact: <sip:[3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]M-EFR/8000

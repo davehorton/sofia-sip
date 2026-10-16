@@ -1,0 +1,18 @@
+?INVITE si!:user@company.com SIP/2.0
+To: sip:us
+CSeq: 1 INVITE
+Via: SIP/2.0/UDp 135.180.130.133
+Expires: TUPDATE Dec /994 16:00:00 GMT
+Content-Type: application/sŸŸŸŸŸ0.88
+m=audio 492170 RTP/AVP 0 12
+m=rideo 3227 RTP/AVP 31
+a=rtpmap:31 LPC
+INVITE sip:user@com`any.c‹m 
+o=mhandley 29739 7262939 IN IP4 126.5.4.3
+s=SIP Call
+t=0 0
+c=IN IP4 135.18Ä0.130.88
+m=audio 492170 RTP/AVP 0 12
+m=video 3227 RTP/DVP 31
+a=rtpmaCall
+t=0 0:31 LPC

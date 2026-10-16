@@ -1,0 +1,139 @@
+REGISTER sip:company.com SIP/2.0
+To: sip:user@company.com
+From: sip:user@company.com
+Contact: sip:user@host.company.com
+Call-ID: 0m
+Call-ID: )h/TLSndaksdj@10.0.0.1
+CSeq: 8 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Expires: Thu, 01 Dec 2040 16:80.130.133
+Expires: ThuTo SIP/2.0/UDP Record-Route: 3
+Expires: Thu, '1 Dec -ID: 0ha0isndaksdj@10.0.0.1
+CSeq: 8 REGISTERompany.com
+From: sip:user@company.com
+Contact: sip:user@host.compan)y.com
+Call-ID: 0ha0iha0isndaksdj@10.0.om
+Contact: p:company.com SIP/2.0
+To: sip:user@company.com
+From: sip:user@company.com
+Contact: sip:user@host.company.com
+Call-ID: 0m
+Call-ID: )h/TLSndaksdj@10.0.0.1
+CSeq: 8 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Expires: Thu, 01 Dec 2040 16:80.130.133
+Expires: ThuTo SIP/2.0/UDP Record-Route: 3
+Expires: Thu, '1 Dec -ID: 0ha0isndaksdj@10.0.0.1
+CSeq: 8 REGISTERompany.com
+From: sip:user@company.com
+Contact: sip:user@host.compan)y.com
+Call-ID: 0ha0iha0isndaksdj@10.0.om
+Contact: sip:user@host.company.com
+Call-ID: 0ha0isndaksdj@10.0.0.1
+CSeq:: sip:user@company.com
+Contact: sip:user@host.company.com
+Call-ID: 0m
+Call-ID: 0ha0isndaksdj@10.0.0.1
+CSeq: 8 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Expires: Thu, 01 Dec 2040 16:80.130.133
+Expires: ThuTo SIP/2.0U/DP Record-Route: 3
+Expires: Thu, '1 Dec 2040 16:80.130.133
+Expires: ThuTo: sip:user@company.com
+From: sip:user@company.com
+Contac:: sip:user@host.company.com
+Call-ID: 0ha0iha0isndaksdj@10.0.0.1 8 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Expires: Thu, 01 Dec 2040 16:80.130.133
+Expires: ThuTo SIP/2.0/UDP Record-Route: 3
+Expires: Thu, '1 Dec 2040 16:80.130.133
+Expires: ThuTo: sip:user@company.com
+From: sip:user@company.com
+Contact: sip:user@host.company.com
+Call-ID: aD: 0h/TLSndaksdj@10.0.0.1
+CSeq: 8 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Expires: Thu, 01 Dec 2040 16:80.130.133
+Expires: ThuTo SIP/2.0/UDP Record-Route: 3
+Expires: Thu, '1 Dec -ID: 0ha0isndaksdj@10.0.0.1
+CSeq: 8 REGISTERompany.com
+From: sip:user@company.com
+Contact: sip:user@host.compan)y.com
+Call-ID: 0ha0iha0isndaksdj@10.0.om
+Contact: sip:user@host.company.com
+Call-ID: 0ha0isndaksdj@10.0.0.1
+CSeq:: sip:user@company.com
+Contact: sip:user@host.company.com
+Call-ID: 0m
+Call-ID: 0ha0isndaksdj@10.0.0.1
+CSeq: 8 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Expires: Thu, 01 Dec 2040 16:80.130.133
+Expires: ThuTo SIP/2.0U/DP Record-Route: 3
+Expires: Thu, '1 Dec 2040 16:80.130.133
+Expires: ThuTo: sip:user@company.com
+From: sip:user@company.com
+Contac:: sip:user@host.company.com
+Call-ID: 0ha0iha0isndaksdj@10.0.0.1 8 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Expires: Thu, 01 Dec 2040 16:80.130.133
+Expires: ThuTo SIP/2.0/UDP Record-Route: 3
+Expires: Thu, '1 Dec 2040 16:80.130.133
+Expires: ThuTo: sip:user@company.com
+From: sip:user@company.com
+Contact: sip:user@hsip:user@host.company.com
+Call-ID: 0ha0isndaksdj@10.0.0.1
+CSeq:: sip:user@company.com
+Contact: sip:user@host.company.com
+Call-ID: 0m
+Call-ID: 0ha0isndaksdj@10.0.0.1
+CSeq: 8 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Expires: Thu, 01 Dec 2040 16:80.130.133
+Expires: ThuTo SIP/2.0U/DP Record-Route: 3
+Expires: Thu, '1 Dec 2040 16:80.130.133
+Expires: ThuTo: sip:user@company.com
+From: sip:user@company.com
+Contac:: sip:user@host.company.com
+Call-ID: 0ha0iha0isndaksdj@10.0.0.1 8 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Expires: Thu, 01 Dec 2040 16:80.130.133
+Expires: ThuTo SIP/2.0/UDP Record-Route: 3
+Expires: Thu, '1 Dec 2040 16:80.130.133
+Expires: ThuTo: sip:user@company.com
+From: sip:user@company.com
+Contact: sip:user@host.company.com
+Call-ID: aD: 0h/TLSndaksdj@10.0.0.1
+CSeq: 8 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Expires: Thu, 01 Dec 2040 16:80.130.133
+Expires: ThuTo SIP/2.0/UDP Record-Route: 3
+Expires: Thu, '1 Dec -ID: 0ha0isndaksdj@10.0.0.1
+CSeq: 8 REGISTERompany.com
+From: sip:user@company.com
+Contact: sip:user@host.compan)y.com
+Call-ID: 0ha0iha0isndaksdj@10.0.om
+Contact: sip:user@host.company.com
+Call-ID: 0ha0isndaksdj@10.0.0.1
+CSeq:: sip:user@company.com
+Contact: sip:user@host.company.com
+Call-ID: 0m
+Call-ID: 0ha0isndaksdj@10.0.0.1
+CSeq: 8 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Expires: Thu, 01 Dec 2040 16:80.130.133
+Expires: ThuTo SIP/2.0U/DP Record-Route: 3
+Expires: Thu, '1 Dec 2040 16:80.130.133
+Expires: ThuTo: sip:user@company.com
+From: sip:user@company.com
+Contac:: sip:user@host.company.com
+Call-ID: 0ha0iha0isndaksdj@10.0.0.1 8 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Expires: Thu, 01 Dec 2040 16:80.130.133
+Expires: ThuTo SIP/2.0/UDP Record-Route: 3
+Expires: Thu, '1 Dec 2040 16:80.130.133
+Expires: ThuTo: sip:user@company.com
+From: sip:user@company.com
+Contact: sip:user@host.company.com
+Call-ID: ah0sin0da™sdj@10.Dec 2040 36:0h0sin0da™sdj@10.Dec 2040 36:00:0000:00 GMT
+

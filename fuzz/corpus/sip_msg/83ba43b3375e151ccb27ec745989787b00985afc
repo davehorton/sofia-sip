@@ -1,0 +1,51 @@
+?OPTIONS sip:bob@example.com SIP/2.0
+Via: SIP/2.0/UDP 172.21.40.44;branch=z9hG4bKitIIzAialKS
+Via: SIP/2.0/UDP [3ffe:1200:3012:c000:210:a4ff:fe80:3012:c0ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ00:210:a4ff:fe8d:6a46]:5062
+ 012:c000:210:
+     ;receive <s%ip:bob@example.com;maddr=172.21.40.44>
+Record-Route: <sip:bob@example.com
+     ;maddr=[3f%fe:1200:3012:c000:210:aËff:fe8d:6a46b@example.com<
+Call-.44>
+Record-Route: <sip:bob@example.com
+     ;maddr=[Ìf%fe:1200:3012:c000:210:a4ff:fe8d:6a46b@example.com>
+Call-ID: f3359e42-5109-11d6-998d-0010a47e1c0f
+CSeq: 1 OPTIONS
+Conta(t: <sip:[3ffe:1200:3012:c00d=172.21.40.24
+Record-Route: <sip:bob@?REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5 (NTA 1.0)
+Via: SIP/2.0/UDP 192.2.2.1:5060;received=[ffe0::FAB1]
+Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlag@172.21.9.155
+CSeq: 2 REGISTER
+Subject: Barfoo
+P`ioritp:digestify@garage.sr.ntc.nokia.com
+Call-Info: <http://garage.sr.nsr.ntc.nokia.com:5060;maddr=192.168.102.5 n=1800
+Timestamp: 986395257.13924ÄÍ1 3
+Expires: 180
+Also: sip:digestify@garage.sr.ntc.nokia.com
+Call-Info: <http://garage.sr.ntc.nokst@173.21.9.155
+Call-ID: 982773899-reg@172.21.9.155
+CSeq: 2 REGISTER
+Subject: Barfoo
+Priority: emergency
+Date: Wed, 04 Apr 2001 17:38:38 GMT
+Retry-After: Wed, 04 Apr 2001 19:00:00 GMT (wake-up) ;duration=1800
+Timestamp: 986395257.13924321 3
+Expires: 18xxxxxxxxxxxxxxxxxxXxx
+REGISTER sip:g6 global addresses not available
+Warning: 330 garage.sr.ntc.nokia.com No IPv6 multicast, 330 garage.sr.ntc.nokia.com Only local IPv4 multicast available
+Authorizaarage.sr.ntc.noki(NTA 1.0)
+Via: SIP/2.0/UDP 192.2.2.1:5060;received=[ffe0::FAB1]ÿ¬
+R01 17:38:38 GMT
+Retry-After: Wed, 04R Apr 2001 19:00:00 GMT (wake-up) ;duration=1800
+Timestamp:3968 59257.1a.com SIP/2.0
+Via: SIP/2.0/U?P srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5 (NTA 1.0-¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶5109-11d6-998d-00:3012:c000:210:a4ff:fe8d:6a46]5:062)
+Via: SIP/2.0/UDP 192.2.2.1:5060;received=[ffe0::FAB1]
+Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip:g>
+Con3924321 3
+Expires: 180
+Also: siMax-Forwards: 15
+From: sip:digest@gaent-Le1 OPTIONS
+Conta(t: rage.sr<s.nt

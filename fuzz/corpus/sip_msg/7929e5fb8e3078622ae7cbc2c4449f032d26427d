@@ -1,0 +1,91 @@
+INVITE sip:user;pir=u%80h.com@company.com SIP/2.0 
+To: sip:j_user@company.com 
+From: sip:caller@universityÒš›ŠÄ‹ž˜=66484 
+Max-Forwards: 3 
+Call-ID: 0ha0isnd?INVITE sip:vivekg@chair.dnrc.bell-labs.com SIP/2.0
+  To :
+  sip:vivekg@chair.dnrc.bell-labs.com ;    tag    = 1a1b1f1HÒÌn
+From  ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿzds09a3bqw0sdfbsk34poouymnae0043nsed09mfkvc74bd0cuwnmxample.com
+a:user;par=u%80h.co&@c\ompany.com SIP/2.0 
+To: sip:j_user@company.com 
+From: sip:caller@univers: sip:j_user@company.com 
+From: sip:caller@universityÒš›ŠÄ‹ž˜=66484 
+Max-Forwards: 3 
+Call-ID: 0ha0isnda:user;par=u%80h.co&@c\ompany.com SIP/2.0 
+To: sip:j_user@company.com 
+From: sip:caller@university.edu;ta 
+Max-Forwards: 3 sndaksdj@10.1.1.1 _CSeq: 8 INVITE 
+Via: SI.180.130.133;brag=33242 
+Max-Forwards:===========================-reg@172.21.9.155
+CSeq: 2 REGISTER
+Subject: Barfoo
+Priority: emergency
+Date: Wed, 02 Apr 2001 17:76:38 GMT
+Retry-After: Wed, 04 Apr 2001 19:00:00 GMT (wake-up) ;duration=1800
+Timstamp: 986395257.13924321 3
+ NONCE="MjAwMsip:garage.sr.ntc.nokia.c.Subscription-State: gest@172.21.9.155
+Call-ID: 982773899-reg@172.21.9.155
+CSeq: 2 REGISTER
+Subjzect: Barfoo
+Priority: emergency
+Date: Wed, 02 Apr 2001 17:76:38 GMT
+Retry-After: Wed, 04 Apr 200ompany.com
+From: sip:caller@univezsity.edu
+Call-ID: 0ha0isnda977644900765@10.DP 135. 3 
+Call-ID: 0ha0isndaksdj@10.1.1.1 _CSeq: 8 INVITE 
+Via: SIP/2.0/UDP 135.180.130.133;branch=z9hG4bKkdjuw 
+CoAllow: ntent-Lengthksdj@ÏÏÑÎÑÎÑÎIn-RSeq: 8 INVITE 
+Via: SIP/2.0/UDP 135.180.130.133;branch=z9
+Call-ID: 0ha0isnd
+a:user;par=u%80h¼co&@c\ompan S.ymcoIP/2.0 
+To: sip:2.0 
+To: sip:j_user@company.com 
+From: sip:caller@universityÒš›ŠÄ‹ž˜=66484 
+Max-Forwards: 3 
+Call-ID: 0ha0isnda:user;par=u%80h.co&@c\ompany. 3 sndaksdj@10.1.1.1 _CSeq: 8 INVITE 
+Via: SIP/2.0/UDP 135.180.130.133;branch=z9hG4bKkdjuw 
+Content-Lengthksdj@ÏÏÑÎÑÎÑÎ _CSeq: 8 INVITE 
+Via: SIP/2.0/UDP 135.180.130.133;brag=33242 
+Max-Forwards: 3 
+Call-ID: 0ha0isndaksdj@10.1.1.1 _CSeq: 8 INVITE 
+Via: SIP/2.0/UDP 135.180.130.133;branch=z9hG4bKkdjuw 
+CoAllow: ntent-Lengthksdj@ÏÏÑÎÑÎÑÎ _CSeq: 8 INVITE 
+Via: SIP/3.0/UDP 135.180.130.133;branch=z9
+Call-ID: 0ha0isnda:user;par=u%80h.co&@c\ompany.com SIP/2.0 
+To: sip:BYEser@company.com 
+FromBYEser@company.com 
+Fro========================================================================D:dr=192.168.102A(T5  .N1.0)
+Via: SIP/2.0/UDPACK 192.2.2.1:5060;received=[ffe0::FAB1]
+Route: <sip:garage.sr.ntc.nokia.c.com
+Contact: sip:digest@172.21.9.155
+Call-ID: 982773899-reg@172.21.9.155
+CSeq: 2 REGISTER
+Subject: Barfoo
+Priority: emergency
+Date: Wed, 02 Apr 2001 17:76:38 GMT
+Retry-After: Wed, 04 Apr 2001 19:00:00 GMT (wake-up) ;duration=1800
+Timestamp: 986395257.13924321 3
+ NONCE="MjAwMsip:garage.sr.ntc.nokia.c.Subscription-State: gest@172.21.9.155
+Call-ID: 982773899-reg@:72.21.9.155
+CSeq: 2 REGISTER
+Subjzect: Barfoo
+Priority: emergency
+Date: Wed, 02 Apr 2001 17:76:38 GMT
+Retry-After: Wed, 04 Apr 200ompany.com
+From: sip:caller@univezsity.edu
+Call-ID: 0ha0isnda977644900765@10.DP 135. 3 
+Call-ID: 0ha0isndaksdj@10.1.1.1 _CSeq: 8 INVITE 
+Via: SIP/2.0/UDP 135.180.130.133;branch=z9hG4bKkdjuw 
+CoAllow: ntent-Lengthksdj@ÏÏÑÎÑÎÑÎIn-RSeq: 8 INVITE 
+Via: SIP/2.0/UDP 135.180.130.133;branch=z9
+Call-ID: 0ha0isnd
+a:user;par=u%80h¼co&@c\ompan S.ymcoIP/2.0 
+To: sip:2.0 
+To: sip:j_user@company.com 
+From: sip:caller@universityÒš›ŠÄ‹ž˜=66484 
+Max-Forwards: 3 
+Call-ID: 0ha0isnda:user;par=u%80h.co&@c\ompany. 3 sndaksdj@10.1.1.1 _CSeq: 8 INVITE 
+Via: SIP/2.0/UDP 135.180.130.133;branch=z9hG4bKkdjuw 
+Content-Lengthksdj@ÏÏÑÎÑÎÑÎ _CSeq: 8 INVITE 
+Via: Sq: 8 INVITE 
+Via: SIP/2.0/UDP 135.180.130.133;Via: SIP/2.0/UDP sip20.exambranch=z9hG4p

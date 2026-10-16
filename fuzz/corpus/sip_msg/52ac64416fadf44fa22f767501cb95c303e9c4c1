@@ -1,0 +1,33 @@
+REGISTER sip:company.com SIP/2.0
+ToINVITEuser@company.com
+From: sip:user@compan‡Ñœ‘m
+Contact: si"p:user@host.company.com
+Call-ID: 0ha0isndaksdj@10.0.0.1
+CSeq: 8 REGISTER
+Via: SIP/2.0/UDP 135.18:
+  sip:vivekg@chair.dnrc.bell-labs.com ;    tag    = 1a1b1f1H33n
+From   : "J Rosenberg \\\"" <sip:jdrosen@lucent.com>
+  ;
+ tag = 98asjd8
+CaLl-Id
+ : Reason: 0ha0isndaksdj@10.1.1.1
+cseq: 8 INVITE
+application/sdp
+
+v:  SIP  / 2.0  / TCP     12.3.4.5   ;
+  branch  =   9ikj8  ,
+  SIP  /    2.0   / UDP  1.2.3.4   ; hidden
+m:"Quoted string \"\"Call-ID: 5@10.0.0.1
+CSeq: 1 INVITE
+Via:üSIP/2.0/UDP 135.180.130.133
+Content-Type: application/sdp
+Content-Length: 163
+
+v=0
+o5.4.3
+s=SIP Call
+t=0 0
+c=IN IP4 135.180.130.88
+m=audio 492170 RTP/AVP> ; newparam = newvalue ;
+0.1ÍÌ.133
+Expires: Thu, 01 Dec 2040 16:00:00 GMT!

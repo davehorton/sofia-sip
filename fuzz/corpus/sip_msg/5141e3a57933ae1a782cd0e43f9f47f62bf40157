@@ -1,0 +1,22 @@
+INVITE sip:user@company.com SIP/2.0
+To: "I have a user name of extreme proportion" <sip:user@company.com:6000;other-param=1234567890something
+selong1234567890>
+From: s$ip:caller@university.educom
+Via: SIP/2.0/UDP2.0
+To: "I have a user name of extreme proportion" <sip:user@company.com:6000;other-param=1234567890something
+selong1234567890>
+From: s$ip:caller@university.educom
+Via: SIP/2.0/UDP sip24.example.com
+;tAuthorization: Digest ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZlZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZFrom: ZZZZZZUDZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZom SIP/2.0
+To: "I have a user name of extreme proportion" <sip:user@company.com:6000;other-param=1234567890something
+selong1234567890>
+From: s$ip:caller@university.educom
+Via: SIP/2.0/UDP sip24.example.com
+;tag=SIP/2.0/UDZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZlZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZFrom: ZZZZZZUDZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZFrom: ZZZZZZZZZZZZP sip23.example.com
+Via: SIP/2.0/UDP sip22.example.com
+Via: SIP/2.0/UDP sip21.example.coia: SIP/2.0/UDP sip26.example.com
+Via: SIP/2.0803adgaasd0afds0asdaasd
+Via: SIPZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZFrom: ZZZZZZZZZZZZP sip23.example.com
+Via: SIP/2.0/UDP sip22.example.c: SIP/2.0/UDP sip31.example.com
+Via: SIP/2.0/UDP sip30.exahandley 2.com
+Via:97 3S

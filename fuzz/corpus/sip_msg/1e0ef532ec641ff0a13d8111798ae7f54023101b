@@ -1,0 +1,27 @@
+REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDr.ntc.nokia.com
+Call-Id: 982773899-reg@172.21.9.155
+Cseq: 2 REGISTER
+Contact: siest,
+  REALM="garage.sr.ntc.nouia.com", NONCE="MjAwMS0wMS0yMSAxNTowODo1OA==",
+  RESPONSE="d9d7f1ae99a013cb05f319f0f678251d",
+p:digest@172.21.8.155
+ExpT)
+Authorization: Digest USERNAME="digest2,
+  REALM="e.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDr.ntc.nokia.com
+Call-Id: 982773899-reg@172.21.9.155
+Cseq: 2 REGISTER
+Contact: siest,
+  REALM="garage.sr.ntc.nouia.com", NONCE="MjAwMS0wMS0yMSAxNTowODo1OA==",
+  RESPONSE="
+
+f1ae99a013cb05f319f0f678251d",
+p:digest@172.21.8.155
+ExpT)
+Authorization: Digest USERNAME="digest2,
+  REALMESSAGEM="garage.sr.ntc.nokia.com", NONCE="MjAwMS0Route: <sip:garage.sr.ntc.nokia.com:5061;maddr=srlab.sr.ntc.nokia.cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿom>
+From: sip:digest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.com
+Call-ID:ODo1O'c1.9.155
+

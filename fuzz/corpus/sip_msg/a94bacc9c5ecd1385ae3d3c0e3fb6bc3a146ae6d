@@ -1,0 +1,5 @@
+INVITE sip:vivekg@chair.dnrc.bell-labs.com SIP/2.0
+8 INVITE
+Via  : SIP   /  2.0/  UDP
+  135.18.bell-?REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SlaIP/2.0/UDP srlab.sr.ntc.nokibs.com ;   a tag  .

@@ -1,0 +1,119 @@
+ÿREGISTER sip:garA*e.sr.ntc.nokia.com SIP/2.0
+Via: SIP52.0/UDP srlAb.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: SIP/2.0/TCP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5 (NTA 1.0)
+Via: SIP/2.0/UDP 192.2.2.1:5060;received=[ffe0::FAnokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=ba60;received=[ffe0::FAB1]
+Routp:ies:< garage.sr.ntc.îokia.com:5060;maddr=srlab.sr.ntc.nokia.com>;foo=bar
+Record-Route: <sip††††|†††††††††††††††††††††††††††:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+Hide: route
+Max-Forwards: 16
+From: sip:digest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.com
+Contact: sip:digest@172.21.9.155
+Call-ID: 982773899-reg@172.21.9.155
+CSeq: 2 REGISTER
+Subject:INVITE sip:vivekg@chair.dnrc.bell-labs.com SIP/2.0)  To :
+  sip:vivekg@chair.dnrc  To :
+  sip:vivekg@chair.dnrc.b
+  sip:vivekg@¥—air.dnrc.bell-labs.com ;    tag    = 1a1b1f1H33n
+From   : "J Rosenberg \\\"" <sip:jdrosen@lucelt.com>
+  ;
+ tag sip:vivekg@chair.dnrc.bell-labs.com ;    tag    = 1a1b1f1H33n
+From   : "J Rosenberg \\\"" <sip:jdrosen@lucent.com>
+  ;
+ tag = 98asjd8
+CaLl-Id
+ : 0ha0isndaksdj@10.1.1.1
+cseq: 8 INVITE
+Via  : SIP   /  2.0/  UDP
+  135.180.130.133
+Subject :
+NewFangle888888dHeader:   newfangl133
+Subject :
+NewFangledHeader:   newfangled value
+ more newfangled value
+Content-Type: application/
+  branch  =   9ikj8  ,
+  SIP  /    2.0   / UDP  1.2.3.4   ;ÿÿÿÿÿÿþ
+m:"Quoted string \"\"" <sip:jdrosen@bell-labs.com> ; newparam = 133
+Subject :
+NewFangledHeader:   newfangl133
+Subject :
+NewFangledHeader:
+  ;
+ tag = 98asjd8
+CaLl-Id
+ : 0ha0isndaksdj@10.1.1.1
+cseq: 8 INVITE
+Via  : SIP   /  2.0/  UDP
+  135.180.130.133
+Subject :
+New.b
+  sip:vivekg@¥—air.dnrc.bell-labs.com ;    tag    = 1a1b1f1H33n
+From   : "J Rosenberg \\\"" <sip:jdrosen@lucelt.com>
+  ;
+ tag sip:vivekg@chair.dnrc.bell-lapplication/
+  branch  =   9ikj8  ,
+  SIP  /    2.0   / UDP  1.2.3.4   ;ÿÿÿÿÿÿþ
+m:"Qu Barfoo
+Priority: emergency
+Date: Wed, 04 Apr 2001 17:38:38 GMT
+Retry-After:77777777777777777cco: s777777777777777777777777777777777777777777777ewag Wed, 04 Apr 2001 19:00:00 GMT (wake-u00 GMT (wake-up) ;duration=1800
+Timestamp: 986395257.13924321 3
+Expires:¥ 180
+Also: sip:digestify@garage.sr.ntc.nokia.com
+Call-Info: <http://garage.sr.ntc.nokiverything
+Error-Info: <http://garage.sr.ntc.nokia.com/figure-1.jpg>
+Warning: 300 garage.sr.nt0.nokia.com IPv6 global addre-reg@172.21.9.155
+CSeq: 2 REGISTER
+Subject: Barfoo
+Priority: emergency
+Date: Wed, 04 Apr 2001 17:38:38 GMT
+Retry-After:77777777777777777cco: s777777777777777777777777777777777777777777777ewag Wed, 04 Apr 2001 19:00:00 GMToted string \"\"" <sip:jdrosen@bell-labs.com> ; newparam = 133
+Subject :
+NewFangledHeader:   newfangl133
+Subject :
+NewFangledHeader:
+  ;
+ tag = 98asjd8
+CaLl-Id
+ : 0ha0isndaksdj@10.1.1.1
+cseq: 8 INVITE
+Via  : SIP   /  2.0/  UDP
+  135.180.130.133
+Subject :
+NewFangle888888dHeader:   newfangl133
+Subject :
+NewFangledHeader:   newfangled value
+ more newSession-Expires: fangled value
+Content- 0.33
+  (((nesder:   newfangled value
+ more newfangled value
+Content-Type: application/
+  branch  =   9ikj8  ,
+  SIP  /    2.0   / UDledHeader:   newfangl133
+Subject :
+NewFangledHeanewvalue ;
+  secondparam = secondvalue  ; q = 0.33
+  (((nested comments) and (more)))  zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz (wake-up) ;duration=1¸00
+Timestamp: 986395257.13924321 3
+Expires:¥ 180
+Also: sip:digestify@garage.sr.ntc.nokia.com
+Call-Info: <http://garage.sr.ntc.nokiverything
+Error-Info: <http://garage.sr.ntc.nokia.com/figure-1.jpg>
+Warning: 300lr garage.sr.nt0.nokia.com IPv6 global addresses not available
+Warning: 165 garage.sr.ntc.nokia.com No IPv6 multicastÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿzzzzz ,
+ ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ, 330 .sr.ntc.nokia.com Only local IPv4 multicast available
+Authorization: Digest USERNAME="digest", , sip-cc-01, timer
+Unsupported: eÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿtelÿÿÿÿ:88866ÿÿverything
+Error-Info: <http://garage.sr.ntc.nokia.com/figure-ot available
+Warning: 330 garage.sr.ntc.nokia.com No IPv6 multicastÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ, 330 garage.sr.ntc.nokia.com Only local IPv4 multicast available
+AutA not available
+Warning: 330 garage.sr.ntc.nokia.com No IPv6 murything
+Error-Info: <http://garage.sr.ntc.nokia.com/figure-1.jpg>
+Warning: 300 garage.sr.nt0.nokia.com IPv6 global addre-reg@172.21.9.155
+CSeq: 2 REGISTER
+Subject: Barfoo
+Priority: emergency
+Date: Wed, 04 Apr 2001 17:38:38 GMT
+Retry-After:4477777777777777777cco: s7
+77777777777777777777777777

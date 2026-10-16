@@ -1,0 +1,11 @@
+REGISTER sip:company.com SIP/2.0
+To: .130.133
+Expires: T
+From: sip:user@company.com
+Contact: sip:user@host.company.com
+Call-ID: 0ha0isndcksdj@10.0.0.1
+CSeq: 
+GISTER
+Via: SIP/2.0/UDP 135.180.13
+Expires: Thu, 01 Dec 2040 16:00:00 GMT
+

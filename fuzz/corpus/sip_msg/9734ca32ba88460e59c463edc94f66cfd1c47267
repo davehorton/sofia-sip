@@ -1,0 +1,10 @@
+REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.com
+Call-Id: 982773899-reg@172.21.9.155
+Cseq: 2 REGISTER
+Contact: sip:digest@172.20yMSAxNTowODo1OA==",
+  RESPONSE="d9d7f1ae99a013cb05f319f0f678251d",
+  URI="sip:garage.sr.ntc.nokia.com"
+Via: SIP/2.0/UDP 172.21.9.155
+

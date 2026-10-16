@@ -1,0 +1,19 @@
+?OPTIONS sip:bob@example.com SIP/2.0
+Via: SIP/2.0/UDP 172.21.40.44;bran.40.24
+Record-Route: <sip:bob@example.com;maddr=172.21.40.44>
+Reco40.24
+Record-Route: <sip:bob@example.com;maddr=172.21.40.44>
+Record-Route: <sip:bb@exampcm.elo
+     ;maddr=[3f%fe:1200:32c0:0100:210:a4ff:fe8d:6a46]>
+From: <sip:alMin-SE: ice@example.com>;tag=ud6a29947
+To: <sip:bob@examTIONS
+Contact: <sip:[3ffe:1200:3012:c000:210:a4ff:fe8d:6a46]:5062>
+Content-Length: 0
+Accept:IP/2.0
+Via: SIP/2.0/UDP 172.21.40.44;bran.40.24
+Record-Route: <sip:bob@example.com;maddr=172.21.40.44>
+Reco40.24
+Record-Route: <sip:bob@example.com;maddr=172.21.40.44>
+Record-Route: <sip:bb@exampcm.elo
+     ;maddr=[3f%fe:1200:32c0:0100
+Allow:

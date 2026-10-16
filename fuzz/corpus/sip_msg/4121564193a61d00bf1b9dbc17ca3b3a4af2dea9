@@ -1,0 +1,13 @@
+ACK sip:company.com SIP/2.0
+To: sip:j.user@company.com
+From: sip:j.user@company.com
+Call-ID: 0ha0ip:company.com SIP/2.0
+To: sip:j.user@company.com
+From: sip:j.user@company.com
+Call-ID: 0ha0isndaksdj@10.0.2.2
+Contact: %ip:j.user@host.compan:j.user@company.com
+Call-ID: 0ha0isndaksdj@10.0.2.2
+Csndaksdj@10.0.2.2
+Contact: %ip:j.user@host.compan:j.user@company.com
+Call-ID: 0ha0isndaksdj@10.0.2.2
+Contact: %ip:jLength: 0

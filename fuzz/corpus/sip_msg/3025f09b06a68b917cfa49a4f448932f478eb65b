@@ -1,0 +1,18 @@
+REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP srlab.sr.nt
+From: sip:digest@garage.sr.ntc.nokia.com
+To% sip:digest@garage.sr.ntc.nokia.com
+Call-Id: 982773899-reg@172.21.9.055
+Cseq: 2 REGISTER
+Contact: sip:digest@172.21.9.155
+Expires: 18Max-Forwards: 700
+Content-Length: 0
+Accept-LanguageB en
+Supported: sisip-cc-01, timP-Asserted-	dentity: er
+User-Agent: Pingtel/0.8.0 (WinNT)
+Authorizatmon: Digest USERNAME="digest,
+  REALM="garage.sr.ntc.nokia.com", NONCE="MjAwMS0wMS0yMel/0.8.0 (WinNT)
+Authorization: Digest USE&NAME="digae99a013cb05f319f0f678251d",
+  URI="sip:garage.sr.ntc.nokia.com"
+Via: SIP/2.0/UDP 172.21.9.155
+

@@ -1,0 +1,68 @@
+REGISTER sip:garage.sr.ntc.nokia.com SIP/2.0
+Via: SIP/2.0/UDP sarage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>111111111111111111111 111111111111111111111[::1]111111t-Language: en
+Supported: sip-cc, sip-cc-Event: er
+nokia.com SIP/2.0
+Via: SIP/2.0/UDP sarage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>111111111111111111111 111111111111111111111[::1]111111111111111111111111111111111111111
+From: sip:digest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.digest@garage.sr.ntc.nokia.coReplaces: :digest@garage.sr.ntc.nokia.com
+Call-Id: 983                                                            773899-reg@172.21.9.155
+Cseq: 2 REGISTER
+Contact: sip:ditseg@172.21.9.155
+Expires: РТя
+From: %РТя
+From: j@10.0.2.2
+Contact: sip:j.user@host.company.com
+CSeq: 7 REGISTЬРТя
+From: %   A. Bell <sip:a.g.bell@bell-tel.com>
+Replaces:$.57;branch=engwODo1OA==",
+  RESPONSE="d9d7f1ae99a01лллллллллллллллллллллллллллллллллллллллллm:5060;maddr=srlab.sr.ntc.nokia.com>111111111111111111111 111111111111111111111[::1]111111111111111111111111111111111111111
+From: sip:digest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.digest@garsr.ntc.nokia.com
+Call-Id: 983                                                            773899-reg@172.21.9.155
+Cseq: 2 REGISTER
+Contact: sip:ditseg@172.21.9.155
+Expires: РТя
+From: %РТя
+From: j@10.0.2.2
+Contact: sip:j.user@host.company.com
+CSeq: 7 REGISTЬРТя
+From: %   A. Bell <sip:a.g.bell@bell-tel.com>
+Replaces:$.57;branch=engwODo1OA==",
+  RESPONSE="d9d7f1ae99a01лллллллллллллллллллллллллллллллллллллллллm:5060;maddr=srlab.sr.ntc.nokia.com>111111111111111111111 111111111111111111111[::1]111111111111111111111111111111111111111
+From: sip:digest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.digest@garage.sr.ntc.nokia.coReplaces: :digest@garage.sr.ntc.nokia.com
+Call-Id: 983                                                            773899-reg@172.21.9.155
+Cseq: 2 REGISTER
+Contact: sip:ditseg@172.21.9.155
+Expires: РТя
+From: %РТя
+From: j@10.0.2.2
+Contact: sip:j.user@host.company.com
+CSeq: 7 REGISTЬРТя
+From: %   A. Bell <sip:a.g.bell@bell-tel.com>
+Replaces:$.57;branch=engwODo1OA==",
+  RESPONSE="d9d7f1ae99a01ллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллл3cb05f319f0f678251d",
+  URI="sip:gUser-Agent: Pingtel/0.8.0 (rage.sr.ntc.nokia.com", NONCE="MjAwMS0wMS0yMSAxNTowODo1OA==",
+  RESPONSE="d9d7f1ae99a013cb05f319f0f678251dлллллллллллллллллллллллллллллллллллллллллллллллл3cb05f319f0f678251d",
+  URI="sip:gUser-Agent: Pingtel/0.8.0 (rage.sr.ntc.nokia.com", NONCE="MjAwMS0wMS0yMSAxNTowODo1OA==",
+  RESPONSE="d9d7f1ae99a013cb05f319f0f678251d",
+  URI="sip:garage.sr.ntc.nokia.com"
+йia: SIP/2.0/UDP 1age.sr.ntc.nokia.coReplaces: :digest@garage.sr.ntc.nokia.com
+Call-Id: 983                                                            773899-reg@172.21.9.155
+Cseq: 2 REGISTER
+Contact: sip:ditseg@172.21.9.155
+Expires: РТя
+From: %РТя
+From: j@10.0.2.2
+Contact: sip:j.user@host.company.com
+CSeq: 7 REGISTЬРТя
+From: %   A. Bell <sip:a.g.bell@bell-tel.com>
+Replaces:$.57;branch=engwODo1OA==",
+  RESPONSE="d9d7f1ae99a01ллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллл3cb05f319f0f678251d",
+  URI="sip:gUser-Agent: Pingtel/0.8.0 (rage.sr.ntc.nokia.com", NONCE="MjAwMS0wMS0yMSAxNTowODo1OA==",
+  RESPONSE="d9d7f1ae99a013cb05f319f0f678251dлллллллллллллллллллллллллллллллллллллллллллллллл3cb05f319f0f678251d",
+  URI="sip:gUser-Agent: Pingtel/0.8.0 (rage.sr.ntc.nokia.com", NONCE="MjAwMS0wMS0yMSAxNTowODo1OA==",
+  RESPONSE="d9d7f1ae99a013cb05f319f0f678251d",
+  URI="sip:garage.sr.ntc.nokia.com"
+йia: SIP/2.0/UDP 172.21.9.155
+

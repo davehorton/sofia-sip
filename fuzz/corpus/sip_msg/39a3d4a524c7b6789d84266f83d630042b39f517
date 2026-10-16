@@ -1,0 +1,106 @@
+ˇREGISTER sip:garage.sr.ntc.änokia.com SIP/2.0
+Via: SIP/2.0/UDP srla-reg@172.21.9.310
+CSeq: 2 REGIST2.21.9.155
+Accept: text/plain
+Accept-Encoding: idRetry-After: Wed, 04 Apr 2001 19:00:00 GMT (wake-…up) ;duration=1800
+Timestamp: 986395257.;3924322 3
+y Feline;tag=s, Inc.
+Server: please
+User-Agent: Nokia Universal Killer Internet Application/1.0 (NUUKIA)
+In-Reply-To: 982773898-refo: <http://garage.sr.ntc.nokia.com/images/face.jpg>;purpose=icApr 2001 17:38:38 GMT
+Retry-After: Wed, 04 Apr 2001 19:00:00 GMT (wake-u`) ;duration=1800
+Timestamp: 986et Application/2.0 (NUUKIA)
+In--up) ;duration=1800
+Timestamp: 986395257.13924321 3
+Expires:• 180
+Also: t: Barfo?REGISTER sip:company.com SIP/2.0
+ToY.COM;x-param-0=0;x-x-p-6=6;x-param-7=7;x-param-8=8
+Call-ID:  / UDP  1.2.3.4   ; hidden
+m:"Quoted Quoted string \"\"" <wip:jdrosen@bell-labsàcom> ; newparam = newvalue ;
+  secll-labs.com SIP/2.0
+  To :
+  sip:vivekg@chair.dnrc.bell-labs.com ;    tag    = 1a1b1f1H33n
+From   : "J Rosenberg \\\"" <sip:jdrosen@lucent.com>
+  ;
+ tag = 98asjd8
+CaLl-Id
+ : 0ha0isndaksdj@10.1.1.1  SIP  /    2.0   / UDP  1.2.3.4   ; hidden
+m:"Quoted string \"\"" <sip:jdrosen@bell-labs.com> ; newparam = 	 /    3.0   / UDP  1.2.3.4   ; hidden
+m:"Quoted Quoted string \"\"" <wip:jdrosen@bell-labs.com> ; newparam = newvalue ;
+  secondparam = secsen@lucent.Contact: *
+CSeq: 9 MEGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Content-tag=foo
+From: sip:j.user@COMPANY.COM;x-param-0=0;x-param-1=1;x-param-2=2;x-param-3=3;x-param-4=4;x-param-5=5;x-param-6=6;x-param: o
+From: sip:j.user@COMPANY4;x-param-5=5;x-param-6=6;x-param-7=7;x-param-8=8
+Call-ID: 0ha0isndaksdj@10.0.2.2  
+Contact: *
+CSeq: 9 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Content-Length: 0
+?)
+Accept-Language: en
+Allow: ACK
+Require: all
+Proxy-Require: kinky: 2 REGISTER
+Subject: Barfoo
+Priority: emergency
+Date: Wed, 04 Apr 2001 17:38:38 GMTINVITE sip:t.watson@ie groe.eSIP/2.0
+Via:     S                                                                   IP/2.0/UDP c.bell-[?ffe0::FAB1]
+Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.nhhhhhhhhhhhhhhhhage.sr.y Feline;rports, Inc.
+Server: please
+User-Agent: Nokia Universal Ksip:digestify@garage.sr.ntc.nokia.com
+Call-Info: <http://garage.sr.ntc.nokia.com/images/face.jpg>;purpose=icon
+Organization: Fuzzy Felines, Inc.
+Server: please
+User-Agent: Nokia Universal Killer I???)
+Accept-Language: en
+Allow: any
+Require5 all
+Proxy-Require: kinkP-Asserted-Identity:  sip-on:Language: en
+Allow: INFOany
+Require: all
+Proxy-Require: kinky# things
+Suppor1ed:-Encoding: id 9ikj8  ,
+  SIP  /    2.0   / UDP  1.2.3.4   ; hidden
+m:"Quoted string \"\"" <sip:jdrosen@bell-labs.com> ticatire: kinky, things
+supported: sip-on:Language: en
+Allow: any
+Require: all
+P!roxy-Require:Date:  kinky,( things
+Supported:-Encoding: identity
+Content-Disposition:
+To: hhhhhhhhhhhhhhhhhhhhage.sr.y Felines, Inc.
+Server: pleastc.nokia.com>;foo=bar
+Record-Route: <sip:garage,sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+Hide: route
+Max-Forwards: 16
+Fromiller I???)
+Accept-Language: en
+Allow: any
+Require:
+Retry-After: Wed, 04 Apr 2001 19:00:00 GMT (wake-u`) ;duration=1800
+Timestamp: 986et Application/2.0 (NUUKIA)
+In-Reply-To: 982773898-reg@172.21.9.155
+Aquire: kinky: 2 REGISTER
+Subject: Barfooom"
+Via: SIP/2.0/UDP 172.21.9.155
+MIM:-Version: 1.0
+Cccept: text/wMS0wMS0yMSAxNTowODo1+OA==", RESPONSE="d9d7f1ae99a013cb05f319f0f678251d", URI="sip:garage.sr.nt all
+Proxy-Require: kinky, things
+Supported: sip-on:Language: en
+Allow: anytamp: 986395257.13924321 3
+Expirip-on:Language: en
+Allow: anytamp: 986395257.13924321 3
+Expires: 180
+Also: sip:digestify@garage.sr.ntc.nokia.com
+Call-Info: <http://garage.sr.ntc.nokia.com/images/face.jpg>;purpose=icon
+Organization: Fuzzy Felines, Inc.
+Server: please
+Userc.nokia.com"
+Via: SIP/2.0/UDP 172.21.9.155
+MIM:-Version: 1.0
+Content-Type: text/plain;charset=US-ASCII
+Content-Encoding: identity
+Content-Disp-Agent: Nokia Univeinky# things
+Suosition: render%00;pph

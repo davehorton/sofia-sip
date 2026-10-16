@@ -1,0 +1,8 @@
+ÿINVITE sip:user@company.com SIP/2.02.0/UDP company.com:5604
+From: sip:iuser@company.com
+To: sip:user@135.180.1mpany.com
+CSeq: 1 OPTIONS
+Cont
+CSeq: 0 INVITE
+Via: SI/2P.0/UDP 135.180.130.133
+C:31 LPC

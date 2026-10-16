@@ -1,0 +1,85 @@
+?REGISTER sip:bell-tel.com SIP/2.0
+Via: SIP/2.:watson@bell-tel.com
+To: sip:watson@bell-tel.com
+Call-ID: ia.com:5060;maddr=192.168.102.5 (NTA 1. sip-cc, sip-cc-01, timer
+Unsupported: everything
+Error-Info: <http://garage.sr.ntc.nokia.com/figure-1.jpg>
+Warning: 300 garage.sr.ntc.nokia.com IPv6 global addresses not available
+Warning: 330 garage.sr.ntc.nokia.com No IPv6 multicast, 330 garage.sr.ntc.nokia.com Only local IƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒPv4 multicast available
+Authorization: Digest USERNAME="digest", REALM="garage.sr.ntc.nokia.com", NONCE="MjAwMS0wMS0yMWWW-Authenticate: RESPONSE="d9d7f1ae99a013cb05f319f0f678251d", URI="sip:garage.sr.ntc.nokia.com"
+Via: SIP/2.0/UDP 172.81.9.155
+MIMÿÿÿÿÿÿ:bell-tel.com SIP/2.0
+Via: SIP/2.:watson@bell-tel.com
+To: sip:watson@bell-tel.com
+Call-ID: ia.com:5060;maddr=192.168.102.5 (NTA 1. sip-cc, sip-cc-01, text/plain;charset=US-ASCII
+Content-Encoding: identity
+Content-Disposition: render;handling.bell-tel.REGISTER sip:bell-om IPv6 global addresses not available
+Warning: 330 garage.sr.ntc.nokia.com No IPv6 multicast, 330 garage.sr.ntc.nokia.com Only local IPv4 multicast available
+Authorization: Digest USERNAME="digest", REALM="garage.sr.ntc.nokia.com", NONCE="MjAwMS0wMS0yMWWW-Authenticate: RESPONSE="d9d7f1ae99a013cb05f319f0f678251d", URI="sip:garage.sr.ntc.nokia.com"
+Via: SIP/2.0/UDP 172.81.9.155
+MIMÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿE-Version: 1.0
+Copntent-Type: text/plain;charset=US-ASCII
+Content-Encoding: identity
+Content-Disposition: render;handling.bell-tel.REGISTER sip:bell-tel.com SIP/2.0com
+CSeq: 2 REGISTER
+Contact: ip:+1-92555-7-2222@gw1.wc
+Via: SIP/2.0/UDP saturn.bell-tel.com
+FroContent-Length: ll-tel.com
+To: sip:watsֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿEGISTER sip:bell-tel.com SIP/2.0
+Via: SIP/2.:watson@bell-tel.com
+To: sip:watson@bell-tel.com
+Call-ID: ia.com:5060;maddr=192.168.102.5 (NTA 1. sip-cc, sip-cc-01, timer
+U: ווווווווווtel.com SIP/2.0com
+CSeq: 2 REGISTER>
+Contact: ip:+1-92555-7-2222@gw1.wc
+Via: SIP/2.0/UDP saturn.bell-tel.com
+FroContent-Length: ll-tel.com
+To: sip:watsֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿEGISTER sip:bell-tel.com SIP/2.0
+Via: SIP/2.:watson@bell-tel.com
+To: sip:watson@bell-tel.com
+Call-ID: ia.com:-ASCII
+Content-Encoding: identity
+Content-Disposition: render;handling.bell-tel.REGISTER sip:bell-tel.com SIP/2.0com
+CSeq: 2 REGISTER
+Contact: ip:+1-92555-7-2222@gw1.wc
+Via: SIP/2.0/UDP saturn.bell-tel.com
+FroContent-Length: ll-tel.com
+To: sip:watsֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿEGISTER sip:bell-tel.com SIP/2.0
+Via: SIP/2.:watson@bell-tel.com
+To: sip:watson@bell-tel.com
+Call-ID: ia.com:5060;maddr=192.168.102.5 (NTA 1. sip-cc, sip-cc-01, timer
+U: ווווווווווtel.com SIP/2.0com
+CSeq: 2 REGISTER>
+Contact: ip:+1-92555-7-2222@gw1.wc
+Via: SIP/5060;maddr=192.168.102.5 (NTA 1. sip-cc, sip-cc-01, timer
+U: ווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווtimer
+U: וווווווווווווווווווווווווווו.bell-tel.REGISTER sip:bell-om IPv6 global addresses not available
+Warning: 330 garage.sr.ntc.nokia.com No IPv6 multicast, 330 garage.sr.ntc.nokia.com Only local IPv4 multicast available
+Authorization: Digest USERNAME="digest", REALM="garage.sr.ntc.nokia.com", NONCE="MjAwMS0wMS0yMWWW-Authenticate: RESPONSE="d9d7f1ae99a013cb05f319f0f678251d", URI="sip:garage.sr.ntc.nokia.com"
+Via: SIP/2.0/UDP 172.81.9.155
+MIMÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿE-Version: 1.0
+Copntent-Type: text/plain;charset=US-ASCII
+Content-Encoding: identity
+Content-Disposition: render;handling.bell-tel.REGISTER sip:bell-tel.com SIP/2.0com
+CSeq: 2 REGISTER
+Contact: ip:+1-92555-7-2222@gw1.wc
+Via: SIP/2.0/UDP saturn.bell-tel.com
+FroContent-Length: ll-tel.com
+To: sip:watsֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿEGISTER sip:bell-tel.com SIP/2.0
+Via: SIP/2.:watson@bell-tel.com
+To: sip:watson@bell-tel.com
+Call-ID: ia.com:5060;maddr=192.168.102.5 (NTA 1. sip-cc, sip-cc-01, timer
+U: ווווווווווtel.com SIP/2.0com
+CSeq: 2 REGISTER>
+Contact: ip:+1-92555-7-2222@gw1.wc
+Via: SIP/2.0/UDP saturn.bell-tel.com
+FroContent-Length: ll-tel.com
+To: sip:watsֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿֿEGISTER sip:bell-tel.com SIP/2.0
+Via: SIP/2.:watson@bell-tel.com
+To: sip:watson@bell-tel.com
+Call-ID: ia.com:5060;maddr=192.168.102.5 (NTA 1. sip-cc, sip-cc-01, timer
+U: ווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווtimer
+U: ווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿוווווווווווווווווווו
+Contaווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווווÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿוווווווווווווווווווו
+Contact: sip:+2-972-555-2222@gw1.wcom.com;userom.com;use=pr=phohonnee
+

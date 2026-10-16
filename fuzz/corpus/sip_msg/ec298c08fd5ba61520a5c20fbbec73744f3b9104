@@ -1,0 +1,17 @@
+INVITE sip:bob@[3ffe:1<sip:012:c006:206:5bff:fe55:462f] SIP/2.0
+Via: SIP/2.0/UDP [3ffe:1200:3012:c000:GISTER sip:company.com SIP/2.0
+To: sip:user@company.com
+From: sip:user@company.com
+Contact: sip:user@host.company.com
+Call-ID: 0ha0isndaksdj@10.0.0.1
+CSeq: 8  REGISTER
+Via: 0030:e0ff:fe40:6297]:50	62
+     ;branch=z9hG4bKuNCTHs8Lumv
+     ;received=3ffe:1200:3012:c006:0030:e0ff:fe40:6297
+Via: SIP/2.0/UDPÿÿÿÿfe:1200:3012:c000:210:a4ff:fe8d:6a46]:5062
+     ;branch=z9hG4bKuNCTHs8Lumv
+     ;received=[3ffe:1200:3012:c006:210:a4ff:fe8d947
+To: <sip:"bob@example.com;maddr=[3fa: SIP/2.0/UDP rama.research.nokia.com
+sips:SIP/2.0/UDP 135.160.130.133
+To: sip:j.user@COMPANY.COM;maddr=135.180.130.133;tag=f00
+a=rtpmap:98 GSM-EFR/8000

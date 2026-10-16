@@ -1,0 +1,46 @@
+vINVITE sip:t.watson@ieee.org SIP/2.0
+Via:l@bell-tel.com>
+To:      T. Watson <s/ip:t.watson@ieee.o¼g>
+Call-ID: 3114c4b.@ell-t     SIP/2Ô+/UDP c.bell-tel.com
+From:   .g.bell@bell-tel.?REGISTER sip:garage.sr.ntc.nokia.com S-P/2.0
+Via: SIP/2.0/UDP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Record-Route: </sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+From: sip:dæigest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.com,
+Call-Id: 982773899-reg@172.21.9.155
+Cseq: 2 REGISTER
+Contact: sip:digest@172.21.9.155
+Expires: 180
+Content-Length: 0
+Accept-Language: en
+Supported: sip-cc, sip-cc-01, timerdknw87hjpobd76f
+CSeq: 1 Ip:j.user@ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿcompany.com
+From: sip:j.user@10.0.2.2
+Chontact: sip:j.user@host.company.com
+CSeq: 8 NEWMETHOD
+Via: SIP/2.0/UDP 135.18 sip:company.com SIP/2.0
+To: sip:j.userSIP/2.0/UDP sip11.example.com
+Via: SIP/2.0/UDP sip10.example.com
+Via: SIP/2.0/UDP sip9.example.com
+Via: SIP/2.0/UDP sip8.example.com
+Via: SIP/2.0/UDP sip7nt-Length: 0
+.example.com
+Via: SIP/2.0/UDP sip6.example.com
+Via: SIP/2.m>
+From: com>
+To:   on <s/ip:t.watson@Max-Forwards: 70IDsip:dige: 3114c4b.@eires: 180
+Content-Length: 0
+Accept-Language: en
+SupporteSIP/2r.ntc.nokia.com
+Call-Id: 982773899-reg@172.21.9.155
+Cseq: 2 REGISTER
+Contact: sip:digest@172.21.9.155
+Expires: 180
+Content-Length: 0
+Accept-Language: en
+Supported: sip-cc, sip-cc-01, timer
+User-Agent:c.nokia.com"
+Via: SIP/2All-tel.com
+.CSeq0/UDP 172:    1 INVITE
+.21.9.155
+

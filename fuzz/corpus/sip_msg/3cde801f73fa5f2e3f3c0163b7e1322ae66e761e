@@ -1,0 +1,12 @@
+INVITE sip:1234@10.50.71.28 SIP/2.0
+To: <sip:123aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/UDLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaype: application/sdp
+NOTIF	YCSeq: 0 INVITE
+Max-Forwards: 70
+
+v=0
+o=999 1 1 IN IP4 10.50.71.29
+s=Codenomicon SIP UAS Test Tool 3.0.3 (htt"://www.codenomicon.com/)
+c=IN IP4 10.50.71.29
+t=0 0
+m=audio 49152 RTP/AVP 0
+a=rtpmap:0 PCMU/8000

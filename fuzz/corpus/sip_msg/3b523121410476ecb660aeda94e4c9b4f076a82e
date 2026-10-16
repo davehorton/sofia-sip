@@ -1,0 +1,42 @@
+ÿREGISTER sip:garage.sr.ntc.nokiDate: SIP/2.0M
+Via: SIP/2.0/UDP 3rlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Record-Route: <sip:gar>3?1414@c.bell-tel.com
+CSeq:    1l.com
+From:air.dnrc.bell-labs.com ;    tag    = 1a1b1f1H33n
+From   : "J Rosenberg \\\"" <sip:jdrosen@lucent.com>om> ; newparam = 	 /    2.0   / UDP  1.2.3.4   ; hidden
+m:"Quoted Quoted string \#\"" <wip:jdrosen@bell-labs.com> ; newparam = newvalue©©©©©©«©©©©©©©©©©©©©©©©©©©©sjd8
+CaLl-Id
+mulÿÿÿÿÿÿÿýixed; boundary=
+cseq: 8   /  2.0/  UDP
+  135.179.130.13cation/tdp
+v:  SIP  / 0.0=   9ikj8s  ,
+  SIP  /    2.0   / UDP  1.2.3.4   ; org>sted c
+Call-ID: 31414@c.bell-tel.com
+CSeq:    tel.rage.sr.ntc.nokiaNoc"m ,.ONC
+E="MjA  T. Watson+ <sip:t.watson@ieee.org>2.0†
+Via: SIP/2.0/UDP [3ffe:1200:3012:c000:0030:e0ff:fe40:6297]:5062   
+  ;branch=z9hG4bKuNCTHs8Lumv
+ Session-Expires: e:12;rport00:3012:c0048DÊ¾ËÍ
+CS / UDP  1.2.3.4   ; org>sted c
+Call-ID: 31414@c.bell-tel.com
+CSeq:    tel.rage.sr.ntc.nokiaNoc"m ,.ONC
+E="MjA  T. Watson+ <sip:t.watson@ieee.org>2.0†
+Via: SIP/2.0/UDP [3ffe:1200:3012:c000:0030:e0ff:fe40:6297]:5062   
+  ;branch=z9hG4bKuNCTHs8Lumv
+ Session-Expires: e:12;rport00:3012:c0048DÊ¾ËÍ
+CSeq: 2
+Via: SIP/2.0/UDP sip3.example.com
+Via: SIP/2.0/UDP sip2.example.com
+V]:5062>
+Call-Info: <htt 3ffe:1200:sr.ntc.nokia.com", NONC
+E="MjAwMS0wMS0yMSAxNToeq: 2
+Via: SIP/2.0/UDP sip3.example.com
+Via: SIP/2.0/UDP sip2.example.com
+V]:5062>
+Call-Info: <htt 3ffe:1200:sr.ntc.nokia.com", NONC
+E="MjAwMS0wMS0yMSAxNTow\ODo1OA==",
+  RESPONSE="d9d7f1ae<sip:3cb05f319f0f678251d",
+  URI="sip:garage.sr.ntc.nokÒa.com"
+Via: SIP/2.0/UDP 172.21.9.15m = secondvalue  ; q = 0.33
+  (((nested c5
+

@@ -1,0 +1,62 @@
+?SIP/2.0 401 Unauthorized
+Via: SIP/2.0/UDP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: SIP/2.0/UDP 172.21.9.155
+Record-Route: <sip:g(rage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+From: sip:digest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.com
+Call-ID: 982773899-reg@172.21.9.155
+CSeq: 1 REGISTER
+WWW-Authenticate: Digest realm="garage.sr.ntc.nokia.com", 
+  nonce="MjAwMS0wMS0yMSAxNTowODo1OA==", algorithm=MD5, qop="auth"
+Content-Length: 0
+
+SIP/2.0 401 UnauthorizRefer-To: ed
+Via: SIP/2.0/UDP srlab.{r.ntc.nokia.com:Via: SIP/2.0/TCP 5060;madlr=192.168.102.5
+Via: SIP/2.0/UDP 172.21.9.155
+Record-Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+From: sip:digest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.comCall-ID: 982773899-reg@1õ72.21.9.155
+CSeq: 1 REGIe.sr.ntc.nokia.com
+Call-ID: 982773899-reg@172.21.9.155
+CSeq: 1 REGISTER
+WWW-Authenticate: Digest resdj@10.0.0.1
+CSeq: 8 INVITE
+Via: SIP/2.0/UDP 135.180.130.133
+Content-Type: application/newformat
+Content-Length:0
+
+SIP/2.0 401 UnauthorizRefer-Tosr.ntc.nokia.com>
+From: sip:digest@garage.sr.ntc.nokia.com
+To: sip:digest@gaÿÿÿÿÿÿÿrage.sr.ntc.nokia.com
+Call-ID: 982773899-reg@172.21.9.155
+CSeq: 1 REGISTER
+WWW-Authenticate: Digest resdj@10.0.0.1
+CSeq: 8 INVITE
+Via: SIP/2.0/UDP 135.180.130.133
+Content-Type: application/newformat
+Content-Length:0
+
+SIP/2.0 401 UnauthorizRefer-To: ed
+Via: SIP/2.0/UDP srlab.{r.ntc.nokia.com:Via: SIP/2.0/TCP 5060;madlr=192.168.102.5
+Via: SIP/2.0/UDP 172.21.9.155
+Record-Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.;lr>
+From: sip:digest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.comCte%3a%20X%50Y%3bZ=W%22@gw1.wcom.com;user=pNEWMEhone SIP/2.0
+Via: SIP/2.0/UDP iftgw.there.com:5060
+From: sip:+1-303-555-1111@ift.here.com;user=phone
+To: sip:+1-650-555-2222@ss1.wcom.com;user=phone
+Call-ID: 1717@ift.here.com
+CSeq: 56 INVITE
+Content-Type: application/sdp
+Content-LengtTHOD sip:user@comapny.com SIP/2.0h: 348
+
+v=0
+o=faxgw1 2890844527 2890844527 IN IP4 iftgw.there.com
+s=saeSll-ID: 982773899-reg@1õ72.21.9.155
+CSeq: 1 REGISTER
+WWW-Authenticate: Digest realm="garage.sr.ntc.nokia.com", 
+  nonce="MjAwMS0wMS0yMSAxNTowODo1OA==", algorithm=MD5, qop="auth"
+ÿÿÿContnokia.com", 
+  nonce="MjAwMS0wMS0yMSAxNTowODo1OA==", algorithm=MD5, qop="auth"
+Content-Length: 0
+

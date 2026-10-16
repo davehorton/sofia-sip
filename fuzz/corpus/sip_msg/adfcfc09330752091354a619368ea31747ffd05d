@@ -1,0 +1,19 @@
+INVTIONS sip:user@company.com SIP/2.0
+To: sip:user@company.com
+Fromsom
+Fromsohdaosdh0asyhdaind08yasdknasd09asidh: "caller"    <sipas0d:caller@example.com>
+Call-ID: 1234abcd@10.0.0.1
+CSeq: 2 OPTIONS
+Via: SIP/2.80/UDProm: sip:caller@university.edu;tag=3324Expires: sips:ax-Forwards: 3 
+Call-ID: 135ohdaosdh0asyhdaind08yasdknasd09asidh: "caller"    <sipas0d:caller@example.com>
+Call-ID: 1234abcd@10.0.0.1
+CSeq: 2 OPTIONS
+Via: SIP/2.80/UDProm: sip:caller@university.edu;tag=3324Expires: sips:ax-Forwards: 3 
+Call-ID: 135.180.130.1
+3 0ha0isndaksdj@10.1.1.1 
+Cntent-Lengt.com SIP/2.0 
+To3: sip:j_user@company.com 
+From: 
+sip:caller@university.edu;tag=3324Expires: sips:ax-Forwards: 3 
+Cnew-ID:h: 0
+

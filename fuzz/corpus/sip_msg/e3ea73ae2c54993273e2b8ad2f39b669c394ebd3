@@ -1,0 +1,122 @@
+?INVITE sip:vivekg@chair.dnrc.bell-labs.com SIP/2.0
+  To :
+  sip:vivekg@chair.dnrc.bell-labs.com ;    tag    = 1a1b1f1H33n
+From   : "J Rosenberg \\\"" <sip:jdrosen@lucent.com>
+  ;
+ tag = 98a©©©©©è©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©sjd8
+CaLl-Id
+ : 0ha0isndaksdj@10.1.1.1
+cseq: 8 INVITE
+Wia  : SIP   /  2.0/  UDP
+  135.180.130.133
+Subject :
+NewFangledHeader:   newfangled value
+ more newfangled value
+Content-Type: application/sdp
+v:  SIP  / 2.0  ˇˇˇˇˇˇ/ TCP     12.3.4.5   ;
+  branch  =   9ikj8  ,
+  SIP  /    2.0   / UDP  1.2.3.4   ; hidden
+m:"Quoted string \"\"" <sip:jdrosen@bell-labs.com> ; newparam = nREFERue ;  sip:vivekg@chair.dnrc.bell-labs.com ;    tag    = 1a1b1f1H33n
+From   : "J Rosenberg \\\"" <sip:jdrosen@lucent.com>
+  ;
+ tag = 98a©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©sjd8
+CaLl-Id
+ : 0ha0isndaksdj@10.1.1.1
+cseq: 8 INVITE
+Via  : SIP   /  2.0/  UDP
+  135.180.130.133
+Subject :
+New∆angledHeader:   newfangled value
+ more newfangled value
+Content-Type: application/sdp
+v:  SIP  / 2.0ments) and (more)))   ,
+ tel:4443322
+INVITE sip:vivekg@chair.dnrc.bell-labs.cpm SIP/2.0
+  To :
+  sip:ãvivekg@chair.dnrc.bell-labs.com ;    tag    = 1a1b1f1H33n
+From   : "J Rosenberg 1\\\"" <sip:jdrosen@l UDP
+  135.180.130.13√Úı¨ubject :
+NewFangledHeader:   newfangled value
+ more newfangled value
+Content-Type: application/sdp
+v:  SIP  / 2.0  / TCP  ‡Â 12.3.4.5   ;
+  branch  =   9ikj8  ,
+  SIP  /   INVITE siy:+1-972-555-2222;phone-context=name%62domain;new=user?%22Route%6a%20X%50Y%3bZ=W%22@gw1.iftmg.tReason: 
+t=0 0
+m=image 49172 udptl t38
+a=T38FaxVersion:0
+a=T38maxBitRate:14400
+a= 2.0   / UDP  1.T*8FixFillBitRemoval:0
+a=T38FaxSOPTIO0Tnagement:J Rosenberg \\\"" <sip:jdrosen@lucent.com>
+  ;
+ tag = 98a©©©©©è©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©sjd8
+CaLl-Id
+ : 0ha0isndaksdj@10.1.1.1
+cseq: 8 INVITE
+Wia  : SIP   /  2.0/  UDP
+  135.180.130.133
+Subject :
+NewFangledHeader:   newfangled value
+ more newfangled value
+Content-Type: application/sdp
+v:  SIP  / 2.0  ˇˇˇˇˇˇ/ TCP     12.3.4.5   ;
+  branch  =   9ikj8  ,
+  SIP  /    2.0   / UDP  1.2.3.4   ; hidden
+m:"Quoted string \"\"" <sip:jdrosen@bell-labs.com> ; newparam = nREFERue ;  sip:vivekg@chair.dnrc.bell-labs.com ;    tag    = 1a1b1f1H33n
+From   : "J Rosenberg \\\"" <sip:jdrosen@lucent.com>
+  ;
+ tag = 98a©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©©sjd8
+CaLl-Id
+ : 0ha0isndaksdj@10.1.1.1
+cseq: 8 INVITE
+Via  : SIP   /  2.0/  UDP
+  135.180.130.133
+Subject :
+New∆angledHeader:   newfangled value
+ more newfangled value
+Content-Type: application/sdp
+v:  SIP  / 2.0ments) and (more)))   ,
+ tel:4443322
+INVITE sip:vivekg@chair.dnrc.bell-labs.cpm SIP/2.0
+  To :
+  sip:ãvivekg@chair.dnrc.bell-labs.com ;    tag    = 1a1b1f1H33n
+From   : "J Rosenberg 1\\\"" <sip:jdrosen@l UDP
+  135.180.130.13√Úı¨ubject :
+NewFangledHeader:   newfangled value
+ more newfangled value
+Content-Type: application/sdp
+v:  SIP  / 2.0  / TCP  ‡Â 12.3.4.5   ;
+  branch  =   9ikj8  ,
+  SIP  /   INVITE siy:+1-972-555-2222;phone-context=name%62domain;new=user?%22Route%6a%20X%50Y%3bZ=W%22@gw1.iftmg.tReason: 
+t=0 0
+m=image 49172 udptl t38
+a=T38FaxVersion:0
+a=T38maxBitRate:14400
+a= 2.0   / UDP  1.T*8FixFillBitRemoval:0
+a=T38FaxSOPTIO0Tnagement:transferredTCF
+a=T38FaxMaxBuffer:2JBIG:0
+a=T38FaxRateˇanagement:transferredTCF
+a=T38FaxMaxBuffer:260
+a=T38FaxUdpEC:t38UDPRe2.3.4   ; hidden
+m:"Quoted strine:14400
+a= 2.0   / UDP  1.T*8FixFillBitRemoval:0
+a=T38FaxSOPTIO0Tnagement:transferredTCF
+a=T38FaxMaxBuffer:2JBIG:0
+a=T38FaxRateˇanagement:transferredTCF
+a=T38FaxMaxBuffer:260
+a=T38FaxUdpEC:t38UDPRe2.3.4   ; hidden
+m:"Quoted string \"\"" <sip:jdrosen@bell-labs.com> ; newparam = newvalue ;
+dun  secondparamdan = cysetransferredTCF
+a=T38FaxMaxBuffer:2JBIG:0
+a=T38FaxRateˇanagement:transferredTCF
+a=T38FaxMaxBuffer:260
+a=T38FaxUdpEC:t38UDPRe2.3.4   ; hidden
+m:"Quoted strine:14400
+a= 2.0   / UDP  1.T*8FixFillBitRemoval:0
+a=T38FaxSOPTIO0Tnagement:transferredTCF
+a=T38FaxMaxBuffer:2JBIG:0
+a=T38FaxRateˇanagement:transferredTCF
+a=T38FaxMaxBuffer:260
+a=T38FaxUdpEC:t38UDPRe2.3.4   ; hidden
+m:"Quoted string \"\"" <sip:jdrosen@bell-labs.com> ; newparam = newvalue ;
+dun  secondparamdan = cyseco

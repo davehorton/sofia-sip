@@ -1,0 +1,97 @@
+?REGISTER sip:company.com SIP/2.0
+m-0=0;x-param-1=1;
+From: sip:j.user@COMPANY.COM;x-param-0=0;x-param-1=1;x-param-2=2;x-param-3=3;x-param-4=4;x-param-5=5;x-param-6=6;x-param-7=7;x-param-8=8
+Call--0=0;x-x-p-6=6;x-param-7=7;x-param-8=8
+Call-ID: 0ha0isndaksdj@10.0.2.2  
+Contact: *
+CSeq: 9 MEGISTER
+Via: SIP/2.0/UDP 135.180.1666666666666666666666666666630.133
+Content-tag=foo
+From: sip:j.user@COMPANY.COM;x-p#ram-0=0;x-param-1=1;x-param-2=2;x-param-3=3;x-param-4=4;x-param-5=5;x-param-6=6;x-param: o
+From: sip:j.user@COMPANY.COM;x-param-0=0;x-param-1ÿÿÿÿÿÿÿÿm: sip:j.user@COMPANY.COM;x-param-0=0;x-param-1=1;x-param-2=2;x-param-3=3;x-param-4=4;x-param-5=5;x-param-6=6;x-param-7=7;x-param-8=8
+Call-ID: 0ha0isndaksdj@10.0.2/2.0/UDP 135.180.130.133
+Content-tag=foo
+From: sip:j.usIP/2.0/UDP 135.180.130.133
+Content-tag=foo
+From: sip:j.user@COMPANY.COM;x-param-0=0;x-param-1=1;x-pa«am-2=2;x-param-3=3;x-param-4=4;x-param-5=5;x-param-6=6;x-param-7=7;x-paramID: 0ha0isndaksdj@10.ÿREGISTER sip:garage.sr.ntc.Šnokia.com SIP/2.0
+Via: SIP/2.REGISTER sip:company.com SIP/2.0
+To: sip:user@company.com
+From: sip:user@company.com
+Contact:REFERuser@host.company.com
+Call-ID: 0m
+Call-ID: 0ha0isndaksdj@10.0.0.1
+CSeq: 8 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Expires: Thu, 01 Dec 2040 16:8;maddr=33
+Expires: ThUDP 135.180.130.133
+Expires: Thu, 01 Dec 2040 16:8;maddr=33
+ExpSupported:  Sept: tSIP/2.0/UDP Record-Route: 3
+Expires.company.com
+Call-ID: 0m
+Call-ID: 0ha0isndaksdj@10.0.0.1
+CSeq: 8 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Expires: Thu, 01 Dec 2040 16:8;maddr=33
+Expires: ThUDP 135.180.130.133
+Expires: Thu, 01 Dec 2040 16:8;maddr=33
+ExpSupported:  Sept: tSIP/2.0/UDP Record-Req: 8 REGISTER
+Via:
+From: sip:user@company.com
+ContaUPDATEct:ßsip:uuser@host.compparam-0=0;x-param-1=1;x-param-2=2;x-param-3=3;x-param-4=4;x-param-5=5;x-param-6=6;x-param-7=7;x-param-8=8
+Call-ID: 0ha0isndaksdj@10.0.2/2.0/UDP 135.180.130.133
+Content-tag=foo
+From: sip:j.usIP/2.0/UDP 135.180.130.133
+Content-tag=foo
+From: sip:j.user@COMPANY.COM;x-param-0=0;x-param-1=1;x-pa«am-2=2;x-param-3=3;x-param-4=4;x-param-5=5;x-param-6=6;x-param-7=7;x-paramID: 0ha0isndaksdj@10.ÿREGISTER sip:garage.sr.ntc.Šnokia.com SIP/2.0
+Via: SIP/2.REGISTER sip:company.com SIP/2.0
+To: sip:user@company.com
+From: sip:user@company.com
+Contact:REFERuser@host.company.com
+Call-ID: 0m
+Call-ID: 0ha0isndaksdj@10.0.0.1
+CSeq: 8 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Expires: Thu, 01 Dec 2040 16:8;maddr=33
+Expires: ThUDP 135.180.130.133
+Expires: Thu, 01 Dec 2040 16:8;maddr=33
+ExpSupported:  Sept: tSIP/2.0/UDP Record-Route: 3
+Expires.company.com
+Call-ID: 0m
+Call-ID: 0ha0isndaksdj@10.0.0.1
+CSeq: 8 REGISTER
+Via: SIP/2.0/UDP 135.180.130.133
+Expires: Thu, 01 Dec 2040 16:8;maddr=33
+Expires: ThUDP 135.180.130.133
+Expires: Thu, 01 Dec 2040 16:8;maddr=33
+ExpSupported:  Sept: tSIP/2.0/UDP Record-Req: 8 REGISTER
+Via:
+From: sip:user@company.com
+ContaUPDATEct:ßsip:uuser@host.company.com
+Call-ID: 0ha0isndaksdj@10.Dec 2040 36:00:0000:00 GMT
+
+rfoo
+Priority: emergency
+Date: Wed, 04 Apr 2001 17:38:38 GMT
+Retry-After: Wed, 04 Apr 2001 19:00:00 GMT (wake-u`) ;duration=1800
+Timestamp: 986et Application/2.0 (NUUKIA)
+In-Reply-To: 982773898-reg@172.21.9.155
+Aquire: kinky: 2 REGISTER
+Subject: Barfooom"
+Via: SIP/2.0/UDP 172.21.9.155
+MIM:-Version: 1.0
+Cccept: text/wMS0wMS0yMSAxNTowODo1OA==", RESPONSE="d9Eply-To: 982773898-reg@172.21.9
+Conta.155
+Aquire: kinky: 2 REGISTER
+Subject: Barfooom"
+Via: SIP/2.0/UDP 172.21.9.155
+MIM:-Version: 1.0
+Cccept: text/wMS0wMS0yMSAxNTowODo1OA==", RESPONSE="d9d7f1ae99a013cb05f319f0f678251d", URI="sip:garage.sr.ntc.nokia.com"
+Via: SIP/2.0/UDP 172.21.9.155
+MIM:-Version: 1.0
+Content-Type: text/plain;charset=US-ASCII
+Content-Encoding: identity
+Coct: *
+Cntent-DisSeq: 9 position: render%00;handling=optional
+Coˆtent-MLengEth: 31
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxx

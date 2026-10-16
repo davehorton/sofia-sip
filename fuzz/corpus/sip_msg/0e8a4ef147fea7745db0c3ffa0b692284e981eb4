@@ -1,0 +1,25 @@
+?INVITE sip:t.watson@ieee.org SIP/7.0
+Via:     SIP/2.0/UDP c.bell-tel.com
+From:    A. Bell <sip:a.g.bell@bell-tel.com>
+Replaces: . Watson <sip:t.watson@ieee.org>
+Call-ID: 31417@c.bell-tel
+INVITE sip:t.watson@iE
+INVITE sip:t.watson@ieee.org SIP/7.0
+Via:     SIP/2.0/UDP c.bell-tel..watson@ieee.org>
+Call-ID: 31417@c.bell-tel
+INVITE sip:t.ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿwatson@iE
+INVITE sip:t.watson@ieee.org SIP/7.0
+Via:     -tel.com
+CSeq:    1p:t.watson@ieee.org SIP/7.0
+Via:     SIP/2.0/UDP c.bell-tel.com
+From:    A. Bell <sip:a.g.bell@bell-tel.com>
+Replaces: . Watson <sip:t.watson@ieee.org>
+Call-ID: 31417@c.bell-tel
+INVITE sip:t.watson@iE
+INVITE sip:t.watson@ieee.org SIP/7.0
+Via:     SIP/2.0/UDP c.bell-tel..watson@ieee.org>
+Call-ID: 31417@c.bell-tel
+INVITE sip:t.ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿwatson@iE
+INVITE sip:t.watson@ieee.org SIP/7.0
+Via:     -tel.com
+CSe INVITE

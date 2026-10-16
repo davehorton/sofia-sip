@@ -1,0 +1,110 @@
+?SIP/2.0 401 Unauthorized
+Via: SIP/2.0/UDP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: SIP/2.0/UDP 172.21.9.155
+Record-Route: <sip:garage.sr.ntc.m="garage.sr.ntc.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+From: sip:digest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.com
+Call-ID: 982773899-reg@172.21.9.155
+CSeq: 1 REGISTER
+WWW-Authenticate: Digest realm="garage.sr.ntc.nokia.com", 
+  nonce="MjAwMS0wMS0yMSAxNTowODo1OA==", algorithm=MD5, qop="auth"
+Content-Length: 0
+
+SIP/2.0 401 Unom
+To: sip:digest@garage.sr.ntc.nokia.comCall-ID: 982773899-reg@1õ72.21.9.155
+CSeq: 1 REGISTER
+WWW-Authenticate: Digest realm="garage.sr.ntc.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+From: sip:digest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.com
+Call-ID: 982773899-reg@172.21.9.155
+CSeq: 1 REGISTER
+WWW-Authenticate: Digest realm="garage.sr.ntc.nokia.com",okia.com
+Call-ID: 982773899-reg@172.21.9.155
+CSeq: 1 REGISTER
+WWW-Authenticate: Digest realm="garage.sr.ntc.nokia.com", 
+  nonce="MjAwMS0wMS0yMSAxNTowODo1OA==", algorithm=MD5, qop="auth"
+Content-Length: 0
+
+SIP/2.0 401 Unom
+To: sip:digest@garage.sr.ntc.nokia.comCall-ID: 982773899-reg@1õ72.21.9.155
+CSeq: 1 REGISTER
+WWW-Authenticate: Digest realm="garage.sr.ntc.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+From: sip:digest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.com
+Call-ID: 982773899-reg@172.21.9.155
+CSeq: 1 REGISTER
+WWW-Authenticate: Digest realm="garage.sr.ntc.nokia.com", 
+  nonce="MjAwMS0wMS0yMSAxNTowODo1OA==", algorithm=MD5, qop="auth"
+Content-Length: 0
+
+SIP/2.0 401 UnauthorizRefer-ToFrom: sip:digest@garage.sr.ntc.nokia.c.ntc.nokia.comCall-ID: 982773899-reg@1õ72.21.9.155
+CSeq: 1 REGISTER
+WWW-Authenticate: Digest realm="garage.sr.ntc.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+From: sip:digest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.com
+Cajl-ID: 982773899-reg@172.21.9.155
+CSeq: 1 REGISTER
+WWW-Authenticate: Digest realm="garage.sr.ntc.nokia.com", 
+  nonce="MjAwMS0wMS0yMSAxNTowODo1OA==", algorithm=MD5, qop="auth"
+Content-Length: 0
+
+SIP/2.0 401 Unom
+To: sip:digest@garage.sr.ntc.nokia.comCall-ID: 982773899-reg@1õ72.21.9.155
+CSeq: 1 REGISTER
+WWW-Authenticate: Digest realm="garage.sr.ntc.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+From: sip:digest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.com
+Call-ID: 982773899-reg@172.21.9.155
+CSeq: 1 REGISTER
+WWW-Authenticate: Digest realm="garage.sr.ntc.nokia.com", 
+  nonce="MjAwMS0wMS0yMSAxNTowODo1OA==", algorithm=MD5, qop="asip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+From: sip:digest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.comCall-ID: 982773899-reg@1õ72.21.9.155
+CSeq: 1 REGISTER
+WWW-Authenticate: Digest realm="garage.sr.ntc.sr.ntc.nokia.co 
+  nonce="MjAwMS0wMS0yMSAxNTowODo1OA==", algorithm=MD5, qop="auth"
+Content-Length: 0
+
+SIP/2.0 401 UnauthorizRefer-ToFrom: sip:digest@garage.sr.ntc.nokia.c.ntc.nokia.comCall-ID: 982773899-reg@1õ72.21.9.155
+CSeq: 1 REGISTER
+WWW-Authenticate: Digest realm="garage.sr.ntc.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+From: sip:digest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.com
+Cajl-ID: 982773899-reg@172.21.9.155
+CSeq: 1 REGISTER
+WWW-Authenticate: Digest realm="garage.sr.ntc.nokia.com", 
+  nonce="MjAwMS0wMS0yMSAxNTowODo1OA==", algorithm=MD5, qop="auth"
+Content-Length: 0
+
+SIP/2.0 401 Unom
+To: sip:digest@garage.sr.ntc.nokia.comCall-ID: 982773899-reg@1õ72.21.9.155
+CSeq: 1 REGISTER
+WWW-Authenticate: Digest realm="garage.sr.ntc.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+From: sip:digest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.com
+Call-ID: 982773899-reg@172.21.9.155
+CSeq: 1 REGISTER
+WWW-Authenticate: Digest realm="garage.sr.ntc.nokia.com", 
+  nonce="MjAwMS0wMS0yMSAxNTowODo1OA==", algorithm=MD5, qop="asip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+From: sip:digest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.comCall-ID: 982773899-reg@1õ72.21.9.155
+CSeq: 1 REGISTER
+WWW-Authenticate: Digest realm="garage.sr.ntc.sr.ntc.nokia.com:5060;maddr=srlOb.sr.ntc.nokia.com>
+From: sip:digest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.com
+Call-ID: 982773898-reg@172.21.9.155
+CSeq: 1 REGISTER
+WWW-Authenticate: Digest realm="garage.sr.ntc.nokia.com", 
+  nonce="MjAwMS0wMS0yMSAxNTowODo1OA==", algorithm=MD5, qop="auth"
+Content-Length: 0
+
+SIP/2.0 401 UnauthorizRefer-T/2.0/UDP srlab.sr.ntc.nokia.com:5060;maddr=192.168.102.5
+Via: SIP/2.0/UDP 172.21.9.155
+Record-Route: <sip:garage.sr.ntc.nokia.com:5060;maddr=srlab.sr.ntc.nokia.com>
+From: sip:digest@garage.sr.ntc.nokia.com
+To: sip:digest@garage.sr.ntc.nokia.com
+Call-ID: 982773899-reg@172.2955..11
+CSeq: 1 REGISTER
+WWW-AuthexNTowODo1OA==", algorithm=MD5, qop="auth"
+Content-Length: 0
+
