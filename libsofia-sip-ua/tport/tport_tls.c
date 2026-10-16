@@ -128,6 +128,7 @@ struct tls_s {
   int   write_events;
   void *write_buffer;
   size_t write_buffer_len;
+  int   pong_pending;	/* CRLF pong OpenSSL has not finished writing */
 
   /* Host names */
   su_strlst_t *subjects;
@@ -1033,6 +1034,60 @@ int tls_want_read(tls_t *tls, int events)
   return 1;
 }
 
+static char const tls_pong_crlf[2] = { '\r', '\n' };
+
+/* Finish writing a pong. OpenSSL requires a write that would block to be
+ * repeated with the same data before anything else is written.
+ *
+ * @retval 1 written, or none pending
+ * @retval 0 would block (errno is EAGAIN)
+ * @retval -1 error
+ */
+static int tls_finish_pong(tls_t *tls)
+{
+  int ret, err;
+
+  if (!tls->pong_pending)
+    return 1;
+
+  ret = SSL_write(tls->con, tls_pong_crlf, sizeof tls_pong_crlf);
+  if (ret > 0) {
+    tls->pong_pending = 0;
+    tls->write_events = 0;
+    return 1;
+  }
+
+  err = SSL_get_error(tls->con, ret);
+  if (err == SSL_ERROR_WANT_WRITE || err == SSL_ERROR_WANT_READ) {
+    tls->write_events = err == SSL_ERROR_WANT_WRITE ? SU_WAIT_OUT : SU_WAIT_IN;
+    errno = EAGAIN;
+    return 0;
+  }
+
+  tls->pong_pending = 0;
+  tls_log_errors(3, "tls_pong", 0);
+  errno = EIO;
+  return -1;
+}
+
+/** Send a CRLF keepalive pong (RFC 5626 section 4.4.1).
+ *
+ * Best effort: skipped while a message is being written. If OpenSSL cannot
+ * write it now, it is finished before the next message.
+ *
+ * @retval 0 sent, pending or skipped
+ * @retval -1 error
+ */
+int tls_pong(tls_t *tls)
+{
+  if (tls == NULL || tls->write_buffer || tls->pong_pending)
+    return 0;
+
+  tls->pong_pending = 1;
+
+  return tls_finish_pong(tls) < 0 ? -1 : 0;
+}
+
 ssize_t tls_write(tls_t *tls, void *buf, size_t size)
 {
   ssize_t ret;
@@ -1046,6 +1101,10 @@ ssize_t tls_write(tls_t *tls, void *buf, size_t size)
     errno = EINVAL;
     return -1;
   }
+
+  /* A pong not yet written goes first */
+  if (tls->pong_pending && tls_finish_pong(tls) <= 0)
+    return -1;
 
   if (tls->write_buffer) {
     assert(buf == tls->write_buffer);
@@ -1081,6 +1140,11 @@ ssize_t tls_write(tls_t *tls, void *buf, size_t size)
 
 int tls_want_write(tls_t *tls, int events)
 {
+  if (tls && (events & tls->write_events) && tls->pong_pending) {
+    int ret = tls_finish_pong(tls);
+    return ret > 0 ? 1 : ret;
+  }
+
   if (tls && (events & tls->write_events)) {
     int ret;
     void *buf = tls->write_buffer;
