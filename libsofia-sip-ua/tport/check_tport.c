@@ -937,7 +937,7 @@ START_TEST(tport_1_6)
 {
   struct peer pe[1];
   struct rx *r;
-  int i, small = 1024;
+  int i, small = 8192;	/* smaller starves the TCP window (persist probes) */
 
   S2_CASE("tport-1.6", "Pongs to a peer that is not reading (TLS)",
 	  "Pings keep coming while the connection is full, so a pong "
