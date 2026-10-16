@@ -271,6 +271,13 @@ static void tport_ws_deinit_primary(tport_primary_t *pri)
   }
 }
 
+/* More to read now? Decrypted data waiting in OpenSSL does not make the
+ * socket readable, so it would wait for the peer's next message. */
+static int tport_ws_more(tport_ws_t const *wstp)
+{
+  return wstp->ws.ssl && SSL_pending(wstp->ws.ssl) > 0 ? 2 : 1;
+}
+
 /** Receive from stream.
  *
  * @retval -1 error
@@ -318,7 +325,7 @@ int tport_recv_stream_ws(tport_t *self)
         (N == 2 || (data[2] == '\r' && data[3] == '\n'))) {
       // "ping" message detected, send "pong"
       tport_ws_send_crlf_text_frame(self);
-      return 1;
+      return tport_ws_more(wstp);
     }
   }
 
@@ -352,7 +359,7 @@ int tport_recv_stream_ws(tport_t *self)
    * flags it, and the reply path answers 413. */
   msg_recv_commit(msg, n, 0);
 
-  return 1;
+  return tport_ws_more(wstp);
 }
 
 /** Send to stream */

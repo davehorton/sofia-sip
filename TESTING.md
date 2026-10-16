@@ -45,6 +45,19 @@ To run one case in an existing build: `libsofia-sip-ua/nta/check_nta drachtio_3_
 
 When a drachtio-server bug turns out to be in sofia-sip, add the exchange that triggers it here.
 
+## Transport tests
+
+`libsofia-sip-ua/tport/check_tport.c` tests the stream transports (TCP, TLS, WS, WSS) against a peer that is not sofia-sip: plain non-blocking sockets and OpenSSL, as a phone, browser or carrier would connect. The peer and tport share one thread, and every `su_root_step()` is timed: a step longer than 500 ms fails the test, because a blocked sofia thread stalls all of drachtio-server.
+
+| Case | Scenario |
+|------|----------|
+| 1.x | Request and response, a request trickled byte by byte, 60 kB requests, pipelined requests split mid-message, CRLF keepalive and pong, two requests in one write |
+| 2.x | Peer resets before the response, peer closes while the stack holds the transport, `tport_shutdown()` by the stack, many short connections; every connection must be freed |
+| 3.x | Plain text to a TLS port, stalled TLS handshake, partial WebSocket frame header, fragmented WebSocket message |
+| 4.x | Mutual TLS: a server that requires a client certificate, and the distinct outbound identity (`TPTAG_TLS_CLIENT_CERTIFICATE_FILE`) |
+
+The certificates are in `libsofia-sip-ua/tport/tls/` (CA, server, and a separate client identity); `make-certs.sh` there regenerates them. To run one case: `libsofia-sip-ua/tport/check_tport tport_3_2`.
+
 ## Fuzzing
 
 `fuzz/` holds libFuzzer targets for the code that parses input from the network:
