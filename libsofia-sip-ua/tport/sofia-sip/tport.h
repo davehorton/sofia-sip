@@ -279,6 +279,9 @@ TPORT_DLL int tport_has_tls(tport_t const *tport);
 /** Test if transport provided a verified certificate chain (TLS only) */
 TPORT_DLL int tport_is_verified(tport_t const *tport);
 
+/** Reload the certificates of all TLS and WSS primaries from their files. */
+TPORT_DLL int tport_reload_tls_files(tport_t *self);
+
 /** Return true if transport is being updated. */
 TPORT_DLL int tport_is_updating(tport_t const *self);
 

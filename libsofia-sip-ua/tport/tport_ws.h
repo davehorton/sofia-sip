@@ -68,6 +68,10 @@ typedef struct tport_ws_primary_s {
   tport_primary_t wspri_pri[1];
   SSL_CTX *ssl_ctx;
   const SSL_METHOD *ssl_method;
+  /* Files ssl_ctx was built from, to rebuild it on reload */
+  char *ws_key, *ws_cert, *ws_chain, *ws_ciphers;
+  /* New context prepared by a reload, until it is swapped in */
+  SSL_CTX *ws_reload_ctx;
   unsigned ws_secure:1;
   unsigned :0;
 } tport_ws_primary_t;

@@ -132,6 +132,9 @@ struct tls_s {
 
   /* Host names */
   su_strlst_t *subjects;
+
+  /* Master only: the settings ctx was built from, to rebuild it on reload */
+  tls_issues_t *issues;
 };
 
 enum { tls_buffer_size = 16384 };
@@ -627,7 +630,8 @@ void tls_free(tls_t *tls)
     SSL_free(tls->con), tls->con = NULL;
   }
 
-  if (tls->ctx != NULL && tls->type != tls_slave) {
+  /* A slave holds its own reference too, see tls_init_secondary() */
+  if (tls->ctx != NULL) {
     SSL_CTX_free(tls->ctx);
   }
 
@@ -644,27 +648,34 @@ int tls_get_socket(tls_t *tls)
   return sock;
 }
 
-tls_t *tls_init_master(tls_issues_t *ti)
+static
+tls_issues_t *tls_issues_dup(su_home_t *home, tls_issues_t const *ti)
+{
+  tls_issues_t *copy = su_alloc(home, sizeof *copy);
+
+  if (!copy)
+    return NULL;
+
+  *copy = *ti;
+  copy->cert = su_strdup(home, ti->cert);
+  copy->key = su_strdup(home, ti->key);
+  copy->passphrase = su_strdup(home, ti->passphrase);
+  copy->randFile = su_strdup(home, ti->randFile);
+  copy->CAfile = su_strdup(home, ti->CAfile);
+  copy->CApath = su_strdup(home, ti->CApath);
+  copy->ciphers = su_strdup(home, ti->ciphers);
+
+  return copy;
+}
+
+static
+int tls_init_master_context(tls_t *tls, tls_issues_t const *ti)
 {
   /* Default id in case RAND fails */
   unsigned char sessionId[32] = "sofia/tls";
-  tls_t *tls;
 
-#if HAVE_SIGPIPE
-  signal(SIGPIPE, SIG_IGN);  /* Ignore spurios SIGPIPE from OpenSSL */
-#endif
-
-  tls_set_default(ti);
-
-  if (!(tls = tls_create(tls_master)))
-    return NULL;
-
-  if (tls_init_context(tls, ti) < 0) {
-    int err = errno;
-    tls_free(tls);
-    errno = err;
-    return NULL;
-  }
+  if (tls_init_context(tls, ti) < 0)
+    return -1;
 
   RAND_bytes(sessionId, sizeof(sessionId));
 
@@ -685,6 +696,30 @@ tls_t *tls_init_master(tls_issues_t *ti)
       tls_log_errors(3, "tls_init_master", 0);
   }
 
+  return 0;
+}
+
+tls_t *tls_init_master(tls_issues_t *ti)
+{
+  tls_t *tls;
+
+#if HAVE_SIGPIPE
+  signal(SIGPIPE, SIG_IGN);  /* Ignore spurios SIGPIPE from OpenSSL */
+#endif
+
+  tls_set_default(ti);
+
+  if (!(tls = tls_create(tls_master)))
+    return NULL;
+
+  if (!(tls->issues = tls_issues_dup(tls->home, ti)) ||
+      tls_init_master_context(tls, tls->issues) < 0) {
+    int err = errno;
+    tls_free(tls);
+    errno = err;
+    return NULL;
+  }
+
 #if 0
   if (sock != -1) {
     tls->bio_con = BIO_new_socket(sock, BIO_NOCLOSE);
@@ -699,6 +734,55 @@ tls_t *tls_init_master(tls_issues_t *ti)
 #endif
 
   return tls;
+}
+
+/** Build a new context for a master from the files it was created with.
+ *
+ * Nothing changes until tls_reload_commit(); tls_free() the result to drop
+ * it instead.
+ *
+ * @return the new context, or NULL if the files do not yield a certificate
+ * with a matching key
+ */
+tls_t *tls_reload_prepare(tls_t *master)
+{
+  tls_t *fresh;
+
+  if (!master || master->type != tls_master || !master->issues) {
+    errno = EINVAL;
+    return NULL;
+  }
+
+  if (!(fresh = tls_create(tls_master)))
+    return NULL;
+
+  if (tls_init_master_context(fresh, master->issues) < 0 ||
+      !SSL_CTX_get0_certificate(fresh->ctx) ||
+      !SSL_CTX_check_private_key(fresh->ctx)) {
+    SU_DEBUG_1(("%s: cannot load certificate %s with key %s, keeping the old one\n",
+		__func__, master->issues->cert, master->issues->key));
+    tls_log_errors(1, __func__, 0);
+    tls_free(fresh);
+    errno = EIO;
+    return NULL;
+  }
+
+  return fresh;
+}
+
+/** Swap in a context from tls_reload_prepare(), and free what is left.
+ *
+ * Connections opened before keep the old context (each holds a reference),
+ * so only connections set up afterwards present the new certificate.
+ */
+void tls_reload_commit(tls_t *master, tls_t *fresh)
+{
+  SSL_CTX *old = master->ctx;
+
+  master->ctx = fresh->ctx, fresh->ctx = old;
+  tls_free(fresh);
+
+  SU_DEBUG_3(("%s: reloaded certificate %s\n", __func__, master->issues->cert));
 }
 
 tls_t *tls_init_secondary(tls_t *master, int sock, int accept)
@@ -721,6 +805,9 @@ tls_t *tls_init_secondary(tls_t *master, int sock, int accept)
   }
   if (!tls)
     return tls;
+
+  /* Own reference, so the master can swap its context on reload */
+  SSL_CTX_up_ref(tls->ctx);
 
   assert(sock != -1);
 

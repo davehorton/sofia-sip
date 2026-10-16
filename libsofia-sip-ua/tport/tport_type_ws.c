@@ -267,6 +267,8 @@ static void tport_ws_deinit_primary(tport_primary_t *pri)
 {
   tport_ws_primary_t *wspri = (tport_ws_primary_t *)pri;
 
+  tport_ws_reload_finish(pri, 0);
+
   if ( wspri->ssl_ctx ) {
 	  SSL_CTX_free(wspri->ssl_ctx);
 	  wspri->ssl_ctx = NULL;
@@ -440,6 +442,130 @@ ssize_t tport_send_stream_ws(tport_t const *self, msg_t *msg,
   return size;
 }
 
+/** Build the server context of a wss primary from its configured files. */
+static SSL_CTX *tport_ws_ssl_ctx(tport_ws_primary_t *wspri)
+{
+  SSL_CTX *ctx;
+  char *tls12_list = NULL;
+  char *tls13_list = NULL;
+
+  init_ssl();
+
+  //  OpenSSL_add_all_algorithms();   /* load & register cryptos */                                                                                       
+  //  SSL_load_error_strings();     /* load all error messages */                                                                                         
+  wspri->ssl_method = SSLv23_server_method();   /* create server instance */
+  ctx = SSL_CTX_new((SSL_METHOD *)wspri->ssl_method);         /* create context */
+
+  if (!ctx) {
+	  tls_log_errors(3, "tport_ws_init_primary_secure", 0);
+	  return NULL;
+  }
+
+  SSL_CTX_sess_set_remove_cb(ctx, NULL);
+
+ if (wspri->ws_chain) {
+	  SSL_CTX_use_certificate_chain_file(ctx, wspri->ws_chain);
+  }
+
+  /* set the local certificate from CertFile */
+  SSL_CTX_use_certificate_file(ctx, wspri->ws_cert, SSL_FILETYPE_PEM);
+  /* set the private key from KeyFile */
+  SSL_CTX_use_PrivateKey_file(ctx, wspri->ws_key, SSL_FILETYPE_PEM);
+  /* verify private key */
+  if ( !SSL_CTX_check_private_key(ctx) ) {
+	  goto fail;
+  }
+
+  /* Disable SSLv2 */
+  SSL_CTX_set_options(ctx, SSL_OP_NO_SSLv2);
+  /* Disable SSLv3 */
+  SSL_CTX_set_options(ctx, SSL_OP_NO_SSLv3);
+  /* Disable TLSv1 */
+  SSL_CTX_set_options(ctx, SSL_OP_NO_TLSv1);
+  /* Disable Compression CRIME (Compression Ratio Info-leak Made Easy) */
+  SSL_CTX_set_options(ctx, SSL_OP_NO_COMPRESSION);
+  
+  if (wspri->ws_ciphers) {
+    split_ciphers(wspri->ws_ciphers, &tls12_list, &tls13_list);
+    SU_DEBUG_1(("Enabling TLS 1.2 and earlier ciphers: %s\n", tls12_list));
+    SU_DEBUG_1(("Enabling TLS 1.3 ciphers:             %s\n", tls13_list));
+    if (tls12_list && strlen(tls12_list) > 0) {
+      if (!SSL_CTX_set_cipher_list(ctx, tls12_list)) {
+        tls_log_errors(3, "tport_ws_init_primary_secure - failed initializing TLS 1.2 cipher list", 0);
+        goto fail;
+      }
+    }
+    if (tls13_list && strlen(tls13_list) > 0) {
+      if (!SSL_CTX_set_ciphersuites(ctx, tls13_list)) {
+        tls_log_errors(3, "tport_ws_init_primary_secure - failed initializing TLS 1.3 cipher list", 0);
+        goto fail;
+      }
+    }
+  }
+  else {
+    if ( !SSL_CTX_set_cipher_list(ctx, "!eNULL:!aNULL:!DSS:HIGH:@STRENGTH") ) {
+        tls_log_errors(3, "tport_ws_init_primary_secure", 0);
+        goto fail;
+    }
+  }
+
+  print_tls12_cipher_list(ctx);
+
+  free(tls12_list);
+  free(tls13_list);
+  return ctx;
+
+ fail:
+  free(tls12_list);
+  free(tls13_list);
+  SSL_CTX_free(ctx);
+  return NULL;
+}
+
+/** Build a new context for a wss primary; tport_ws_reload_finish() swaps
+ * it in.
+ *
+ * @retval 1 prepared, 0 not a secure primary, -1 the old certificate stays
+ */
+int tport_ws_reload_prepare(tport_primary_t *pri)
+{
+  tport_ws_primary_t *wspri = (tport_ws_primary_t *)pri;
+
+  if (!wspri->ws_secure || !wspri->ssl_ctx)
+    return 0;
+
+  if (!(wspri->ws_reload_ctx = tport_ws_ssl_ctx(wspri))) {
+    SU_DEBUG_1(("%s: cannot load certificate %s with key %s, keeping the old one\n",
+		__func__, wspri->ws_cert, wspri->ws_key));
+    return -1;
+  }
+
+  return 1;
+}
+
+/** Swap in the context prepared for a wss primary, or drop it.
+ *
+ * Connections keep the old one: each holds its own reference, see ws_init().
+ */
+void tport_ws_reload_finish(tport_primary_t *pri, int commit)
+{
+  tport_ws_primary_t *wspri = (tport_ws_primary_t *)pri;
+  SSL_CTX *ctx = wspri->ws_reload_ctx;
+
+  if (!ctx)
+    return;
+
+  wspri->ws_reload_ctx = NULL;
+
+  if (commit) {
+    SSL_CTX_free(wspri->ssl_ctx);
+    wspri->ssl_ctx = ctx;
+    SU_DEBUG_3(("%s: reloaded certificate %s\n", __func__, wspri->ws_cert));
+  }
+  else
+    SSL_CTX_free(ctx);
+}
+
 static int tport_ws_init_primary_secure(tport_primary_t *pri,
 				 tp_name_t tpn[1],
 				 su_addrinfo_t *ai,
@@ -455,8 +581,6 @@ static int tport_ws_init_primary_secure(tport_primary_t *pri,
   const char *key = NULL;
   const char *chain = NULL;
   char const *tls_ciphers = NULL;
-  char *tls12_list = NULL;
-  char *tls13_list = NULL;
 
   //char *homedir;
   //char *tbf = NULL;
@@ -526,74 +650,19 @@ static int tport_ws_init_primary_secure(tport_primary_t *pri,
 	if (access(chain, R_OK) != 0) chain = NULL;
   }
 */
-  init_ssl();
+  wspri->ws_key = su_strdup(pri->pri_home, key);
+  wspri->ws_cert = su_strdup(pri->pri_home, cert);
+  wspri->ws_chain = su_strdup(pri->pri_home, chain);
+  wspri->ws_ciphers = su_strdup(pri->pri_home, tls_ciphers);
 
-  //  OpenSSL_add_all_algorithms();   /* load & register cryptos */                                                                                       
-  //  SSL_load_error_strings();     /* load all error messages */                                                                                         
-  wspri->ssl_method = SSLv23_server_method();   /* create server instance */
-  wspri->ssl_ctx = SSL_CTX_new((SSL_METHOD *)wspri->ssl_method);         /* create context */
+  if (!(wspri->ssl_ctx = tport_ws_ssl_ctx(wspri)))
+    goto done;
 
-  if (!wspri->ssl_ctx) {
-	  tls_log_errors(3, "tport_ws_init_primary_secure", 0);
-	  goto done;
-  }
-
-  SSL_CTX_sess_set_remove_cb(wspri->ssl_ctx, NULL);
   wspri->ws_secure = 1;
-
- if (tls_chain_file) {
-	  SSL_CTX_use_certificate_chain_file(wspri->ssl_ctx, chain);
-  }
-
-  /* set the local certificate from CertFile */
-  SSL_CTX_use_certificate_file(wspri->ssl_ctx, cert, SSL_FILETYPE_PEM);
-  /* set the private key from KeyFile */
-  SSL_CTX_use_PrivateKey_file(wspri->ssl_ctx, key, SSL_FILETYPE_PEM);
-  /* verify private key */
-  if ( !SSL_CTX_check_private_key(wspri->ssl_ctx) ) {
-	  goto done;
-  }
-
-  /* Disable SSLv2 */
-  SSL_CTX_set_options(wspri->ssl_ctx, SSL_OP_NO_SSLv2);
-  /* Disable SSLv3 */
-  SSL_CTX_set_options(wspri->ssl_ctx, SSL_OP_NO_SSLv3);
-  /* Disable TLSv1 */
-  SSL_CTX_set_options(wspri->ssl_ctx, SSL_OP_NO_TLSv1);
-  /* Disable Compression CRIME (Compression Ratio Info-leak Made Easy) */
-  SSL_CTX_set_options(wspri->ssl_ctx, SSL_OP_NO_COMPRESSION);
-  
-  if (tls_ciphers) {
-    split_ciphers(tls_ciphers, &tls12_list, &tls13_list);
-    SU_DEBUG_1(("Enabling TLS 1.2 and earlier ciphers: %s\n", tls12_list));
-    SU_DEBUG_1(("Enabling TLS 1.3 ciphers:             %s\n", tls13_list));
-    if (tls12_list && strlen(tls12_list) > 0) {
-      if (!SSL_CTX_set_cipher_list(wspri->ssl_ctx, tls12_list)) {
-        tls_log_errors(3, "tport_ws_init_primary_secure - failed initializing TLS 1.2 cipher list", 0);
-        goto done;
-      }
-    }
-    if (tls13_list && strlen(tls13_list) > 0) {
-      if (!SSL_CTX_set_ciphersuites(wspri->ssl_ctx, tls13_list)) {
-        tls_log_errors(3, "tport_ws_init_primary_secure - failed initializing TLS 1.3 cipher list", 0);
-        goto done;
-      }
-    }
-  }
-  else {
-    if ( !SSL_CTX_set_cipher_list(wspri->ssl_ctx, "!eNULL:!aNULL:!DSS:HIGH:@STRENGTH") ) {
-        tls_log_errors(3, "tport_ws_init_primary_secure", 0);
-        goto done;
-    }
-  }
-
-  print_tls12_cipher_list(wspri->ssl_ctx);
 
   ret = tport_ws_init_primary(pri, tpn, ai, tags, return_culprit);
 
  done:
-  free(tls12_list);
-  free(tls13_list);
   su_home_zap(autohome);
   return ret;
 }

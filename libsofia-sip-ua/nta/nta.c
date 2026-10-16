@@ -1168,6 +1168,26 @@ void nta_agent_resolver_clean_cache(nta_agent_t *agent)
 #endif
 }
 
+/** Reload TLS and WSS certificates from the files the transports use.
+ *
+ * Open connections, and the calls and transactions on them, keep the
+ * certificate they were set up with. If any transport's files cannot be
+ * loaded, none of them changes. Encrypted keys must use the passphrase the
+ * transports were bound with. Call from the agent's root thread.
+ *
+ * @return the number of transports reloaded, or -1 if any of them failed
+ *
+ * @sa tport_reload_tls_files()
+ */
+int nta_agent_reload_tls_files(nta_agent_t *agent)
+{
+  if (!agent || !agent->sa_tports) {
+    errno = EINVAL;
+    return -1;
+  }
+  return tport_reload_tls_files(agent->sa_tports);
+}
+
 /** Return agent context. */
 nta_agent_magic_t *nta_agent_magic(nta_agent_t const *agent)
 {

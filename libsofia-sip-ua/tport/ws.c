@@ -721,6 +721,11 @@ int ws_init(wsh_t *wsh, ws_socket_t sock, SSL_CTX *ssl_ctx, int close_sock, int 
 	wsh->ssl_ctx = ssl_ctx;
 	wsh->stay_open = stay_open;
 
+	/* Own reference, so the primary can swap its context on reload */
+	if (ssl_ctx) {
+		SSL_CTX_up_ref(ssl_ctx);
+	}
+
 	if (!ssl_ctx) {
 		ssl_ctx = ws_globals.ssl_ctx;
 	}
@@ -781,6 +786,11 @@ void ws_destroy(wsh_t *wsh)
 	if (wsh->bbuffer) free(wsh->bbuffer);
 
 	wsh->buffer = wsh->bbuffer = NULL;
+
+	if (wsh->ssl_ctx) {
+		SSL_CTX_free(wsh->ssl_ctx);
+		wsh->ssl_ctx = NULL;
+	}
 
 }
 
