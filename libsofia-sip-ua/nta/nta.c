@@ -2240,11 +2240,20 @@ static tport_stack_class_t nta_agent_class[1] =
  * ephemeral port.
  *
  * The "transport" parameter determines the transport protocol that is used
- * and how they are preferred. If no protocol is specified, both UDP and TCP
- * are used for SIP URL and TLS for SIPS URL. The preference can be
- * indicated with a comma-separated list of transports, for instance,
- * parameter @code transport=tcp,udp @endcode indicates that TCP is
- * preferred to UDP.
+ * and how they are preferred. If no protocol is specified, a SIP URL binds
+ * UDP, TCP, SCTP (when built with it) and WS, and a SIPS URL binds TLS, WSS
+ * and WS. The preference can be indicated with a comma-separated list of
+ * transports, for instance, parameter @code transport=tcp,udp @endcode
+ * indicates that TCP is preferred to UDP.
+ *
+ * @note Without a "transport" parameter, the stream transports share one
+ * port: WS listens on the TCP port, and WSS and WS on the TLS port. The
+ * listening sockets set SO_REUSEPORT (see su_setreuseaddr()), so the kernel
+ * spreads incoming connections between them, and a WebSocket client can
+ * land on the TCP listener and the other way round. Name the transports,
+ * and give WS and WSS ports of their own, e.g.
+ * @code sip:*:5060;transport=udp,tcp @endcode and
+ * @code sip:*:8080;transport=ws @endcode
  *
  * The "maddr" parameter determines to which address the stack binds in
  * order to listen for incoming requests. An "*" in "maddr" parameter is

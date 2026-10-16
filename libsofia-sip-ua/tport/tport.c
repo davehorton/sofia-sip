@@ -4355,6 +4355,14 @@ int tport_error_event(tport_t *self)
 
 /** Mark message as waiting for a response.
  *
+ * If the transport fails while the message is pending, @a callback is
+ * called with @a client and @a msg.
+ *
+ * @note No reference to @a msg is taken. Call tport_release() before the
+ * message is destroyed: otherwise an error on the transport passes the
+ * destroyed message to @a callback. nta releases each pending request when
+ * its transaction gets a final response or is destroyed.
+ *
  * @return Positive integer, or -1 upon an error.
  */
 int tport_pend(tport_t *self,
