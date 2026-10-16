@@ -52,8 +52,8 @@ When a drachtio-server bug turns out to be in sofia-sip, add the exchange that t
 | Case | Scenario |
 |------|----------|
 | 1.x | Request and response, a request trickled byte by byte, 60 kB requests, pipelined requests split mid-message, CRLF keepalive and pong (including a pong that cannot be written at once over TLS), two requests in one write |
-| 2.x | Peer resets before the response, peer closes while the stack holds the transport, `tport_shutdown()` by the stack, many short connections; every connection must be freed |
-| 3.x | Plain text to a TLS port, stalled TLS handshake, partial WebSocket frame header, fragmented WebSocket message |
+| 2.x | Peer resets before the response, peer closes while the stack holds the transport, `tport_shutdown()` by the stack, many short connections, a WSS connection released after its fd was reused; every connection must be freed |
+| 3.x | Plain text to a TLS port, stalled TLS handshake, partial WebSocket frame header, fragmented WebSocket message, no raw keepalive on a WebSocket, a WebSocket peer that stops reading |
 | 4.x | Mutual TLS: a server that requires a client certificate, and the distinct outbound identity (`TPTAG_TLS_CLIENT_CERTIFICATE_FILE`) |
 
 The certificates are in `libsofia-sip-ua/tport/tls/` (CA, server, and a separate client identity); `make-certs.sh` there regenerates them. To run one case: `libsofia-sip-ua/tport/check_tport tport_3_2`.
