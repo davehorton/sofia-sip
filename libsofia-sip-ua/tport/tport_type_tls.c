@@ -260,6 +260,8 @@ static int tport_tls_init_master(tport_primary_t *pri,
           SU_DEBUG_1(("%s(%p): tls CAfile = %s does not exist or could not be accessed\n", __func__, (void *)pri, ti.CAfile));
     }
   }
+  if (passphrase)
+    ti.passphrase = su_sprintf(autohome, "%s", passphrase);
 
   SU_DEBUG_4(("%s(%p): tls_policy: %d, tls_verify: %d\n", __func__, (void *)pri, tls_policy, tls_verify));
   SU_DEBUG_4(("%s(%p): tls_version: %d, tls_timeout: %d\n", __func__, (void *)pri, tls_version, tls_timeout));
