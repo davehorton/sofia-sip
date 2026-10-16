@@ -555,13 +555,42 @@ int tport_tls_recv(tport_t *self)
     return -1;
   }
 
+  tls_buf = tls_read_buffer(tlstp->tlstp_context, N);
+
+  /* CRLF keepalive between messages (RFC 5626 section 4.4.1), as
+     tport_recv_stream() handles it for TCP */
+  if (self->tp_msg == NULL) {
+    for (i = 0; i < N && (tls_buf[i] == '\r' || tls_buf[i] == '\n'); i++)
+      ;
+
+    if (i > 0) {
+      self->tp_ping += (unsigned short)i;
+
+      if (self->tp_ping >= 4) {
+	self->tp_ping = 0;
+	if (self->tp_params->tpp_pong2ping && !tport_has_queued(self)) {
+	  SU_DEBUG_7(("%s(%p): sending PONG to " TPN_FORMAT "\n",
+		      __func__, (void *)self, TPN_ARGS(self->tp_name)));
+	  if (tls_pong(tlstp->tlstp_context) < 0)
+	    return -1;
+	  tport_tls_set_events(self);
+	}
+      }
+
+      if (i == N)		/* nothing but keepalive */
+	return tls_pending(tlstp->tlstp_context) ? 2 : 1;
+
+      tls_buf += i, N -= i;
+    }
+
+    self->tp_ping = 0;
+  }
+
   veclen = tport_recv_iovec(self, &self->tp_msg, iovec, N, 0);
   if (veclen < 0)
     return -1;
 
   msg = self->tp_msg;
-
-  tls_buf = tls_read_buffer(tlstp->tlstp_context, N);
 
   msg_set_address(msg, self->tp_addr, self->tp_addrlen);
 
