@@ -201,7 +201,7 @@ static int tport_tls_init_master(tport_primary_t *pri,
   su_home_t autohome[SU_HOME_AUTO_SIZE(1024)];
   tls_issues_t ti = {0};
   tls_issues_t ti_client = {0};
-  int have_client_identity = 0;
+  int have_client_context = 0;
 
   su_home_auto(autohome, sizeof autohome);
 
@@ -275,54 +275,77 @@ static int tport_tls_init_master(tport_primary_t *pri,
   ti.timeout = tls_timeout;
   ti.sni = tls_sni ? 1 : 0;
 
-  /* A distinct identity for outbound (client) connections is optional.  Derive
-     it from the listener's settings so that ciphers, version and verify policy
-     are shared, then override the certificate, key and trust store.  Build it
-     before tls_init_master() below, because that mutates 'ti' by applying
-     defaults, and before su_home_zap() frees the strings. */
-  if (tls_client_certificate_file && tls_client_key_file) {
-    ti_client = ti;
-    ti_client.cert = su_sprintf(autohome, "%s", tls_client_certificate_file);
-    ti_client.key = su_sprintf(autohome, "%s", tls_client_key_file);
-    ti_client.passphrase = tls_client_passphrase ?
-      su_sprintf(autohome, "%s", tls_client_passphrase) : NULL;
-    ti_client.use_cert_chain = 1;
-    if (tls_client_ca_file) {
-      ti_client.CAfile = su_sprintf(autohome, "%s", tls_client_ca_file);
-      ti_client.CApath = NULL;
-    }
-    have_client_identity = 1;
+  /* A distinct context for outbound (client) connections is built when either a
+     separate client identity is configured, or outbound verification is
+     requested.  It derives from the listener's settings so that ciphers, version
+     and verify policy are shared, trusts the system CA store (use_system_ca), and
+     may override the certificate, key and trust anchors.  Keeping it separate
+     from the listener context means the system store is never consulted when
+     verifying inbound client certificates.  Build it before tls_init_master()
+     below, because that mutates 'ti' by applying defaults, and before
+     su_home_zap() frees the strings. */
+  {
+    int want_client_identity = (tls_client_certificate_file && tls_client_key_file);
+    int want_verify_outgoing = (ti.policy & TPTLS_VERIFY_OUT) != 0;
 
-    SU_DEBUG_9(("%s(%p): tls client cert file = %s\n",
-                __func__, (void *)pri, ti_client.cert));
-    if (access(ti_client.cert, R_OK) != 0) {
-      SU_DEBUG_1(("%s(%p): tls client cert = %s does not exist or could not be accessed\n",
-                  __func__, (void *)pri, ti_client.cert));
+    if (!want_client_identity && (tls_client_certificate_file || tls_client_key_file)) {
+      SU_DEBUG_1(("%s(%p): both TPTAG_TLS_CLIENT_CERTIFICATE_FILE and "
+                  "TPTAG_TLS_CLIENT_CERTIFICATE_KEY_FILE are required to use a "
+                  "distinct outbound identity; ignoring the one supplied\n",
+                  __func__, (void *)pri));
     }
-    if (access(ti_client.key, R_OK) != 0) {
-      SU_DEBUG_1(("%s(%p): tls client key = %s does not exist or could not be accessed\n",
-                  __func__, (void *)pri, ti_client.key));
+
+    if (want_client_identity || want_verify_outgoing) {
+      ti_client = ti;
+      /* Trust the OpenSSL default (system) CA store, outbound only. */
+      ti_client.use_system_ca = 1;
+
+      /* Present a distinct client identity if one was configured; otherwise the
+         copy of 'ti' keeps the listener's certificate (historical behaviour). */
+      if (want_client_identity) {
+        ti_client.cert = su_sprintf(autohome, "%s", tls_client_certificate_file);
+        ti_client.key = su_sprintf(autohome, "%s", tls_client_key_file);
+        ti_client.passphrase = tls_client_passphrase ?
+          su_sprintf(autohome, "%s", tls_client_passphrase) : NULL;
+        ti_client.use_cert_chain = 1;
+      }
+
+      /* Optional additional trust anchors (e.g. a private or self-signed CA) for
+         verifying the peer's server certificate on outbound connections. */
+      if (tls_client_ca_file) {
+        ti_client.CAfile = su_sprintf(autohome, "%s", tls_client_ca_file);
+        ti_client.CApath = NULL;
+      }
+
+      have_client_context = 1;
+
+      if (want_client_identity) {
+        SU_DEBUG_9(("%s(%p): tls client cert file = %s\n",
+                    __func__, (void *)pri, ti_client.cert));
+        if (access(ti_client.cert, R_OK) != 0) {
+          SU_DEBUG_1(("%s(%p): tls client cert = %s does not exist or could not be accessed\n",
+                      __func__, (void *)pri, ti_client.cert));
+        }
+        if (access(ti_client.key, R_OK) != 0) {
+          SU_DEBUG_1(("%s(%p): tls client key = %s does not exist or could not be accessed\n",
+                      __func__, (void *)pri, ti_client.key));
+        }
+      }
+      if (ti_client.CAfile && access(ti_client.CAfile, R_OK) != 0) {
+        SU_DEBUG_1(("%s(%p): tls client CAfile = %s does not exist or could not be accessed\n",
+                    __func__, (void *)pri, ti_client.CAfile));
+      }
     }
-    if (ti_client.CAfile && access(ti_client.CAfile, R_OK) != 0) {
-      SU_DEBUG_1(("%s(%p): tls client CAfile = %s does not exist or could not be accessed\n",
-                  __func__, (void *)pri, ti_client.CAfile));
-    }
-  }
-  else if (tls_client_certificate_file || tls_client_key_file) {
-    SU_DEBUG_1(("%s(%p): both TPTAG_TLS_CLIENT_CERTIFICATE_FILE and "
-                "TPTAG_TLS_CLIENT_CERTIFICATE_KEY_FILE are required to use a "
-                "distinct outbound identity; ignoring the one supplied\n",
-                __func__, (void *)pri));
   }
 
   tlspri->tlspri_master = tls_init_master(&ti);
 
-  /* When no client identity is configured, outbound connections share the
+  /* When no distinct client context is needed, outbound connections share the
      listener's context -- the historical behaviour. */
-  if (tlspri->tlspri_master && have_client_identity) {
+  if (tlspri->tlspri_master && have_client_context) {
     tlspri->tlspri_client_master = tls_init_master(&ti_client);
     if (!tlspri->tlspri_client_master) {
-      SU_DEBUG_1(("%s(%p): failed to initialize the outbound TLS identity\n",
+      SU_DEBUG_1(("%s(%p): failed to initialize the outbound TLS context\n",
                   __func__, (void *)pri));
       tls_free(tlspri->tlspri_master), tlspri->tlspri_master = NULL;
     }

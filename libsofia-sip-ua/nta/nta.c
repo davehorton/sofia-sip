@@ -577,6 +577,9 @@ struct nta_outgoing_s
   nta_outgoing_t       *orq_forks;	/**< Tagged transactions */
   uint32_t              orq_rseq;       /**< Latest incoming rseq */
   int                   orq_pending;    /**< Request is pending in tport */
+  char const           *orq_tperror_reason; /**< Transient: Reason-header text
+                                             * for an internally-generated
+                                             * transport-error response. */
 };
 
 /* ------------------------------------------------------------------------- */
@@ -8750,7 +8753,22 @@ outgoing_tport_error(nta_agent_t *agent, nta_outgoing_t *orq,
     outgoing_reply(orq, SIP_410_GONE, 0);
   }
   else {
+    /* If the transport recorded a human-readable failure reason (e.g. a TLS
+       certificate verification failure), carry it into the 503 as a Reason
+       header so the application can see *why* the next hop was unreachable,
+       instead of a bare "Service Unavailable". */
+    char const *treason = tp ? tport_error_reason(tp) : NULL;
+    char reasonbuf[200];
+
+    if (treason) {
+      snprintf(reasonbuf, sizeof(reasonbuf),
+               "SIP ;cause=503 ;text=\"%s\"", treason);
+      orq->orq_tperror_reason = reasonbuf;
+    }
+
     outgoing_reply(orq, SIP_503_SERVICE_UNAVAILABLE, 0);
+
+    orq->orq_tperror_reason = NULL;
   }
 }
 
@@ -10106,6 +10124,11 @@ int outgoing_reply(nta_outgoing_t *orq, int status, char const *phrase,
 
       sip_add_dup(msg, sip, (sip_header_t *)af);
     }
+
+    /* Attach a Reason header when a transport error supplied one (e.g. the
+       detail of a TLS certificate-verification failure). */
+    if (orq->orq_tperror_reason)
+      sip_add_make(msg, sip, sip_reason_class, orq->orq_tperror_reason);
   }
 
   if (orq->orq_inserted && !delayed) {

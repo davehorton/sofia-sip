@@ -306,6 +306,9 @@ TPORT_DLL tp_magic_t *tport_magic(tport_t const *tport);
 /** Get transport name. */
 TPORT_DLL tp_name_t const *tport_name(tport_t const *tport);
 
+/** Get the reason for the most recent transport failure, or NULL if none. */
+TPORT_DLL char const *tport_error_reason(tport_t const *tport);
+
 /** Get transport address list. */
 TPORT_DLL su_addrinfo_t const *tport_get_address(tport_t const *tport);
 
