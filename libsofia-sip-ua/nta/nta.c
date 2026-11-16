@@ -9302,8 +9302,17 @@ size_t outgoing_timer_c(outgoing_queue_t *q,
     /*
      * If the client transaction has received a provisional response, the
      * proxy MUST generate a CANCEL request matching that transaction.
+     *
+     * A destroyed orq can be left here (e.g. canceled, but the CANCEL could
+     * not be created). nta_outgoing_tcancel() refuses destroyed orqs without
+     * dequeuing them, which would leave this orq at q_head and spin forever.
+     * Time it out instead, as timer B does: for a destroyed orq this only
+     * completes it (no callback) and it is reclaimed via timer D/terminate.
      */
-    nta_outgoing_tcancel(orq, NULL, NULL, TAG_NULL());
+    if (orq->orq_destroyed)
+      outgoing_timeout(orq, now);
+    else
+      nta_outgoing_tcancel(orq, NULL, NULL, TAG_NULL());
   }
 
   return timeout;
