@@ -980,6 +980,89 @@ START_TEST(tport_1_6)
 }
 END_TEST
 
+/** Encrypt data as one TLS record and return it, without sending it */
+static size_t
+peer_seal(struct peer *pe, char const *data, size_t len, char *out, size_t size)
+{
+  BIO *sock = SSL_get_wbio(pe->ssl), *mem = BIO_new(BIO_s_mem());
+  char *p;
+  long n;
+
+  fail_unless(mem != NULL && BIO_up_ref(sock) == 1);
+  SSL_set0_wbio(pe->ssl, mem);
+  fail_unless(SSL_write(pe->ssl, data, (int)len) == (int)len);
+  n = BIO_get_mem_data(mem, &p);
+  fail_unless(n > 0 && (size_t)n <= size);
+  memcpy(out, p, n);
+  SSL_set0_wbio(pe->ssl, sock);
+
+  return (size_t)n;
+}
+
+START_TEST(tport_1_7)
+{
+  int p = _i, round;
+  struct peer pe[1];
+  struct rx *r;
+  static char text[4096], sealed[8192];
+  char callid[64];
+
+  S2_CASE("tport-1.7", "TLS record split, stale OpenSSL error (TLS, WSS)",
+	  "A request whose TLS record arrives in two TCP segments while "
+	  "an earlier failure on another connection is still in the "
+	  "thread's OpenSSL error queue: the first half must read as "
+	  "'want more', not as an error that closes the connection");
+
+  if (!is_secure(p))
+    return;
+
+  fail_if(peer_connect(pe, p));
+
+  for (round = 0; round < 2; round++) {
+    char const *req;
+    size_t n, half;
+
+    snprintf(callid, sizeof callid, "1.7-%s-%d", protos[p], round);
+    req = request(p, callid, 2000);
+    n = is_ws(p) ? ws_frame(text, 0x1, req, strlen(req))
+      : (memcpy(text, req, strlen(req)), strlen(req));
+    n = peer_seal(pe, text, n, sealed, sizeof sealed);
+    half = n / 2;
+
+    /* What a failed SSL call on another connection leaves behind */
+#if OPENSSL_VERSION_NUMBER >= 0x30000000L
+    if (round == 0)
+      ERR_raise(ERR_LIB_SYS, ECONNRESET);
+    else
+      ERR_raise(ERR_LIB_SSL, SSL_R_DECRYPTION_FAILED_OR_BAD_RECORD_MAC);
+#else
+    if (round == 0)
+      ERR_put_error(ERR_LIB_SYS, 0, ECONNRESET, __FILE__, __LINE__);
+    else
+      ERR_put_error(ERR_LIB_SSL, 0, SSL_R_DECRYPTION_FAILED_OR_BAD_RECORD_MAC,
+		    __FILE__, __LINE__);
+#endif
+
+    fail_unless(send(pe->fd, sealed, half, MSG_NOSIGNAL) == (ssize_t)half);
+    pump(50);
+    ERR_clear_error();
+    fail_unless(send(pe->fd, sealed + half, n - half, MSG_NOSIGNAL)
+		== (ssize_t)(n - half));
+
+    r = wait_rx(3000);
+    ck_assert_msg(r && callid_is(r, callid),
+		  "%s connection dropped on a split record (round %d)",
+		  protos[p], round);
+    free_rx(r);
+    ck_assert_msg(!peer_wait(pe, NULL, 0), "connection closed by tport");
+  }
+
+  peer_close(pe);
+  fail_if(wait_no_secondaries(master, 3000));
+  NO_STALL();
+}
+END_TEST
+
 TCase *check_tport_1(void)
 {
   TCase *tc = tcase_create("1 - Stream transports");
@@ -994,6 +1077,7 @@ TCase *check_tport_1(void)
   tcase_add_loop_test(tc, tport_1_4, 0, NPROTOS);
   tcase_add_loop_test(tc, tport_1_5, 0, NPROTOS);
   tcase_add_test(tc, tport_1_6);
+  tcase_add_loop_test(tc, tport_1_7, 0, NPROTOS);
 
   return tc;
 }

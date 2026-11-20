@@ -372,7 +372,8 @@ ssize_t ws_raw_read(wsh_t *wsh, void *data, size_t bytes, int block)
 
 	if (wsh->ssl) {
 		do {
-			//ERR_clear_error();
+			/* A stale error from another connection would turn WANT_READ into a fatal error */
+			ERR_clear_error();
 			r = SSL_read(wsh->ssl, data, bytes);
 
 			if (r <= 0) {
@@ -450,14 +451,13 @@ void wss_log_errors(unsigned level, char const *s, unsigned long e)
 
 	if (s == NULL) s = "tls";
 
+	/* su_llog() filters, falling back to the default level when tport_log is unset */
 	for (; e != 0; e = ERR_get_error()) {
-		if (level <= tport_log->log_level) {
-			const char *error = ERR_lib_error_string(e);
-			const char *reason = ERR_reason_error_string(e);
+		const char *error = ERR_lib_error_string(e);
+		const char *reason = ERR_reason_error_string(e);
 
-			su_llog(tport_log, level, "%s: %08lx:%s:%s\n",
-				s, e, error, reason);
-		}
+		su_llog(tport_log, level, "%s: %08lx:%s:%s\n",
+			s, e, error ? error : "", reason ? reason : "");
 	}
 }
 
@@ -474,11 +474,18 @@ int wss_error(wsh_t *wsh, int ssl_err, char const *who)
 		if (errno == 0)
 			return 0;			/* EOS */
 
+		{
+			int e = errno;
+
+			if (!tport_log->log_init)
+				su_log_init(tport_log);
+			su_llog(tport_log, 3, "%s: %s\n", who, strerror(e));
+		}
 		errno = EIO;
 		return -1;
 
 	default:
-		wss_log_errors(1, who, ssl_err);
+		wss_log_errors(1, who, 0);
 		errno = EIO;
 		return -1;
 	}
@@ -504,7 +511,7 @@ ssize_t ws_raw_write(wsh_t *wsh, void *data, size_t bytes)
 			void *buf = (void *)((unsigned char *)data + wrote);
 			int size = bytes - wrote;
 
-			//ERR_clear_error();
+			ERR_clear_error();
 			r = SSL_write(wsh->ssl, buf, size);
 
 			if (r == 0) {
@@ -642,6 +649,7 @@ int establish_logical_layer(wsh_t *wsh)
 		}
 
 		do {
+			ERR_clear_error();
 			code = SSL_accept(wsh->ssl);
 
 			if (code == 1) {
@@ -825,7 +833,9 @@ ssize_t ws_close(wsh_t *wsh, int16_t reason)
 		 * not reused. */
 		if (wsh->secure_established && !wsh->ssl_io_error &&
 			!(SSL_get_shutdown(wsh->ssl) & SSL_SENT_SHUTDOWN)) {
+			ERR_clear_error();
 			SSL_shutdown(wsh->ssl);
+			ERR_clear_error();
 		}
 
 		SSL_free(wsh->ssl);
