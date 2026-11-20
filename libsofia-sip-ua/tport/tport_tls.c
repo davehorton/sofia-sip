@@ -618,6 +618,7 @@ void tls_free(tls_t *tls)
 
   if (tls->con != NULL) {
     do {
+      ERR_clear_error();
       ret = SSL_shutdown(tls->con);
       if (ret == -1) {
         /* The return value -1 means that the connection wasn't actually established */
@@ -1074,6 +1075,8 @@ ssize_t tls_read(tls_t *tls)
 
   tls->read_events = SU_WAIT_IN;
 
+  /* A stale error from another connection would turn WANT_READ into a fatal error */
+  ERR_clear_error();
   ret = SSL_read(tls->con, tls->read_buffer, tls_buffer_size);
   if (ret <= 0) {
     SU_DEBUG_4(("%s: SSL_read failed with %d\n",  __func__, (int) ret));
@@ -1137,6 +1140,7 @@ static int tls_finish_pong(tls_t *tls)
   if (!tls->pong_pending)
     return 1;
 
+  ERR_clear_error();
   ret = SSL_write(tls->con, tls_pong_crlf, sizeof tls_pong_crlf);
   if (ret > 0) {
     tls->pong_pending = 0;
@@ -1218,6 +1222,7 @@ ssize_t tls_write(tls_t *tls, void *buf, size_t size)
 
   tls->write_events = 0;
 
+  ERR_clear_error();
   ret = SSL_write(tls->con, buf, size);
   if (ret <= 0)
     return tls_error(tls, ret, "tls_write: SSL_write", buf, size);
@@ -1340,6 +1345,7 @@ int tls_connect(su_root_magic_t *magic, su_wait_t *w, tport_t *self)
       }
     }
 
+    ERR_clear_error();
     ret = self->tp_accepted ? SSL_accept(tls->con) : SSL_connect(tls->con);
     status = SSL_get_error(tls->con, ret);
 
