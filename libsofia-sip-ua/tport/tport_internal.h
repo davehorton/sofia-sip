@@ -190,9 +190,14 @@ struct tport_s {
                                          *
                                          * Subject Name(s) provided by the peer
 					 * in a TLS connection (if secondary).
-					 * or matched against incoming 
+					 * or matched against incoming
 					 * connections (if primary).
                                          */
+
+  char                tp_error_reason[128]; /**< Human-readable reason for the
+                                             * last transport failure (e.g. TLS
+                                             * certificate verification), for
+                                             * surfacing up to the stack. */
 
 #define tp_protoname tp_name->tpn_proto
 #define tp_canon     tp_name->tpn_canon
@@ -478,6 +483,8 @@ void tport_base_deliver(tport_t *self, msg_t *msg, su_time_t now);
 int tport_recv_error_report(tport_t *self);
 void tport_error_report(tport_t *self, int errcode,
 			su_sockaddr_t const *addr);
+
+void tport_set_error_reason(tport_t *self, char const *reason);
 
 int tport_open_log(tport_master_t *mr, tagi_t *tags);
 void tport_log_msg(tport_t *tp, msg_t *msg, char const *what,

@@ -2693,6 +2693,34 @@ char *localipname(int pf, char *buf, size_t bufsiz)
   return buf;
 }
 
+/** Record a human-readable reason for the most recent transport failure.
+ *
+ * Stored on the secondary transport so the stack can surface it (e.g. in a
+ * SIP Reason header) when it turns the failure into a response.  Used for TLS
+ * certificate-verification failures, where the errno alone ("Protocol error")
+ * says nothing useful.
+ */
+void tport_set_error_reason(tport_t *self, char const *reason)
+{
+  if (!self)
+    return;
+  if (reason && reason[0]) {
+    strncpy(self->tp_error_reason, reason, sizeof(self->tp_error_reason) - 1);
+    self->tp_error_reason[sizeof(self->tp_error_reason) - 1] = '\0';
+  }
+  else {
+    self->tp_error_reason[0] = '\0';
+  }
+}
+
+/** Return the reason recorded by tport_set_error_reason(), or NULL if none. */
+char const *tport_error_reason(tport_t const *self)
+{
+  if (self && self->tp_error_reason[0])
+    return self->tp_error_reason;
+  return NULL;
+}
+
 /** Process errors from transport. */
 void tport_error_report(tport_t *self, int errcode,
 			su_sockaddr_t const *addr)

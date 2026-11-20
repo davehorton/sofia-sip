@@ -71,6 +71,11 @@ typedef struct tls_issues_s {
 			 * intermediates in the file are sent too.  Only the
 			 * client (outbound) context sets this; the listener
 			 * keeps the historical single-certificate load. */
+  int   use_system_ca;  /* If non-zero, trust the OpenSSL default (system) CA
+			 * store in addition to any configured CAfile/CApath.
+			 * Only the client (outbound) context sets this, so the
+			 * listener's inbound client-cert trust stays limited to
+			 * its configured CAfile. */
   int   sni;		/* If non-zero, send the server_name (SNI) extension
 			 * on outbound connections.  Never sent for bare IP
 			 * destinations (RFC 6066). */
