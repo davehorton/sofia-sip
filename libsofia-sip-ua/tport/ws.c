@@ -451,14 +451,13 @@ void wss_log_errors(unsigned level, char const *s, unsigned long e)
 
 	if (s == NULL) s = "tls";
 
+	/* su_llog() filters, falling back to the default level when tport_log is unset */
 	for (; e != 0; e = ERR_get_error()) {
-		if (level <= tport_log->log_level) {
-			const char *error = ERR_lib_error_string(e);
-			const char *reason = ERR_reason_error_string(e);
+		const char *error = ERR_lib_error_string(e);
+		const char *reason = ERR_reason_error_string(e);
 
-			su_llog(tport_log, level, "%s: %08lx:%s:%s\n",
-				s, e, error, reason);
-		}
+		su_llog(tport_log, level, "%s: %08lx:%s:%s\n",
+			s, e, error ? error : "", reason ? reason : "");
 	}
 }
 
@@ -475,14 +474,18 @@ int wss_error(wsh_t *wsh, int ssl_err, char const *who)
 		if (errno == 0)
 			return 0;			/* EOS */
 
-		if (!tport_log->log_init)
-			su_log_init(tport_log);
-		su_llog(tport_log, 3, "%s: %s\n", who, strerror(errno));
+		{
+			int e = errno;
+
+			if (!tport_log->log_init)
+				su_log_init(tport_log);
+			su_llog(tport_log, 3, "%s: %s\n", who, strerror(e));
+		}
 		errno = EIO;
 		return -1;
 
 	default:
-		wss_log_errors(1, who, ssl_err);
+		wss_log_errors(1, who, 0);
 		errno = EIO;
 		return -1;
 	}

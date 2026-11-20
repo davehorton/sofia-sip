@@ -1030,10 +1030,18 @@ START_TEST(tport_1_7)
     half = n / 2;
 
     /* What a failed SSL call on another connection leaves behind */
+#if OPENSSL_VERSION_NUMBER >= 0x30000000L
     if (round == 0)
-      ERR_raise_data(ERR_LIB_SYS, ECONNRESET, "stale");
+      ERR_raise(ERR_LIB_SYS, ECONNRESET);
     else
-      ERR_raise(ERR_LIB_SSL, SSL_R_UNEXPECTED_EOF_WHILE_READING);
+      ERR_raise(ERR_LIB_SSL, SSL_R_DECRYPTION_FAILED_OR_BAD_RECORD_MAC);
+#else
+    if (round == 0)
+      ERR_put_error(ERR_LIB_SYS, 0, ECONNRESET, __FILE__, __LINE__);
+    else
+      ERR_put_error(ERR_LIB_SSL, 0, SSL_R_DECRYPTION_FAILED_OR_BAD_RECORD_MAC,
+		    __FILE__, __LINE__);
+#endif
 
     fail_unless(send(pe->fd, sealed, half, MSG_NOSIGNAL) == (ssize_t)half);
     pump(50);
@@ -1046,7 +1054,7 @@ START_TEST(tport_1_7)
 		  "%s connection dropped on a split record (round %d)",
 		  protos[p], round);
     free_rx(r);
-    fail_if(peer_wait(pe, NULL, 0), "connection closed by tport");
+    ck_assert_msg(!peer_wait(pe, NULL, 0), "connection closed by tport");
   }
 
   peer_close(pe);
